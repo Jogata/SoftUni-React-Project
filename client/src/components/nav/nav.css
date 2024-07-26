@@ -1,0 +1,94 @@
+nav {
+    display: flex;
+    gap: 3rem;
+    width: 96%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 0.5rem 0;
+    z-index: 7000;
+}
+
+.nav-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+nav li {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.sub-nav {
+    position: relative;
+}
+
+.sub-nav span {
+    display: inline-block;
+    padding: 0.4em 1em;
+    cursor: pointer;
+}
+
+.sub-nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: max-content;
+}
+
+/* .sub-nav.expanded ul {
+    display: block;
+} */
+
+.sub-nav:hover ul,
+.sub-nav ul:hover {
+    display: block;
+}
+
+.alt .sub-nav ul {
+    padding: 0.5rem 0;
+    border-radius: 12px;
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+nav a {
+    position: relative;
+    padding: 0.4em 1em;
+    color: #fff;
+}
+
+nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 50%;
+    height: 1px;
+    margin: auto;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 400ms ease-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+.alt .sub-nav a {
+    color: #000;
+}
+
+.alt .sub-nav a::after {
+    background-color: #000;
+}
+
+.logo {
+    align-self: flex-start;
+    font-size: 2rem;
+    font-weight: bold;
+}
