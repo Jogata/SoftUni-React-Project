@@ -1,0 +1,13 @@
+.main-menu main {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+    
+.main-slider {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+  

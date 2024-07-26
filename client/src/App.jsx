@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import MainPage from './components/main-page/MainPage'
 
 function App() {
   return (
     <>
-      <h1>Start</h1>
+      <div className="body">
+        <div className="page main-menu">
+          <MainPage />
+        </div>
+      </div>
     </>
   )
 }

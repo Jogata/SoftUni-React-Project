@@ -1,0 +1,1566 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600&family=Limelight&family=Lobster&family=Montserrat:wght@300;400;600&family=Oleo+Script+Swash+Caps:wght@400;700&family=Poppins:wght@300;400;700;800&family=Raleway:ital,wght@0,400;1,300;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Kaushan+Script&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Brawler:wght@400;700&family=Croissant+One&family=Ephesis&family=Gloock&family=Hurricane&family=Imbue:opsz,wght@10..100,100..900&family=Modak&family=Montez&family=Prosto+One&family=Rye&family=Shojumaru&family=Young+Serif&family=ZCOOL+XiaoWei&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Poppins:wght@400;500;600&display=swap");
+
+*, 
+*::before, 
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #897859;
+  --gothic-font: "Planewalker", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.bulled {
+  list-style: inside circle;
+  padding-left: 1rem;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+a:focus-visible {
+  outline: 1px solid #fff5;
+}
+
+.link {
+  display: inline;
+  color: #f1683a;
+}
+
+a.not-active {
+  color: red;
+  font-weight: bold;
+  cursor: text;
+}
+a.not-active:hover {
+  color: #fff;
+  background-color: red;
+}
+
+img {
+  width: 100%;
+}
+
+.svg {
+  /* display: none; */
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.mask-1 {
+  clip-path: url("#mask-1");
+}
+.mask-2 {
+  clip-path: url("#mask-2");
+}
+.mask-3 {
+  clip-path: url("#mask-3");
+}
+.mask-4 {
+  clip-path: url("#mask-4");
+}
+
+
+.body {
+  /* min-height: 100vh; */
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Courgette', cursive;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Great Vibes', cursive;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Limelight', cursive;
+  font-family: 'Lobster', cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Fraunces', serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Lemon', cursive;
+  font-family: "Lora", serif;
+  font-family: "Croissant One", serif;
+  font-family: "Shojumaru", system-ui;
+  font-family: "Montez", cursive;
+  font-family: "Modak", system-ui;
+  font-family: "Prosto One", sans-serif;
+  font-family: "Young Serif", serif;
+  font-family: "ZCOOL XiaoWei", sans-serif;
+  font-family: "Brawler", serif;
+  font-family: "Gloock", serif;
+  font-family: "Ephesis", cursive;
+  font-family: "Platypi", serif;
+  font-family: "Patua One", serif;
+  font-family: "Rye", serif;
+  font-family: "Arizonia", cursive;
+  font-family: "Imbue", serif;  
+  font-family: 'Kaushan Script', cursive;
+  font-family: "Hurricane", cursive;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  background-color: #000;
+}
+
+/* @media screen and (min-aspect-ratio: 16/9) {
+  body {
+    background-position: top center;
+    background-size: contain;
+  }
+} */
+
+.btn {
+  display: inline-block;
+  margin: 2rem 0;
+  padding: 0.6em 1.4em;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 2em;
+  border: 1px solid #fff;
+  transition: all 500ms;
+}
+.btn:hover {
+  color: #f1683a;
+  border: 1px solid #f1683a;
+}
+
+.details-btn {
+  margin-top: 3rem;
+  padding: 0.4em 1.4em;
+  color: #fff;
+  font-size: 2rem;
+  /* font-weight: 500; */
+  font-family: inherit;
+  text-transform: capitalize;
+  border-radius: 2em;
+  border: 1px solid #eee;
+  background-color: transparent;
+  transition: all 400ms;
+  cursor: pointer;
+}
+.details-btn:hover {
+  color: #000;
+  background-color: #eee8;
+  box-shadow: inset 2px 2px 2px #000, 
+            inset -2px -2px 2px #fff;
+}
+
+.big-fs {
+  font-size: 4rem;
+}
+
+.cursive {
+  font-family: "Arizonia", cursive;
+}
+
+.gold {
+  color: transparent;
+  background: linear-gradient(0deg, rgb(174 144 46), rgb(255, 232, 155), rgb(174, 144, 46));
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.silver {
+  color: transparent;
+  background-color: rgb(130, 174, 185);
+  background: linear-gradient(0deg, rgb(130, 174, 185), rgb(228 231 232), rgb(130, 174, 185));
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.decor-1 {
+  /* position: relative; */
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+}
+.decor-1::before, 
+.decor-1::after {
+  display: inline-block;
+  /* position: absolute; */
+  /* top: 50%; */
+  content: "";
+  width: 3rem;
+  height: 2px;
+}
+.decor-1::before {
+  right: 100%;
+}
+.decor-1::after {
+  left: 100%;
+}
+
+.silver.decor-1::before, 
+.silver.decor-1::after {
+  background-color: rgb(228, 231, 232);
+}
+
+.page {
+  min-height: 100vh;
+  /* background-color: green; */
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+}
+
+.main-description {
+  max-width: 80%;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.main-description h1 {
+
+}
+
+.main-description p {
+  margin-bottom: 2rem;
+}
+
+body .main-menu {
+  /* font-family: 'Kaushan Script', cursive; */
+  font-family: "Hurricane", cursive;
+}
+
+nav {
+  display: flex;
+  gap: 3rem;
+  width: 96%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0.5rem 0;
+  /* border: 1px solid wheat; */
+  z-index: 7000;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+nav li {
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  /* text-align: center; */
+  text-transform: capitalize;
+}
+
+.sub-nav {
+  position: relative;
+}
+
+.sub-nav span {
+  display: inline-block;
+  padding: 0.4em 1em;
+  cursor: pointer;
+}
+
+.sub-nav ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: max-content;
+}
+.sub-nav.expanded ul {
+  display: block;
+}
+.sub-nav:hover ul, 
+.sub-nav ul:hover {
+  display: block;
+}
+
+.alt .sub-nav ul {
+  padding: 0.5rem 0;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+nav a {
+  position: relative;
+  padding: 0.4em 1em;
+  color: #fff;
+  /* font-size: 1.2rem; */
+  /* border: 1px solid red; */
+}
+nav ul a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 50%;
+  height: 1px;
+  margin: auto;
+  background-color: #fff;
+  transform: scaleX(0);
+  transition: transform 400ms ease-out;
+}
+nav ul a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+.alt .sub-nav a {
+  color: #000;
+}
+.alt .sub-nav a::after {
+  background-color: #000;
+}
+
+.logo {
+  align-self: flex-start;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.slide {
+  /* flex: 1; */
+  position: absolute;
+  /* max-width: 34%; */
+  width: 100%;
+  height: 100%;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* border: 1px solid red; */
+  transition: clip-path 500ms ease;
+  overflow: hidden;
+}
+
+.slide:hover {
+  z-index: 2;
+}
+
+.relative {
+  position: relative;
+  height: auto;
+}
+
+.slide img {
+  display: block;
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+  /* opacity: 0; */
+  transition: width 500ms ease;
+}
+
+.slide:hover img {
+  width: 55%;
+}
+
+.slide:nth-child(2) img {
+  width: 50%;
+  margin: auto;
+}
+.slide:nth-child(2):hover img {
+  width: 70%;
+  margin: auto;
+}
+.slide:nth-child(3) img {
+  margin-left: auto;
+  object-position: 80% center;
+}
+
+.slide:nth-child(1) {
+  /* display: none; */
+  clip-path: polygon(0% 0%, 40% 0%, 25% 100%, 0% 100%);
+  /* background-color: red; */
+}
+.slide:nth-child(1):hover {
+  clip-path: polygon(0% 0%, 55% 0%, 40% 100%, 0% 100%);
+}
+.slide:nth-child(2) {
+  clip-path: polygon(40% 0%, 75% 0%, 60% 100%, 25% 100%);
+  /* background-color: blue; */
+  /* z-index: -1; */
+}
+.slide:nth-child(2):hover {
+  clip-path: polygon(30% 0%, 85% 0%, 70% 100%, 15% 100%);
+}
+.slide:nth-child(3) {
+  /* display: none; */
+  clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 60% 100%);
+  /* background-color: burlywood; */
+}
+.slide:nth-child(3):hover {
+  clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 45% 100%);
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  max-width: 30%;
+  /* margin: auto; */
+  /* border: 1px solid black; */
+  text-align: center;
+  transform: translateY(100%);
+  transition: opacity 800ms ease-in, 
+            transform 800ms ease-in;
+  opacity: 0;
+}
+
+.slide:nth-child(2) .content {
+  /* left: 0; */
+  /* right: 0; */
+  margin: auto;
+}
+.slide:nth-child(3) .content {
+  /* left: 0; */
+  /* right: 0; */
+  margin-left: auto;
+}
+
+/* .slide:hover {
+  z-index: 2;
+} */
+.slide:hover .content {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.content h1 {
+  font-size: 5rem;
+  text-transform: capitalize;
+}
+
+.content a {
+  padding: 0.2em 1.4em;
+  color: #fff;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  border-radius: 2em;
+  border: 1px solid #fff;
+  transition: opacity 400ms ease, 
+      background-color 400ms ease;
+  transition-delay: 1s, 0s;
+  opacity: 0;
+}
+.content a:hover {
+  background-color: #000;
+}
+
+.slide:hover a {
+  opacity: 1;
+}
+
+.skyrim {
+  position: relative;
+  background: url("./img/skyrim_mountains__transparent_mask.png"), url('./img/pngegg74-copy.png'), 
+            url('./img/skyrim_mountains__transparent_background__by_sosinizter_d71jn48-copy.png');
+  background-position: top, top, top;
+  background-size: cover, cover, cover;
+}
+.skyrim::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url('./img/3823088-copy.jpg'), 
+          linear-gradient(0deg, #000, #000);
+  background-position: bottom right, center;
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  animation: removebg 5s linear 2s both;
+  opacity: 0;
+}
+
+.skyrim .nav-link, 
+.skyrim .logo {
+  color: #000;
+  /* letter-spacing: 3px; */
+  border-radius: 12px;
+  border: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.start-page {
+  position: relative;
+  width: 100%;
+  /* min-height: 100vh; */
+  /* background: url('./img/pngegg74-copy.png'), 
+  url('./img/skyrim_mountains__transparent_background__by_sosinizter_d71jn48-copy.png');
+  background-position: top, top;
+  background-size: cover, cover; */
+  /* overflow: hidden; */
+  /* background-attachment: fixed; */
+}
+
+.moon {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  /* width: 150px; */
+  width: 10vw;
+  /* height: 150px; */
+  height: 10vw;
+}
+.moon img {
+  width: 100%;
+  height: 100%;
+}
+
+.clouds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cloud1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 600px;
+  /* z-index: 1000; */
+  animation: clouds 50s linear infinite;
+}
+.cloud2 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  max-width: 500px;
+  /* z-index: 1000; */
+  animation: clouds 35s linear infinite;
+}
+.cloud3 {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  max-width: 300px;
+  /* z-index: 1000; */
+  animation: clouds 80s linear infinite;
+}
+.cloud4 {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  max-width: 300px;
+  /* z-index: 1000; */
+  animation: clouds 70s linear infinite;
+  animation-delay: -20s;
+}
+.cloud5 {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  max-width: 500px;
+  /* z-index: 1000; */
+  animation: clouds 40s linear infinite;
+  animation-delay: -5s;
+}
+.cloud6 {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  max-width: 400px;
+  /* z-index: 1000; */
+  animation: clouds 30s linear infinite;
+  animation-delay: -10s;
+}
+@keyframes clouds {
+  0% {
+    /* transform: translateX(-100%) scale(1); */
+    left: -650px;
+  }
+  100% {
+    /* transform: translateX(400%) scale(1.5); */
+    left: 100%;
+  }
+}
+/* .clouds-mask {
+  position: absolute;
+} */
+
+/* .starry-night-scene i {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: stars linear infinite;
+}
+@keyframes stars {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+} */
+
+.main-title-container {
+  /* position: absolute; */
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background-position: bottom right, center; */
+  /* background-size: contain, cover; */
+  /* background-repeat: no-repeat; */
+  z-index: 4000;
+}
+/* .main-title-container::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+} */
+@keyframes removebg {
+  0% {
+    opacity: 1;
+    /* background-image: url('./img/3823088-copy.jpg'), linear-gradient(0deg, #000, #000); */
+  }
+  /* 40% {
+    background-image: url('./norwegian-copy.png'), linear-gradient(0deg, #000, #000);
+  } */
+  80% {
+    opacity: 1;
+  }
+  100% {
+    /* background-image: linear-gradient(0deg, transparent, transparent); */
+    opacity: 0;
+  }
+}
+
+.main-title {
+  width: 50%;
+  /* max-width: 1600px; */
+  max-width: 100rem;
+  margin: auto;
+  padding: 10rem 0;
+  z-index: 5000;
+  animation: zooming 5s linear backwards;
+  filter: invert(1) brightness(0.75);
+}
+/* @keyframes hidetitle {
+  0%   {opacity: 1;}
+  50%  {opacity: 1;}
+  100% {opacity: 0;}
+} */
+@keyframes zooming {
+  0% {
+      opacity: 0;
+      transform: scale(0.5);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.bottom-section {
+  /* visibility: hidden; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 30vh;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  z-index: 6000;
+  overflow: hidden;
+}
+.play-btn {
+  position: relative;
+  min-width: 300px;
+  /* max-width: 350px; */
+  max-width: min(32%, 350px);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  animation: show-up 1s ease-in both;
+  animation-delay: 6s;
+}
+/* .enter img {
+} */
+.play-btn a {
+  position: absolute;
+  padding: 0.8em 1.5em;
+  /* color: #000; */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  /* letter-spacing: 1px; */
+  /* text-decoration: none; */
+  border-radius: 20px;
+  border: 2px solid #fff;
+  /* background: rgba(255, 255, 255, 0.5); */
+  background: rgba(35, 35, 35, 0.5);
+}
+
+@keyframes show-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.page main {
+  width: 100%;
+  max-width: 2400px;
+  margin: auto;
+}
+
+.overview-page {
+  /* background-color: white; */
+  /* background-image: url("./img/skyrim-3840x2400.jpg"); */
+  background-image: url("./img/00test/skyrim-the-dovahkiin.jpg");
+  /* background-image: url("./img/00test/skyrim-desktop-fk3ej1t9csqkmqm7.webp"); */
+  /* background-image: url("./img/3823088-copy.jpg"); */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+.page-header {
+  /* text-align: center; */
+}
+
+.header-content {
+  /* width: 96%; */
+  max-width: 60%;
+  /* max-width: 100rem; */
+  /* margin: 0 auto; */
+  margin: 0 auto 0 2vw;
+  padding: 3rem 0;
+}
+
+/* Overview */
+.header-content h1 {
+  margin: 1rem 0 3rem;
+  font-size: 4rem;
+}
+
+.details-content h2 {
+  margin: 3rem 0 1rem;
+  /* text-indent: 1rem; */
+  font-size: 2.2rem;
+  border-bottom: 1px solid gray;
+}
+
+.details-content h3 {
+  display: inline-block;
+  margin: 2rem 0 1rem;
+  /* text-indent: 1rem; */
+  font-size: 1.6rem;
+  border-bottom: 1px solid gray;
+}
+
+.details-content p {
+  margin: 1rem 0;
+}
+
+.page-content {
+  width: 96%;
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+  
+.page-content h1 {
+  /* margin: 1rem 0 1rem; */
+  /* font-size: 4rem; */
+}
+  
+.page-content h2 {
+  /* margin: 3rem 0 1rem; */
+  /* text-indent: 1rem; */
+  /* font-size: 2.2rem; */
+  /* border-bottom: 1px solid gray; */
+}  
+.auth-page .page-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  margin: auto;
+  transform-style: preserve-3d;
+}
+@media (min-width: 33.75) {
+  .wrapper {
+    width: 40rem;
+  }
+}
+
+.form-container {
+  width: 100%;
+  max-width: 340px;
+  padding: 1rem 0 2rem;
+  text-align: center;
+  border-radius: 12px;
+  /* border: 1px solid #fff; */
+  background-color: #18293d;
+  box-shadow: 2px 2px 5px #0004, -2px -2px 2px #fff2;
+}
+.form-container.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* display: flex; */
+}
+
+.form-container h1 {
+  font-size: 2rem;
+  /* text-align: center; */
+  text-transform: capitalize;
+}
+
+label {
+  display: block;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.5em 1em;
+  color: #fff;
+  border-radius: 2em;
+  border: 1px solid #fff5;
+  outline: 0px solid #fff;
+  background-color: transparent;
+}
+input:focus-visible {
+  outline: 1px solid #fff;
+}
+
+form button {
+  margin: 1rem 0;
+  padding: 0.4em 1.6em;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: inherit;
+  text-transform: capitalize;
+  border-radius: 2em;
+  border: 1px solid transparent;
+  background-color: transparent;
+  box-shadow: 2px 2px 2px #0006, -2px -2px 2px #fff4;
+  transition: all 500ms;
+  cursor: pointer;
+}
+form button:focus-visible {
+  outline: 1px solid #fff4;
+}
+form button:hover {
+  color: #5a91cf;
+  /* border-color: #fff; */
+}
+form button:active {
+  box-shadow: inset 2px 2px 2px #0006, inset -2px -2px 2px #fff4;
+}
+
+.forgot {
+  margin-top: 1.5rem;
+  /* text-align: center; */
+}
+.forgot a {
+  color: #fff;
+  font-size: 1rem;
+  text-transform: capitalize;
+  transition: color 500ms ease;
+}
+.forgot a:hover {
+  color: #5a91cf;
+}
+
+.redirect {
+  /* margin-top: 1rem; */
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  text-transform: capitalize;
+}
+.redirect a {
+  padding: 0.2em 0.4em;
+  color: #fff;
+  /* color: var(--main-color); */
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 500ms ease;
+}
+.redirect a:hover {
+  color: #5a91cf;
+}
+
+.login {
+  transform: rotate(7deg);
+}
+
+.flip-left {
+  animation: flip-left 1s ease both;
+}
+.flip-right {
+  animation: flip-right 1s ease both;
+}
+.move-forward {
+  animation: move-forward 1s ease both;
+}
+
+@keyframes flip-left {
+  0% {
+    transform: translateX(0) rotate(0) translateZ(1px);
+  }
+  50% {
+    transform: translateX(-100%) rotate(0);
+  }
+  100% {
+    transform: translateX(0) rotate(7deg) translateZ(0px);
+  }
+}
+
+@keyframes flip-right {
+  0% {
+    transform: translateX(0) rotate(0) translateZ(1px);
+  }
+  50% {
+    transform: translateX(100%) rotate(0);
+  }
+  100% {
+    transform: translateX(0) rotate(7deg) translateZ(0px);
+  }
+}
+
+@keyframes move-forward {
+  0% {
+    transform: rotate(7deg) translateZ(0px);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg) translateZ(1px);
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle-section {
+  padding: 4rem 0;
+  color: #fff;
+  text-align: center;
+  background-color: #060612;
+}
+.middle-section {
+  position: relative;
+  background-color: transparent;
+  isolation: isolate;
+}
+.middle-section::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #060612;
+  clip-path: url("#mask-1");
+  z-index: -1;
+}
+.middle-section h2 span {
+  display: block;
+  /* width: 90%; */
+  /* margin: auto; */
+  /* padding: 1em 0; */
+  color: transparent;
+  font-size: 4rem;
+  line-height: 1;
+  /* text-transform: capitalize; */
+  /* border: 1px solid burlywood; */
+  background: linear-gradient(0deg, rgb(174 144 46), rgb(255, 232, 155), rgb(174, 144, 46));
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.inner-middle-section {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  /* padding: 4rem 0; */
+  display: flex;
+  gap: 2rem;
+  border: 1px solid burlywood;
+  /* background-color: #fff; */
+}
+
+.inner-middle-section .text {
+  max-width: 550px;
+  margin: auto;
+  padding: min(3vw, 3rem);
+}
+
+.inner-middle-section .image {
+  max-width: 450px;
+  margin: auto;
+}
+
+.inner-middle-section .image img {
+  /* clip-path: url("#mask-1"); */
+  clip-path: url("#mask-2");
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+}
+
+.section {
+  /* clip-path: url("#mask-1"); */
+}
+.section {
+  position: relative;
+  /* background-color: transparent; */
+  /* background-image: none; */
+  isolation: isolate;
+}
+.section::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  clip-path: url("#mask-1");
+  z-index: -1;
+}
+.section::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  /* background-color: #000; */
+  /* background-image: url('./img/bg/locations-page-bg.jpg'); */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  clip-path: url("#mask-1");
+  z-index: -2;
+}
+
+
+.inner-section h2, 
+.inner-section a {
+  position: relative;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+.inner-section h2::before, 
+.inner-section h2::after {
+  flex-shrink: 0;
+  content: '';
+  width: 12px;
+  height: 12px;
+  /* margin: 0px 10px; */
+  border: 2px solid burlywood;
+  transform: rotate(45deg);
+}
+.inner-section h2::before {
+  margin-right: 12px;
+}
+.inner-section h2::after {
+  margin-left: 12px;
+}
+.inner-section a::before, 
+.inner-section a::after {
+  flex-shrink: 0;
+  content: '';
+  width: 12px;
+  height: 12px;
+  /* margin: 0px 10px; */
+  border: 2px solid burlywood;
+  transform: rotate(45deg);
+}
+.inner-section a::before {
+  margin-right: 12px;
+}
+.inner-section a::after {
+  margin-left: 12px;
+}
+/* .inner section h2::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  margin: 0px 10px;
+  border: 1px solid #fff;
+} */
+.inner section p {
+  /* margin-bottom: 1.2rem; */
+}
+
+#page-2::after {
+  /* position: relative; */
+  /* background-color: #000; */
+  background-image: url('./img/bg/games-the-elder-scrolls-v-skyrim-55851b-copy.jpg');
+  /* background: url('../assets/img/00test/00tits/Victoria6-Linia-copy.png'); */
+  /* background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+  /* animation: scale 5s linear; */
+}
+@keyframes scale {
+  0%   { transform: scale(1.9)}
+  100% { transform: scale(1); }
+}
+
+.inner {
+  width: 100%;
+  min-height: 102vh;
+  padding: 1rem 0;
+  display: flex;
+  /* background: rgba(0, 0, 0, 0.3); */
+  /* align-items: center; */
+  /* justify-content: space-around; */
+}
+
+.inner-section {
+  /* width: 100%; */
+  /* min-height: 100vh; */
+  margin: auto;
+}
+
+.magic-schools {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  /* width: 300px; */
+  /* max-width: 300px; */
+  /* flex-direction: column; */
+}
+.magic-schools img {
+  width: 100%;
+  animation: rotate 30s linear infinite;
+}
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+.magic-schools h2 {
+  max-width: 320px;
+  font-size: 50px;
+  text-align: center;
+  text-transform: capitalize;
+  color: transparent;
+  /* background: linear-gradient(0deg, rgb(166, 59, 32), rgb(234, 142, 28), rgb(166, 59, 32)); */
+  /* background: linear-gradient(-20deg, rgb(166, 59, 32), rgb(255, 255, 255), rgb(166, 59, 32)); */
+  /* background: linear-gradient(-20deg, white, white, red, white); */
+  /* background: linear-gradient(0deg, rgb(130 174 185), rgb(228 231 232), rgb(130, 174, 185)); */
+  background: linear-gradient(-20deg, rgb(243, 9, 9), rgb(228, 172, 103), rgb(243, 9, 9));
+  /* background: url("./img/magic-circle-symbol-red-copy.png"); */
+  /* background-position: center; */
+  /* background-size: contain; */
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  transition: 1s;
+}
+.magic-schools h2:hover {
+  transform: scale(1.1);
+}
+.magic-schools h2::before, 
+.magic-schools h2::after {
+    border-color: rgb(165, 44, 35);
+}
+
+.bestiary {
+  /* width: 300px; */
+  /* max-width: 300px; */
+  /* position: relative; */
+  /* top: 0;
+  right: 0; */
+  /* margin: 0 20px; */
+  /* flex-direction: column; */
+}
+
+.bestiary img {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+/* #splash {
+  position: absolute;
+  width: 120%;
+  top: 79px;
+  right: 30px;
+  opacity: 0.5;
+  z-index: 1;
+  filter:  brightness(0) invert(1);
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2)) 
+      drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.2))
+  drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.3));
+} */
+.inner .bestiary-title {
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+}
+
+.bestiary-title h2 {
+  /* width: 100%; */
+  position: relative;
+  font-size: 50px;
+  text-align: center;
+  text-transform: capitalize;
+  color: transparent;
+  background: linear-gradient(0deg, rgb(130, 174, 185), rgb(228, 231, 232), rgb(130, 174, 185));
+  /* background: linear-gradient(0deg, rgb(174 144 46), rgb(255, 232, 155), rgb(174, 144, 46)); */
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  transition: 1s;
+}
+.bestiary-title:hover h2 {
+  transform: scale(1.1);
+}
+.bestiary-title img {
+  width: 55px;
+  opacity: 0;
+  transition: 1s;
+}
+.bestiary-title:hover img {
+  opacity: 1;
+}
+.ornament-left {
+  transform: rotateY(180deg);
+}
+
+#splash {
+  /* position: absolute; */
+  /* width: 100%; */
+  /* top: 101px; */
+  /* right: 54px; */
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2)) 
+      drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.2))
+  drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.3));
+  mix-blend-mode: color-burn;
+  z-index: 1;
+}
+
+#tigrex {
+  position: absolute;
+}
+
+#page-3::after {
+    /* position: relative; */
+    /* background-color: #000; */
+    background-image: url('./img/bg/games-the-elder-scrolls-v-skyrim-39367-copy.jpg');
+    /* background-attachment: fixed;     */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-size: cover; */
+    /* animation: scale 5s linear; */
+}
+
+.locations {
+    /* max-width: 300px; */
+    /* flex-direction: column; */
+}
+.factions {}
+
+.inner-section img {
+  display: block;
+  max-width: 320px;
+  margin: auto;
+}
+.inner-section .title h2, 
+.inner-section .title a {
+  color: transparent;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  background: 
+    linear-gradient(0deg, 
+      rgb(174 144 46), 
+      rgb(255, 232, 155), 
+      rgb(174, 144, 46)
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  transition: 1s;
+}
+/* .inner-section .title h2:hover {
+    transform: scale(1.1);
+} */
+
+.inner-section .title {
+  /* width: 100%; */
+  /* height: auto; */
+  /* justify-content: space-around; */
+}
+.inner-section .title img {
+  max-width: 55px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.inner-section .title:hover img {
+  opacity: 1;
+}
+
+#page-4 {
+  /* position: relative; */
+  /* background-color: #000; */
+  /* background-image: url('./img/bg/locations-page-bg.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+  /* animation: scale 5s linear; */
+}
+
+#page-4 {
+  /* position: relative; */
+  /* background-color: transparent; */
+  /* background-image: none; */
+  /* isolation: isolate; */
+}
+#page-4::after {
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* content: ""; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: #000; */
+  background-image: url('./img/bg/locations-page-bg.jpg');
+  /* background-attachment: fixed; */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: cover; */
+  /* clip-path: url("#mask-1"); */
+  /* z-index: -1; */
+}
+
+#page-4 .inner {
+  padding-bottom: 5rem;
+}
+
+#skyrim-history-section {
+  /* position: absolute; */
+  /* left: 40px; */
+  /* bottom: 10%; */
+  max-width: 50%;
+  /* min-width: 290px; */
+  margin: 15rem 0 auto 4vw;
+  padding: 40px 25px;
+  /* height: 70vh; */
+  /* font-family: initial; */
+  color: #fff;
+  font-size: 18px;
+  text-indent: 12px;
+  border-radius: 20px;
+  background: url('./img/border_patterns_03_preview-copyhw.png'), 
+              url('./img/border_patterns_03_preview-copyvw.png'), 
+              url('./img/border_patterns_03_preview-copyvw.png'), 
+              url('./img/border_patterns_03_preview-copyhw.png');
+  background-size: 290px, 20px, 20px, 290px;
+  background-repeat: repeat-x, repeat-y, repeat-y, repeat-x;
+  background-position: top, left, right, bottom;
+}
+
+@media screen and (max-width: 900px) {
+  #skyrim-history-section {
+    max-width: 96%;
+    margin: 5rem auto auto;
+  }
+}
+
+.todo {}
+.locations .header-content, 
+.equipment .header-content, 
+.armor-sets .header-content, 
+.armor .header-content {
+  max-width: 90%;
+  display: flex;
+  gap: 2rem;
+}
+
+.todo {}
+.locations h1, 
+.equipment h1, 
+.armor-sets h1, 
+.armor h1 {
+  margin: 2rem 0;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.page-content .header .image {
+  position: relative;
+  /* max-width: 100%; */
+  width: 30%;
+  /* position: absolute; */
+  /* right: 20%; */
+  /* width: auto; */
+  /* height: 140%; */
+  /* clip-path: url("#mask-3"); */
+  /* z-index: -2; */
+  z-index: -1;
+}
+.page-content .header .image-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140%;
+  min-width: min(90vw, 30rem);
+  transform: translateY(-25%);
+  /* height: 100%; */
+  /* clip-path: url("#mask-3"); */
+  z-index: -1;
+}
+.page-content .header .image-mask::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  /* transform: translateY(-25%); */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* background-color: red; */
+  /* clip-path: url("#mask-1"); */
+  /* clip-path: url("#mask-2"); */
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+  z-index: 1;
+}
+
+article {
+  display: flex;
+  gap: min(10vw, 3rem);
+}
+.article-content {
+  max-width: 1000px;
+}
+.article-image {
+  max-width: 200px;
+  margin: auto auto auto 0;
+}
+
+.todo {}
+.locations .details-btn, 
+.armor .details-btn, 
+.armor-sets .details-btn, 
+.equipment .details-btn {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+}
+.locations .details-btn:hover, 
+.armor .details-btn:hover, 
+.armor-sets .details-btn:hover, 
+.equipment .details-btn:hover {
+  color: #000;
+  background-color: #eee8;
+  box-shadow: inset 2px 2px 2px #000, 
+            inset -2px -2px 2px #fff;
+}
+
+
+.locations .header {
+  /* position: relative; */
+  padding-bottom: 10rem;
+  /* isolation: isolate; */
+}
+.locations .header::after {
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* content: ""; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-image: url("./img/bg/map-with-compass-other-things-it_962508-27250.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: cover; */
+  /* clip-path: url("#mask-1"); */
+  /* clip-path: url("#mask-2"); */
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+  /* z-index: -2; */
+}
+/* .locations p {
+  text-indent: 1rem;
+} */
+.locations .main-description {
+  width: 70%;
+  margin: auto;
+}
+
+
+@keyframes titleanimation {
+  0%, 20%, 100% {
+      width: 0;
+      border-right: none;
+  }
+  1% {
+      width: 0;
+      border-right: 2px solid rgba(0, 0, 0, 0.7);
+  }
+  7%, 19% {
+      width: 101%;
+      border-right: 2px solid rgba(0, 0, 0, 0.7);
+  } 
+}
+
+
+.overview-page main {
+  max-width: 1600px;
+}
