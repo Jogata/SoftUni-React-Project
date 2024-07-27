@@ -17,7 +17,7 @@ export default function MainPage() {
           <section className="slide">
             <div className="content">
               <h1>the witcher</h1>
-              <a href="#">explore</a>
+              <Link to={'/witcher'}>explore</Link>
             </div>
             <img src="/main/witcher-background.jpg" alt="" />
           </section>

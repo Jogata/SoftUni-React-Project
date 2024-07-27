@@ -1,0 +1,130 @@
+.page.witcher {
+  background-image: url("/the-witcher/witcher-background.jpg");
+  background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+.header {
+  width: 100%;
+  background-color: #19263694;
+  transition: all 0.35s ease;
+}
+
+.navbar {
+  width: 100%;
+  max-width: 150rem;
+  margin: auto;
+  padding: min(1rem, 4vh) min(2rem, 2vw);
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1.25rem;
+  column-gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo img {
+  max-width: 10rem;
+}
+
+.burger {
+  display: none;
+}
+
+.menu {
+  transition: all 0.4s ease-in-out;
+}
+
+.menu-inner {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1.25rem;
+  column-gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-link {
+	color: #fff;
+	font-size: 1.2rem;
+	font-weight: 500;
+	line-height: 1.5;
+	transition: color 300ms ease;
+}
+.menu-link:hover {
+  color: #d80221;
+}
+
+.menu-block {
+  position: relative;
+  display: inline-block;
+  padding: 0.6em 2em;
+	color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: 2px solid #d80221;
+  clip-path: 
+    polygon(
+      0 0, calc(90% - 4px) 0, 
+      100% 50%, 100% 100%, 
+      calc(10% + 4px) 100%, 0 50%
+    );
+	transition: all .5s ease-out;
+  overflow: hidden;
+}
+.menu-block:before, 
+.menu-block:after {
+  position: absolute;
+  content: "";
+  width: 10%;
+  height: 100%;
+  background-color: #19263694;
+  border: 2px solid #d80221;
+}
+.menu-block:before {
+  top: 0;
+  right: 0;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.menu-block:after {
+  bottom: 0;
+  left: 0;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.banner {
+  display: flex;
+  margin-left: auto;
+}
+
+.banner-column {
+  position: relative;
+  max-width: fit-content;
+  margin: auto 0 auto auto;
+  padding: 4vw;
+}
+.banner-links {
+  text-align: center;
+}
+.banner-links a {
+  display: block;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  transition: color 300ms ease;
+}
+.banner-links::before, 
+.banner-links::after {
+  display: block;
+  margin: 3rem auto;
+  content: "";
+  width: 2px;
+  height: 80px;
+  background-color: #fff;
+}
+.banner-links a:hover {
+  color: #d80221;
+}

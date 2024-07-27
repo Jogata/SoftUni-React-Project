@@ -13,7 +13,7 @@ export default function Nav() {
                         <span>games</span>
                         <ul>
                             <li><Link to='/skyrim'>skyrim</Link></li>
-                            <li><a href="#">the witcher</a></li>
+                            <li><Link to='/witcher'>the witcher</Link></li>
                             <li><a href="#">god of war</a></li>
                         </ul>
                     </li>

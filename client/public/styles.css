@@ -34,6 +34,13 @@ a:focus-visible {
   outline: 1px solid #fff5;
 }
 
+button {
+  border: 0px solid transparent;
+  outline: 1px solid #999;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .link {
   display: inline;
   color: #f1683a;
@@ -73,6 +80,11 @@ img {
   clip-path: url("#mask-4");
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
 .body {
   /* min-height: 100vh; */
@@ -112,7 +124,7 @@ img {
   font-family: "Hurricane", cursive;
   font-family: Georgia, serif;
   line-height: 1.6;
-  background-color: #000;
+  background-color: #080a0c;
 }
 
 /* @media screen and (min-aspect-ratio: 16/9) {
