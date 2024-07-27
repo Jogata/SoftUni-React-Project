@@ -1,5 +1,7 @@
 import "./main-page.css";
 
+import { Link } from 'react-router-dom'
+
 export default function MainPage() {
   return (
     <>
@@ -8,7 +10,7 @@ export default function MainPage() {
           <section className="slide relative">
             <div className="content">
               <h1>skyrim</h1>
-              <a href="./skyrim.html">explore</a>
+              <Link to={'/skyrim'}>explore</Link>
             </div>
             <img src="/main/skyrim-3840x2400.jpg" alt="" />
           </section>

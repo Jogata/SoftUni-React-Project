@@ -1,16 +1,18 @@
 import "./nav.css";
 
+import { Link } from 'react-router-dom'
+
 export default function Nav() {
     return (
         <>
             <nav>
                 <a href="#" className="logo">Logo</a>
                 <ul className="nav-list">
-                    <li><a href="./index.html">main</a></li>
+                    <li><Link to='/'>main</Link></li>
                     <li className="sub-nav">
                         <span>games</span>
                         <ul>
-                            <li><a href="./skyrim.html">skyrim</a></li>
+                            <li><Link to='/skyrim'>skyrim</Link></li>
                             <li><a href="#">the witcher</a></li>
                             <li><a href="#">god of war</a></li>
                         </ul>
