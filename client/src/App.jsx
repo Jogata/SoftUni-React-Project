@@ -1,5 +1,7 @@
-import MainPage from './components/main-page/MainPage'
+import { Routes, Route } from 'react-router-dom'
+
 import Nav from './components/nav/Nav'
+import MainPage from './components/main-page/MainPage'
 
 function App() {
   return (
@@ -7,7 +9,11 @@ function App() {
       <div className="body">
         <div className="page main-menu">
           <Nav />
-          <MainPage />
+
+          <Routes>
+            <Route path='/' element={<MainPage />} />
+          </Routes>
+
         </div>
       </div>
     </>
