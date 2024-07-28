@@ -81,3 +81,7 @@ nav li {
     font-size: 2rem;
     font-weight: bold;
 }
+
+.logo img {
+    display: block;
+}

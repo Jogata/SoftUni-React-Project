@@ -16,7 +16,7 @@ export default function MainPage() {
               <ul>
                 <li><Link to='/skyrim' className="nav-link">skyrim</Link></li>
                 <li><Link to='/witcher' className="nav-link">the witcher</Link></li>
-                <li><a href="#" className="nav-link">god of war</a></li>
+                <li><Link to="/god-of-war" className="nav-link">god of war</Link></li>
               </ul>
             </li>
             <li><a href="#" className="nav-link">about</a></li>
@@ -46,7 +46,7 @@ export default function MainPage() {
             <section className="slide">
               <div className="content">
                 <h1>god of wars</h1>
-                <a href="#">explore</a>
+                <Link to={"/god-of-war"}>explore</Link>
               </div>
               <img src="/main/GodBG.png" alt="" />
             </section>

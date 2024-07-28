@@ -1,0 +1,218 @@
+.page.gow {
+    background-image: url("/god-of-war/god-bg.png");
+	background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+	font-family: "Roboto", sans-serif;
+	font-family: 'Abril Fatface', cursive;
+	font-family: 'Courgette', cursive;
+	font-family: 'Dancing Script', cursive;
+	font-family: 'Great Vibes', cursive;
+	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Limelight', cursive;
+	font-family: 'Lobster', cursive;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Oleo Script Swash Caps', cursive;
+	font-family: 'Poppins', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	font-family: 'Fraunces', serif;
+	font-family: 'Playfair Display', serif;
+	font-family: 'Lemon', cursive;
+	font-family: "Lora", serif;
+	font-family: "Montez", cursive;
+	font-family: "Modak", system-ui;
+	font-family: "Prosto One", sans-serif;
+	font-family: "ZCOOL XiaoWei", sans-serif;
+	font-family: "Brawler", serif;
+	font-family: "Gloock", serif;
+	font-family: "Ephesis", cursive;
+	font-family: "Platypi", serif;
+	font-family: "Patua One", serif;
+	font-family: "Rye", serif;
+	font-family: "Arizonia", cursive;
+	font-family: "Imbue", serif;  
+	font-family: "Hurricane", cursive;
+	font-family: Georgia, serif;  
+	font-family: 'Kaushan Script', cursive;
+	font-family: "Shojumaru", system-ui;
+	font-family: "Croissant One", serif;
+	font-family: "Young Serif", serif;
+}
+
+.page.gow .navbar {
+	max-width: 2400px;
+	margin: auto;
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page.gow .logo {
+	max-width: 300px;
+}
+
+.page.gow .nav-list a {
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 500;
+	padding: 0.6em 1.2em;
+	border-radius: 2em;
+	border: 2px solid transparent;
+	transition: all 0.3s ease;
+}
+
+.page.gow .nav-list a:hover {
+	color: #38deec;
+	/* background-image: linear-gradient(to right, #3f8cd6 , #38deec); */
+	border: 2px solid #3bbee3;
+	background-color: #000;
+}
+
+.nav-btn button {
+    padding: 0.6em 1.2em;
+    color: #38deec;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    border: 2px solid #3bbee3;
+    transition: all 0.3s ease;
+}
+
+.menu-btn {
+    display: none;
+    color: #fff;
+    font-size: 2rem;
+}
+
+/* button {
+	font-family: inherit;
+	background-color: transparent;
+	cursor: pointer;
+} */
+
+.nav-btn:hover button {
+    color: #000;
+    background-image: linear-gradient(to right, #3f8cd6 , #38deec);
+}
+
+/* .wrapper {
+    height: 100%;
+} */
+
+/* .container {
+	width: 1200px;
+	height: 85%;
+	margin: 0 auto;
+	padding: 0 20px;
+} */
+
+.inner-container {
+    /* height: 80%; */
+    display: flex;
+    padding: 5rem 6vw;
+    /* align-items: center; */
+}
+
+/* .center {
+    width: 54%;
+} */
+.center {
+    max-width: 38rem;
+    margin: auto;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+
+.center .title {
+	color: #fff;
+	font-size: 4.4rem;
+	/* font-family: 'Reem Kufi Ink', sans-serif; */
+}
+
+.center .sub-des {
+	margin: 0.75rem 0 1.5rem 0;
+	color: #fff;
+    font-size: 1.1rem;
+    font-weight: 200;
+}
+
+.center .btns button {
+	padding: 0.6em 1.2em;
+	color: #000;
+	font-size: 1.4rem;
+	font-weight: 500;
+	border-radius: 2em;
+    border: 2px solid transparent;
+	background: linear-gradient(to right, #3f8cd6 , #38deec);
+	transition: all 300ms ease;
+}
+
+.center .btns button:hover {
+    color: #38deec;
+    border: 2px solid #3bbee3;
+    background: transparent;
+}
+
+@media (min-width: 1200px){
+	.menu ul {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 1200px){
+	.menu ul li {
+		margin-left: 7px;
+		text-align: left;
+		padding-left: 60px;
+	}
+
+	/* .container {
+		width: 100%;
+	} */
+
+	/* .nav-btn {
+		display: none;
+	} */
+
+	.center .title {
+		font-size: 38px;
+	}
+
+	/* .center {
+		width: 100%;
+	} */
+
+	/* ul {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: #2c3e50;
+		top: 0;
+		left: -100%;
+		text-align: center;
+		transition: all .5s;
+	} */
+
+	/* nav ul li {
+		display: block;
+		margin: 20px 0;
+	} */
+	
+	nav ul li a {
+		font-size: 20px;
+	}
+	
+    /* a.active, 
+	a:hover {
+		color: #0082e6;
+		background: none;
+	} */
+}

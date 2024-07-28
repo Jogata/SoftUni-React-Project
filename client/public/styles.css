@@ -30,15 +30,18 @@ a {
   display: inline-block;
   text-decoration: none;
 }
-a:focus-visible {
-  outline: 1px solid #fff5;
-}
 
 button {
+  font-family: inherit;
   border: 0px solid transparent;
-  outline: 1px solid #999;
+  outline: 1px solid transparent;
   background-color: transparent;
   cursor: pointer;
+}
+
+button:focus-visible, 
+a:focus-visible {
+  outline: 1px solid #999;
 }
 
 .link {

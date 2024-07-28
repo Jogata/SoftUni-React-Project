@@ -23,8 +23,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.logo img {
-  display: block;
+.page.witcher .logo img {
   max-width: 10rem;
 }
 
