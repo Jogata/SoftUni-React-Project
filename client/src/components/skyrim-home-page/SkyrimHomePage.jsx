@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function SkyrimHomePage() {
   return (
     <>
-      <div className="page skyrim">
+      <div className="page full-screen skyrim">
 
       {/* <a href="#" class="logo">Logo</a>
       <ul class="nav-list alt">
@@ -27,21 +27,20 @@ export default function SkyrimHomePage() {
         <li><a href="./skyrim-auth.html" class="nav-link">login</a></li>
         <li><a href="./skyrim-auth.html" class="nav-link">register</a></li>
         <li><a href="#" class="nav-link">logout</a></li>
-      </ul> */}
-    
+      </ul> */}    
 
         <nav className="main-nav alt">
           {/* <a href="#" className="logo">Logo</a> */}
-          <a href="#" className="logo">
+          <a href="#" className="logo skyrim-logo">
             <img src="/skyrim-favicon-192.png" alt="" />
           </a>
           <ul className="nav-list">
             <li><Link to='/' className="nav-link">main</Link></li>
             <li><Link to="/skyrim" className="nav-link">home</Link></li>
             <li className="sub-nav">
-            <a href="./skyrim-overview.html" className="nav-link">info</a>
+            <Link to="/skyrim-overview" className="nav-link">info</Link>
           <ul>
-            <li><a href="./skyrim-overview.html" className="nav-link">overview</a></li>
+            <li><Link to="/skyrim-overview" className="nav-link">overview</Link></li>
             <li><a href="./skyrim-locations.html" className="nav-link">locations</a></li>
             <li><a href="./skyrim-equipment.html" className="nav-link">equipment</a></li>
             <li><a href="./skyrim-overview.html" className="nav-link">races</a></li>

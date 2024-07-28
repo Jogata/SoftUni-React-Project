@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function MainPage() {
   return (
     <>
-      <div className="page main-menu">
+      <div className="page full-screen main-menu">
 
         <nav className="main-nav">
           <a href="#" className="logo">Logo</a>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function GodOfWarHomePage() {
   return (
     <>
-      <div className="page gow">
+      <div className="page full-screen gow">
         <nav className="navbar">
           {/* <div className="menu"> */}
             <div className="logo">

@@ -1,9 +1,9 @@
-main {
+/* main {
     flex: 1;
     display: flex;
     width: 100%;
     max-width: 100%;
-}
+} */
 
 .skyrim {
     position: relative;
@@ -27,12 +27,6 @@ main {
     background-repeat: no-repeat;
     animation: removebg 5s linear 2s both;
     opacity: 0;
-}
-
-.skyrim .logo {
-    max-width: 7rem;
-    padding: 1rem;
-    border-radius: 50%;
 }
 
 .main-nav.alt .sub-nav ul {

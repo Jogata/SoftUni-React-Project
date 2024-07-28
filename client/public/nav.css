@@ -85,3 +85,9 @@ nav li {
 .logo img {
     display: block;
 }
+
+.main-nav .skyrim-logo {
+    max-width: 7rem;
+    padding: 1rem;
+    border-radius: 50%;
+}

@@ -226,11 +226,23 @@ html {
 }
 
 .page {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* background-color: green; */
-  display: flex;
+  /* display: flex; */
   /* flex-wrap: wrap; */
+  /* flex-direction: column; */
+}
+
+.page.full-screen {
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
+}
+.page.full-screen main {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
 }
 
 .main-description {
@@ -787,7 +799,7 @@ form button:active {
 #page-2::after {
   /* position: relative; */
   /* background-color: #000; */
-  background-image: url('./img/bg/games-the-elder-scrolls-v-skyrim-55851b-copy.jpg');
+  background-image: url('/skyrim/overview/bg/games-the-elder-scrolls-v-skyrim-55851b-copy.jpg');
   /* background: url('../assets/img/00test/00tits/Victoria6-Linia-copy.png'); */
   /* background-attachment: fixed;
   background-repeat: no-repeat;
@@ -947,7 +959,7 @@ form button:active {
 #page-3::after {
     /* position: relative; */
     /* background-color: #000; */
-    background-image: url('./img/bg/games-the-elder-scrolls-v-skyrim-39367-copy.jpg');
+    background-image: url('/skyrim/overview/bg/games-the-elder-scrolls-v-skyrim-39367-copy.jpg');
     /* background-attachment: fixed;     */
     /* background-repeat: no-repeat; */
     /* background-position: center; */
@@ -1027,7 +1039,7 @@ form button:active {
   /* width: 100%; */
   /* height: 100%; */
   /* background-color: #000; */
-  background-image: url('./img/bg/locations-page-bg.jpg');
+  background-image: url('/skyrim/overview/bg/locations-page-bg.jpg');
   /* background-attachment: fixed; */
   /* background-repeat: no-repeat; */
   /* background-position: center; */

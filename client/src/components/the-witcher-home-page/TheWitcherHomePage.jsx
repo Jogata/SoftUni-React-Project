@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function TheWitcherHomePage() {
     return (
         <>
-            <div className="page witcher">
+            <div className="page full-screen witcher">
 
                 <header className="header">
                     <nav className="navbar">
