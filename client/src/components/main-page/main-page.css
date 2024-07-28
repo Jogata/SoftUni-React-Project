@@ -5,7 +5,7 @@ main {
     max-width: 100%;
 }
 
-body .main-menu {
+.main-menu {
     /* font-family: 'Kaushan Script', cursive; */
     font-family: "Hurricane", cursive;
 }

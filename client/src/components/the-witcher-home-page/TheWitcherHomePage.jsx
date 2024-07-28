@@ -6,6 +6,7 @@ export default function TheWitcherHomePage() {
     return (
         <>
             <div className="page witcher">
+
                 <header className="header">
                     <nav className="navbar">
                         <a href="#" className="logo">
@@ -18,14 +19,16 @@ export default function TheWitcherHomePage() {
                         </div>
                         <div className="menu" id="menu">
                             <ul className="menu-inner">
-                                <li className="menu-item"><Link to='/'>main</Link></li>
+                                <li className="menu-item"><Link to='/' className="menu-link">main</Link></li>
                                 <li className="menu-item"><a href="#" className="menu-link">Home</a></li>
                                 <li className="menu-item"><a href="#" className="menu-link">Feature</a></li>
                                 <li className="menu-item"><a href="#" className="menu-link">Product</a></li>
                                 <li className="menu-item"><a href="#" className="menu-link">Support</a></li>
                             </ul>
                         </div>
-                        <a href="#" className="menu-block">Discover</a>
+                        <a href="#" className="menu-block">
+                            <span>Discover</span>
+                        </a>
                     </nav>
                 </header>
 
@@ -41,6 +44,7 @@ export default function TheWitcherHomePage() {
                         </div>
                     </section>
                 </main>
+
             </div>
         </>
     )

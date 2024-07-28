@@ -376,7 +376,7 @@ html {
   opacity: 1;
 }
 
-.page main {
+main.max-width {
   width: 100%;
   max-width: 2400px;
   margin: auto;

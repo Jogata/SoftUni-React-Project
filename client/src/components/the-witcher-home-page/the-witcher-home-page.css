@@ -24,6 +24,7 @@
   justify-content: space-between;
 }
 .logo img {
+  display: block;
   max-width: 10rem;
 }
 
@@ -68,8 +69,10 @@
   clip-path: 
     polygon(
       0 0, calc(90% - 4px) 0, 
-      100% 50%, 100% 100%, 
-      calc(10% + 4px) 100%, 0 50%
+      100% calc(50% - 4px), 
+      100% 100%, 
+      calc(10% + 4px) 100%, 
+      0 calc(50% + 4px)
     );
 	transition: all .5s ease-out;
   overflow: hidden;
@@ -92,6 +95,22 @@
   bottom: 0;
   left: 0;
   transform: translateY(50%) rotate(-45deg);
+}
+
+.menu-block span::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #d80221;
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+  z-index: -1;
+}
+.menu-block:hover span::after {
+  transform: translate(0);
 }
 
 .banner {

@@ -29,13 +29,38 @@ main {
     opacity: 0;
 }
 
-.skyrim .nav-link,
 .skyrim .logo {
-    color: #000;
-    /* letter-spacing: 3px; */
+    max-width: 7rem;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.main-nav.alt .sub-nav ul {
+    padding: 0.5rem 0;
     border-radius: 12px;
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.alt .nav-list > li > .nav-link,
+.alt .logo {
     border: 2px solid #fff;
     background-color: rgba(255, 255, 255, 0.6);
+}
+.alt .nav-link {
+    color: #000;
+    border-radius: 12px;
+}
+.main-nav.alt .nav-link::after {
+    background-color: transparent;
+}
+
+.main-nav.alt .sub-nav a {
+    color: #000;
+}
+
+.main-nav.alt .sub-nav ul a::after {
+    background-color: #000;
 }
 
 .start-page {
@@ -76,7 +101,8 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    max-width: 600px;
+    /* max-width: 600px; */
+    max-width: 39vw;
     /* z-index: 1000; */
     animation: clouds 50s linear infinite;
 }
@@ -85,7 +111,8 @@ main {
     position: absolute;
     top: 10px;
     left: 0;
-    max-width: 500px;
+    /* max-width: 500px; */
+    max-width: 33vw;
     /* z-index: 1000; */
     animation: clouds 35s linear infinite;
 }
@@ -94,7 +121,8 @@ main {
     position: absolute;
     top: 25px;
     left: 0;
-    max-width: 300px;
+    /* max-width: 300px; */
+    max-width: 20vw;
     /* z-index: 1000; */
     animation: clouds 80s linear infinite;
 }
@@ -103,7 +131,8 @@ main {
     position: absolute;
     top: 200px;
     left: 0;
-    max-width: 300px;
+    /* max-width: 300px; */
+    max-width: 20vw;
     /* z-index: 1000; */
     animation: clouds 70s linear infinite;
     animation-delay: -20s;
@@ -113,7 +142,8 @@ main {
     position: absolute;
     top: 150px;
     left: 0;
-    max-width: 500px;
+    /* max-width: 500px; */
+    max-width: 33vw;
     /* z-index: 1000; */
     animation: clouds 40s linear infinite;
     animation-delay: -5s;
@@ -123,7 +153,8 @@ main {
     position: absolute;
     top: 75px;
     left: 0;
-    max-width: 400px;
+    /* max-width: 400px; */
+    max-width: 26vw;
     /* z-index: 1000; */
     animation: clouds 30s linear infinite;
     animation-delay: -10s;
@@ -132,7 +163,8 @@ main {
 @keyframes clouds {
     0% {
         /* transform: translateX(-100%) scale(1); */
-        left: -650px;
+        /* left: -650px; */
+        left: -45vw;
     }
 
     100% {

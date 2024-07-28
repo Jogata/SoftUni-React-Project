@@ -21,6 +21,30 @@ nav li {
     text-transform: capitalize;
 }
 
+.main-nav a {
+    position: relative;
+    padding: 0.4em 1em;
+    color: #fff;
+}
+
+.main-nav .nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 50%;
+    height: 1px;
+    margin: auto;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 400ms ease-out;
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
+}
+
 .sub-nav {
     position: relative;
 }
@@ -37,6 +61,10 @@ nav li {
     top: 100%;
     left: 0;
     min-width: max-content;
+    padding: 1.2rem 1rem;
+    border: 1px solid #000;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* .sub-nav.expanded ul {
@@ -46,45 +74,6 @@ nav li {
 .sub-nav:hover ul,
 .sub-nav ul:hover {
     display: block;
-}
-
-.alt .sub-nav ul {
-    padding: 0.5rem 0;
-    border-radius: 12px;
-    border: 1px solid #fff;
-    background-color: rgba(255, 255, 255, 0.6);
-}
-
-nav a {
-    position: relative;
-    padding: 0.4em 1em;
-    color: #fff;
-}
-
-nav a::after {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    content: "";
-    width: 50%;
-    height: 1px;
-    margin: auto;
-    background-color: #fff;
-    transform: scaleX(0);
-    transition: transform 400ms ease-out;
-}
-
-nav a:hover::after {
-    transform: scaleX(1);
-}
-
-.alt .sub-nav a {
-    color: #000;
-}
-
-.alt .sub-nav a::after {
-    background-color: #000;
 }
 
 .logo {
