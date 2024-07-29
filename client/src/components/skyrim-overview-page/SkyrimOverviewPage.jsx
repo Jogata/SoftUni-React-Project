@@ -58,7 +58,7 @@ export default function SkyrimOverviewPage() {
             </div>
           </section>
 
-          <section className="section" id="page-4">
+          <section className="section" id="section-1">
             <div className="locations-page inner">
               <div id="skyrim-history-section">
                 <p>
@@ -103,7 +103,7 @@ export default function SkyrimOverviewPage() {
             </div>
           </section>
 
-          <section className="section" id="page-3">
+          <section className="section" id="section-2">
             <div className="inner">
               <div className="inner-section locations">
                 {/* <!-- <img src="./asset/skyrim/overview/00test/compass-0.png" alt="Compass"> --> */}
@@ -146,7 +146,7 @@ export default function SkyrimOverviewPage() {
             </div>
           </section>
 
-          <section className="section" id="page-2">
+          <section className="section" id="section-3">
             <div className="inner">
               <div className="inner-section magic-schools">
                 {/* <!-- <img src="./asset/skyrim/overview/00test/magic-circle-symbol-blue-copy.png" alt="Magic Circle Symbol"> --> */}
@@ -162,7 +162,6 @@ export default function SkyrimOverviewPage() {
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/2.png" alt=""> --> */}
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/hole-trans-copy.png" alt=""> --> */}
                   <img id="splash" src="/skyrim/overview/claw-1-copy.png" alt="Claw trail" />
-
                   <img id="tigrex" src="/skyrim/overview/Tigrex-copy.png" alt="Monster" />
                   {/* <!-- <img src="./asset/skyrim/overview/00test/Rathian-copy.png" alt="Monster"> --> */}
                   {/* <!-- <img src="./asset/skyrim/overview/00test/war-for-the-overworld-shadow-of-the-colossus-copy.png" alt="Monster"> --> */}
