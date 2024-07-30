@@ -5,6 +5,7 @@ import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
 import TheWitcherHomePage from './components/the-witcher-home-page/TheWitcherHomePage'
 import GodOfWarHomePage from './components/god-of-war-home-page/GodOfWarHomePage'
 import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverviewPage'
+import AuthPage from './components/auth-page/AuthPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
           <Route path='/witcher' element={<TheWitcherHomePage />} />
           <Route path='/god-of-war' element={<GodOfWarHomePage />} />
+          <Route path='/auth' element={<AuthPage />} />
         </Routes>
 
         <svg className="svg">

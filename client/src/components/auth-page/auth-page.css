@@ -1,0 +1,26 @@
+.auth-page {
+    background-color: #18293d;
+}
+
+h1 {
+    width: 100%;
+    padding: 5rem;
+    text-align: center;
+}
+
+main {
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+}
+
+form {
+    margin: auto;
+}
+
+label {
+    margin: 0;
+}
+
+form div {
+    margin: 2rem;
+}

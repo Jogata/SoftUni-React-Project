@@ -27,8 +27,8 @@ export default function SkyrimOverviewPage() {
               </ul>
             </li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><a href="#" className="nav-link">login</a></li>
-            <li><a href="#" className="nav-link">register</a></li>
+            <li><a href="/auth" className="nav-link">login</a></li>
+            <li><a href="/auth" className="nav-link">register</a></li>
             <li><a href="#" className="nav-link">logout</a></li>
           </ul>
         </nav>
@@ -161,8 +161,8 @@ export default function SkyrimOverviewPage() {
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/1.png" alt=""> --> */}
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/2.png" alt=""> --> */}
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/hole-trans-copy.png" alt=""> --> */}
-                  <img id="splash" src="/skyrim/overview/claw-1-copy.png" alt="Claw trail" />
-                  <img id="tigrex" src="/skyrim/overview/Tigrex-copy.png" alt="Monster" />
+                  <img id="claws-img" src="/skyrim/overview/claw-1-copy.png" alt="Claw trail" />
+                  <img id="tigrex-img" src="/skyrim/overview/Tigrex-copy.png" alt="Monster" />
                   {/* <!-- <img src="./asset/skyrim/overview/00test/Rathian-copy.png" alt="Monster"> --> */}
                   {/* <!-- <img src="./asset/skyrim/overview/00test/war-for-the-overworld-shadow-of-the-colossus-copy.png" alt="Monster"> --> */}
                   {/* <!-- <img src="./asset/skyrim/overview/00test/skyrim-icon-41567-copy.png" alt="Monster"> --> */}

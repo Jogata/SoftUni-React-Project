@@ -50,8 +50,8 @@ export default function SkyrimHomePage() {
           </ul>
             </li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><a href="#" className="nav-link">login</a></li>
-            <li><a href="#" className="nav-link">register</a></li>
+            <li><a href="/auth" className="nav-link">login</a></li>
+            <li><a href="/auth" className="nav-link">register</a></li>
             <li><a href="#" className="nav-link">logout</a></li>
           </ul>
         </nav>

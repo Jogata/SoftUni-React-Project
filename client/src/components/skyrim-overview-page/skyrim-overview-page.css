@@ -396,8 +396,8 @@
 }
 
 .bestiary img {
-    position: relative;
-    width: 100%;
+    /* position: relative; */
+    /* width: 100%; */
     z-index: 2;
 }
 
@@ -445,7 +445,8 @@
   .bestiary-title:hover img {
     opacity: 1;
   } */
-#splash {
+#claws-img {
+    position: relative;
     /* position: absolute; */
     /* width: 100%; */
     /* top: 101px; */
@@ -458,6 +459,6 @@
     z-index: 1;
 }
 
-#tigrex {
+#tigrex-img {
     position: absolute;
 }
