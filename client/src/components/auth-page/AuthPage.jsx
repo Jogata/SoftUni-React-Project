@@ -5,13 +5,31 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 
 export default function AuthPage() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({
+    username: '', 
+    password: '', 
+  })
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    getUserById("562f8422-88cc-47f9-b273-ed12a319d041");
+    async function getUserById(id) {
+      const data = await fetch(`http://localhost:3030/jsonstore/advanced/profiles/${id}`);
+      const user = await data.json();
+      console.log(user);
+      // setUser(user);
+    }
+  }, [])
 
   const submitForm = (e) => {
     e.preventDefault();
     console.log("Form Submitted");
+  }
+
+  const changeHandler = (e) => {
+    setUser(oldData => ({
+      ...oldData, 
+      [e.target.name]: e.target.value,
+    }))
   }
 
   return (
@@ -49,12 +67,24 @@ export default function AuthPage() {
           <form onSubmit={submitForm}>
             <div>
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" id="username" defaultValue={"Pesho"} />
+              <input 
+                type="text" 
+                name="username" 
+                id="username" 
+                value={user.username} 
+                onChange={changeHandler}
+              />
             </div>
 
             <div>
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" />
+              <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                value={user.password} 
+                onChange={changeHandler}
+              />
             </div>
 
             <div>
