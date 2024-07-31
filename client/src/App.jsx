@@ -18,7 +18,8 @@ function App() {
           <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
           <Route path='/witcher' element={<TheWitcherHomePage />} />
           <Route path='/god-of-war' element={<GodOfWarHomePage />} />
-          <Route path='/auth' element={<AuthPage />} />
+          <Route path='/register' element={<AuthPage />} />
+          <Route path='/login' element={<AuthPage />} />
         </Routes>
 
         <svg className="svg">

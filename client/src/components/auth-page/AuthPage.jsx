@@ -56,14 +56,68 @@ export default function AuthPage() {
               </ul>
             </li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><a href="/auth" className="nav-link">login</a></li>
-            <li><a href="/auth" className="nav-link">register</a></li>
+            <li><Link href="/login" className="nav-link">login</Link></li>
+            <li><Link href="/register" className="nav-link">register</Link></li>
             <li><a href="#" className="nav-link">logout</a></li>
           </ul>
         </nav>
 
         <main>
-          <h1>Controlled Form</h1>
+
+          <section className="page-content">
+            <div className="wrapper">
+
+              <div className="form-container login flip-left">
+                <h1 className="cursive">login</h1>
+                <form method="post">
+                  <label htmlFor="login-username">
+                    Username
+                    <input type="text" name="login-username" id="login-username" />
+                  </label>
+                  <label htmlFor="login-password">
+                    Password
+                    <input type="password" name="login-password" id="login-password" />
+                  </label>
+                  <div className="forgot">
+                    <a href="#forgot">forgot password?</a>
+                  </div>
+                  <button type="submit">login</button>
+                  <div className="redirect">
+                    <span>Don't have an account?
+                      <a href="/register">register</a>
+                    </span>
+                  </div>
+                </form>
+              </div>
+
+              <div className="form-container register move-forward">
+                <h1 className="cursive">register</h1>
+                <form method="post">
+                  <label htmlFor="register-username">
+                    Username
+                    <input type="text" name="register-username" id="register-username" />
+                  </label>
+                  <label htmlFor="register-password">
+                    Password
+                    <input type="password" name="register-password" id="register-password" />
+                  </label>
+                  <label htmlFor="repeat">
+                    Repeat Password
+                    <input type="password" name="repeat" id="repeat" />
+                  </label>
+                  <button type="submit">register</button>
+                  <div className="redirect">
+                    <span>Already have an account?
+                      <a href="/login">login</a>
+                    </span>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </section>
+
+          {/* <h1>Controlled Form</h1>
           <form onSubmit={submitForm}>
             <div>
               <label htmlFor="username">Username</label>
@@ -83,14 +137,16 @@ export default function AuthPage() {
                 name="password" 
                 id="password" 
                 value={user.password} 
-                onChange={changeHandler}
+                onChange={changeHandler} 
+                autoFocus
               />
             </div>
 
             <div>
               <input type="submit" value="Login" style={{cursor: "pointer"}} />
             </div>
-          </form>
+          </form> */}
+
         </main>
 
       </div>

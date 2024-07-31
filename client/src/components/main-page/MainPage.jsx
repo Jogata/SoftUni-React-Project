@@ -21,8 +21,8 @@ export default function MainPage() {
             </li>
             <li><a href="#" className="nav-link">about</a></li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><a href="/auth" className="nav-link">login</a></li>
-            <li><a href="/auth" className="nav-link">register</a></li>
+            <li><Link href="/login" className="nav-link">login</Link></li>
+            <li><Link href="/register" className="nav-link">register</Link></li>
             <li><a href="#" className="nav-link">logout</a></li>
           </ul>
         </nav>
