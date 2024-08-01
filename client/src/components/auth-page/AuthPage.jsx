@@ -2,7 +2,7 @@ import "./auth-page.css";
 
 import { useEffect, useState } from "react"
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function AuthPage(props) {
   const [user, setUser] = useState({
@@ -10,13 +10,14 @@ export default function AuthPage(props) {
     password: '', 
   })
 
-  // console.log(props.route);
+  const { pathname } = useLocation();
+  // console.log(pathname);
   const formClasses = {
-    "register": {
+    "/register": {
       "login": "flip-left", 
       "register": "move-forward"
     }, 
-    "login": {
+    "/login": {
       "register": "flip-right", 
       "login": "move-forward"
     }
@@ -80,7 +81,7 @@ export default function AuthPage(props) {
             <div className="wrapper">
 
               {/* <div className="form-container login flip-left"> */}
-              <div className={`form-container login ${formClasses[props.route].login}`}>
+              <div className={`form-container login ${formClasses[pathname].login}`}>
                 <h1 className="cursive">login</h1>
                 <form method="post">
                   <label htmlFor="login-username">
@@ -104,7 +105,7 @@ export default function AuthPage(props) {
               </div>
 
               {/* <div className="form-container register move-forward"> */}
-              <div className={`form-container register ${formClasses[props.route].register}`}>
+              <div className={`form-container register ${formClasses[pathname].register}`}>
                 <h1 className="cursive">register</h1>
                 <form method="post">
                   <label htmlFor="register-username">

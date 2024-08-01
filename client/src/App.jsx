@@ -5,6 +5,7 @@ import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
 import TheWitcherHomePage from './components/the-witcher-home-page/TheWitcherHomePage'
 import GodOfWarHomePage from './components/god-of-war-home-page/GodOfWarHomePage'
 import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverviewPage'
+import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import AuthPage from './components/auth-page/AuthPage'
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
           <Route path='/' element={<MainPage />} />
           <Route path='/skyrim' element={<SkyrimHomePage />} />
           <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
+          <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
           <Route path='/witcher' element={<TheWitcherHomePage />} />
           <Route path='/god-of-war' element={<GodOfWarHomePage />} />
-          <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} route={"register"} />} />
-          <Route path='/login' element={<AuthPage classes={"full-screen auth-page"} route={"login"} />} />
+          <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} />} />
+          <Route path='/login' element={<AuthPage classes={"full-screen auth-page"} />} />
         </Routes>
 
         <svg className="svg">
