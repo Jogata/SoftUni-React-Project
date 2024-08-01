@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { Link } from 'react-router-dom'
 
-export default function AuthPage() {
+export default function AuthPage(props) {
   const [user, setUser] = useState({
     username: '', 
     password: '', 
@@ -34,7 +34,7 @@ export default function AuthPage() {
 
   return (
     <>
-      <div className="page full-screen auth-page">
+      <div className={`page ${props.classes}`}>
 
         <nav className="main-nav">
           <a href="#" className="logo skyrim-logo">
@@ -56,8 +56,8 @@ export default function AuthPage() {
               </ul>
             </li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><Link href="/login" className="nav-link">login</Link></li>
-            <li><Link href="/register" className="nav-link">register</Link></li>
+            <li><Link to="/login" className="nav-link">login</Link></li>
+            <li><Link to="/register" className="nav-link">register</Link></li>
             <li><a href="#" className="nav-link">logout</a></li>
           </ul>
         </nav>
@@ -84,7 +84,7 @@ export default function AuthPage() {
                   <button type="submit">login</button>
                   <div className="redirect">
                     <span>Don't have an account?
-                      <a href="/register">register</a>
+                      <Link to="/register">register</Link>
                     </span>
                   </div>
                 </form>
@@ -108,7 +108,7 @@ export default function AuthPage() {
                   <button type="submit">register</button>
                   <div className="redirect">
                     <span>Already have an account?
-                      <a href="/login">login</a>
+                      <Link to="/login">login</Link>
                     </span>
                   </div>
                 </form>
