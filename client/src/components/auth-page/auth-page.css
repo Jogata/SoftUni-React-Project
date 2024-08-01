@@ -135,9 +135,9 @@ form button:active {
     color: #5a91cf;
 }
 
-.login {
+/* .login {
     transform: rotate(7deg);
-}
+} */
 
 .flip-left {
     animation: flip-left 1s ease both;

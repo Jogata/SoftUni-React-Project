@@ -10,6 +10,18 @@ export default function AuthPage(props) {
     password: '', 
   })
 
+  // console.log(props.route);
+  const formClasses = {
+    "register": {
+      "login": "flip-left", 
+      "register": "move-forward"
+    }, 
+    "login": {
+      "register": "flip-right", 
+      "login": "move-forward"
+    }
+  }
+
   useEffect(() => {
     getUserById("562f8422-88cc-47f9-b273-ed12a319d041");
     async function getUserById(id) {
@@ -67,7 +79,8 @@ export default function AuthPage(props) {
           <section className="page-content">
             <div className="wrapper">
 
-              <div className="form-container login flip-left">
+              {/* <div className="form-container login flip-left"> */}
+              <div className={`form-container login ${formClasses[props.route].login}`}>
                 <h1 className="cursive">login</h1>
                 <form method="post">
                   <label htmlFor="login-username">
@@ -90,7 +103,8 @@ export default function AuthPage(props) {
                 </form>
               </div>
 
-              <div className="form-container register move-forward">
+              {/* <div className="form-container register move-forward"> */}
+              <div className={`form-container register ${formClasses[props.route].register}`}>
                 <h1 className="cursive">register</h1>
                 <form method="post">
                   <label htmlFor="register-username">
