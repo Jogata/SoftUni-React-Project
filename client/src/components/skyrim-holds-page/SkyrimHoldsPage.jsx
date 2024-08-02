@@ -1,12 +1,53 @@
-import { useEffect, useState } from "react"
-import "./skyrim-holds-page.css"
-
 import { Link } from 'react-router-dom'
 
+import { useEffect, useState } from "react"
+
+import Thumbnail from './thumbnail/Thumbnail'
+
+import "./skyrim-holds-page.css"
+
 const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
+const thumbnailsData = [
+  {
+    img: "/skyrim/holds/Eastmarch-bg.jpg",
+    title: "Eastmarch"
+  },
+  {
+    img: "/skyrim/holds/Falkreath-hold-copy.jpeg",
+    title: "Falkreath"
+  },
+  {
+    img: "/skyrim/holds/Haafingar-2.jpg",
+    title: "Haafingar"
+  },
+  {
+    img: "/skyrim/holds/Hjaalmarch.png",
+    title: "Hjaalmarch"
+  },
+  {
+    img: "/skyrim/holds/The-Pale-bg-1-copy.jpg",
+    title: "The Pale"
+  },
+  {
+    img: "/skyrim/holds/the-Reach-bg-copy.jpg",
+    title: "The Reach"
+  },
+  {
+    img: "/skyrim/holds/the-rift-copy.jpg",
+    title: "The Rift"
+  },
+  {
+    img: "/skyrim/holds/whiterun-hold-bg.png",
+    title: "Whiterun Hold"
+  },
+  {
+    img: "/skyrim/holds/Winterhold-region.jpg",
+    title: "Winterhold"
+  },
+]
 
 export default function SkyrimHoldsPage() {
-  const [ index, setIndex ] = useState(0);
+  const [index, setIndex] = useState(0);
   // console.log("render");
   // console.log(classes);
   // const [classes, setClasses] = useState(["item active", "item", "item", "item", "item", "item", "item", "item", "item"]);
@@ -74,244 +115,149 @@ export default function SkyrimHoldsPage() {
         </nav>
 
         <main>
-        <div className="carousel">
-        <div className="slider">
-          <div className={classes[0]} id="relative">
-            <img src="/skyrim/holds/Eastmarch-bg.jpg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Eastmarch</div>
-              {/* <!-- <div className="topic"></div> --> */}
-              <p className="des">
-                Eastmarch or the Eastmarch Hold makes up the volcanic tundra of the Old Holds, within the province of Skyrim; it is one of the nine holds of the province. Eastmarch is largely a rural area, with sulfur pools that stretch the inner wastes. Eastmarch and its capital, <a href="#" className="valid">Windhelm</a> was formerly the seat of power for the First Empire of the Nords, beginning with Ysgramor and continuing through the Ysgramor Dynasty.
-              </p>
-              <div className="buttons">
-                <a href="./skyrim-eastmarch.html">SEE MORE</a>
+
+          <div className="carousel">
+
+            <div className="slider">
+              <div className={classes[0]} id="relative">
+                <img src="/skyrim/holds/Eastmarch-bg.jpg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Eastmarch</div>
+                  {/* <!-- <div className="topic"></div> --> */}
+                  <p className="des">
+                    Eastmarch or the Eastmarch Hold makes up the volcanic tundra of the Old Holds, within the province of Skyrim; it is one of the nine holds of the province. Eastmarch is largely a rural area, with sulfur pools that stretch the inner wastes. Eastmarch and its capital, <a href="#" className="valid">Windhelm</a> was formerly the seat of power for the First Empire of the Nords, beginning with Ysgramor and continuing through the Ysgramor Dynasty.
+                  </p>
+                  <div className="buttons">
+                    <a href="./skyrim-eastmarch.html">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[1]}>
+                <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Falkreath</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[2]}>
+                <img src="/skyrim/holds/Haafingar-2.jpg" />
+                {/* <!-- <img src="/skyrim/holds/Haafingar-3a.jpg"> --> */}
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Haafingar</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[3]}>
+                <img src="/skyrim/holds/Hjaalmarch.png" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Hjaalmarch</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[4]}>
+                <img src="/skyrim/holds/The-Pale-bg-1-copy.jpg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">The Pale</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[5]}>
+                <img src="/skyrim/holds/the-Reach-bg-copy.jpg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">The Reach</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[6]}>
+                <img src="/skyrim/holds/the-rift-copy.jpg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">The Rift</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[7]}>
+                <img src="/skyrim/holds/whiterun-hold-bg.png" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Whiterun hold</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div className={classes[8]}>
+                <img src="/skyrim/holds/Winterhold-region.jpg" />
+                <div className="slide-content">
+                  <div className="slide-subtitle">holds</div>
+                  <div className="slide-title">Winterhold</div>
+                  <div className="topic">Under Construction</div>
+                  <div className="des">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                  </div>
+                  <div className="buttons">
+                    <a href="#" className="not-active">SEE MORE</a>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <div className="thumbnails render">
+              {thumbnailsData.map(data => <Thumbnail key={data.title} img={data.img} title={data.title} />)}
+            </div>
+
+            <div className="arrows">
+              <button id="prev" onClick={prevSlide}>&lsaquo;</button>
+              <button id="next" onClick={nextSlide}>&rsaquo;</button>
+            </div>
+
           </div>
-          <div className={classes[1]}>
-            <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Falkreath</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[2]}>
-            <img src="/skyrim/holds/Haafingar-2.jpg" />
-            {/* <!-- <img src="/skyrim/holds/Haafingar-3a.jpg"> --> */}
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Haafingar</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[3]}>
-            <img src="/skyrim/holds/Hjaalmarch.png" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Hjaalmarch</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[4]}>
-            <img src="/skyrim/holds/The-Pale-bg-1-copy.jpg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">The Pale</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[5]}>
-            <img src="/skyrim/holds/the-Reach-bg-copy.jpg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">The Reach</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[6]}>
-            <img src="/skyrim/holds/the-rift-copy.jpg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">The Rift</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[7]}>
-            <img src="/skyrim/holds/whiterun-hold-bg.png" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Whiterun hold</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-          <div className={classes[8]}>
-            <img src="/skyrim/holds/Winterhold-region.jpg" />
-            <div className="slide-content">
-              <div className="slide-subtitle">holds</div>
-              <div className="slide-title">Winterhold</div>
-              <div className="topic">Under Construction</div>
-              <div className="des">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-              </div>
-              <div className="buttons">
-                <a href="#" className="not-active">SEE MORE</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="thumbnails render">
-          <div className="thumbnail">
-            <img src="/skyrim/holds/Eastmarch-bg.jpg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Eastmarch
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Falkreath
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/Haafingar-2.jpg" />
-            {/* <!-- <img src="/skyrim/holds/Haafingar-3a.jpg"> --> */}
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Haafingar
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>          
-          <div className="thumbnail">
-            <img src="/skyrim/holds/Hjaalmarch.png" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Hjaalmarch
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/The-Pale-bg-1-copy.jpg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                The Pale
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/the-Reach-bg-copy.jpg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                The Reach
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/the-rift-copy.jpg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                The Rift
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/whiterun-hold-bg.png" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Whiterun Hold
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-          <div className="thumbnail">
-            <img src="/skyrim/holds/Winterhold-region.jpg" />
-            <div className="thumbnail-content">
-              <div className="thumbnail-title">
-                Winterhold
-              </div>
-              {/* <!-- <div className="thumbnail-description">
-                Description
-              </div> --> */}
-            </div>
-          </div>
-        </div>
-        
-        <div className="arrows">
-          <button id="prev" onClick={prevSlide}>&lsaquo;</button>
-          <button id="next" onClick={nextSlide}>&rsaquo;</button>
-        </div>
-      </div>
 
         </main>
       </div>
