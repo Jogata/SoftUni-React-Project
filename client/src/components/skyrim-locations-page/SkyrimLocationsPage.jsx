@@ -56,7 +56,7 @@ export default function SkyrimLocationsPage() {
             {/* <!-- <article> --> */}
             <h3 className="cursive">Holds</h3>
             <p>The Nords long ago divided the province into nine geopolitical regions known as "holds". Each hold is a large area of land roughly equivalent to a county in Cyrodiil, each individually governed by a jarl who maintains court in the hold's capital city. The nine traditional holds of Skyrim are: Haafingar, Hjaalmarch, the Pale, Winterhold, <a className="link" href="./skyrim-eastmarch.html">Eastmarch</a>, the Rift, Whiterun, Falkreath, and the Reach. During the Interregnum, when the Reach became an independent Reachman kingdom and lost its status as a Nordic hold, a tenth hold named Karthald was created from the Reach's northern fringe.</p>
-            <a href="./skyrim-holds.html" className="details-btn">Learn More</a>
+            <Link to="/skyrim-holds" className="details-btn">Learn More</Link>
             {/* <!-- <div className="article-image"> --> */}
             {/* <!-- <img src="./img/337316387_606335980996691_4651753538642375914_n.jpg" alt="" /> --> */}
             {/* <!-- </div> --> */}
