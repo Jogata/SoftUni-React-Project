@@ -10,6 +10,11 @@
     background-size: cover;
 }
 
+.overview-page main {
+    max-width: 1600px;
+    margin: auto;
+}
+
 .middle-section {
     position: relative;
     padding: 4rem 0;
@@ -451,10 +456,9 @@
     /* width: 100%; */
     /* top: 101px; */
     /* right: 54px; */
-    filter: 
-        drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2)) 
-        drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.2)) 
-        drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2)) 
+            drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.2)) 
+            drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.3));
     mix-blend-mode: color-burn;
     z-index: 1;
 }

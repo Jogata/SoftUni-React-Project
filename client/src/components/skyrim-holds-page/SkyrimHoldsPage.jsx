@@ -1,9 +1,48 @@
-import "./skyrim-holds-page.css";
+import { useEffect, useState } from "react"
+import "./skyrim-holds-page.css"
 
 import { Link } from 'react-router-dom'
 
+const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
+
 export default function SkyrimHoldsPage() {
-  const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
+  const [ index, setIndex ] = useState(0);
+  // console.log("render");
+  // console.log(classes);
+  // const [classes, setClasses] = useState(["item active", "item", "item", "item", "item", "item", "item", "item", "item"]);
+
+  function nextSlide() {
+    classes[index] = "item";
+    // console.log(index);
+    // console.log(classes);
+    // setClasses(classes[index] = "item");
+    setIndex(index => ++index);
+    setIndex(index => index % classes.length);
+    let nextIndex = index + 1;
+    nextIndex = nextIndex % classes.length;
+    // console.log(index);
+    classes[nextIndex] = "item active";
+  }
+
+  function prevSlide() {
+    classes[index] = "item";
+    setIndex(index => --index);
+    setIndex(index => index + classes.length);
+    setIndex(index => index % classes.length);
+    // console.log(index);
+    let prevIndex = index - 1;
+    prevIndex = prevIndex + classes.length;
+    prevIndex = prevIndex % classes.length;
+    classes[prevIndex] = "item active";
+  }
+
+  useEffect(() => {
+    // classes[0] = "item";
+    classes[index] = "item active";
+    console.log(index);
+    console.log(classes);
+  }, [index]);
+
   return (
     <>
       <div className="page">
@@ -269,8 +308,8 @@ export default function SkyrimHoldsPage() {
         </div>
         
         <div className="arrows">
-          <button id="prev">&lsaquo;</button>
-          <button id="next">&rsaquo;</button>
+          <button id="prev" onClick={prevSlide}>&lsaquo;</button>
+          <button id="next" onClick={nextSlide}>&rsaquo;</button>
         </div>
       </div>
 

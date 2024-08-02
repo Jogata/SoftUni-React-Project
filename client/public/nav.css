@@ -5,7 +5,8 @@ nav {
     max-width: 1600px;
     margin: auto;
     padding: 0.5rem 0;
-    z-index: 7000;
+    position: relative;
+    z-index: 7000;    /* TODO */
 }
 
 .nav-list {
