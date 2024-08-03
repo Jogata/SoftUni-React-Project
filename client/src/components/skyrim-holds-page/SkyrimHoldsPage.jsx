@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import Thumbnail from './thumbnail/Thumbnail'
 
@@ -8,10 +8,6 @@ import "./skyrim-holds-page.css"
 
 const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
 const thumbnailsData = [
-  {
-    img: "/skyrim/holds/Eastmarch-bg.jpg",
-    title: "Eastmarch"
-  },
   {
     img: "/skyrim/holds/Falkreath-hold-copy.jpeg",
     title: "Falkreath"
@@ -43,7 +39,11 @@ const thumbnailsData = [
   {
     img: "/skyrim/holds/Winterhold-region.jpg",
     title: "Winterhold"
-  },
+  }, 
+  {
+    img: "/skyrim/holds/Eastmarch-bg.jpg",
+    title: "Eastmarch"
+  }
 ]
 
 export default function SkyrimHoldsPage() {
@@ -57,32 +57,37 @@ export default function SkyrimHoldsPage() {
     // console.log(index);
     // console.log(classes);
     // setClasses(classes[index] = "item");
-    setIndex(index => ++index);
-    setIndex(index => index % classes.length);
+    // const newIndex = index + 1;
+    // setIndex(index => ++index);
+    // setIndex(index => index % classes.length);
     let nextIndex = index + 1;
     nextIndex = nextIndex % classes.length;
     // console.log(index);
     classes[nextIndex] = "item active";
+    thumbnailsData.push(thumbnailsData.shift());
+    setIndex(index => nextIndex);
   }
 
   function prevSlide() {
     classes[index] = "item";
-    setIndex(index => --index);
-    setIndex(index => index + classes.length);
-    setIndex(index => index % classes.length);
+    // setIndex(index => --index);
+    // setIndex(index => index + classes.length);
+    // setIndex(index => index % classes.length);
     // console.log(index);
     let prevIndex = index - 1;
     prevIndex = prevIndex + classes.length;
     prevIndex = prevIndex % classes.length;
     classes[prevIndex] = "item active";
+    thumbnailsData.unshift(thumbnailsData.pop());
+    setIndex(index => prevIndex);
   }
 
-  useEffect(() => {
+  // useEffect(() => {
     // classes[0] = "item";
-    classes[index] = "item active";
-    console.log(index);
-    console.log(classes);
-  }, [index]);
+    // classes[index] = "item active";
+    // console.log(index);
+    // console.log(classes);
+  // }, [index]);
 
   return (
     <>
