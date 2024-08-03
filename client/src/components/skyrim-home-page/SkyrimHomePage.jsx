@@ -41,7 +41,7 @@ export default function SkyrimHomePage() {
             <Link to="/skyrim-overview" className="nav-link">info</Link>
           <ul>
             <li><Link to="/skyrim-overview" className="nav-link">overview</Link></li>
-            <li><a href="./skyrim-locations.html" className="nav-link">locations</a></li>
+            <li><Link to="/skyrim-locations" className="nav-link">locations</Link></li>
             <li><a href="./skyrim-equipment.html" className="nav-link">equipment</a></li>
             <li><a href="./skyrim-overview.html" className="nav-link">races</a></li>
             <li><a href="./skyrim-overview.html" className="nav-link">skills</a></li>

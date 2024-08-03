@@ -7,6 +7,7 @@ import GodOfWarHomePage from './components/god-of-war-home-page/GodOfWarHomePage
 import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverviewPage'
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
+import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
 import AuthPage from './components/auth-page/AuthPage'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
           <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
           <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
+          <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
           <Route path='/witcher' element={<TheWitcherHomePage />} />
           <Route path='/god-of-war' element={<GodOfWarHomePage />} />
           <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} />} />

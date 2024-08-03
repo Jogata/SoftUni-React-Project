@@ -34,6 +34,7 @@ export default function SkyrimOverviewPage() {
         </nav>
 
         <main>
+          
           <section className="header-content details-content">
             <h1 className="cursive">The Elder Scrolls V: Skyrim</h1>
             <p>The Elder Scrolls V: Skyrim is a single-player role-playing video game.</p>
@@ -114,7 +115,7 @@ export default function SkyrimOverviewPage() {
                 {/* <!-- <img src="./asset/skyrim/overview/00test/compass-5.png" alt="Compass"> --> */}
                 <div className="title flex">
                   <img src="/skyrim/overview/ornament-1.png" alt="" className="ornament-left" />
-                  <a href="./skyrim-locations.html">locations</a>
+                  <Link to="/skyrim-locations">locations</Link>
                   {/* <!-- <h2>locations</h2> --> */}
                   <img src="/skyrim/overview/ornament-1.png" alt="" className="ornament-right" />
                 </div>
