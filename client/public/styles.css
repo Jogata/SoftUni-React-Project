@@ -475,6 +475,7 @@ main.max-width {
 }
 
 .todo {}
+.raids h1, 
 .locations h1, 
 .equipment h1, 
 .armor-sets h1, 
@@ -485,6 +486,7 @@ main.max-width {
 }
 
 
+.raids.page-content .header-section .image, 
 .locations.page-content .header-section .image {
   position: relative;
   /* max-width: 100%; */
@@ -497,6 +499,7 @@ main.max-width {
   /* z-index: -2; */
   z-index: -1;
 }
+.raids.page-content .header-section .image-mask, 
 .locations.page-content .header-section .image-mask {
   position: absolute;
   top: 0;
@@ -508,6 +511,7 @@ main.max-width {
   clip-path: url("#mask-3");
   z-index: -1;
 }
+.raids.page-content .header-section .image-mask::before, 
 .locations.page-content .header-section .image-mask::before {
   position: absolute;
   top: 0;

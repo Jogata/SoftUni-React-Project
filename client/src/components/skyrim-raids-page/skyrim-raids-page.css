@@ -1,0 +1,63 @@
+.raids-list ul {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  gap: max(5vw, 2rem);
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+
+.raid {
+  max-width: 320px;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: -2px -2px 5px #fff5;
+}
+
+.raid .location {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.raid .buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  /* text-align: center; */
+  /* justify-content: space-evenly; */
+}
+
+.raid .buttons a {
+  margin: auto;
+}
+
+.raids-list li:last-child {
+  flex: 1;
+  max-width: 320px;
+  display: flex;
+  /* border: 1px solid red; */
+}
+.raids-list li:last-child span {
+  max-width: 120px;
+  aspect-ratio: 1;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  color: #000;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  transition: color 300ms, 
+    background-color 300ms;
+}
+.raids-list .create-btn {
+  color: inherit;
+  font-size: 1.2rem;
+  text-align: center;
+  /* border: 1px solid wheat; */
+}
+.raids-list li:last-child span:hover {
+  color: #fff;
+  background-color: transparent;
+}

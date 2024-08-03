@@ -5,6 +5,7 @@ import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
 import TheWitcherHomePage from './components/the-witcher-home-page/TheWitcherHomePage'
 import GodOfWarHomePage from './components/god-of-war-home-page/GodOfWarHomePage'
 import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverviewPage'
+import SkyrimRaidsPage from './components/skyrim-raids-page/SkyrimRaidsPage'
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' element={<MainPage />} />
           <Route path='/skyrim' element={<SkyrimHomePage />} />
           <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
+          <Route path='/raids' element={<SkyrimRaidsPage />} />
           <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
           <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
           <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
