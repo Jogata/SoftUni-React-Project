@@ -77,7 +77,7 @@ export default function SkyrimHomePage() {
             <div className="bottom-section">
               <div className="play-btn">
                 <img src="/skyrim/home/skyrim-icon-41590-copy.png" alt="warrior" />
-                <a href="./skyrim-overview.html"> explore </a>
+                <a href="/skyrim-overview"> explore </a>
               </div>
             </div>
           </section>

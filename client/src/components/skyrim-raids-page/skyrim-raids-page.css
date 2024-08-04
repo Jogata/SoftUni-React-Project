@@ -14,6 +14,8 @@
 .raid {
   max-width: 320px;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
   border-radius: 12px;
   box-shadow: -2px -2px 5px #fff5;
 }
@@ -21,7 +23,23 @@
 .raid .location {
   margin-bottom: 1rem;
   font-size: 2rem;
+  text-align: center;
 }
+
+.raid-info {
+  margin-top: auto;
+  /* flex: 1;
+  display: flex;
+  flex-direction: column; */
+}
+
+.raid-info p {
+  margin-bottom: 0.5rem;
+}
+
+/* .raid-info p:last-of-type {
+  margin-bottom: auto;
+} */
 
 .raid .buttons {
   margin-top: 2rem;

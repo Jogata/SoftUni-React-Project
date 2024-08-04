@@ -1,0 +1,68 @@
+.page-content.raid-details {
+  display: flex;
+}
+
+.details-card {
+  margin: auto;
+  padding: 2rem;
+  /* display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; */
+  border-radius: 12px;
+  box-shadow: -2px -2px 5px #fff4;
+}
+
+.details-card .flex-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.details-card > div {
+  width: 100%;
+}
+
+.details-card h2 {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.details-card p {
+  /* position: relative; */
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  border-bottom: 1px solid grey;
+}
+/* .details-card p::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  width: 60%;
+  height: 1px;
+  background-color: grey;
+} */
+
+.details-card-content {
+  flex: 1;
+  max-width: 480px;
+  padding: 1rem;
+}
+
+.details-card-image {
+  max-width: 400px;
+  clip-path: url("#mask-1");
+}
+
+.details-card-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-card .buttons a {
+  /* padding: 0 1rem; */
+  margin: 1rem;
+}
