@@ -10,6 +10,7 @@ import SkyrimRaidDetailsPage from './components/skyrim-raid-details-page/SkyrimR
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
+import SkyrimEquipmentPage from './components/skyrim-equipment-page/SkyrimEquipmentPage'
 import AuthPage from './components/auth-page/AuthPage'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/raids' element={<SkyrimRaidsPage />} />
           <Route path='/raid/details/:id' element={<SkyrimRaidDetailsPage />} />
           <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
+          <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
           <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
           <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
           <Route path='/witcher' element={<TheWitcherHomePage />} />

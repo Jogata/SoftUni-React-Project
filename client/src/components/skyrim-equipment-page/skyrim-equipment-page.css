@@ -1,0 +1,21 @@
+article {
+    display: flex;
+    gap: min(10vw, 3rem);
+}
+
+.article-content {
+    max-width: 1000px;
+}
+
+.article-image {
+    max-width: 200px;
+    margin: auto auto auto 0;
+}
+
+.article-image img {
+    /* clip-path: url("#mask-1"); */
+    /* clip-path: url("#mask-2"); */
+    clip-path: url("#mask-3");
+    /* clip-path: url("#mask-4"); */
+    /* opacity: 0.5; */
+}

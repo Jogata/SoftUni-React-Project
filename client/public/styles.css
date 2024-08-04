@@ -487,6 +487,7 @@ main.max-width {
 
 
 .raids.page-content .header-section .image, 
+.equipment.page-content .header-section .image, 
 .locations.page-content .header-section .image {
   position: relative;
   /* max-width: 100%; */
@@ -500,6 +501,7 @@ main.max-width {
   z-index: -1;
 }
 .raids.page-content .header-section .image-mask, 
+.equipment.page-content .header-section .image-mask, 
 .locations.page-content .header-section .image-mask {
   position: absolute;
   top: 0;
@@ -512,6 +514,7 @@ main.max-width {
   z-index: -1;
 }
 .raids.page-content .header-section .image-mask::before, 
+.equipment.page-content .header-section .image-mask::before, 
 .locations.page-content .header-section .image-mask::before {
   position: absolute;
   top: 0;
@@ -560,6 +563,8 @@ article {
 }
 
 
+/* todo */
+.equipment .header-section, 
 .locations .header-section {
   /* position: relative; */
   padding-bottom: 10rem;
