@@ -1,3 +1,7 @@
+.raids h1.big-fs {
+  font-size: 6rem;
+}
+
 .raids-list ul {
   width: 90%;
   margin: auto;

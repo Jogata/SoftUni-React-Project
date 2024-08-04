@@ -1,11 +1,23 @@
 import { Link } from 'react-router-dom'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import "./skyrim-raids-page.css"
+import Raid from './raid/Raid';
 
 export default function SkyrimRaidsPage() {
-    return (
+  const [raids, setRaids] = useState([]);
+  // console.log("render");
+
+  useEffect(() => {
+    // console.log("use effect");
+    fetch("http://localhost:3030/jsonstore/advanced/raids")
+      .then(response => response.json())
+      // .then(data => console.log(Object.values(data)))
+      .then(data => setRaids(Object.values(data)))
+  }, []);
+
+  return (
     <>
       <div className="page full-screen">
 
@@ -41,7 +53,7 @@ export default function SkyrimRaidsPage() {
               <h1 className="big-fs cursive"><span className="silver decor-1">Raids</span></h1>
               <div className="header-content">
                 <div className="main-description">
-                  <p>main description</p>
+                  <p>TODO: add main description</p>
                 </div>
                 <div className="image">
                   <div className="image-mask">
@@ -52,64 +64,10 @@ export default function SkyrimRaidsPage() {
             </div>
             <div className="raids-list">
               <ul>
-                <li className='raid'>
-                  <h2 className='location'>Location name 1</h2>
-                  <div className="raid-info">
-                    <p className='time'>Start at: <span>12:00 AM</span></p>
-                    <p className="level">Level: <span>5</span></p>
-                    <div className="buttons">
-                      <Link to="/raids/:id">Join</Link>
-                      <Link to="/raids/details/:id">Details</Link>
-                    </div>
-                  </div>
-                </li>
-                <li className='raid'>
-                  <h2 className='location'>Location name 2</h2>
-                  <div className="raid-info">
-                    <p className='time'>Start at: <span>14:30 AM</span></p>
-                    <p className="level">Level: <span>8</span></p>
-                    <div className="buttons">
-                      <Link to="/raids/:id">Join</Link>
-                      <Link to="/raids/details/:id">Details</Link>
-                    </div>
-                  </div>
-                </li>
-                <li className='raid'>
-                  <h2 className='location'>Location name 3</h2>
-                  <div className="raid-info">
-                    <p className='time'>Start at: <span>18:10 AM</span></p>
-                    <p className="level">Level: <span>3</span></p>
-                    <div className="buttons">
-                      <Link to="/raids/:id">Join</Link>
-                      <Link to="/raids/details/:id">Details</Link>
-                    </div>
-                  </div>
-                </li>
-                <li className='raid'>
-                  <h2 className='location'>Location name 4</h2>
-                  <div className="raid-info">
-                    <p className='time'>Start at: <span>18:10 AM</span></p>
-                    <p className="level">Level: <span>3</span></p>
-                    <div className="buttons">
-                      <Link to="/raids/:id">Join</Link>
-                      <Link to="/raids/details/:id">Details</Link>
-                    </div>
-                  </div>
-                </li>
-                <li className='raid'>
-                  <h2 className='location'>Location name 5</h2>
-                  <div className="raid-info">
-                    <p className='time'>Start at: <span>18:10 AM</span></p>
-                    <p className="level">Level: <span>3</span></p>
-                    <div className="buttons">
-                      <Link to="/raids/:id">Join</Link>
-                      <Link to="/raids/details/:id">Details</Link>
-                    </div>
-                  </div>
-                </li>
+                {raids.map(raid => <Raid key={raid._id} data={raid} />)}
                 <li>
                   <span>
-                  <Link to="" className='create-btn'>Start New Raid</Link>
+                    <Link to="" className='create-btn'>Start New Raid</Link>
                   </span>
                 </li>
               </ul>
