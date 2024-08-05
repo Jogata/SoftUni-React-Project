@@ -1,0 +1,33 @@
+.page-content.armor .header .image-mask {
+    /* clip-path: url("#mask-1"); */
+    min-width: min(90vw, 24rem);
+}
+
+.page-content.armor .article-image {
+    max-width: 320px;
+    margin: auto auto auto 0;
+}
+
+.article-image.shadow {
+    position: relative;
+    /* clip-path: url("#mask-4"); */
+}
+
+.shadow::before,
+.shadow::after {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    content: "";
+    width: 100%;
+    background-image: linear-gradient(transparent, #000);
+    z-index: 1;
+}
+
+.shadow::before {
+    height: 30%;
+}
+
+.shadow::after {
+    height: 25%;
+}

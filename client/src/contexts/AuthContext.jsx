@@ -1,11 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({
     userID: "",
     email: "",
     accessToken: "",
     isAuthenticated: "",
-    changeAuthState: () => null,
+    changeAuthState: () => null, 
+    logout: () => null,
 });
 
 export function AuthContextProvider(props) {
@@ -17,8 +19,10 @@ export function AuthContextProvider(props) {
     }
 
     const logout = () => {
-        setAuthState({});
-    }
+   setAuthState({});
+   // const navig = useNavigate();
+// navig("/");
+}
 
     const contextData = {
         userID: authState._id,

@@ -63,7 +63,7 @@ export default function SkyrimEquipmentPage() {
               <div className="article-content">
                 <h2 className="cursive">Armor</h2>
                 <p>Armor is a type of apparel that is worn on the body to increases a character's armor rating and thus helps to reduce the overall damage inflicted from physical attacks. Armor comes in two varieties: Heavy Armor and Light Armor. Both types have their advantages and disadvantages. There are also shields which provide an additional passive increase to armor rating. In addition armor can be enchanted to grant additional effects, such as, to boost certain skills, protect from magic attacks or to increase stats like Stamina, Health and Magicka.</p>
-                <a href="./skyrim-armor.html" className="details-btn">Learn More</a>
+                <Link to="/skyrim-armor" className="details-btn">Learn More</Link>
               </div>
               <div className="article-image">
                 {/* <!-- <img src="./img/00test2/file(10).png" alt=""> --> */}
