@@ -1,21 +1,13 @@
 import { Link } from 'react-router-dom'
 
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
+import { useGetAllRaids } from '../../hooks/useRaids'
+import Raid from './raid/Raid'
 import "./skyrim-raids-page.css"
-import Raid from './raid/Raid';
 
 export default function SkyrimRaidsPage() {
-  const [raids, setRaids] = useState([]);
-  // console.log("render");
-
-  useEffect(() => {
-    // console.log("use effect");
-    fetch("http://localhost:3030/jsonstore/advanced/raids")
-      .then(response => response.json())
-      // .then(data => console.log(Object.values(data)))
-      .then(data => setRaids(Object.values(data)))
-  }, []);
+  const [raids] = useGetAllRaids();
 
   return (
     <>

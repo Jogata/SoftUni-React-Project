@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
+import { getOneGame } from '../../hooks/useRaids'
 
 import "./skyrim-raid-details-page.css"
 
 export default function SkyrimRaidDetailsPage() {
-  const [raid, setRaid] = useState({
-    currentPlayers: "",
-    level: "",
-    location: "",
-    maxPlayers: "",
-    minPlayers: "",
-    start: ""
-  })
-
   const { id } = useParams();
   // console.log(id);
-  useEffect(() => {
-    fetch(`http://localhost:3030/jsonstore/advanced/raids/${id}`)
-      .then(response => response.json())
-      // .then(data => console.log(data))
-      .then(data => setRaid(data))
-  }, [])
+  const [raid] = getOneGame(id);
   return (
     <>
       <div className="page full-screen">

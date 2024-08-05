@@ -1,14 +1,19 @@
 import "./auth-page.css";
 
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
 import { Link, useLocation } from 'react-router-dom'
+import { useForm } from "../../hooks/useForm";
+import { useLogin } from "../../hooks/useAuth";
 
 export default function AuthPage(props) {
-  const [user, setUser] = useState({
-    username: '', 
-    password: '', 
-  })
+  const login = useLogin();
+  const [ loginFormData, changeLoginFormHandler, submitLoginForm] = useForm(
+    {email: "", password: ""}, 
+    ({ email, password }) => {
+      login(email, password);
+    }
+  )
 
   const { pathname } = useLocation();
   // console.log(pathname);
@@ -21,28 +26,6 @@ export default function AuthPage(props) {
       "register": "flip-right", 
       "login": "move-forward"
     }
-  }
-
-  useEffect(() => {
-    getUserById("562f8422-88cc-47f9-b273-ed12a319d041");
-    async function getUserById(id) {
-      const data = await fetch(`http://localhost:3030/jsonstore/advanced/profiles/${id}`);
-      const user = await data.json();
-      console.log(user);
-      // setUser(user);
-    }
-  }, [])
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted");
-  }
-
-  const changeHandler = (e) => {
-    setUser(oldData => ({
-      ...oldData, 
-      [e.target.name]: e.target.value,
-    }))
   }
 
   return (
@@ -83,14 +66,26 @@ export default function AuthPage(props) {
               {/* <div className="form-container login flip-left"> */}
               <div className={`form-container login ${formClasses[pathname].login}`}>
                 <h1 className="cursive">login</h1>
-                <form method="post">
-                  <label htmlFor="login-username">
+                <form onSubmit={submitLoginForm}>
+                  <label htmlFor="login-email">
                     Username
-                    <input type="text" name="login-username" id="login-username" />
+                    <input 
+                      type="email" 
+                      name="login-email" 
+                      id="login-email" 
+                      value={loginFormData.email} 
+                      onChange={changeLoginFormHandler}
+                    />
                   </label>
                   <label htmlFor="login-password">
                     Password
-                    <input type="password" name="login-password" id="login-password" />
+                    <input 
+                      type="password" 
+                      name="login-password" 
+                      id="login-password" 
+                      value={loginFormData.password} 
+                      onChange={changeLoginFormHandler}
+                    />
                   </label>
                   <div className="forgot">
                     <a href="#forgot">forgot password?</a>
