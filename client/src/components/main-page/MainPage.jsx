@@ -1,8 +1,13 @@
-import "./main-page.css";
+import { useContext } from "react";
 
 import { Link } from 'react-router-dom'
+import { AuthContext } from "../../contexts/AuthContext";
+
+import "./main-page.css";
 
 export default function MainPage() {
+  const { isAuthenticated } = useContext(AuthContext);
+  // console.log(isAuthenticated);
   return (
     <>
       <div className="page full-screen main-menu">
@@ -21,9 +26,15 @@ export default function MainPage() {
             </li>
             <li><a href="#" className="nav-link">about</a></li>
             <li><a href="#" className="nav-link">contact</a></li>
-            <li><Link to="/login" className="nav-link">login</Link></li>
-            <li><Link to="/register" className="nav-link">register</Link></li>
-            <li><a href="#" className="nav-link">logout</a></li>
+            {isAuthenticated
+              ? (
+                  <li><Link to="/logout" className="nav-link">logout</Link></li>
+              ) : (
+                <>
+                  <li><Link to="/login" className="nav-link">login</Link></li>
+                  <li><Link to="/register" className="nav-link">register</Link></li>
+                </>
+              )}
           </ul>
         </nav>
 

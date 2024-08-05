@@ -3,6 +3,7 @@
 }
 
 .auth-page .page-content {
+    position: relative;
     width: 100%;
     overflow: hidden;
 }
@@ -193,6 +194,18 @@ form button:active {
     }
 }
 
+.error {
+    position: absolute;
+    top: 3px;
+    right: 1rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    background-color: #18293d;
+    box-shadow: 2px 2px 3px #0004, 
+            -2px -2px 3px #fff2;
+}
 
 /* h1 {
     width: 100%;

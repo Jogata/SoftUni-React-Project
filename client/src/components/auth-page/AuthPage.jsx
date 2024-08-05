@@ -1,17 +1,54 @@
 import "./auth-page.css";
 
-// import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from "../../hooks/useForm";
-import { useLogin } from "../../hooks/useAuth";
+import { useLogin, useRegister } from "../../hooks/useAuth";
 
 export default function AuthPage(props) {
+  const navigate = useNavigate();
   const login = useLogin();
+  const register = useRegister();
+  const [errors, setErrors] = useState("");
+  
   const [ loginFormData, changeLoginFormHandler, submitLoginForm] = useForm(
-    {email: "", password: ""}, 
-    ({ email, password }) => {
-      login(email, password);
+    {"login-email": "", "login-password": ""}, 
+    async (formData) => {
+      const email = formData["login-email"];
+      const password = formData["login-password"];
+      try {
+        await login(email, password);
+        navigate("/");
+      } catch (error) {
+        const { message } = await error.json();
+        // console.log(error.message);
+        setErrors(message);
+      }
+    }
+  )
+
+  const [ registerFormData, changeRegisterFormHandler, submitRegisterForm] = useForm(
+    {"register-email": "", "register-password": "", "repeat": ""}, 
+    async (formData) => {
+      const email = formData["register-email"];
+      const password = formData["register-password"];
+      const repeat = formData["repeat"];
+      console.log(email, password, repeat);
+
+      if (password != repeat) {
+        setErrors("Passwords doesn't match");
+        return;
+      }
+
+      try {
+        await register(email, password);
+        navigate("/");
+      } catch (error) {
+        const { message } = await error.json()
+        // console.log(message);
+        setErrors(message);
+      }
     }
   )
 
@@ -102,18 +139,36 @@ export default function AuthPage(props) {
               {/* <div className="form-container register move-forward"> */}
               <div className={`form-container register ${formClasses[pathname].register}`}>
                 <h1 className="cursive">register</h1>
-                <form method="post">
+                <form onSubmit={submitRegisterForm}>
                   <label htmlFor="register-username">
                     Username
-                    <input type="text" name="register-username" id="register-username" />
+                    <input 
+                      type="text" 
+                      name="register-email" 
+                      id="register-email" 
+                      value={registerFormData.email} 
+                      onChange={changeRegisterFormHandler}
+                    />
                   </label>
                   <label htmlFor="register-password">
                     Password
-                    <input type="password" name="register-password" id="register-password" />
+                    <input 
+                      type="password" 
+                      name="register-password" 
+                      id="register-password" 
+                      value={registerFormData.password} 
+                      onChange={changeRegisterFormHandler}
+                    />
                   </label>
                   <label htmlFor="repeat">
                     Repeat Password
-                    <input type="password" name="repeat" id="repeat" />
+                    <input 
+                      type="password" 
+                      name="repeat" 
+                      id="repeat" 
+                      value={registerFormData.repeat}
+                      onChange={changeRegisterFormHandler}
+                    />
                   </label>
                   <button type="submit">register</button>
                   <div className="redirect">
@@ -125,6 +180,13 @@ export default function AuthPage(props) {
               </div>
 
             </div>
+
+            {errors && (
+                <p className="error">
+                  <span>{errors}</span>
+                </p>
+              )}
+
           </section>
 
           {/* <h1>Controlled Form</h1>
