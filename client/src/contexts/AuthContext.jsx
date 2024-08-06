@@ -18,11 +18,12 @@ export function AuthContextProvider(props) {
         setAuthState(state);
     }
 
-    const logout = () => {
-   setAuthState({});
-   // const navig = useNavigate();
-// navig("/");
-}
+    // const logout = () => {
+        // setAuthState({});
+        // console.log(authState);
+        // const navig = useNavigate();
+        // navig("/");
+    // }
 
     const contextData = {
         userID: authState._id,
@@ -30,7 +31,7 @@ export function AuthContextProvider(props) {
         accessToken: authState.accessToken,
         isAuthenticated: Boolean(authState.email),
         changeAuthState, 
-        logout,
+        // logout
     };
 
     return (

@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import { getOneGame } from '../../hooks/useRaids'
+import { getOneGame } from '../../../hooks/useRaids';
 
 import "./skyrim-raid-details-page.css"
 

@@ -1,3 +1,4 @@
+import PageNavigation from "../navigation/PageNavigation";
 import "./skyrim-home-page.css";
 
 import { Link } from 'react-router-dom'
@@ -7,7 +8,7 @@ export default function SkyrimHomePage() {
     <>
       <div className="page full-screen skyrim">
 
-      {/* <a href="#" class="logo">Logo</a>
+        {/* <a href="#" class="logo">Logo</a>
       <ul class="nav-list alt">
         <li><a href="./index.html" class="nav-link">main</a></li>
         <li><a href="./skyrim.html" class="nav-link">home</a></li>
@@ -27,35 +28,9 @@ export default function SkyrimHomePage() {
         <li><a href="./skyrim-auth.html" class="nav-link">login</a></li>
         <li><a href="./skyrim-auth.html" class="nav-link">register</a></li>
         <li><a href="#" class="nav-link">logout</a></li>
-      </ul> */}    
-
-        <nav className="main-nav alt">
-          {/* <a href="#" className="logo">Logo</a> */}
-          <a href="#" className="logo skyrim-logo">
-            <img src="/skyrim-favicon-192.png" alt="" />
-          </a>
-          <ul className="nav-list">
-            <li><Link to='/' className="nav-link">main</Link></li>
-            <li><Link to="/skyrim" className="nav-link">home</Link></li>
-            <li className="sub-nav">
-              <Link to="/skyrim-overview" className="nav-link">info</Link>
-              <ul>
-                <li><Link to="/skyrim-overview" className="nav-link">overview</Link></li>
-                <li><Link to="/skyrim-locations" className="nav-link">locations</Link></li>
-                <li><Link to="/skyrim-equipment" className="nav-link">equipment</Link></li>
-                <li><a href="./skyrim-overview.html" className="nav-link">races</a></li>
-                <li><a href="./skyrim-overview.html" className="nav-link">skills</a></li>
-                <li><a href="./skyrim-overview.html" className="nav-link">spells</a></li>
-                <li><a href="./skyrim-overview.html" className="nav-link">overview</a></li>
-              </ul>
-            </li>
-            <li><Link to="/raids" className="nav-link">raids</Link></li>
-            <li><a href="#" className="nav-link">contact</a></li>
-            <li><Link to="/login" className="nav-link">login</Link></li>
-            <li><Link to="/register" className="nav-link">register</Link></li>
-            <li><a href="#" className="nav-link">logout</a></li>
-          </ul>
-        </nav>
+      </ul> */}
+      
+        <PageNavigation />
 
         <main>
           <section className="start-page">

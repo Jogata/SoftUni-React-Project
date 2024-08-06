@@ -7,8 +7,9 @@ import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
 import TheWitcherHomePage from './components/the-witcher-home-page/TheWitcherHomePage'
 import GodOfWarHomePage from './components/god-of-war-home-page/GodOfWarHomePage'
 import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverviewPage'
-import SkyrimRaidsPage from './components/skyrim-raids-page/SkyrimRaidsPage'
-import SkyrimRaidDetailsPage from './components/skyrim-raid-details-page/SkyrimRaidDetailsPage'
+import SkyrimRaidsPage from './components/raids/raids-page/SkyrimRaidsPage'
+import SkyrimRaidDetailsPage from './components/raids/raid-details-page/SkyrimRaidDetailsPage'
+import CrateRaidPage from './components/raids/create-raid/CreateRaid'
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
@@ -16,6 +17,10 @@ import SkyrimEquipmentPage from './components/skyrim-equipment-page/SkyrimEquipm
 import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+import { createContext } from 'react'
+
+const context = createContext();
+// console.log(context);
 
 function App() {
   return (
@@ -30,6 +35,7 @@ function App() {
             <Route path='/skyrim-overview' element={<SkyrimOverviewPage />} />
             <Route path='/raids' element={<SkyrimRaidsPage />} />
             <Route path='/raid/details/:id' element={<SkyrimRaidDetailsPage />} />
+            <Route path='/create-raid' element={<CrateRaidPage />} />
             <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />
