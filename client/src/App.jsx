@@ -15,6 +15,7 @@ import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
 import SkyrimEquipmentPage from './components/skyrim-equipment-page/SkyrimEquipmentPage'
 import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
+import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 import { createContext } from 'react'
@@ -39,6 +40,7 @@ function App() {
             <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />
+            <Route path='/skyrim-armor-sets' element={<SkyrimArmorSetsPage />} />
             <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
             <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
             <Route path='/witcher' element={<TheWitcherHomePage />} />

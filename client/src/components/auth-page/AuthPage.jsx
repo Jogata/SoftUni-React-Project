@@ -68,7 +68,7 @@ export default function AuthPage(props) {
 
   return (
     <>
-      <div className={`page ${props.classes}`}>
+      <div className={`page dark-bg ${props.classes}`}>
 
         <PageNavigation />
         

@@ -98,7 +98,7 @@ export default function SkyrimArmorPage() {
             </p>
             <p>An armor set is defined as a complete set of armor that includes one matching armor piece for the head, chest, hands and feet.</p>
             <p>There are several different armor sets available in Skyrim, both in heavy and light variants. Certain armor sets can provide special bonuses if the full set is worn.</p>
-            <a href="./skyrim-armor-sets.html" class="details-btn">Learn More</a>
+            <Link to="/skyrim-armor-sets" class="details-btn">Learn More</Link>
           </div>
           {/* <!-- <div class="article-image"> --> */}
             {/* <!-- <img src="./img/00test2/file(10).png" alt=""> --> */}

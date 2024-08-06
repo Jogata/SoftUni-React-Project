@@ -137,6 +137,10 @@ html {
   }
 } */
 
+.dark-bg {
+  background-color: #18293d;
+}
+
 .btn {
   display: inline-block;
   margin: 2rem 0;

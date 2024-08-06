@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export function useGetAllRaids() {
     const [raids, setRaids] = useState([]);
@@ -33,4 +34,38 @@ export function getOneGame(id) {
   }, [])
 
   return [raid, setRaid];
+}
+
+export function useCreateGame() {
+  const { accessToken } = useContext(AuthContext);
+  console.log(accessToken);
+
+  const gameCreateHandler = (data) => {
+    // console.log(data);
+    const opt = {
+      method: "post", 
+      "X-Authorization": accessToken, 
+      body: JSON.stringify(data)
+    }
+    console.log(opt);
+    fetch(`http://localhost:3030/data/raids`, {
+      method: "post", 
+      "X-Authorization": accessToken, 
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    // .then(data => setRaid(data))
+  }
+
+  return gameCreateHandler;
+
+  // const [raid, setRaid] = useState({
+  //   currentPlayers: "",
+  //   level: "",
+  //   location: "",
+  //   maxPlayers: "",
+  //   minPlayers: "",
+  //   start: ""
+  // })
 }
