@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { useGetAllRaids } from '../../../hooks/useRaids'
 import Raid from './raid/Raid'
+import PageNavigation from '../../navigation/PageNavigation'
+
 import "./skyrim-raids-page.css"
-import PageNavigation from '../../navigation/PageNavigation';
 
 export default function SkyrimRaidsPage() {
   const [raids] = useGetAllRaids();

@@ -7,9 +7,8 @@ export function useGetAllRaids() {
 
     useEffect(() => {
       // console.log("use effect");
-      fetch("http://localhost:3030/jsonstore/advanced/raids")
+      fetch("http://localhost:3030/data/raids")
         .then(response => response.json())
-        // .then(data => console.log(Object.values(data)))
         .then(data => setRaids(Object.values(data)))
     }, []);
 
@@ -27,7 +26,7 @@ export function getOneGame(id) {
   })
 
   useEffect(() => {
-    fetch(`http://localhost:3030/jsonstore/advanced/raids/${id}`)
+    fetch(`http://localhost:3030/data/raids/${id}`)
       .then(response => response.json())
       // .then(data => console.log(data))
       .then(data => setRaid(data))
@@ -42,17 +41,16 @@ export function useCreateGame() {
 
   const gameCreateHandler = (data) => {
     // console.log(data);
-    const opt = {
+    const options = {
       method: "post", 
-      "X-Authorization": accessToken, 
+      headers: {
+        "Content-Type": "application/json", 
+        "X-Authorization": accessToken,   
+      },
       body: JSON.stringify(data)
     }
-    console.log(opt);
-    fetch(`http://localhost:3030/data/raids`, {
-      method: "post", 
-      "X-Authorization": accessToken, 
-      body: JSON.stringify(data)
-    })
+    console.log(options);
+    fetch(`http://localhost:3030/data/raids`, options)
     .then(response => response.json())
     .then(data => console.log(data))
     // .then(data => setRaid(data))

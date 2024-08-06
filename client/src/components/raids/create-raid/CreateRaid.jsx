@@ -12,7 +12,7 @@ export default function CrateRaidPage() {
 
   const [formData, changeFormHandler, submitForm] = useForm(
     { "location": "", "level": "", "region": "", "time": "", "min": "", "max": "" },
-    async (data) => {
+    (data) => {
       //   const location = data["location"];
       //   const level = data["level"];
       //   const region = data["region"];
