@@ -8,7 +8,7 @@ export default function Logout() {
     // const navig = useNavigate();
     const logout = useLogout();
     logout();
-    console.log(logout);
+    // console.log(logout);
 
     useEffect(() => {
         changeAuthState({});

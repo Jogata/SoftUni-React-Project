@@ -35,11 +35,11 @@ export function getOneGame(id) {
   return [raid, setRaid];
 }
 
-export function useCreateGame() {
+export function useCreateRaid() {
   const { accessToken } = useContext(AuthContext);
   // console.log(accessToken);
 
-  const gameCreateHandler = (data) => {
+  const raidCreateHandler = (data) => {
     // console.log(data);
     const options = {
       method: "post", 
@@ -49,14 +49,14 @@ export function useCreateGame() {
       },
       body: JSON.stringify(data)
     }
-    console.log(options);
+    // console.log(options);
     fetch(`http://localhost:3030/data/raids`, options)
     .then(response => response.json())
     .then(data => console.log(data))
     // .then(data => setRaid(data))
   }
 
-  return gameCreateHandler;
+  return raidCreateHandler;
 
   // const [raid, setRaid] = useState({
   //   currentPlayers: "",

@@ -35,7 +35,7 @@ export default function AuthPage(props) {
       const email = formData["register-email"];
       const password = formData["register-password"];
       const repeat = formData["repeat"];
-      console.log(email, password, repeat);
+      // console.log(email, password, repeat);
 
       if (password != repeat) {
         setErrors("Passwords doesn't match");

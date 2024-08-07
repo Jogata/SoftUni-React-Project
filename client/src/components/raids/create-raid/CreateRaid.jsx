@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../../hooks/useForm";
-import { useCreateGame } from "../../../hooks/useRaids";
+import { useCreateRaid } from "../../../hooks/useRaids";
 import PageNavigation from "../../navigation/PageNavigation";
 
 export default function CrateRaidPage() {
   const navigate = useNavigate();
-  const createGame = useCreateGame();
+  const createRaid = useCreateRaid();
   const [errors, setErrors] = useState("");
 
   const [formData, changeFormHandler, submitForm] = useForm(
@@ -20,7 +20,7 @@ export default function CrateRaidPage() {
       //   const min = data["min"];
       //   const max = data["max"];
       try {
-        createGame(data);
+        createRaid(data);
         navigate("/raids");
       } catch (error) {
         // console.log(typeof error);
