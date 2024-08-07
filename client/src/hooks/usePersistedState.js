@@ -15,7 +15,9 @@ export default function usePersistedState(key, initialState) {
     // console.log(initialState);
     
     const updateState = (value) => {
+
         localStorage.setItem(key, JSON.stringify(value));
+
         // console.log(value);
         setState(value);
     }

@@ -37,7 +37,7 @@ export function getOneGame(id) {
 
 export function useCreateGame() {
   const { accessToken } = useContext(AuthContext);
-  console.log(accessToken);
+  // console.log(accessToken);
 
   const gameCreateHandler = (data) => {
     // console.log(data);

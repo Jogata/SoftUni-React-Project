@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+
 const baseURL = "http://localhost:3030/users";
 
 export const login = async (email, password) => {
@@ -29,4 +32,15 @@ export const register = async (email, password) => {
     const user = await response.json();
 
     return user;
+}
+
+export const logout = async () => {
+    const { accessToken } = useContext(AuthContext);
+    console.log(accessToken);
+  
+    const response = await fetch(baseURL + "/logout", {
+        headers: {
+            "X-Authorization": accessToken,   
+        }
+    });
 }

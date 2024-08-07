@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { login, register } from "../api/auth-api";
+import { login, logout, register } from "../api/auth-api";
 
 export function useLogin() {
     const { changeAuthState } = useContext(AuthContext);
@@ -25,4 +25,17 @@ export function useRegister() {
     }
 
     return registerHandler;
+}
+
+export function useLogout() {
+    // const { changeAuthState } = useContext(AuthContext);
+    // const navig = useNavigate();
+    // console.log("logout");
+
+    const logoutHandler = () => {
+        // changeAuthState({});
+        logout();
+    }
+
+    return logoutHandler;
 }
