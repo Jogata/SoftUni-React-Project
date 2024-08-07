@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+
+import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({
@@ -11,10 +13,10 @@ export const AuthContext = createContext({
 });
 
 export function AuthContextProvider(props) {
-    const [authState, setAuthState] = useState({});
+    const [authState, setAuthState] = usePersistedState("auth", {});
 
     const changeAuthState = (state) => {
-        // localStorage.setItem("accessToken", JSON.stringify(state.accessToken));
+        localStorage.setItem("accessToken", state.accessToken);
         setAuthState(state);
     }
 

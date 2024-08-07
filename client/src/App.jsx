@@ -18,10 +18,6 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
-import { createContext } from 'react'
-
-const context = createContext();
-// console.log(context);
 
 function App() {
   return (

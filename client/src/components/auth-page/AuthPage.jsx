@@ -22,7 +22,7 @@ export default function AuthPage(props) {
         await login(email, password);
         navigate("/");
       } catch (error) {
-        const { message } = await error.json();
+        const { message } = await error;
         // console.log(error.message);
         setErrors(message);
       }
@@ -46,7 +46,7 @@ export default function AuthPage(props) {
         await register(email, password);
         navigate("/");
       } catch (error) {
-        const { message } = await error.json()
+        const { message } = await error;
         // console.log(message);
         setErrors(message);
       }
