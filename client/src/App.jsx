@@ -19,12 +19,72 @@ import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmor
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
+function Header() {
+  return (
+    <>
+      <header style={{textAlign: "center", fontSize: "2rem", padding: "2em"}}>
+        <h1>Groceries List</h1>
+      </header>
+    </>
+  )
+}
+
+function Content() {
+  function handleNameChange() {
+    const names = ["Bob", "Kevin", "Dave"];
+    const index = Math.floor(Math.random() * 3);
+    return names[index];
+  }
+
+  function handleClick() {
+    console.log("clicked");
+  }
+
+  function handleClick2(name) {
+    console.log(`${name} clicked`);
+  }
+
+  function handleClick3(e) {
+    console.log(e);
+  }
+  
+  return (
+    <>
+      <main style={{textAlign: "center", fontSize: "2rem"}}>
+        <p onDoubleClick={handleClick}>
+          Hello {handleNameChange()}
+        </p>
+        <button onClick={handleClick}>Click</button>
+        <button onClick={() => handleClick2(handleNameChange())}>Click</button>
+        <button onClick={(e) => handleClick3(e)}>Click</button>
+      </main>
+    </>
+  )
+}
+
+function Footer() {
+  const today = new Date().getFullYear();
+  return (
+    <>
+      <footer style={{textAlign: "center", fontSize: "1.2rem", padding: "2em"}}>
+        <p>Copyright &copy; {today}</p>
+      </footer>
+    </>
+  )
+}
+
 function App() {
   return (
     <>
       <AuthContextProvider>
 
-        <div className="body">
+        <div className="shopping-list">
+          <Header />
+          <Content />
+          <Footer />
+        </div>
+
+        <div className="body" style={{display: "none"}}>
 
           <Routes>
             <Route path='/' element={<MainPage />} />
