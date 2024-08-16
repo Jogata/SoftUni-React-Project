@@ -18,6 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+import { useState } from 'react'
 
 function Header() {
   return (
@@ -30,33 +31,74 @@ function Header() {
 }
 
 function Content() {
-  function handleNameChange() {
-    const names = ["Bob", "Kevin", "Dave"];
-    const index = Math.floor(Math.random() * 3);
-    return names[index];
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: true,
+      item: "One half pound bag of Cocoa Covered Almonds Unsalted"
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2"
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3"
+    }
+  ]);
+
+  function changeCheckedAttributes(id, arr) {
+    // console.log(id);
+    // console.log(arr);
+    const newArr = [...arr];
+    newArr[id - 1].checked = !newArr[id - 1].checked;
+    // console.log(newArr);
+    return newArr;
   }
 
-  function handleClick() {
-    console.log("clicked");
+  function handleChange(id) {
+    // console.log(id);
+    const newItems = changeCheckedAttributes(id, items);
+    setItems(newItems);
   }
 
-  function handleClick2(name) {
-    console.log(`${name} clicked`);
+  function removeDeletedItem(id, arr) {
+    // console.log(id);
+    // console.log(arr);
+    const newArr = arr.filter(item => item.id != id);
+    // console.log(newArr);
+    return newArr;
   }
 
-  function handleClick3(e) {
-    console.log(e);
+  function handleDelete(id) {
+    // console.log(id);
+    const newItems = removeDeletedItem(id, items);
+    setItems(newItems);
   }
-  
+
   return (
     <>
       <main style={{textAlign: "center", fontSize: "2rem"}}>
-        <p onDoubleClick={handleClick}>
-          Hello {handleNameChange()}
-        </p>
-        <button onClick={handleClick}>Click</button>
-        <button onClick={() => handleClick2(handleNameChange())}>Click</button>
-        <button onClick={(e) => handleClick3(e)}>Click</button>
+        <ul>
+          {items.map(item => (
+            <li className='item' key={item.id}>
+              <input 
+                type="checkbox" 
+                checked={item.checked}  
+                onChange={() => handleChange(item.id)}
+              />
+              <label 
+                style={item.checked ? {textDecoration: "line-through"} : null} 
+                onDoubleClick={() => handleChange(item.id)} 
+              >{item.item}</label>
+              <button 
+                onClick={() => handleDelete(item.id)} 
+              >Delete</button>
+            </li>
+          ))}
+        </ul>
       </main>
     </>
   )
