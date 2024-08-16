@@ -34,7 +34,13 @@ function List({items, handleChange, handleDelete}) {
   return (
     <>
       <ul>
-        {items.map(item => <ListItem key={item.id} item={item} handleChange={handleChange} handleDelete={handleDelete} />)}
+        {items.map(item => 
+          <ListItem 
+            key={item.id} 
+            item={item} 
+            handleChange={handleChange} 
+            handleDelete={handleDelete} 
+          />)}
       </ul>
       <p>{items.length} items</p>
     </>
@@ -125,6 +131,28 @@ function Content() {
   )
 }
 
+function AddItem({ newItem, setNewItem, handleSubmit }) {
+  return (
+    <form className="addForm" onSubmit={(e) => handleSubmit(e)}>
+      <label htmlFor="addItem">Add Item</label>
+      <input 
+        autoFocus 
+        id="addItem"
+        type="text" 
+        placeholder='Add Item' 
+        value={newItem} 
+        onChange={(e) => setNewItem(e.target.value)}
+        // required
+      />
+      <button 
+        type="submit" 
+      >
+        Add New Item
+      </button>
+    </form>
+  )
+}
+
 function Footer() {
   const today = new Date().getFullYear();
   return (
@@ -137,12 +165,27 @@ function Footer() {
 }
 
 function App() {
+  const [newItem, setNewItem] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // console.log("submitted");
+    function addItem(item) {
+      const id = items.length ? items[items.length - 1] : 0;
+    }
+  }
+
   return (
     <>
       <AuthContextProvider>
 
         <div className="shopping-list">
           <Header />
+          <AddItem 
+            newItem={newItem} 
+            setNewItem={setNewItem} 
+            handleSubmit={handleSubmit} 
+          />
           <Content />
           <Footer />
         </div>
