@@ -30,6 +30,37 @@ function Header() {
   )
 }
 
+function List({items, handleChange, handleDelete}) {
+  return (
+    <>
+      <ul>
+        {items.map(item => <ListItem key={item.id} item={item} handleChange={handleChange} handleDelete={handleDelete} />)}
+      </ul>
+      <p>{items.length} items</p>
+    </>
+  )
+}
+
+function ListItem({item, handleChange, handleDelete}) {
+  console.log(item);
+  return (
+    <li className='item'>
+      <input
+        type="checkbox"
+        checked={item.checked}
+        onChange={() => handleChange(item.id)}
+      />
+      <label
+        style={item.checked ? { textDecoration: "line-through" } : null}
+        onDoubleClick={() => handleChange(item.id)}
+      >{item.item}</label>
+      <button
+        onClick={() => handleDelete(item.id)}
+      >Delete</button>
+    </li>
+  )
+}
+
 function Content() {
   const [items, setItems] = useState([
     {
@@ -80,25 +111,15 @@ function Content() {
 
   return (
     <>
-      <main style={{textAlign: "center", fontSize: "2rem"}}>
-        <ul>
-          {items.map(item => (
-            <li className='item' key={item.id}>
-              <input 
-                type="checkbox" 
-                checked={item.checked}  
-                onChange={() => handleChange(item.id)}
-              />
-              <label 
-                style={item.checked ? {textDecoration: "line-through"} : null} 
-                onDoubleClick={() => handleChange(item.id)} 
-              >{item.item}</label>
-              <button 
-                onClick={() => handleDelete(item.id)} 
-              >Delete</button>
-            </li>
-          ))}
-        </ul>
+      <main style={{ textAlign: "center", fontSize: "2rem" }}>
+        {items.length ?
+          <List
+            items={items} 
+            handleChange={handleChange} 
+            handleDelete={handleDelete} 
+          /> :
+          <p>No items in the list</p>
+        }
       </main>
     </>
   )
