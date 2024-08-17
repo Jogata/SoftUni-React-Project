@@ -18,7 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Header() {
   return (
@@ -163,44 +163,18 @@ function Footer() {
   )
 }
 
-function Square({color}) {
-  return (
-    <div className="square" style={{backgroundColor: color}}>
-      <p>Empty value</p>
-    </div>
-  )
-}
-
-function ColorPicker({color, setColor}) {
-  return (
-    <input 
-      type="text" 
-      placeholder="Add color name"
-      value={color} 
-      onChange={(e) => setColor(e.target.value)}
-    />
-  )
-}
-
 function App() {
-  const [color, setColor] = useState("green");
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      checked: true,
-      item: "One half pound bag of Cocoa Covered Almonds Unsalted"
-    },
-    {
-      id: 2,
-      checked: false,
-      item: "Item 2"
-    },
-    {
-      id: 3,
-      checked: false,
-      item: "Item 3"
-    }
-  ]);
+  const [items, setItems] = useState([]);
+
+  console.log("before");
+  useEffect(() => {
+    console.log("inside");
+    fetch(`http://localhost:3030/jsonstore/advanced/items`)
+    .then(response => response.json())
+    .then(data => setItems(data))
+    .catch(err=>console.log(err));
+  }, []);
+  console.log("after");
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
@@ -212,7 +186,7 @@ function App() {
       console.log(item);
       const id = items.length ? items[items.length - 1].id + 1 : 0;
       const myNewItem = { id, checked: false, item };
-      console.log(myNewItem);
+      // console.log(myNewItem);
       const newListItems = [...items, myNewItem];
       // console.log(newListItems);
       return newListItems;
@@ -224,15 +198,7 @@ function App() {
     <>
       <AuthContextProvider>
 
-        <div className="page full-screen tutoral">
-          <Square color={color}/>
-          <ColorPicker 
-            color={color} 
-            setColor={setColor} 
-          />
-        </div>
-
-        <div className="shopping-list" style={{display: "none"}}>
+        <div className="shopping-list">
           <Header />
           <AddItem 
             newItem={newItem} 
