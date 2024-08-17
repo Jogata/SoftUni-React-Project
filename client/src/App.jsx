@@ -163,7 +163,27 @@ function Footer() {
   )
 }
 
+function Square({color}) {
+  return (
+    <div className="square" style={{backgroundColor: color}}>
+      <p>Empty value</p>
+    </div>
+  )
+}
+
+function ColorPicker({color, setColor}) {
+  return (
+    <input 
+      type="text" 
+      placeholder="Add color name"
+      value={color} 
+      onChange={(e) => setColor(e.target.value)}
+    />
+  )
+}
+
 function App() {
+  const [color, setColor] = useState("green");
   const [items, setItems] = useState([
     {
       id: 1,
@@ -204,7 +224,15 @@ function App() {
     <>
       <AuthContextProvider>
 
-        <div className="shopping-list">
+        <div className="page full-screen tutoral">
+          <Square color={color}/>
+          <ColorPicker 
+            color={color} 
+            setColor={setColor} 
+          />
+        </div>
+
+        <div className="shopping-list" style={{display: "none"}}>
           <Header />
           <AddItem 
             newItem={newItem} 
