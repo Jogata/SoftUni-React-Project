@@ -48,7 +48,7 @@ function List({items, handleChange, handleDelete}) {
 }
 
 function ListItem({item, handleChange, handleDelete}) {
-  console.log(item);
+  // console.log(item);
   return (
     <li className='item'>
       <input
@@ -67,25 +67,7 @@ function ListItem({item, handleChange, handleDelete}) {
   )
 }
 
-function Content() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      checked: true,
-      item: "One half pound bag of Cocoa Covered Almonds Unsalted"
-    },
-    {
-      id: 2,
-      checked: false,
-      item: "Item 2"
-    },
-    {
-      id: 3,
-      checked: false,
-      item: "Item 3"
-    }
-  ]);
-
+function Content({ items, setItems }) {
   function changeCheckedAttributes(id, arr) {
     // console.log(id);
     // console.log(arr);
@@ -145,10 +127,27 @@ function AddItem({ newItem, setNewItem, handleSubmit }) {
         // required
       />
       <button 
-        type="submit" 
+        type="submit"
       >
         Add New Item
       </button>
+    </form>
+  )
+}
+
+function SearchItem({ search, setSearch }) {
+  return (
+    <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
+      <label htmlFor="search">Search</label>
+      <input 
+        id="search"
+        type="text" 
+        placeholder='Search Item' 
+        role="searchbox" 
+        value={search} 
+        onChange={(e) => setSearch(e.target.value)} 
+        required
+      />
     </form>
   )
 }
@@ -165,14 +164,40 @@ function Footer() {
 }
 
 function App() {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: true,
+      item: "One half pound bag of Cocoa Covered Almonds Unsalted"
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2"
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3"
+    }
+  ]);
+
   const [newItem, setNewItem] = useState("");
+  const [search, setSearch] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     // console.log("submitted");
-    function addItem(item) {
-      const id = items.length ? items[items.length - 1] : 0;
+    function addNewItem(item) {
+      console.log(item);
+      const id = items.length ? items[items.length - 1].id + 1 : 0;
+      const myNewItem = { id, checked: false, item };
+      console.log(myNewItem);
+      const newListItems = [...items, myNewItem];
+      // console.log(newListItems);
+      return newListItems;
     }
+    setItems(addNewItem(newItem));
   }
 
   return (
@@ -186,7 +211,14 @@ function App() {
             setNewItem={setNewItem} 
             handleSubmit={handleSubmit} 
           />
-          <Content />
+          <SearchItem 
+            search={search} 
+            setSearch={setSearch} 
+          />
+          <Content 
+            items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))} 
+            setItems={setItems} 
+          />
           <Footer />
         </div>
 
