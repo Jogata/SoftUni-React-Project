@@ -169,10 +169,28 @@ function App() {
   console.log("before");
   useEffect(() => {
     console.log("inside");
-    fetch(`http://localhost:3030/jsonstore/advanced/items`)
-    .then(response => response.json())
-    .then(data => setItems(data))
-    .catch(err=>console.log(err));
+    async function fetchData() {
+      try {
+        const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`);
+      
+        if (!response.ok) {
+          console.log("response not ok");
+          throw new Error(`${response.statusText}`);
+        }
+  
+        if (response.status == 204) {
+          console.log(response.statusText);
+          return;
+        }
+  
+        const data = await response.json();
+        setItems(data);  
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchData();
   }, []);
   console.log("after");
 
