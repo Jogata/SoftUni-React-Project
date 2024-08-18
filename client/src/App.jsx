@@ -36,7 +36,7 @@ function List({items, handleChange, handleDelete}) {
       <ul>
         {items.map(item => 
           <ListItem 
-            key={item.id} 
+            key={item._id} 
             item={item} 
             handleChange={handleChange} 
             handleDelete={handleDelete} 
@@ -114,9 +114,9 @@ function Content({ items, setItems, isLoading }) {
   )
 }
 
-function AddItem({ newItem, setNewItem, handleSubmit }) {
+function AddItem({ newItem, setNewItem, handleAddNewItem }) {
   return (
-    <form className="addForm" onSubmit={(e) => handleSubmit(e)}>
+    <form className="addForm" onSubmit={(e) => handleAddNewItem(e)}>
       <label htmlFor="addItem">Add Item</label>
       <input 
         autoFocus 
@@ -179,9 +179,9 @@ function App() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("before");
+  console.log("before useEffect");
   useEffect(() => {
-    console.log("inside");
+    console.log("inside useEffect");
     function fetchData() {
       setTimeout(async () => {
 
@@ -222,27 +222,45 @@ function App() {
 
       }, 2000);
     }
-    
+
     fetchData();
+
   }, []);
-  console.log("after");
+  console.log("after useEffect");
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
 
-  function handleSubmit(e) {
+  function handleAddNewItem(e) {
     e.preventDefault();
-    // console.log("submitted");
-    function addNewItem(item) {
+    console.log("submitted");
+    addNewItem(newItem);
+
+    async function addNewItem(item) {
       console.log(item);
-      const id = items.length ? items[items.length - 1].id + 1 : 0;
-      const myNewItem = { id, checked: false, item };
+      // const id = items.length ? items[items.length - 1].id + 1 : 0;
+      const myNewItem = { checked: false, item };
+      const options = {
+        method: "POST", 
+        headers: {
+          "Content-type": "application/json"
+        }, 
+        body: JSON.stringify(myNewItem),
+      }
       // console.log(myNewItem);
-      const newListItems = [...items, myNewItem];
+      // const newListItems = [...items, myNewItem];
       // console.log(newListItems);
-      return newListItems;
+      // return newListItems;
+      const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`, options);
+
+      if (response.ok) {
+        const data = await response.json();
+        setItems([...items, data]);
+        // setItems(addNewItem(newItem));
+      } else {
+        console.log(response.status);
+      }
     }
-    setItems(addNewItem(newItem));
   }
 
   return (
@@ -254,7 +272,7 @@ function App() {
           <AddItem 
             newItem={newItem} 
             setNewItem={setNewItem} 
-            handleSubmit={handleSubmit} 
+            handleAddNewItem={handleAddNewItem} 
           />
           <SearchItem 
             search={search} 
