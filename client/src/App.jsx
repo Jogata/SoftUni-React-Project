@@ -67,7 +67,7 @@ function ListItem({item, handleChange, handleDelete}) {
   )
 }
 
-function Content({ items, setItems }) {
+function Content({ items, setItems, isLoading }) {
   function changeCheckedAttributes(id, arr) {
     // console.log(id);
     // console.log(arr);
@@ -100,6 +100,7 @@ function Content({ items, setItems }) {
   return (
     <>
       <main style={{ textAlign: "center", fontSize: "2rem" }}>
+        {isLoading && <Loader />}
         {items.length ?
           <List
             items={items} 
@@ -163,33 +164,65 @@ function Footer() {
   )
 }
 
+function Loader() {
+  return (
+    <span className="loader">
+      <div className="logo-ring"></div>
+      <div className="logo-ring"></div>
+      <div className="logo-ring"></div>
+      <div className="logo-ring"></div>
+    </span>
+  )
+}
+
 function App() {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   console.log("before");
   useEffect(() => {
     console.log("inside");
-    async function fetchData() {
-      try {
-        const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`);
-      
-        if (!response.ok) {
-          console.log("response not ok");
-          throw new Error(`${response.statusText}`);
-        }
-  
-        if (response.status == 204) {
-          console.log(response.statusText);
-          return;
-        }
-  
-        const data = await response.json();
-        setItems(data);  
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
+    function fetchData() {
+      setTimeout(async () => {
 
+        try {
+          const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`);
+
+          if (!response.ok) {
+            console.log("response not ok");
+            throw new Error(`${response.statusText}`);
+          }
+
+          if (response.status == 204) {
+            console.log(response.statusText);
+            return;
+          }
+
+          const data = await response.json();
+          setItems(data);
+
+          // if (!response.ok) {
+          //   console.log("response not ok");
+          //   throw new Error(`${response.statusText}`);
+          // }
+
+          // if (response.status == 204) {
+          //   console.log(response.statusText);
+          //   return;
+          // }
+
+          // const data = await response.json();
+          // setItems(data);
+          // setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        } finally {
+          setIsLoading(false);
+        }
+
+      }, 2000);
+    }
+    
     fetchData();
   }, []);
   console.log("after");
@@ -230,6 +263,7 @@ function App() {
           <Content 
             items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))} 
             setItems={setItems} 
+            isLoading={isLoading} 
           />
           <Footer />
         </div>
