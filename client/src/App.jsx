@@ -54,7 +54,7 @@ function ListItem({item, handleChange, handleDelete}) {
       <input
         type="checkbox"
         checked={item.checked}
-        onChange={() => handleChange(item.id)}
+        onChange={() => handleChange(item._id)}
       />
       <label
         style={item.checked ? { textDecoration: "line-through" } : null}
@@ -68,28 +68,55 @@ function ListItem({item, handleChange, handleDelete}) {
 }
 
 function Content({ items, setItems, isLoading }) {
-  function changeCheckedAttributes(id, arr) {
-    // console.log(id);
-    // console.log(arr);
-    const newArr = [...arr];
-    newArr[id - 1].checked = !newArr[id - 1].checked;
-    // console.log(newArr);
-    return newArr;
-  }
+    async function changeCheckedAttributes(id) {
+      // console.log(id);
+      // console.log(arr);
+      // const newArr = [...arr];
+      // newArr[id - 1].checked = !newArr[id - 1].checked;
+      // console.log(newArr);
+      console.log(id);
+      const item = items.find(item => item._id == id);
+      console.log(item);
+      // const myNewItem = { checked: false, item };
+      item.checked = !item.checked;
+      console.log(item);
+      const options = {
+        method: "PUT", 
+        headers: {
+          "Content-type": "application/json"
+        }, 
+        body: JSON.stringify(item),
+      }
+      // console.log(myNewItem);
+      // const newListItems = [...items, myNewItem];
+      // console.log(newListItems);
+      // return newListItems;
+      const response = await fetch(`http://localhost:3030/jsonstore/advanced/items/:id`, options);
+      console.log(response);
+  
+      if (response.ok) {      
+        const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`);
+        const data = await response.json();
+        console.log(data);
+        // setItems(data);
+        return data;
+      } 
+      else {
+        throw new Error("Item wasn't found");
+      }
+    }  
 
-  function handleChange(id) {
+  async function handleChange(id) {
     // console.log(id);
-    const newItems = changeCheckedAttributes(id, items);
-    setItems(newItems);
+    try {    
+      const newItems = await changeCheckedAttributes(id);
+      console.log(newItems);
+      setItems(newItems);
+    } catch (error) {
+      console.log(error.message);
+    }
+  
   }
-
-  // function removeDeletedItem(id, arr) {
-  //   // console.log(id);
-  //   // console.log(arr);
-  //   const newArr = arr.filter(item => item.id != id);
-  //   // console.log(newArr);
-  //   return newArr;
-  // }
 
   async function handleDelete(id) {
     console.log(id);
@@ -263,13 +290,13 @@ function App() {
     async function addNewItem(item) {
       console.log(item);
       // const id = items.length ? items[items.length - 1].id + 1 : 0;
-      const myNewItem = { checked: false, item };
+      const newItem = { checked: false, item };
       const options = {
         method: "POST", 
         headers: {
           "Content-type": "application/json"
         }, 
-        body: JSON.stringify(myNewItem),
+        body: JSON.stringify(newItem),
       }
       // console.log(myNewItem);
       // const newListItems = [...items, myNewItem];
@@ -282,8 +309,9 @@ function App() {
         const data = await response.json();
         console.log(data);
         // setItems([...items, data]);
-        const response2 = await fetch(`http://localhost:3030/jsonstore/advanced/items/`);
+        const response2 = await fetch(`http://localhost:3030/jsonstore/advanced/items`);
         const data2 = await response2.json();
+        // console.log(data2);
         setItems(data2);
         // setItems(addNewItem(newItem));
       } else {
