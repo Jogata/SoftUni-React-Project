@@ -61,7 +61,7 @@ function ListItem({item, handleChange, handleDelete}) {
         onDoubleClick={() => handleChange(item.id)}
       >{item.item}</label>
       <button
-        onClick={() => handleDelete(item.id)}
+        onClick={() => handleDelete(item._id)}
       >Delete</button>
     </li>
   )
@@ -83,19 +83,43 @@ function Content({ items, setItems, isLoading }) {
     setItems(newItems);
   }
 
-  function removeDeletedItem(id, arr) {
-    // console.log(id);
-    // console.log(arr);
-    const newArr = arr.filter(item => item.id != id);
-    // console.log(newArr);
-    return newArr;
-  }
+  // function removeDeletedItem(id, arr) {
+  //   // console.log(id);
+  //   // console.log(arr);
+  //   const newArr = arr.filter(item => item.id != id);
+  //   // console.log(newArr);
+  //   return newArr;
+  // }
 
-  function handleDelete(id) {
-    // console.log(id);
-    const newItems = removeDeletedItem(id, items);
-    setItems(newItems);
+  async function handleDelete(id) {
+    console.log(id);
+    // const id = items.length ? items[items.length - 1].id + 1 : 0;
+    // const myNewItem = { checked: false, item };
+    const options = {
+      method: "DELETE", 
+    }
+    // console.log(myNewItem);
+    // const newListItems = [...items, myNewItem];
+    // console.log(newListItems);
+    // return newListItems;
+    const response = await fetch(`http://localhost:3030/jsonstore/advanced/items/:id`, options);
+    // console.log(response);
+
+    if (response.ok) {      
+      const response = await fetch(`http://localhost:3030/jsonstore/advanced/items/`);
+      const data = await response.json();
+      console.log(data);
+      setItems(data);
+    }
+
+    // if (response.ok) {
+    //   const data = await response.json();
+    //   setItems([...items, data]);
+    // } else {
+    //   console.log(response.status);
+    // }
   }
+// }
 
   return (
     <>
@@ -252,10 +276,15 @@ function App() {
       // console.log(newListItems);
       // return newListItems;
       const response = await fetch(`http://localhost:3030/jsonstore/advanced/items`, options);
+      console.log(response);
 
       if (response.ok) {
         const data = await response.json();
-        setItems([...items, data]);
+        console.log(data);
+        // setItems([...items, data]);
+        const response2 = await fetch(`http://localhost:3030/jsonstore/advanced/items/`);
+        const data2 = await response2.json();
+        setItems(data2);
         // setItems(addNewItem(newItem));
       } else {
         console.log(response.status);
