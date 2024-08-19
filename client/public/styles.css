@@ -870,3 +870,16 @@ footer {
 .logo:hover .logo-ring {
   animation-duration: 1s;
 }
+
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 1px solid black;
+}

@@ -320,11 +320,38 @@ function App() {
     }
   }
 
+  const [data, setData] = useState([]);
+
+  async function getData(endpoint) {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/${endpoint}`);
+    console.log(response);
+    const newdata = await response.json();
+    console.log(newdata);
+    setData(newdata);
+  }
+
+  function JSListItem({item}) {
+    return (
+      <li>{JSON.stringify(item)}</li>
+    )
+  }
+
   return (
     <>
       <AuthContextProvider>
 
-        <div className="shopping-list">
+        <div id="challenge-2">
+          <div className="buttons">
+            <button onClick={() => getData("users")}>users</button>
+            <button onClick={() => getData("posts")}>posts</button>
+            <button onClick={() => getData("comments")}>comments</button>
+          </div>
+            <ul>
+              {data.map(data => (<JSListItem key={data.id} item={data} />))}
+            </ul>
+        </div>
+
+        <div className="shopping-list" style={{display: "none"}}>
           <Header />
           <AddItem 
             newItem={newItem} 
