@@ -883,3 +883,14 @@ footer {
   text-align: center;
   border: 1px solid black;
 }
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  padding-top: 52px;
+}
+
+td {
+  border: 1px solid #000;
+  padding: 0.25rem;
+}

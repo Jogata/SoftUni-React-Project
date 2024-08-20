@@ -359,6 +359,40 @@ function App() {
 
   }, [reqType])
 
+  function Table({ items }) {
+    return (
+      <div className="table-container">
+        <table>
+          <tbody>
+            {items.map(item => (
+              <Row key={item.id} item={item} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
+  function Row({ item }) {
+    return (
+      <tr>
+        {Object.entries(item).map(([key, value]) => {
+          return (
+            <Cell key={key} cellData={JSON.stringify(value)} />
+          )
+        })}
+      </tr>
+    )
+  }
+
+  function Cell({ cellData }) {
+    return (
+      <td>
+        {cellData}
+      </td>
+    )
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -369,9 +403,10 @@ function App() {
             <button onClick={() => setReqType("posts")}>posts</button>
             <button onClick={() => setReqType("comments")}>comments</button>
           </div>
-            <ul className='bulled'>
+          <Table items={items} />
+            {/* <ul className='bulled'>
               {items.map(data => (<JSListItem key={data.id} item={data} />))}
-            </ul>
+            </ul> */}
         </div>
 
         {/* <div className="shopping-list" style={{display: "none"}}>
