@@ -321,8 +321,12 @@ function App() {
   }
 
   const [data, setData] = useState([]);
+  const [button, setButton] = useState({});
 
-  async function getData(endpoint) {
+  async function getData(endpoint, e) {
+    console.log(endpoint);
+    console.log(e.target);
+    setButton(e.target);
     const response = await fetch(`https://jsonplaceholder.typicode.com/${endpoint}`);
     console.log(response);
     const newdata = await response.json();
@@ -336,22 +340,41 @@ function App() {
     )
   }
 
+  const API_URL = 'https://jsonplaceholder.typicode.com/';
+  const [reqType, setReqType] = useState('users');
+
+  useEffect(() => {
+
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(`${API_URL}${reqType}`);
+        const data = await response.json();
+        setItems(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchItems();
+
+  }, [reqType])
+
   return (
     <>
       <AuthContextProvider>
 
         <div id="challenge-2">
           <div className="buttons">
-            <button onClick={() => getData("users")}>users</button>
-            <button onClick={() => getData("posts")}>posts</button>
-            <button onClick={() => getData("comments")}>comments</button>
+            <button onClick={() => setReqType("users")}>users</button>
+            <button onClick={() => setReqType("posts")}>posts</button>
+            <button onClick={() => setReqType("comments")}>comments</button>
           </div>
-            <ul>
-              {data.map(data => (<JSListItem key={data.id} item={data} />))}
+            <ul className='bulled'>
+              {items.map(data => (<JSListItem key={data.id} item={data} />))}
             </ul>
         </div>
 
-        <div className="shopping-list" style={{display: "none"}}>
+        {/* <div className="shopping-list" style={{display: "none"}}>
           <Header />
           <AddItem 
             newItem={newItem} 
@@ -368,7 +391,7 @@ function App() {
             isLoading={isLoading} 
           />
           <Footer />
-        </div>
+        </div> */}
 
         <div className="body" style={{display: "none"}}>
 
