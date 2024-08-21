@@ -24,10 +24,10 @@ import Logout from './components/logout/Logout'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-function Header() {
+function Header({ title }) {
   return (
-    <header>
-      <h1>Header</h1>
+    <header className='Header'>
+      <h1>{title}</h1>
     </header>
   )
 }
@@ -121,7 +121,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
 
-          <Header />
+          <Header title="React JS Blog" />
           <Nav />
           <Routes>
             <Route path='/' element={<Home />} />
