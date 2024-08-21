@@ -54,11 +54,44 @@ function Nav({ search, setSearch }) {
   )
 }
 
-function Home() {
+function Home({ posts }) {
   return (
-    <main>
-      <h1>Home</h1>
+    <main className='Home'>
+      {posts.length ? (
+        <List posts={posts} />
+      ) : (
+        <p style={{ marginTop: "2rem" }}>
+          No posts to display.
+        </p>
+      )}
     </main>
+  )
+}
+
+function List({ posts }) {
+  return (
+    <>
+      {posts.map(post => (
+        <Post key={post.id} post={post} />
+      ))}
+    </>
+  )
+}
+
+function Post({ post }) {
+  return (
+    <article className='post'>
+      <Link to={`/post/${post.id}`}>
+        <h2>{post.title}</h2>
+        <p className="postDate">{post.datetime}</p>
+      </Link>
+      <p className="postBody">
+        {(post.body).length <= 25 
+            ? post.body 
+            : `${(post.body).slice(0, 25)}...`
+        }
+      </p>
+    </article>
   )
 }
 
@@ -116,15 +149,42 @@ function Loader() {
 
 function App() {
   const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "My First Post",
+      datetime: "July 01, 2021 11:17:36 AM",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
+    },
+    {
+      id: 2,
+      title: "My 2nd Post",
+      datetime: "July 01, 2021 11:17:36 AM",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
+    },
+    {
+      id: 3,
+      title: "My 3rd Post",
+      datetime: "July 01, 2021 11:17:36 AM",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
+    },
+    {
+      id: 4,
+      title: "My Fourth Post",
+      datetime: "July 01, 2021 11:17:36 AM",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
+    }
+  ]);
+
   return (
     <>
       <AuthContextProvider>
         <div className="body">
 
           <Header title="React JS Blog" />
-          <Nav />
+          <Nav search={search} setSearch={setSearch} />
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home posts={posts} />} />
             <Route path='/post' element={<NewPost />} />
             <Route path='/post/:id' element={<PostPage />} />
             <Route path='/about' element={<About />} />
