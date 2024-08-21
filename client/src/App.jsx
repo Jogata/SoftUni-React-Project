@@ -21,6 +21,7 @@ import Logout from './components/logout/Logout'
 
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 function Header() {
@@ -31,10 +32,24 @@ function Header() {
   )
 }
 
-function Nav() {
+function Nav({ search, setSearch }) {
   return (
-    <nav>
-      <h1>Nav</h1>
+    <nav className='Nav'>
+      <form className="searchForm" onSubmit={e => e.preventDefault()}>
+        <label htmlFor="search">Search Posts</label>
+        <input 
+          id='search' 
+          type="text" 
+          value={search} 
+          onChange={e => setSearch(e.target.value)} 
+          placeholder='Search Posts'
+        />
+      </form>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/post">Post</Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
     </nav>
   )
 }
@@ -100,6 +115,7 @@ function Loader() {
 // ============================================================
 
 function App() {
+  const [search, setSearch] = useState("");
   return (
     <>
       <AuthContextProvider>
@@ -107,11 +123,13 @@ function App() {
 
           <Header />
           <Nav />
-          <Home />
-          <NewPost />
-          <PostPage />
-          <About />
-          <Missing />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/post' element={<NewPost />} />
+            <Route path='/post/:id' element={<PostPage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<Missing />} />
+          </Routes>
           <Footer />
 
           {/* <Routes>
