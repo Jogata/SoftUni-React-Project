@@ -60,7 +60,7 @@ function Home({ posts }) {
       {posts.length ? (
         <List posts={posts} />
       ) : (
-        <p style={{ marginTop: "2rem" }}>
+        <p style={{ marginTop: "2rem", textAlign: "center" }}>
           No posts to display.
         </p>
       )}
