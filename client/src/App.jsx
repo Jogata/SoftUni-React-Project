@@ -123,10 +123,34 @@ function PostPage({ posts, handleDelete }) {
   )
 }
 
-function NewPost() {
+function NewPost({
+  handleSubmit, 
+  postTitle, 
+  setPostTitle, 
+  postBody, 
+  setPostBody
+}) {
   return (
-    <main>
-      <h1>NewPost</h1>
+    <main className='NewPost'>
+      <h2>New Post</h2>
+      <form className="newPostForm" onSubmit={handleSubmit}>
+        <label htmlFor="postTitle">Title:</label>
+        <input 
+          id="postTitle"
+          type="text" 
+          value={postTitle} 
+          onChange={(e) => setPostTitle(e.target.value)} 
+          required
+        />
+        <label htmlFor="postBody">Post:</label>
+        <textarea 
+          id="postBody"
+          value={postBody} 
+          onChange={(e) => setPostBody(e.target.value)} 
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
     </main>
   )
 }
@@ -195,8 +219,30 @@ function App() {
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
     }
   ]);
+  const [postTitle, setPostTitle] = useState("");
+  const [postBody, setPostBody] = useState("");
 
   const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+    const datetime = new Date();
+    const newPost = {
+      id, 
+      title: postTitle, 
+      body: postBody, 
+      datetime: datetime.toDateString()
+    }
+    // const postsList = posts.filter(post => post.id !== id);
+    console.log("created", id);
+    console.log(newPost);
+    const postsList = [...posts, newPost];
+    setPosts(postsList);
+    setPostTitle("");
+    setPostBody("");
+    navigate("/");
+  }
 
   async function handleDelete(id) {
     // console.log("deleted", id);
@@ -204,7 +250,7 @@ function App() {
     // console.log(postsList);
     setPosts(postsList);
     navigate("/");
-  }  
+  }
 
   return (
     <>
@@ -215,7 +261,7 @@ function App() {
           <Nav search={search} setSearch={setSearch} />
           <Routes>
             <Route path='/' element={<Home posts={posts} />} />
-            <Route path='/post' element={<NewPost />} />
+            <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
             <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Missing />} />
