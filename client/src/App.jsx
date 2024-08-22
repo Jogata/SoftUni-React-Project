@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { AuthContextProvider } from './contexts/AuthContext'
 
@@ -21,7 +21,7 @@ import Logout from './components/logout/Logout'
 
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 function Header({ title }) {
@@ -95,10 +95,30 @@ function Post({ post }) {
   )
 }
 
-function PostPage() {
+function PostPage({ posts, handleDelete }) {
+  const { id } = useParams();
+  const post = posts.find(post => post.id.toString() === id);
   return (
-    <main>
-      <h1>PostPage</h1>
+    <main className='PostPage'>
+      <article className="post">
+        {post && 
+          <>
+            <h2>{post.title}</h2>
+            <p className="postDate">{post.datetime}</p>
+            <p className="postBody">{post.body}</p>
+            <button onClick={() => handleDelete(post.id)}>Delete Post</button>
+          </>
+        }
+        {!post && 
+          <>
+            <h2>Post Not Found</h2>
+            <p>Well, that's disappointing.</p>
+            <p>
+              <Link to='/'>Visit Our Homepage</Link>
+            </p>
+          </>
+        }
+      </article>
     </main>
   )
 }
@@ -176,6 +196,16 @@ function App() {
     }
   ]);
 
+  const navigate = useNavigate();
+
+  async function handleDelete(id) {
+    // console.log("deleted", id);
+    const postsList = posts.filter(post => post.id !== id);
+    // console.log(postsList);
+    setPosts(postsList);
+    navigate("/");
+  }  
+
   return (
     <>
       <AuthContextProvider>
@@ -186,7 +216,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home posts={posts} />} />
             <Route path='/post' element={<NewPost />} />
-            <Route path='/post/:id' element={<PostPage />} />
+            <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Missing />} />
           </Routes>
