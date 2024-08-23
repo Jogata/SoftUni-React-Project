@@ -157,24 +157,32 @@ function NewPost({
 
 function About() {
   return (
-    <main>
-      <h1>About</h1>
+    <main className='About'>
+      <h2>About</h2>
+      <p style={{ marginTop: "1rem" }}>
+        This blog app is a project in the Learn React tutorial series.
+      </p>
     </main>
   )
 }
 
 function Missing() {
   return (
-    <main>
-      <h1>Missing</h1>
+    <main className='Missing'>
+      <h2>Page Not Found</h2>
+      <p>Well, that's disappointing.</p>
+      <p>
+        <Link to='/'>Visit Our Homepage</Link>
+      </p>
     </main>
   )
 }
 
 function Footer() {
+  const today = new Date();
   return (
-    <footer>
-      <h1>Footer</h1>
+    <footer className='Footer'>
+      <p>Copyright &copy; {today.getFullYear()}</p>
     </footer>
   )
 }
@@ -193,6 +201,7 @@ function Loader() {
 
 function App() {
   const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState("");
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -221,6 +230,14 @@ function App() {
   ]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+
+  useEffect(() => {
+    const filteredResults = posts.filter(post => 
+      ((post.title).toLowerCase()).includes(search.toLowerCase()) || 
+      ((post.body).toLowerCase()).includes(search.toLowerCase())
+    );
+    setSearchResults(filteredResults.reverse());
+  }, [posts, search]);
 
   const navigate = useNavigate();
 
@@ -260,7 +277,7 @@ function App() {
           <Header title="React JS Blog" />
           <Nav search={search} setSearch={setSearch} />
           <Routes>
-            <Route path='/' element={<Home posts={posts} />} />
+            <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
             <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
             <Route path='/about' element={<About />} />
