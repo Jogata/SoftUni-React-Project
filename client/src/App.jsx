@@ -69,10 +69,11 @@ function Home({ posts }) {
 }
 
 function List({ posts }) {
+  // console.log(posts);
   return (
     <>
       {posts.map(post => (
-        <Post key={post.id} post={post} />
+        <Post key={post._id} post={post} />
       ))}
     </>
   )
@@ -210,13 +211,18 @@ function App() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const response = await fetch(`${baseURL}/posts`);
-      // console.log(response);
-      const data = await response.json();
-      // console.log(posts);
-      const posts = Object.values(data);
-      console.log(posts);
-      setPosts(posts);
+      try {
+        const response = await fetch(`${baseURL}/posts`);
+        // console.log(response);
+        if (response.ok) {
+          const data = await response.json();
+          const posts = Object.values(data);
+          // console.log(posts);
+          setPosts(posts);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
     }
     getPosts();
   }, []);
@@ -233,22 +239,35 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+    // const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const datetime = new Date();
     const newPost = {
-      id, 
+      // id, 
       title: postTitle, 
       body: postBody, 
       datetime: datetime.toDateString()
     }
     // const postsList = posts.filter(post => post.id !== id);
-    console.log("created", id);
-    console.log(newPost);
-    const postsList = [...posts, newPost];
-    setPosts(postsList);
-    setPostTitle("");
-    setPostBody("");
-    navigate("/");
+    const options = {
+      method: "POST", 
+      headers: {
+        "Content-type": "application/json",
+      }, 
+      body: JSON.stringify(newPost)
+    }
+    const response = await fetch(`${baseURL}/posts`, options);
+    console.log(response);
+
+    // console.log(newPost);
+    if (response.ok) {      
+      const data = await response.json();
+      console.log(data);
+      const postsList = [...posts, data];
+      setPosts(postsList);
+      setPostTitle("");
+      setPostBody("");
+      navigate("/");
+    }
   }
 
   async function handleDelete(id) {
