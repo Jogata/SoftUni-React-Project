@@ -82,7 +82,7 @@ function List({ posts }) {
 function Post({ post }) {
   return (
     <article className='post'>
-      <Link to={`/post/${post.id}`}>
+      <Link to={`/post/${post._id}`}>
         <h2>{post.title}</h2>
         <p className="postDate">{post.datetime}</p>
       </Link>
@@ -98,7 +98,7 @@ function Post({ post }) {
 
 function PostPage({ posts, handleDelete }) {
   const { id } = useParams();
-  const post = posts.find(post => post.id.toString() === id);
+  const post = posts.find(post => post._id.toString() === id);
   return (
     <main className='PostPage'>
       <article className="post">
@@ -107,7 +107,7 @@ function PostPage({ posts, handleDelete }) {
             <h2>{post.title}</h2>
             <p className="postDate">{post.datetime}</p>
             <p className="postBody">{post.body}</p>
-            <button onClick={() => handleDelete(post.id)}>Delete Post</button>
+            <button onClick={() => handleDelete(post._id)}>Delete Post</button>
           </>
         }
         {!post && 
@@ -271,11 +271,21 @@ function App() {
   }
 
   async function handleDelete(id) {
-    // console.log("deleted", id);
-    const postsList = posts.filter(post => post.id !== id);
-    // console.log(postsList);
-    setPosts(postsList);
-    navigate("/");
+    const options = {
+      method: "DELETE"
+    }
+    console.log(id);
+    try {
+      const response = await fetch(`${baseURL}/posts/${id}`, options);
+      if (response.ok) {        
+        const postsList = posts.filter(post => post.id !== id);
+        // console.log(postsList);
+        setPosts(postsList);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   return (
