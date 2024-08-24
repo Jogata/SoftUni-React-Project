@@ -107,7 +107,8 @@ function PostPage({ posts, handleDelete }) {
             <h2>{post.title}</h2>
             <p className="postDate">{post.datetime}</p>
             <p className="postBody">{post.body}</p>
-            <button onClick={() => handleDelete(post._id)}>Delete Post</button>
+            <Link to={`/edit/${id}`} className='editButton'>Edit Post</Link>
+            <button className='deleteButton' onClick={() => handleDelete(post._id)}>Delete Post</button>
           </>
         }
         {!post && 
@@ -152,6 +153,62 @@ function NewPost({
         />
         <button type="submit">Submit</button>
       </form>
+    </main>
+  )
+}
+
+function EditPost({
+  posts, 
+  handleEdit, 
+  editTitle, 
+  setEditTitle, 
+  editBody, 
+  setEditBody
+}) {
+  const { id } = useParams();
+  const post = posts.find(post => post._id === id);
+
+  useEffect(() => {
+    if (post) {
+      setEditTitle(post.title);
+      setEditBody(post.body);
+    }
+  }, [post, setEditTitle, setEditBody])
+
+  return (
+    <main className="NewPost">
+      {editTitle &&
+        <>
+          <h2>Edit Post</h2>
+          <form className="newPostForm" onSubmit={(e) => e.preventDefault()}>
+            <label htmlFor="postTitle">Title:</label>
+            <input
+              id="postTitle" 
+              type="text" 
+              value={editTitle} 
+              onChange={(e) => setEditTitle(e.target.value)} 
+              required
+            />
+            <label htmlFor="postBody">Post:</label>
+            <textarea
+              id="postBody" 
+              value={editBody} 
+              onChange={(e) => setEditBody(e.target.value)} 
+              required
+            />
+            <button type="submit" onClick={() => handleEdit(id)}>Submit</button>
+          </form>
+        </>
+      }
+      {!editTitle &&
+        <>
+          <h2>Post Not Found</h2>
+          <p>Well, that's disappointing.</p>
+          <p>
+            <Link to='/'>Visit Our Homepage</Link>
+          </p>
+        </>
+      }
     </main>
   )
 }
@@ -282,6 +339,7 @@ function App() {
       body: editBody, 
       datetime: datetime.toDateString()
     }
+
     const options = {
       method: "PUT", 
       headers: {
@@ -336,6 +394,7 @@ function App() {
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
             <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
+            <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Missing />} />
           </Routes>
