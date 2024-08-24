@@ -208,6 +208,8 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
 
   useEffect(() => {
     const getPosts = async () => {
@@ -248,6 +250,7 @@ function App() {
       datetime: datetime.toDateString()
     }
     // const postsList = posts.filter(post => post.id !== id);
+
     const options = {
       method: "POST", 
       headers: {
@@ -256,17 +259,51 @@ function App() {
       body: JSON.stringify(newPost)
     }
     const response = await fetch(`${baseURL}/posts`, options);
-    console.log(response);
+    // console.log(response);
 
     // console.log(newPost);
     if (response.ok) {      
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       const postsList = [...posts, data];
       setPosts(postsList);
       setPostTitle("");
       setPostBody("");
       navigate("/");
+    }
+  }
+
+  async function handleEdit(id) {
+    console.log(id);
+    const datetime = new Date();
+    const editedPost = {
+      // id, 
+      title: editTitle, 
+      body: editBody, 
+      datetime: datetime.toDateString()
+    }
+    const options = {
+      method: "PUT", 
+      headers: {
+        "Content-type": "application/json",
+      }, 
+      body: JSON.stringify(editedPost)
+    }
+
+    try {
+      const response = await fetch(`${baseURL}/posts/${id}`, options);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        const postsList = posts.map(post => post._id !== id ? { ...data } : post);
+        console.log(postsList);
+        setEditTitle("");
+        setEditBody("");
+        // setPosts(postsList);
+        // navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
