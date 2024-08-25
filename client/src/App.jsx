@@ -99,6 +99,7 @@ function Post({ post }) {
 function PostPage({ posts, handleDelete }) {
   const { id } = useParams();
   const post = posts.find(post => post._id.toString() === id);
+  console.log(id, post);
   return (
     <main className='PostPage'>
       <article className="post">
@@ -334,7 +335,7 @@ function App() {
     console.log(id);
     const datetime = new Date();
     const editedPost = {
-      // id, 
+      _id: id, 
       title: editTitle, 
       body: editBody, 
       datetime: datetime.toDateString()
@@ -351,14 +352,17 @@ function App() {
     try {
       const response = await fetch(`${baseURL}/posts/${id}`, options);
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        const postsList = posts.map(post => post._id !== id ? { ...data } : post);
-        console.log(postsList);
+        // const data = await response.json();
+        // console.log(data);
+        const response = await fetch(`${baseURL}/posts`);
+        const posts = Object.values(await response.json());
+        // const postsList = posts.map(post => post._id !== id ? { ...data } : post);
+        // console.log(postsList);
+        // console.log(posts);
         setEditTitle("");
         setEditBody("");
-        // setPosts(postsList);
-        // navigate("/");
+        setPosts(posts);
+        navigate("/");
       }
     } catch (error) {
       console.log(error.message);
@@ -382,7 +386,7 @@ function App() {
       console.log(error.message);
     }
   }
-
+  console.log(searchResults);
   return (
     <>
       <AuthContextProvider>
