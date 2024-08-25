@@ -24,10 +24,13 @@ import Logout from './components/logout/Logout'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-function Header({ title }) {
+function Header({ title, width }) {
   return (
     <header className='Header'>
       <h1>{title}</h1>
+      {width < 768 ? <p>Mobile</p> 
+        : width < 992 ? <p>Tablet</p> 
+          : <p>Desktop</p>}
     </header>
   )
 }
@@ -257,6 +260,35 @@ function Loader() {
   )
 }
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined, 
+    height: undefined
+  });
+
+  useEffect(() => {
+    function hahdleResize() {
+      setWindowSize({
+        width: window.innerWidth, 
+        height: window.innerHeight
+      })
+    }
+
+    hahdleResize();
+
+    window.addEventListener("resize", hahdleResize);
+
+    function cleanUp() {
+      console.log(" runs if a useEffect dep changes");
+      window.removeEventListener("resize", hahdleResize);
+    }
+
+    return cleanUp;
+  }, [])
+
+  return windowSize;
+}
+
 const baseURL = " http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
@@ -268,6 +300,7 @@ function App() {
   const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -386,13 +419,13 @@ function App() {
       console.log(error.message);
     }
   }
-  console.log(searchResults);
+  
   return (
     <>
       <AuthContextProvider>
         <div className="body">
 
-          <Header title="React JS Blog" />
+          <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
           <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
