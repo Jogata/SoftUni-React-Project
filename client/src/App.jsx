@@ -278,15 +278,56 @@ function useWindowSize() {
 
     window.addEventListener("resize", hahdleResize);
 
-    function cleanUp() {
-      console.log(" runs if a useEffect dep changes");
-      window.removeEventListener("resize", hahdleResize);
-    }
-
-    return cleanUp;
+    return () => window.removeEventListener("resize", hahdleResize);
   }, [])
 
   return windowSize;
+}
+
+function useFetch(url) {
+  const [data, setData] = useState([]);
+  const [fetchError, setFetchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    async function fetchData(url) {
+      setIsLoading(true);
+      try {
+        const response = await fetch(url);
+        if (isMounted) {
+          const data = await response.json();
+          setData(data);
+          setFetchError(null);
+        }
+      } catch (error) {
+        console.log(error);
+        if (isMounted) {          
+          setFetchError(error.message);
+          setData([]);
+        }
+      } finally {
+        isMounted && setTimeout(() => {
+          console.log("timeout");
+          setIsLoading(false);
+        }, 2000);
+      }
+    }
+
+    fetchData(url);
+
+    function cleanUp() {
+      console.log("clean up");
+      console.log(isMounted);
+      isMounted = false;
+      console.log(isMounted);
+    }
+
+    return cleanUp;
+  }, [url]);
+
+  return { data, fetchError, isLoading };
 }
 
 const baseURL = " http://localhost:3030/jsonstore/blog/"
@@ -302,23 +343,30 @@ function App() {
   const [editBody, setEditBody] = useState("");
   const { width } = useWindowSize();
 
+  const { data, fetchError, isLoading } = useFetch(`${baseURL}/posts`);
+
   useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const response = await fetch(`${baseURL}/posts`);
-        // console.log(response);
-        if (response.ok) {
-          const data = await response.json();
-          const posts = Object.values(data);
-          // console.log(posts);
-          setPosts(posts);
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-    getPosts();
-  }, []);
+    const posts = Object.values(data);
+    setPosts(posts);
+  }, [data]);
+
+  // useEffect(() => {
+  //   const getPosts = async () => {
+  //     try {
+  //       const response = await fetch(`${baseURL}/posts`);
+  //       console.log(response);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         const posts = Object.values(data);
+  //         console.log(posts);
+  //         setPosts(posts);
+  //       }
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   }
+  //   getPosts();
+  // }, []);
 
   useEffect(() => {
     const filteredResults = posts.filter(post => 
