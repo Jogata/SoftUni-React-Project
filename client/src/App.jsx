@@ -468,6 +468,41 @@ function App() {
     }
   }
 
+  function NameList() {
+    const [list, setList] = useState(["Jack", "Jill", "John"]);
+    const [name, setName] = useState(() => "Jack");
+  
+    const onAddName = () => {
+      setList([...list, name]);
+      setName("");
+    };
+  
+    return (
+      <div>
+        <ul className='bulled'>
+          {list.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button 
+          onClick={onAddName} 
+          style={{
+            color: "black", 
+            backgroundColor: "whitesmoke", 
+            padding: "0.5em 1.2em"
+          }}
+        >
+          Add Name
+        </button>
+      </div>
+    );
+  }
+  
   function Counter() {
     const [count, setCount] = useState(10);
   
@@ -506,6 +541,7 @@ function App() {
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
           <Counter />
+          <NameList />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
