@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useReducer } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -468,71 +468,45 @@ function App() {
     }
   }
 
-  function NameList() {
-    const [list, setList] = useState(["Jack", "Jill", "John"]);
-    const [name, setName] = useState(() => "Jack");
-  
-    const onAddName = () => {
-      setList([...list, name]);
-      setName("");
-    };
-  
-    return (
-      <div>
-        <ul className='bulled'>
-          {list.map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-        </ul>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button 
-          onClick={onAddName} 
-          style={{
-            color: "black", 
-            backgroundColor: "whitesmoke", 
-            padding: "0.5em 1.2em"
-          }}
-        >
-          Add Name
-        </button>
-      </div>
-    );
-  }
-  
-  function Counter() {
-    const [count, setCount] = useState(10);
-  
-    function addOne() {
-      setCount(count + 1);
+function NameList() {
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "SET_NAME":
+          return { ...state, name: action.payload };
+        case "ADD_NAME":
+          return {
+            ...state,
+            names: [...state.names, state.name],
+            name: "",
+          };
+      }
+    },
+    {
+      names: [],
+      name: "",
     }
-  
-    return (
-      <div 
-        className="test" 
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center"
-        }}
-      >
-        <button 
-          onClick={addOne} 
-          style={{
-            color: "black", 
-            backgroundColor: "whitesmoke", 
-            padding: "0.5em 1.2em"
-          }}
-        >
-          Count = {count}
-        </button>
+  );
+
+  return (
+    <div className="list">
+      <div>
+        {state.names.map((name, index) => (
+          <div key={index}>{name}</div>
+        ))}
       </div>
-    );
-  }
-  
+      <input
+        type="text"
+        value={state.name}
+        onChange={(e) =>
+          dispatch({ type: "SET_NAME", payload: e.target.value })
+        }
+      />
+      <button onClick={() => dispatch({ type: "ADD_NAME" })}>Add Name</button>
+    </div>
+  );
+}
+
   return (
     <>
       <AuthContextProvider>
@@ -540,7 +514,7 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <Counter />
+          <UserForm />
           <NameList />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
