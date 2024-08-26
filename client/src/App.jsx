@@ -467,6 +467,36 @@ function App() {
       console.log(error.message);
     }
   }
+
+  function Counter() {
+    const [count, setCount] = useState(10);
+  
+    function addOne() {
+      setCount(count + 1);
+    }
+  
+    return (
+      <div 
+        className="test" 
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center"
+        }}
+      >
+        <button 
+          onClick={addOne} 
+          style={{
+            color: "black", 
+            backgroundColor: "whitesmoke", 
+            padding: "0.5em 1.2em"
+          }}
+        >
+          Count = {count}
+        </button>
+      </div>
+    );
+  }
   
   return (
     <>
@@ -475,14 +505,15 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <Routes>
+          <Counter />
+          {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
             <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
             <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Missing />} />
-          </Routes>
+          </Routes> */}
           <Footer />
 
           {/* <Routes>
