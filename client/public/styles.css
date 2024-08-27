@@ -967,7 +967,14 @@ body {
   background-color: #efefef;
 }
 
+.body {
+  height: auto;
+  min-height: 100vh;
+}
+
 .body div {
+  max-width: 94%;
+  margin: auto;
   font-size: 2rem;
   font-weight: bold;
 }

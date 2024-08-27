@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useCallback } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -467,6 +467,28 @@ function App() {
       console.log(error.message);
     }
   }
+  
+  function SortedList({ list, sortFunc }) {
+    console.log("SortedList render");
+  
+    const sortedList = useMemo(() => {
+      console.log("Running sort");
+      return [...list].sort(sortFunc);
+    }, [list, sortFunc]);
+  
+    return <div>{sortedList.join(", ")}</div>;
+  }
+
+  function SortedList2({ list, sortFunc }) {
+    console.log("SortedList2 render");
+  
+    const sortedList = useMemo(() => {
+      console.log("Running sort2");
+      return [...list].sort(sortFunc);
+    }, [list]);
+  
+    return <div>{sortedList.join(", ")}</div>;
+  }
 
   function TestApp() {
     const [numbers] = useState([10, 20, 30]);
@@ -493,12 +515,16 @@ function App() {
       return [...names].sort();
     }, [names]);
 
+    const sortFunc = useCallback((a, b) => a.localeCompare(b) * -1, []);
+
     return (
       <>
         <div>Total: {total}</div>
         <div>Names: {names.join(", ")}</div>
         <div>Sorted Names: {sortedNames().join(", ")}</div>
         <div>Sorted Names with memo: {sortedNamesMemo.join(", ")}</div>
+        <SortedList list={names} sortFunc={sortFunc} />
+        <SortedList2 list={[...names]} sortFunc={sortFunc} />
         <button onClick={() => setCount1(count1 + 1)}>Count1: {count1}</button>
         <button onClick={() => setCount2(count2 + 1)}>Count2: {count2}</button>
         <div>Total: {countTotal}</div>
