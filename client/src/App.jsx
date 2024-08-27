@@ -468,6 +468,36 @@ function App() {
     }
   }
 
+  function UserForm() {
+    const [state, dispatch] = useReducer(
+      (state, action) => ({
+        ...state,
+        ...action,
+      }),
+      {
+        first: "",
+        last: "",
+      }
+    );
+
+    return (
+      <div>
+        <input
+          type="text"
+          value={state.first}
+          onChange={(e) => dispatch({ first: e.target.value })}
+        />
+        <input
+          type="text"
+          value={state.last}
+          onChange={(e) => dispatch({ last: e.target.value })}
+        />
+        <div>First: {state.first}</div>
+        <div>Last: {state.last}</div>
+      </div>
+    );
+  }
+
 function NameList() {
   const [state, dispatch] = useReducer(
     (state, action) => {
@@ -489,7 +519,7 @@ function NameList() {
   );
 
   return (
-    <div className="list">
+    <div className="list" style={{flex: 1}}>
       <div>
         {state.names.map((name, index) => (
           <div key={index}>{name}</div>
@@ -502,7 +532,16 @@ function NameList() {
           dispatch({ type: "SET_NAME", payload: e.target.value })
         }
       />
-      <button onClick={() => dispatch({ type: "ADD_NAME" })}>Add Name</button>
+      <button 
+        onClick={() => dispatch({ type: "ADD_NAME" })}
+        style={{
+          color: "black", 
+          backgroundColor: "whitesmoke", 
+          padding: "0.5em 1.2em"
+        }}
+      >
+        Add Name
+      </button>
     </div>
   );
 }
