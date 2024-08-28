@@ -330,7 +330,7 @@ function useFetch(url) {
   return { data, fetchError, isLoading };
 }
 
-const baseURL = " http://localhost:3030/jsonstore/blog/"
+const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
 function App() {
@@ -467,69 +467,35 @@ function App() {
       console.log(error.message);
     }
   }
-  
-  function SortedList({ list, sortFunc }) {
-    console.log("SortedList render");
-  
-    const sortedList = useMemo(() => {
-      console.log("Running sort");
-      return [...list].sort(sortFunc);
-    }, [list, sortFunc]);
-  
-    return <div>{sortedList.join(", ")}</div>;
-  }
 
-  function SortedList2({ list, sortFunc }) {
-    console.log("SortedList2 render");
-  
-    const sortedList = useMemo(() => {
-      console.log("Running sort2");
-      return [...list].sort(sortFunc);
-    }, [list]);
-  
-    return <div>{sortedList.join(", ")}</div>;
-  }
+  function TestUseEffect() {
+    const [names, setNames] = useState([]);
+    const [selectedName, setSelectedName] = useState("");
+    console.log("test use effect");
 
-  function TestApp() {
-    const [numbers] = useState([10, 20, 30]);
+    const extractNames = (data) => {
+      console.log("filter");
+      return data.map(person => person.username);
+    }
 
-    const total = useMemo(
-      () => numbers.reduce((acc, number) => acc + number, 0),
-      [numbers]
-    );
-
-    const [count1, setCount1] = useState(0);
-    const [count2, setCount2] = useState(0);
-
-    const countTotal = count1 + count2;
-
-    const [names] = useState(["John", "Paul", "George", "Ringo"]);
-
-    const sortedNames = () => {
-      console.log("sorted names without memo");
-      return [...names].sort();
-    };
-
-    const sortedNamesMemo = useMemo(() => {
-      console.log("sorted names with memo");
-      return [...names].sort();
-    }, [names]);
-
-    const sortFunc = useCallback((a, b) => a.localeCompare(b) * -1, []);
+    useEffect(() => {
+      console.log("mount");
+      fetch(`http://localhost:3030/jsonstore/advanced/profiles`)
+      .then(res => res.json())
+      .then(data => Object.values(data))
+      .then(data => extractNames(data))
+      .then(names => setNames(names))
+    }, []);
 
     return (
       <>
-        <div>Total: {total}</div>
-        <div>Names: {names.join(", ")}</div>
-        <div>Sorted Names: {sortedNames().join(", ")}</div>
-        <div>Sorted Names with memo: {sortedNamesMemo.join(", ")}</div>
-        <SortedList list={names} sortFunc={sortFunc} />
-        <SortedList2 list={[...names]} sortFunc={sortFunc} />
-        <button onClick={() => setCount1(count1 + 1)}>Count1: {count1}</button>
-        <button onClick={() => setCount2(count2 + 1)}>Count2: {count2}</button>
-        <div>Total: {countTotal}</div>
+        <p style={{fontSize: "1.2rem", flex: 1}}>Names: {names.join(", ")}</p>
+        {names.map(name => (
+          <button key={name} onClick={() => setSelectedName(name)}>{name}</button>
+        ))}
+        <p>{selectedName}</p>
       </>
-    );
+    )
   }
 
   return (
@@ -539,7 +505,7 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <TestApp />
+          <TestUseEffect />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
