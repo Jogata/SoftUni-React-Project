@@ -469,13 +469,16 @@ function App() {
   }
 
   function TestUseEffect() {
-    const [names, setNames] = useState([]);
-    const [selectedName, setSelectedName] = useState("");
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState({});
+    const [user, setUser] = useState({});
     console.log("test use effect");
 
-    const extractNames = (data) => {
+    const extractUsers = (data) => {
       console.log("filter");
-      return data.map(person => person.username);
+      return data.map(person => {
+        return {name: person.username, id: person._id};
+      })
     }
 
     useEffect(() => {
@@ -483,17 +486,28 @@ function App() {
       fetch(`http://localhost:3030/jsonstore/advanced/profiles`)
       .then(res => res.json())
       .then(data => Object.values(data))
-      .then(data => extractNames(data))
-      .then(names => setNames(names))
+      .then(data => extractUsers(data))
+      .then(users => setUsers(users))
+      // .then(data => console.log(data))
     }, []);
+
+    useEffect(() => {
+      console.log(selectedUser);
+      fetch(`http://localhost:3030/jsonstore/advanced/profiles/${selectedUser.id}`)
+      // .then(res => console.log(res))
+      .then(res => res.json())
+      // .then(data => console.log(data))
+      .then(user => setUser(user))
+    }, [selectedUser]);
 
     return (
       <>
-        <p style={{fontSize: "1.2rem", flex: 1}}>Names: {names.join(", ")}</p>
-        {names.map(name => (
-          <button key={name} onClick={() => setSelectedName(name)}>{name}</button>
+        <p style={{fontSize: "1.2rem", flex: 1}}>Names: {users.map(user => user.name).join(", ")}</p>
+        {users.map(user => (
+          <button key={user.id} onClick={() => setSelectedUser(user)}>{user.name}</button>
         ))}
-        <p>{selectedName}</p>
+        <p>{selectedUser.name}</p>
+        <p>{`Name: ${user.username} / Age: ${user.age} / Email: ${user.email}`}</p>
       </>
     )
   }
