@@ -562,6 +562,37 @@ function App() {
     );
   };
 
+  const TodoList = () => {
+    const [todos, setTodos] = useState();
+  
+    useEffect(() => {
+      fetch(`https://jsonplaceholder.typicode.com/todos`)
+      .then(res => res.json())
+      .then(data => setTodos(data));
+    }, []);
+  
+    console.log(todos);
+  
+    return (
+      <div>
+        <h1> Todo List </h1>
+        {todos &&
+          todos.map((todo) => {
+            const { id, userId, title } = todo;
+            return (
+              <div key={id}>
+                <h5> {title} </h5>
+                <h6> Assigned to user: {userId} </h6>
+                <span style={{color: "gray"}}>
+                  ----------------------------
+                </span>
+              </div>
+            );
+          })}
+      </div>
+    );
+  };
+
   return (
     <>
       <AuthContextProvider>
@@ -569,9 +600,10 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
+          <TodoList />
           <div 
             className="test" 
-            style={{textAlign: "center"}}
+            style={{textAlign: "center", display: "none"}}
           >
             <h1>Our App</h1>
             <button onClick={() => setShowCounter(!showCounter)}>
