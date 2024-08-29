@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo, useCallback } from 'react'
+import { useEffect, useState, useMemo, useCallback, useRef } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -468,130 +468,57 @@ function App() {
     }
   }
 
-  function TestUseEffect() {
-    const [users, setUsers] = useState([]);
-    // const [selectedUser, setSelectedUser] = useState({});
-    const [user, setUser] = useState(null);
-    console.log("test use effect");
-
-    const extractUsers = (data) => {
-      console.log("filter");
-      return data.map(person => {
-        return {name: person.username, id: person._id};
-      })
-    }
+  function TestUseRef() {
+    const inputRef = useRef(null);
+    const idRef = useRef(1);
+    const [names, setNames] = useState([]);
+    const [people, setPeople] = useState([
+      { id: idRef.current++, name: "John" }, 
+      { id: idRef.current++, name: "Jane" }, 
+    ]);
 
     useEffect(() => {
-      console.log("mount");
-      fetch(`http://localhost:3030/jsonstore/advanced/profiles`)
-      .then(res => res.json())
-      .then(data => Object.values(data))
-      .then(data => extractUsers(data))
-      .then(users => setUsers(users))
-      // .then(data => console.log(data))
+      inputRef.current.focus();
     }, []);
 
-    // useEffect(() => {
-    //   console.log(selectedUser);
-    //   fetch(`http://localhost:3030/jsonstore/advanced/profiles/${selectedUser.id}`)
-    //   .then(res => console.log(res))
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
-    //   .then(user => setUser(user))
-    // }, [selectedUser]);
-
-    function getUser(id) {
-      fetch(`http://localhost:3030/jsonstore/advanced/profiles/${id}`)
-      // .then(res => console.log(res))
-      .then(res => res.json())
-      // .then(data => console.log(data))
-      .then(user => setUser(user))
+    function onAddName() {
+      setNames([...names, inputRef.current.value]);
+      setPeople([
+        ...people, 
+        {
+          id: idRef.current++, 
+          name: inputRef.current.value
+        }
+      ]);
+      inputRef.current.value = "";
     }
 
     return (
-      <>
-        <p style={{fontSize: "1.2rem", flex: 1}}>Names: {users.map(user => user.name).join(", ")}</p>
-        {users.map(user => (
-          // <button key={user.id} onClick={() => setSelectedUser(user)}>{user.name}</button>
-          <button key={user.id} onClick={() => getUser(user.id)}>{user.name}</button>
-        ))}
-        {/* <p>{selectedUser.name}</p> */}
-        {user && <p>{`Name: ${user.username} / Age: ${user.age} / Email: ${user.email}`}</p>}
-      </>
+      <div 
+        style={
+          {flex: 1, 
+          padding: "1rem 0"}
+        }
+      >
+        <input type="text" style={{marginBottom: "1rem"}} />
+        <input type="text" ref={inputRef} />
+        <button 
+          onClick={onAddName}
+        >Add Name
+        </button>
+        <div>
+          {names.map(name => (
+            <p key={name}>{name}</p>
+          ))}
+        </div>
+        <div>
+          {people.map(({id, name}) => (
+            <p key={id}>{id}. {name}</p>
+          ))}
+        </div>
+      </div>
     )
   }
-
-  const [showCounter, setShowCounter] = useState(false);
-
-  const Counter = () => {
-    const [count, setCount] = useState(0);
-    const [count2, setCount2] = useState(0);
-  
-    // componentDidMount
-    // useEffect(() => {
-    //   console.log("The use effect ran");
-    // }, []);
-  
-    // // componentDidUpdate
-    // useEffect(() => {
-    //   console.log("The use effect ran");
-    // }, [count, count2]);
-  
-    // componentWillUnmount
-    // useEffect(() => {
-    //   console.log("The use effect ran");
-    //   return () => {
-    //     console.log("the return is being ran");
-    //   };
-    // }, []);
-  
-    useEffect(() => {
-      console.log(`The count has updated to ${count}`);
-      return () => {
-        console.log(`we are in the cleanup - the count is ${count}`);
-      };
-    }, [count]);
-  
-    return (
-      <div>
-        <h6> Counter </h6>
-        <p> current count: {count} </p>
-        <button onClick={() => setCount(count + 1)}>increment the count</button>
-        <button onClick={() => setCount2(count2 + 1)}>increment count 2</button>
-      </div>
-    );
-  };
-
-  const TodoList = () => {
-    const [todos, setTodos] = useState();
-  
-    useEffect(() => {
-      fetch(`https://jsonplaceholder.typicode.com/todos`)
-      .then(res => res.json())
-      .then(data => setTodos(data));
-    }, []);
-  
-    console.log(todos);
-  
-    return (
-      <div>
-        <h1> Todo List </h1>
-        {todos &&
-          todos.map((todo) => {
-            const { id, userId, title } = todo;
-            return (
-              <div key={id}>
-                <h5> {title} </h5>
-                <h6> Assigned to user: {userId} </h6>
-                <span style={{color: "gray"}}>
-                  ----------------------------
-                </span>
-              </div>
-            );
-          })}
-      </div>
-    );
-  };
 
   return (
     <>
@@ -600,18 +527,7 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <TodoList />
-          <div 
-            className="test" 
-            style={{textAlign: "center", display: "none"}}
-          >
-            <h1>Our App</h1>
-            <button onClick={() => setShowCounter(!showCounter)}>
-              {showCounter ? "Hide Counter" : "Show Counter"}
-            </button>
-            {showCounter && <Counter />}
-          </div>
-          {/* <TestUseEffect /> */}
+          <TestUseRef />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
