@@ -468,54 +468,38 @@ function App() {
     }
   }
 
-  function TestUseRef() {
-    const inputRef = useRef(null);
-    const idRef = useRef(1);
-    const [names, setNames] = useState([]);
-    const [people, setPeople] = useState([
-      { id: idRef.current++, name: "John" }, 
-      { id: idRef.current++, name: "Jane" }, 
-    ]);
+  function usePokemons() {
+    const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
-      inputRef.current.focus();
-    }, []);
+      document.title = "Pokemons";
+      fetch("./src/api/pokemon.json")
+      .then(res => res.json())
+      .then(data => setPokemons(data.slice(0, 10)))
+    }, [])
 
-    function onAddName() {
-      setNames([...names, inputRef.current.value]);
-      setPeople([
-        ...people, 
-        {
-          id: idRef.current++, 
-          name: inputRef.current.value
-        }
-      ]);
-      inputRef.current.value = "";
-    }
+    return { pokemons };
+  }
+
+  function PokemonsList({ pokemons }) {
+    return (
+      <ul>
+        {pokemons.map(p => (
+          <li key={p.id}>
+            <h4>{p.name}</h4>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  function PokemonApp() {
+    const { pokemons } = usePokemons();
 
     return (
-      <div 
-        style={
-          {flex: 1, 
-          padding: "1rem 0"}
-        }
-      >
-        <input type="text" style={{marginBottom: "1rem"}} />
-        <input type="text" ref={inputRef} />
-        <button 
-          onClick={onAddName}
-        >Add Name
-        </button>
-        <div>
-          {names.map(name => (
-            <p key={name}>{name}</p>
-          ))}
-        </div>
-        <div>
-          {people.map(({id, name}) => (
-            <p key={id}>{id}. {name}</p>
-          ))}
-        </div>
+      <div id='pokemons'>
+        <h1>Pokemons</h1>
+        <PokemonsList pokemons={pokemons} />
       </div>
     )
   }
@@ -527,7 +511,7 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <TestUseRef />
+          <PokemonApp />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />

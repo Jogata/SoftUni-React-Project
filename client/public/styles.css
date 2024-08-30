@@ -958,6 +958,15 @@ body {
 
 }
 
+#pokemons {
+  flex: 1;
+  text-align: center;
+}
+
+#pokemons h4 {
+  border-bottom: 3px dotted gray;
+}
+
 .body button {
   margin-bottom: 0.5rem;
   padding: 0.4em 1.2em;
