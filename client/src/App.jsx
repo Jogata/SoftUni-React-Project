@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo, useCallback, useRef } from 'react'
+import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -481,7 +481,9 @@ function App() {
     return { pokemons };
   }
 
-  function PokemonsList({ pokemons }) {
+  function PokemonsList() {
+    const { pokemons } = useContext(PokemonContext);
+
     return (
       <ul>
         {pokemons.map(p => (
@@ -493,13 +495,17 @@ function App() {
     )
   }
 
+  const PokemonContext = createContext({
+    pokemons: [],
+  })
+
   function PokemonApp() {
-    const { pokemons } = usePokemons();
+    // const { pokemons } = useContext(PokemonContext);
 
     return (
       <div id='pokemons'>
         <h1>Pokemons</h1>
-        <PokemonsList pokemons={pokemons} />
+        <PokemonsList />
       </div>
     )
   }
@@ -511,7 +517,9 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonApp />
+          <PokemonContext.Provider value={usePokemons()} >
+            <PokemonApp />
+          </PokemonContext.Provider>
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
