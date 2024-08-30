@@ -468,7 +468,7 @@ function App() {
     }
   }
 
-  function usePokemons() {
+  function usePokemonsSource() {
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
@@ -481,23 +481,41 @@ function App() {
     return { pokemons };
   }
 
+  const PokemonContext = createContext({
+    pokemons: [],
+  })
+
+  function usePokemons() {
+    return useContext(PokemonContext);
+  }
+
+  function PokemonContextProvider({children}) {
+    return (
+      <PokemonContext.Provider value={usePokemonsSource()} >
+        {children}
+      </PokemonContext.Provider>
+    )
+  }
+
   function PokemonsList() {
-    const { pokemons } = useContext(PokemonContext);
+    const { pokemons } = usePokemons();
 
     return (
       <ul>
         {pokemons.map(p => (
           <li key={p.id}>
-            <h4>{p.name}</h4>
+            <div className='pokemon-box'>
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
+                alt=""
+              />
+              <h3>{p.name}</h3>
+            </div>
           </li>
         ))}
       </ul>
     )
   }
-
-  const PokemonContext = createContext({
-    pokemons: [],
-  })
 
   function PokemonApp() {
     // const { pokemons } = useContext(PokemonContext);
@@ -517,9 +535,12 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonContext.Provider value={usePokemons()} >
+          <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContext.Provider>
+          </PokemonContextProvider>
+          {/* <PokemonContext.Provider value={usePokemonsSource()} >
+            <PokemonApp />
+          </PokemonContext.Provider> */}
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />

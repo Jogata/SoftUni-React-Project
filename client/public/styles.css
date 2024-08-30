@@ -693,8 +693,8 @@ body {
 
 .body {
   width: 100%;
-  max-width: 800px;
-  height: 100vh;
+  /* max-width: 800px; */
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -960,11 +960,33 @@ body {
 
 #pokemons {
   flex: 1;
+  width: 100%;
   text-align: center;
 }
 
-#pokemons h4 {
-  border-bottom: 3px dotted gray;
+#pokemons h3 {
+  font-size: 1.2rem;
+  /* margin-bottom: 2rem; */
+  /* border-bottom: 3px dotted gray; */
+}
+
+#pokemons ul {
+  padding: 2rem 0;
+  display: grid;
+  gap: min(2rem, 2vw);
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.pokemon-box {
+  padding-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px #000,
+          -1px -1px 1px #fff5;
+}
+
+.pokemon-box img {
+  max-width: 60%;
+  /* margin: auto; */
 }
 
 .body button {
@@ -979,6 +1001,7 @@ body {
 .body {
   height: auto;
   min-height: 100vh;
+  background-color: #222;
 }
 
 .body div {
