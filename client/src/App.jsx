@@ -469,21 +469,49 @@ function App() {
   }
 
   function usePokemonsSource() {
-    const [pokemons, setPokemons] = useState([]);
+    // const [pokemons, setPokemons] = useState([]);
+    // const [searchPokemon, setSearchPokemon] = useState("");
+    const [{pokemons, search}, dispatch] = useReducer(reducer, {
+      pokemons: [], 
+      search: "", 
+    })
 
     useEffect(() => {
       document.title = "Pokemons";
       fetch("./src/api/pokemon.json")
       .then(res => res.json())
-      .then(data => setPokemons(data.slice(0, 10)))
+      // .then(data => setPokemons(data.slice(0, 10)))
+      .then(data => dispatch({
+        type: "setPokemons", 
+        payload: data.slice(0, 10)
+      }))
     }, [])
 
-    return { pokemons };
+    function reducer(state, action) {
+      console.log(state);
+      switch (action.type) {
+        case "setPokemons":
+          return {...state, pokemons: action.payload};
+        case "setSearchedPokemons":
+          return {...state, search: action.payload};
+        default:
+          return {...state};
+      }
+    }
+
+    const setSearchedValue = useCallback((value) => {
+      dispatch({
+        type: "setSearchedPokemons", 
+        payload: value,
+      });
+    }, []);
+
+    return { pokemons, setSearchedValue, search };
   }
 
   const PokemonContext = createContext({
-    pokemons: [],
-  })
+    state: {},
+  });
 
   function usePokemons() {
     return useContext(PokemonContext);
@@ -494,11 +522,40 @@ function App() {
       <PokemonContext.Provider value={usePokemonsSource()} >
         {children}
       </PokemonContext.Provider>
-    )
+    );
+  }
+
+  // function SearchBox() {
+  //   return (
+  //     <input 
+  //       type="search" 
+  //       value={searchPokemon} 
+  //       onChange={(e) => setSearchPokemon(e.target.value)}
+  //     />
+  //   )
+  // }
+  function SearchBox() {
+    const { search, setSearchedValue } = usePokemons();
+    // const search = state.search;
+    // const test = usePokemons();
+    // console.log(test);
+
+    return (
+      <input 
+        type="search" 
+        value={search} 
+        onChange={(e) => setSearchedValue(e.target.value)} 
+        placeholder='Search'
+      />
+    );
   }
 
   function PokemonsList() {
     const { pokemons } = usePokemons();
+    // console.log(state);
+    // const pokemons = state.pokemons;
+    // const test = usePokemons();
+    // console.log(test[0].pokemons);
 
     return (
       <ul>
@@ -523,61 +580,9 @@ function App() {
     return (
       <div id='pokemons'>
         <h1>Pokemons</h1>
+        <SearchBox />
         <PokemonsList />
       </div>
-    )
-  }
-
-  function CounterWithState() {
-    const [count, setCount] = useState(0);
-
-    return (
-      <>
-        <h1>count: {count}</h1>
-        <button 
-          onClick={() => setCount(count + 1)}
-        >increase</button>
-        <button 
-          onClick={() => setCount(count - 1)}
-        >decrease</button>
-      </>
-    )
-  }
-
-  function CounterWithReducer() {
-    const initialState = {count: 3};
-
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    function reducer(state, action) {
-      // console.log(state);
-      switch (action.type) {
-        case "increase":
-          return {count: state.count + 1};
-        case "decrease":
-          return {count: state.count - 1};
-        case "set":
-          return {count: action.payload};  
-        default: 
-          return state;
-      }
-    }
-
-    return (
-      <>
-        <h1>count: {state.count}</h1>
-        <button 
-          onClick={() => dispatch({type: "increase"})}
-        >increase</button>
-        <button 
-          onClick={() => dispatch({type: "decrease"})}
-        >decrease</button>
-        <input 
-          type="number" 
-          value={state.count} 
-          onChange={(e) => dispatch({type: "set", payload: Number(e.target.value)})}
-        />
-      </>
     )
   }
 
@@ -588,14 +593,9 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <CounterWithState />
-          <CounterWithReducer />
-          {/* <PokemonContextProvider >
+          <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContextProvider> */}
-          {/* <PokemonContext.Provider value={usePokemonsSource()} >
-            <PokemonApp />
-          </PokemonContext.Provider> */}
+          </PokemonContextProvider>
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
