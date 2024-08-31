@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext } from 'react'
+import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -528,6 +528,59 @@ function App() {
     )
   }
 
+  function CounterWithState() {
+    const [count, setCount] = useState(0);
+
+    return (
+      <>
+        <h1>count: {count}</h1>
+        <button 
+          onClick={() => setCount(count + 1)}
+        >increase</button>
+        <button 
+          onClick={() => setCount(count - 1)}
+        >decrease</button>
+      </>
+    )
+  }
+
+  function CounterWithReducer() {
+    const initialState = {count: 3};
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    function reducer(state, action) {
+      // console.log(state);
+      switch (action.type) {
+        case "increase":
+          return {count: state.count + 1};
+        case "decrease":
+          return {count: state.count - 1};
+        case "set":
+          return {count: action.payload};  
+        default: 
+          return state;
+      }
+    }
+
+    return (
+      <>
+        <h1>count: {state.count}</h1>
+        <button 
+          onClick={() => dispatch({type: "increase"})}
+        >increase</button>
+        <button 
+          onClick={() => dispatch({type: "decrease"})}
+        >decrease</button>
+        <input 
+          type="number" 
+          value={state.count} 
+          onChange={(e) => dispatch({type: "set", payload: Number(e.target.value)})}
+        />
+      </>
+    )
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -535,9 +588,11 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonContextProvider >
+          <CounterWithState />
+          <CounterWithReducer />
+          {/* <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContextProvider>
+          </PokemonContextProvider> */}
           {/* <PokemonContext.Provider value={usePokemonsSource()} >
             <PokemonApp />
           </PokemonContext.Provider> */}
