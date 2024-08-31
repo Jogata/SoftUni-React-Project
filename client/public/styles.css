@@ -964,6 +964,11 @@ body {
   text-align: center;
 }
 
+#pokemons h1 {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+}
+
 #pokemons h3 {
   font-size: 1.2rem;
   /* margin-bottom: 2rem; */
@@ -975,6 +980,18 @@ body {
   display: grid;
   gap: min(2rem, 2vw);
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+#pokemons input {
+  font-size: 1.2rem;
+  font-family: inherit;
+  outline: none;
+}
+
+#pokemons input:focus-visible {
+  border: 1px solid transparent;
+  box-shadow: inset 1px 1px 1px #000, 
+          inset -1px -1px 1px #fff5;
 }
 
 .pokemon-box {

@@ -506,7 +506,11 @@ function App() {
       });
     }, []);
 
-    return { pokemons, setSearchedValue, search };
+    const filteredPokemons = useMemo(() => {
+      return pokemons.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+    }, [pokemons, search]);
+
+    return { pokemons: filteredPokemons, setSearchedValue, search };
   }
 
   const PokemonContext = createContext({
