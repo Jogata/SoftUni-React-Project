@@ -597,9 +597,18 @@ function App() {
       this.state = {
         message: "Hello"
       }
+
+      // this.clickHandler = this.clickHandler.bind(this)
     }
 
-    clickHandler() {
+    // clickHandler() {
+    //   this.setState({
+    //     message: "Goodbye!"
+    //   })
+    //   console.log(this);
+    // }
+
+    clickHandler = () => {
       this.setState({
         message: "Goodbye!"
       })
@@ -610,7 +619,8 @@ function App() {
       return (
         <div style={{textAlign: "center"}}>
           <h1>{this.state.message}</h1>
-          <button onClick={this.clickHandler.bind(this)}>Click</button>
+          <button onClick={this.clickHandler}>Click</button>
+          {/* <button onClick={this.clickHandler.bind(this)}>Click</button> */}
           {/* <button onClick={() => this.clickHandler()}>Click</button> */}
         </div>
       )
