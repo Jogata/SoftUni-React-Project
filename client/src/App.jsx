@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer } from 'react'
+import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component } from 'react'
 
 function Header({ title, width }) {
   return (
@@ -590,6 +590,33 @@ function App() {
     )
   }
 
+  class EventBind extends Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        message: "Hello"
+      }
+    }
+
+    clickHandler() {
+      this.setState({
+        message: "Goodbye!"
+      })
+      console.log(this);
+    }
+
+    render() {
+      return (
+        <div style={{textAlign: "center"}}>
+          <h1>{this.state.message}</h1>
+          <button onClick={this.clickHandler.bind(this)}>Click</button>
+          {/* <button onClick={() => this.clickHandler()}>Click</button> */}
+        </div>
+      )
+    }
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -597,9 +624,11 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonContextProvider >
+          <EventBind />
+          <button onClick={(e) => console.log(e.target)}>Log this</button>
+          {/* <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContextProvider>
+          </PokemonContextProvider> */}
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
