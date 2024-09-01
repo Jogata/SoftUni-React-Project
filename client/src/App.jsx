@@ -627,6 +627,55 @@ function App() {
     }
   }
 
+  class ParentComponent extends Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        parentName: "Parent"
+      }
+
+      this.greetParent = this.greetParent.bind(this)
+    }
+
+    greetParent(childName) {
+      console.log(`Hello ${this.state.parentName}`);
+      console.log(childName);
+    }
+
+    render() {
+      return (
+        <div>
+          <ChildComponent greetHandler={this.greetParent} />
+        </div>
+      )
+    }
+  }
+
+  function ChildComponent(props) {
+    // constructor(props) {
+    //   super(props)
+
+    //   this.state = {
+    //     childName: "Child"
+    //   }
+
+    //   this.greetChild = this.greetChild.bind(this)
+    // }
+
+    // greetChild() {
+    //   console.log(`Hello ${this.state.childName}`);
+    // }
+
+    // render() {
+      return (
+        <div>
+          <button onClick={() => props.greetHandler("child")}>Greet Parent</button>
+        </div>
+      )
+    }
+  // }
+
   return (
     <>
       <AuthContextProvider>
@@ -634,7 +683,8 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <EventBind />
+          {/* <EventBind /> */}
+          <ParentComponent />
           <button onClick={(e) => console.log(e.target)}>Log this</button>
           {/* <PokemonContextProvider >
             <PokemonApp />
