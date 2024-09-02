@@ -576,48 +576,35 @@ function App() {
     )
   }
 
-  class UserGreeting extends Component {
+  class List extends Component {
     constructor(props) {
       super(props)
 
       this.state = {
-        isLoggedIn: false
+        names: ["N1", "N2", "N3"]
       }
     }
+
     render() {
+      const List = this.state.names.map(name => <h2>{name}</h2>);
 
       return (
-        (this.state.isLoggedIn && <div>Welcome User</div>)
+        <>
+        <h2>{this.state.names[0]}</h2>
+        <h2>{this.state.names[1]}</h2>
+        <h2>{this.state.names[2]}</h2>
+
+        <div style={{textAlign: "center"}}>
+          <h1>Names</h1>
+          {this.state.names.map(name => <h2>{name}</h2>)}
+        </div>
+        
+        <div style={{textAlign: "center"}}>
+          <h1>Names from const List</h1>
+          <>{List}</>
+        </div>
+        </>
       )
-
-      // return (
-      //   this.state.isLoggedIn 
-      //     ? <div>Welcome User</div> 
-      //     : <div>Welcome Guest</div>
-      // )
-
-      // let message = "";
-
-      // if (this.state.isLoggedIn) {
-      //   message = <div>Welcome User</div>
-      // } else {
-      //   message = <div>Welcome Guest</div>
-      // }
-
-      // return message;
-
-      // if (this.state.isLoggedIn) {
-      //   return (
-      //     <div>
-      //       Welcome User
-      //     </div>)
-      // } else {
-      //   return (
-      //     <div>
-      //       Welcome Guest
-      //     </div>
-      //   )
-      // }
     }
   }
 
@@ -628,7 +615,7 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <UserGreeting />
+          <List />
           {/* <PokemonContextProvider >
             <PokemonApp />
           </PokemonContextProvider> */}
