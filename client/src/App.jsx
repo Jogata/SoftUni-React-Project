@@ -533,20 +533,8 @@ function App() {
     );
   }
 
-  // function SearchBox() {
-  //   return (
-  //     <input 
-  //       type="search" 
-  //       value={searchPokemon} 
-  //       onChange={(e) => setSearchPokemon(e.target.value)}
-  //     />
-  //   )
-  // }
   function SearchBox() {
     const { search, setSearchedValue } = usePokemons();
-    // const search = state.search;
-    // const test = usePokemons();
-    // console.log(test);
 
     return (
       <input 
@@ -560,10 +548,6 @@ function App() {
 
   function PokemonsList() {
     const { pokemons } = usePokemons();
-    // console.log(state);
-    // const pokemons = state.pokemons;
-    // const test = usePokemons();
-    // console.log(test[0].pokemons);
 
     return (
       <ul>
@@ -583,8 +567,6 @@ function App() {
   }
 
   function PokemonApp() {
-    // const { pokemons } = useContext(PokemonContext);
-
     return (
       <div id='pokemons'>
         <h1>Pokemons</h1>
@@ -594,6 +576,51 @@ function App() {
     )
   }
 
+  class UserGreeting extends Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        isLoggedIn: false
+      }
+    }
+    render() {
+
+      return (
+        (this.state.isLoggedIn && <div>Welcome User</div>)
+      )
+
+      // return (
+      //   this.state.isLoggedIn 
+      //     ? <div>Welcome User</div> 
+      //     : <div>Welcome Guest</div>
+      // )
+
+      // let message = "";
+
+      // if (this.state.isLoggedIn) {
+      //   message = <div>Welcome User</div>
+      // } else {
+      //   message = <div>Welcome Guest</div>
+      // }
+
+      // return message;
+
+      // if (this.state.isLoggedIn) {
+      //   return (
+      //     <div>
+      //       Welcome User
+      //     </div>)
+      // } else {
+      //   return (
+      //     <div>
+      //       Welcome Guest
+      //     </div>
+      //   )
+      // }
+    }
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -601,9 +628,10 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonContextProvider >
+          <UserGreeting />
+          {/* <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContextProvider>
+          </PokemonContextProvider> */}
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
