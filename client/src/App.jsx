@@ -510,7 +510,11 @@ function App() {
       return pokemons.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
     }, [pokemons, search]);
 
-    return { pokemons: filteredPokemons, setSearchedValue, search };
+    const sortedPokemons = useMemo(() => {
+      return [...filteredPokemons].sort((a, b) => a.name.localeCompare(b.name));
+    }, [filteredPokemons]);
+
+    return { pokemons: sortedPokemons, setSearchedValue, search };
   }
 
   const PokemonContext = createContext({
@@ -590,92 +594,6 @@ function App() {
     )
   }
 
-  class EventBind extends Component {
-    constructor(props) {
-      super(props)
-
-      this.state = {
-        message: "Hello"
-      }
-
-      // this.clickHandler = this.clickHandler.bind(this)
-    }
-
-    // clickHandler() {
-    //   this.setState({
-    //     message: "Goodbye!"
-    //   })
-    //   console.log(this);
-    // }
-
-    clickHandler = () => {
-      this.setState({
-        message: "Goodbye!"
-      })
-      console.log(this);
-    }
-
-    render() {
-      return (
-        <div style={{textAlign: "center"}}>
-          <h1>{this.state.message}</h1>
-          <button onClick={this.clickHandler}>Click</button>
-          {/* <button onClick={this.clickHandler.bind(this)}>Click</button> */}
-          {/* <button onClick={() => this.clickHandler()}>Click</button> */}
-        </div>
-      )
-    }
-  }
-
-  class ParentComponent extends Component {
-    constructor(props) {
-      super(props)
-
-      this.state = {
-        parentName: "Parent"
-      }
-
-      this.greetParent = this.greetParent.bind(this)
-    }
-
-    greetParent(childName) {
-      console.log(`Hello ${this.state.parentName}`);
-      console.log(childName);
-    }
-
-    render() {
-      return (
-        <div>
-          <ChildComponent greetHandler={this.greetParent} />
-        </div>
-      )
-    }
-  }
-
-  function ChildComponent(props) {
-    // constructor(props) {
-    //   super(props)
-
-    //   this.state = {
-    //     childName: "Child"
-    //   }
-
-    //   this.greetChild = this.greetChild.bind(this)
-    // }
-
-    // greetChild() {
-    //   console.log(`Hello ${this.state.childName}`);
-    // }
-
-    // render() {
-      return (
-        <div>
-          <button onClick={() => props.greetHandler("child")}>Greet Parent</button>
-        </div>
-      )
-    }
-  // }
-
   return (
     <>
       <AuthContextProvider>
@@ -683,12 +601,9 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          {/* <EventBind /> */}
-          <ParentComponent />
-          <button onClick={(e) => console.log(e.target)}>Log this</button>
-          {/* <PokemonContextProvider >
+          <PokemonContextProvider >
             <PokemonApp />
-          </PokemonContextProvider> */}
+          </PokemonContextProvider>
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
