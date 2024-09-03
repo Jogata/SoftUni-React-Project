@@ -624,6 +624,40 @@ function App() {
     )
   }
 
+  const User = () => {
+    const [user, setUser] = useState({});
+    const params = useParams();
+    console.log(params);
+    const { id } = useParams();
+
+    useEffect(() => {
+      let unsubscribed = false;
+      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!unsubscribed) {
+          setUser(data);
+        }
+      });
+
+      return () => {
+        console.log("cancelled");
+        unsubscribed = true;
+      }
+    }, [id]);
+
+    return (
+      <div>
+        <p>Name: {user.name}</p>
+        <p>Username: {user.username}</p>
+        <p>Email: {user.email}</p>
+        <Link to={"/users/1"} className='block'>Fetch User1</Link>
+        <Link to={"/users/2"} className='block'>Fetch User2</Link>
+        <Link to={"/users/3"} className='block'>Fetch User3</Link>
+      </div>
+    )
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -631,13 +665,17 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <PokemonContextProvider >
+          <Routes >
+            <Route path='/users' element={<User />} />
+            <Route path='/users/:id' element={<User />} />
+          </Routes>
+          {/* <PokemonContextProvider >
             <Routes>
               <Route path='/' element={<PokemonApp posts={searchResults} />} />
               <Route path='/:id' element={<PokemonDetails posts={searchResults} />} />
-            </Routes>
+            </Routes> */}
             {/* <PokemonApp /> */}
-          </PokemonContextProvider>
+          {/* </PokemonContextProvider> */}
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
