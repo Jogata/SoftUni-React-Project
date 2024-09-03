@@ -558,7 +558,7 @@ function App() {
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
                 alt=""
               />
-              <h3>{p.name}</h3>
+              <h3 className='block'>{p.name}</h3>
             </Link>
           </li>
         ))}
@@ -624,36 +624,29 @@ function App() {
     )
   }
 
-  const User = () => {
-    const [user, setUser] = useState({});
-    const params = useParams();
-    console.log(params);
-    const { id } = useParams();
+  function FullName() {
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    // const [fullName, setFullName] = useState("");
+    const fullName = `${name} ${lastName}`;
 
-    useEffect(() => {
-      let unsubscribed = false;
-      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        if (!unsubscribed) {
-          setUser(data);
-        }
-      });
-
-      return () => {
-        console.log("cancelled");
-        unsubscribed = true;
-      }
-    }, [id]);
+    // useEffect(() => {
+    //   setFullName(`${name} ${lastName}`);
+    // }, [name, lastName]);
 
     return (
-      <div>
-        <p>Name: {user.name}</p>
-        <p>Username: {user.username}</p>
-        <p>Email: {user.email}</p>
-        <Link to={"/users/1"} className='block'>Fetch User1</Link>
-        <Link to={"/users/2"} className='block'>Fetch User2</Link>
-        <Link to={"/users/3"} className='block'>Fetch User3</Link>
+      <div className='test'>
+      <input 
+        type="text" 
+        value={name} 
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input 
+        type="text" 
+        value={lastName} 
+        onChange={(e) => setLastName(e.target.value)}
+      />
+      <p>{fullName}</p>
       </div>
     )
   }
@@ -665,10 +658,6 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <Routes >
-            <Route path='/users' element={<User />} />
-            <Route path='/users/:id' element={<User />} />
-          </Routes>
           {/* <PokemonContextProvider >
             <Routes>
               <Route path='/' element={<PokemonApp posts={searchResults} />} />
@@ -676,6 +665,7 @@ function App() {
             </Routes> */}
             {/* <PokemonApp /> */}
           {/* </PokemonContextProvider> */}
+          <FullName />
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
