@@ -1027,3 +1027,24 @@ body {
   font-size: 2rem;
   font-weight: bold;
 }
+
+.block {
+  display: block;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.center {
+  text-align: center;
+}
+.title {
+  /* display: block; */
+  color: #eee;
+  text-decoration: underline;
+  /* text-align: center; */
+}
+
+.underline {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fff5;
+}

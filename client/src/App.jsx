@@ -553,13 +553,13 @@ function App() {
       <ul>
         {pokemons.map(p => (
           <li key={p.id}>
-            <div className='pokemon-box'>
+            <Link to={`/${p.id}`} className='pokemon-box'>
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
                 alt=""
               />
               <h3>{p.name}</h3>
-            </div>
+            </Link>
           </li>
         ))}
       </ul>
@@ -576,36 +576,52 @@ function App() {
     )
   }
 
-  class List extends Component {
-    constructor(props) {
-      super(props)
+  function PokemonDetails() {
+    const { id } = useParams();
+    const [details, setDetails] = useState({});
 
-      this.state = {
-        names: ["N1", "N2", "N3"]
-      }
-    }
+    useEffect(() => {
+      fetch("./src/api/pokemon.json")
+      .then(res => res.json())
+      .then(pokemons => pokemons.find(p => p.id == id))
+      // .then(data => console.log(data))
+      .then(data => setDetails(data))
+    })
 
-    render() {
-      const List = this.state.names.map(name => <h2>{name}</h2>);
-
-      return (
-        <>
-        <h2>{this.state.names[0]}</h2>
-        <h2>{this.state.names[1]}</h2>
-        <h2>{this.state.names[2]}</h2>
-
-        <div style={{textAlign: "center"}}>
-          <h1>Names</h1>
-          {this.state.names.map(name => <h2>{name}</h2>)}
+    return (
+      <div>
+        <Link to={"/"} className='title' >
+          <h1>Home</h1>
+        </Link>
+        <div>
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+            alt=""
+          />
+          <div>
+            <h2 className='center'>{details.name}</h2>
+            <div className='center'>
+              <h3 className='underline'>Stats</h3>
+              <ul>
+                {[
+                  "hp",
+                  "attack",
+                  "defense",
+                  "special_attack",
+                  "special_defense",
+                  "speed",
+                ].map(stat => (
+                  <li key={stat}>
+                    <span className='block'>{stat}</span>
+                    <span>{details[stat]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        
-        <div style={{textAlign: "center"}}>
-          <h1>Names from const List</h1>
-          <>{List}</>
-        </div>
-        </>
-      )
-    }
+      </div>
+    )
   }
 
   return (
@@ -615,10 +631,13 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <List />
-          {/* <PokemonContextProvider >
-            <PokemonApp />
-          </PokemonContextProvider> */}
+          <PokemonContextProvider >
+            <Routes>
+              <Route path='/' element={<PokemonApp posts={searchResults} />} />
+              <Route path='/:id' element={<PokemonDetails posts={searchResults} />} />
+            </Routes>
+            {/* <PokemonApp /> */}
+          </PokemonContextProvider>
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
