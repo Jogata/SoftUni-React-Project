@@ -624,32 +624,54 @@ function App() {
     )
   }
 
-  function FullName() {
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    // const [fullName, setFullName] = useState("");
-    const fullName = `${name} ${lastName}`;
+function Form() {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
 
-    // useEffect(() => {
-    //   setFullName(`${name} ${lastName}`);
-    // }, [name, lastName]);
+  const personStr = `${name} ${age}`;
 
-    return (
-      <div className='test'>
+  useEffect(() => {
+    console.log(personStr);
+  }, [personStr]);
+
+  const personObj = {name, age};
+
+  useEffect(() => {
+    console.log(personObj);
+  }, [personObj]);
+
+  const personObjMemo = useMemo(() => {
+    return {name, age};
+  }, [name, age]);
+  
+  useEffect(() => {
+    console.log(personObjMemo);
+  }, [personObjMemo]);
+
+  return (
+    <div style={{background: darkMode ? "#333" : "#fff"}} className='test-form'>
+      Name: {" "}
+      <input  
+        type="text"  
+        value={name}  
+        onChange={e => setName(e.target.value)}
+      /> 
+      Age: {" "}
+      <input  
+        type="text"  
+        value={age} 
+        onChange={e => setAge(e.target.value)}
+      /> 
+      Dark Mode: {" "}
       <input 
-        type="text" 
-        value={name} 
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input 
-        type="text" 
-        value={lastName} 
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <p>{fullName}</p>
-      </div>
-    )
-  }
+        type="checkbox" 
+        value={darkMode} 
+        onChange={(e) => setDarkMode(e.target.checked)} 
+      /> 
+    </div> 
+  )
+}
 
   return (
     <>
@@ -658,14 +680,14 @@ function App() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          {/* <PokemonContextProvider >
+          <Form />
+          <PokemonContextProvider >
             <Routes>
               <Route path='/' element={<PokemonApp posts={searchResults} />} />
               <Route path='/:id' element={<PokemonDetails posts={searchResults} />} />
-            </Routes> */}
+            </Routes>
             {/* <PokemonApp /> */}
-          {/* </PokemonContextProvider> */}
-          <FullName />
+          </PokemonContextProvider>
           {/* <Routes>
             <Route path='/' element={<Home posts={searchResults} />} />
             <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
