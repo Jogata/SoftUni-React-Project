@@ -566,6 +566,37 @@ function App() {
     )
   }
 
+  function useFetchTest(url) {
+    const [loading, setLoading] = useState(true);
+    const [data2, setData2] = useState(["i"]);
+    const [error, setError] = useState({});
+
+    useEffect(() => {
+      const controller = new AbortController();
+      // const signal = controller.signal;
+      setLoading(true);
+      fetch(url, {signal: controller.signal})
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        setData2((oldData) => data);
+        // console.log(data2, isLoading);
+      })
+      // .then(data => console.log(data))
+      .catch(err => setError(err))
+      .finally(() => setLoading(false))
+      // .finally(() => console.log(data2, isLoading))
+
+      // return () => {console.log(data2)}
+      return () => {
+        console.log("cancelled");
+        controller.abort();
+      }
+    }, []);
+    // console.log(data, isLoading);
+    return [loading, data2, error];
+  }
+
   function PokemonApp() {
     return (
       <div id='pokemons'>
@@ -580,13 +611,25 @@ function App() {
     const { id } = useParams();
     const [details, setDetails] = useState({});
 
-    useEffect(() => {
-      fetch("./src/api/pokemon.json")
-      .then(res => res.json())
-      .then(pokemons => pokemons.find(p => p.id == id))
+    // useEffect(() => {
+      const url = "./src/api/pokemon.json";
+      const [loading, data, error] = useFetchTest(url);
+      console.log(loading, data, error);
+
+      useEffect(() => {
+        console.log(data);
+        const pokemon = data.find(p => p.id == id);
+        console.log(pokemon, 614);
+        if (pokemon) {
+          setDetails(pokemon);
+        }
+      }, [data, error]);
+      // fetch("./src/api/pokemon.json")
+      // .then(res => res.json())
+      // .then(pokemons => pokemons.find(p => p.id == id))
       // .then(data => console.log(data))
-      .then(data => setDetails(data))
-    })
+      // .then(data => setDetails(data))
+    // }, []);
 
     return (
       <div>
@@ -624,55 +667,6 @@ function App() {
     )
   }
 
-function Form() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [darkMode, setDarkMode] = useState(false);
-
-  const personStr = `${name} ${age}`;
-
-  useEffect(() => {
-    console.log(personStr);
-  }, [personStr]);
-
-  const personObj = {name, age};
-
-  useEffect(() => {
-    console.log(personObj);
-  }, [personObj]);
-
-  const personObjMemo = useMemo(() => {
-    return {name, age};
-  }, [name, age]);
-  
-  useEffect(() => {
-    console.log(personObjMemo);
-  }, [personObjMemo]);
-
-  return (
-    <div style={{background: darkMode ? "#333" : "#fff"}} className='test-form'>
-      Name: {" "}
-      <input  
-        type="text"  
-        value={name}  
-        onChange={e => setName(e.target.value)}
-      /> 
-      Age: {" "}
-      <input  
-        type="text"  
-        value={age} 
-        onChange={e => setAge(e.target.value)}
-      /> 
-      Dark Mode: {" "}
-      <input 
-        type="checkbox" 
-        value={darkMode} 
-        onChange={(e) => setDarkMode(e.target.checked)} 
-      /> 
-    </div> 
-  )
-}
-
   return (
     <>
       <AuthContextProvider>
@@ -680,7 +674,6 @@ function Form() {
 
           <Header title="React JS Blog" width={width} />
           <Nav search={search} setSearch={setSearch} />
-          <Form />
           <PokemonContextProvider >
             <Routes>
               <Route path='/' element={<PokemonApp posts={searchResults} />} />
