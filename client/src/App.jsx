@@ -24,7 +24,160 @@ import Logout from './components/logout/Logout'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component } from 'react'
 
-function Header({ title, width }) {
+const DataContext = createContext({});
+
+function DataProvider({children}) {
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [postTitle, setPostTitle] = useState("");
+  const [postBody, setPostBody] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
+  const { width } = useWindowSize();
+
+  const { data, fetchError, isLoading } = useFetch(`${baseURL}/posts`);
+
+  useEffect(() => {
+    const posts = Object.values(data);
+    setPosts(posts);
+  }, [data]);
+
+  // useEffect(() => {
+  //   const getPosts = async () => {
+  //     try {
+  //       const response = await fetch(`${baseURL}/posts`);
+  //       console.log(response);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         const posts = Object.values(data);
+  //         console.log(posts);
+  //         setPosts(posts);
+  //       }
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   }
+  //   getPosts();
+  // }, []);
+
+  useEffect(() => {
+    const filteredResults = posts.filter(post => 
+      ((post.title).toLowerCase()).includes(search.toLowerCase()) || 
+      ((post.body).toLowerCase()).includes(search.toLowerCase())
+    );
+    setSearchResults(filteredResults.reverse());
+  }, [posts, search]);
+
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+    const datetime = new Date();
+    const newPost = {
+      // id, 
+      title: postTitle, 
+      body: postBody, 
+      datetime: datetime.toDateString()
+    }
+    // const postsList = posts.filter(post => post.id !== id);
+
+    const options = {
+      method: "POST", 
+      headers: {
+        "Content-type": "application/json",
+      }, 
+      body: JSON.stringify(newPost)
+    }
+    const response = await fetch(`${baseURL}/posts`, options);
+    // console.log(response);
+
+    // console.log(newPost);
+    if (response.ok) {      
+      const data = await response.json();
+      // console.log(data);
+      const postsList = [...posts, data];
+      setPosts(postsList);
+      setPostTitle("");
+      setPostBody("");
+      navigate("/");
+    }
+  }
+
+  async function handleEdit(id) {
+    console.log(id);
+    const datetime = new Date();
+    const editedPost = {
+      _id: id, 
+      title: editTitle, 
+      body: editBody, 
+      datetime: datetime.toDateString()
+    }
+
+    const options = {
+      method: "PUT", 
+      headers: {
+        "Content-type": "application/json",
+      }, 
+      body: JSON.stringify(editedPost)
+    }
+
+    try {
+      const response = await fetch(`${baseURL}/posts/${id}`, options);
+      if (response.ok) {
+        // const data = await response.json();
+        // console.log(data);
+        const response = await fetch(`${baseURL}/posts`);
+        const posts = Object.values(await response.json());
+        // const postsList = posts.map(post => post._id !== id ? { ...data } : post);
+        // console.log(postsList);
+        // console.log(posts);
+        setEditTitle("");
+        setEditBody("");
+        setPosts(posts);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    const options = {
+      method: "DELETE"
+    }
+    console.log(id);
+    try {
+      const response = await fetch(`${baseURL}/posts/${id}`, options);
+      if (response.ok) {        
+        const postsList = posts.filter(post => post.id !== id);
+        // console.log(postsList);
+        setPosts(postsList);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  return (
+    <DataContext.Provider value={{
+      posts, 
+      width, 
+      search, 
+      setSearch, 
+      searchResults, 
+      fetchError, 
+      isLoading
+    }}>
+      {children}
+    </DataContext.Provider>
+  )
+}
+
+function Header({ title }) {
+  const { width } = useContext(DataContext);
   return (
     <header className='Header'>
       <h1>{title}</h1>
@@ -35,7 +188,9 @@ function Header({ title, width }) {
   )
 }
 
-function Nav({ search, setSearch }) {
+function Nav() {
+  const { search, setSearch } = useContext(DataContext);
+
   return (
     <nav className='Nav'>
       <form className="searchForm" onSubmit={e => e.preventDefault()}>
@@ -57,11 +212,13 @@ function Nav({ search, setSearch }) {
   )
 }
 
-function Home({ posts }) {
+function Home() {
+  const { searchResults, fetchError, isLoading } = useContext(DataContext);
+
   return (
     <main className='Home'>
-      {posts.length ? (
-        <List posts={posts} />
+      {searchResults.length ? (
+        <List posts={searchResults} />
       ) : (
         <p style={{ marginTop: "2rem", textAlign: "center" }}>
           No posts to display.
@@ -71,8 +228,10 @@ function Home({ posts }) {
   )
 }
 
-function List({ posts }) {
+function List() {
   // console.log(posts);
+  const { posts } = useContext(DataContext);
+
   return (
     <>
       {posts.map(post => (
@@ -330,366 +489,30 @@ function useFetch(url) {
   return { data, fetchError, isLoading };
 }
 
+function handleSubmit() {}
+
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [postTitle, setPostTitle] = useState("");
-  const [postBody, setPostBody] = useState("");
-  const [editTitle, setEditTitle] = useState("");
-  const [editBody, setEditBody] = useState("");
-  const { width } = useWindowSize();
-
-  const { data, fetchError, isLoading } = useFetch(`${baseURL}/posts`);
-
-  useEffect(() => {
-    const posts = Object.values(data);
-    setPosts(posts);
-  }, [data]);
-
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     try {
-  //       const response = await fetch(`${baseURL}/posts`);
-  //       console.log(response);
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         const posts = Object.values(data);
-  //         console.log(posts);
-  //         setPosts(posts);
-  //       }
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   }
-  //   getPosts();
-  // }, []);
-
-  useEffect(() => {
-    const filteredResults = posts.filter(post => 
-      ((post.title).toLowerCase()).includes(search.toLowerCase()) || 
-      ((post.body).toLowerCase()).includes(search.toLowerCase())
-    );
-    setSearchResults(filteredResults.reverse());
-  }, [posts, search]);
-
-  const navigate = useNavigate();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    // const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = new Date();
-    const newPost = {
-      // id, 
-      title: postTitle, 
-      body: postBody, 
-      datetime: datetime.toDateString()
-    }
-    // const postsList = posts.filter(post => post.id !== id);
-
-    const options = {
-      method: "POST", 
-      headers: {
-        "Content-type": "application/json",
-      }, 
-      body: JSON.stringify(newPost)
-    }
-    const response = await fetch(`${baseURL}/posts`, options);
-    // console.log(response);
-
-    // console.log(newPost);
-    if (response.ok) {      
-      const data = await response.json();
-      // console.log(data);
-      const postsList = [...posts, data];
-      setPosts(postsList);
-      setPostTitle("");
-      setPostBody("");
-      navigate("/");
-    }
-  }
-
-  async function handleEdit(id) {
-    console.log(id);
-    const datetime = new Date();
-    const editedPost = {
-      _id: id, 
-      title: editTitle, 
-      body: editBody, 
-      datetime: datetime.toDateString()
-    }
-
-    const options = {
-      method: "PUT", 
-      headers: {
-        "Content-type": "application/json",
-      }, 
-      body: JSON.stringify(editedPost)
-    }
-
-    try {
-      const response = await fetch(`${baseURL}/posts/${id}`, options);
-      if (response.ok) {
-        // const data = await response.json();
-        // console.log(data);
-        const response = await fetch(`${baseURL}/posts`);
-        const posts = Object.values(await response.json());
-        // const postsList = posts.map(post => post._id !== id ? { ...data } : post);
-        // console.log(postsList);
-        // console.log(posts);
-        setEditTitle("");
-        setEditBody("");
-        setPosts(posts);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-  async function handleDelete(id) {
-    const options = {
-      method: "DELETE"
-    }
-    console.log(id);
-    try {
-      const response = await fetch(`${baseURL}/posts/${id}`, options);
-      if (response.ok) {        
-        const postsList = posts.filter(post => post.id !== id);
-        // console.log(postsList);
-        setPosts(postsList);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-  function usePokemonsSource() {
-    // const [pokemons, setPokemons] = useState([]);
-    // const [searchPokemon, setSearchPokemon] = useState("");
-    const [{pokemons, search}, dispatch] = useReducer(reducer, {
-      pokemons: [], 
-      search: "", 
-    })
-
-    useEffect(() => {
-      document.title = "Pokemons";
-      fetch("./src/api/pokemon.json")
-      .then(res => res.json())
-      // .then(data => setPokemons(data.slice(0, 10)))
-      .then(data => dispatch({
-        type: "setPokemons", 
-        payload: data.slice(0, 10)
-      }))
-    }, [])
-
-    function reducer(state, action) {
-      console.log(state);
-      switch (action.type) {
-        case "setPokemons":
-          return {...state, pokemons: action.payload};
-        case "setSearchedPokemons":
-          return {...state, search: action.payload};
-        default:
-          return {...state};
-      }
-    }
-
-    const setSearchedValue = useCallback((value) => {
-      dispatch({
-        type: "setSearchedPokemons", 
-        payload: value,
-      });
-    }, []);
-
-    const filteredPokemons = useMemo(() => {
-      return pokemons.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
-    }, [pokemons, search]);
-
-    const sortedPokemons = useMemo(() => {
-      return [...filteredPokemons].sort((a, b) => a.name.localeCompare(b.name));
-    }, [filteredPokemons]);
-
-    return { pokemons: sortedPokemons, setSearchedValue, search };
-  }
-
-  const PokemonContext = createContext({
-    state: {},
-  });
-
-  function usePokemons() {
-    return useContext(PokemonContext);
-  }
-
-  function PokemonContextProvider({children}) {
-    return (
-      <PokemonContext.Provider value={usePokemonsSource()} >
-        {children}
-      </PokemonContext.Provider>
-    );
-  }
-
-  function SearchBox() {
-    const { search, setSearchedValue } = usePokemons();
-
-    return (
-      <input 
-        type="search" 
-        value={search} 
-        onChange={(e) => setSearchedValue(e.target.value)} 
-        placeholder='Search'
-      />
-    );
-  }
-
-  function PokemonsList() {
-    const { pokemons } = usePokemons();
-
-    return (
-      <ul>
-        {pokemons.map(p => (
-          <li key={p.id}>
-            <Link to={`/${p.id}`} className='pokemon-box'>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
-                alt=""
-              />
-              <h3 className='block'>{p.name}</h3>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    )
-  }
-
-  function useFetchTest(url) {
-    const [loading, setLoading] = useState(true);
-    const [data2, setData2] = useState(["i"]);
-    const [error, setError] = useState({});
-
-    useEffect(() => {
-      const controller = new AbortController();
-      // const signal = controller.signal;
-      setLoading(true);
-      fetch(url, {signal: controller.signal})
-      .then(res => res.json())
-      .then(data => {
-        // console.log(data);
-        setData2((oldData) => data);
-        // console.log(data2, isLoading);
-      })
-      // .then(data => console.log(data))
-      .catch(err => setError(err))
-      .finally(() => setLoading(false))
-      // .finally(() => console.log(data2, isLoading))
-
-      // return () => {console.log(data2)}
-      return () => {
-        console.log("cancelled");
-        controller.abort();
-      }
-    }, []);
-    // console.log(data, isLoading);
-    return [loading, data2, error];
-  }
-
-  function PokemonApp() {
-    return (
-      <div id='pokemons'>
-        <h1>Pokemons</h1>
-        <SearchBox />
-        <PokemonsList />
-      </div>
-    )
-  }
-
-  function PokemonDetails() {
-    const { id } = useParams();
-    const [details, setDetails] = useState({});
-
-    // useEffect(() => {
-      const url = "./src/api/pokemon.json";
-      const [loading, data, error] = useFetchTest(url);
-      console.log(loading, data, error);
-
-      useEffect(() => {
-        console.log(data);
-        const pokemon = data.find(p => p.id == id);
-        console.log(pokemon, 614);
-        if (pokemon) {
-          setDetails(pokemon);
-        }
-      }, [data, error]);
-      // fetch("./src/api/pokemon.json")
-      // .then(res => res.json())
-      // .then(pokemons => pokemons.find(p => p.id == id))
-      // .then(data => console.log(data))
-      // .then(data => setDetails(data))
-    // }, []);
-
-    return (
-      <div>
-        <Link to={"/"} className='title' >
-          <h1>Home</h1>
-        </Link>
-        <div>
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-            alt=""
-          />
-          <div>
-            <h2 className='center'>{details.name}</h2>
-            <div className='center'>
-              <h3 className='underline'>Stats</h3>
-              <ul>
-                {[
-                  "hp",
-                  "attack",
-                  "defense",
-                  "special_attack",
-                  "special_defense",
-                  "speed",
-                ].map(stat => (
-                  <li key={stat}>
-                    <span className='block'>{stat}</span>
-                    <span>{details[stat]}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <>
       <AuthContextProvider>
         <div className="body">
-
-          <Header title="React JS Blog" width={width} />
-          <Nav search={search} setSearch={setSearch} />
-          <PokemonContextProvider >
+          <DataProvider>
+            <Header title="React JS Blog" />
+            <Nav />
             <Routes>
-              <Route path='/' element={<PokemonApp posts={searchResults} />} />
-              <Route path='/:id' element={<PokemonDetails posts={searchResults} />} />
+              <Route path='/' element={<Home />} />
+              {/* <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} /> */}
+              {/* <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} /> */}
+              {/* <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} /> */}
+              <Route path='/about' element={<About />} />
+              <Route path='*' element={<Missing />} />
             </Routes>
-            {/* <PokemonApp /> */}
-          </PokemonContextProvider>
-          {/* <Routes>
-            <Route path='/' element={<Home posts={searchResults} />} />
-            <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} />
-            <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} />
-            <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} />
-            <Route path='/about' element={<About />} />
-            <Route path='*' element={<Missing />} />
-          </Routes> */}
-          <Footer />
+            <Footer />
+          </DataProvider>
+
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
