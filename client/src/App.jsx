@@ -169,7 +169,12 @@ function DataProvider({children}) {
       setSearch, 
       searchResults, 
       fetchError, 
-      isLoading
+      isLoading, 
+      handleSubmit, 
+      postTitle, 
+      setPostTitle, 
+      postBody, 
+      setPostBody
     }}>
       {children}
     </DataContext.Provider>
@@ -288,13 +293,9 @@ function PostPage({ posts, handleDelete }) {
   )
 }
 
-function NewPost({
-  handleSubmit, 
-  postTitle, 
-  setPostTitle, 
-  postBody, 
-  setPostBody
-}) {
+function NewPost() {
+  const {handleSubmit, postTitle, setPostTitle, postBody, setPostBody} = useContext(DataContext);
+
   return (
     <main className='NewPost'>
       <h2>New Post</h2>
@@ -489,8 +490,6 @@ function useFetch(url) {
   return { data, fetchError, isLoading };
 }
 
-function handleSubmit() {}
-
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
@@ -504,7 +503,7 @@ function App() {
             <Nav />
             <Routes>
               <Route path='/' element={<Home />} />
-              {/* <Route path='/post' element={<NewPost handleSubmit={handleSubmit} postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} />} /> */}
+              <Route path='/post' element={<NewPost />} />
               {/* <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} /> */}
               {/* <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} /> */}
               <Route path='/about' element={<About />} />
