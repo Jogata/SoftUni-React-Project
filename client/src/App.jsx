@@ -174,7 +174,8 @@ function DataProvider({children}) {
       postTitle, 
       setPostTitle, 
       postBody, 
-      setPostBody
+      setPostBody, 
+      handleDelete
     }}>
       {children}
     </DataContext.Provider>
@@ -263,10 +264,12 @@ function Post({ post }) {
   )
 }
 
-function PostPage({ posts, handleDelete }) {
+function PostPage() {
+  const { posts, handleDelete } = useContext(DataContext);
   const { id } = useParams();
   const post = posts.find(post => post._id.toString() === id);
   console.log(id, post);
+
   return (
     <main className='PostPage'>
       <article className="post">
@@ -504,7 +507,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/post' element={<NewPost />} />
-              {/* <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />} /> */}
+              <Route path='/post/:id' element={<PostPage />} />
               {/* <Route path='/edit/:id' element={<EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody} />} /> */}
               <Route path='/about' element={<About />} />
               <Route path='*' element={<Missing />} />
