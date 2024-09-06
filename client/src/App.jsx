@@ -499,8 +499,8 @@ function App() {
     <>
       <AuthContextProvider>
         <div className="body">
+          <Header title="React JS Blog" />
           <DataProvider>
-            <Header title="React JS Blog" />
             <Nav />
             <Routes>
               <Route path='/' element={<Home />} />
@@ -510,9 +510,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='*' element={<Missing />} />
             </Routes>
-            <Footer />
           </DataProvider>
-
+          <Footer />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
