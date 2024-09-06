@@ -142,27 +142,10 @@ function DataProvider({children}) {
     }
   }
 
-  async function handleDelete(id) {
-    const options = {
-      method: "DELETE"
-    }
-    console.log(id);
-    try {
-      const response = await fetch(`${baseURL}/posts/${id}`, options);
-      if (response.ok) {        
-        const postsList = posts.filter(post => post.id !== id);
-        // console.log(postsList);
-        setPosts(postsList);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   return (
     <DataContext.Provider value={{
       posts, 
+      setPosts, 
       search, 
       setSearch, 
       searchResults, 
@@ -173,7 +156,6 @@ function DataProvider({children}) {
       setPostTitle, 
       postBody, 
       setPostBody, 
-      handleDelete, 
       handleEdit, 
       editTitle, 
       setEditTitle, 
@@ -293,10 +275,28 @@ function Post({ post }) {
 }
 
 function PostPage() {
-  const { posts, handleDelete } = useContext(DataContext);
+  const { posts, setPosts } = useContext(DataContext);
   const { id } = useParams();
   const post = posts.find(post => post._id.toString() === id);
   console.log(id, post);
+
+  async function handleDelete(id) {
+    const options = {
+      method: "DELETE"
+    }
+    console.log(id);
+    try {
+      const response = await fetch(`${baseURL}/posts/${id}`, options);
+      if (response.ok) {        
+        const postsList = posts.filter(post => post.id !== id);
+        // console.log(postsList);
+        setPosts(postsList);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <main className='PostPage'>
