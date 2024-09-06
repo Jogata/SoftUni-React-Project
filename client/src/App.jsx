@@ -34,7 +34,6 @@ function DataProvider({children}) {
   const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
-  const { width } = useWindowSize();
 
   const { data, fetchError, isLoading } = useFetch(`${baseURL}/posts`);
 
@@ -164,7 +163,6 @@ function DataProvider({children}) {
   return (
     <DataContext.Provider value={{
       posts, 
-      width, 
       search, 
       setSearch, 
       searchResults, 
@@ -187,8 +185,33 @@ function DataProvider({children}) {
   )
 }
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined, 
+    height: undefined
+  });
+
+  useEffect(() => {
+    function hahdleResize() {
+      setWindowSize({
+        width: window.innerWidth, 
+        height: window.innerHeight
+      })
+    }
+
+    hahdleResize();
+
+    window.addEventListener("resize", hahdleResize);
+
+    return () => window.removeEventListener("resize", hahdleResize);
+  }, [])
+
+  return windowSize;
+}
+
 function Header({ title }) {
-  const { width } = useContext(DataContext);
+  const { width } = useWindowSize();
+
   return (
     <header className='Header'>
       <h1>{title}</h1>
@@ -201,7 +224,7 @@ function Header({ title }) {
 
 function Nav() {
   const { search, setSearch } = useContext(DataContext);
-
+  
   return (
     <nav className='Nav'>
       <form className="searchForm" onSubmit={e => e.preventDefault()}>
@@ -420,30 +443,6 @@ function Loader() {
       <div className="logo-ring"></div>
     </span>
   )
-}
-
-function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
-    width: undefined, 
-    height: undefined
-  });
-
-  useEffect(() => {
-    function hahdleResize() {
-      setWindowSize({
-        width: window.innerWidth, 
-        height: window.innerHeight
-      })
-    }
-
-    hahdleResize();
-
-    window.addEventListener("resize", hahdleResize);
-
-    return () => window.removeEventListener("resize", hahdleResize);
-  }, [])
-
-  return windowSize;
 }
 
 function useFetch(url) {
