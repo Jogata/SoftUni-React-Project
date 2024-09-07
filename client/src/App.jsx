@@ -501,42 +501,73 @@ function Parent() {
     console.log("Parent");
   })
 
+  function Grandchild() {
+    useEffect(() => {
+      console.log("Grandchild");
+    })
+  
+    return (
+      <div>
+        <button 
+          onClick={() => setUsername("New user")}
+        >
+          Change username
+        </button>
+      </div>
+    )
+  }  
+
   return (
     <div>
       <h1>{username}</h1>
-      <Child setUsername={setUsername} />
+      <Child>
+        <h2>Child component</h2>
+        <Grandchild />
+      </Child>
     </div>
   )
 }
 
-function Child({setUsername}) {
+function Child({children}) {
   useEffect(() => {
     console.log("Child");
   })
 
   return (
     <div>
-      <h2>Child component</h2>
-      <Grandchild setUsername={setUsername} />
+      {children}
     </div>
   )
 }
 
-function Grandchild({setUsername}) {
-  useEffect(() => {
-    console.log("Grandchild");
-  })
+// function Child({setUsername}) {
+//   useEffect(() => {
+//     console.log("Child");
+//   })
 
-  return (
-    <div>
-      <button 
-        onClick={() => setUsername("New user")}
-      >
-        Change username
-      </button>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <h2>Child component</h2>
+//       <Grandchild setUsername={setUsername} />
+//     </div>
+//   )
+// }
+
+// function Grandchild({setUsername}) {
+//   useEffect(() => {
+//     console.log("Grandchild");
+//   })
+
+//   return (
+//     <div>
+//       <button 
+//         onClick={() => setUsername("New user")}
+//       >
+//         Change username
+//       </button>
+//     </div>
+//   )
+// }
 
 function App() {
   return (
