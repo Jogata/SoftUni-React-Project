@@ -494,28 +494,47 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function TestCleanUp() {
-  const [num, setNum] = useState(0);
-  console.log("before" + num);
+function Parent() {
+  const [username, setUsername] = useState("Jogata");
 
   useEffect(() => {
-    console.log(num);
-
-    return () => {
-      console.log("clean " + num);
-    }
+    console.log("Parent");
   })
 
-  console.log("after" + num);
+  return (
+    <div>
+      <h1>{username}</h1>
+      <Child setUsername={setUsername} />
+    </div>
+  )
+}
 
-  function increase() {
-    // setNum(num + 1);
-    // setNum(num + 1);
-    setNum(oldnum => oldnum + 1);
-  }
+function Child({setUsername}) {
+  useEffect(() => {
+    console.log("Child");
+  })
 
   return (
-    <button onClick={increase}>click</button>
+    <div>
+      <h2>Child component</h2>
+      <Grandchild setUsername={setUsername} />
+    </div>
+  )
+}
+
+function Grandchild({setUsername}) {
+  useEffect(() => {
+    console.log("Grandchild");
+  })
+
+  return (
+    <div>
+      <button 
+        onClick={() => setUsername("New user")}
+      >
+        Change username
+      </button>
+    </div>
   )
 }
 
@@ -525,7 +544,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <TestCleanUp />
+          <Parent />
           {/* <DataProvider>
             <Nav />
             <Routes>
