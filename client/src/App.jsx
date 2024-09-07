@@ -494,13 +494,39 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+function TestCleanUp() {
+  const [num, setNum] = useState(0);
+  console.log("before" + num);
+
+  useEffect(() => {
+    console.log(num);
+
+    return () => {
+      console.log("clean " + num);
+    }
+  })
+
+  console.log("after" + num);
+
+  function increase() {
+    // setNum(num + 1);
+    // setNum(num + 1);
+    setNum(oldnum => oldnum + 1);
+  }
+
+  return (
+    <button onClick={increase}>click</button>
+  )
+}
+
 function App() {
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <DataProvider>
+          <TestCleanUp />
+          {/* <DataProvider>
             <Nav />
             <Routes>
               <Route path='/' element={<Home />} />
@@ -510,7 +536,7 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='*' element={<Missing />} />
             </Routes>
-          </DataProvider>
+          </DataProvider> */}
           <Footer />
 
           {/* <Routes>
