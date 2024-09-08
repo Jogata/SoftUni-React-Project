@@ -494,10 +494,44 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UserContext = createContext({
-  username: "", 
-  setUsername: () => null
-})
+const UserContext = createContext(null);
+
+function UserContextProvider({children}) {
+  const [userInfo, setUserInfo] = useState(null);
+  const [isAuth, setIsAuth] = useState(null);
+
+  function login() {
+    fetch("/login")
+    .then(res => {
+      setIsAuth(true);
+      setUserInfo(res.user);
+    })
+  }
+
+  function logout() {
+    fetch("/logout")
+    .then(res => {
+      setIsAuth(false);
+      setUserInfo(null);
+    })
+  }
+
+  const value = {
+    userInfo, 
+    setUserInfo, 
+    isAuth, 
+    setIsAuth, 
+    login, 
+    logout
+  }
+
+  return (
+    <UserContext.Provider value={value}>
+      {children}
+    </UserContext.Provider>
+  )
+
+}
 
 function Parent() {
   const [username, setUsername] = useState("Jogata");
@@ -545,24 +579,6 @@ function Child2() {
         Change username
       </button>
     // </div>
-  )
-}
-
-function Grandchild() {
-  const { setUsername } = useContext(UserContext);
-
-  useEffect(() => {
-    console.log("Grandchild");
-  })
-
-  return (
-    <div>
-      <button 
-        onClick={() => setUsername("New user")}
-      >
-        Change username
-      </button>
-    </div>
   )
 }
 
