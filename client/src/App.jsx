@@ -494,6 +494,11 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+const UserContext = createContext({
+  username: "", 
+  setUsername: () => null
+})
+
 function Parent() {
   const [username, setUsername] = useState("Jogata");
 
@@ -501,73 +506,45 @@ function Parent() {
     console.log("Parent");
   })
 
-  function Grandchild() {
-    useEffect(() => {
-      console.log("Grandchild");
-    })
-  
-    return (
-      <div>
-        <button 
-          onClick={() => setUsername("New user")}
-        >
-          Change username
-        </button>
-      </div>
-    )
-  }  
-
   return (
-    <div>
-      <h1>{username}</h1>
-      <Child>
-        <h2>Child component</h2>
-        <Grandchild />
-      </Child>
-    </div>
+    <UserContext.Provider value={{username: username, setUsername: setUsername}}>
+      <div>
+        <h1>{username}</h1>
+        <Child />
+      </div>
+    </UserContext.Provider>
   )
 }
 
-function Child({children}) {
+function Child() {
   useEffect(() => {
     console.log("Child");
   })
 
   return (
     <div>
-      {children}
+      <h2>Child component</h2>
+      <Grandchild />
     </div>
   )
 }
 
-// function Child({setUsername}) {
-//   useEffect(() => {
-//     console.log("Child");
-//   })
+function Grandchild() {
+  const { setUsername } = useContext(UserContext);
+  useEffect(() => {
+    console.log("Grandchild");
+  })
 
-//   return (
-//     <div>
-//       <h2>Child component</h2>
-//       <Grandchild setUsername={setUsername} />
-//     </div>
-//   )
-// }
-
-// function Grandchild({setUsername}) {
-//   useEffect(() => {
-//     console.log("Grandchild");
-//   })
-
-//   return (
-//     <div>
-//       <button 
-//         onClick={() => setUsername("New user")}
-//       >
-//         Change username
-//       </button>
-//     </div>
-//   )
-// }
+  return (
+    <div>
+      <button 
+        onClick={() => setUsername("New user")}
+      >
+        Change username
+      </button>
+    </div>
+  )
+}
 
 function App() {
   return (
