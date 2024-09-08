@@ -509,28 +509,48 @@ function Parent() {
   return (
     <UserContext.Provider value={{username: username, setUsername: setUsername}}>
       <div>
-        <h1>{username}</h1>
-        <Child />
+        <Child1 />
+        <Child2 />
       </div>
     </UserContext.Provider>
   )
 }
 
-function Child() {
+function Child1() {
+  const { username } = useContext(UserContext);
+
   useEffect(() => {
-    console.log("Child");
+    console.log("Child1");
   })
 
   return (
-    <div>
-      <h2>Child component</h2>
-      <Grandchild />
-    </div>
+    // <div>
+      <h1>{username}</h1>
+    // </div>
+  )
+}
+
+function Child2() {
+  const { setUsername } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log("Child2");
+  })
+
+  return (
+    // <div>
+      <button 
+        onClick={() => setUsername("New user")}
+      >
+        Change username
+      </button>
+    // </div>
   )
 }
 
 function Grandchild() {
   const { setUsername } = useContext(UserContext);
+
   useEffect(() => {
     console.log("Grandchild");
   })
