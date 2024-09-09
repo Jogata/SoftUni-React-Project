@@ -23,6 +23,7 @@ import Logout from './components/logout/Logout'
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component } from 'react'
+import { createRef } from 'react'
 
 const DataContext = createContext({});
 
@@ -494,134 +495,25 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const ProfileContext = createContext(null);
-
-function ProfileContextProvider({children}) {
-  const [userProfileInfo, setUserProfileInfo] = useState(null);
-  const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false);
-  const [listOfFriends, setListOfFriends] = useState([]);
-  const [newProfileInfo, setNewProfileInfo] = useState(userProfileInfo);
-
-  const value = {
-    userProfileInfo, 
-    setUserProfileInfo, 
-    isOpenUpdateModal, 
-    setIsOpenUpdateModal, 
-    listOfFriends, 
-    setListOfFriends, 
-    newProfileInfo, 
-    setNewProfileInfo
+class RefDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = createRef();
   }
 
-  return (
-    <ProfileContext.Provider value={value}>
-      {children}
-    </ProfileContext.Provider>
-  )
+  componentDidMount() {
+    console.log(this.inputRef);
+    console.log(this.inputRef.current);
+    this.inputRef.current.focus();
+  }
 
-}
-
-function Parent() {
-  // const [username, setUsername] = useState("Jogata");
-  // const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("Parent");
-  })
-
-  return (
-    <ProfileContextProvider>
-      <div>
-        <Child1 />
-        <Child2 />
-        <Child3 />
-        <Child4 />
-        <Child5 />
+  render() {
+    return (
+      <div style={{flex: 1, paddingTop: "2rem"}}>
+        <input type="text" ref={this.inputRef} />
       </div>
-    </ProfileContextProvider>
-  )
-}
-
-function Child1() {
-  const { userProfileInfo } = useContext(ProfileContext);
-
-  useEffect(() => {
-    console.log("Child1");
-  })
-
-  return (
-    // <div>
-      <h1>{userProfileInfo}</h1>
-    // </div>
-  )
-}
-
-function Child2() {
-  const { setUserProfileInfo } = useContext(ProfileContext);
-
-  useEffect(() => {
-    console.log("Child2");
-  })
-
-  return (
-    // <div>
-      <button 
-        onClick={() => setUserProfileInfo("New user")}
-      >
-        Change username
-      </button>
-    // </div>
-  )
-}
-
-function Child3() {
-  const { listOfFriends } = useContext(ProfileContext);
-
-  useEffect(() => {
-    console.log("Child3");
-  })
-
-  return (
-    // <div>
-      <h1>{listOfFriends}</h1>
-    // </div>
-  )
-}
-
-function Child4() {
-  const { isOpenUpdateModal } = useContext(ProfileContext);
-
-  useEffect(() => {
-    console.log("Child4");
-  })
-
-  return (
-    // <div>
-      <h1>
-        {isOpenUpdateModal ? "Modal is open" : ""}
-      </h1>
-    // </div>
-  )
-}
-
-function Child5() {
-  const { setIsOpenUpdateModal } = useContext(ProfileContext);
-
-  useEffect(() => {
-    console.log("Child5");
-  })
-
-  return (
-    // <div>
-      <button 
-        onClick={() => {
-          setIsOpenUpdateModal(b => !b);
-        }}
-      >
-        Modal
-      </button>
-    // </div>
-  )
+    )
+  }
 }
 
 function App() {
@@ -630,7 +522,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Parent />
+          <RefDemo />
           {/* <DataProvider>
             <Nav />
             <Routes>
