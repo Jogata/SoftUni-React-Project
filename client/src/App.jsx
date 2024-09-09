@@ -494,44 +494,29 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UserContext = createContext(null);
+const ProfileContext = createContext(null);
 
-function UserContextProvider({children}) {
-  const [userInfo, setUserInfo] = useState(null);
-  const [isAuth, setIsAuth] = useState(null);
-  const [count, setCount] = useState(0);
-
-  function login() {
-    fetch("/login")
-    .then(res => {
-      setIsAuth(true);
-      setUserInfo(res.user);
-    })
-  }
-
-  function logout() {
-    fetch("/logout")
-    .then(res => {
-      setIsAuth(false);
-      setUserInfo(null);
-    })
-  }
+function ProfileContextProvider({children}) {
+  const [userProfileInfo, setUserProfileInfo] = useState(null);
+  const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false);
+  const [listOfFriends, setListOfFriends] = useState([]);
+  const [newProfileInfo, setNewProfileInfo] = useState(userProfileInfo);
 
   const value = {
-    count, 
-    setCount, 
-    userInfo, 
-    setUserInfo, 
-    isAuth, 
-    setIsAuth, 
-    login, 
-    logout
+    userProfileInfo, 
+    setUserProfileInfo, 
+    isOpenUpdateModal, 
+    setIsOpenUpdateModal, 
+    listOfFriends, 
+    setListOfFriends, 
+    newProfileInfo, 
+    setNewProfileInfo
   }
 
   return (
-    <UserContext.Provider value={value}>
+    <ProfileContext.Provider value={value}>
       {children}
-    </UserContext.Provider>
+    </ProfileContext.Provider>
   )
 
 }
@@ -545,19 +530,20 @@ function Parent() {
   })
 
   return (
-    <UserContextProvider>
+    <ProfileContextProvider>
       <div>
         <Child1 />
         <Child2 />
         <Child3 />
         <Child4 />
+        <Child5 />
       </div>
-    </UserContextProvider>
+    </ProfileContextProvider>
   )
 }
 
 function Child1() {
-  const { userInfo } = useContext(UserContext);
+  const { userProfileInfo } = useContext(ProfileContext);
 
   useEffect(() => {
     console.log("Child1");
@@ -565,13 +551,13 @@ function Child1() {
 
   return (
     // <div>
-      <h1>{userInfo}</h1>
+      <h1>{userProfileInfo}</h1>
     // </div>
   )
 }
 
 function Child2() {
-  const { setUserInfo } = useContext(UserContext);
+  const { setUserProfileInfo } = useContext(ProfileContext);
 
   useEffect(() => {
     console.log("Child2");
@@ -580,7 +566,7 @@ function Child2() {
   return (
     // <div>
       <button 
-        onClick={() => setUserInfo("New user")}
+        onClick={() => setUserProfileInfo("New user")}
       >
         Change username
       </button>
@@ -589,7 +575,7 @@ function Child2() {
 }
 
 function Child3() {
-  const { count } = useContext(UserContext);
+  const { listOfFriends } = useContext(ProfileContext);
 
   useEffect(() => {
     console.log("Child3");
@@ -597,13 +583,13 @@ function Child3() {
 
   return (
     // <div>
-      <h1>{count}</h1>
+      <h1>{listOfFriends}</h1>
     // </div>
   )
 }
 
 function Child4() {
-  const { setCount } = useContext(UserContext);
+  const { isOpenUpdateModal } = useContext(ProfileContext);
 
   useEffect(() => {
     console.log("Child4");
@@ -611,12 +597,28 @@ function Child4() {
 
   return (
     // <div>
+      <h1>
+        {isOpenUpdateModal ? "Modal is open" : ""}
+      </h1>
+    // </div>
+  )
+}
+
+function Child5() {
+  const { setIsOpenUpdateModal } = useContext(ProfileContext);
+
+  useEffect(() => {
+    console.log("Child5");
+  })
+
+  return (
+    // <div>
       <button 
         onClick={() => {
-          setCount(c => c + 1);
+          setIsOpenUpdateModal(b => !b);
         }}
       >
-        Change count
+        Modal
       </button>
     // </div>
   )
