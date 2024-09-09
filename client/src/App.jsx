@@ -499,6 +499,7 @@ const UserContext = createContext(null);
 function UserContextProvider({children}) {
   const [userInfo, setUserInfo] = useState(null);
   const [isAuth, setIsAuth] = useState(null);
+  const [count, setCount] = useState(0);
 
   function login() {
     fetch("/login")
@@ -517,6 +518,8 @@ function UserContextProvider({children}) {
   }
 
   const value = {
+    count, 
+    setCount, 
     userInfo, 
     setUserInfo, 
     isAuth, 
@@ -534,24 +537,27 @@ function UserContextProvider({children}) {
 }
 
 function Parent() {
-  const [username, setUsername] = useState("Jogata");
+  // const [username, setUsername] = useState("Jogata");
+  // const [count, setCount] = useState(0);
 
   useEffect(() => {
     console.log("Parent");
   })
 
   return (
-    <UserContext.Provider value={{username: username, setUsername: setUsername}}>
+    <UserContextProvider>
       <div>
         <Child1 />
         <Child2 />
+        <Child3 />
+        <Child4 />
       </div>
-    </UserContext.Provider>
+    </UserContextProvider>
   )
 }
 
 function Child1() {
-  const { username } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
     console.log("Child1");
@@ -559,13 +565,13 @@ function Child1() {
 
   return (
     // <div>
-      <h1>{username}</h1>
+      <h1>{userInfo}</h1>
     // </div>
   )
 }
 
 function Child2() {
-  const { setUsername } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
     console.log("Child2");
@@ -574,9 +580,43 @@ function Child2() {
   return (
     // <div>
       <button 
-        onClick={() => setUsername("New user")}
+        onClick={() => setUserInfo("New user")}
       >
         Change username
+      </button>
+    // </div>
+  )
+}
+
+function Child3() {
+  const { count } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log("Child3");
+  })
+
+  return (
+    // <div>
+      <h1>{count}</h1>
+    // </div>
+  )
+}
+
+function Child4() {
+  const { setCount } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log("Child4");
+  })
+
+  return (
+    // <div>
+      <button 
+        onClick={() => {
+          setCount(c => c + 1);
+        }}
+      >
+        Change count
       </button>
     // </div>
   )
