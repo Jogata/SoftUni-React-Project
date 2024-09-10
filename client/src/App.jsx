@@ -495,14 +495,10 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class RefDemo extends Component {
+class Input extends Component {
   constructor(props) {
     super(props);
     this.inputRef = createRef();
-    this.cbRef = null;
-    this.setCbRef = (element) => {
-      this.cbRef = element;
-    }
   }
 
   componentDidMount() {
@@ -514,16 +510,40 @@ class RefDemo extends Component {
     }
   }
 
+  focusInput() {
+    this.inputRef.current.focus();
+  }
+
   clickHandler() {
     console.log(this.inputRef.current.value);
   }
 
   render() {
     return (
-      <div style={{flex: 1, paddingTop: "2rem"}}>
+      <>
         <input type="text" ref={this.inputRef} />
-        <input type="text" ref={this.setCbRef} />
         <button onClick={() => this.clickHandler()}>Click</button>
+      </>
+    )
+  }
+}
+
+class Parent extends Component {
+  constructor(props) {
+    super(props);
+    this.componentRef = createRef();
+  }
+
+  clickHandler = () => {
+    console.log(this.componentRef.current);
+    this.componentRef.current.focusInput();
+  }
+
+  render() {
+    return (
+      <div style={{flex: 1, paddingTop: "2rem", textAlign: "center"}}>
+        <Input ref={this.componentRef} />
+        <button onClick={this.clickHandler} >Focus Input</button>
       </div>
     )
   }
@@ -535,7 +555,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <RefDemo />
+          <Parent />
           {/* <DataProvider>
             <Nav />
             <Routes>
