@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component } from 'react'
+import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component, forwardRef } from 'react'
 import { createRef } from 'react'
 
 const DataContext = createContext({});
@@ -495,59 +495,41 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class Input extends Component {
-  constructor(props) {
-    super(props);
-    this.inputRef = createRef();
-  }
+// function FRInput() {
+//   return (
+//     // <div style={{flex: 1, paddingTop: "1rem"}}>
+//       <input type="text" />
+//     // </div>
+//   )
+// } 
 
-  componentDidMount() {
-    // console.log(this.inputRef);
-    // console.log(this.inputRef.current);
-    // this.inputRef.current.focus();
-    if (this.cbRef) {
-      this.cbRef.focus();
-    }
-  }
+const FRInput = forwardRef((props, ref) => {
+  return (
+    // <div style={{flex: 1, paddingTop: "1rem"}}>
+    <input type="text" ref={ref} />
+    // </div>
+  ) 
+});
 
-  focusInput() {
-    this.inputRef.current.focus();
-  }
-
-  clickHandler() {
-    console.log(this.inputRef.current.value);
-  }
-
-  render() {
-    return (
-      <>
-        <input type="text" ref={this.inputRef} />
-        <button onClick={() => this.clickHandler()}>Click</button>
-      </>
-    )
-  }
-}
-
-class Parent extends Component {
-  constructor(props) {
-    super(props);
-    this.componentRef = createRef();
-  }
+class FRInputParent extends Component {
+  constructor(props) { 
+    super(props)
+    this.inputRef = createRef()
+  } 
 
   clickHandler = () => {
-    console.log(this.componentRef.current);
-    this.componentRef.current.focusInput();
-  }
+    this.inputRef.current.focus();
+  } 
 
-  render() {
-    return (
-      <div style={{flex: 1, paddingTop: "2rem", textAlign: "center"}}>
-        <Input ref={this.componentRef} />
-        <button onClick={this.clickHandler} >Focus Input</button>
+  render() { 
+    return ( 
+      <div style={{ flex: 1, paddingTop: "1rem" }}>
+        <FRInput ref={this.inputRef} />
+        <button onClick={this.clickHandler}>Focus</button>
       </div>
-    )
-  }
-}
+    ) 
+  } 
+} 
 
 function App() {
   return (
@@ -555,7 +537,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Parent />
+          <FRInputParent />
           {/* <DataProvider>
             <Nav />
             <Routes>
