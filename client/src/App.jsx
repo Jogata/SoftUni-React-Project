@@ -496,25 +496,25 @@ const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
 class ClickCounter extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      count: 0
-    }
-  }
+  //   this.state = {
+  //     count: 0
+  //   }
+  // }
 
-  incrementCount = () => {
-    // console.log(this.state);
-    this.setState({count: this.state.count + 1});
-  }
+  // incrementCount = () => {
+  //   // console.log(this.state);
+  //   this.setState({count: this.state.count + 1});
+  // }
 
   render() {
-    const { count } = this.state;
+    const { count } = this.props;
     return (
       <div style={{ flex: 1, paddingTop: "1rem" }}> 
         <button 
-          onClick={this.incrementCount}
+          onClick={this.props.incrementCount}
         >
           {this.props.name} clicked {count} times
         </button>
@@ -524,25 +524,25 @@ class ClickCounter extends Component {
 }
 
 class HoverCounter extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      count: 0
-    }
-  }
+  //   this.state = {
+  //     count: 0
+  //   }
+  // }
 
-  incrementCount = () => {
-    // console.log(this.state);
-    this.setState({count: this.state.count + 1});
-  }
+  // incrementCount = () => {
+  //   // console.log(this.state);
+  //   this.setState({count: this.state.count + 1});
+  // }
 
   render() {
-    const { count } = this.state;
+    const { count } = this.props;
     return (
       <div style={{ flex: 1, paddingTop: "1rem" }}> 
         <button 
-          onMouseOver={this.incrementCount}
+          onMouseOver={this.props.incrementCount}
         >
           {this.props.name} hovered {count} times
         </button>
@@ -553,8 +553,24 @@ class HoverCounter extends Component {
 
 const UpdatedComponent = (OriginalComponent) => {
   class NewComponent extends Component {
+    constructor(props) {
+      super(props);
+  
+      this.state = {
+        count: 0
+      }
+    }
+  
+    incrementCount = () => {
+      // console.log(this.state);
+      this.setState({count: this.state.count + 1});
+    }
+  
     render(){
-      return <OriginalComponent name="Jogata" />
+      return <OriginalComponent 
+        count={this.state.count} 
+        incrementCount={this.incrementCount} 
+      />
     }
   }
 
