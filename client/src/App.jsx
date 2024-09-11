@@ -495,41 +495,62 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-// function FRInput() {
-//   return (
-//     // <div style={{flex: 1, paddingTop: "1rem"}}>
-//       <input type="text" />
-//     // </div>
-//   )
-// } 
+class ClickCounter extends Component {
+  constructor(props) {
+    super(props);
 
-const FRInput = forwardRef((props, ref) => {
-  return (
-    // <div style={{flex: 1, paddingTop: "1rem"}}>
-    <input type="text" ref={ref} />
-    // </div>
-  ) 
-});
+    this.state = {
+      count: 0
+    }
+  }
 
-class FRInputParent extends Component {
-  constructor(props) { 
-    super(props)
-    this.inputRef = createRef()
-  } 
+  incrementCount = () => {
+    // console.log(this.state);
+    this.setState({count: this.state.count + 1});
+  }
 
-  clickHandler = () => {
-    this.inputRef.current.focus();
-  } 
+  render() {
+    const { count } = this.state;
+    return (
+      <div style={{ flex: 1, paddingTop: "1rem" }}> 
+        <button 
+          onClick={this.incrementCount}
+        >
+          Clicked {count} times
+        </button>
+      </div> 
+    )
+  }
+}
 
-  render() { 
-    return ( 
-      <div style={{ flex: 1, paddingTop: "1rem" }}>
-        <FRInput ref={this.inputRef} />
-        <button onClick={this.clickHandler}>Focus</button>
-      </div>
-    ) 
-  } 
-} 
+class HoverCounter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0
+    }
+  }
+
+  incrementCount = () => {
+    // console.log(this.state);
+    this.setState({count: this.state.count + 1});
+  }
+
+  render() {
+    const { count } = this.state;
+    return (
+      <div style={{ flex: 1, paddingTop: "1rem" }}> 
+        <button 
+          onMouseOver={this.incrementCount}
+        >
+          Hovered {count} times
+        </button>
+      </div> 
+    )
+  }
+}
+
 
 function App() {
   return (
@@ -537,7 +558,8 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <FRInputParent />
+          <ClickCounter />
+          <HoverCounter />
           {/* <DataProvider>
             <Nav />
             <Routes>
