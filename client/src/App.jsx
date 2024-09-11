@@ -516,7 +516,7 @@ class ClickCounter extends Component {
         <button 
           onClick={this.incrementCount}
         >
-          Clicked {count} times
+          {this.props.name} clicked {count} times
         </button>
       </div> 
     )
@@ -544,13 +544,25 @@ class HoverCounter extends Component {
         <button 
           onMouseOver={this.incrementCount}
         >
-          Hovered {count} times
+          {this.props.name} hovered {count} times
         </button>
       </div> 
     )
   }
 }
 
+const UpdatedComponent = (OriginalComponent) => {
+  class NewComponent extends Component {
+    render(){
+      return <OriginalComponent name="Jogata" />
+    }
+  }
+
+  return NewComponent;
+}
+
+const UpdatedClickCounter = UpdatedComponent(ClickCounter);
+const UpdatedHoverCounter = UpdatedComponent(HoverCounter);
 
 function App() {
   return (
@@ -558,8 +570,9 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ClickCounter />
-          <HoverCounter />
+          {/* <ClickCounter /> */}
+          <UpdatedClickCounter />
+          <UpdatedHoverCounter />
           {/* <DataProvider>
             <Nav />
             <Routes>
