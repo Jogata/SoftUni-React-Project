@@ -495,6 +495,30 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      count: 0
+    }
+
+  }
+
+  icrementCount = () => {
+    console.log(this.state.count);
+    this.setState({count: this.state.count + 1});
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.render(this.state.count, this.icrementCount)}
+      </div>
+    )
+  }
+}
+
 class User extends Component {
   render() {
     // console.log(typeof this.props.name);
@@ -513,22 +537,23 @@ class User extends Component {
 }
 
 class ClickCounterTwo extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      count: 0
-    }
+  //   this.state = {
+  //     count: 0
+  //   }
 
-  }
+  // }
 
-  icrementCount = () => {
-    console.log(this.state.count);
-    this.setState({count: this.state.count + 1});
-  }
+  // icrementCount = () => {
+  //   console.log(this.state.count);
+  //   this.setState({count: this.state.count + 1});
+  // }
 
   render() { 
-    const { count } = this.state;
+    // const { count } = this.state;
+    const { count } = this.props;
     return ( 
       <div 
         style={{
@@ -537,7 +562,7 @@ class ClickCounterTwo extends Component {
           paddingBottom: "1rem"
         }}>
         <button  
-          onClick={this.icrementCount}
+          onClick={this.props.icrementCount}
         > 
           Clicked {count} times
         </button> 
@@ -547,26 +572,28 @@ class ClickCounterTwo extends Component {
 } 
 
 class HoverCounterTwo extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      count: 0
-    }
+  //   this.state = {
+  //     count: 0
+  //   }
 
-  }
+  // }
 
-  icrementCount = () => {
-    console.log(this.state.count);
-    this.setState({count: this.state.count + 1});
-  }
+  // icrementCount = () => {
+  //   console.log(this.state.count);
+  //   this.setState({count: this.state.count + 1});
+  // }
 
   render() { 
-    const { count } = this.state;
+    // const { count } = this.state;
+    const { count } = this.props;
     return ( 
       <div style={{flex: 1, paddingTop: "1rem"}}>
         <button  
-          onMouseOver={this.icrementCount}
+          // onMouseOver={this.icrementCount}
+          onMouseOver={this.props.icrementCount}
         > 
           Hovered {count} times
         </button> 
@@ -582,10 +609,20 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ClickCounterTwo />
-          <HoverCounterTwo />
+          <Counter 
+            render={(count, icrementCount) => (
+              <ClickCounterTwo count={count} icrementCount={icrementCount} />
+            )} 
+          />
+          <Counter 
+            render={(count, icrementCount) => (
+              <HoverCounterTwo count={count} icrementCount={icrementCount} />
+            )} 
+          />
+          {/* <ClickCounterTwo /> */}
+          {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
-          <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } />
+          {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
             <Nav />
             <Routes>
