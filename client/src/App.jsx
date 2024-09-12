@@ -495,6 +495,23 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+class User extends Component {
+  render() {
+    // console.log(typeof this.props.name);
+    return (
+      <div style={{
+        flex: 1, 
+        paddingTop: "1rem", 
+        paddingBottom: "1rem"
+      }}>
+        {/* Jogata */}
+        {/* {this.props.name} */}
+        {this.props.render(false)}
+      </div>
+    )
+  }
+}
+
 class ClickCounterTwo extends Component {
   constructor(props) {
     super(props)
@@ -509,10 +526,16 @@ class ClickCounterTwo extends Component {
     console.log(this.state.count);
     this.setState({count: this.state.count + 1});
   }
+
   render() { 
     const { count } = this.state;
     return ( 
-      <div style={{flex: 1, paddingTop: "1rem"}}>
+      <div 
+        style={{
+          flex: 1, 
+          paddingTop: "1rem", 
+          paddingBottom: "1rem"
+        }}>
         <button  
           onClick={this.icrementCount}
         > 
@@ -537,6 +560,7 @@ class HoverCounterTwo extends Component {
     console.log(this.state.count);
     this.setState({count: this.state.count + 1});
   }
+
   render() { 
     const { count } = this.state;
     return ( 
@@ -560,6 +584,8 @@ function App() {
           <Header title="React JS Blog" />
           <ClickCounterTwo />
           <HoverCounterTwo />
+          {/* <User name="Jogata" /> */}
+          <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } />
           {/* <DataProvider>
             <Nav />
             <Routes>
