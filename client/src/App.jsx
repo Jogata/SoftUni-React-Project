@@ -495,113 +495,46 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class Counter extends Component {
-  constructor(props) {
-    super(props)
+const UserContext = createContext();
 
-    this.state = {
-      count: 0
-    }
+const UserProvider = UserContext.Provider;
+const UserConsumer = UserContext.Consumer;
 
-  }
+class ComponentF extends Component {
+  render() { 
+    return ( 
+      <UserConsumer>
+        {
+          username => {
+            return (
+              <h1>Hello {username}</h1>
+            )
+          }
+        }
+      </UserConsumer>
+    ) 
+  } 
+} 
 
-  icrementCount = () => {
-    console.log(this.state.count);
-    this.setState({count: this.state.count + 1});
-  }
+class ComponentE extends Component {
+  render() {  
+    return (  
+      <div>
+        <ComponentF />
+      </div> 
+    )  
+  }  
+}  
 
+class ComponentC extends Component {
   render() {
     return (
       <div>
-        {this.props.render(this.state.count, this.icrementCount)}
-      </div>
+        <ComponentE />
+      </div> 
     )
   }
 }
-
-class User extends Component {
-  render() {
-    // console.log(typeof this.props.name);
-    return (
-      <div style={{
-        flex: 1, 
-        paddingTop: "1rem", 
-        paddingBottom: "1rem"
-      }}>
-        {/* Jogata */}
-        {/* {this.props.name} */}
-        {this.props.render(false)}
-      </div>
-    )
-  }
-}
-
-class ClickCounterTwo extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  //   this.state = {
-  //     count: 0
-  //   }
-
-  // }
-
-  // icrementCount = () => {
-  //   console.log(this.state.count);
-  //   this.setState({count: this.state.count + 1});
-  // }
-
-  render() { 
-    // const { count } = this.state;
-    const { count } = this.props;
-    return ( 
-      <div 
-        style={{
-          flex: 1, 
-          paddingTop: "1rem", 
-          paddingBottom: "1rem"
-        }}>
-        <button  
-          onClick={this.props.icrementCount}
-        > 
-          Clicked {count} times
-        </button> 
-      </div>
-    ) 
-  } 
-} 
-
-class HoverCounterTwo extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  //   this.state = {
-  //     count: 0
-  //   }
-
-  // }
-
-  // icrementCount = () => {
-  //   console.log(this.state.count);
-  //   this.setState({count: this.state.count + 1});
-  // }
-
-  render() { 
-    // const { count } = this.state;
-    const { count } = this.props;
-    return ( 
-      <div style={{flex: 1, paddingTop: "1rem"}}>
-        <button  
-          // onMouseOver={this.icrementCount}
-          onMouseOver={this.props.icrementCount}
-        > 
-          Hovered {count} times
-        </button> 
-      </div>
-    ) 
-  } 
-} 
-
 
 function App() {
   return (
@@ -609,16 +542,9 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Counter 
-            render={(count, icrementCount) => (
-              <ClickCounterTwo count={count} icrementCount={icrementCount} />
-            )} 
-          />
-          <Counter 
-            render={(count, icrementCount) => (
-              <HoverCounterTwo count={count} icrementCount={icrementCount} />
-            )} 
-          />
+          <UserProvider value={"Jogata"}>
+            <ComponentC />
+          </UserProvider>
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
