@@ -495,58 +495,50 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UserContext = createContext("default");
+class PostList extends Component {  
+  constructor(props) {  
+    super(props); 
 
-const UserProvider = UserContext.Provider;
-const UserConsumer = UserContext.Consumer;
+    this.state = {  
+      posts: [],   
+      message: ""   
+    }   
+  }   
 
-const ThemeContext = createContext("dark");
-
-const ThemeProvider = ThemeContext.Provider;
-const ThemeConsumer = ThemeContext.Consumer;
-
-class ComponentF extends Component {
-  render() { 
-    return ( 
-      <ThemeConsumer>
-        {theme => (
-                <UserConsumer>
-                {
-                  username => {
-                    return (
-                      <>
-                      <h1>Hello {username}</h1>
-                      <h1>The theme is {theme}</h1>
-                      </>
-                    )
-                  }
-                }
-              </UserConsumer>
-        )}
-      </ThemeConsumer>
-    ) 
-  } 
-} 
-
-class ComponentE extends Component {
-  render() {  
-    return (  
-      <div>
-        <ComponentF />
-      </div> 
-    )  
-  }  
-}  
-
-class ComponentC extends Component {
-  render() {
-    return (
-      <div>
-        <ComponentE />
-      </div> 
-    )
+  componentDidMount() { 
+    fetch("https://jsonplaceholder.typicode.com/postss") 
+    .then(res => {  
+      if (!res.ok) {  
+        throw new Error("Error retrieving data");    
+      }   
+      return res.json();      
+    })    
+    // .then(res => res.json())  
+    .then(data => this.setState({posts: data})) 
+    // .then(() => console.log(this.state.posts)) 
+    .catch(error => {       
+      // console.log(error);  
+      this.setState({message: error.message});  
+    })
   }
-}
+
+  render() {    
+    const { posts, message } = this.state; 
+    // const posts = [];   
+
+    return (    
+      <div style={{flex: 1, padding: "1rem"}}>  
+        <h1>List of Posts</h1>  
+        {   
+          posts.length ?    
+          posts.map(post => <h2 key={post.id}>{post.title}</h2>) :    
+          <h2>No posts yet</h2>    
+        }   
+        { message && <h2>{message}</h2> }
+      </div>  
+    )   
+  }   
+}   
 
 function App() {
   return (
@@ -554,9 +546,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <UserProvider value={"Jogata"}>
-            <ComponentC />
-          </UserProvider>
+            <PostList />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
