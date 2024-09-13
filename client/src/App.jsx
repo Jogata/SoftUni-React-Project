@@ -495,23 +495,35 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UserContext = createContext();
+const UserContext = createContext("default");
 
 const UserProvider = UserContext.Provider;
 const UserConsumer = UserContext.Consumer;
 
+const ThemeContext = createContext("dark");
+
+const ThemeProvider = ThemeContext.Provider;
+const ThemeConsumer = ThemeContext.Consumer;
+
 class ComponentF extends Component {
   render() { 
     return ( 
-      <UserConsumer>
-        {
-          username => {
-            return (
-              <h1>Hello {username}</h1>
-            )
-          }
-        }
-      </UserConsumer>
+      <ThemeConsumer>
+        {theme => (
+                <UserConsumer>
+                {
+                  username => {
+                    return (
+                      <>
+                      <h1>Hello {username}</h1>
+                      <h1>The theme is {theme}</h1>
+                      </>
+                    )
+                  }
+                }
+              </UserConsumer>
+        )}
+      </ThemeConsumer>
     ) 
   } 
 } 
