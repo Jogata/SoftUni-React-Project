@@ -495,37 +495,31 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function Names() {
-  const [name, setName] = useState({
-    first: "", 
-    second: ""
-  })
+function Items() {
+  const [items, setItems] = useState([]);
 
-  console.log(name);
+  console.log(items);
 
-  return (
-    <>
-    <form>
-      <input 
-        type="text" 
-        value={name.first} 
-        // onChange={(e) => setName({first: e.target.value})} 
-        onChange={(e) => setName({...name, first: e.target.value})} 
-      />
-      <input 
-        type="text" 
-        value={name.second} 
-        // onChange={(e) => setName({second: e.target.value})} 
-        onChange={(e) => setName({...name, second: e.target.value})} 
-      />
-    </form>
-    <div>
-      <h1>Your first name is - {name.first}</h1>
-      <h1>Your second name is - {name.second}</h1>
-    </div>
-    </>
-  )
-}
+  function addItem() {
+    setItems([...items, {
+      id: items.length, 
+      value: Math.floor(Math.random() * 10) + 1
+    }])  
+  } 
+
+  return (  
+    <div style={{flex: 1, padding: "1rem"}}>
+      <button onClick={addItem}>Add a number</button>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.value}
+          </li>
+        ))}
+      </ul>
+    </div>  
+  ) 
+} 
 
 function App() {
   return (
@@ -533,7 +527,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Names />
+          <Items />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
