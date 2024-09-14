@@ -495,138 +495,37 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class PostList extends Component {  
-  constructor(props) {  
-    super(props); 
+function Names() {
+  const [name, setName] = useState({
+    first: "", 
+    second: ""
+  })
 
-    this.state = {  
-      posts: [],   
-      message: ""   
-    }   
-  }   
+  console.log(name);
 
-  componentDidMount() { 
-    fetch("https://jsonplaceholder.typicode.com/postss") 
-    .then(res => {  
-      if (!res.ok) {  
-        throw new Error("Error retrieving data");    
-      }   
-      return res.json();      
-    })    
-    // .then(res => res.json())  
-    .then(data => this.setState({posts: data})) 
-    // .then(() => console.log(this.state.posts)) 
-    .catch(error => {       
-      // console.log(error);  
-      this.setState({message: error.message});  
-    })
-  }
-
-  render() {    
-    const { posts, message } = this.state; 
-    // const posts = [];   
-
-    return (    
-      <div style={{flex: 1, padding: "1rem"}}>  
-        <h1>List of Posts</h1>  
-        {   
-          posts.length ?    
-          posts.map(post => <h2 key={post.id}>{post.title}</h2>) :    
-          <h2>No posts yet</h2>    
-        }   
-        { message && <h2>{message}</h2> }
-      </div>  
-    )   
-  }   
-}   
-
-class PostForm extends Component {  
-  constructor(props) {  
-    super(props); 
-
-    this.state = {  
-      userID: "",   
-      title: "",   
-      body: ""   
-    }   
-
-    this.inputRef = createRef();
-  }   
-
-  changeHandler = (e) => {    
-    this.setState({[e.target.name]: e.target.value});   
-  }   
-
-  submitHandler = (e) => {  
-    e.preventDefault();   
-    console.log(this.state);
-    fetch("https://jsonplaceholder.typicode.com/posts", {    
-      method: "POST",     
-      headers: {    
-        "Content-Type": "application/json"        
-      },    
-      body: JSON.stringify(this.state)    
-    })    
-    .then(res => console.log(res))    
-    // .then()   
-    .catch(err => {
-      console.log(err.message);
-    })
-  }   
-
-  componentDidMount() { 
-    this.inputRef.current.focus();
-    fetch("https://jsonplaceholder.typicode.com/posts") 
-    .then(res => {  
-      if (!res.ok) {  
-        throw new Error("Error retrieving data");    
-      }   
-      return res.json();      
-    })    
-    // .then(res => res.json())  
-    .then(data => this.setState({posts: data})) 
-    // .then(() => console.log(this.state.posts)) 
-    .catch(error => {       
-      // console.log(error);  
-      this.setState({message: error.message});  
-    })
-  }
-
-  render() {    
-    const { userID, title, body } = this.state; 
-    // const posts = [];   
-
-    return (    
-      <div style={{flex: 1, padding: "1rem"}}>  
-        <h1>Create a Post</h1>  
-        <form onSubmit={this.submitHandler}>  
-          <div>   
-            <input 
-              type="text"   
-              name="userID"   
-              value={userID} ref={this.inputRef}  
-              onChange={this.changeHandler} />   
-          </div>    
-          <div>   
-            <input 
-              type="text"   
-              name="title"  
-              value={title}   
-              onChange={this.changeHandler} />   
-          </div>    
-          <div>   
-            <input 
-              type="text"   
-              name="body"   
-              value={body}  
-              onChange={this.changeHandler} />   
-          </div>    
-          <button type="submit">Submit</button>
-        </form>   
-      </div>  
-    )   
-  }   
-}   
+  return (
+    <>
+    <form>
+      <input 
+        type="text" 
+        value={name.first} 
+        // onChange={(e) => setName({first: e.target.value})} 
+        onChange={(e) => setName({...name, first: e.target.value})} 
+      />
+      <input 
+        type="text" 
+        value={name.second} 
+        // onChange={(e) => setName({second: e.target.value})} 
+        onChange={(e) => setName({...name, second: e.target.value})} 
+      />
+    </form>
+    <div>
+      <h1>Your first name is - {name.first}</h1>
+      <h1>Your second name is - {name.second}</h1>
+    </div>
+    </>
+  )
+}
 
 function App() {
   return (
@@ -634,8 +533,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-            {/* <PostList /> */}
-            <PostForm />
+          <Names />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
