@@ -540,13 +540,102 @@ class PostList extends Component {
   }   
 }   
 
+class PostForm extends Component {  
+  constructor(props) {  
+    super(props); 
+
+    this.state = {  
+      userID: "",   
+      title: "",   
+      body: ""   
+    }   
+
+    this.inputRef = createRef();
+  }   
+
+  changeHandler = (e) => {    
+    this.setState({[e.target.name]: e.target.value});   
+  }   
+
+  submitHandler = (e) => {  
+    e.preventDefault();   
+    console.log(this.state);
+    fetch("https://jsonplaceholder.typicode.com/posts", {    
+      method: "POST",     
+      headers: {    
+        "Content-Type": "application/json"        
+      },    
+      body: JSON.stringify(this.state)    
+    })    
+    .then(res => console.log(res))    
+    // .then()   
+    .catch(err => {
+      console.log(err.message);
+    })
+  }   
+
+  componentDidMount() { 
+    this.inputRef.current.focus();
+    fetch("https://jsonplaceholder.typicode.com/posts") 
+    .then(res => {  
+      if (!res.ok) {  
+        throw new Error("Error retrieving data");    
+      }   
+      return res.json();      
+    })    
+    // .then(res => res.json())  
+    .then(data => this.setState({posts: data})) 
+    // .then(() => console.log(this.state.posts)) 
+    .catch(error => {       
+      // console.log(error);  
+      this.setState({message: error.message});  
+    })
+  }
+
+  render() {    
+    const { userID, title, body } = this.state; 
+    // const posts = [];   
+
+    return (    
+      <div style={{flex: 1, padding: "1rem"}}>  
+        <h1>Create a Post</h1>  
+        <form onSubmit={this.submitHandler}>  
+          <div>   
+            <input 
+              type="text"   
+              name="userID"   
+              value={userID} ref={this.inputRef}  
+              onChange={this.changeHandler} />   
+          </div>    
+          <div>   
+            <input 
+              type="text"   
+              name="title"  
+              value={title}   
+              onChange={this.changeHandler} />   
+          </div>    
+          <div>   
+            <input 
+              type="text"   
+              name="body"   
+              value={body}  
+              onChange={this.changeHandler} />   
+          </div>    
+          <button type="submit">Submit</button>
+        </form>   
+      </div>  
+    )   
+  }   
+}   
+
 function App() {
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-            <PostList />
+            {/* <PostList /> */}
+            <PostForm />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
