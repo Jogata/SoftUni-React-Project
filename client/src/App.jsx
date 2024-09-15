@@ -513,6 +513,10 @@ class ClassMouse extends Component {
 		window.addEventListener('mousemove', this.logMousePosition);
 	} 
 
+	componentWillUnmount() { 
+		window.removeEventListener('mousemove', this.logMousePosition);
+	} 
+
 	render() {  
 		return (  
 			<div> 
@@ -535,6 +539,11 @@ function HookMouse() {
 	useEffect(() => { 
 		console.log('useFffect called');
     window.addEventListener('mousemove', logMousePosition);
+
+    return () => {  
+      console.log('Component unmounting code');
+      window.removeEventListener('mousemove', logMousePosition);
+    } 
 	}, []); 
 
 	return (  
@@ -544,6 +553,21 @@ function HookMouse() {
 	) 
 } 
 
+function MouseContainer() {
+	const [display, setDisplay] = useState(true);
+
+	return (
+		<div>
+			<button 
+        onClick={() => setDisplay(!display)}
+      >
+        Toggle display
+      </button>
+			{display && <HookMouse />}
+		</div>
+	)
+}
+
 function App() {
   return (
     <>
@@ -551,7 +575,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <ClassMouse />
-          <HookMouse />
+          {/* <HookMouse /> */}
+          <MouseContainer />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
