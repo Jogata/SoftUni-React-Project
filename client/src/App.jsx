@@ -495,64 +495,54 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class ClassCounterOne extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			count: 0,
-			name: ''
-		}
-	}
+class ClassMouse extends Component {
+	constructor(props) {  
+		super(props);  
 
-	componentDidMount() {
-		document.title = `Clicked ${this.state.count} times`;
-	}
+		this.state = {  
+			x: 0,
+			y: 0
+		} 
+	} 
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.count !== this.state.count) {
-			console.log('Updating document title');
-			document.title = `Clicked ${this.state.count} times`;
-		}
-	}
+	logMousePosition = e => { 
+		this.setState({ x: e.clientX, y: e.clientY });
+	} 
 
-	render() {
-		return (
-			<div>
-				<input 
-          type="text" 
-          value={this.state.name} 
-          onChange={e => this.setState({ name: e.target.value })} 
-        />
-				<button onClick={() => this.setState({ count: this.state.count + 1 })}>
-					Click {this.state.count} times
-				</button>
-			</div>
-		)
-	}
-}
+	componentDidMount() { 
+		window.addEventListener('mousemove', this.logMousePosition);
+	} 
 
-function HookCounterOne() {
-	const [count, setCount] = useState(0);
-	const [name, setName] = useState('');
+	render() {  
+		return (  
+			<div> 
+				X - {this.state.x} Y - {this.state.y}
+			</div>  
+		) 
+	} 
+} 
 
-	useEffect(() => {
-		console.log('useEffect - Updating document title ')
-		document.title = `You clicked ${count} times`
-	}, [count]);
+function HookMouse() {
+	const [x, setX] = useState(0);
+	const [y, setY] = useState(0);
 
-	return (
-		<div>
-			<input 
-        type="text" 
-        value={name} 
-        onChange={e => setName(e.target.value)} 
-      />
-			<button onClick={() => setCount(count + 1)}>
-				useEffect - Click {count} times
-			</button>
-		</div>
-	)
-}
+	const logMousePosition = e => {
+		console.log('Mouse event');
+		setX(e.clientX);
+		setY(e.clientY);
+	} 
+
+	useEffect(() => { 
+		console.log('useFffect called');
+    window.addEventListener('mousemove', logMousePosition);
+	}, []); 
+
+	return (  
+		<div> 
+			Hooks - X - {x} Y - {y}
+		</div>  
+	) 
+} 
 
 function App() {
   return (
@@ -560,8 +550,8 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ClassCounterOne />
-          <HookCounterOne />
+          <ClassMouse />
+          <HookMouse />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
