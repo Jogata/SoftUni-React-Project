@@ -495,31 +495,64 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function Items() {
-  const [items, setItems] = useState([]);
+class ClassCounterOne extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			count: 0,
+			name: ''
+		}
+	}
 
-  console.log(items);
+	componentDidMount() {
+		document.title = `Clicked ${this.state.count} times`;
+	}
 
-  function addItem() {
-    setItems([...items, {
-      id: items.length, 
-      value: Math.floor(Math.random() * 10) + 1
-    }])  
-  } 
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.count !== this.state.count) {
+			console.log('Updating document title');
+			document.title = `Clicked ${this.state.count} times`;
+		}
+	}
 
-  return (  
-    <div style={{flex: 1, padding: "1rem"}}>
-      <button onClick={addItem}>Add a number</button>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.value}
-          </li>
-        ))}
-      </ul>
-    </div>  
-  ) 
-} 
+	render() {
+		return (
+			<div>
+				<input 
+          type="text" 
+          value={this.state.name} 
+          onChange={e => this.setState({ name: e.target.value })} 
+        />
+				<button onClick={() => this.setState({ count: this.state.count + 1 })}>
+					Click {this.state.count} times
+				</button>
+			</div>
+		)
+	}
+}
+
+function HookCounterOne() {
+	const [count, setCount] = useState(0);
+	const [name, setName] = useState('');
+
+	useEffect(() => {
+		console.log('useEffect - Updating document title ')
+		document.title = `You clicked ${count} times`
+	}, [count]);
+
+	return (
+		<div>
+			<input 
+        type="text" 
+        value={name} 
+        onChange={e => setName(e.target.value)} 
+      />
+			<button onClick={() => setCount(count + 1)}>
+				useEffect - Click {count} times
+			</button>
+		</div>
+	)
+}
 
 function App() {
   return (
@@ -527,7 +560,8 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Items />
+          <ClassCounterOne />
+          <HookCounterOne />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
