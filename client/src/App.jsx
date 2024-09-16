@@ -495,77 +495,53 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class ClassMouse extends Component {
-	constructor(props) {  
-		super(props);  
+class IntervalClassCounter extends Component {
+  constructor(props) {
+    super(props);
 
-		this.state = {  
-			x: 0,
-			y: 0
-		} 
-	} 
+    this.state = {
+      count: 0
+    }
+  }
 
-	logMousePosition = e => { 
-		this.setState({ x: e.clientX, y: e.clientY });
-	} 
+	componentDidMount() {
+		this.interval = setInterval(this.tick, 1000);
+	}
 
-	componentDidMount() { 
-		window.addEventListener('mousemove', this.logMousePosition);
-	} 
+	componentWillUnmount() {
+		clearInterval(this.interval);
+	}
 
-	componentWillUnmount() { 
-		window.removeEventListener('mousemove', this.logMousePosition);
-	} 
+	tick = () => {
+		this.setState({
+			count: this.state.count + 1
+		})
+	}
 
-	render() {  
-		return (  
-			<div> 
-				X - {this.state.x} Y - {this.state.y}
-			</div>  
-		) 
-	} 
-} 
+	render() {
+		return <h1>{this.state.count}</h1>
+	}
+}
 
-function HookMouse() {
-	const [x, setX] = useState(0);
-	const [y, setY] = useState(0);
+function IntervalHookCounter() {
+  const [count, setCount] = useState(0);
 
-	const logMousePosition = e => {
-		console.log('Mouse event');
-		setX(e.clientX);
-		setY(e.clientY);
-	} 
+  const tick = () => {
+    setCount(count + 1);
+  }
+  useEffect(() => {
+    const interval = setInterval(tick, 1000);
 
-	useEffect(() => { 
-		console.log('useFffect called');
-    window.addEventListener('mousemove', logMousePosition);
+    return () => {
+      clearInterval(interval);
+    }
+	}, [count]);
 
-    return () => {  
-      console.log('Component unmounting code');
-      window.removeEventListener('mousemove', logMousePosition);
-    } 
-	}, []); 
-
-	return (  
-		<div> 
-			Hooks - X - {x} Y - {y}
-		</div>  
-	) 
-} 
-
-function MouseContainer() {
-	const [display, setDisplay] = useState(true);
-
-	return (
-		<div>
-			<button 
-        onClick={() => setDisplay(!display)}
-      >
-        Toggle display
-      </button>
-			{display && <HookMouse />}
-		</div>
-	)
+  return (
+    <div>
+      {count}
+    </div>
+  )
 }
 
 function App() {
@@ -574,9 +550,8 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ClassMouse />
-          {/* <HookMouse /> */}
-          <MouseContainer />
+          <IntervalClassCounter />
+          <IntervalHookCounter />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
