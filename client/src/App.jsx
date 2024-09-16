@@ -495,51 +495,36 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function DataFetching() {
-	const [post, setPost] = useState({});
-	const [id, setId] = useState(1);
-	const [idFromButtonClick, setIdFromButtonClick] = useState(1);
+const UserContext = createContext();
+const ChannelContext = createContext();
 
-	useEffect(() => { 
-		fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then(res => {
-        return res.json();
-      })
-			.then(data => {
-        console.log(data);
-        setPost(data)
-			})
-			.catch(err => {
-				console.log(err)
-			})
-	}, [idFromButtonClick]);
+function ComponentF() {
+	return ( 
+		<div> 
+			<UserContext.Consumer>
+				{user => {
+					return (
+						<ChannelContext.Consumer>
+							{channel => {
+                return <div>User context value {user}, channel context value {channel}</div>
+							}}
+						</ChannelContext.Consumer>
+					)
+				}}
+			</UserContext.Consumer>
+		</div> 
+	) 
+} 
 
-	const handleClick = () => {
-		setIdFromButtonClick(id);
-	} 
+function ComponentE() {
+  const user = useContext(UserContext);
+  const channel = useContext(ChannelContext);
+  return <div> User is {user} and channel is {channel}</div>
+} 
 
-	return (
-		<div>
-			<input 
-        type="text" 
-        value={id} 
-        onChange={e => setId(e.target.value)} 
-      />
-			<button 
-        type="button" 
-        onClick={handleClick} 
-      >
-        Fetch Post
-      </button>
-			<div>{post.title}</div>
-			{/* <ul>
-				{posts.map(post => (
-          <li key={post.id}>{post.title}</li>
-				))}
-			</ul> */}
-		</div>
-	)
-}
+function ComponentC() {
+	return <ComponentE />
+} 
 
 function App() {
   return (
@@ -547,9 +532,12 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <DataFetching />
-          {/* <ClickCounterTwo /> */}
-          {/* <HoverCounterTwo /> */}
+          <ComponentF />
+          <UserContext.Provider value={'Jogata'}>
+            <ChannelContext.Provider value={'Test'}>
+              <ComponentC />
+            </ChannelContext.Provider>
+          </UserContext.Provider>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
