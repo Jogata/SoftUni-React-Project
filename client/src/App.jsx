@@ -495,53 +495,50 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class IntervalClassCounter extends Component {
-  constructor(props) {
-    super(props);
+function DataFetching() {
+	const [post, setPost] = useState({});
+	const [id, setId] = useState(1);
+	const [idFromButtonClick, setIdFromButtonClick] = useState(1);
 
-    this.state = {
-      count: 0
-    }
-  }
+	useEffect(() => { 
+		fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(res => {
+        return res.json();
+      })
+			.then(data => {
+        console.log(data);
+        setPost(data)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}, [idFromButtonClick]);
 
-	componentDidMount() {
-		this.interval = setInterval(this.tick, 1000);
-	}
+	const handleClick = () => {
+		setIdFromButtonClick(id);
+	} 
 
-	componentWillUnmount() {
-		clearInterval(this.interval);
-	}
-
-	tick = () => {
-		this.setState({
-			count: this.state.count + 1
-		})
-	}
-
-	render() {
-		return <h1>{this.state.count}</h1>
-	}
-}
-
-function IntervalHookCounter() {
-  const [count, setCount] = useState(0);
-
-  const tick = () => {
-    setCount(count + 1);
-  }
-  useEffect(() => {
-    const interval = setInterval(tick, 1000);
-
-    return () => {
-      clearInterval(interval);
-    }
-	}, [count]);
-
-  return (
-    <div>
-      {count}
-    </div>
-  )
+	return (
+		<div>
+			<input 
+        type="text" 
+        value={id} 
+        onChange={e => setId(e.target.value)} 
+      />
+			<button 
+        type="button" 
+        onClick={handleClick} 
+      >
+        Fetch Post
+      </button>
+			<div>{post.title}</div>
+			{/* <ul>
+				{posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+				))}
+			</ul> */}
+		</div>
+	)
 }
 
 function App() {
@@ -550,8 +547,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <IntervalClassCounter />
-          <IntervalHookCounter />
+          <DataFetching />
           {/* <ClickCounterTwo /> */}
           {/* <HoverCounterTwo /> */}
           {/* <User name="Jogata" /> */}
