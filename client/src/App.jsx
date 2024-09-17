@@ -495,36 +495,32 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UserContext = createContext();
-const ChannelContext = createContext();
+const initialState = 0;
+const reducer = (state, action) => {
+	switch (action) {
+		case 'increment':
+			return state + 1
+		case 'decrement':
+			return state - 1
+		case 'reset':
+			return initialState
+		default:
+			return state
+	}
+};
 
-function ComponentF() {
-	return ( 
-		<div> 
-			<UserContext.Consumer>
-				{user => {
-					return (
-						<ChannelContext.Consumer>
-							{channel => {
-                return <div>User context value {user}, channel context value {channel}</div>
-							}}
-						</ChannelContext.Consumer>
-					)
-				}}
-			</UserContext.Consumer>
-		</div> 
-	) 
-} 
+function CounterOne() {
+	const [count, dispatch] = useReducer(reducer, initialState);
 
-function ComponentE() {
-  const user = useContext(UserContext);
-  const channel = useContext(ChannelContext);
-  return <div> User is {user} and channel is {channel}</div>
-} 
-
-function ComponentC() {
-	return <ComponentE />
-} 
+	return (
+    <div>
+      <div>Count = {count}</div>
+      <button onClick={() => dispatch('increment')}>Increment</button>
+			<button onClick={() => dispatch('decrement')}>Decrement</button>
+			<button onClick={() => dispatch('reset')}>Reset</button>
+		</div>
+	)
+}
 
 function App() {
   return (
@@ -532,12 +528,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ComponentF />
-          <UserContext.Provider value={'Jogata'}>
-            <ChannelContext.Provider value={'Test'}>
-              <ComponentC />
-            </ChannelContext.Provider>
-          </UserContext.Provider>
+          <CounterOne />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
