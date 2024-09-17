@@ -495,59 +495,38 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const initialState = {
-	firstCounter: 0,
-	secondCounter: 10
+const initialState = 0;
+const reducer = (state, action) => {
+	switch (action) {
+		case 'increment':
+			return state + 1;
+		case 'decrement':
+			return state - 1;
+		case 'reset':
+			return initialState;
+		default:
+			return state;
+	}
 };
 
-const reducer = (state, action) => {  
-	switch (action.type) {
-		case 'increment': 
-			return { ...state, firstCounter: state.firstCounter + action.value };
-		case 'decrement': 
-			return { ...state, firstCounter: state.firstCounter - action.value };
-		case 'increment2':
-			return { ...state, secondCounter: state.secondCounter + action.value };
-		case 'decrement2':
-			return { ...state, secondCounter: state.secondCounter - action.value };
-		case 'reset': 
-			return initialState;
-		default:  
-			return state;
-	} 
-} 
+function CounterThree() {
+	const [count, dispatch] = useReducer(reducer, initialState)
+	const [countTwo, dispatchTwo] = useReducer(reducer, initialState)
 
-function CounterTwo() {
-	const [count, dispatch] = useReducer(reducer, initialState);  
+	return (
+		<div>
+			<div>Count = {count}</div>
+			<button onClick={() => dispatch('increment')}>Increment</button>
+			<button onClick={() => dispatch('decrement')}>Decrement</button>
+			<button onClick={() => dispatch('reset')}>Reset</button>
 
-	return (  
-		<div> 
-			<div>Count = {count.firstCounter}</div>
-			<button onClick={() => dispatch({ type: 'increment', value: 1 })}>
-				Increment
-			</button>
-			<button onClick={() => dispatch({ type: 'decrement', value: 1 })}>
-				Decrement
-			</button>
-			<button onClick={() => dispatch({ type: 'increment', value: 5 })}>
-				Increment 5
-			</button>
-			<button onClick={() => dispatch({ type: 'decrement', value: 5 })}>
-				Decrement 5
-			</button>
-			<button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-			<div>Secound Counter = {count.secondCounter}</div>
-			<div> 
-				<button onClick={() => dispatch({ type: 'increment2', value: 1 })}>
-					Increment
-				</button>
-				<button onClick={() => dispatch({ type: 'decrement2', value: 1 })}>
-					Decrement
-				</button>
-			</div>  
-		</div>  
-	) 
-} 
+			<div>Count = {countTwo}</div>
+			<button onClick={() => dispatchTwo('increment')}>Increment</button>
+			<button onClick={() => dispatchTwo('decrement')}>Decrement</button>
+			<button onClick={() => dispatchTwo('reset')}>Reset</button>
+		</div>
+	)
+}
 
 function App() {
   return (
@@ -555,7 +534,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <CounterTwo />
+          <CounterThree />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
