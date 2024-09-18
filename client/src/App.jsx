@@ -495,100 +495,41 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const CountContext = createContext();
+function DataFetchingOne() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [post, setPost] = useState({});
 
-function ComponentA() {
-  const countContext = useContext(CountContext);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/1`)
+      .then(res => res.json())
+      .then(data => {
+        setLoading(false);
+        setPost(data);
+        setError('');
+      })  
+      .catch(error => {
+        setLoading(false);
+        setPost({});
+        setError('Something went wrong!');
+      })  
+  }, [])  
 
-  return (
-    <div>
-      <h1>Component A {countContext.countState}</h1>
-      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
-			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
-			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
-    </div>
-  )
-}
-
-function ComponentB() {
-	return (
-		<div>
-			Component B<ComponentD />
-		</div>
-	)
-}
-
-function ComponentC() {
-	return (
-		<div>
-			Component C<ComponentE />
-		</div>
-	)
-}
-
-function ComponentD() {
-  const countContext = useContext(CountContext);
-
-  return (
-    <div>
-      <h1>Component D {countContext.countState}</h1>
-      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
-			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
-			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
-    </div>
-  )
-}
-
-function ComponentE() {
-	return (
-		<div>
-			Component E<ComponentF />
-		</div>
-	)
-}
-
-function ComponentF() {
-  const countContext = useContext(CountContext);
-
-  return (
-    <div>
-      <h1>Component F {countContext.countState}</h1>
-      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
-			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
-			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
-    </div>
-  )
-}
+  return (  
+    <div> 
+      {loading ? 'Loading' : post.title}
+      {error ? error : null}
+    </div>  
+  ) 
+} 
 
 function App() {
-  const initialState = 0;
-  const reducer = (state, action) => {
-    switch (action) {
-      case 'increment':
-        return state + 1;
-      case 'decrement':
-        return state - 1;
-      case 'reset':
-        return initialState;
-      default:
-        return state;
-    }
-  }
-  
-  const [count, dispatch] = useReducer(reducer, initialState);
-
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <CountContext.Provider
-            value={{ countState: count, countDispatch: dispatch }}
-          >
-            <ComponentA />
-            <ComponentB />
-            <ComponentC />
-          </CountContext.Provider>
+            <DataFetchingOne />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
