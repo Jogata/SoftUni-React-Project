@@ -495,33 +495,53 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function DataFetchingOne() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [post, setPost] = useState({});
+const initialState = {
+	loading: true,
+	error: '',
+	post: {}
+};
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/1`)
-      .then(res => res.json())
-      .then(data => {
-        setLoading(false);
-        setPost(data);
-        setError('');
-      })  
-      .catch(error => {
-        setLoading(false);
-        setPost({});
-        setError('Something went wrong!');
-      })  
-  }, [])  
+const reducer = (state, action) => {
+	switch (action.type) {
+		case 'FETCH_SUCCESS':
+			return {
+				loading: false,
+				post: action.payload,
+				error: ''
+			};
+		case 'FETCH_ERROR':
+			return {
+				loading: false,
+				post: {},
+				error: 'Something went wrong!'
+			};
+		default:
+			return state;
+	}
+}
 
-  return (  
-    <div> 
-      {loading ? 'Loading' : post.title}
-      {error ? error : null}
-    </div>  
-  ) 
-} 
+function DataFetchingTwo() {
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => { 
+    fetch(`https://jsonplaceholder.typicode.com/posts/1`) 
+      .then(response => response.json())
+      .then(data => { 
+        // console.log(data);
+        dispatch({ type: 'FETCH_SUCCESS', payload: data });
+      })
+      .catch(error => { 
+        dispatch({ type: 'FETCH_ERROR' });
+      })
+	}, []);
+
+	return (
+		<div>
+			{state.loading ? 'Loading' : state.post.title}
+			{state.error ? state.error : null}
+		</div>
+	)
+}
 
 function App() {
   return (
@@ -529,7 +549,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-            <DataFetchingOne />
+            <DataFetchingTwo />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
