@@ -495,52 +495,50 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const initialState = {
-	loading: true,
-	error: '',
-	post: {}
-};
+function ParentComponent() {
+	const [age, setAge] = useState(25);
+	const [salary, setSalary] = useState(50000);
 
-const reducer = (state, action) => {
-	switch (action.type) {
-		case 'FETCH_SUCCESS':
-			return {
-				loading: false,
-				post: action.payload,
-				error: ''
-			};
-		case 'FETCH_ERROR':
-			return {
-				loading: false,
-				post: {},
-				error: 'Something went wrong!'
-			};
-		default:
-			return state;
-	}
-}
+	const incrementAge = useCallback(() => {
+		setAge(age + 1);
+	}, [age]);
 
-function DataFetchingTwo() {
-	const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => { 
-    fetch(`https://jsonplaceholder.typicode.com/posts/1`) 
-      .then(response => response.json())
-      .then(data => { 
-        // console.log(data);
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
-      })
-      .catch(error => { 
-        dispatch({ type: 'FETCH_ERROR' });
-      })
-	}, []);
+	const incrementSalary = useCallback(() => {
+		setSalary(salary + 1000);
+	}, [salary]);
 
 	return (
 		<div>
-			{state.loading ? 'Loading' : state.post.title}
-			{state.error ? state.error : null}
+			<Title />
+			<Count text="Age" count={age} />
+			<Button handleClick={incrementAge}>Increment Age</Button>
+			<Count text="Salary" count={salary} />
+			<Button handleClick={incrementSalary}>Increment Salary</Button>
 		</div>
 	)
+}
+
+function Title() {
+  console.log('Rendering Title');
+  return (
+    <h2>
+      useCallback Hook
+    </h2>
+  )
+}
+
+function Count({ text, count }) {
+	console.log(`Rendering ${text}`);
+	return <div>{text} - {count}</div>
+}
+
+function Button({ handleClick, children }) {
+  console.log('Rendering button - ', children);
+  return (
+    <button onClick={handleClick}>
+      {children}
+    </button>
+  )
 }
 
 function App() {
@@ -549,7 +547,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-            <DataFetchingTwo />
+          <ParentComponent />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
