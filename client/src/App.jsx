@@ -495,50 +495,35 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function ParentComponent() {
-	const [age, setAge] = useState(25);
-	const [salary, setSalary] = useState(50000);
+function Counter() {
+	const [counterOne, setCounterOne] = useState(0);
+	const [counterTwo, setCounterTwo] = useState(0);
 
-	const incrementAge = useCallback(() => {
-		setAge(age + 1);
-	}, [age]);
+	const incrementOne = () => {
+		setCounterOne(counterOne + 1);
+	}
 
-	const incrementSalary = useCallback(() => {
-		setSalary(salary + 1000);
-	}, [salary]);
+	const incrementTwo = () => {
+		setCounterTwo(counterTwo + 1);
+  }
+
+  const isEven = useMemo(() => {
+    let i = 0;
+    while (i < 2000000000) i++
+    return counterOne % 2 === 0
+  }, [counterOne]);
 
 	return (
 		<div>
-			<Title />
-			<Count text="Age" count={age} />
-			<Button handleClick={incrementAge}>Increment Age</Button>
-			<Count text="Salary" count={salary} />
-			<Button handleClick={incrementSalary}>Increment Salary</Button>
+			<div>
+        <button onClick={incrementOne}>Count One - {counterOne}</button>
+        <span>{isEven ? 'Even' : 'Odd'}</span>
+			</div>
+			<div>
+        <button onClick={incrementTwo}>Count Two - {counterTwo}</button>
+			</div>
 		</div>
 	)
-}
-
-function Title() {
-  console.log('Rendering Title');
-  return (
-    <h2>
-      useCallback Hook
-    </h2>
-  )
-}
-
-function Count({ text, count }) {
-	console.log(`Rendering ${text}`);
-	return <div>{text} - {count}</div>
-}
-
-function Button({ handleClick, children }) {
-  console.log('Rendering button - ', children);
-  return (
-    <button onClick={handleClick}>
-      {children}
-    </button>
-  )
 }
 
 function App() {
@@ -547,7 +532,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ParentComponent />
+          <Counter />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
