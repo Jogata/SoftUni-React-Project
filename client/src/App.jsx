@@ -495,36 +495,20 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function Counter() {
-	const [counterOne, setCounterOne] = useState(0);
-	const [counterTwo, setCounterTwo] = useState(0);
+function FocusInput() {
+	const inputRef = useRef(null);
 
-	const incrementOne = () => {
-		setCounterOne(counterOne + 1);
-	}
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
 
-	const incrementTwo = () => {
-		setCounterTwo(counterTwo + 1);
-  }
-
-  const isEven = useMemo(() => {
-    let i = 0;
-    while (i < 2000000000) i++
-    return counterOne % 2 === 0
-  }, [counterOne]);
-
-	return (
-		<div>
-			<div>
-        <button onClick={incrementOne}>Count One - {counterOne}</button>
-        <span>{isEven ? 'Even' : 'Odd'}</span>
-			</div>
-			<div>
-        <button onClick={incrementTwo}>Count Two - {counterTwo}</button>
-			</div>
-		</div>
-	)
-}
+	return (  
+		<div> 
+			<input type="text" style={{marginBottom: "1rem"}} />
+			<input ref={inputRef} type="text" />
+		</div>  
+	) 
+} 
 
 function App() {
   return (
@@ -532,7 +516,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Counter />
+          <FocusInput />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
