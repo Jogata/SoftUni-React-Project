@@ -495,58 +495,37 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-class ClassTimer extends Component {
+function useCounter(initialCount = 0, value) {
+	const [count, setCount] = useState(initialCount);
 
-  interval
-  constructor(props) {
-    super(props);
+	const increment = () => {
+		setCount(prevCount => prevCount + value);
+	}
 
-    this.state = {
-       timer: 0
-    }
-  }
+	const decrement = () => {
+		setCount(prevCount => prevCount - value);
+	}
 
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(prevState => (this.setState({timer: prevState.timer + 1})))
-    }, 1000);
-  }
+	const reset = () => {
+		setCount(initialCount);
+	}
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+	return [count, increment, decrement, reset];
+  
+} 
 
-  render() {
-    return (
-      <div style={{textAlign: "center"}}>
-        <p>Class Timer - {this.state.timer} -</p>
-        <button onClick={() => clearInterval(this.interval)}>Clear Timer</button>
-      </div>
-    )
-  }
-}
+function CounterOne() {
+	const [count, increment, decrement, reset] = useCounter(0, 1);
 
-function HookTimer() {
-  const [timer, setTimer] = useState(0);
-  const interValRef = useRef();
-
-  useEffect(() => {
-    interValRef.current = setInterval(() => {
-      setTimer(timer => timer + 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(interValRef.current);
-    }
-  }, [])
-
-  return (
-    <div style={{textAlign: "center"}}>
-      <p>HookTimer - {timer} -</p>
-      <button onClick={() => clearInterval(interValRef.current)}>Clear Timer</button>
-    </div>
-  )
-}
+	return (
+		<div>
+			<h2>Count = {count}</h2>
+			<button onClick={increment}>Increment</button>
+			<button onClick={decrement}>Decrement</button>
+			<button onClick={reset}>Reset</button>
+		</div>
+	)
+} 
 
 function App() {
   return (
@@ -554,8 +533,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <ClassTimer />
-          <HookTimer />
+          <CounterOne />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
