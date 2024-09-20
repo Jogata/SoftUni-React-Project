@@ -495,20 +495,36 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function FocusInput() {
-	const inputRef = useRef(null);
+class ClassTimer extends Component {
 
-	useEffect(() => {
-		inputRef.current.focus();
-	}, []);
+  interval
+  constructor(props) {
+    super(props);
 
-	return (  
-		<div> 
-			<input type="text" style={{marginBottom: "1rem"}} />
-			<input ref={inputRef} type="text" />
-		</div>  
-	) 
-} 
+    this.state = {
+       timer: 0
+    }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState(prevState => (this.setState({timer: prevState.timer + 1})))
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div style={{textAlign: "center"}}>
+        <p>Class Timer - {this.state.timer} -</p>
+        <button onClick={() => clearInterval(this.interval)}>Clear Timer</button>
+      </div>
+    )
+  }
+}
 
 function App() {
   return (
@@ -516,7 +532,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <FocusInput />
+          <ClassTimer />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
