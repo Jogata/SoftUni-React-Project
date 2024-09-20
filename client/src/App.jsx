@@ -526,6 +526,28 @@ class ClassTimer extends Component {
   }
 }
 
+function HookTimer() {
+  const [timer, setTimer] = useState(0);
+  const interValRef = useRef();
+
+  useEffect(() => {
+    interValRef.current = setInterval(() => {
+      setTimer(timer => timer + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interValRef.current);
+    }
+  }, [])
+
+  return (
+    <div style={{textAlign: "center"}}>
+      <p>HookTimer - {timer} -</p>
+      <button onClick={() => clearInterval(interValRef.current)}>Clear Timer</button>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -533,6 +555,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <ClassTimer />
+          <HookTimer />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
