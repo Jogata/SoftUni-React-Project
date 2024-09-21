@@ -495,78 +495,56 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function useCounter(value, initialCount = 0) {
-	const [count, setCount] = useState(initialCount);
+function useInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
 
-	const increment = () => {
-		setCount(prevCount => prevCount + value);
-	}
+  const reset = () => {
+    setValue('');
+  }
 
-	const decrement = () => {
-		setCount(prevCount => prevCount - value);
-	}
+  const bind = {
+    value,
+    onChange: e => {
+      setValue(e.target.value);
+    }
+  }
 
-	const reset = () => {
-		setCount(initialCount);
-	}
+  return [value, bind, reset];
+}
 
-	return [count, increment, decrement, reset];
+function UserForm() {
+  const [firstName, bindFirstName, resetFirstName] = useInput('');
+  const [lastName, bindLastName, resetLastName] = useInput('');
 
-} 
+  const submitHandler = e => {
+    e.preventDefault();
+    console.log(`Hello ${firstName} ${lastName}`);
+    resetFirstName();
+    resetLastName();
+  }
 
-function CounterOne() {
-	const [count, increment, decrement, reset] = useCounter(1);
-
-	return (
-		<div>
-			<h2>Count = {count}</h2>
-			<button onClick={increment}>Increment</button>
-			<button onClick={decrement}>Decrement</button>
-			<button onClick={reset}>Reset</button>
+	return (  
+		<div> 
+      <form onSubmit={submitHandler}>
+				<div>
+					<label>First Name</label>
+					<input
+            type="text"
+            {...bindFirstName}
+					/>
+				</div>
+				<div>
+					<label>Last Name</label>
+					<input
+            type="text"
+            {...bindLastName}
+					/>
+        </div>
+        <button>Submit</button>
+			</form>
 		</div>
 	)
 } 
-
-function CounterTwo() {
-	const [count, increment, decrement, reset] = useCounter(10, 10);
-
-	return (
-		<div>
-			<h2>Count = {count}</h2>
-			<button onClick={increment}>Increment</button>
-			<button onClick={decrement}>Decrement</button>
-			<button onClick={reset}>Reset</button>
-		</div>
-	)
-}
-
-function DocTitleOne() {
-  const [count, setCount] = useState(0);
-  useDocumentTitle(count);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Count - {count}</button>
-    </div>
-  )
-}
-
-function DocTitleTwo() {
-  const [count, setCount] = useState(0);
-  useDocumentTitle(count);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Count - {count}</button>
-    </div>
-  )
-}
-
-function useDocumentTitle(count) {
-  useEffect(() => {
-    document.title = `Count ${count}`;
-  }, [count]);
-}
 
 function App() {
   return (
@@ -574,8 +552,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <DocTitleOne />
-          <DocTitleTwo />
+          <UserForm />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
