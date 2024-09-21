@@ -495,7 +495,7 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function useCounter(initialCount = 0, value) {
+function useCounter(value, initialCount = 0) {
 	const [count, setCount] = useState(initialCount);
 
 	const increment = () => {
@@ -511,11 +511,11 @@ function useCounter(initialCount = 0, value) {
 	}
 
 	return [count, increment, decrement, reset];
-  
+
 } 
 
 function CounterOne() {
-	const [count, increment, decrement, reset] = useCounter(0, 1);
+	const [count, increment, decrement, reset] = useCounter(1);
 
 	return (
 		<div>
@@ -527,6 +527,19 @@ function CounterOne() {
 	)
 } 
 
+function CounterTwo() {
+	const [count, increment, decrement, reset] = useCounter(10, 10);
+
+	return (
+		<div>
+			<h2>Count = {count}</h2>
+			<button onClick={increment}>Increment</button>
+			<button onClick={decrement}>Decrement</button>
+			<button onClick={reset}>Reset</button>
+		</div>
+	)
+}
+
 function App() {
   return (
     <>
@@ -534,6 +547,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <CounterOne />
+          <CounterTwo />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
