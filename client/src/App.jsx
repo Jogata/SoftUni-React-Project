@@ -540,14 +540,42 @@ function CounterTwo() {
 	)
 }
 
+function DocTitleOne() {
+  const [count, setCount] = useState(0);
+  useDocumentTitle(count);
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Count - {count}</button>
+    </div>
+  )
+}
+
+function DocTitleTwo() {
+  const [count, setCount] = useState(0);
+  useDocumentTitle(count);
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Count - {count}</button>
+    </div>
+  )
+}
+
+function useDocumentTitle(count) {
+  useEffect(() => {
+    document.title = `Count ${count}`;
+  }, [count]);
+}
+
 function App() {
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <CounterOne />
-          <CounterTwo />
+          <DocTitleOne />
+          <DocTitleTwo />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
