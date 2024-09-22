@@ -495,56 +495,42 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function useInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
-
-  const reset = () => {
-    setValue('');
-  }
-
-  const bind = {
-    value,
-    onChange: e => {
-      setValue(e.target.value);
-    }
-  }
-
-  return [value, bind, reset];
+function BookList() {
+  return (
+    <section>
+      <Book />
+    </section>
+  )
 }
 
-function UserForm() {
-  const [firstName, bindFirstName, resetFirstName] = useInput('');
-  const [lastName, bindLastName, resetLastName] = useInput('');
+function Book() {
+  return (
+    <article style={{display: "block"}}>
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  )
+}
 
-  const submitHandler = e => {
-    e.preventDefault();
-    console.log(`Hello ${firstName} ${lastName}`);
-    resetFirstName();
-    resetLastName();
-  }
+function Image() {
+  return (
+    <img src="https://m.media-amazon.com/images/I/81mpSoJzv4L._AC_UF1000,1000_QL80_.jpg" alt="Book cover" style={{width: "15rem"}} />
+  )
+}
 
-	return (  
-		<div> 
-      <form onSubmit={submitHandler}>
-				<div>
-					<label>First Name</label>
-					<input
-            type="text"
-            {...bindFirstName}
-					/>
-				</div>
-				<div>
-					<label>Last Name</label>
-					<input
-            type="text"
-            {...bindLastName}
-					/>
-        </div>
-        <button>Submit</button>
-			</form>
-		</div>
-	)
-} 
+function Title() {
+  return (
+    <h1>I love you to the Moon and back</h1>
+  )
+}
+
+
+function Author() {
+  return (
+    <h2>Amelia Hepworth</h2>
+  )
+}
 
 function App() {
   return (
@@ -552,7 +538,7 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <UserForm />
+          <BookList />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
