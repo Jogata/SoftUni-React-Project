@@ -1066,3 +1066,7 @@ body {
   color: #888;
   text-align: center;
 }
+
+.book p {
+  color: #222;
+}

@@ -495,44 +495,82 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function BookList() {
+const firstBook = {
+  img:
+    'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
+  title: 'I Love You to the Moon and Back',
+  author: 'Amelia Hepworth',
+}
+
+const secondBook = {
+  img:
+    'https://images-na.ssl-images-amazon.com/images/I/71aLultW5EL._AC_UL200_SR200,200_.jpg',
+  title: 'Our Class is a Family',
+  author: 'Shannon Olsen',
+}
+ 
+ function BookList() {
   return (
     <section className='books'>
-      <Book />
-      <Book />
-      <Book />
+      <Book 
+        img={firstBook.img} 
+        title={firstBook.title} 
+        author={firstBook.author} 
+      >
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci fugit dolorem at.</p>
+      </Book>
+      <Book2 
+        img={secondBook.img} 
+        title={secondBook.title} 
+        author={secondBook.author}
+      />
     </section>
   )
 }
 
-function Book() {
+function Book(props) {
+  console.log(props);
+
   return (
     <article className='book'>
-      <Image />
-      <Title />
-      <Author />
+      <img src={props.img} alt="Book cover" />
+      <h1>{props.title}</h1>
+      <h2>{props.author}</h2>
+      {props.children}
     </article>
   )
 }
 
-function Image() {
+function Book2({img, title, author}) {
+  console.log(img, title, author);
+
   return (
-    <img src="https://m.media-amazon.com/images/I/81mpSoJzv4L._AC_UF1000,1000_QL80_.jpg" alt="Book cover" style={{width: "15rem"}} />
+    <article className='book'>
+      <img src={img} alt="Book cover" />
+      <h1>{title}</h1>
+      <h2>{author}</h2>
+    </article>
   )
 }
 
-function Title() {
-  return (
-    <h1>I love you to the Moon and back</h1>
-  )
-}
+// function Image() {
+//   return (
+//     <img src="https://m.media-amazon.com/images/I/81mpSoJzv4L._AC_UF1000,1000_QL80_.jpg" alt="Book cover" />
+//   )
+// }
+
+// function Title() {
+//   return (
+//     <h1>I love you to the Moon and back</h1>
+//   )
+// }
 
 
-function Author() {
-  return (
-    <h2>Amelia Hepworth</h2>
-  )
-}
+// function Author() {
+//   return (
+//     <h2>Amelia Hepworth</h2>
+//   )
+// }
 
 function App() {
   return (
