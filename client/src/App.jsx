@@ -497,7 +497,9 @@ const baseURL = "http://localhost:3030/jsonstore/blog/"
 
 function BookList() {
   return (
-    <section>
+    <section className='books'>
+      <Book />
+      <Book />
       <Book />
     </section>
   )
@@ -505,7 +507,7 @@ function BookList() {
 
 function Book() {
   return (
-    <article style={{display: "block"}}>
+    <article className='book'>
       <Image />
       <Title />
       <Author />

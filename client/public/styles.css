@@ -1039,3 +1039,30 @@ body {
   font-family: inherit;
   border: 1px solid grey;
 }
+
+.books {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 94%;
+  max-width: 80rem;
+  margin: 5rem auto;
+}
+
+.book {
+  display: block;
+  max-width: 20rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.book h1 {
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+.book h2 {
+  color: #888;
+  text-align: center;
+}
