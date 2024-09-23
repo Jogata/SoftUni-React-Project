@@ -495,144 +495,49 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-// const firstBook = {
-//   img:
-//     'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
-//   title: 'I Love You to the Moon and Back',
-//   author: 'Amelia Hepworth',
-// }
+const ErrorExample = () => {
+  let title = 'random title';
 
-// const secondBook = {
-//   img:
-//     'https://images-na.ssl-images-amazon.com/images/I/71aLultW5EL._AC_UL200_SR200,200_.jpg',
-//   title: 'Our Class is a Family',
-//   author: 'Shannon Olsen',
-// }
-
-const books = [
-  {
-   id: 1,
-   img:
-    'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
-   title: 'I Love You to the Moon and Back',
-   author: 'Amelia Hepworth',
-  },
-  {
-   id: 2,
-   img:
-    'https://images-na.ssl-images-amazon.com/images/I/71aLultW5EL._AC_UL200_SR200,200_.jpg',
-   title: 'Our Class is a Family',
-   author: 'Shannon Olsen',
-  },
-  {
-   id: 3,
-   img:
-    'https://images-na.ssl-images-amazon.com/images/I/71e5m7xQd0L._AC_UL200_SR200,200_.jpg',
-   title: 'The Vanishing Half: A Novel',
-   author: 'Brit Bennett',
-  },
- ];
-
-// const names = ["john", "susan", "peter"];
-// const newNames = names.map(name => {
-//   console.log(name);
-//   return <h1>{name}</h1>;
-// })
-// console.log(newNames);
- 
- function BookList() {
-  return (
-    <section className='books'>
-      {/* {names} */}
-      {/* {newNames} */}
-      {books.map(book => {
-        console.log(book);
-        return (
-          // <Book data={book} key={book.id} />
-          <Book2 {...book} key={book.id} />
-        )
-      })}
-      {/* <Book 
-        img={firstBook.img} 
-        title={firstBook.title} 
-        author={firstBook.author} 
-      >
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci fugit dolorem at.</p>
-      </Book>
-      <Book2 
-        img={secondBook.img} 
-        title={secondBook.title} 
-        author={secondBook.author}
-      /> */}
-    </section>
-  )
-}
-
-function Book(props) {
-  console.log(props);
-  const {data} = props;
-
-  return (
-    <article className='book'>
-      <img src={data.img} alt="Book cover" />
-      <h2>{data.title}</h2>
-      <h3>{data.author}</h3>
-      {/* {data.children} */}
-    </article>
-  )
-}
-
-function Book2({img, title, author}) {
-  console.log(img, title, author);
-
-  function clickHandler() {
-    console.log("reference");
-  }
-
-  function onMouseOverHandler(title) {
+  const handleClick = () => {
+    title = 'hello people';
     console.log(title);
-  }
+  };
 
-  function clickHandlerWithParameters(author) {
-    console.log(author);
-  }
-
-  return (
-    <article className='book' onMouseOver={() => onMouseOverHandler(title)}>
-      <img src={img} alt="Book cover" />
+  return (  
+    <>
       <h2>{title}</h2>
-      <h3>{author}</h3>
-      <button type='button' onClick={clickHandler}>
-        click
+      <button type='button' className='btn' onClick={handleClick}>
+        change title
       </button>
-      <button type='button' onClick={() => console.log("inline")}>
-        click
-      </button>
-      <button type='button' onClick={() => clickHandlerWithParameters(author)}>
-        click
-      </button>
-    </article>
-  )
-}
+    </>
+  );
+};
 
-// function Image() {
-//   return (
-//     <img src="https://m.media-amazon.com/images/I/81mpSoJzv4L._AC_UF1000,1000_QL80_.jpg" alt="Book cover" />
-//   )
-// }
+const UseStateBasics = () => {
+  // console.log(useState());
+  // const value = useState()[0];
+  // const handler = useState()[1];
+  // console.log(value, handler);
 
-// function Title() {
-//   return (
-//     <h1>I love you to the Moon and back</h1>
-//   )
-// }
+  const [text, setText] = useState('random title');
 
+  const handleClick = () => {
+    if (text === 'random title') {
+      setText('hello world');
+    } else {
+      setText('random title');
+    }
+  };
 
-// function Author() {
-//   return (
-//     <h2>Amelia Hepworth</h2>
-//   )
-// }
+  return (  
+    <>
+      <h1>{text}</h1>
+      <button type='button' className='btn' onClick={handleClick}>
+        change title
+      </button> 
+    </>
+  );
+};
 
 function App() {
   return (
@@ -640,7 +545,10 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <BookList />
+          <div className="container">
+          <ErrorExample />
+          <UseStateBasics />
+          </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
