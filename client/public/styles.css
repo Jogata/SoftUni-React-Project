@@ -1057,12 +1057,12 @@ body {
   background-color: white;
 }
 
-.book h1 {
+.book h2 {
   margin-top: 0.5rem;
   color: #333;
 }
 
-.book h2 {
+.book h3 {
   color: #888;
   text-align: center;
 }
