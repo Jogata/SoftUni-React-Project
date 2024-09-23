@@ -585,11 +585,32 @@ function Book(props) {
 function Book2({img, title, author}) {
   console.log(img, title, author);
 
+  function clickHandler() {
+    console.log("reference");
+  }
+
+  function onMouseOverHandler(title) {
+    console.log(title);
+  }
+
+  function clickHandlerWithParameters(author) {
+    console.log(author);
+  }
+
   return (
-    <article className='book'>
+    <article className='book' onMouseOver={() => onMouseOverHandler(title)}>
       <img src={img} alt="Book cover" />
-      <h1>{title}</h1>
-      <h2>{author}</h2>
+      <h2>{title}</h2>
+      <h3>{author}</h3>
+      <button type='button' onClick={clickHandler}>
+        click
+      </button>
+      <button type='button' onClick={() => console.log("inline")}>
+        click
+      </button>
+      <button type='button' onClick={() => clickHandlerWithParameters(author)}>
+        click
+      </button>
     </article>
   )
 }
