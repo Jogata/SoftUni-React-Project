@@ -495,49 +495,38 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const ErrorExample = () => {
-  let title = 'random title';
+const data = [
+  { id: 1, name: 'john' }, 
+  { id: 2, name: 'peter' }, 
+  { id: 3, name: 'susan' }, 
+  { id: 4, name: 'anna' }, 
+];
 
-  const handleClick = () => {
-    title = 'hello people';
-    console.log(title);
-  };
+const UseStateArray = () => {
+  const [people, setPeople] = useState(data);
 
-  return (  
-    <>
-      <h2>{title}</h2>
-      <button type='button' className='btn' onClick={handleClick}>
-        change title
+  const removeItem = (id) => {
+    let newPeople = people.filter((person) => person.id !== id);
+    setPeople(newPeople);
+  };  
+
+  return (
+    <>  
+      {people.map((person) => {
+        const { id, name } = person;
+        return (
+          <div key={id} className='item'>
+            <h4>{name}</h4>
+            <button onClick={() => removeItem(id)}>remove</button>
+          </div>
+        );
+      })}
+      <button className='btn' onClick={() => setPeople([])}>
+        clear items
       </button>
-    </>
-  );
-};
-
-const UseStateBasics = () => {
-  // console.log(useState());
-  // const value = useState()[0];
-  // const handler = useState()[1];
-  // console.log(value, handler);
-
-  const [text, setText] = useState('random title');
-
-  const handleClick = () => {
-    if (text === 'random title') {
-      setText('hello world');
-    } else {
-      setText('random title');
-    }
-  };
-
-  return (  
-    <>
-      <h1>{text}</h1>
-      <button type='button' className='btn' onClick={handleClick}>
-        change title
-      </button> 
-    </>
-  );
-};
+    </> 
+  );  
+};  
 
 function App() {
   return (
@@ -546,8 +535,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-          <ErrorExample />
-          <UseStateBasics />
+            <UseStateArray />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
