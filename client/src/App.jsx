@@ -495,38 +495,34 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const data = [
-  { id: 1, name: 'john' }, 
-  { id: 2, name: 'peter' }, 
-  { id: 3, name: 'susan' }, 
-  { id: 4, name: 'anna' }, 
-];
+const UseStateObject = () => {
+  const [person, setPerson] = useState({
+    name: 'peter',
+    age: 24,
+    message: 'random message',
+  });
 
-const UseStateArray = () => {
-  const [people, setPeople] = useState(data);
+  // const [name, setName] = useState('peter');
+  // const [age, setAge] = useState(24);
+  // const [message, setMessage] = useState('random message');
 
-  const removeItem = (id) => {
-    let newPeople = people.filter((person) => person.id !== id);
-    setPeople(newPeople);
-  };  
+  const changeMessage = () => {
+    console.log(person.message);
+    setPerson({ ...person, message: 'hello world' });
+    // setMessage('hello world');
+  };
 
-  return (
-    <>  
-      {people.map((person) => {
-        const { id, name } = person;
-        return (
-          <div key={id} className='item'>
-            <h4>{name}</h4>
-            <button onClick={() => removeItem(id)}>remove</button>
-          </div>
-        );
-      })}
-      <button className='btn' onClick={() => setPeople([])}>
-        clear items
-      </button>
-    </> 
-  );  
-};  
+  return (  
+    <>
+      <h3>{person.name}</h3>
+      <h3>{person.age}</h3>
+      <h4>{person.message}</h4>
+      <button className='btn' onClick={changeMessage}>
+        change message
+      </button> 
+    </>
+  );
+};
 
 function App() {
   return (
@@ -535,7 +531,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <UseStateArray />
+            <UseStateObject />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
