@@ -495,91 +495,35 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UseStateObject = () => {
-  const [person, setPerson] = useState({
-    name: 'peter',
-    age: 24,
-    message: 'random message',
-  });
+const UseEffectBasics = () => {
+  const [value, setValue] = useState(0);  
 
-  // const [name, setName] = useState('peter');
-  // const [age, setAge] = useState(24);
-  // const [message, setMessage] = useState('random message');
+  useEffect(() => {
+    console.log('call useEffect');
+    if (value > 0) {
+      document.title = `New Messages(${value})`;
+    } 
+  }, [value]); 
 
-  const changeMessage = () => {
-    console.log(person.message);
-    setPerson({ ...person, message: 'hello world' });
-    // setMessage('hello world');
-  };
+  useEffect(() => {
+    console.log("initial render");
+    document.title = `Main Menu`;
+  }, []);
+
+  console.log('render component');
 
   return (  
-    <>
-      <h3>{person.name}</h3>
-      <h3>{person.age}</h3>
-      <h4>{person.message}</h4>
-      <button className='btn' onClick={changeMessage}>
-        change message
-      </button> 
-    </>
-  );
-};
-
-
-const UseStateCounter = () => {
-  const [value, setValue] = useState(0);
-
-  const reset = () => {
-    setValue(0);
-  };
-
-  const complexIncrease = () => {
-    setTimeout(() => {
-      console.log("timeout");
-      // setValue(value + 1);
-      setValue((prevState) => {
-        return prevState + 1;
-      });
-    }, 2000);
-  };
-
-  return (
-    <>
-      <section style={{ margin: '4rem 0' }}>
-        <h2>regular counter</h2>
-        <h1>{value}</h1>
-        <button 
-          className='btn' 
-          onClick={() => setValue(value - 1)}
-        >
-          decrease
-        </button>
-        <button 
-          className='btn' 
-          onClick={reset}
-        >
-          reset
-        </button>
-        <button 
-          className='btn' 
-          onClick={() => setValue(value + 1)}
-        >
-          increase
-        </button>
-      </section>
-      <hr />
-      <section style={{ margin: '4rem 0' }}>
-        <h2>more complex counter</h2>
-        <h1>{value}</h1>
-        <button 
-          className='btn' 
-          onClick={complexIncrease}
-        >
-          increase later
-        </button>
-      </section>
-    </>
-  );
-};
+    <>  
+      <h1>{value}</h1>
+      <button 
+        className='btn' 
+        onClick={() => setValue(value + 1)}
+      >
+        click me
+      </button>
+    </> 
+  );  
+};  
 
 function App() {
   return (
@@ -588,8 +532,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            {/* <UseStateObject /> */}
-            <UseStateCounter />
+            <UseEffectBasics />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
