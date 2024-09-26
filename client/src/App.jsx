@@ -547,6 +547,37 @@ const MultipleReturns = () => {
   );  
 };  
 
+
+const ShortCircuit = () => {
+  const [text, setText] = useState('');
+  const [isError, setIsError] = useState(false);
+  // const firstValue = text || 'hello world';
+  // const secondValue = text && 'hello world';
+
+  return (
+    <>
+      {/* <h1>{firstValue}</h1>
+      <h1>value : {secondValue}</h1> */}
+      {/* {if (true) {
+        console.log('will throw an error')
+      }} */}
+      <h1>{text || 'john doe'}</h1>
+      <button className='btn' onClick={() => setIsError(!isError)}>
+        toggle error
+      </button>
+      {isError && <h1>Error...</h1>}
+      {isError ? (
+        <p>there is an error...</p>
+      ) : (
+        <div>
+          <h2>there is no error</h2>
+        </div>
+      )}
+    </>
+  );
+};
+
+
 function App() {
   return (
     <>
@@ -554,6 +585,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
+            <ShortCircuit />
             <MultipleReturns />
           </div>
           {/* <User name="Jogata" /> */}
