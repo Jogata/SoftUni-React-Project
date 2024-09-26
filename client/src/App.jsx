@@ -495,100 +495,57 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const UseEffectBasics = () => {
-  const [value, setValue] = useState(0);  
+const url = 'https://api.github.com/users/QuincyLarson';
 
-  useEffect(() => {
-    console.log('call useEffect');
-    if (value > 0) {
-      document.title = `New Messages(${value})`;
-    } 
-  }, [value]); 
+const MultipleReturns = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [user, setUser] = useState('default user');
 
-  useEffect(() => {
-    console.log("initial render");
-    document.title = `Main Menu`;
-  }, []);
+  useEffect(() => { 
+    fetch(url)
+      .then((resp) => {
+        if (resp.status >= 200 && resp.status <= 299) {
+          return resp.json();
+        } else {
+          setIsLoading(false);
+          setIsError(true);
+          throw new Error(resp.statusText);
+        }
+      })
+      .then((user) => {
+        setTimeout(() => {
+          const { login } = user;
+          setUser(login);
+          setIsLoading(false);
+        }, 2000);
+      })
+      .catch((error) => console.log(error));
+  }, []); 
 
-  console.log('render component');
+  if (isLoading) {
+    return (
+      <div>
+        {/* <h1>Loading...</h1> */}
+        <Loader />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div>
+        <h1>Error....</h1>
+      </div>
+    );
+  }
 
   return (  
-    <>  
-      <h1>{value}</h1>
-      <button 
-        className='btn' 
-        onClick={() => setValue(value + 1)}
-      >
-        click me
-      </button>
-    </> 
+    <div>
+      <h1>{user}</h1>
+    </div>
   );  
 };  
-
-
-const UseEffectCleanup = () => {
-  const [size, setSize] = useState(window.innerWidth);
-
-  const checkSize = () => {
-    setSize(window.innerWidth);
-  };
-
-  useEffect(() => {
-    console.log('useEffect');
-    window.addEventListener('resize', checkSize);
-
-    return () => {
-      console.log('cleanup');
-      window.removeEventListener('resize', checkSize);
-    };
-  }, []);
-
-  console.log('render');
-
-  return (
-    <>
-      <h1>window</h1>
-      <h2>{size} PX</h2>
-    </>
-  );
-};
-
-
-const UseEffectFetchData = () => {
-  const [users, setUsers] = useState([]);
-  
-  const url = 'https://api.github.com/users';
-  const getUsers = async () => {
-    const response = await fetch(url);
-    const users = await response.json();
-    setUsers(users);
-    // console.log(users);
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  return (
-    <>
-      <h3>github users</h3>
-      <ul className='users'>
-        {users.map((user) => {
-          const { id, login, avatar_url, html_url } = user;
-          return (
-            <li key={id}>
-              <img src={avatar_url} alt={login} />
-              <div>
-                <h4>{login}</h4>
-                <a href={html_url}>profile</a>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-};
 
 function App() {
   return (
@@ -597,9 +554,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <UseEffectBasics />
-            <UseEffectCleanup />
-            <UseEffectFetchData />
+            <MultipleReturns />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
