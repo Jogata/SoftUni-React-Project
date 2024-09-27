@@ -495,128 +495,65 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const url = 'https://api.github.com/users/QuincyLarson';
+const ControlledInputs = () => {
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [people, setPeople] = useState([]);
 
-const MultipleReturns = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [user, setUser] = useState('default user');
-
-  useEffect(() => { 
-    fetch(url)
-      .then((resp) => {
-        if (resp.status >= 200 && resp.status <= 299) {
-          return resp.json();
-        } else {
-          setIsLoading(false);
-          setIsError(true);
-          throw new Error(resp.statusText);
-        }
-      })
-      .then((user) => {
-        setTimeout(() => {
-          const { login } = user;
-          setUser(login);
-          setIsLoading(false);
-        }, 2000);
-      })
-      .catch((error) => console.log(error));
-  }, []); 
-
-  if (isLoading) {
-    return (
-      <div>
-        {/* <h1>Loading...</h1> */}
-        <Loader />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div>
-        <h1>Error....</h1>
-      </div>
-    );
-  }
-
-  return (  
-    <div>
-      <h1>{user}</h1>
-    </div>
-  );  
-};  
-
-
-const ShortCircuit = () => {
-  const [text, setText] = useState('');
-  const [isError, setIsError] = useState(false);
-  // const firstValue = text || 'hello world';
-  // const secondValue = text && 'hello world';
-
-  return (
-    <>
-      {/* <h1>{firstValue}</h1>
-      <h1>value : {secondValue}</h1> */}
-      {/* {if (true) {
-        console.log('will throw an error')
-      }} */}
-      <h1>{text || 'john doe'}</h1>
-      <button className='btn' onClick={() => setIsError(!isError)}>
-        toggle error
-      </button>
-      {isError && <h1>Error...</h1>}
-      {isError ? (
-        <p>there is an error...</p>
-      ) : (
-        <div>
-          <h2>there is no error</h2>
-        </div>
-      )}
-    </>
-  );
-};
-
-
-const ShowHide = () => {
-  const [show, setShow] = useState(false);
-
-  return (
-    <>
-      <button 
-        className='btn' 
-        onClick={() => setShow(!show)}
-      >
-        show/hide
-      </button>
-      {show && <Item />}
-    </>
-  );
-};
-
-const Item = () => {
-  const [size, setSize] = useState(window.innerWidth);
-
-  const checkSize = () => {
-    setSize(window.innerWidth);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (firstName && email) {
+      const person = { id: new Date().getTime().toString(), firstName, email };
+      console.log(person);
+      setPeople((people) => {
+        return [...people, person];
+      });
+      setFirstName('');
+      setEmail('');
+    } else {
+      console.log('empty values');
+    }
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', checkSize);
-
-    return () => {
-      window.removeEventListener('resize', checkSize);
-    };
-  }, []);
-
   return (
-    <div style={{ marginTop: '2rem' }}>
-      <h1>Window</h1>
-      <h2>size : {size}</h2>
-    </div>
+    <>
+      <article>
+        <form className='form' onSubmit={handleSubmit}>
+          <div className='form-control'>
+            <label htmlFor='firstName'>Name : </label>
+            <input
+              type='text'
+              id='firstName'
+              name='firstName'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className='form-control'>
+            <label htmlFor='email'>Email : </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <button type='submit'>add person</button>
+        </form>
+        {people.map((person, index) => {
+          const { id, firstName, email } = person;
+          return (
+            <div className='item' key={id}>
+              <h4>{firstName}</h4>
+              <p>{email}</p>
+            </div>
+          );
+        })}
+      </article>
+    </>
   );
 };
-
 
 function App() {
   return (
@@ -625,9 +562,9 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <ShowHide />
-            <ShortCircuit />
-            <MultipleReturns />
+            <ControlledInputs />
+            {/* <ShortCircuit /> */}
+            {/* <MultipleReturns /> */}
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
