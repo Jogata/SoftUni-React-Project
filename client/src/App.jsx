@@ -630,6 +630,31 @@ const MultipleControlledInputs = () => {
   );
 };
 
+const UseRefBasics = () => {
+  const refContainer = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(refContainer.current.value);
+  };
+  
+  useEffect(() => {
+    console.log(refContainer.current);
+    refContainer.current.focus();
+  });
+
+  return (
+    <>
+      <form className='form' onSubmit={handleSubmit}>
+        <div>
+          <input type='text' ref={refContainer} />
+        </div>
+        <button type='submit'>submit</button>
+      </form>
+    </>
+  );
+};
+
 
 function App() {
   return (
@@ -639,6 +664,7 @@ function App() {
           <Header title="React JS Blog" />
           <div className="container">
             <MultipleControlledInputs />
+            <UseRefBasics />
             <ControlledInputs />
             {/* <ShortCircuit /> */}
             {/* <MultipleReturns /> */}
