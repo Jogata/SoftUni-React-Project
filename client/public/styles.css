@@ -1208,3 +1208,19 @@ body {
 .item p {
   margin-bottom: 0;
 }
+
+.modal {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  text-transform: capitalize;
+  border-radius: var(--radius);
+  background-color: var(--clr-white);
+}
+.modal p {
+  margin-bottom: 0;
+  color: var(--clr-red-dark);
+}

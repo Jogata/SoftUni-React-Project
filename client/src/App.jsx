@@ -495,165 +495,113 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const ControlledInputs = () => {
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
-  const [people, setPeople] = useState([]);
+export const data = [
+  { id: 1, name: 'john' },
+  { id: 2, name: 'peter' },
+  { id: 3, name: 'susan' },
+  { id: 4, name: 'anna' },
+];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (firstName && email) {
-      const person = { id: new Date().getTime().toString(), firstName, email };
-      console.log(person);
-      setPeople((people) => {
-        return [...people, person];
-      });
-      setFirstName('');
-      setEmail('');
-    } else {
-      console.log('empty values');
-    }
-  };
-
-  return (
-    <>
-      <article>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-control'>
-            <label htmlFor='firstName'>Name : </label>
-            <input
-              type='text'
-              id='firstName'
-              name='firstName'
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className='form-control'>
-            <label htmlFor='email'>Email : </label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <button type='submit'>add person</button>
-        </form>
-        {people.map((person, index) => {
-          const { id, firstName, email } = person;
-          return (
-            <div className='item' key={id}>
-              <h4>{firstName}</h4>
-              <p>{email}</p>
-            </div>
-          );
-        })}
-      </article>
-    </>
-  );
+const defaultState = {
+  people: [],
+  isModalOpen: false,
+  modalContent: '',
 };
 
+const reducer = (state, action) => {
+  if (action.type === 'ADD_ITEM') {
+    const newPeople = [...state.people, action.payload];
+    return {
+      ...state,
+      people: newPeople,
+      isModalOpen: true,
+      modalContent: 'item added',
+    };
+  }
+  if (action.type === 'NO_VALUE') {
+    return { 
+      ...state, 
+      isModalOpen: true, 
+      modalContent: 'please enter value' 
+    };
+  }
+  if (action.type === 'CLOSE_MODAL') {
+    return { ...state, isModalOpen: false };
+  }
+  if (action.type === 'REMOVE_ITEM') {
+    const newPeople = state.people.filter(
+      (person) => person.id !== action.payload
+    );
+    return { ...state, people: newPeople };
+  }
+  throw new Error('no matching action type');
+};  
 
-const MultipleControlledInputs = () => {
-  const [person, setPerson] = useState({ firstName: '', email: '', age: '' });
-  const [people, setPeople] = useState([]);
+const Modal = ({ modalContent, closeModal }) => {
+  useEffect(() => { 
+    setTimeout(() => {
+      closeModal();
+    }, 3000);
+  }); 
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setPerson({ ...person, [name]: value });
+  return (  
+    <div className='modal'>
+      <p>{modalContent}</p>
+    </div>  
+  );  
+};  
+
+const Index = () => {
+  const [name, setName] = useState('');
+  const [state, dispatch] = useReducer(reducer, defaultState);
+
+  const handleSubmit = (e) => { 
+    e.preventDefault(); 
+    if (name) {
+      const newItem = { id: new Date().getTime().toString(), name };
+      dispatch({ type: 'ADD_ITEM', payload: newItem });
+      setName('');
+    } else {  
+      dispatch({ type: 'NO_VALUE' });
+    } 
+  };  
+
+  const closeModal = () => {
+    dispatch({ type: 'CLOSE_MODAL' });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (person.firstName && person.email && person.age) {
-      const newPerson = { ...person, id: new Date().getTime().toString() };
-      setPeople([...people, newPerson]);
-      setPerson({ firstName: '', email: '', age: '' });
-    }
-  };
-
-  return (
-    <>
-      <article className='form'>
-        <form>
-          <div className='form-control'>
-            <label htmlFor='firstName'>Name : </label>
-            <input
-              type='text'
-              id='firstName'
-              name='firstName'
-              value={person.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='form-control'>
-            <label htmlFor='email'>Email : </label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={person.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='form-control'>
-            <label htmlFor='age'>Age : </label>
-            <input
-              type='number'
-              id='age'
-              name='age'
-              value={person.age}
-              onChange={handleChange}
-            />
-          </div>
-          <button type='submit' className='btn' onClick={handleSubmit}>
-            add person
-          </button>
-        </form>
-      </article>
-      <article>
-        {people.map((person) => {
-          const { id, firstName, email, age } = person;
-          return (
-            <div key={id} className='item'>
-              <h4>{firstName}</h4>
-              <p>{email}</p>
-              <p>{age}</p>
-            </div>
-          );
-        })}
-      </article>
-    </>
-  );
-};
-
-const UseRefBasics = () => {
-  const refContainer = useRef(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(refContainer.current.value);
-  };
-  
-  useEffect(() => {
-    console.log(refContainer.current);
-    refContainer.current.focus();
-  });
-
-  return (
-    <>
-      <form className='form' onSubmit={handleSubmit}>
+  return (  
+    <>  
+      {state.isModalOpen && (
+        <Modal closeModal={closeModal} modalContent={state.modalContent} />
+      )}
+      <form onSubmit={handleSubmit} className='form'>
         <div>
-          <input type='text' ref={refContainer} />
+          <input
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-        <button type='submit'>submit</button>
+        <button type='submit'>add </button>
       </form>
-    </>
-  );
-};
+      {state.people.map((person) => {
+        return (
+          <div key={person.id} className='item'>
+            <h4>{person.name}</h4>
+            <button
+              onClick={() =>
+                dispatch({ type: 'REMOVE_ITEM', payload: person.id })
+              }
+            >
+              remove
+            </button>
+          </div>
+        );
+      })}
+    </> 
+  );  
+};  
 
 
 function App() {
@@ -663,11 +611,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <MultipleControlledInputs />
-            <UseRefBasics />
-            <ControlledInputs />
-            {/* <ShortCircuit /> */}
-            {/* <MultipleReturns /> */}
+            <Index />
+            {/* <UseRefBasics /> */}
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
