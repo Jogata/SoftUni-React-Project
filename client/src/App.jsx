@@ -511,6 +511,12 @@ const PropDrilling = () => {
     });
   };
 
+useEffect(() => {
+  setTimeout(() => {
+    setPeople([...people, {id: 5, name: "jogata"}]);
+  }, 15000);
+}, [])  ;
+
   return (
     <section>
       <h3>prop drilling</h3>
@@ -525,8 +531,8 @@ const ListPeople = ({ people, removePerson }) => {
       {people.map((person) => {
         return (
           <SinglePerson
-            key={person.id}
-            {...person}
+            key={person.id} 
+            {...person} 
             removePerson={removePerson}
           />  
         );  
@@ -545,6 +551,49 @@ const SinglePerson = ({ id, name, removePerson }) => {
 };
 
 
+const PersonContext = createContext();
+
+const ContextAPI = () => {
+  const [people, setPeople] = useState(data);
+
+  const removePerson = (id) => {
+    setPeople((people) => {
+      return people.filter((person) => person.id !== id);
+    });
+  };
+  return (
+    <PersonContext.Provider value={{ removePerson, people }}>
+      <h3>Context API / useContext</h3>
+      <ListPersonsContext />
+    </PersonContext.Provider>
+  );
+};
+
+const ListPersonsContext = () => {
+  const mainData = useContext(PersonContext);
+  console.log(mainData);
+
+  return (
+    <>
+      {mainData.people.map((person) => {
+        return <SinglePersonContext key={person.id} {...person} />;
+      })}
+    </>
+  );
+};
+
+const SinglePersonContext = ({ id, name }) => {
+  const { removePerson } = useContext(PersonContext);
+
+  return (
+    <div className='item'>
+      <h4>{name}</h4>
+      <button onClick={() => removePerson(id)}>remove</button>
+    </div>
+  );
+};
+
+
 function App() {
   return (
     <>
@@ -552,8 +601,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
+            <ContextAPI />
             <PropDrilling />
-            {/* <UseRefBasics /> */}
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
