@@ -1224,3 +1224,50 @@ body {
   margin-bottom: 0;
   color: var(--clr-red-dark);
 }
+
+.products {
+  display: grid;
+  gap: 2rem;
+  margin: 4rem 0;
+}
+@media screen and (min-width: 576px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+.product {
+  display: block;
+  border-radius: var(--radius);
+  background-color: var(--clr-white);
+}
+.product img {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.product h4 {
+  margin-top: 1rem;
+  color: var(--clr-grey-3);
+}
+.product p {
+  margin-bottom: 1rem;
+  color: var(--clr-green-dark);
+}
+
+.product button {
+  margin-bottom: 1rem;
+  padding: 0.6em 1.2em;
+  color: var(--clr-white);
+  font-size: 1rem;
+  text-transform: capitalize;
+  border-color: transparent;
+  border-radius: var(--radius);
+  background-color: var(--clr-primary-5);
+  transition: background-color 400ms;
+  cursor: pointer;
+}
+.product button:hover {
+  background-color: var(--clr-primary-1);
+}

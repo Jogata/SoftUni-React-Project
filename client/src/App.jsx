@@ -625,6 +625,77 @@ const Example = () => {
   )
 }
 
+import PropTypes from 'prop-types';
+import defaultImage from '../public/skyrim/equipment/equipment.jpeg';
+
+const testing = (props) => {
+  return <div></div>;
+};
+
+testing.propTypes = {
+  name: PropTypes.array.isRequired,
+};
+
+const Product = ({ image, name, price }) => {
+  // const url = image && image.url;
+
+  return (
+    <article className='product'>
+      <img src={image || defaultImage} alt={name || 'default name'} />
+      <h4>{name}</h4>
+      <p>${price || 3.99}</p>
+      <button>buy now</button>
+    </article>
+  );
+};
+
+Product.propTypes = {
+  image: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
+// Product.defaultProps = {
+//   name: 'default name',
+//   price: 3.99,
+//   image: defaultImage,
+// };
+
+const url2 = 'https://course-api.com/react-prop-types-example';
+
+const Index = () => {
+  // const { products } = useFetch(url2);
+  const { products } = {products: [
+    {
+      image: "https://www.course-api.com/images/store/product-1.jpeg", 
+      name: "p1", 
+      price: 350}, 
+    {
+      image: "https://www.course-api.com/images/store/product-2.jpeg", 
+      name: "p2", 
+      price: 450}, 
+    {
+      image: "https://www.course-api.com/images/store/product-4.jpeg", 
+      name: "p3", 
+      price: 550}, 
+    {
+      name: "p3"
+    }, 
+  ]};
+
+  return (
+    <div>
+      <h2>products</h2>
+      {/* <img src={defaultImage} /> */}
+      <section className='products'>
+        {products.map((product, index) => {
+          return <Product key={index} {...product} />
+        })}
+      </section>
+    </div>
+  )
+}
+
+
 function App() {
   return (
     <>
@@ -632,7 +703,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <Example />
+            <Index />
             {/* <ContextAPI /> */}
             {/* <PropDrilling /> */}
           </div>
