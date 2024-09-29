@@ -594,6 +594,37 @@ const SinglePersonContext = ({ id, name }) => {
 };
 
 
+const useFetchExample = (url) => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  const getProducts = useCallback(async () => {
+    const response = await fetch(url);
+    const products = await response.json();
+    setProducts(products);
+    setLoading(false);
+  }, [url]);
+
+  useEffect(() => {
+    getProducts();
+  }, [url, getProducts]);
+
+  return { loading, products };
+};
+
+const url = 'https://course-api.com/javascript-store-products';
+
+const Example = () => {
+  const { loading, products } = useFetchExample(url);
+  console.log(products);
+
+  return (
+    <div>
+      <h2>{loading ? 'loading...' : 'data'}</h2>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -601,8 +632,9 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <div className="container">
-            <ContextAPI />
-            <PropDrilling />
+            <Example />
+            {/* <ContextAPI /> */}
+            {/* <PropDrilling /> */}
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
