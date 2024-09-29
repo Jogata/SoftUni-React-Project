@@ -21,7 +21,7 @@ import Logout from './components/logout/Logout'
 
 // ============================================================
 // import { useHistory, Switch } from 'react-router-dom'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, Router } from 'react-router-dom'
 import { useEffect, useState, useMemo, useCallback, useRef, createContext, useContext, useReducer, Component, forwardRef } from 'react'
 import { createRef } from 'react'
 
@@ -495,205 +495,112 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-export const data = [
+const data = [
   { id: 1, name: 'john' },
   { id: 2, name: 'peter' },
   { id: 3, name: 'susan' },
   { id: 4, name: 'anna' },
 ];
 
-const PropDrilling = () => {
+const AboutTest = () => {
+  return (  
+    <div>
+      <h1>About Page</h1>
+    </div>  
+  );  
+};  
+
+const Error = () => {
+  return (  
+    <div>
+      <h1>Error Page</h1>
+      <Link to='/' className='btn'>
+        Back Home
+      </Link>
+    </div>  
+  );  
+};  
+
+
+const HomeTest = () => {
+  return (  
+    <div> 
+      <h1>Home Page</h1>
+      <p>shake and bake</p>
+    </div>  
+  );  
+};  
+
+const Navbar = () => {
+  return (  
+    <nav>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/about'>About</Link>
+        </li>
+        <li>
+          <Link to='/people'>People</Link>
+        </li>
+      </ul>
+    </nav>  
+  );  
+};  
+
+const People = () => {
   const [people, setPeople] = useState(data);
-
-  const removePerson = (id) => {
-    setPeople((people) => {
-      return people.filter((person) => person.id !== id);
-    });
-  };
-
-useEffect(() => {
-  setTimeout(() => {
-    setPeople([...people, {id: 5, name: "jogata"}]);
-  }, 15000);
-}, [])  ;
-
-  return (
-    <section>
-      <h3>prop drilling</h3>
-      <ListPeople people={people} removePerson={removePerson} />
-    </section>
-  );
-};
-
-const ListPeople = ({ people, removePerson }) => {
-  return (
-    <>
+  return (  
+    <div>
+      <h1>People Page</h1>
       {people.map((person) => {
         return (
-          <SinglePerson
-            key={person.id} 
-            {...person} 
-            removePerson={removePerson}
-          />  
+          <div key={person.id} className='item'>
+            <h4>{person.name}</h4>
+            <Link to={`/person/${person.id}`}>Learn More</Link>
+          </div>  
         );  
       })} 
-    </>
-  );
-};
+    </div>  
+  );  
+};  
 
-const SinglePerson = ({ id, name, removePerson }) => {
-  return (
-    <div className='item'>
-      <h4>{name}</h4>
-      <button onClick={() => removePerson(id)}>remove</button>
-    </div>
-  );
-};
+const Person = () => {
+  const [name, setName] = useState('default name');
+  const { id } = useParams();
 
+  useEffect(() => { 
+    const newPerson = data.find((person) => person.id === parseInt(id));
+    setName(newPerson.name);
+  }, []); 
 
-const PersonContext = createContext();
+  return (  
+    <div> 
+      <h1>{name}</h1>
+      <Link to='/people' className='btn'>
+        Back To People
+      </Link>
+    </div>  
+  );  
+};  
 
-const ContextAPI = () => {
-  const [people, setPeople] = useState(data);
-
-  const removePerson = (id) => {
-    setPeople((people) => {
-      return people.filter((person) => person.id !== id);
-    });
-  };
-  return (
-    <PersonContext.Provider value={{ removePerson, people }}>
-      <h3>Context API / useContext</h3>
-      <ListPersonsContext />
-    </PersonContext.Provider>
-  );
-};
-
-const ListPersonsContext = () => {
-  const mainData = useContext(PersonContext);
-  console.log(mainData);
-
-  return (
+const ReactRouterSetup = () => {
+  return (  
     <>
-      {mainData.people.map((person) => {
-        return <SinglePersonContext key={person.id} {...person} />;
-      })}
+      <Navbar />
+      <Routes>
+        {/* <Switch> */}
+        <Route exact path='/' element={<HomeTest />} />
+        <Route path='/about' element={<AboutTest />} />
+        <Route path='/people' element={<People />} />
+        <Route path='/person/:id' element={<Person />} />
+        <Route path='*' element={<Error />} />
+        {/* </Switch> */}
+      </Routes>
     </>
-  );
-};
-
-const SinglePersonContext = ({ id, name }) => {
-  const { removePerson } = useContext(PersonContext);
-
-  return (
-    <div className='item'>
-      <h4>{name}</h4>
-      <button onClick={() => removePerson(id)}>remove</button>
-    </div>
-  );
-};
-
-
-const useFetchExample = (url) => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-
-  const getProducts = useCallback(async () => {
-    const response = await fetch(url);
-    const products = await response.json();
-    setProducts(products);
-    setLoading(false);
-  }, [url]);
-
-  useEffect(() => {
-    getProducts();
-  }, [url, getProducts]);
-
-  return { loading, products };
-};
-
-const url = 'https://course-api.com/javascript-store-products';
-
-const Example = () => {
-  const { loading, products } = useFetchExample(url);
-  console.log(products);
-
-  return (
-    <div>
-      <h2>{loading ? 'loading...' : 'data'}</h2>
-    </div>
-  )
-}
-
-import PropTypes from 'prop-types';
-import defaultImage from '../public/skyrim/equipment/equipment.jpeg';
-
-const testing = (props) => {
-  return <div></div>;
-};
-
-testing.propTypes = {
-  name: PropTypes.array.isRequired,
-};
-
-const Product = ({ image, name, price }) => {
-  // const url = image && image.url;
-
-  return (
-    <article className='product'>
-      <img src={image || defaultImage} alt={name || 'default name'} />
-      <h4>{name}</h4>
-      <p>${price || 3.99}</p>
-      <button>buy now</button>
-    </article>
-  );
-};
-
-Product.propTypes = {
-  image: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-};
-// Product.defaultProps = {
-//   name: 'default name',
-//   price: 3.99,
-//   image: defaultImage,
-// };
-
-const url2 = 'https://course-api.com/react-prop-types-example';
-
-const Index = () => {
-  // const { products } = useFetch(url2);
-  const { products } = {products: [
-    {
-      image: "https://www.course-api.com/images/store/product-1.jpeg", 
-      name: "p1", 
-      price: 350}, 
-    {
-      image: "https://www.course-api.com/images/store/product-2.jpeg", 
-      name: "p2", 
-      price: 450}, 
-    {
-      image: "https://www.course-api.com/images/store/product-4.jpeg", 
-      name: "p3", 
-      price: 550}, 
-    {
-      name: "p3"
-    }, 
-  ]};
-
-  return (
-    <div>
-      <h2>products</h2>
-      {/* <img src={defaultImage} /> */}
-      <section className='products'>
-        {products.map((product, index) => {
-          return <Product key={index} {...product} />
-        })}
-      </section>
-    </div>
-  )
-}
+  );  
+};  
 
 
 function App() {
@@ -701,11 +608,9 @@ function App() {
     <>
       <AuthContextProvider>
         <div className="body">
-          <Header title="React JS Blog" />
+          {/* <Header title="React JS Blog" /> */}
           <div className="container">
-            <Index />
-            {/* <ContextAPI /> */}
-            {/* <PropDrilling /> */}
+            <ReactRouterSetup />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
