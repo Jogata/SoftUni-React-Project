@@ -495,103 +495,76 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-import React from 'react';
+const data = [
+  {
+    id: 1,
+    name: 'Bertie Yates',
+    age: 29,
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg',
+  },
+  {
+    id: 2,
+    name: 'Hester Hogan',
+    age: 32,
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-3_rxtqvi.jpg',
+  },
+  {
+    id: 3,
+    name: 'Larry Little',
+    age: 36,
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg',
+  },
+  {
+    id: 4,
+    name: 'Sean Walsh',
+    age: 34,
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg',
+  },
+  {
+    id: 5,
+    name: 'Lola Gardner',
+    age: 29,
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg',
+  },
+];
 
-// const data = [
-//   { id: 1, name: 'john' },
-//   { id: 2, name: 'peter' },
-//   { id: 3, name: 'susan' },
-//   { id: 4, name: 'anna' },
-// ];
-
-const data = [{ "id": "rec43w3ipXvP28vog", "fields": { "company": "ikea", "colors": ["#f15025", "#222"], "featured": true, "price": 999, "name": "high-back bench", "image": [{ "id": "attcvDDMikF6G2iNi", "width": 1000, "height": 639, "url": "https://course-api.com/images/store/product-1.jpeg", "filename": "product-1.jpeg", "size": 62864, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 56, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 801, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "rec4f2RIftFCb7aHh", "fields": { "company": "marcos", "colors": ["#f15025", "#222"], "price": 7999, "name": "albany table", "image": [{ "id": "attP2cUyxU35M1zbw", "width": 1000, "height": 1500, "url": "https://course-api.com/images/store/product-2.jpeg", "filename": "product-1.jpeg", "size": 119274, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 24, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 512, "height": 768 }, "full": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "rec8kkCmSiMkbkiko", "fields": { "company": "caressa", "colors": ["#222", "#0000ff", "#f15025"], "price": 2599, "name": "accent chair", "image": [{ "id": "attIieysyB9zQmQo9", "width": 1000, "height": 667, "url": "https://course-api.com/images/store/product-3.jpeg", "filename": "product-4.jpeg", "size": 49641, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 54, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 768, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recBohCqQsot4Q4II", "fields": { "company": "caressa", "colors": ["#ff0000", "#0000ff"], "price": 4599, "name": "wooden table", "image": [{ "id": "attXaEED3KJcY2cjY", "width": 1280, "height": 1891, "url": "https://course-api.com/images/store/product-4.jpeg", "filename": "pexels-dominika-roseclay-1139785.jpg", "size": 203105, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 24, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 512, "height": 756 }, "full": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recDG1JRZnbpRHpoy", "fields": { "company": "caressa", "colors": ["#ff0000", "#f15025"], "price": 699, "name": "dining table", "image": [{ "id": "attxkKEEgmBnutpwI", "width": 1280, "height": 1858, "url": "https://course-api.com/images/store/product-5.jpeg", "filename": "product-8.jpg", "size": 281908, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 25, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 512, "height": 743 }, "full": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recNWGyP7kjFhSqw3", "fields": { "company": "liddy", "colors": ["#0000ff"], "price": 6999, "name": "sofa set", "image": [{ "id": "att5iyl4TJvd3oepN", "width": 1000, "height": 625, "url": "https://course-api.com/images/store/product-6.jpeg", "filename": "product-1.jpeg", "size": 56151, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 58, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 819, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recZEougL5bbY4AEx", "fields": { "company": "marcos", "colors": ["#00ff00", "#f15025", "#ff0000"], "price": 899, "name": "modern bookshelf", "image": [{ "id": "attDj1C6GxJMsJ1he", "width": 1280, "height": 720, "url": "https://course-api.com/images/store/product-7.jpeg", "filename": "product-7.jpg", "size": 162415, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 64, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 910, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recjMK1jgTb2ld7sv", "fields": { "company": "liddy", "colors": ["#f15025"], "price": 2199, "name": "emperor bed", "image": [{ "id": "attiwrd7gSI1oGxRK", "width": 1280, "height": 720, "url": "https://course-api.com/images/store/product-8.jpeg", "filename": "product-6.jpg", "size": 178908, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 64, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 910, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recmg2a1ctaEJNZhu", "fields": { "company": "marcos", "colors": ["#00ff00", "#0000ff"], "featured": true, "price": 3995, "name": "utopia sofa", "image": [{ "id": "attqutUt355traBeS", "width": 1280, "height": 846, "url": "https://course-api.com/images/store/product-9.jpeg", "filename": "product-3.jpg", "size": 196312, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 54, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 775, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recvKMNR3YFw0bEt3", "fields": { "company": "liddy", "colors": ["#ff0000", "#00ff00"], "featured": true, "price": 2998, "name": "entertainment center", "image": [{ "id": "atttOzyYI8P1XfJu8", "width": 1280, "height": 924, "url": "https://course-api.com/images/store/product-10.jpeg", "filename": "product-2.jpg", "size": 195175, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 50, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 709, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recxaXFy5IW539sgM", "fields": { "company": "ikea", "colors": ["#00ff00", "#ff0000"], "price": 1099, "name": "albany sectional", "image": [{ "id": "attjWNxk7KKzcLPDx", "width": 1000, "height": 652, "url": "https://course-api.com/images/store/product-11.jpeg", "filename": "product-1.jpeg", "size": 61946, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 55, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 785, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recyqtRglGNGtO4Q5", "fields": { "company": "liddy", "colors": ["#222"], "price": 999, "name": "leather sofa", "image": [{ "id": "attnZHyyOUTBzJ1ZD", "width": 1280, "height": 960, "url": "https://course-api.com/images/store/product-12.jpeg", "filename": "product-5.jpg", "size": 189559, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 48, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 683, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 3000, "height": 3000 } } }] } }]
-
-// const url = 'https://course-api.com/javascript-store-products';
-
-const calculateMostExpensive = (data) => {
-  return (
-    data.reduce((total, item) => {
-      const price = item.fields.price;
-      if (price >= total) {
-        total = price;
-      }
-      return total;
-    }, 0) / 100
-  )
-}
-
-const Index = () => {
-  const products = [...data];
-  const [count, setCount] = useState(0);
-  const [cart, setCart] = useState(0);
-
-  const addToCart = useCallback(() => {
-    setCart(cart + 1);
-  }, [cart])
-
-  const mostExpensive = useMemo(() => calculateMostExpensive(products), [
-    products,
-  ])
-
-  return (
-    <>
-      <h1>Count : {count}</h1>
-      <button className='btn' onClick={() => setCount(count + 1)}>
-        click me
-      </button>
-      <h1 style={{ marginTop: '3rem' }}>cart : {cart}</h1>
-      <h1>Most Expensive : ${mostExpensive}</h1>
-      <BigList products={products} addToCart={addToCart} />
-    </>
-  )
-}
-
-const BigList = React.memo(({ products, addToCart }) => {
-  // useEffect(() => {
-  //   console.count('hello from big list');
-  // });
-
-  return (
-    <section className='products'>
-      {products.map((product) => {
-        return (  
-          <SingleProduct
-            key={product.id}
-            {...product}
-            addToCart={addToCart}
-          ></SingleProduct>
-        )
+const ListBirthday = ({ people }) => {
+  return (  
+    <>  
+      {people.map((person) => {
+        const { id, name, age, image } = person;
+        return (
+          <article key={id} className='person'>
+            <img src={image} alt={name} />
+            <div>
+              <h4>{name}</h4>
+              <p>{age} years</p>
+            </div>
+          </article>
+        );
       })}
-    </section>
-  )
-})
+    </>
+  );
+};
 
-const SingleProduct = ({ fields, addToCart }) => {
-  let { name, price } = fields;
-  price = price / 100;
-  const image = fields.image[0].url;
-
-  // useEffect(() => {
-  //   console.count('hello from product');
-  // });
-  return (
-    <article className='product'>
-      <img src={image} alt={name} />
-      <h4>{name}</h4>
-      <p>${price}</p>
-      <button onClick={addToCart}>add to cart</button>
-    </article>
-  )
-}
 
 function App() {
+  const [people, setPeople] = useState(data);
+
   return (
     <>
       <AuthContextProvider>
         <div className="body">
-          {/* <Header title="React JS Blog" /> */}
+          <Header title="React JS Blog" />
           <div className="container">
-            <Index />
+            <h3>{people.length} birthdays today</h3>
+            <ListBirthday people={people} />
+            <button onClick={() => setPeople([])}>clear all</button>
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
