@@ -27,7 +27,7 @@ import { createRef } from 'react'
 
 const DataContext = createContext({});
 
-function DataProvider({children}) {
+function DataProvider({ children }) {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState("");
   const [posts, setPosts] = useState([]);
@@ -62,8 +62,8 @@ function DataProvider({children}) {
   // }, []);
 
   useEffect(() => {
-    const filteredResults = posts.filter(post => 
-      ((post.title).toLowerCase()).includes(search.toLowerCase()) || 
+    const filteredResults = posts.filter(post =>
+      ((post.title).toLowerCase()).includes(search.toLowerCase()) ||
       ((post.body).toLowerCase()).includes(search.toLowerCase())
     );
     setSearchResults(filteredResults.reverse());
@@ -77,24 +77,24 @@ function DataProvider({children}) {
     const datetime = new Date();
     const newPost = {
       // id, 
-      title: postTitle, 
-      body: postBody, 
+      title: postTitle,
+      body: postBody,
       datetime: datetime.toDateString()
     }
     // const postsList = posts.filter(post => post.id !== id);
 
     const options = {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-type": "application/json",
-      }, 
+      },
       body: JSON.stringify(newPost)
     }
     const response = await fetch(`${baseURL}/posts`, options);
     // console.log(response);
 
     // console.log(newPost);
-    if (response.ok) {      
+    if (response.ok) {
       const data = await response.json();
       // console.log(data);
       const postsList = [...posts, data];
@@ -109,17 +109,17 @@ function DataProvider({children}) {
     console.log(id);
     const datetime = new Date();
     const editedPost = {
-      _id: id, 
-      title: editTitle, 
-      body: editBody, 
+      _id: id,
+      title: editTitle,
+      body: editBody,
       datetime: datetime.toDateString()
     }
 
     const options = {
-      method: "PUT", 
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
-      }, 
+      },
       body: JSON.stringify(editedPost)
     }
 
@@ -145,22 +145,22 @@ function DataProvider({children}) {
 
   return (
     <DataContext.Provider value={{
-      posts, 
-      setPosts, 
-      search, 
-      setSearch, 
-      searchResults, 
-      fetchError, 
-      isLoading, 
-      handleSubmit, 
-      postTitle, 
-      setPostTitle, 
-      postBody, 
-      setPostBody, 
-      handleEdit, 
-      editTitle, 
-      setEditTitle, 
-      editBody, 
+      posts,
+      setPosts,
+      search,
+      setSearch,
+      searchResults,
+      fetchError,
+      isLoading,
+      handleSubmit,
+      postTitle,
+      setPostTitle,
+      postBody,
+      setPostBody,
+      handleEdit,
+      editTitle,
+      setEditTitle,
+      editBody,
       setEditBody
     }}>
       {children}
@@ -170,14 +170,14 @@ function DataProvider({children}) {
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
-    width: undefined, 
+    width: undefined,
     height: undefined
   });
 
   useEffect(() => {
     function hahdleResize() {
       setWindowSize({
-        width: window.innerWidth, 
+        width: window.innerWidth,
         height: window.innerHeight
       })
     }
@@ -198,8 +198,8 @@ function Header({ title }) {
   return (
     <header className='Header'>
       <h1>{title}</h1>
-      {width < 768 ? <p>Mobile</p> 
-        : width < 992 ? <p>Tablet</p> 
+      {width < 768 ? <p>Mobile</p>
+        : width < 992 ? <p>Tablet</p>
           : <p>Desktop</p>}
     </header>
   )
@@ -207,16 +207,16 @@ function Header({ title }) {
 
 function Nav() {
   const { search, setSearch } = useContext(DataContext);
-  
+
   return (
     <nav className='Nav'>
       <form className="searchForm" onSubmit={e => e.preventDefault()}>
         <label htmlFor="search">Search Posts</label>
-        <input 
-          id='search' 
-          type="text" 
-          value={search} 
-          onChange={e => setSearch(e.target.value)} 
+        <input
+          id='search'
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
           placeholder='Search Posts'
         />
       </form>
@@ -266,9 +266,9 @@ function Post({ post }) {
         <p className="postDate">{post.datetime}</p>
       </Link>
       <p className="postBody">
-        {(post.body).length <= 25 
-            ? post.body 
-            : `${(post.body).slice(0, 25)}...`
+        {(post.body).length <= 25
+          ? post.body
+          : `${(post.body).slice(0, 25)}...`
         }
       </p>
     </article>
@@ -288,7 +288,7 @@ function PostPage() {
     console.log(id);
     try {
       const response = await fetch(`${baseURL}/posts/${id}`, options);
-      if (response.ok) {        
+      if (response.ok) {
         const postsList = posts.filter(post => post.id !== id);
         // console.log(postsList);
         setPosts(postsList);
@@ -302,7 +302,7 @@ function PostPage() {
   return (
     <main className='PostPage'>
       <article className="post">
-        {post && 
+        {post &&
           <>
             <h2>{post.title}</h2>
             <p className="postDate">{post.datetime}</p>
@@ -311,7 +311,7 @@ function PostPage() {
             <button className='deleteButton' onClick={() => handleDelete(post._id)}>Delete Post</button>
           </>
         }
-        {!post && 
+        {!post &&
           <>
             <h2>Post Not Found</h2>
             <p>Well, that's disappointing.</p>
@@ -326,25 +326,25 @@ function PostPage() {
 }
 
 function NewPost() {
-  const {handleSubmit, postTitle, setPostTitle, postBody, setPostBody} = useContext(DataContext);
+  const { handleSubmit, postTitle, setPostTitle, postBody, setPostBody } = useContext(DataContext);
 
   return (
     <main className='NewPost'>
       <h2>New Post</h2>
       <form className="newPostForm" onSubmit={handleSubmit}>
         <label htmlFor="postTitle">Title:</label>
-        <input 
+        <input
           id="postTitle"
-          type="text" 
-          value={postTitle} 
-          onChange={(e) => setPostTitle(e.target.value)} 
+          type="text"
+          value={postTitle}
+          onChange={(e) => setPostTitle(e.target.value)}
           required
         />
         <label htmlFor="postBody">Post:</label>
-        <textarea 
+        <textarea
           id="postBody"
-          value={postBody} 
-          onChange={(e) => setPostBody(e.target.value)} 
+          value={postBody}
+          onChange={(e) => setPostBody(e.target.value)}
           required
         />
         <button type="submit">Submit</button>
@@ -354,7 +354,7 @@ function NewPost() {
 }
 
 function EditPost() {
-  const {posts, handleEdit, editTitle, setEditTitle, editBody, setEditBody} = useContext(DataContext);
+  const { posts, handleEdit, editTitle, setEditTitle, editBody, setEditBody } = useContext(DataContext);
   const { id } = useParams();
   const post = posts.find(post => post._id === id);
 
@@ -373,17 +373,17 @@ function EditPost() {
           <form className="newPostForm" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="postTitle">Title:</label>
             <input
-              id="postTitle" 
-              type="text" 
-              value={editTitle} 
-              onChange={(e) => setEditTitle(e.target.value)} 
+              id="postTitle"
+              type="text"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
               required
             />
             <label htmlFor="postBody">Post:</label>
             <textarea
-              id="postBody" 
-              value={editBody} 
-              onChange={(e) => setEditBody(e.target.value)} 
+              id="postBody"
+              value={editBody}
+              onChange={(e) => setEditBody(e.target.value)}
               required
             />
             <button type="submit" onClick={() => handleEdit(id)}>Submit</button>
@@ -453,7 +453,7 @@ function useFetch(url) {
 
   useEffect(() => {
     let isMounted = true;
-    
+
     async function fetchData(url) {
       setIsLoading(true);
       try {
@@ -465,7 +465,7 @@ function useFetch(url) {
         }
       } catch (error) {
         console.log(error);
-        if (isMounted) {          
+        if (isMounted) {
           setFetchError(error.message);
           setData([]);
         }
@@ -495,113 +495,94 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const data = [
-  { id: 1, name: 'john' },
-  { id: 2, name: 'peter' },
-  { id: 3, name: 'susan' },
-  { id: 4, name: 'anna' },
-];
+import React from 'react';
 
-const AboutTest = () => {
-  return (  
-    <div>
-      <h1>About Page</h1>
-    </div>  
-  );  
-};  
+// const data = [
+//   { id: 1, name: 'john' },
+//   { id: 2, name: 'peter' },
+//   { id: 3, name: 'susan' },
+//   { id: 4, name: 'anna' },
+// ];
 
-const Error = () => {
-  return (  
-    <div>
-      <h1>Error Page</h1>
-      <Link to='/' className='btn'>
-        Back Home
-      </Link>
-    </div>  
-  );  
-};  
+const data = [{ "id": "rec43w3ipXvP28vog", "fields": { "company": "ikea", "colors": ["#f15025", "#222"], "featured": true, "price": 999, "name": "high-back bench", "image": [{ "id": "attcvDDMikF6G2iNi", "width": 1000, "height": 639, "url": "https://course-api.com/images/store/product-1.jpeg", "filename": "product-1.jpeg", "size": 62864, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 56, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 801, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-1.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "rec4f2RIftFCb7aHh", "fields": { "company": "marcos", "colors": ["#f15025", "#222"], "price": 7999, "name": "albany table", "image": [{ "id": "attP2cUyxU35M1zbw", "width": 1000, "height": 1500, "url": "https://course-api.com/images/store/product-2.jpeg", "filename": "product-1.jpeg", "size": 119274, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 24, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 512, "height": 768 }, "full": { "url": "https://course-api.com/images/store/product-2.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "rec8kkCmSiMkbkiko", "fields": { "company": "caressa", "colors": ["#222", "#0000ff", "#f15025"], "price": 2599, "name": "accent chair", "image": [{ "id": "attIieysyB9zQmQo9", "width": 1000, "height": 667, "url": "https://course-api.com/images/store/product-3.jpeg", "filename": "product-4.jpeg", "size": 49641, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 54, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 768, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-3.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recBohCqQsot4Q4II", "fields": { "company": "caressa", "colors": ["#ff0000", "#0000ff"], "price": 4599, "name": "wooden table", "image": [{ "id": "attXaEED3KJcY2cjY", "width": 1280, "height": 1891, "url": "https://course-api.com/images/store/product-4.jpeg", "filename": "pexels-dominika-roseclay-1139785.jpg", "size": 203105, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 24, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 512, "height": 756 }, "full": { "url": "https://course-api.com/images/store/product-4.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recDG1JRZnbpRHpoy", "fields": { "company": "caressa", "colors": ["#ff0000", "#f15025"], "price": 699, "name": "dining table", "image": [{ "id": "attxkKEEgmBnutpwI", "width": 1280, "height": 1858, "url": "https://course-api.com/images/store/product-5.jpeg", "filename": "product-8.jpg", "size": 281908, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 25, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 512, "height": 743 }, "full": { "url": "https://course-api.com/images/store/product-5.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recNWGyP7kjFhSqw3", "fields": { "company": "liddy", "colors": ["#0000ff"], "price": 6999, "name": "sofa set", "image": [{ "id": "att5iyl4TJvd3oepN", "width": 1000, "height": 625, "url": "https://course-api.com/images/store/product-6.jpeg", "filename": "product-1.jpeg", "size": 56151, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 58, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 819, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-6.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recZEougL5bbY4AEx", "fields": { "company": "marcos", "colors": ["#00ff00", "#f15025", "#ff0000"], "price": 899, "name": "modern bookshelf", "image": [{ "id": "attDj1C6GxJMsJ1he", "width": 1280, "height": 720, "url": "https://course-api.com/images/store/product-7.jpeg", "filename": "product-7.jpg", "size": 162415, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 64, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 910, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-7.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recjMK1jgTb2ld7sv", "fields": { "company": "liddy", "colors": ["#f15025"], "price": 2199, "name": "emperor bed", "image": [{ "id": "attiwrd7gSI1oGxRK", "width": 1280, "height": 720, "url": "https://course-api.com/images/store/product-8.jpeg", "filename": "product-6.jpg", "size": 178908, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 64, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 910, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-8.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recmg2a1ctaEJNZhu", "fields": { "company": "marcos", "colors": ["#00ff00", "#0000ff"], "featured": true, "price": 3995, "name": "utopia sofa", "image": [{ "id": "attqutUt355traBeS", "width": 1280, "height": 846, "url": "https://course-api.com/images/store/product-9.jpeg", "filename": "product-3.jpg", "size": 196312, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 54, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 775, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-9.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recvKMNR3YFw0bEt3", "fields": { "company": "liddy", "colors": ["#ff0000", "#00ff00"], "featured": true, "price": 2998, "name": "entertainment center", "image": [{ "id": "atttOzyYI8P1XfJu8", "width": 1280, "height": 924, "url": "https://course-api.com/images/store/product-10.jpeg", "filename": "product-2.jpg", "size": 195175, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 50, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 709, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-10.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recxaXFy5IW539sgM", "fields": { "company": "ikea", "colors": ["#00ff00", "#ff0000"], "price": 1099, "name": "albany sectional", "image": [{ "id": "attjWNxk7KKzcLPDx", "width": 1000, "height": 652, "url": "https://course-api.com/images/store/product-11.jpeg", "filename": "product-1.jpeg", "size": 61946, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 55, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 785, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-11.jpeg", "width": 3000, "height": 3000 } } }] } }, { "id": "recyqtRglGNGtO4Q5", "fields": { "company": "liddy", "colors": ["#222"], "price": 999, "name": "leather sofa", "image": [{ "id": "attnZHyyOUTBzJ1ZD", "width": 1280, "height": 960, "url": "https://course-api.com/images/store/product-12.jpeg", "filename": "product-5.jpg", "size": 189559, "type": "image/jpeg", "thumbnails": { "small": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 48, "height": 36 }, "large": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 683, "height": 512 }, "full": { "url": "https://course-api.com/images/store/product-12.jpeg", "width": 3000, "height": 3000 } } }] } }]
 
+// const url = 'https://course-api.com/javascript-store-products';
 
-const HomeTest = () => {
-  return (  
-    <div> 
-      <h1>Home Page</h1>
-      <p>shake and bake</p>
-    </div>  
-  );  
-};  
+const calculateMostExpensive = (data) => {
+  return (
+    data.reduce((total, item) => {
+      const price = item.fields.price;
+      if (price >= total) {
+        total = price;
+      }
+      return total;
+    }, 0) / 100
+  )
+}
 
-const Navbar = () => {
-  return (  
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
-          <Link to='/people'>People</Link>
-        </li>
-      </ul>
-    </nav>  
-  );  
-};  
+const Index = () => {
+  const products = [...data];
+  const [count, setCount] = useState(0);
+  const [cart, setCart] = useState(0);
 
-const People = () => {
-  const [people, setPeople] = useState(data);
-  return (  
-    <div>
-      <h1>People Page</h1>
-      {people.map((person) => {
-        return (
-          <div key={person.id} className='item'>
-            <h4>{person.name}</h4>
-            <Link to={`/person/${person.id}`}>Learn More</Link>
-          </div>  
-        );  
-      })} 
-    </div>  
-  );  
-};  
+  const addToCart = useCallback(() => {
+    setCart(cart + 1);
+  }, [cart])
 
-const Person = () => {
-  const [name, setName] = useState('default name');
-  const { id } = useParams();
+  const mostExpensive = useMemo(() => calculateMostExpensive(products), [
+    products,
+  ])
 
-  useEffect(() => { 
-    const newPerson = data.find((person) => person.id === parseInt(id));
-    setName(newPerson.name);
-  }, []); 
-
-  return (  
-    <div> 
-      <h1>{name}</h1>
-      <Link to='/people' className='btn'>
-        Back To People
-      </Link>
-    </div>  
-  );  
-};  
-
-const ReactRouterSetup = () => {
-  return (  
+  return (
     <>
-      <Navbar />
-      <Routes>
-        {/* <Switch> */}
-        <Route exact path='/' element={<HomeTest />} />
-        <Route path='/about' element={<AboutTest />} />
-        <Route path='/people' element={<People />} />
-        <Route path='/person/:id' element={<Person />} />
-        <Route path='*' element={<Error />} />
-        {/* </Switch> */}
-      </Routes>
+      <h1>Count : {count}</h1>
+      <button className='btn' onClick={() => setCount(count + 1)}>
+        click me
+      </button>
+      <h1 style={{ marginTop: '3rem' }}>cart : {cart}</h1>
+      <h1>Most Expensive : ${mostExpensive}</h1>
+      <BigList products={products} addToCart={addToCart} />
     </>
-  );  
-};  
+  )
+}
 
+const BigList = React.memo(({ products, addToCart }) => {
+  // useEffect(() => {
+  //   console.count('hello from big list');
+  // });
+
+  return (
+    <section className='products'>
+      {products.map((product) => {
+        return (  
+          <SingleProduct
+            key={product.id}
+            {...product}
+            addToCart={addToCart}
+          ></SingleProduct>
+        )
+      })}
+    </section>
+  )
+})
+
+const SingleProduct = ({ fields, addToCart }) => {
+  let { name, price } = fields;
+  price = price / 100;
+  const image = fields.image[0].url;
+
+  // useEffect(() => {
+  //   console.count('hello from product');
+  // });
+  return (
+    <article className='product'>
+      <img src={image} alt={name} />
+      <h4>{name}</h4>
+      <p>${price}</p>
+      <button onClick={addToCart}>add to cart</button>
+    </article>
+  )
+}
 
 function App() {
   return (
@@ -610,7 +591,7 @@ function App() {
         <div className="body">
           {/* <Header title="React JS Blog" /> */}
           <div className="container">
-            <ReactRouterSetup />
+            <Index />
           </div>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
