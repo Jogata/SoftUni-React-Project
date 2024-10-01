@@ -1202,6 +1202,7 @@ main {
 }
 
 .single-tour {
+  /* display: block; */
   margin: 2rem 0;
   border-radius: var(--radius);
   background-color: var(--clr-white);
@@ -1215,8 +1216,9 @@ main {
   width: 100%;
   height: 20rem;
   object-fit: cover;
-  border-top-right-radius: var(--radius);
-  border-top-left-radius: var(--radius);
+  /* clip-path: url("#mask-1"); */
+  /* border-top-right-radius: var(--radius); */
+  /* border-top-left-radius: var(--radius); */
 }
 .tour-info {
   display: flex;
