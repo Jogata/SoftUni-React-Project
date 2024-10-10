@@ -551,16 +551,18 @@ function App() {
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <div className="grid-container">
-            <h3>questions and answers about login</h3>
-            <section className='info'>
-              {questions.map((question) => {
-                return (
-                  <SingleQuestion key={question.id} {...question}></SingleQuestion>
-                );
-              })}
-            </section>
-          </div>
+          <main>
+            <div className="grid-container">
+              <h3>questions and answers about login</h3>
+              <section className='info'>
+                {questions.map((question) => {
+                  return (
+                    <SingleQuestion key={question.id} {...question}></SingleQuestion>
+                  );
+                })}
+              </section>
+            </div>
+          </main>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
