@@ -495,153 +495,129 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const menu = [
+const url = 'https://course-api.com/react-tabs-project';
+
+const data = [
   {
-    id: 1,
-    title: 'buttermilk pancakes',
-    category: 'breakfast',
-    price: 15.99,
-    img: './images/item-1.jpeg',
-    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-  },    
-  {     
-    id: 2,
-    title: 'diner double',
-    category: 'lunch',
-    price: 13.99,
-    img: './images/item-2.jpeg',
-    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
-  },    
-  {   
-    id: 3,
-    title: 'godzilla milkshake',
-    category: 'shakes',
-    price: 6.99,
-    img: './images/item-3.jpeg',
-    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
-  },    
-  {     
-    id: 4,
-    title: 'country delight',
-    category: 'breakfast',
-    price: 20.99,
-    img: './images/item-4.jpeg',
-    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
-  },    
-  {   
-    id: 5,  
-    title: 'egg attack',
-    category: 'lunch',
-    price: 22.99,
-    img: './images/item-5.jpeg',
-    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
-  },  
-  { 
-    id: 6,
-    title: 'oreo dream',
-    category: 'shakes',
-    price: 18.99,
-    img: './images/item-6.jpeg',
-    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
-  },  
-  { 
-    id: 7,
-    title: 'bacon overflow',
-    category: 'breakfast',
-    price: 8.99,
-    img: './images/item-7.jpeg',
-    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
-  },  
-  { 
-    id: 8,
-    title: 'american classic',
-    category: 'lunch',
-    price: 12.99,
-    img: './images/item-8.jpeg',
-    desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
-  },  
-  { 
-    id: 9,
-    title: 'quarantine buddy',
-    category: 'shakes',
-    price: 16.99,
-    img: './images/item-9.jpeg',
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-  },   
-];  
+    "id": "recAGJfiU4CeaV0HL",
+    "order": 3,
+    "title": "Full Stack Web Developer",
+    "dates": "December 2015 - Present",
+    "duties": [
+      "Tote bag sartorial mlkshk air plant vinyl banjo lumbersexual poke leggings offal cold-pressed brunch neutra. Hammock photo booth live-edge disrupt.",
+      "Post-ironic selvage chambray sartorial freegan meditation. Chambray chartreuse kombucha meditation, man bun four dollar toast street art cloud bread live-edge heirloom.",
+      "Butcher drinking vinegar franzen authentic messenger bag copper mug food truck taxidermy. Mumblecore lomo echo park readymade iPhone migas single-origin coffee franzen cloud bread tilde vegan flexitarian."
+    ],
+    "company": "TOMMY"
+  },
+  {
+    "id": "recIL6mJNfWObonls",
+    "order": 2,
+    "title": "Front-End Engineer",
+    "dates": "May 2015 - December 2015",
+    "duties": [
+      "Hashtag drinking vinegar scenester mumblecore snackwave four dollar toast, lumbersexual XOXO. Cardigan church-key pabst, biodiesel vexillologist viral squid.",
+      "Franzen af pitchfork, mumblecore try-hard kogi XOXO roof party la croix cardigan neutra retro tattooed copper mug. Meditation lomo biodiesel scenester",
+      "Fam VHS enamel pin try-hard echo park raw denim unicorn fanny pack vape authentic. Helvetica fixie church-key, small batch jianbing messenger bag scenester +1",
+      "Fam VHS enamel pin try-hard echo park raw denim unicorn fanny pack vape authentic. Helvetica fixie church-key, small batch jianbing messenger bag scenester +1"
+    ],
+    "company": "BIGDROP"
+  },
+  {
+    "id": "rec61x18GVY99hQq5",
+    "order": 1,
+    "title": "Engineering Intern",
+    "dates": "May 2014 - September 2015",
+    "duties": [
+      "I'm baby woke mumblecore stumptown enamel pin. Snackwave prism pork belly, blog vape four loko sriracha messenger bag jean shorts DIY bushwick VHS. Banjo post-ironic hella af, palo santo craft beer gluten-free.",
+      "YOLO drinking vinegar chambray pok pok selfies quinoa kinfolk pitchfork street art la croix unicorn DIY. Woke offal jianbing venmo tote bag, palo santo subway tile slow-carb post-ironic pug ugh taxidermy squid.",
+      "Pour-over glossier chambray umami 3 wolf moon. Iceland kale chips asymmetrical craft beer actually forage, biodiesel tattooed fingerstache. Pork belly lomo man braid, portland pitchfork locavore man bun prism."
+    ],
+    "company": "CUKER"
+  }
+]
 
-const allCategories = ['all', ...new Set(menu.map((item) => item.category))];
+function Tabs() {
+  const [loading, setLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
+  const [value, setValue] = useState(0);
 
-const Menu = ({ items }) => {
-  return (  
-    <div className='section-center'>
-      {items.map((menuItem) => {
-        const { id, title, img, desc, price } = menuItem;
-        return (
-          <article key={id} className='menu-item'>
-            <img src={img} alt={title} className='photo' />
-            <div className='item-info'>
-              <header>
-                <h4>{title}</h4>
-                <h4 className='price'>${price}</h4>
-              </header>
-              <p className='item-text'>{desc}</p>
-            </div>
-          </article>
-        );
-      })}
-    </div>
-  );
-};
+  const fetchJobs = async () => {
+    // const reponse = await fetch(url);
+    // const newJobs = await reponse.json();
+    setTimeout(() => {      
+      // setJobs(newJobs);
+      setJobs(data);
+      setLoading(false);
+    }, 2000);
+  }
 
-const Categories = ({ categories, filterItems }) => {
-  return (  
-    <div className="btn-container">
-      {categories.map((category, index) => {
-        return (
-          <button
-            type="button" 
-            className="filter-btn" 
-            key={index} 
-            onClick={() => filterItems(category)} 
-          >
-            {category}
-          </button>
-        );
-      })}
-    </div>
-  );  
-};
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="section loading">
+        {/* <h1>Loading...</h1> */}
+        <Loader />
+      </section>
+    )
+  }
+
+  const { company, dates, duties, title } = jobs[value];
+
+  return (
+    <section className="section">
+      <div className="title">
+        <h2>experience</h2>
+        <div className="underline"></div>
+      </div>
+      <div className="jobs-center">
+        {/* btn container */}
+        <div className="btn-container">
+          {jobs.map((item, index) => {
+            return (
+              <button 
+                key={item.id} 
+                onClick={() => setValue(index)} 
+                className={`job-btn ${index === value && 'active-btn'}`} 
+              >
+                {item.company}
+              </button>
+            )
+          })}
+        </div>
+        {/* job info */}
+        <article className="job-info">
+          <h3>{title}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{dates}</p>
+          {duties.map((duty, index) => {
+            return (
+              <div key={index} className="job-desc">
+                {/* <FaAngleDoubleRight className="job-icon"></FaAngleDoubleRight> */}
+                <span className='job-icon'>{">>"}</span>
+                <p>{duty}</p>
+              </div>
+            )
+          })}
+        </article>
+      </div>
+      <button type="button" className="btn">
+        more info
+      </button>
+    </section>
+  )
+}
 
 function App() {
-
-  const [menuItems, setMenuItems] = useState(menu);
-  const [categories, setCategories] = useState(allCategories);
-
-  const filterItems = (category) => {
-    if (category === 'all') {
-      setMenuItems(menu);
-      return;
-    }
-    const newItems = menu.filter((item) => item.category === category);
-    setMenuItems(newItems);
-  };
-
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <main>  
-            <section className="menu menu-section">
-              <div className="title">
-                <h2>our menu</h2>
-                <div className="underline"></div>
-              </div>
-              <Categories categories={categories} filterItems={filterItems} />
-              <Menu items={menuItems} />
-            </section>
-          </main> 
+          <Tabs />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
