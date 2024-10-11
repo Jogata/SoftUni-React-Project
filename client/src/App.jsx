@@ -633,7 +633,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <main>  
-            <section className="menu section">
+            <section className="menu menu-section">
               <div className="title">
                 <h2>our menu</h2>
                 <div className="underline"></div>
