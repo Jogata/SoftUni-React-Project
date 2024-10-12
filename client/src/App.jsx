@@ -594,7 +594,10 @@ function Slider() {
           {">"}
         </button>
       </div>  
-    </section>  
+      {/* <div className="test">
+        <h1>test</h1>
+      </div> */}
+    </section> 
   ) 
 } 
 
