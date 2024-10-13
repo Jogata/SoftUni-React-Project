@@ -495,148 +495,61 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const data = [
-  { 
-    id: 1,
-    image: 'https://www.course-api.com/images/people/person-1.jpeg',
-    name: 'maria ferguson',
-    title: 'office manager',
-    quote:
-      'Fingerstache umami squid, kinfolk subway tile selvage tumblr man braid viral kombucha gentrify fanny pack raclette pok pok mustache.',
-  },  
-  { 
-    id: 2,
-    image: 'https://www.course-api.com/images/people/person-4.jpeg',
-    name: 'john doe',
-    title: 'regular guy',
-    quote:
-      'Gastropub sustainable tousled prism occupy. Viral XOXO roof party brunch actually, chambray listicle microdosing put a bird on it paleo subway tile squid umami.',
-  },  
-  { 
-    id: 3,
-    image: 'https://www.course-api.com/images/people/person-3.jpeg',
-    name: 'peter smith',
-    title: 'product designer',
-    quote:
-      'Drinking vinegar polaroid street art echo park, actually semiotics next level butcher master cleanse hammock flexitarian ethical paleo.',
-  },  
-  { 
-    id: 4,
-    image: 'https://www.course-api.com/images/people/person-2.jpeg',
-    name: 'susan andersen',
-    title: 'the boss',
-    quote:
-      'Marfa af yr 3 wolf moon kogi, readymade distillery asymmetrical seitan kale chips fingerstache cloud bread mustache twee messenger bag. ',
-  },  
-];  
-
-function Slider() {
-  const [people, setPeople] = useState(data);
-  const [index, setIndex] = useState(0);
-
-  const nextSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex + 1
-      if (index > people.length - 1) {
-        index = 0
-      }
-      return index
-    })
-  }
-
-  const prevSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex - 1
-      if (index < 0) {
-        index = people.length - 1
-      }
-      return index
-    })
-  }
-
-  // useEffect(() => { 
-  //   const lastIndex = people.length - 1;
-  //   if (index < 0) {
-  //     setIndex(lastIndex);
-  //   }
-  //   if (index > lastIndex) {
-  //     setIndex(0);
-  //   }
-  // }, [index, people]);
-
-  useEffect(() => { 
-    let slider = setInterval(() => {
-      setIndex(index + 1);
-    }, 5000);
-    return () => {
-      clearInterval(slider);
-    };
-  }, [index]);
-
-  return (  
-    <section className="section"> 
-      <div className="title"> 
-        <h2>
-          <span>/</span>reviews
-        </h2>
-      </div>  
-      <div className="section-center">
-        {people.map((person, personIndex) => {
-          const { id, image, name, title, quote } = person;
-
-          let position = 'nextSlide';
-          if (personIndex === index) {
-            position = 'activeSlide';
-          }
-          if (
-            personIndex === index - 1 ||
-            (index === 0 && personIndex === people.length - 1)
-          ) {
-            position = 'lastSlide';
-          }
-
-          return (
-            <article className={position} key={id}>
-              <img src={image} alt={name} className="person-img" />
-              <h4>{name}</h4>
-              <p className="title">{title}</p>
-              <p className="text">{quote}</p>
-              <span className="icon">{'"'}</span>
-            </article>
-          );
-        })}
-        {/* <button className="prev" onClick={() => setIndex(index - 1)}> */}
-          {/* <FiChevronLeft /> */}
-          {/* {"<"} */}
-        {/* </button> */}
-        {/* <button className="next" onClick={() => setIndex(index + 1)}> */}
-          {/* <FiChevronRight /> */}
-          {/* {">"} */}
-        {/* </button> */}
-        <button className="prev" onClick={prevSlide}>
-          {/* <FiChevronLeft /> */}
-          {"<"}
-        </button>
-        <button className="next" onClick={nextSlide}>
-          {/* <FiChevronRight /> */}
-          {">"}
-        </button>
-
-      </div>  
-      {/* <div className="test">
-        <h1>test</h1>
-      </div> */}
-    </section> 
-  ) 
-} 
+const textData = [
+  `Jelly sweet roll jelly beans biscuit pie macaroon chocolate donut. Carrot cake caramels pie sweet apple pie tiramisu carrot cake. Marzipan marshmallow croissant tootsie roll lollipop. Cupcake lemon drops bear claw gummies. Jelly bear claw gummi bears lollipop cotton candy gummi bears chocolate bar cake cookie. Cupcake muffin danish muffin cookie gummies. Jelly beans tiramisu pudding. Toffee soufflé chocolate cake pastry brownie. Oat cake halvah sweet roll cotton candy croissant lollipop. Macaroon tiramisu chocolate bar candy candy carrot cake jelly sweet. Gummies croissant macaroon dessert. Chocolate cake dragée pie.`,
+  `Next level tbh everyday carry, blog copper mug forage kitsch roof party pickled hammock kale chips tofu. Etsy shoreditch 8-bit microdosing, XOXO viral butcher banh mi humblebrag listicle woke bicycle rights brunch before they sold out ramps. Twee shabby chic taiyaki flannel, enamel pin venmo vape four loko. Hexagon kale chips typewriter kitsch 8-bit organic plaid small batch keffiyeh ethical banh mi narwhal echo park cronut.`,
+  `Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.`,
+  `Cat gets stuck in tree firefighters try to get cat down firefighters get stuck in tree cat eats firefighters' slippers kitty power ignore the squirrels, you'll never catch them anyway for what a cat-ass-trophy! or purr as loud as possible, be the most annoying cat that you can, and, knock everything off the table. Pretend you want to go out but then don't bite off human's toes, yet disappear for four days and return home with an expensive injury; bite the vet so catch eat throw up catch eat throw up bad birds. `,
+  `This opera's as lousy as it is brilliant! Your lyrics lack subtlety. You can't just have your characters announce how they feel. That makes me feel angry! Anyhoo, your net-suits will allow you to experience Fry's worm infested bowels as if you were actually wriggling through them. 
+  I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Michelle, I don't regret this, but I both rue and lament it. Morbo can't understand his teleprompter because he forgot how you say that letter that's shaped like a man wearing a hat.`,
+  `Airedale hard cheese mozzarella. Pecorino melted cheese port-salut emmental babybel cheese and wine melted cheese manchego. Everyone loves blue castello everyone loves fromage cheese slices airedale cheddar cream cheese. Bavarian bergkase who moved my cheese halloumi port-salut gouda jarlsberg ricotta rubber cheese. Stinking bishop smelly cheese brie.`,
+  `Salvia glossier subway tile, leggings mustache YOLO semiotics chia. Pitchfork tbh af blog church-key meggings vaporware PBR&B master cleanse post-ironic man bun pabst mustache letterpress synth. Snackwave raw denim godard, 3 wolf moon shaman offal kitsch unicorn live-edge selvage schlitz fashion axe vaporware drinking vinegar prism. Shabby chic tacos artisan, chambray chicharrones cardigan leggings typewriter af pop-up williamsburg meditation PBR&B viral. You probably haven't heard of them DIY jean shorts subway tile fashion axe bushwick kitsch tumeric cloud bread vaporware freegan franzen pork belly chicharrones banh mi.`,
+  `Man braid celiac synth freegan readymade, pitchfork fam salvia waistcoat lomo bitters gentrify four loko. Pitchfork semiotics post-ironic vegan. Tofu meditation microdosing hashtag semiotics venmo. Flexitarian vape tilde taiyaki. Prism poutine farm-to-table, messenger bag vegan taxidermy tattooed sartorial squid jean shorts fixie selvage trust fund vape.`,
+  `Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm.`,
+];
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let amount = parseInt(count);
+    if (count <= 0) {
+      amount = 1;
+    }
+    if (count > 8) {
+      amount = 8;
+    }
+    setText(data.slice(0, amount));
+  };
+
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Slider />
+          <>
+            <section className='section-center'>
+              <h3>tired of boring lorem ipsum?</h3>
+              <form className='lorem-form' onSubmit={handleSubmit}>
+                <label htmlFor='amount'>paragraphs:</label>
+                <input
+                  type='number'
+                  name='amount'
+                  id='amount'
+                  value={count}
+                  onChange={(e) => setCount(e.target.value)}
+                />
+                <button className='btn'>generate</button>
+              </form>
+              <article className='lorem-text'>
+                {text.map((item, index) => {
+                  return <p key={index}>{item}</p>;
+                })}
+              </article>
+            </section>
+          </>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
