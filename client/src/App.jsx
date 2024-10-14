@@ -495,95 +495,147 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function componentToHex(c) {
-  const hex = c.toString(16);
-  return hex.length == 1 ? '0' + hex : hex;
-}
+// const getLocalStorage = () => {
+//   let list = localStorage.getItem('list');
+//   if (list) {
+//     return (list = JSON.parse(localStorage.getItem('list')));
+//   } else {
+//     return [];
+//   }
+// };
 
-function rgbToHex(r, g, b) {
-  return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
+const GroceryList = ({ items, removeItem, editItem }) => {
+  return (  
+    <div className='grocery-list'>
+      {items.map((item) => {
+        const { id, title } = item;
+        return (
+          <article className='grocery-item' key={id}>
+            <p className='title'>{title}</p>
+            <div className='btn-container'>
+              <button
+                type='button'
+                className='edit-btn'
+                onClick={() => editItem(id)}
+              >
+                Edit
+              </button>
+              <button
+                type='button'
+                className='delete-btn'
+                onClick={() => removeItem(id)}
+              >
+                Delete
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+};
 
-const SingleColor = ({ rgb, weight, index, hexColor }) => {
-  const [alert, setAlert] = useState(false);
-  const bcg = rgb.join(',');
-  const hex = rgbToHex(...rgb);
-  const hexValue = `#${hexColor}`;
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setAlert(false);
-    }, 3000);
-
-    return () => clearTimeout(timeout);
-  }, [alert]);
-
-  return (
-    <article
-      className={`color ${index > 10 && 'color-light'}`} 
-      style={{ backgroundColor: `rgb(${bcg})` }} 
-      onClick={() => {
-        setAlert(true);
-        navigator.clipboard.writeText(hexValue);
-      }}
-    >
-      <p className='percent-value'>{weight}%</p>
-      <p className='color-value'>{hexValue}</p>
-      {alert && <p className='alert'>copied to clipboard</p>}
-    </article>
-  )
-}
+const Alert = ({ type, msg, removeAlert, list }) => {
+  useEffect(() => { 
+    const timeout = setTimeout(() => {  
+      removeAlert();
+    }, 3000); 
+    return () => clearTimeout(timeout); 
+  }, [list]);
+  return <p className={`alert alert-${type}`}>{msg}</p>;
+};
 
 function App() {
-  const [color, setColor] = useState('');
-  const [error, setError] = useState(false);
-  const [list, setList] = useState(new Values('#f15025').all(10));
+  const [name, setName] = useState('');
+  // const [list, setList] = useState(getLocalStorage());
+  const [list, setList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
+  const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
 
-  const handleSubmit = (e) => { 
-    e.preventDefault(); 
-    try {
-      let colors = new Values(color).all(10);
-      setList(colors);
-    } catch (error) {
-      setError(true);
-      console.log(error);
-    } 
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name) {
+      showAlert(true, 'danger', 'please enter value');
+    } else if (name && isEditing) {
+      setList(
+        list.map((item) => {
+          if (item.id === editID) {
+            return { ...item, title: name };
+          }
+          return item;
+        })
+      );
+      setName('');
+      setEditID(null);
+      setIsEditing(false);
+      showAlert(true, 'success', 'value changed');
+    } else {
+      showAlert(true, 'success', 'item added to the list');
+      const newItem = { id: new Date().getTime().toString(), title: name };
+
+      setList([...list, newItem]);
+      setName('');
+    }
+  };
+
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg });
+  };
+
+  const clearList = () => {
+    showAlert(true, 'danger', 'empty list');
+    setList([]);
+  };
+
+  const removeItem = (id) => {
+    showAlert(true, 'danger', 'item removed');
+    setList(list.filter((item) => item.id !== id));
+  };
+
+  const editItem = (id) => {
+    const specificItem = list.find((item) => item.id === id);
+    setIsEditing(true);
+    setEditID(id);
+    setName(specificItem.title);
+  };
+
+  // useEffect(() => {
+    // localStorage.setItem('list', JSON.stringify(list));
+  // }, [list]);
 
   return (
     <>
       <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <>  
-            <section className='color-container'> 
-              <h3>color generator</h3>
-              <form onSubmit={handleSubmit}>  
-                <input  
-                  type='text' 
-                  value={color} 
-                  onChange={(e) => setColor(e.target.value)}  
-                  placeholder='#f15025' 
-                  className={`${error ? 'error' : null}`} 
-                />  
-                <button className='btn' type='submit'>  
-                  submit  
-                </button> 
-              </form >  
-            </section>  
-            <section className='colors'>
-              {list.map((color, index) => {
-                return (
-                  <SingleColor
-                    key={index} 
-                    {...color}  
-                    index={index} 
-                    hexColor={color.hex}  
-                  />  
-                ) 
-              })} 
-            </section>  
-          </> 
+          <section className='section-center'>
+            <form className='grocery-form' onSubmit={handleSubmit}>
+              {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+
+              <h3>grocery bud</h3>
+              <div className='form-control'>
+                <input
+                  type='text'
+                  className='grocery'
+                  placeholder='e.g. eggs'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <button type='submit' className='submit-btn'>
+                  {isEditing ? 'edit' : 'submit'}
+                </button>
+              </div>
+            </form>
+            {list.length > 0 && (
+              <div className='grocery-container'>
+                <GroceryList items={list} removeItem={removeItem} editItem={editItem} />
+                <button className='clear-btn' onClick={clearList}>
+                  clear items
+                </button>
+              </div>
+            )}
+          </section>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
