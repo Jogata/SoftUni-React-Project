@@ -556,7 +556,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <>  
-            <section className='container'> 
+            <section className='color-container'> 
               <h3>color generator</h3>
               <form onSubmit={handleSubmit}>  
                 <input  
