@@ -565,10 +565,10 @@ const Navbar = () => {
   }, [showLinks]);
 
   return (
-    <nav>
+    <nav className='nav'>
       <div className='nav-center'>
         <div className='nav-header'>
-          <a href="#" className="logo"></a>
+          <a href="#" className="logo">logo</a>
           <button className='nav-toggle' onClick={toggleLinks}>
             menu
           </button>
