@@ -495,118 +495,78 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const links = [
-  {
-    id: 1,
-    url: '/',
-    text: 'home',
-  },
-  {
-    id: 2,
-    url: '/about',
-    text: 'about',
-  },
-  {
-    id: 3,
-    url: '/projects',
-    text: 'projects',
-  },
-  {
-    id: 4,
-    url: '/contact',
-    text: 'contact',
-  },
-  {
-    id: 5,
-    url: '/profile',
-    text: 'profile',
-  },
-];
+const AppContext = createContext();
 
-const socials = [
-  {
-    id: 1,
-    url: 'https://www.twitter.com',
-    icon: "facebook",
-  },
-  {
-    id: 2,
-    url: 'https://www.twitter.com',
-    icon: "twitter",
-  },
-  {
-    id: 3,
-    url: 'https://www.twitter.com',
-    icon: "linkedin",
-  },
-  {
-    id: 4,
-    url: 'https://www.twitter.com',
-    icon: "behance",
-  },
-];
+const AppProvider = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const Navbar = () => {
-  const [showLinks, setShowLinks] = useState(false);
-  const linksContainerRef = useRef(null);
-  const linksRef = useRef(null);
-
-  const toggleLinks = () => {
-    setShowLinks(!showLinks);
+  const openModal = () => {
+    console.log("open modal");
+    setIsModalOpen(true);
+    console.log(isModalOpen);
+  };
+  const closeModal = () => {
+    console.log("close modal");
+    setIsModalOpen(false);
+    console.log(isModalOpen);
   };
 
-  useEffect(() => {
-    const linksHeight = linksRef.current.getBoundingClientRect().height;
-    if (showLinks) {
-      linksContainerRef.current.style.height = `${linksHeight}px`;
-    } else {
-      linksContainerRef.current.style.height = '0px';
-    }
-  }, [showLinks]);
-
   return (
-    <nav className='nav'>
-      <div className='nav-center'>
-        <div className='nav-header'>
-          <a href="#" className="logo">logo</a>
-          <button className='nav-toggle' onClick={toggleLinks}>
-            menu
-          </button>
-        </div>
-        <div className='links-container' ref={linksContainerRef}>
-          <ul className='links' ref={linksRef}>
-            {links.map((link) => {
-              const { id, url, text } = link;
-              return (
-                <li key={id}>
-                  <a href={url}>{text}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <ul className='social-icons'>
-          {socials.map((socialIcon) => {
-            const { id, url, icon } = socialIcon;
-            return (
-              <li key={id}>
-                <a href={url}>{icon}</a>
-              </li>
-            );
-          })}
-        </ul>
+    <AppContext.Provider
+      value={{
+        isModalOpen,
+        openModal,
+        closeModal,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+const useGlobalContext = () => {
+  return useContext(AppContext);
+};
+
+const Modal = () => {
+  const { isModalOpen, closeModal } = useGlobalContext();
+  return (    
+    <div
+      className={`${
+        isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'
+      }`}
+    >
+      <div className='modal-container'>
+        <h3>modal content</h3>
+        <button className='close-modal-btn' onClick={closeModal}>
+          x
+        </button>
       </div>
-    </nav>
-  );  
-};  
+    </div>
+  );
+};
+
+const Main = () => {
+  const { openModal } = useGlobalContext();
+
+  return (    
+    <main>
+      <button onClick={openModal} className='btn'>
+        show modal
+      </button>
+    </main>
+  );
+};
 
 function App() {
   return (
     <>
-      <AuthContextProvider>
+      {/* <AuthContextProvider> */}
+      <AppProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Navbar />
+          <Main />
+          <Modal />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
@@ -656,7 +616,8 @@ function App() {
           </svg>
 
         </div>
-      </AuthContextProvider>
+      {/* </AuthContextProvider> */}
+      </AppProvider>
     </>
   )
 }
