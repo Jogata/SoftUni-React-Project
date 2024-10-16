@@ -495,10 +495,74 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+const links = [
+  {
+    id: 1,
+    url: '/',
+    text: 'home',
+  },
+  {
+    id: 2,
+    url: '/team',
+    text: 'team',
+  },
+  {
+    id: 3,
+    url: '/projects',
+    text: 'projects',
+  },
+  {
+    id: 4,
+    url: '/calendar',
+    text: 'calendar',
+  },
+  {
+    id: 5,
+    url: '/documents',
+    text: 'documents',
+  },
+];
+
+const social = [
+  {
+    id: 1,
+    url: 'https://www.twitter.com',
+    icon: "facebook",
+  },
+  {
+    id: 2,
+    url: 'https://www.twitter.com',
+    icon: "twitter",
+  },
+  {
+    id: 3,
+    url: 'https://www.twitter.com',
+    icon: "linkedin",
+  },
+  {
+    id: 4,
+    url: 'https://www.twitter.com',
+    icon: "behance",
+  },
+  {
+    id: 5,
+    url: 'https://www.twitter.com',
+    icon: "sketch",
+  },
+];
+
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
+  };
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
 
   const openModal = () => {
     console.log("open modal");
@@ -514,9 +578,12 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        isSidebarOpen,
         isModalOpen,
         openModal,
         closeModal,
+        openSidebar,
+        closeSidebar,
       }}
     >
       {children}
@@ -546,11 +613,51 @@ const Modal = () => {
   );
 };
 
+const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar } = useGlobalContext();
+
+  return (
+    <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+      <div className='sidebar-header'>
+        <a href="#" className='logo'>logo</a>
+        <button className='close-btn' onClick={closeSidebar}>
+          x
+        </button>
+      </div>
+      <ul className='links'>
+        {links.map((link) => {
+          const { id, url, text } = link;
+          return (
+            <li key={id}>
+              <a href={url}>
+                {text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <ul className='social-icons'>
+        {social.map((link) => {
+          const { id, url, icon } = link;
+          return (
+            <li key={id}>
+              <a href={url}>{icon}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </aside>
+  );
+};
+
 const Main = () => {
-  const { openModal } = useGlobalContext();
+  const { openSidebar, openModal } = useGlobalContext();
 
   return (    
     <main>
+      <button onClick={openSidebar} className='sidebar-toggle'>
+        menu
+      </button>
       <button onClick={openModal} className='btn'>
         show modal
       </button>
@@ -567,6 +674,7 @@ function App() {
           <Header title="React JS Blog" />
           <Main />
           <Modal />
+          <Sidebar />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
