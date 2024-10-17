@@ -596,6 +596,31 @@ const useGlobalContext = () => {
   return useContext(AppContext);
 };
 
+const Hero = () => {
+  const { closeSubmenu } = useGlobalContext();
+  return (
+    <section className='hero' onMouseOver={closeSubmenu}>
+      <div className='hero-center'>
+        <article className='hero-info'>
+          <h1>
+            Payments infrastructure <br />
+            for the internet
+          </h1>
+          <p>
+            Millions of companies of all sizes—from startups to Fortune 500s—use
+            Stripe's software and APIs to accept payments, send payouts, and
+            manage their businesses online.
+          </p>
+          <button className='btn'>Start now</button>
+        </article>
+        <article className='hero-images'>
+          <img src="https://montonio.com/wp-content/uploads/2024/08/hero_payment_linkEU.svg" className='phone-img' alt='phone' />
+        </article>
+      </div>
+    </section>
+  );
+};
+
 function App() {
   return (
     <>
@@ -606,7 +631,7 @@ function App() {
           <h1>Navbar </h1>
           <h1>Submenu </h1>
           <h1>Sidebar </h1>
-          <h1>Hero </h1>
+          <Hero />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
