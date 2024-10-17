@@ -495,186 +495,70 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const links = [
-  {
-    id: 1,
-    url: '/',
-    text: 'home',
-  },
-  {
-    id: 2,
-    url: '/team',
-    text: 'team',
-  },
-  {
-    id: 3,
-    url: '/projects',
-    text: 'projects',
-  },
-  {
-    id: 4,
-    url: '/calendar',
-    text: 'calendar',
-  },
-  {
-    id: 5,
-    url: '/documents',
-    text: 'documents',
-  },
-];
-
-const social = [
-  {
-    id: 1,
-    url: 'https://www.twitter.com',
-    icon: "facebook",
-  },
-  {
-    id: 2,
-    url: 'https://www.twitter.com',
-    icon: "twitter",
-  },
-  {
-    id: 3,
-    url: 'https://www.twitter.com',
-    icon: "linkedin",
-  },
-  {
-    id: 4,
-    url: 'https://www.twitter.com',
-    icon: "behance",
-  },
-  {
-    id: 5,
-    url: 'https://www.twitter.com',
-    icon: "sketch",
-  },
-];
-
-const AppContext = createContext();
-
-const AppProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openSidebar = () => {
-    setIsSidebarOpen(true);
-  };
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
-
-  const openModal = () => {
-    console.log("open modal");
-    setIsModalOpen(true);
-    console.log(isModalOpen);
-  };
-  const closeModal = () => {
-    console.log("close modal");
-    setIsModalOpen(false);
-    console.log(isModalOpen);
-  };
-
-  return (
-    <AppContext.Provider
-      value={{
-        isSidebarOpen,
-        isModalOpen,
-        openModal,
-        closeModal,
-        openSidebar,
-        closeSidebar,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
-};
-
-const useGlobalContext = () => {
-  return useContext(AppContext);
-};
-
-const Modal = () => {
-  const { isModalOpen, closeModal } = useGlobalContext();
-  return (    
-    <div
-      className={`${
-        isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'
-      }`}
-    >
-      <div className='modal-container'>
-        <h3>modal content</h3>
-        <button className='close-modal-btn' onClick={closeModal}>
-          x
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const Sidebar = () => {
-  const { isSidebarOpen, closeSidebar } = useGlobalContext();
-
-  return (
-    <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
-      <div className='sidebar-header'>
-        <a href="#" className='logo'>logo</a>
-        <button className='close-btn' onClick={closeSidebar}>
-          x
-        </button>
-      </div>
-      <ul className='links'>
-        {links.map((link) => {
-          const { id, url, text } = link;
-          return (
-            <li key={id}>
-              <a href={url}>
-                {text}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className='social-icons'>
-        {social.map((link) => {
-          const { id, url, icon } = link;
-          return (
-            <li key={id}>
-              <a href={url}>{icon}</a>
-            </li>
-          );
-        })}
-      </ul>
-    </aside>
-  );
-};
-
-const Main = () => {
-  const { openSidebar, openModal } = useGlobalContext();
-
-  return (    
-    <main>
-      <button onClick={openSidebar} className='sidebar-toggle'>
-        menu
-      </button>
-      <button onClick={openModal} className='btn'>
-        show modal
-      </button>
-    </main>
-  );
-};
+const sublinks = [
+  { 
+    page: 'products',
+    links: [
+      { 
+        label: 'payment', 
+        icon: "CreditCard", 
+        url: '/products' },
+      { 
+        label: 'terminal', 
+        icon: "CreditCard", 
+        url: '/products' },
+      { 
+        label: 'connect', 
+        icon: "CreditCard", 
+        url: '/products' },
+    ],
+  },  
+  { 
+    page: 'developers',
+    links: [
+      { 
+        label: 'plugins', 
+        icon: "Book", 
+        url: '/products' },
+      { 
+        label: 'libraries', 
+        icon: "Book", 
+        url: '/products' },
+      { 
+        label: 'help', 
+        icon: "Book", 
+        url: '/products' },
+      { 
+        label: 'billing', 
+        icon: "Book", 
+        url: '/products' },
+    ],
+  },  
+  { 
+    page: 'company',
+    links: [
+      { 
+        label: 'about', 
+        icon: "Briefcase", 
+        url: '/products' },
+      { 
+        label: 'customers', 
+        icon: "Briefcase", 
+        url: '/products' },
+    ],
+  },  
+];  
 
 function App() {
   return (
     <>
-      {/* <AuthContextProvider> */}
-      <AppProvider>
+      <AuthContextProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <Main />
-          <Modal />
-          <Sidebar />
+          <h1>Navbar </h1>
+          <h1>Submenu </h1>
+          <h1>Sidebar </h1>
+          <h1>Hero </h1>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
@@ -724,8 +608,7 @@ function App() {
           </svg>
 
         </div>
-      {/* </AuthContextProvider> */}
-      </AppProvider>
+      </AuthContextProvider>
     </>
   )
 }
