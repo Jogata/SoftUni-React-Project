@@ -621,6 +621,55 @@ const Hero = () => {
   );
 };
 
+const Navbar = () => {
+  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
+
+  const displaySubmenu = (e) => {
+    const page = e.target.textContent;
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.left + tempBtn.right) / 2;
+    const bottom = tempBtn.bottom - 3;
+    openSubmenu(page, { center, bottom });
+  };
+
+  const handleSubmenu = (e) => {
+    if (!e.target.classList.contains('link-btn')) {
+      closeSubmenu();
+    }
+  };
+
+  return (
+    <nav className='nav' onMouseOver={handleSubmenu}>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <a href="#" className="nav-logo">logo</a>
+          <button className='btn toggle-btn' onClick={openSidebar}>
+            &#9776;
+          </button>
+        </div>
+        <ul className='nav-links'>
+          <li>
+            <button className='link-btn' onMouseOver={displaySubmenu}>
+              products
+            </button>
+          </li>
+          <li>
+            <button className='link-btn' onMouseOver={displaySubmenu}>
+              developers
+            </button>
+          </li>
+          <li>
+            <button className='link-btn' onMouseOver={displaySubmenu}>
+              company
+            </button>
+          </li>
+        </ul>
+        <button className='btn signin-btn'>Sign in</button>
+      </div>
+    </nav>
+  );
+};
+
 function App() {
   return (
     <>
@@ -628,7 +677,7 @@ function App() {
       <AppProvider>
         <div className="body">
           <Header title="React JS Blog" />
-          <h1>Navbar </h1>
+          <Navbar />
           <h1>Submenu </h1>
           <h1>Sidebar </h1>
           <Hero />
