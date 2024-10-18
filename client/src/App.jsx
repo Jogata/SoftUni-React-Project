@@ -706,7 +706,7 @@ const Submenu = () => {
         <h4>{page}</h4>
         <div className={`submenu-center ${columns}`}>
           {links.map((link, index) => {
-            const { url, icon, label } = link
+            const { url, icon, label } = link;
             return (
               <a key={index} href={url}>
                 {icon}
@@ -720,6 +720,44 @@ const Submenu = () => {
   )
 }
 
+const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar } = useGlobalContext();
+  return (
+    <div
+      className={`${
+        isSidebarOpen ? 'sidebar-wrapper show' : 'sidebar-wrapper' 
+      }`}
+    >
+      <aside className='sidebar'>
+        <button className='close-btn' onClick={closeSidebar}>
+          +
+        </button>
+        <div className='sidebar-links'>
+          {sublinks.map((item, index) => {
+            const { links, page } = item;
+            return (
+              <article key={index}>
+                <h4>{page}</h4>
+                <div className='sidebar-sublinks'>
+                  {links.map((link, index) => {
+                    const { url, icon, label } = link;
+                    return (
+                      <a key={index} href={url}>
+                        {icon}
+                        {label}
+                      </a>
+                    )
+                  })}
+                </div>
+              </article>
+            )
+          })}
+        </div>
+      </aside>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -729,7 +767,7 @@ function App() {
           <Header title="React JS Blog" />
           <Navbar />
           <Submenu />
-          <h1>Sidebar </h1>
+          <Sidebar />
           <Hero />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
