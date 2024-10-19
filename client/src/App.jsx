@@ -494,6 +494,114 @@ function useFetch(url) {
 
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
+
+const data = [
+  {
+    id: 1,
+    title: 'Samsung Galaxy S7',
+    price: 599.99,
+    img: 'https://dl.airtable.com/.attachments/91ee456448cef47deec553a2ea3fa8ad/b08bec68/phone-2_ohtt5s.png',
+    amount: 1,
+  },
+  {
+    id: 2,
+    title: 'google pixel ',
+    price: 499.99,
+    img: 'https://dl.airtable.com/.attachments/91c88ae8c1580e2b762ecb3f73ed1eed/a633139a/phone-1_gvesln.png',
+    amount: 1,
+  },
+  {
+    id: 3,
+    title: 'Xiaomi Redmi Note 2',
+    price: 699.99,
+    img: 'https://dl.airtable.com/.attachments/bae9208dc34f35128749ecda5b999e84/337c285d/phone-3_h2s6fo.png',
+    amount: 1,
+  },
+];
+
+const reducer = (state, action) => {
+  if (action.type === 'CLEAR_CART') {
+    return { ...state, cart: [] };
+  }
+
+  if (action.type === 'REMOVE') {
+    return {
+      ...state,
+      cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
+    }
+  }
+
+  if (action.type === 'INCREASE') {
+    let tempCart = state.cart.map((cartItem) => {
+      if (cartItem.id === action.payload) {
+        return { ...cartItem, amount: cartItem.amount + 1 };
+      }
+      return cartItem;
+    })
+    return { ...state, cart: tempCart };
+  }
+
+  if (action.type === 'DECREASE') {
+    let tempCart = state.cart
+      .map((cartItem) => {
+        if (cartItem.id === action.payload) {
+          return { ...cartItem, amount: cartItem.amount - 1 };
+        }
+        return cartItem;
+      })
+      .filter((cartItem) => cartItem.amount !== 0);
+    return { ...state, cart: tempCart };
+  }
+
+  if (action.type === 'GET_TOTALS') {
+    let { total, amount } = state.cart.reduce(
+      (cartTotal, cartItem) => {
+        const { price, amount } = cartItem;
+        const itemTotal = price * amount;
+
+        cartTotal.total += itemTotal;
+        cartTotal.amount += amount;
+        return cartTotal;
+      },
+      {
+        total: 0,
+        amount: 0,
+      }
+    )
+    total = parseFloat(total.toFixed(2));
+
+    return { ...state, total, amount };
+  }
+
+  if (action.type === 'LOADING') {
+    return { ...state, loading: true };
+  }
+
+  if (action.type === 'DISPLAY_ITEMS') {
+    return { ...state, cart: action.payload, loading: false };
+  }
+
+  if (action.type === 'TOGGLE_AMOUNT') {
+    let tempCart = state.cart
+      .map((cartItem) => {
+        if (cartItem.id === action.payload.id) {
+          if (action.payload.type === 'inc') {
+            return { ...cartItem, amount: cartItem.amount + 1 };
+          }
+          if (action.payload.type === 'dec') {
+            return { ...cartItem, amount: cartItem.amount - 1 };
+          }
+        }
+        return cartItem;
+      })
+      .filter((cartItem) => cartItem.amount !== 0);
+    return { ...state, cart: tempCart };
+  }
+
+  throw new Error('no matching action type');
+  
+}
+
 function App() {
   return (
     <>
