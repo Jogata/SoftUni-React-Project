@@ -599,15 +599,95 @@ const reducer = (state, action) => {
   }
 
   throw new Error('no matching action type');
+
+}
+
+// const url = 'https://course-api.com/react-useReducer-cart-project'
+const AppContext = createContext();
+
+const initialState = {
+  loading: false,
+  cart: [],
+  total: 0,
+  amount: 0,
+}
+
+const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  }
+
+  const remove = (id) => {
+    dispatch({ type: 'REMOVE', payload: id });
+  }
+
+  const increase = (id) => {
+    dispatch({ type: 'INCREASE', payload: id });
+  }
+
+  const decrease = (id) => {
+    dispatch({ type: 'DECREASE', payload: id });
+  }
+
+  const fetchData = async () => {
+    dispatch({ type: 'LOADING' });
+    // const response = await fetch(url);
+    // const cart = await response.json();
+    setTimeout(() => {
+      dispatch({ type: 'DISPLAY_ITEMS', payload: data });
+    }, 30000);
+  }
+
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    dispatch({ type: 'GET_TOTALS' });
+  }, [state.cart]);
+
+  return (
+    <AppContext.Provider
+      value={{
+        ...state,
+        clearCart,
+        remove,
+        increase,
+        decrease,
+        toggleAmount,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  )
+}
+
+export const useGlobalContext = () => {
+  return useContext(AppContext);
+}
+
+const Test = () => {
+  const { total, loading } = useGlobalContext();
+  return (
+    loading ? <Loader /> : <h1>Total: {total}</h1>
+  )
   
 }
 
 function App() {
   return (
     <>
-      <AuthContextProvider>
+      {/* <AuthContextProvider> */}
+      <AppProvider>
         <div className="body">
           <Header title="React JS Blog" />
+          <Test />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
@@ -657,7 +737,8 @@ function App() {
           </svg>
 
         </div>
-      </AuthContextProvider>
+      {/* </AuthContextProvider> */}
+      </AppProvider>
     </>
   )
 }
