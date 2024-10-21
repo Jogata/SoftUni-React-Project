@@ -500,7 +500,7 @@ const data = [
     id: 1,
     title: 'Samsung Galaxy S7',
     price: 599.99,
-    img: 'https://pcmall.bg/images/product.gif',
+    img: 'https://m.media-amazon.com/images/I/61jmT4Enm1L._AC_SL1499_.jpg',
     amount: 1,
   },
   {
@@ -637,7 +637,7 @@ const AppProvider = ({ children }) => {
     // const cart = await response.json();
     setTimeout(() => {
       dispatch({ type: 'DISPLAY_ITEMS', payload: data });
-    }, 30000);
+    }, 3000);
   }
 
   const toggleAmount = (id, type) => {
@@ -721,7 +721,15 @@ const CartItem = ({ id, img, title, price, amount }) => {
 }
 
 const CartContainer = () => {
-  const { cart, total, clearCart } = useGlobalContext();
+  const { cart, total, clearCart, loading } = useGlobalContext();
+
+  if (loading) {
+    return (
+      <div className='loading'>
+        <Loader />
+      </div>
+    )
+  }
 
   if (cart.length === 0) {
     return (
