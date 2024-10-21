@@ -500,21 +500,21 @@ const data = [
     id: 1,
     title: 'Samsung Galaxy S7',
     price: 599.99,
-    img: 'https://dl.airtable.com/.attachments/91ee456448cef47deec553a2ea3fa8ad/b08bec68/phone-2_ohtt5s.png',
+    img: 'https://pcmall.bg/images/product.gif',
     amount: 1,
   },
   {
     id: 2,
     title: 'google pixel ',
     price: 499.99,
-    img: 'https://dl.airtable.com/.attachments/91c88ae8c1580e2b762ecb3f73ed1eed/a633139a/phone-1_gvesln.png',
+    img: 'https://www.telepolis.pl/images/katalog/Google/Google_Pixel_6/google-pixel-6-1.jpg',
     amount: 1,
   },
   {
     id: 3,
     title: 'Xiaomi Redmi Note 2',
     price: 699.99,
-    img: 'https://dl.airtable.com/.attachments/bae9208dc34f35128749ecda5b999e84/337c285d/phone-3_h2s6fo.png',
+    img: 'https://images.tokopedia.net/img/cache/700/catalog/2019/4/29/2592140/2592140_6b615082-b36a-4bf4-96b5-6a6c6cbb84de.jpg',
     amount: 1,
   },
 ];
@@ -720,6 +720,45 @@ const CartItem = ({ id, img, title, price, amount }) => {
   )
 }
 
+const CartContainer = () => {
+  const { cart, total, clearCart } = useGlobalContext();
+
+  if (cart.length === 0) {
+    return (
+      <section className='cart'>
+        <header>
+          <h2>your bag</h2>
+          <h4 className='empty-cart'>is currently empty</h4>
+        </header>
+      </section>
+    )
+  }
+
+  return (
+    <section className='cart'>
+      <header>
+        <h2>your bag</h2>
+      </header>
+      <div>
+        {cart.map((item) => {
+          return <CartItem key={item.id} {...item} />
+        })}
+      </div>
+      <footer>
+        <hr />
+        <div className='cart-total'>
+          <h4>
+            total <span>${total}</span>
+          </h4>
+        </div>
+        <button className='btn clear-btn' onClick={clearCart}>
+          clear cart
+        </button>
+      </footer>
+    </section>
+  )
+}
+
 function App() {
   return (
     <>
@@ -728,6 +767,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <Navbar />
+          <CartContainer />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
