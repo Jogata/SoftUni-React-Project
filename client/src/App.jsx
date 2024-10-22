@@ -563,6 +563,42 @@ const useGlobalContext = () => {
 //   return loading ? <Loader /> : null;
 // }
 
+function Navbar() {
+  return (
+    <nav className='navbar'>
+      <div className='nav-center' 
+           style={{
+            display: "flex", 
+            alignItems: "center"
+           }}>
+        <Link to='/'>
+          {/* <img src={logo} alt='cocktail db logo' className='logo' /> */}
+          <span className="logo" 
+                style={{
+                  textTransform: "capitalize", 
+                  color: "white"
+                }}>
+            logo
+          </span>
+        </Link>
+        <ul className='nav-links' 
+            style={{
+              display: "flex", 
+              margin: "auto", 
+              gap: "1rem"
+            }}>
+          <li>
+            <Link to='/'>home</Link>
+          </li>
+          <li>
+            <Link to='/about'>about</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
 function Cocktail({ image, name, id, info, glass }) {
   return (
     <article className='cocktail'>
@@ -616,6 +652,7 @@ function App() {
       <AppProvider>  
         <div className="body">
           <Header title="React JS Blog" />
+          <Navbar />
           <CocktailList />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
