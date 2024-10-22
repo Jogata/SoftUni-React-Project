@@ -505,6 +505,7 @@ const AppProvider = ({ children }) => {
 
   const fetchDrinks = useCallback( async () => {
     setLoading(true);
+    setTimeout(async () => {      
     try {
       const response = await fetch(`${url}${searchTerm}`);
       const data = await response.json();
@@ -537,6 +538,7 @@ const AppProvider = ({ children }) => {
       console.log(error);
       setLoading(false);
     }
+  }, 5000);
   },[searchTerm]);
 
   useEffect(() => { 
@@ -556,9 +558,27 @@ const useGlobalContext = () => {
   return useContext(AppContext);  
 } 
 
-const Test = () => {
-  const { loading } = useGlobalContext();
-  return loading ? <Loader /> : null;
+// const Test = () => {
+//   const { loading } = useGlobalContext();
+//   return loading ? <Loader /> : null;
+// }
+
+function Cocktail({ image, name, id, info, glass }) {
+  return (
+    <article className='cocktail'>
+      <div className='img-container'>
+        <img src={image} alt={name} />
+      </div>
+      <div className='cocktail-footer'>
+        <h3>{name}</h3>
+        <h4>{glass}</h4>
+        <p>{info}</p>
+        <Link to={`/cocktail/${id}`} className='btn btn-primary btn-details'>
+          details
+        </Link>
+      </div>
+    </article>
+  )
 }
 
 function CocktailList() {
@@ -581,7 +601,8 @@ function CocktailList() {
       <h2 className='section-title'>cocktails</h2>
       <div className='cocktails-center'>
         {cocktails.map((item) => {
-          return <h1>Cocktail {item.name}</h1>
+          // return <h1>Cocktail {item.name}</h1>
+          return <Cocktail key={item.id} {...item} />;
         })}
       </div>
     </section>
