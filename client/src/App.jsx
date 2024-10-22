@@ -532,7 +532,7 @@ const AppProvider = ({ children }) => {
       } else {
         setCocktails([]);
       }
-      // setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -561,6 +561,33 @@ const Test = () => {
   return loading ? <Loader /> : null;
 }
 
+function CocktailList() {
+  const { cocktails, loading } = useGlobalContext();
+
+  if (loading) {
+    return <Loader/>;
+  }
+
+  if (cocktails.length < 1) {
+    return (
+      <h2 className='section-title'>
+        no cocktails matched your search criteria
+      </h2>
+    )
+  }
+
+  return (
+    <section className='section'>
+      <h2 className='section-title'>cocktails</h2>
+      <div className='cocktails-center'>
+        {cocktails.map((item) => {
+          return <h1>Cocktail {item.name}</h1>
+        })}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   return (
     <>
@@ -568,7 +595,7 @@ function App() {
       <AppProvider>  
         <div className="body">
           <Header title="React JS Blog" />
-          <Test />
+          <CocktailList />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
