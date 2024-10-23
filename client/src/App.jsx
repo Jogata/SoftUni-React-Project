@@ -684,8 +684,12 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <Navbar />
+          <Routes>
           {/* <CocktailList /> */}
-          <Catalog />
+          <Route path='/' element={<Catalog />} />
+          <Route path='/about' element={<AboutCocktails />} />
+          <Route path='*' element={<Error />} />
+          </Routes>
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
