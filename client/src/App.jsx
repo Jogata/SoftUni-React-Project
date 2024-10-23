@@ -558,11 +558,6 @@ const useGlobalContext = () => {
   return useContext(AppContext);  
 } 
 
-// const Test = () => {
-//   const { loading } = useGlobalContext();
-//   return loading ? <Loader /> : null;
-// }
-
 function Navbar() {
   return (
     <nav className='navbar'>
@@ -637,12 +632,48 @@ function CocktailList() {
       <h2 className='section-title'>cocktails</h2>
       <div className='cocktails-center'>
         {cocktails.map((item) => {
-          // return <h1>Cocktail {item.name}</h1>
           return <Cocktail key={item.id} {...item} />;
         })}
       </div>
     </section>
   )
+}
+
+function Catalog() {
+  return (
+    <main>
+      <h1>search form</h1>
+      <CocktailList />
+    </main>
+  )
+}
+
+function AboutCocktails() {
+  return (
+    <section className="section about-section">
+      <h1 className="section-title">about us</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+        repudiandae architecto qui adipisci in officiis, aperiam sequi atque
+        perferendis eos, autem maiores nisi saepe quisquam hic odio consectetur
+        nobis veritatis quasi explicabo obcaecati doloremque? Placeat ratione
+        hic aspernatur error blanditiis?
+      </p>
+    </section>
+  );
+}
+
+function Error() {
+  return (
+    <section className="error-page section">
+      <div className="error-container">
+        <h1>oops! it's a dead end</h1>
+        <Link to="/" className="btn btn-primary">
+          back home
+        </Link>
+      </div>
+    </section>
+  );
 }
 
 function App() {
@@ -653,7 +684,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <Navbar />
-          <CocktailList />
+          {/* <CocktailList /> */}
+          <Catalog />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
