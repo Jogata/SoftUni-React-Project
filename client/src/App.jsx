@@ -571,7 +571,7 @@ function Navbar() {
           <span className="logo" 
                 style={{
                   textTransform: "capitalize", 
-                  color: "white"
+                  // color: "white"
                 }}>
             logo
           </span>
