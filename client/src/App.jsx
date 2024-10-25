@@ -517,7 +517,7 @@ function Person(props) {
   const {id, name, job} = props.person;
   const url = `https://randomuser.me/api/portraits/thumb/men/${id}.jpg`;
   return ( 
-    <div>
+    <div className='person'>
       <img src={url} alt="person" />
       <div>
         <h4>{name}</h4>
@@ -530,9 +530,9 @@ function Person(props) {
 function PersonList() {
   return ( 
     <>
-    <Person person={persons[0]} />
-    <Person person={persons[1]} />
-    <Person person={persons[2]} />
+      <Person person={persons[0]} />
+      <Person person={persons[1]} />
+      <Person person={persons[2]} />
     </>
   ) 
 } 
