@@ -495,15 +495,22 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function Person() {
+function Person({img, name, job}) {
+  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
   return ( 
-    <div>Person Component</div>
+    <div>
+      <img src={url} alt="person" />
+      <div>
+        <h4>{name}</h4>
+        <h4>{job}</h4>
+      </div>
+    </div>
   )
 }
 
 function PersonList() {
   return (  
-    <Person />
+    <Person img={22} name={"Bob"} job={"Developer"} />
   ) 
 } 
 
