@@ -495,8 +495,27 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-function Person({img, name, job}) {
-  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
+const persons = [
+  {
+    name: "Bob", 
+    job: "Developer", 
+    id: "22"
+  }, 
+  {
+    name: "Bob", 
+    job: "Developer", 
+    id: "23"
+  }, 
+  {
+    name: "Bob", 
+    job: "Developer", 
+    id: "24"
+  }, 
+]
+
+function Person(props) {
+  const {id, name, job} = props.person;
+  const url = `https://randomuser.me/api/portraits/thumb/men/${id}.jpg`;
   return ( 
     <div>
       <img src={url} alt="person" />
@@ -509,8 +528,12 @@ function Person({img, name, job}) {
 }
 
 function PersonList() {
-  return (  
-    <Person img={22} name={"Bob"} job={"Developer"} />
+  return ( 
+    <>
+    <Person person={persons[0]} />
+    <Person person={persons[1]} />
+    <Person person={persons[2]} />
+    </>
   ) 
 } 
 
