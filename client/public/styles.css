@@ -1052,43 +1052,39 @@ body {
   border: 1px solid grey;
 }
 
-.person {
-  width: 17rem;
-  margin: 2rem auto;
-  padding: 1rem;
-  color: black;
-  text-align: center;
-  border-radius: 16px;
-  background-color: #eeeeee;
-  transition: all 0.3s linear;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-.person:hover {
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.person img {
-  max-width: 150px;
-  border-radius: 50%;
-  border: 0.1rem solid teal;
-}
-
-.person h4 {
-  margin: 0.5rem 0;
-  color: teal;
-  letter-spacing: 0.15rem;
-  text-transform: capitalize;
-}
-
-/* .person p {
-  color: black;
-} */
-
-.body div {
-  /* width: auto; */
-  margin: 1rem 0;
-}
-
 .body {
-  background-color: #eee;
+  --main-black: #222;
+  --main-green: #82b340;
+  --main-white: #fff;
+  --main-grey: #ececec;
+} 
+
+.navbar {
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: var(--main-black);
+} 
+
+.nav-links {
+  /* list-style: none; */
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+} 
+
+.nav-link {
+  color: var(--main-grey);
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: capitalize; 
+  transition: color 0.3s linear;
+} 
+.nav-link:hover {
+  color: var(--main-green);
+} 
+
+.active {
+  color: var(--main-green);
 }

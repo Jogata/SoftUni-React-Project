@@ -495,50 +495,33 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const persons = [
-  {
-    name: "Bob", 
-    job: "Developer", 
-    id: "22"
-  }, 
-  {
-    name: "Josh", 
-    job: "Designer", 
-    id: "23"
-  }, 
-  {
-    name: "Antoan", 
-    job: "Artist", 
-    id: "24"
-  }, 
-]
-
-function Person(props) {
-  const {id, name, job} = props.person;
-  const url = `https://randomuser.me/api/portraits/thumb/men/${id}.jpg`;
-  return ( 
-    <div className='person'>
-      <img src={url} alt="person" />
-      <div>
-        <h4>{name}</h4>
-        <h4>{job}</h4>
-        {props.children}
-      </div>
-    </div>
+function Navbar() {
+  return (
+    <nav className='navbar'>
+      <a href="/">
+        logo
+        <img src="../public/skyrim-favicon-192.png" alt="logo" />
+      </a>
+      <ul className='nav-links'>
+        <li>
+          <a href="/" className='nav-link'>
+            home
+          </a>
+        </li>
+        <li>
+          <a href="/" className='nav-link'>
+            about
+          </a>
+        </li>
+        <li>
+          <a href="/" className='nav-link active'>
+            tours
+          </a>
+        </li>
+      </ul>
+    </nav>
   )
 }
-
-function PersonList() {
-  return ( 
-    <>
-      <Person person={persons[0]} />
-      <Person person={persons[1]}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum aperiam ipsum fugit, corrupti error officiis nesciunt laborum? Minima aperiam inventore doloremque rem cupiditate.
-      </Person>
-      <Person person={persons[2]} />
-    </>
-  ) 
-} 
 
 function App() {
   return (
@@ -546,7 +529,7 @@ function App() {
       <AuthContextProvider> 
         <div className="body">
           <Header title="React JS Blog" />
-          <PersonList />
+          <Navbar />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
