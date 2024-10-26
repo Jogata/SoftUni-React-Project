@@ -1059,12 +1059,17 @@ body {
   --main-grey: #ececec;
 } 
 
-.navbar {
+.body .navbar {
   padding: 0.5rem 1rem;
   display: grid;
   grid-template-columns: auto 1fr;
   background-color: var(--main-black);
 } 
+
+.navbar .logo {
+  font-size: 0;
+  max-width: 3rem;
+}
 
 .nav-links {
   /* list-style: none; */

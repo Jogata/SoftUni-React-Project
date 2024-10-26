@@ -495,10 +495,45 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
+const data = [
+  {
+    id: 1,
+    city: "new york",
+    img: "/skyrim/locations/city.jpg",
+    name: "new york bridge tour",
+    info:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
+  },
+  {
+    id: 2,
+    city: "paris",
+    img: "/skyrim/locations/town.jpg",
+    name: "paris lights tour",
+    info:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
+  },
+  {
+    id: 3,
+    city: "london",
+    img: "skyrim/locations/all/bannermist-tower.png",
+    name: "london royal palace tour",
+    info:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
+  },
+  {
+    id: 4,
+    city: "tokyo",
+    img: "/skyrim/locations/all/Bleak-Falls-Barrow-AerialView.png",
+    name: "tokyo sushi tour",
+    info:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
+  }
+];
+
 function Navbar() {
   return (
     <nav className='navbar'>
-      <a href="/">
+      <a href="/" className='logo'>
         logo
         <img src="../public/skyrim-favicon-192.png" alt="logo" />
       </a>
@@ -523,6 +558,12 @@ function Navbar() {
   )
 }
 
+function Test() {
+  return (
+    <img src={data[0].img} alt="" />
+  )
+}
+
 function App() {
   return (
     <>
@@ -530,6 +571,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <Navbar />
+          <Test />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
