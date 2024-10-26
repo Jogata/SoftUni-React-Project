@@ -502,13 +502,13 @@ const persons = [
     id: "22"
   }, 
   {
-    name: "Bob", 
-    job: "Developer", 
+    name: "Josh", 
+    job: "Designer", 
     id: "23"
   }, 
   {
-    name: "Bob", 
-    job: "Developer", 
+    name: "Antoan", 
+    job: "Artist", 
     id: "24"
   }, 
 ]
@@ -522,6 +522,7 @@ function Person(props) {
       <div>
         <h4>{name}</h4>
         <h4>{job}</h4>
+        {props.children}
       </div>
     </div>
   )
@@ -531,7 +532,9 @@ function PersonList() {
   return ( 
     <>
       <Person person={persons[0]} />
-      <Person person={persons[1]} />
+      <Person person={persons[1]}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum aperiam ipsum fugit, corrupti error officiis nesciunt laborum? Minima aperiam inventore doloremque rem cupiditate.
+      </Person>
       <Person person={persons[2]} />
     </>
   ) 
