@@ -558,11 +558,41 @@ function Navbar() {
   )
 }
 
-function Test() {
-  return (
-    <img src={data[0].img} alt="" />
-  )
-}
+// function Test() {
+//   return (
+//     <img src={data[0].img} alt="" />
+//   )
+// }
+
+class Tour extends Component {
+  render() {
+    return (
+      <article className='tour'>
+        <div className="img-container">
+          <img src={data[0].img} alt="" />
+          <button className='close-btn'>
+            <span>+</span>
+          </button>
+        </div>
+        <div className="tour-info">
+          <h3>city</h3>
+          <h4>name</h4>
+          <h5>
+            info
+            <button className='info-button'>
+              {">"}
+            </button>
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing 
+            elit. Eius cupiditate nisi non ad optio sint qui. 
+            Perferendis suscipit voluptas nostrum sit placeat.
+          </p>
+        </div>
+      </article>
+    )
+  }
+} 
 
 function App() {
   return (
@@ -571,7 +601,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           <Navbar />
-          <Test />
+          {/* <Test /> */}
+          <Tour />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
