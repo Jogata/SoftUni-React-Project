@@ -565,18 +565,26 @@ function Navbar() {
 // }
 
 class Tour extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.img = props.tour.img;
+  //   this.city = props.tour.city;
+  //   this.name = props.tour.name;
+  //   this.info = props.tour.info;
+  // }
+
   render() {
     return (
       <article className='tour'>
         <div className="img-container">
-          <img src={data[0].img} alt="" />
+          <img src={this.props.tour.img} alt="" />
           <button className='close-btn'>
             <span>+</span>
           </button>
         </div>
         <div className="tour-info">
-          <h3>city</h3>
-          <h4>name</h4>
+          <h3>{this.props.tour.city}</h3>
+          <h4>{this.props.tour.name}</h4>
           <h5>
             info
             <button className='info-button'>
@@ -584,15 +592,33 @@ class Tour extends Component {
             </button>
           </h5>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing 
-            elit. Eius cupiditate nisi non ad optio sint qui. 
-            Perferendis suscipit voluptas nostrum sit placeat.
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing  */}
+            {/* elit. Eius cupiditate nisi non ad optio sint qui.  */}
+            {/* Perferendis suscipit voluptas nostrum sit placeat. */}
+            {this.props.tour.info}
           </p>
         </div>
       </article>
     )
   }
-} 
+}
+
+class TourList extends Component {
+  state = {
+    tours: data
+  };
+
+  render() {
+    const { tours } = this.state;
+
+    return (
+      <section className='list'>
+        <h1>Tours</h1>
+        {tours.map(tour => <Tour key={tour.id} tour={tour} />)}
+      </section>
+    )
+  }
+}
 
 function App() {
   return (
@@ -602,7 +628,7 @@ function App() {
           <Header title="React JS Blog" />
           <Navbar />
           {/* <Test /> */}
-          <Tour />
+          <TourList />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>

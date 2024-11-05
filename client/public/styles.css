@@ -1096,10 +1096,46 @@ body {
 }
 
 
+
+.list {
+  width: 90vw;
+  max-width: 150rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: grid;
+    column-gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.list h1 {
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
 .tour {
   width: 100%;
-  max-width: 20rem;
-  margin: 1rem 0;
+  /* max-width: 20rem; */
+  /* margin: 1rem 0; */
+  margin: 1rem auto;
   border-radius: 16px;
   background-color: var(--main-grey);
 }
