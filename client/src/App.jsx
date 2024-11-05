@@ -573,6 +573,16 @@ class Tour extends Component {
   //   this.info = props.tour.info;
   // }
 
+  state = {
+    showInfo: false
+  }
+
+  hahdleInfo = () => {
+    this.setState({
+      showInfo: !this.state.showInfo
+    })
+  }
+
   render() {
     return (
       <article className='tour'>
@@ -587,16 +597,11 @@ class Tour extends Component {
           <h4>{this.props.tour.name}</h4>
           <h5>
             info
-            <button className='info-button'>
+            <button className='info-button' onClick={this.hahdleInfo}>
               {">"}
             </button>
           </h5>
-          <p>
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing  */}
-            {/* elit. Eius cupiditate nisi non ad optio sint qui.  */}
-            {/* Perferendis suscipit voluptas nostrum sit placeat. */}
-            {this.props.tour.info}
-          </p>
+          {this.state.showInfo && <p>{this.props.tour.info}</p>}
         </div>
       </article>
     )
