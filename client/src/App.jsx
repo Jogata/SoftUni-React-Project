@@ -588,7 +588,9 @@ class Tour extends Component {
       <article className='tour'>
         <div className="img-container">
           <img src={this.props.tour.img} alt="" />
-          <button className='close-btn'>
+          <button className='close-btn' onClick={() => {
+            this.props.deleteTour(this.props.tour.id);
+          }}>
             <span>+</span>
           </button>
         </div>
@@ -613,13 +615,23 @@ class TourList extends Component {
     tours: data
   };
 
+  deleteTour = (id) => {
+    console.log(id);
+    const {tours} = this.state;
+    const filtered = tours.filter(tour => tour.id !== id);
+    console.log(filtered);
+    this.setState({
+      tours: filtered
+    })
+  }
+
   render() {
     const { tours } = this.state;
 
     return (
       <section className='list'>
         <h1>Tours</h1>
-        {tours.map(tour => <Tour key={tour.id} tour={tour} />)}
+        {tours.map(tour => <Tour key={tour.id} tour={tour} deleteTour={this.deleteTour} />)}
       </section>
     )
   }
