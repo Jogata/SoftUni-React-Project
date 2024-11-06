@@ -496,15 +496,18 @@ const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
 class TodoList extends Component {
-  render() { 
-    return ( 
-      <div>
+  render() {
+    return (
+      <div className='todo-list-container'>
         <TodoInput />
         <h1>todo list</h1>
-        <TodoItem />
+        <ul className='todo-list'>
+          <TodoItem />
+        </ul>
+        <button type="button">clear all</button>
       </div>
-    ) 
-  } 
+    )
+  }
 } 
 
 class TodoItem extends Component {
