@@ -495,147 +495,33 @@ function useFetch(url) {
 const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
-const data = [
-  {
-    id: 1,
-    city: "new york",
-    img: "/skyrim/locations/city.jpg",
-    name: "new york bridge tour",
-    info:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
-  },
-  {
-    id: 2,
-    city: "paris",
-    img: "/skyrim/locations/town.jpg",
-    name: "paris lights tour",
-    info:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
-  },
-  {
-    id: 3,
-    city: "london",
-    img: "skyrim/locations/all/bannermist-tower.png",
-    name: "london royal palace tour",
-    info:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
-  },
-  {
-    id: 4,
-    city: "tokyo",
-    img: "/skyrim/locations/all/Bleak-Falls-Barrow-AerialView.png",
-    name: "tokyo sushi tour",
-    info:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,repellendus!"
-  }
-];
+class TodoList extends Component {
+  render() { 
+    return ( 
+      <div>
+        <TodoInput />
+        <h1>todo list</h1>
+        <TodoItem />
+      </div>
+    ) 
+  } 
+} 
 
-function Navbar() {
-  return (
-    <nav className='navbar'>
-      <a href="/" className='logo'>
-        logo
-        <img src="../public/skyrim-favicon-192.png" alt="logo" />
-      </a>
-      <ul className='nav-links'>
-        <li>
-          <a href="/" className='nav-link'>
-            home
-          </a>
-        </li>
-        <li>
-          <a href="/" className='nav-link'>
-            about
-          </a>
-        </li>
-        <li>
-          <a href="/" className='nav-link active'>
-            tours
-          </a>
-        </li>
-      </ul>
-    </nav>
-  )
-}
+class TodoItem extends Component {
+  render() { 
+    return ( 
+      <h2>todo item</h2>
+    ) 
+  } 
+} 
 
-// function Test() {
-//   return (
-//     <img src={data[0].img} alt="" />
-//   )
-// }
-
-class Tour extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.img = props.tour.img;
-  //   this.city = props.tour.city;
-  //   this.name = props.tour.name;
-  //   this.info = props.tour.info;
-  // }
-
-  state = {
-    showInfo: false
-  }
-
-  hahdleInfo = () => {
-    this.setState({
-      showInfo: !this.state.showInfo
-    })
-  }
-
-  render() {
-    return (
-      <article className='tour'>
-        <div className="img-container">
-          <img src={this.props.tour.img} alt="" />
-          <button className='close-btn' onClick={() => {
-            this.props.deleteTour(this.props.tour.id);
-          }}>
-            <span>+</span>
-          </button>
-        </div>
-        <div className="tour-info">
-          <h3>{this.props.tour.city}</h3>
-          <h4>{this.props.tour.name}</h4>
-          <h5>
-            info
-            <button className='info-button' onClick={this.hahdleInfo}>
-              {">"}
-            </button>
-          </h5>
-          {this.state.showInfo && <p>{this.props.tour.info}</p>}
-        </div>
-      </article>
-    )
-  }
-}
-
-class TourList extends Component {
-  state = {
-    tours: data
-  };
-
-  deleteTour = (id) => {
-    console.log(id);
-    const {tours} = this.state;
-    const filtered = tours.filter(tour => tour.id !== id);
-    console.log(filtered);
-    this.setState({
-      tours: filtered
-    })
-  }
-
-  render() {
-    const { tours } = this.state;
-
-    return (
-      <section className='list'>
-        <h1>Tours</h1>
-        {tours.map(tour => <Tour key={tour.id} tour={tour} deleteTour={this.deleteTour} />)}
-      </section>
-    )
-  }
-}
+class TodoInput extends Component {
+  render() { 
+    return ( 
+      <input type="text" name="search" id="search" placeholder='Search' />
+    ) 
+  } 
+} 
 
 function App() {
   return (
@@ -643,9 +529,8 @@ function App() {
       <AuthContextProvider> 
         <div className="body">
           <Header title="React JS Blog" />
-          <Navbar />
-          {/* <Test /> */}
-          <TourList />
+          {/* <TodoInput /> */}
+          <TodoList />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
