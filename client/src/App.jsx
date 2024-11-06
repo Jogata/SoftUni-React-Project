@@ -518,7 +518,15 @@ class TodoItem extends Component {
 class TodoInput extends Component {
   render() { 
     return ( 
-      <input type="text" name="search" id="search" placeholder='Search' />
+      <div>
+        <form>
+          <div className='input-group'>
+            <i className="fa fa-book"></i>
+            <input type="text" name="add" id="add-todo" placeholder='Add a todo item' />
+          </div>
+          <button type="submit">add item</button>
+        </form>
+      </div>
     ) 
   } 
 } 
