@@ -527,13 +527,30 @@ class TodoItem extends Component {
 } 
 
 class TodoInput extends Component {
+  state = {
+    name: ""
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      name: e.target.value
+    })
+  }
+
   render() { 
     return ( 
       <div>
         <form>
           <div className='input-group'>
             <i className="fa fa-book"></i>
-            <input type="text" name="add" id="add-todo" placeholder='Add a todo item' />
+            <input 
+              type="text" 
+              name="add" 
+              id="add-todo" 
+              placeholder='Add a todo item' 
+              value={this.state.name} 
+              onChange={(e) => this.handleChange(e)} 
+            />
           </div>
           <button type="submit">add item</button>
         </form>
