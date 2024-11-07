@@ -543,6 +543,11 @@ class TodoInput extends Component {
 } 
 
 function App() {
+  const [items, setItems] = useState([]);
+  // const [itemName, setItemName] = useState("");
+  const [id, setID] = useState(0);
+  const [isEditing, setIEditing] = useState(false);
+
   return (
     <>
       <AuthContextProvider> 
