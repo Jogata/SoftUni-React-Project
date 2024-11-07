@@ -513,7 +513,15 @@ class TodoList extends Component {
 class TodoItem extends Component {
   render() { 
     return ( 
-      <h2>todo item</h2>
+      <li className='todo-item'>
+        <h6>title</h6>
+        <span className="icon">
+          <i className="fa fa-pencil"></i>
+        </span>
+        <span className="icon">
+          <i className="fa fa-trash-o"></i>
+        </span>
+      </li>
     ) 
   } 
 } 
