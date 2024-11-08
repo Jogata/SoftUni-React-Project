@@ -500,7 +500,8 @@ class TodoList extends Component {
     // console.log(this.props.items);
     return (
       <div className='todo-list-container'>
-        <TodoInput setID={this.props.setID} setItems={this.props.setItems} />
+        {/* <TodoInput setID={this.props.setID} setItems={this.props.setItems} /> */}
+        <TodoInput setItems={this.props.setItems} />
         <h1>todo list</h1>
         <ul className='todo-list'>
           {this.props.items.map(item => {
@@ -531,7 +532,8 @@ class TodoItem extends Component {
 
 class TodoInput extends Component {
   state = {
-    name: ""
+    name: "", 
+    id: 0
   }
 
   handleChange = (e) => {
@@ -544,12 +546,17 @@ class TodoInput extends Component {
     e.preventDefault();
     // console.log(this.state.name);
     const newTodoItem = {
-      name: this.state.name,
+      name: this.state.name, 
+      id: this.state.id, 
     };
-    this.props.setID(currentID => {
-      newTodoItem.id = currentID;
-      return currentID + 1;
-    })
+    // this.props.setID(currentID => {
+    //   newTodoItem.id = currentID;
+    //   return currentID + 1;
+    // })
+    this.setState({
+      name: this.state.name, 
+      id: this.state.id + 1,
+    });
     // console.log(newTodoItem);
     this.props.setItems(currentItems => {
       const newItems = [...currentItems, newTodoItem];
@@ -584,7 +591,7 @@ class TodoInput extends Component {
 function App() {
   const [items, setItems] = useState([]);
   // const [itemName, setItemName] = useState("");
-  const [id, setID] = useState(0);
+  // const [id, setID] = useState(0);
   const [isEditing, setIEditing] = useState(false);
 
   return (
@@ -593,7 +600,8 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           {/* <TodoInput /> */}
-          <TodoList setID={setID} items={items} setItems={setItems} />
+          {/* <TodoList setID={setID} items={items} setItems={setItems} /> */}
+          <TodoList items={items} setItems={setItems} />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
