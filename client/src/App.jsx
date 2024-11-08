@@ -537,10 +537,29 @@ class TodoInput extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(this.state.name);
+    const newTodoItem = {
+      name: this.state.name,
+    };
+    this.props.setID(currentID => {
+      newTodoItem.id = currentID;
+      return currentID + 1;
+    })
+    // console.log(newTodoItem);
+    this.props.setItems(currentItems => {
+      const newItems = [...currentItems, newTodoItem];
+      // console.log(currentItems);
+      // console.log(newItems);
+      return newItems;
+    })
+  }
+
   render() { 
     return ( 
       <div>
-        <form>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className='input-group'>
             <i className="fa fa-book"></i>
             <input 
@@ -571,7 +590,7 @@ function App() {
         <div className="body">
           <Header title="React JS Blog" />
           {/* <TodoInput /> */}
-          <TodoList />
+          <TodoList setID={setID} items={items} setItems={setItems} />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
