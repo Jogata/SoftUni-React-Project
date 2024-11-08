@@ -497,12 +497,15 @@ const baseURL = "http://localhost:3030/jsonstore/blog/"
 
 class TodoList extends Component {
   render() {
+    // console.log(this.props.items);
     return (
       <div className='todo-list-container'>
-        <TodoInput />
+        <TodoInput setID={this.props.setID} setItems={this.props.setItems} />
         <h1>todo list</h1>
         <ul className='todo-list'>
-          <TodoItem />
+          {this.props.items.map(item => {
+            return <TodoItem key={item.id} {...item} />
+          })}
         </ul>
         <button type="button">clear all</button>
       </div>
@@ -514,7 +517,7 @@ class TodoItem extends Component {
   render() { 
     return ( 
       <li className='todo-item'>
-        <h6>title</h6>
+        <h6>{this.props.name}</h6>
         <span className="icon">
           <i className="fa fa-pencil"></i>
         </span>
