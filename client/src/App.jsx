@@ -509,7 +509,7 @@ class TodoList extends Component {
         <h1>todo list</h1>
         <ul className='todo-list'>
           {this.props.items.map(item => {
-            return <TodoItem key={item.id} {...item} />
+            return <TodoItem key={item.id} {...item} setItems={this.props.setItems} />
           })}
         </ul>
         <button 
@@ -523,6 +523,15 @@ class TodoList extends Component {
 } 
 
 class TodoItem extends Component {
+  deleteSingleItem = () => {
+    // console.log(this.props.id);
+    // const filtered = this.props.items.filter(item => item.id != this.props.id);
+    this.props.setItems(currentItems => {
+      const filtered = currentItems.filter(item => item.id != this.props.id);
+      return filtered;
+    });
+  }
+
   render() { 
     return ( 
       <li className='todo-item'>
@@ -530,7 +539,7 @@ class TodoItem extends Component {
         <span className="icon">
           <i className="fa fa-pencil"></i>
         </span>
-        <span className="icon">
+        <span className="icon" onClick={this.deleteSingleItem}>
           <i className="fa fa-trash-o"></i>
         </span>
       </li>
