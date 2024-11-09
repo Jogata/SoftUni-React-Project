@@ -496,6 +496,10 @@ const baseURL = "http://localhost:3030/jsonstore/blog/"
 // ============================================================
 
 class TodoList extends Component {
+  clearAll = () => {
+    this.props.setItems([]);
+  }
+
   render() {
     // console.log(this.props.items);
     return (
@@ -508,7 +512,11 @@ class TodoList extends Component {
             return <TodoItem key={item.id} {...item} />
           })}
         </ul>
-        <button type="button">clear all</button>
+        <button 
+          type="button" 
+          onClick={this.clearAll}
+        > clear all
+        </button>
       </div>
     )
   }
