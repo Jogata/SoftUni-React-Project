@@ -501,15 +501,21 @@ class TodoList extends Component {
   }
 
   render() {
-    // console.log(this.props.items);
+    // console.log(this.props.editedTitle);
+    // console.log("render list");
     return (
       <div className='todo-list-container'>
         {/* <TodoInput setID={this.props.setID} setItems={this.props.setItems} /> */}
-        <TodoInput setItems={this.props.setItems} />
+        <TodoInput 
+          setItems={this.props.setItems} 
+          isEditing={this.props.isEditing} 
+          setIsEditing={this.props.setIsEditing} 
+          editedTitle={this.props.editedTitle} 
+        />
         <h1>todo list</h1>
         <ul className='todo-list'>
           {this.props.items.map(item => {
-            return <TodoItem key={item.id} {...item} setItems={this.props.setItems} />
+            return <TodoItem key={item.id} {...item} setItems={this.props.setItems} setIsEditing={this.props.setIsEditing} setEditedTitle={this.props.setEditedTitle} />
           })}
         </ul>
         <button 
@@ -532,11 +538,21 @@ class TodoItem extends Component {
     });
   }
 
+  handleClickEditButton = (title) => {
+    // console.log(this.props.id);
+    // console.log(this.props.setIsEditing);
+    this.props.setIsEditing(true);
+    // console.log(title);
+    this.props.setEditedTitle(title);
+    this.deleteSingleItem();
+  }
+
   render() { 
+    // console.log("render " + this.props.name);
     return ( 
       <li className='todo-item'>
         <h6>{this.props.name}</h6>
-        <span className="icon">
+        <span className="icon" onClick={() => this.handleClickEditButton(this.props.name)}>
           <i className="fa fa-pencil"></i>
         </span>
         <span className="icon" onClick={this.deleteSingleItem}>
@@ -550,7 +566,15 @@ class TodoItem extends Component {
 class TodoInput extends Component {
   state = {
     name: "", 
+    // name: this.props.editedTitle, 
     id: 0
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.editedTitle !== this.props.editedTitle) {
+      // console.log('props has changed.');
+      this.setState({name: this.props.editedTitle});
+    }
   }
 
   handleChange = (e) => {
@@ -562,6 +586,7 @@ class TodoInput extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     // console.log(this.state.name);
+    this.props.setIsEditing(false);
     const newTodoItem = {
       name: this.state.name, 
       id: this.state.id, 
@@ -584,6 +609,13 @@ class TodoInput extends Component {
   }
 
   render() { 
+    const actions = {
+      "true": "edit", 
+      "false": "add", 
+    }
+    // console.log(this.state.name);
+    // console.log(this.props.editedTitle);
+    // console.log("render input");
     return ( 
       <div>
         <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -598,7 +630,7 @@ class TodoInput extends Component {
               onChange={(e) => this.handleChange(e)} 
             />
           </div>
-          <button type="submit">add item</button>
+          <button type="submit">{actions[this.props.isEditing]} item</button>
         </form>
       </div>
     ) 
@@ -608,8 +640,9 @@ class TodoInput extends Component {
 function App() {
   const [items, setItems] = useState([]);
   // const [itemName, setItemName] = useState("");
+  const [editedTitle, setEditedTitle] = useState("");
   // const [id, setID] = useState(0);
-  const [isEditing, setIEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <>
@@ -618,7 +651,14 @@ function App() {
           <Header title="React JS Blog" />
           {/* <TodoInput /> */}
           {/* <TodoList setID={setID} items={items} setItems={setItems} /> */}
-          <TodoList items={items} setItems={setItems} />
+          <TodoList 
+            items={items} 
+            setItems={setItems} 
+            isEditing={isEditing} 
+            setIsEditing={setIsEditing} 
+            editedTitle={editedTitle} 
+            setEditedTitle={setEditedTitle} 
+          />
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
