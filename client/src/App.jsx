@@ -515,7 +515,13 @@ class TodoList extends Component {
         <h1>todo list</h1>
         <ul className='todo-list'>
           {this.props.items.map(item => {
-            return <TodoItem key={item.id} {...item} setItems={this.props.setItems} setIsEditing={this.props.setIsEditing} setEditedTitle={this.props.setEditedTitle} />
+            return <TodoItem 
+                      key={item.id} 
+                      {...item} 
+                      setItems={this.props.setItems} 
+                      setIsEditing={this.props.setIsEditing} 
+                      setEditedTitle={this.props.setEditedTitle} 
+                    />
           })}
         </ul>
         <button 
@@ -552,12 +558,12 @@ class TodoItem extends Component {
     return ( 
       <li className='todo-item'>
         <h6>{this.props.name}</h6>
-        <span className="icon" onClick={() => this.handleClickEditButton(this.props.name)}>
+        <button className="icon" onClick={() => this.handleClickEditButton(this.props.name)}>
           <i className="fa fa-pencil"></i>
-        </span>
-        <span className="icon" onClick={this.deleteSingleItem}>
+        </button>
+        <button className="icon" onClick={this.deleteSingleItem}>
           <i className="fa fa-trash-o"></i>
-        </span>
+        </button>
       </li>
     ) 
   } 
