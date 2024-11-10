@@ -20,9 +20,9 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { PhoneHome } from './components/phone-e-commerce/home';
 import { Navbar } from './components/phone-e-commerce/Navbar';
-import { ProductList } from './components/phone-e-commerce/ProductList'
+import { PhoneHome } from './components/phone-e-commerce/PhoneHome';
+// import { ProductList } from './components/phone-e-commerce/ProductList'
 import { Cart } from './components/phone-e-commerce/Cart'
 import { PageNotFound } from './components/phone-e-commerce/PageNotFound'
 import { Details } from './components/phone-e-commerce/Details'
@@ -44,11 +44,17 @@ function App() {
       <AuthContextProvider> 
         <div className="body cart">
           <Navbar />
-          <PhoneHome />
-          <ProductList />
-          <Details />
-          <Cart />
-          <PageNotFound />
+          <Routes>
+              <Route path='/' element={<PhoneHome />} />
+              <Route path='/details/:id' element={<Details />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='*' element={<PageNotFound />} />
+            </Routes>
+          {/* <PhoneHome /> */}
+          {/* <ProductList /> */}
+          {/* <Details /> */}
+          {/* <Cart /> */}
+          {/* <PageNotFound /> */}
           {/* <User name="Jogata" /> */}
           {/* <User render={(isLoggedIn) => isLoggedIn ? "Jogata" : "Guest" } /> */}
           {/* <DataProvider>
