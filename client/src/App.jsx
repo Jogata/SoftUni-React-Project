@@ -26,6 +26,7 @@ import { PhoneHome } from './components/phone-e-commerce/PhoneHome';
 import { Cart } from './components/phone-e-commerce/Cart'
 import { PageNotFound } from './components/phone-e-commerce/PageNotFound'
 import { Details } from './components/phone-e-commerce/Details'
+import { ProductProvider } from './components/phone-e-commerce/Context'
 
 function Loader() {
   return (
@@ -41,7 +42,8 @@ function Loader() {
 function App() {
   return (
     <>
-      <AuthContextProvider> 
+      {/* <AuthContextProvider> */}
+      <ProductProvider>
         <div className="body cart">
           <Navbar />
           <Routes>
@@ -103,7 +105,8 @@ function App() {
           </svg>
 
         </div>
-      </AuthContextProvider>  
+      </ProductProvider> 
+      {/* </AuthContextProvider>  */}
     </>
   )
 }

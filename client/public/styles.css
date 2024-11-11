@@ -1144,3 +1144,7 @@ a:focus-visible {
 .page-title h1 {
   text-align: center;
 }
+
+.body div {
+  margin: 0 auto;
+}
