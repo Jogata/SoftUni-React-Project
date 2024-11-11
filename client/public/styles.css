@@ -1136,3 +1136,11 @@ a:focus-visible {
 .cart .cart-link:hover a {
   color: var(--main-blue);
 }
+
+.page-title {
+  padding: 2rem 0;
+}
+
+.page-title h1 {
+  text-align: center;
+}

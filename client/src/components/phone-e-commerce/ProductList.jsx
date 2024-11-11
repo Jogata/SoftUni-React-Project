@@ -1,9 +1,10 @@
 import { Product } from "./Product";
+import { Title } from "./Title";
 
 export function ProductList() {
     return (
         <>
-            <h2 className="blue-color">ProductList component</h2>
+            <Title name={"Our"} title={"Progucts"} />
             <Product />
         </>
     )
