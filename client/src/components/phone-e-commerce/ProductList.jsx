@@ -12,7 +12,6 @@ export function ProductList() {
                     return <h2>{products[0].title}</h2>
                 }}
             </ProductConsumer>
-            <Product />
         </>
     )
 }
