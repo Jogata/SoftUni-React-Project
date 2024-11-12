@@ -6,10 +6,10 @@ import { ProductConsumer } from "./Context";
 export function ProductList() {
     return (
         <>
-            <Title name={"Our"} title={"Progucts"} />
+            <Title name={"Our"} title={"Products"} />
             <ProductConsumer>
-                {({storeProducts}) => {
-                    return <h2>{storeProducts[0].title}</h2>
+                {({products}) => {
+                    return <h2>{products[0].title}</h2>
                 }}
             </ProductConsumer>
             <Product />
