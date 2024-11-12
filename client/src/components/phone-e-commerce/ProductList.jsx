@@ -9,7 +9,10 @@ export function ProductList() {
             <Title name={"Our"} title={"Products"} />
             <ProductConsumer>
                 {({products}) => {
-                    return <h2>{products[0].title}</h2>
+                    // return <h2>{products[0].title}</h2>
+                    return products.map(product => {
+                        return <Product key={product.id} product={product} />
+                    })
                 }}
             </ProductConsumer>
         </>
