@@ -6,8 +6,24 @@ const ProductContext = createContext();
 
 class ProductProvider extends Component {
     state = {
-        products: storeProducts, 
+        // products: storeProducts, 
+        products: [], 
         detailProduct: detailProduct
+    }
+
+    componentDidMount() {
+        this.setProducts();
+    }
+
+    setProducts = () => {
+        const newProducts = [];
+        storeProducts.forEach(product => {
+            const newProduct = {...product};
+            newProducts.push(newProduct);
+        })
+        this.setState(() => {
+            return {products: newProducts};
+        })
     }
 
     handleDetail = () => {
