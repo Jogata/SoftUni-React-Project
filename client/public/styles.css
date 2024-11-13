@@ -1225,6 +1225,80 @@ a:focus-visible {
   font-size: 1rem;
 }
 
+.body .flex-container {
+  display: flex;
+}
+
+.body .details-container {
+  /* display: flex; */
+  max-width: 900px;
+}
+
+.body .details-img-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.details-img-container img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart .details {
+  max-width: 100%;
+}
+
+.cart .details h1 {
+  margin: 3rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.product-info h2 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  /* text-align: center; */
+}
+.product-info h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+.product-info h3 span {
+  text-transform: uppercase;
+}
+
+.product-info h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.details-footer {
+  padding: 0 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details a {
+  align-self: center;
+  color: var(--light-blue);
+  font-size: 1rem;
+  text-transform: capitalize;
+  border: 1px solid var(--light-blue);
+  border-radius: 8px;
+  transition: color 0.6s linear, 
+    background-color 0.6s linear;
+}
+.details a:hover {
+  color: var(--main-white);
+  background-color: var(--main-blue);
+}
+
 .body div {
+  width: 100%;
   margin: 0 auto;
+}
+
+.body div p {
+  font-size: 1rem;
+  font-weight: normal;
 }

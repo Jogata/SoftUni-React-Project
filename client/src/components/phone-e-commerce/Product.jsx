@@ -10,7 +10,7 @@ export function Product(props) {
                 return (
                     <div className="card">
                         <div className="img-container">
-                            <Link to="/details">
+                            <Link to="/details/1">
                                 <img src={img} alt="" />
                             </Link>
                             <button 
