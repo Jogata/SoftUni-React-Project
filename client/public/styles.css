@@ -1231,7 +1231,8 @@ a:focus-visible {
 
 .body .details-container {
   /* display: flex; */
-  max-width: 900px;
+  /* max-width: 900px; */
+  max-width: 1080px;
 }
 
 .body .details-img-container {
@@ -1246,6 +1247,7 @@ a:focus-visible {
 
 .cart .details {
   max-width: 100%;
+  padding: 3rem 0;
 }
 
 .cart .details h1 {
@@ -1268,18 +1270,25 @@ a:focus-visible {
 }
 
 .product-info h4 {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   font-size: 1.2rem;
+}
+
+.product-info p {
+  margin: 1rem 0;
 }
 
 .details-footer {
   padding: 0 1rem;
-  align-items: center;
+  gap: 2%;
+  flex-wrap: wrap;
+  /* align-items: center; */
   justify-content: space-between;
 }
 
 .details a {
-  align-self: center;
+  /* align-self: center; */
+  padding: 0.4em 0.8em;
   color: var(--light-blue);
   font-size: 1rem;
   text-transform: capitalize;
@@ -1291,6 +1300,25 @@ a:focus-visible {
 .details a:hover {
   color: var(--main-white);
   background-color: var(--main-blue);
+}
+
+.details button {
+  flex: 1;
+  margin-bottom: 0;
+  padding: 0.4em 0.8em;
+  color: var(--main-yellow);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  border: 1px solid var(--main-yellow);
+  border-radius: 8px;
+  transition: color 0.6s linear, 
+    background-color 0.6s linear;
+}
+
+.details button:hover {
+  color: var(--main-white);
+  background-color: var(--main-yellow);
 }
 
 .body div {

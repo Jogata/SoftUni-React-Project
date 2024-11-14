@@ -33,7 +33,7 @@ export function Details() {
                                             disabled={inCart ? true : false}
                                             onClick={() => { console.log("added to cart") }}
                                         >
-                                            {inCart ? "in cart" : <i className="fa fa-shopping-cart"></i>}
+                                            {inCart ? "in cart" : "add to cart"}
                                         </button>
                                     </div>
                                 </div>
