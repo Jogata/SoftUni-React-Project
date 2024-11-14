@@ -9,7 +9,7 @@ export function Product(props) {
             {(ctx) => {
                 return (
                     <div className="card">
-                        <div className="img-container">
+                        <div className="img-container" onClick={() => ctx.handleDetails(id)}>
                             <Link to="/details/1">
                                 <img src={img} alt="" />
                             </Link>

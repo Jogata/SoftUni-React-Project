@@ -27,13 +27,20 @@ class ProductProvider extends Component {
     }
 
     getProductByID = (id) => {
-        console.log(this);
+        // console.log(this.state.products);
+        // console.log(id);
         const product = this.state.products.find(product => product.id == id);
+        // console.log(product);
         return product;
     }
 
-    handleDetail = () => {
-        console.log("details component");
+    handleDetails = (id) => {
+        // console.log(this);
+        const product = this.getProductByID(id);
+        // console.log(product);
+        this.setState(() => {
+            return {detailProduct: product};
+        })
     }
 
     addToCart = () => {
@@ -41,12 +48,12 @@ class ProductProvider extends Component {
     }
 
     render() {
-        console.log(ProductProvider.prototype);
+        // console.log(ProductProvider.prototype);
         return (
             <ProductContext.Provider 
                 value={{
                     ...this.state, 
-                    handleDetail: this.handleDetail, 
+                    handleDetails: this.handleDetails, 
                     addToCart: this.addToCart, 
                 }}
             >
