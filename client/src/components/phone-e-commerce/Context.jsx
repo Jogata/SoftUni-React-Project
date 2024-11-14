@@ -26,6 +26,12 @@ class ProductProvider extends Component {
         })
     }
 
+    getProductByID = (id) => {
+        console.log(this);
+        const product = this.state.products.find(product => product.id == id);
+        return product;
+    }
+
     handleDetail = () => {
         console.log("details component");
     }
@@ -35,6 +41,7 @@ class ProductProvider extends Component {
     }
 
     render() {
+        console.log(ProductProvider.prototype);
         return (
             <ProductContext.Provider 
                 value={{

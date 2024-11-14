@@ -6,7 +6,7 @@ export function Details() {
         // <h2 className="blue-color">Details component</h2>
         <ProductConsumer>
             {(ctx) => {
-                console.log(ctx.detailProduct);
+                // console.log(ctx.detailProduct);
                 const {id, company, info, title, img, price, inCart} = ctx.detailProduct;
                 return (
                     <div className="details">
