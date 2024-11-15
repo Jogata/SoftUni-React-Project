@@ -27,6 +27,7 @@ import { Cart } from './components/phone-e-commerce/Cart'
 import { PageNotFound } from './components/phone-e-commerce/PageNotFound'
 import { Details } from './components/phone-e-commerce/Details'
 import { ProductProvider } from './components/phone-e-commerce/Context'
+import { Modal } from './components/phone-e-commerce/Modal'
 
 function Loader() {
   return (
@@ -47,11 +48,12 @@ function App() {
         <div className="body cart">
           <Navbar />
           <Routes>
-              <Route path='/' element={<PhoneHome />} />
-              <Route path='/details' element={<Details />} />
-              <Route path='/cart' element={<Cart />} />
-              <Route path='*' element={<PageNotFound />} />
-            </Routes>
+            <Route path='/' element={<PhoneHome />} />
+            <Route path='/details' element={<Details />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+          <Modal />
           {/* <PhoneHome /> */}
           {/* <ProductList /> */}
           {/* <Details /> */}

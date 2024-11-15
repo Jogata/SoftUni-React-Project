@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Product } from "./Product";
 import { Title } from "./Title";
 import { ProductConsumer } from "./Context";
