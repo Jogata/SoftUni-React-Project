@@ -48,7 +48,7 @@ function App() {
           <Navbar />
           <Routes>
               <Route path='/' element={<PhoneHome />} />
-              <Route path='/details/:id' element={<Details />} />
+              <Route path='/details' element={<Details />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='*' element={<PageNotFound />} />
             </Routes>

@@ -3,10 +3,8 @@ import { ProductConsumer } from "./Context";
 
 export function Details() {
     return (
-        // <h2 className="blue-color">Details component</h2>
         <ProductConsumer>
             {(ctx) => {
-                // console.log(ctx.detailProduct);
                 const {id, company, info, title, img, price, inCart} = ctx.detailProduct;
                 return (
                     <div className="details">
@@ -14,10 +12,7 @@ export function Details() {
                         <div className="details-container">
                             <div className="flex-container">
                                 <div className="details-img-container">
-                                    {/* <Link to="/details/1"> */}
-                                    {/* <img src={img} alt="" /> */}
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGP6WeUbCjx-4cV8Z9CilpsGGOXNrcpFGPCg&s" alt="" />
-                                    {/* </Link> */}
                                 </div>
                                 <div className="product-info">
                                     <h2>model: {title}</h2>
@@ -31,7 +26,7 @@ export function Details() {
                                         <button
                                             className="cart-btn"
                                             disabled={inCart ? true : false}
-                                            onClick={() => { console.log("added to cart") }}
+                                            onClick={() => { ctx.addToCart(id) }}
                                         >
                                             {inCart ? "in cart" : "add to cart"}
                                         </button>
