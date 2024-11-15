@@ -26,7 +26,10 @@ export function Details() {
                                         <button
                                             className="cart-btn"
                                             disabled={inCart ? true : false}
-                                            onClick={() => { ctx.addToCart(id) }}
+                                            onClick={() => {
+                                                ctx.addToCart(id);
+                                                ctx.openModal(id);
+                                            }}
                                         >
                                             {inCart ? "in cart" : "add to cart"}
                                         </button>

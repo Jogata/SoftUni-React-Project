@@ -16,7 +16,10 @@ export function Product(props) {
                                 className="cart-btn" 
                                 disabled={inCart ? true : false} 
                                 // onClick={() => {console.log("added to cart")}}
-                                onClick={() => ctx.addToCart(id)}
+                                onClick={() => {
+                                    ctx.addToCart(id);
+                                    ctx.openModal(id);
+                                }}
                             >
                                 {inCart ? "in cart" : <i className="fa fa-shopping-cart"></i>}
                             </button>
