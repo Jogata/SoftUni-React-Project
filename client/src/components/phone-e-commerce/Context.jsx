@@ -70,6 +70,12 @@ class ProductProvider extends Component {
         })
     }
 
+    closeModal = () => {
+        this.setState(() => {
+            return {isModalOpen: false};
+        })
+    }
+
     render() {
         return (
             <ProductContext.Provider 
@@ -78,6 +84,7 @@ class ProductProvider extends Component {
                     handleDetails: this.handleDetails, 
                     addToCart: this.addToCart, 
                     openModal: this.openModal, 
+                    closeModal: this.closeModal, 
                 }}
             >
                 {this.props.children}

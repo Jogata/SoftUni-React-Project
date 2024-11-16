@@ -28,11 +28,11 @@ export function Modal() {
                                     price: <span>$</span>{price}
                                 </h4>
                                 <div className="flex-container modal-footer">
-                                    <Link to="/">continue shopping</Link>
+                                    <Link to="/" onClick={ctx.closeModal}>continue shopping</Link>
                                     <button
                                         className="cart-btn"
                                         // disabled={inCart ? true : false}
-                                        onClick={() => { ctx.addToCart(id) }}
+                                        onClick={ctx.closeModal}
                                     >
                                         {/* {inCart ? "in cart" : "add to cart"} */}
                                         go to cart
