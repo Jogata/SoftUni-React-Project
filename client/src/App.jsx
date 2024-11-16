@@ -23,7 +23,7 @@ import Logout from './components/logout/Logout'
 import { Navbar } from './components/phone-e-commerce/Navbar';
 import { PhoneHome } from './components/phone-e-commerce/PhoneHome';
 // import { ProductList } from './components/phone-e-commerce/ProductList'
-import { Cart } from './components/phone-e-commerce/Cart'
+import { Cart } from './components/phone-e-commerce/Cart/Cart'
 import { PageNotFound } from './components/phone-e-commerce/PageNotFound'
 import { Details } from './components/phone-e-commerce/Details'
 import { ProductProvider } from './components/phone-e-commerce/Context'
