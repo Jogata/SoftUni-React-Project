@@ -1,13 +1,26 @@
 import { ProductConsumer } from "../Context";
 import { Title } from "../Title";
 import { CartColums } from "./CartColumns";
+import { EmptyCart } from "./EmptyCart";
 
 export function Cart() {
     return (
-        <section>
-            {/* <h2 className="blue-text">Cart component</h2> */}
-            <Title name={"Your"} title={"Cart"} />
-            <CartColums />
+        <section className="cart-container">
+            <ProductConsumer>
+                {ctx => {
+                    const { cart } = ctx;
+                    if (cart.length > 0) {
+                        return (
+                            <>
+                                <Title name={"Your"} title={"Cart"} />
+                                <CartColums />
+                            </>
+                        )
+                    } else {
+                        return <EmptyCart />
+                    }
+                }}
+            </ProductConsumer>
         </section>
     )
 }
