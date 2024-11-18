@@ -2,8 +2,8 @@ import { ProductConsumer } from "../Context";
 
 export function CartColums() {
     return (
-        <div className="container">
-            <div className="row">
+        // <div className="container">
+            <div className="flex-container cart-header">
                 <div className="col">
                     <p>products</p>
                 </div>
@@ -18,12 +18,12 @@ export function CartColums() {
                 </div>
                 <div className="col">
                     <p>remove</p>
-                    <i className="fa fa-trash"></i>
+                    {/* <i className="fa fa-trash"></i> */}
                 </div>
                 <div className="col">
                     <p>total</p>
                 </div>
             </div>
-        </div>
+        // </div>
     )
 }

@@ -29,14 +29,13 @@ export function Modal() {
                                 </h4>
                                 <div className="flex-container modal-footer">
                                     <Link to="/" onClick={ctx.closeModal}>continue shopping</Link>
-                                    <button
-                                        className="cart-btn"
-                                        // disabled={inCart ? true : false}
+                                    <Link to="/cart" onClick={ctx.closeModal}>go to cart</Link>
+                                    {/* <button
+                                        disabled={inCart ? true : false}
                                         onClick={ctx.closeModal}
                                     >
-                                        {/* {inCart ? "in cart" : "add to cart"} */}
                                         go to cart
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
 
