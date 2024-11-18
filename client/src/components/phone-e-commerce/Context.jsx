@@ -80,7 +80,24 @@ class ProductProvider extends Component {
     }
 
     increment = (id) => {
-        console.log("increment");
+        // console.log("increment");
+        // console.log(id);
+        // console.log(this.state.cart);
+        const tempCart = [...this.state.cart];
+        const cartProduct = tempCart.find(product => product.id == id);
+        // console.log(cartProduct.count);
+        // console.log(cartProduct.total);
+        cartProduct.count += 1;
+        cartProduct.total = cartProduct.count * cartProduct.price;
+        // console.log(cartProduct.count);
+        // console.log(cartProduct.total);
+        // const product = this.state.products.find(product => product.id == cartProduct.id);
+        // console.log(product);
+        this.setState(() => {
+            return {
+                cart: tempCart
+            }
+        })
     }
 
     decrement = (id) => {
