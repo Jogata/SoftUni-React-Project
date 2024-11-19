@@ -55,13 +55,25 @@ class ProductProvider extends Component {
         product.count = 1;
         const price = product.price;
         product.total = price;
-        this.setState(() => {
-            return {
-                products: newProducts, 
-                detailProduct: product, 
-                cart: [...this.state.cart, product]
-            };
-        })
+        this.setState(
+            () => {
+                return {
+                    products: newProducts,
+                    detailProduct: product,
+                    cart: [...this.state.cart, product]
+                };
+            }, 
+            () => {
+                this.calcTotals();
+            }
+        )
+        // this.setState(() => {
+        //     return {
+        //         products: newProducts, 
+        //         detailProduct: product, 
+        //         cart: [...this.state.cart, product]
+        //     };
+        // })
     }
 
     openModal = (id) => {
@@ -111,6 +123,24 @@ class ProductProvider extends Component {
 
     clearCart = (id) => {
         console.log("clearCart");
+    }
+
+    calcTotals = () => {
+        let subtotal = 0;
+        this.state.cart.forEach(product => subtotal += product.total);
+        console.log(subtotal);
+        const tempTax = subtotal * 0.1;
+        const tax = parseFloat(tempTax.toFixed(2));
+        console.log(tax);
+        const total = subtotal + tax;
+        console.log(total);
+        this.setState(() => {
+            return {
+                cartSubtotal: subtotal, 
+                cartTax: tax, 
+                cartTotal: total
+            }
+        })
     }
 
     render() {
