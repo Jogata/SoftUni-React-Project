@@ -1381,6 +1381,7 @@ a:focus-visible {
 }
 
 .cart-component {
+  padding: 1rem 0;
   text-align: center;
 }
 
@@ -1431,7 +1432,7 @@ a:focus-visible {
 }
 
 .cart-item button.box:first-child {
-  padding: 0.65em 0.5em 0.75em;
+  padding: 0.65em 0.56em 0.75em;
 }
 
 .cart-item button.box:first-child:hover {
@@ -1456,6 +1457,28 @@ a:focus-visible {
 
 .cart-item button:hover .fa-trash {
   color: var(--main-yellow);
+}
+
+.cart-totals .block {
+  display: block;
+  margin: 1rem 0 0;
+  text-transform: capitalize;
+}
+
+.cart-totals a {
+  color: var(--main-dark);
+  padding: 0.3em 1em;
+  text-transform: capitalize;
+  border: 1px solid var(--main-dark);
+  transition: color 0.3s linear, 
+      border-color 0.3s linear, 
+  background-color 0.3s linear;
+}
+
+.cart-totals a:hover {
+  color: #fff;
+  border-color: #fff;
+  background-color: #f00;
 }
 
 .col-name {
