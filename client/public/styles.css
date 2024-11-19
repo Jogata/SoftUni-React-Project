@@ -1446,6 +1446,7 @@ a:focus-visible {
 } */
 
 .value {
+  /* min-width: 2rem; */
   margin: 0 0.8rem;
   /* padding: 0.5em; */
 }

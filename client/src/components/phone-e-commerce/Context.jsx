@@ -8,8 +8,8 @@ class ProductProvider extends Component {
     state = {
         products: [], 
         detailProduct: detailProduct, 
-        // cart: [], 
-        cart: storeProducts, 
+        cart: [], 
+        // cart: storeProducts, 
         isModalOpen: false, 
         modalProduct: detailProduct, 
         cartSubtotal: 0, 
@@ -67,13 +67,6 @@ class ProductProvider extends Component {
                 this.calcTotals();
             }
         )
-        // this.setState(() => {
-        //     return {
-        //         products: newProducts, 
-        //         detailProduct: product, 
-        //         cart: [...this.state.cart, product]
-        //     };
-        // })
     }
 
     openModal = (id) => {
@@ -121,19 +114,30 @@ class ProductProvider extends Component {
         console.log("removeItem");
     }
 
-    clearCart = (id) => {
-        console.log("clearCart");
+    clearCart = () => {
+        // console.log("clearCart");
+        this.setState(
+            () => {
+                return {
+                    cart: []
+                }
+            }, 
+            () => {
+                this.setProducts();
+                this.calcTotals();
+            }
+        )
     }
 
     calcTotals = () => {
         let subtotal = 0;
         this.state.cart.forEach(product => subtotal += product.total);
-        console.log(subtotal);
+        // console.log(subtotal);
         const tempTax = subtotal * 0.1;
         const tax = parseFloat(tempTax.toFixed(2));
-        console.log(tax);
+        // console.log(tax);
         const total = subtotal + tax;
-        console.log(total);
+        // console.log(total);
         this.setState(() => {
             return {
                 cartSubtotal: subtotal, 
