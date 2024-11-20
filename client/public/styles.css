@@ -1486,6 +1486,30 @@ a:focus-visible {
   display: none;
 }
 
+.cart .full-screen {
+  flex: 1;
+}
+
+.cart .page-content {
+  width: auto;
+  /* margin: auto; */
+  text-align: center;
+  max-width: 40rem;
+}
+
+.page-content h2 {
+  text-transform: uppercase;
+}
+
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 2px black;
+}
+
+.red {
+  color: #f00;
+}
+
 .cart-item {
   /* border: 1px solid red; */
 }
