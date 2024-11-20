@@ -107,7 +107,29 @@ class ProductProvider extends Component {
     }
 
     decrement = (id) => {
-        console.log("decrement");
+        // console.log("decrement");
+        // console.log(id);
+        // console.log(this.state.cart);
+        const tempCart = [...this.state.cart];
+        const cartProduct = tempCart.find(product => product.id == id);
+        // console.log(cartProduct.count);
+        // console.log(cartProduct.total);
+        cartProduct.count -= 1;
+
+        if (cartProduct.count == 0) {
+            this.removeItem(id);
+        } else {
+            cartProduct.total = cartProduct.count * cartProduct.price;
+            // console.log(cartProduct.count);
+            // console.log(cartProduct.total);
+            // const product = this.state.products.find(product => product.id == cartProduct.id);
+            // console.log(product);
+            this.setState(() => {
+                return {
+                    cart: tempCart
+                }
+            })    
+        }
     }
 
     removeItem = (id) => {
