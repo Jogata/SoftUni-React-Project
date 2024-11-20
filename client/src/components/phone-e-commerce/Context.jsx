@@ -111,7 +111,27 @@ class ProductProvider extends Component {
     }
 
     removeItem = (id) => {
-        console.log("removeItem");
+        // console.log("removeItem");
+        const tempProducts = [...this.state.products];
+        const tempCart = [...this.state.cart];
+        const filteredCart = tempCart.filter(product => product.id !== id);
+        // console.log(filteredCart);
+        const product = tempProducts.find(product => product.id == id);
+        // console.log(product);
+        product.inCart = false;
+        product.count = 0;
+        product.total = 0;
+        this.setState(
+            () => {
+                return {
+                    cart: filteredCart, 
+                    // products: tempProducts
+                }
+            }, 
+            () => {
+                this.calcTotals();
+            }
+        )
     }
 
     clearCart = () => {
