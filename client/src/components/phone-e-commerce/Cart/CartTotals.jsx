@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PaypalExpressBtn from "../PayPalButton";
 
 export function CartTotals({ctx}) {
     const { cartSubtotal, cartTax, cartTotal, clearCart } = ctx;
@@ -22,6 +23,7 @@ export function CartTotals({ctx}) {
                             total: 
                             <span> ${cartTotal}</span>
                         </span>
+                        <PaypalExpressBtn />
                     {/* </div> */}
                 {/* </div> */}
             </div>
