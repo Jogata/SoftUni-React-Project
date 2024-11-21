@@ -13,17 +13,17 @@ export function CartTotals({ctx}) {
                         </Link>
                         <span className="block">
                             subtotal: 
-                            <span> ${cartSubtotal}</span>
+                            <span> ${cartSubtotal.toFixed(2)}</span>
                         </span>
                         <span className="block">
                             tax: 
-                            <span> ${cartTax}</span>
+                            <span> ${cartTax.toFixed(2)}</span>
                         </span>
                         <span className="block">
                             total: 
-                            <span> ${cartTotal}</span>
+                            <span> ${cartTotal.toFixed(2)}</span>
                         </span>
-                        <PaypalExpressBtn />
+                        {/* <PaypalExpressBtn total={cartTotal} clearCart={clearCart} history={history} /> */}
                     {/* </div> */}
                 {/* </div> */}
             </div>

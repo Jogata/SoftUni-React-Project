@@ -7,7 +7,7 @@ import { EmptyCart } from "./EmptyCart";
 
 export function Cart() {
     return (
-        <section className="cart-component">
+        <section className="cart-component flex-container">
             <ProductConsumer>
                 {ctx => {
                     const { cart } = ctx;

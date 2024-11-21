@@ -1389,9 +1389,29 @@ a:focus-visible {
   padding: 0.5rem;
 }
 
-.cart-component .flex-container {
+.cart-component {
   flex: 1;
-  align-items: center;
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.cart-inner-container {
+  max-width: 50rem;
+  margin: auto;
+}
+
+.cart-inner-container h1 {
+  margin-bottom: 1rem;
+}
+
+.cart-inner-container a {
+  color: var(--light-blue);
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.cart-inner-container a:hover {
+  text-decoration: underline;
 }
 
 .cart-header div p {
