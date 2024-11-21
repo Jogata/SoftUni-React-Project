@@ -99,11 +99,16 @@ class ProductProvider extends Component {
         // console.log(cartProduct.total);
         // const product = this.state.products.find(product => product.id == cartProduct.id);
         // console.log(product);
-        this.setState(() => {
-            return {
-                cart: tempCart
+        this.setState(
+            () => {
+                return {
+                    cart: tempCart
+                }
+            },
+            () => {
+                this.calcTotals();
             }
-        })
+        )
     }
 
     decrement = (id) => {
@@ -124,11 +129,16 @@ class ProductProvider extends Component {
             // console.log(cartProduct.total);
             // const product = this.state.products.find(product => product.id == cartProduct.id);
             // console.log(product);
-            this.setState(() => {
-                return {
-                    cart: tempCart
+            this.setState(
+                () => {
+                    return {
+                        cart: tempCart
+                    }
+                },
+                () => {
+                    this.calcTotals();
                 }
-            })    
+            )
         }
     }
 
