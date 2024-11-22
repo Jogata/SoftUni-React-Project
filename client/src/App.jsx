@@ -41,9 +41,9 @@ function App() {
     <>
       <AuthContextProvider>
         <Home />
-        <Rooms />
-        <SingleRoom />
-        <NotFound />
+        {/* <Rooms /> */}
+        {/* <SingleRoom /> */}
+        {/* <NotFound /> */}
           {/* <PhoneHome /> */}
           {/* <ProductList /> */}
           {/* <Details /> */}
