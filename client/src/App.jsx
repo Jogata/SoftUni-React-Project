@@ -40,10 +40,13 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Home />
-        {/* <Rooms /> */}
-        {/* <SingleRoom /> */}
-        {/* <NotFound /> */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/rooms' element={<Rooms />} />
+          <Route path='/rooms/:slug' element={<SingleRoom />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+
           {/* <PhoneHome /> */}
           {/* <ProductList /> */}
           {/* <Details /> */}
