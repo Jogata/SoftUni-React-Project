@@ -1021,6 +1021,19 @@ body {
   background-color: #222;
 }
 
+#root {
+  --primaryColor: #af9a7d;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #cfcfcf;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
 body {
   /* padding-top: 66px; */
   color: var(--mainBlack);
@@ -1093,4 +1106,88 @@ h6 {
   text-align: center;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
+}
+
+.nav-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--mainWhite);
+  z-index: 2;
+}
+
+.resort-nav {
+  /* width: 100%; */
+  position: unset;
+  padding: 1rem 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resort-nav ul {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.resort-nav img {
+  display: block;
+}
+
+.resort-nav a {
+  padding: 0.4em 1em;
+  color: var(--mainBlack);
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  transition: color 300ms ease;
+  /* border: 1px solid black; */
+}
+
+.resort-nav a:hover {
+  color: var(--gold);
+}
+
+.flex-container {
+  display: flex;
+}
+
+.menu-btn {
+  display: none;
+  padding: 0.4em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menu-btn i {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--primaryColor);
+  -webkit-text-stroke: 1px var(--mainWhite);
+}
+
+@media screen and (max-width: 650px) {
+  .resort-nav .menu-btn {
+    display: inline;
+  }
+  .resort-nav ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--mainWhite);
+    transition: transform 300ms;
+    z-index: -1;
+  }
+  .resort-nav ul.hidden {
+    transform: translateY(-100%);
+  }
+  .resort-nav ul a {
+    display: block;
+  }
 }

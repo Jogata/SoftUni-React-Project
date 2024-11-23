@@ -24,6 +24,7 @@ import { Home } from './components/beach-resort/components/Home'
 import { Rooms } from './components/beach-resort/components/Rooms'
 import { SingleRoom } from './components/beach-resort/components/SingleRoom'
 import { NotFound } from './components/beach-resort/components/NotFound'
+import { Navbar } from './components/beach-resort/components/Navbar'
 
 function Loader() {
   return (
@@ -40,6 +41,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/rooms' element={<Rooms />} />
