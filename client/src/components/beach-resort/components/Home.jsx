@@ -1,4 +1,5 @@
 import img1 from "../../../../../images/room-1.jpeg";
+import { Hero } from "./Hero";
 
 export function Home() {
     // console.log(hotels[0].fields.images[0].fields.file.url);
@@ -7,17 +8,20 @@ export function Home() {
         <div className="page full-screen" 
             style={{position: "relative", width: "100%"}}
         >
+            <Hero hero="default-hero-section">
             <h1 className="cursive" 
                 style={{
-                    position: "absolute", 
-                    top: "10%", 
+                    // position: "absolute", 
+                    // top: "10%", 
                     width: "100%", 
+                    padding: "1em 0", 
                     fontSize: "5rem", 
                     textAlign: "center", 
                     textTransform: "uppercase" 
                 }}>
-                    hotels
+                    hero
                 </h1>
+            </Hero>
             <img src={img1} alt="" style={{flex: "1", objectFit: "cover"}} />
         </div>
     )

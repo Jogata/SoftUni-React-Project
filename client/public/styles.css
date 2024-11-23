@@ -1191,3 +1191,19 @@ h6 {
     display: block;
   }
 }
+
+.default-hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../images/defaultBcg.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.rooms-hero-section {
+  min-height: 60vh;
+  background-image: url("../../images/room-2.jpeg");
+}
