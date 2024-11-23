@@ -1072,20 +1072,20 @@ h6 {
 }
 
 .btn-primary {
+  /* text-decoration: none; */
   display: inline-block;
-  text-decoration: none;
-  letter-spacing: var(--mainSpacing);
-  color: var(--mainBlack);
-  background: var(--primaryColor);
   padding: 0.4rem 0.9rem;
-  border: 3px solid var(--primaryColor);
-  transition: var(--mainTransition);
+  color: var(--mainBlack);
   text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  border: 3px solid var(--primaryColor);
+  background-color: var(--primaryColor);
+  transition: var(--mainTransition);
   cursor: pointer;
 }
 .btn-primary:hover {
-  background: transparent;
   color: var(--primaryColor);
+  background-color: transparent;
 }
 
 .loading {
@@ -1197,7 +1197,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../images/defaultBcg.jpeg");
+  background-image: url("./resort/defaultBcg.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1205,5 +1205,31 @@ h6 {
 
 .rooms-hero-section {
   min-height: 60vh;
-  background-image: url("../../images/room-2.jpeg");
+  background-image: url("./resort/room-2.jpeg");
+}
+
+.resort-banner {
+  display: inline-block;
+  padding: 3vw 5vw;
+  color: var(--mainWhite);
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.resort-banner h1 {
+  font-size: 2.5rem;
+}
+
+.resort-banner div {
+  width: 10rem;
+  height: 5px;
+  margin: 1.7rem auto;
+  background-color: var(--primaryColor);
+}
+
+.resort-banner p {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
 }
