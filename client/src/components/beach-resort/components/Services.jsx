@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Title } from "./Title";
 
 export class Services extends Component {
     state = {
@@ -29,7 +30,7 @@ export class Services extends Component {
     render() {
         return (
             <section className="services-section">
-                <h1>services</h1>
+                <Title title="services" />
                 <div className="inner-services-container">
                     {this.state.services.map((item, index) => {
                         return (
