@@ -1,0 +1,47 @@
+import { Component } from "react";
+
+export class Services extends Component {
+    state = {
+        services: [
+            {
+                icon: <i className="ri-goblet-fill"></i>, 
+                title: "free coctails", 
+                info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, animi."
+            }, 
+            {
+                icon: <i className="ri-walk-line"></i>, 
+                title: "endless hiking", 
+                info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, animi."
+            }, 
+            {
+                icon: <i className="ri-truck-line"></i>, 
+                title: "free shuttle", 
+                info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, animi."
+            }, 
+            {
+                icon: <i className="fa fa-beer"></i>, 
+                title: "strongest beer", 
+                info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, animi."
+            }
+        ]
+    }
+
+    render() {
+        return (
+            <section>
+                <h1>services</h1>
+                <div>
+                    {this.state.services.map((item, index) => {
+                        return (
+                            <article key={index}>
+                                <span>{item.icon}</span>
+                                <h6>{item.title}</h6>
+                                <p>{item.info}</p>
+                            </article>
+                        )
+                    })}
+                </div>
+            </section>
+        )
+    }
+}
