@@ -1233,3 +1233,42 @@ h6 {
   margin-bottom: 2rem;
   font-size: 1.2rem;
 }
+
+.services-section {
+  padding: 5rem 0;
+}
+
+.services-section {
+  text-align: center;
+  background-color: var(--darkGrey);
+}
+
+.inner-services-container {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-column-gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+}
+
+article.service {
+  display: block;
+}
+
+.service span {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--primaryColor);
+  font-size: 2.5rem;
+}
+
+.service h6 {
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+}
+
+.service p {
+  width: 80%;
+  margin: 0 auto;
+}

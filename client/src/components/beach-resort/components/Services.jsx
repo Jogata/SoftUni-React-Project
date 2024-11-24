@@ -28,12 +28,12 @@ export class Services extends Component {
 
     render() {
         return (
-            <section>
+            <section className="services-section">
                 <h1>services</h1>
-                <div>
+                <div className="inner-services-container">
                     {this.state.services.map((item, index) => {
                         return (
-                            <article key={index}>
+                            <article key={index} className="service">
                                 <span>{item.icon}</span>
                                 <h6>{item.title}</h6>
                                 <p>{item.info}</p>
