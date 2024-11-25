@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { RoomContext } from "./Context";
+import { Room } from "./Room";
 
 export class FeaturedRooms extends Component {
     static contextType = RoomContext;
@@ -7,8 +8,10 @@ export class FeaturedRooms extends Component {
         const ctx = this.context;
         console.log(ctx.featuredRooms);
         return (
-            <h1>rooms</h1>
-
+            <div>
+                <h1>rooms</h1>
+                <Room room={ctx.featuredRooms[0]} />
+            </div>
         )
     }
 }
