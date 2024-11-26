@@ -10,7 +10,7 @@ export class FeaturedRooms extends Component {
         return (
             <div>
                 <h1>rooms</h1>
-                <Room room={ctx.featuredRooms[0]} />
+                {ctx.featuredRooms.length > 0 ? <Room room={ctx.featuredRooms[0]} /> : null}
             </div>
         )
     }

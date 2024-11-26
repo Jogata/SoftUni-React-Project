@@ -4,18 +4,18 @@ export function Room({room}) {
     console.log(room);
     const { name, slug, images, price } = room;
     return (
-        <article style={{display: "block"}}>
-            <div>
+        <article className="room">
+            <div className="img-container">
                 <img src={images[0]} alt="single room" />
-                <div>
+                <div className="price">
                     <h6>${price}</h6>
                     <p>per night</p>
                 </div>
-                <Link to={`/rooms/${slug}`}>
+                <Link to={`/rooms/${slug}`} className="btn-primary room-link">
                     features
                 </Link>
             </div>
-            <p>{name}</p>
+            <p className="room-info">{name}</p>
         </article>
     )
 }
