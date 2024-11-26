@@ -29,7 +29,7 @@ export class Services extends Component {
 
     render() {
         return (
-            <section className="services-section">
+            <section className="section services-section">
                 <Title title="services" />
                 <div className="inner-services-container">
                     {this.state.services.map((item, index) => {

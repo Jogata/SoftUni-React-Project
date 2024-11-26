@@ -1264,8 +1264,12 @@ h6 {
   font-size: 1.2rem;
 }
 
-.services-section {
+.page .section {
   padding: 5rem 0;
+}
+.page .section::before, 
+.page .section::after {
+  content: none;
 }
 
 .services-section {
@@ -1301,6 +1305,29 @@ article.service {
 .service p {
   width: 80%;
   margin: 0 auto;
+}
+
+.inner-featured-container {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+@media screen and (min-width: 776px) {
+  .inner-featured-container {
+    width: 90vw;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .inner-featured-container {
+    width: 95vw;
+    max-width: 1170px;
+  }
 }
 
 article.room {
