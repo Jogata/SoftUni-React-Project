@@ -7,7 +7,7 @@ export class FeaturedRooms extends Component {
     static contextType = RoomContext;
     render() {
         const ctx = this.context;
-        console.log(ctx.featuredRooms);
+        // console.log(ctx.featuredRooms);
         return (
             <div className="section featured-section">
                 {/* <h1>rooms</h1> */}

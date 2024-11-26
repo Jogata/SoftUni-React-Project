@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export function Room({room}) {
-    console.log(room);
+    // console.log(room);
     const { name, slug, images, price } = room;
     return (
         <article className="room">
