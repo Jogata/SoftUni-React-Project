@@ -1,6 +1,6 @@
-export function Hero({children, hero}) {
+export function Hero({children, heroClass, bcg}) {
     return (
-        <header className={hero}>
+        <header className={heroClass} style={{backgroundImage: `url(${bcg})`}}>
             {children}
         </header>
     )

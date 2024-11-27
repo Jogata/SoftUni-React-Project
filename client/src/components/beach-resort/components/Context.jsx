@@ -12,6 +12,7 @@ class RoomProvider extends Component {
     }
 
     componentDidMount() {
+        // console.log("did mount");
         const rooms = this.formatData(items);
         // console.log(rooms);
         const featuredRooms = rooms.filter(room => room.featured === true);
@@ -38,12 +39,20 @@ class RoomProvider extends Component {
     }
 
     getSingleRoom = (slug) => {
-        const tempRooms = [...this.state.rooms];
+        // console.log("get single room", slug);
+        // console.log(this.state.rooms);
+        const tempRooms = this.formatData([...items]);
+        // const tempRooms = [...this.state.rooms];
+        // console.log(items);
+        // console.log(this.state.rooms);
+        // console.log(tempRooms);
         const room = tempRooms.find(room => room.slug === slug);
+        // console.log(room);
         return room;
     }
 
     render() {
+        // console.log(this.state);
         return <RoomContext.Provider
             value={{
                 ...this.state, 

@@ -1224,6 +1224,7 @@ h6 {
 
 .default-hero-section {
   min-height: 100vh;
+  padding-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
