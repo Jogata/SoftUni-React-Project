@@ -52,7 +52,7 @@ export function SingleRoom() {
                 <ul className="extras">
                     {room.extras.map((item, index) => {
                         return (
-                            <li key={index}>{item}</li>
+                            <li key={index} className="bulled">{item}</li>
                         )
                     })}
                 </ul>
