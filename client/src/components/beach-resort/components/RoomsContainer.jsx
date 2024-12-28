@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { RoomContext } from "./Context";
 import { Rooms } from "./Rooms";
-
+import { RoomsFilter } from "./RoomsFilter";
 
 export function RoomsContainer() {
     const { rooms, sortedRooms, loading } = useContext(RoomContext);
@@ -19,8 +19,8 @@ export function RoomsContainer() {
 
     return (
         <>
-            {/* <h1>Rooms</h1> */}
-            <Rooms rooms={rooms} />
+            <RoomsFilter rooms={rooms} />
+            <Rooms rooms={sortedRooms} />
         </>
     )
 }
