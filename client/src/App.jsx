@@ -21,11 +21,12 @@ import Logout from './components/logout/Logout'
 
 // ================================================
 import { Home } from './components/beach-resort/components/Home'
-import { Rooms } from './components/beach-resort/components/Rooms'
+// import { Rooms } from './components/beach-resort/components/Rooms'
 import { SingleRoom } from './components/beach-resort/components/SingleRoom'
 import { NotFound } from './components/beach-resort/components/NotFound'
 import { Navbar } from './components/beach-resort/components/Navbar'
 import { RoomProvider } from './components/beach-resort/components/Context'
+import { RoomsContainer } from './components/beach-resort/components/RoomsContainer'
 
 function Loader() {
   return (
@@ -46,7 +47,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/rooms' element={<Rooms />} />
+          <Route path='/rooms' element={<RoomsContainer />} />
           <Route path='/rooms/:slug' element={<SingleRoom />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
