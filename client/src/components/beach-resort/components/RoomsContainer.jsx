@@ -20,7 +20,7 @@ export function RoomsContainer() {
     return (
         <>
             {/* <h1>Rooms</h1> */}
-            <Rooms />
+            <Rooms rooms={rooms} />
         </>
     )
 }
