@@ -23,6 +23,14 @@ export function RoomsFilter({ rooms }) {
     pets
   } = context;
 
+  let types = getUnique(rooms, "type");
+  types = ["all", ...types];
+  types = types.map((item, index) => (
+    <option key={index} value={item}>
+      {item}
+    </option>
+  ));
+
   return (
     <section className="filter-container">
       <Title title="search rooms" />
