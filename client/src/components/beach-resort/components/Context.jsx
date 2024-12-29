@@ -8,7 +8,16 @@ class RoomProvider extends Component {
         rooms: [], 
         sortedRooms: [], 
         featuredRooms: [], 
-        loading: true
+        loading: true, 
+        type: "all",
+        capacity: 1,
+        price: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minSize: 0,
+        maxSize: 0,
+        breakfast: false,
+        pets: false
     }
 
     componentDidMount() {
@@ -51,12 +60,17 @@ class RoomProvider extends Component {
         return room;
     }
 
+    handleChange = event => {
+        console.log(event);
+      };
+
     render() {
         // console.log(this.state);
         return <RoomContext.Provider
             value={{
                 ...this.state, 
-                getSingleRoom: this.getSingleRoom
+                getSingleRoom: this.getSingleRoom, 
+                handleChange: this.handleChange
             }}
         >
             {this.props.children}

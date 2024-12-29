@@ -4,7 +4,20 @@ import { Title } from "./Title";
 
 export function RoomsFilter({ rooms }) {
   const context = useContext(RoomContext);
-  console.log(context);
+//   console.log(context);
+
+  const {
+    handleChange, 
+    type, 
+    capacity, 
+    price, 
+    minPrice, 
+    maxPrice, 
+    minSize, 
+    maxSize, 
+    breakfast, 
+    pets
+  } = context;
 
   return (
     <section className="filter-container">
