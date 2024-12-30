@@ -1499,9 +1499,9 @@ article.room {
   }
 }
 
-.roomslist {
+/* .roomslist {
   padding: 5rem 0;
-}
+} */
 
 .roomslist-center {
   width: 80vw;
@@ -1523,4 +1523,8 @@ article.room {
     width: 95vw;
     max-width: 1170px;
   }
+}
+
+.filter-container {
+  padding: 5rem 0;
 }
