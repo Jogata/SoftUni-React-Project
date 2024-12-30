@@ -79,12 +79,14 @@ export function RoomsFilter({ rooms }) {
             className="form-control"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="price">room size </label>
+        <div className="form-group room-sizes">
+          <label htmlFor="min-size">room size </label>
           <div className="size-inputs">
             <input
+              id="min-size"
               type="number"
               name="minSize"
+              size="5"
               value={minSize}
               onChange={handleChange}
               className="size-input"
@@ -92,6 +94,7 @@ export function RoomsFilter({ rooms }) {
             <input
               type="number"
               name="maxSize"
+              size="5"
               value={maxSize}
               onChange={handleChange}
               className="size-input"
