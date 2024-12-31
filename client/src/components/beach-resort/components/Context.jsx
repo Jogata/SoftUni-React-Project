@@ -26,11 +26,16 @@ class RoomProvider extends Component {
         // console.log(rooms);
         const featuredRooms = rooms.filter(room => room.featured === true);
         // console.log(featuredRooms);
+        let maxPrice = Math.max(...rooms.map(item => item.price));
+        let maxSize = Math.max(...rooms.map(item => item.size));
         this.setState({
             rooms, 
             featuredRooms, 
             sortedRooms: rooms, 
-            loading: false
+            loading: false, 
+            price: maxPrice, 
+            maxPrice, 
+            maxSize
         })
     }
 
@@ -75,9 +80,9 @@ class RoomProvider extends Component {
         let tempRooms = [...rooms];
         capacity = parseInt(capacity);
         price = parseInt(price);
-        price = 600;
-        minSize = 1;
-        maxSize = 10000;
+        // price = 600;
+        // minSize = 1;
+        // maxSize = 10000;
 
         // filter by type
         if (type !== "all") {
