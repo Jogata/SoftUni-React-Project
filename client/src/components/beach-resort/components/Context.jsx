@@ -60,6 +60,64 @@ class RoomProvider extends Component {
         return room;
     }
 
+    filterRooms = () => {
+        let {
+          rooms,
+          type,
+          capacity,
+          price,
+          minSize,
+          maxSize,
+          breakfast,
+          pets
+        } = this.state;
+
+        let tempRooms = [...rooms];
+        capacity = parseInt(capacity);
+        price = parseInt(price);
+        price = 600;
+        minSize = 1;
+        maxSize = 10000;
+
+        // filter by type
+        if (type !== "all") {
+            // console.log("by type");
+            console.log(type);
+            tempRooms = tempRooms.filter(room => room.type === type);
+        }
+        
+        // filter by capacity
+        if (capacity !== 1) {
+            tempRooms = tempRooms.filter(room => room.capacity >= capacity);
+        }
+        
+        // filter by price
+        tempRooms = tempRooms.filter(room => room.price <= price);
+        console.log(tempRooms);
+        
+        //filter by size
+        tempRooms = tempRooms.filter(
+            room => room.size >= minSize && room.size <= maxSize
+        );
+        console.log(tempRooms);
+
+        //filter by breakfast
+        if (breakfast) {
+            tempRooms = tempRooms.filter(room => room.breakfast === true);
+        }
+
+        //filter by pets
+        if (pets) {
+            tempRooms = tempRooms.filter(room => room.pets === true);
+        }
+
+        console.log(tempRooms);
+
+        this.setState({
+            sortedRooms: tempRooms
+        });
+    };
+        
     handleChange = event => {
         // console.log(event);
         // const target = event.target;
@@ -67,7 +125,12 @@ class RoomProvider extends Component {
         const value = event.target.value;
         console.log(event.target.type);
         console.log(name, value);
-        this.setState({[name]: value});
+        this.setState(
+            {
+                [name]: value
+            }, 
+            this.filterRooms
+        );
         // console.log(this.state.maxSize);
     };
 
