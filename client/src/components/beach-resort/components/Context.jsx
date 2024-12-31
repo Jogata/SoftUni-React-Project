@@ -61,8 +61,15 @@ class RoomProvider extends Component {
     }
 
     handleChange = event => {
-        console.log(event);
-      };
+        // console.log(event);
+        // const target = event.target;
+        const name = event.target.name;
+        const value = event.target.value;
+        console.log(event.target.type);
+        console.log(name, value);
+        this.setState({[name]: value});
+        // console.log(this.state.maxSize);
+    };
 
     render() {
         // console.log(this.state);
