@@ -80,9 +80,6 @@ class RoomProvider extends Component {
         let tempRooms = [...rooms];
         capacity = parseInt(capacity);
         price = parseInt(price);
-        // price = 600;
-        // minSize = 1;
-        // maxSize = 10000;
 
         // filter by type
         if (type !== "all") {
@@ -125,11 +122,12 @@ class RoomProvider extends Component {
         
     handleChange = event => {
         // console.log(event);
-        // const target = event.target;
-        const name = event.target.name;
-        const value = event.target.value;
-        console.log(event.target.type);
-        console.log(name, value);
+        const target = event.target;
+        const name = target.name;
+        // const value = event.target.value;
+        const value = target.type === "checkbox" ? target.checked : target.value;
+        // console.log(event.target.type);
+        // console.log(name, value);
         this.setState(
             {
                 [name]: value
