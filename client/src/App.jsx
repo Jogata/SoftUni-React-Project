@@ -27,6 +27,7 @@ import { NotFound } from './components/beach-resort/components/NotFound'
 import { Navbar } from './components/beach-resort/components/Navbar'
 import { RoomProvider } from './components/beach-resort/components/Context'
 import { RoomsContainer } from './components/beach-resort/components/RoomsContainer'
+import { Hero } from './components/beach-resort/components/Hero'
 
 function Loader() {
   return (
@@ -43,6 +44,7 @@ function App() {
   return (
     <>
       {/* <AuthContextProvider> */}
+      <Hero />
       <RoomProvider>
         <Navbar />
         <Routes>
