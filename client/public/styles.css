@@ -1633,3 +1633,15 @@ select.form-control {
     min-width: 100%;
   }
 }
+
+.nav-component {
+  display: none;
+}
+
+.default-hero-section {
+  display: none;
+}
+
+.default-hero-section ~ .section {
+  display: none;
+}
