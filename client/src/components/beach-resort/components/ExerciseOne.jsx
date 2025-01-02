@@ -1,10 +1,16 @@
+function Header() {
+    return (
+        <header>
+            <img src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/01.%20Static%20pages/11.%20Random%20housekeeping/react-logo.png" alt="" />
+            <span>React</span>
+        </header>
+    )
+}
+
 export function ExerciseOne() {
     return (
         <div className="e-one full-screen">
-            <header>
-                <img src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/01.%20Static%20pages/11.%20Random%20housekeeping/react-logo.png" alt="" />
-                <span>React</span>
-            </header>
+            <Header />
             <h1>Why i want to learn React?</h1>
             <ol>
                 <li className="numbred">
