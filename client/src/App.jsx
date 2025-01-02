@@ -28,6 +28,7 @@ import { Navbar } from './components/beach-resort/components/Navbar'
 import { RoomProvider } from './components/beach-resort/components/Context'
 import { RoomsContainer } from './components/beach-resort/components/RoomsContainer'
 import { Hero } from './components/beach-resort/components/Hero'
+import { ExerciseOne } from './components/beach-resort/components/ExerciseOne'
 
 function Loader() {
   return (
@@ -44,7 +45,8 @@ function App() {
   return (
     <>
       {/* <AuthContextProvider> */}
-      <Hero />
+      {/* <Hero /> */}
+      <ExerciseOne />
       <RoomProvider>
         <Navbar />
         <Routes>

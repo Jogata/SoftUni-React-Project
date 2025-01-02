@@ -1693,3 +1693,30 @@ select.form-control {
   font-size: 2rem;
   font-weight: bold;
 }
+
+.e-one {
+  color: white;
+  /* text-align: center; */
+  background-color: #27292c;
+}
+
+.e-one h1 {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.e-one.full-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.e-one ol {
+  max-width: 800px;
+  /* text-align: left; */
+  margin: 0 auto;
+}
+
+.e-one li {
+  margin-bottom: 1rem;
+}
