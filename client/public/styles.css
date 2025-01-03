@@ -1697,13 +1697,15 @@ select.form-control {
 .e-one {
   color: white;
   /* text-align: center; */
-  background-color: #27292c;
+  /* background-color: #27292c; */
+  background-color: #282d35;
 }
 
 .e-one header {
   padding: 1rem;
   display: flex;
   align-items: center;
+  background-color: #212224;
 }
 
 .e-one img {
@@ -1713,7 +1715,8 @@ select.form-control {
 
 .e-one header span {
   margin-left: 1rem;
-  color: #00cffa;
+  /* color: #00cffa; */
+  color: #61dafb;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -1753,6 +1756,7 @@ select.form-control {
   width: 96%;
   max-width: 1600px;
   margin: auto;
+  /* margin-left: auto; */
   padding: 0.5rem 0;
 }
 
@@ -1760,5 +1764,42 @@ select.form-control {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  /* margin: auto; */
+  margin: 0 0 0 auto;
+}
+
+.e-one main {
+  position: relative;
+  color: inherit;
+  background-color: inherit;
+  z-index: 1;
+}
+
+.e-one main::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
   margin: auto;
+  content: "";
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  filter: brightness(0.45) grayscale(0.99);
+  background-image: url("https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/01.%20Static%20pages/11.%20Random%20housekeeping/react-logo.png");
+  background-repeat: no-repeat;
+  background-position: right 90%;
+  background-size: 50%;
+  z-index: -1;
+}
+
+ol {
+  /* list-style: none; */
+}
+
+ol li::marker {
+  color: #61dafb;
+  font-size: 1.5rem;
+  vertical-align: top;
+  line-height: 1;
 }
