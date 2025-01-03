@@ -1,3 +1,13 @@
+export function ExerciseOne() {
+    return (
+        <div className="e-one full-screen">
+            <Header />
+            <Main />
+            <Footer />
+        </div>
+    )
+}
+
 function Header() {
     return (
         <header>
@@ -7,10 +17,9 @@ function Header() {
     )
 }
 
-export function ExerciseOne() {
+function Main() {
     return (
-        <div className="e-one full-screen">
-            <Header />
+        <main>
             <h1>Why i want to learn React?</h1>
             <ol>
                 <li className="numbred">
@@ -35,9 +44,14 @@ export function ExerciseOne() {
                     React is a very declarative, fast, and flexible JavaScript library.
                 </li>
             </ol>
-            <footer>
-                <p>&copy; 2024. All right reserved.</p>
-            </footer>
-        </div>
+        </main>
+    )
+}
+
+function Footer() {
+    return (
+        <footer>
+            <p>&copy; 2024. All right reserved.</p>
+        </footer>
     )
 }

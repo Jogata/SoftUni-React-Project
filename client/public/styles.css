@@ -1741,7 +1741,8 @@ select.form-control {
 
 .e-one footer {
   margin-top: auto;
-  padding-top: 3rem;
-  padding-bottom: 1rem;
+  /* padding-top: 3rem; */
+  /* padding-bottom: 1rem; */
+  padding: 1rem 0;
   text-align: center;
 }
