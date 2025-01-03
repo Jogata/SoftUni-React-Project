@@ -1735,7 +1735,7 @@ select.form-control {
   margin: 0 auto;
 }
 
-.e-one li {
+.e-one ol li {
   margin-bottom: 1rem;
 }
 
@@ -1745,4 +1745,20 @@ select.form-control {
   /* padding-bottom: 1rem; */
   padding: 1rem 0;
   text-align: center;
+}
+
+.e-one nav {
+  display: flex;
+  gap: 3rem;
+  width: 96%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0.5rem 0;
+}
+
+.e-one .nav-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: auto;
 }

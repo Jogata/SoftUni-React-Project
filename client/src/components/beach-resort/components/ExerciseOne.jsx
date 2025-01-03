@@ -13,6 +13,13 @@ function Header() {
         <header>
             <img src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/01.%20Static%20pages/11.%20Random%20housekeeping/react-logo.png" alt="" />
             <span>React</span>
+            <nav>
+                <ul className="nav-list">
+                    <li>pricing</li>
+                    <li>about</li>
+                    <li>contact</li>
+                </ul>
+            </nav>
         </header>
     )
 }
