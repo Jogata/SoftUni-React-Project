@@ -1005,3 +1005,22 @@ body {
   max-width: 60%;
   /* margin: auto; */
 }
+
+header {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #f55a5a;
+}
+
+header img {
+  width: 24px;
+  margin-right: 7px;
+}
+
+header h1 {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
