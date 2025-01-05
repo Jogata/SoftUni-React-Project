@@ -1024,3 +1024,63 @@ header h1 {
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+article.journal {
+  display: flex;
+  gap: 0;
+}
+
+.journal-image-box {
+  flex-shrink: 0;
+  width: 125px;
+  height: 168px;
+  margin-right: 16px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.journal-image {
+  /* width: 125px; */
+  height: 100%;
+  object-fit: cover;
+}
+
+.journal-icon {
+  width: 12px;
+  display: inline;
+  vertical-align: middle;
+}
+
+.journal-info .country, 
+.journal-info a {
+  vertical-align: middle;
+}
+
+.journal-info .country {
+  padding: 0 8px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.journal-info a {
+  color: #2B283A;
+  font-size: 0.7rem;
+}
+
+.journal-info a:visited {
+  color: #918E9B;
+}
+
+.journal-info h2.entry-title {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.journal-info p.trip-dates {
+  font-weight: bold;
+}
+
+.info-container p.entry-text {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
