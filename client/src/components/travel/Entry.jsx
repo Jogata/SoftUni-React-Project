@@ -1,5 +1,18 @@
 export function Entry() {
+    const hours = new Date().getHours();
+    let timeOfDay = "";
+
+    if (hours < 12) {
+        timeOfDay = "morning";
+    } else if (hours >= 12 && hours < 17) {
+        timeOfDay = "afternoon";
+    } else {
+        timeOfDay = "night";
+    }
+
     return (
+        <>
+        <h1>Good {timeOfDay}</h1>
         <article className="journal">
                 <div className="journal-image-box">
                     <img className="journal-image" src="https://raw.githubusercontent.com/Jogata/CSS/refs/heads/main/assets/img/stock-photo-131318185-copy.jpg" alt="add image" />
@@ -15,5 +28,6 @@ export function Entry() {
                 <p className="entry-text">Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists.</p>
             </div>
         </article>
+        </>
     )
 }
