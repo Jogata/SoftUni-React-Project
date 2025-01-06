@@ -1,4 +1,6 @@
-export function Entry() {
+export function Entry(props) {
+    console.log(props);
+
     return (
         // <article className="journal">
         //         <div className="journal-image-box">
@@ -17,24 +19,28 @@ export function Entry() {
         // </article>
 
         <article className="contact-card">
-            <img
+            {/* <img
                 src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mr-whiskerson.png"
                 alt="Photo of Mr. Whiskerson"
-            />
-            <h3>Mr. Whiskerson</h3>
+            /> */}
+            <img src={props.img} alt="cat" />
+            {/* <h3>Mr. Whiskerson</h3> */}
+            <h3>{props.name}</h3>
             <div className="info-group">
                 <img
                     src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/phone-icon.png"
                     alt="phone icon"
                 />
-                <p>(212) 555-1234</p>
+                {/* <p>(212) 555-1234</p> */}
+                <p>{props.phone}</p>
             </div>
             <div className="info-group">
                 <img
                     src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mail-icon.png"
                     alt="mail icon"
                 />
-                <p>mr.whiskaz@catnap.meow</p>
+                {/* <p>mr.whiskaz@catnap.meow</p> */}
+                <p>{props.email}</p>
             </div>
         </article>
     )

@@ -6,10 +6,31 @@ export function Main() {
             <h1>main component</h1>
             {/* <Entry /> */}
             <div className="contacts">
-                <Entry />
-                <Entry />
-                <Entry />
-                <Entry />
+                <Entry 
+                    img="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mr-whiskerson.png" 
+                    name="Mr. Whiskerson" 
+                    phone="(212) 555-1234" 
+                    email="mr.whiskaz@catnap.meow"
+                />
+                <Entry 
+                    img="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/fluffykins.png" 
+                    name="Fluffykins" 
+                    phone="(212) 555-2345" 
+                    email="fluff@me.com"
+                />
+                <Entry 
+                    img="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/felix.png" 
+                    name="Felix" 
+                    phone="(212) 555-4567" 
+                    email="thecat@hotmail.com"
+                />
+                <Entry 
+                    img="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/pumpkin.png" 
+                    name="Pumpkin" 
+                    phone="(0800) CAT KING" 
+                    email="pumpkin@scrimba.com"
+                />
+
                 {/* <article className="contact-card">
                     <img
                         src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mr-whiskerson.png"
