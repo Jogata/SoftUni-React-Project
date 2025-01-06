@@ -6,7 +6,11 @@ export function Main() {
             <h1>main component</h1>
             {/* <Entry /> */}
             <div className="contacts">
-                <article className="contact-card">
+                <Entry />
+                <Entry />
+                <Entry />
+                <Entry />
+                {/* <article className="contact-card">
                     <img
                         src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mr-whiskerson.png"
                         alt="Photo of Mr. Whiskerson"
@@ -92,7 +96,7 @@ export function Main() {
                         />
                         <p>pumpkin@scrimba.com</p>
                     </div>
-                </article>
+                </article> */}
 
             </div>
 
