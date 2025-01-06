@@ -1084,3 +1084,70 @@ article.journal {
   font-size: 0.8rem;
   line-height: 1.5;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  /* align-items: center; */
+  font-family: 'Inter', sans-serif;
+  background-color: whitesmoke;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+}
+
+.contacts {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-card {
+  flex-basis: 225px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding: 13px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.contact-card > img {
+  align-self: center;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.contact-card > h3 {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.info-group {
+  display: flex;
+  align-items: center;
+}
+
+.info-group > img {
+  width: auto;
+  height: 11px;
+  margin-right: 8px;
+}
+
+.info-group > p {
+  margin-block: 3px;
+  color: #2B283A;
+  font-size: 12px;
+}
