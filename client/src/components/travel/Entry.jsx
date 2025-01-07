@@ -27,9 +27,11 @@ export function Joke(props) {
         <>
             <article className="joke">
                 {/* <h1>joke comp</h1> */}
-                <p className="setup">
-                    {props.setup}
-                </p>
+                {props.setup &&
+                    <p className="setup">
+                        {props.setup}
+                    </p>
+                }
                 <p className="punchline">
                     {props.punchline}
                 </p>
