@@ -1151,3 +1151,14 @@ header {
   color: #2B283A;
   font-size: 12px;
 }
+
+article.joke {
+  padding-top: 1rem;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.setup {
+  font-size: 1.1rem;
+  font-weight: bold;
+}

@@ -1,11 +1,33 @@
-import { Entry } from "./Entry";
+import { Entry, Joke } from "./Entry";
 
 export function Main() {
     return (
         <main>
             <h1>main component</h1>
             {/* <Entry /> */}
-            <div className="contacts">
+
+            <Joke
+                setup="I got my daughter a fridge for her birthday."
+                punchline="I can't wait to see her face light up when she opens it."
+            />
+            <Joke
+                setup="How did the hacker escape the police?"
+                punchline="He just ransomware!"
+            />
+            <Joke
+                setup="Why don't pirates travel on mountain roads?"
+                punchline="Scurvy."
+            />
+            <Joke
+                setup="Why do bees stay in the hive in the winter?"
+                punchline="Swarm."
+            />
+            <Joke
+                setup="What's the best thing about Switzerland?"
+                punchline="I don't know, but the flag is a big plus!"
+            />
+
+            <div className="contacts" style={{display: "none"}}>
                 <Entry 
                     img="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/08.%20Props%20Part%203%20-%20Create%20a%20contact%20component/images/mr-whiskerson.png" 
                     name="Mr. Whiskerson" 
