@@ -6,8 +6,10 @@ export function Entry(props) {
             <div className="journal-image-box">
                 <img
                     className="journal-image"
-                    src={props.src}
-                    alt="image" />
+                    src={props.img.src}
+                    // alt="image" 
+                    alt={props.img.alt}
+                />
             </div>
             <div className="journal-info">
                 <img src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/04.%20Problem%20-%20Not%20reusable/images/marker.png" alt="marker icon" className="journal-icon" />

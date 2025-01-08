@@ -5,7 +5,10 @@ export function Main() {
         <main>
             <h1>main component</h1>
             <Entry
-                src="https://raw.githubusercontent.com/Jogata/CSS/refs/heads/main/assets/img/stock-photo-131318185-copy.jpg"
+                img={{
+                    src: "https://raw.githubusercontent.com/Jogata/CSS/refs/heads/main/assets/img/stock-photo-131318185-copy.jpg", 
+                    alt: "Mount Fuji"
+                }}
                 country="Japan"
                 title="Mount Fuji"
                 dates="12 Jan, 2021 - 24 Jan, 2021"
