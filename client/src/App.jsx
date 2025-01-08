@@ -35,6 +35,16 @@ function Loader() {
   )
 }
 
+/*
+Challenge 1:
+Given an array of numbers, return an array of each number, squared
+*/
+const nums = [1, 2, 3, 4, 5];
+
+const squaredNums = nums.map(num => num * num);
+console.log(squaredNums);
+// -->       [1, 4, 9, 16, 25]
+
 function App() {
   return (
     <>
