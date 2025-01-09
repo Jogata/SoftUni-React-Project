@@ -45,6 +45,19 @@ const squaredNums = nums.map(num => num * num);
 console.log(squaredNums);
 // -->       [1, 4, 9, 16, 25]
 
+
+/*
+Challenge 2:
+Given an array of strings, return an array where 
+the first letter of each string is capitalized
+*/
+
+const names = ["alice", "bob", "charlie", "danielle"];
+
+const capitalized = names.map(name => name.replace(name[0], name[0].toUpperCase()));
+console.log(capitalized);
+// -->        ["Alice", "Bob", "Charlie", "Danielle"]
+
 function App() {
   return (
     <>
