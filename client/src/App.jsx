@@ -58,6 +58,23 @@ const capitalized = names.map(name => name.replace(name[0], name[0].toUpperCase(
 console.log(capitalized);
 // -->        ["Alice", "Bob", "Charlie", "Danielle"]
 
+
+/*
+Challenge 3:
+Given an array of strings, return an array of strings that wraps each
+of the original strings in an HTML-like <p></p> tag.
+
+E.g. given: ["Bulbasaur", "Charmander", "Squirtle"]
+return: ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+*/
+
+const pokemon = ["Bulbasaur", "Charmander", "Squirtle"];
+
+const pTags = pokemon.map(pokemon => `<p>${pokemon}</p>`);
+console.log(pTags);
+// -->          ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
+
+
 function App() {
   return (
     <>
