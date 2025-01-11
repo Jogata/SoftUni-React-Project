@@ -20,10 +20,6 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Header } from './components/travel/Header';
-import { Main } from './components/travel/Main';
-import { Footer } from './components/travel/Footer';
-
 function Loader() {
   return (
     <span className="loader">
@@ -35,53 +31,10 @@ function Loader() {
   )
 }
 
-/*
-Challenge 1:
-Given an array of numbers, return an array of each number, squared
-*/
-const nums = [1, 2, 3, 4, 5];
-
-const squaredNums = nums.map(num => num * num);
-console.log(squaredNums);
-// -->       [1, 4, 9, 16, 25]
-
-
-/*
-Challenge 2:
-Given an array of strings, return an array where 
-the first letter of each string is capitalized
-*/
-
-const names = ["alice", "bob", "charlie", "danielle"];
-
-const capitalized = names.map(name => name.replace(name[0], name[0].toUpperCase()));
-console.log(capitalized);
-// -->        ["Alice", "Bob", "Charlie", "Danielle"]
-
-
-/*
-Challenge 3:
-Given an array of strings, return an array of strings that wraps each
-of the original strings in an HTML-like <p></p> tag.
-
-E.g. given: ["Bulbasaur", "Charmander", "Squirtle"]
-return: ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
-*/
-
-const pokemon = ["Bulbasaur", "Charmander", "Squirtle"];
-
-const pTags = pokemon.map(pokemon => `<p>${pokemon}</p>`);
-console.log(pTags);
-// -->          ["<p>Bulbasaur</p>", "<p>Charmander</p>", "<p>Squirtle</p>"]
-
-
 function App() {
   return (
     <>
       <AuthContextProvider>
-        <Header />
-        <Main />
-        <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
