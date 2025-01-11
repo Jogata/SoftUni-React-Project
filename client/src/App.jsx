@@ -18,6 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+import { Header } from './components/recepies/Header'
 
 // ================================================
 function Loader() {
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Header />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
