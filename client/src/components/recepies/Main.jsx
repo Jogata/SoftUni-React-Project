@@ -1,30 +1,36 @@
 import { useState } from "react";
 
 export function Main() {
-    const [isImportant, setIsImportant] = useState("Yes");
+    // const ingridients = ["Chicken", "Tomatoes", "Oregano"];
+    const [ingridients, setIngridients] = useState([]);
 
-    function handleClick() {
-        setIsImportant("Heck yes");
+    const ingridientsList = ingridients.map(ingridient => (
+        <li key={ingridient}>{ingridient}</li>
+    ))
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const newIngridient = data.get("ingridient");
+        console.log(newIngridient);
+        setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
     }
 
     return (
         <main>
             {/* <h1>main component</h1> */}
-            <h1 className="title">Is state important to know?</h1>
-            <button 
-                className="value" 
-                onClick={handleClick} 
-            >
-                {isImportant}
-            </button>
-            <form className="recipe-form" style={{display: "none"}}>
+            <form className="recipe-form" onSubmit={handleSubmit}>
                 <input 
                     type="text" 
+                    name="ingridient" 
                     placeholder="e.g. oregano" 
                     aria-label="add ingridient"
                 />
                 <button type="submit">Add ingridient</button>
             </form>
+            <ul>
+                {ingridientsList}
+            </ul>
         </main>
     )
 }

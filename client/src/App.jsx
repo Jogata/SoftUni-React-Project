@@ -18,10 +18,11 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+
+// ================================================
 import { Header } from './components/recepies/Header'
 import { Main } from './components/recepies/Main'
 
-// ================================================
 function Loader() {
   return (
     <span className="loader">
