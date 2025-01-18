@@ -18,6 +18,27 @@ export function Main() {
 
     const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/19.%20Complex%20state%20-%20Objects/images/user.png";
     const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/19.%20Complex%20state%20-%20Objects/images/star-empty.png";
+    const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/19.%20Complex%20state%20-%20Objects/images/star-filled.png";
+
+    const [contact, setContact] = useState({
+        firstName: "John", 
+        lastName: "Doe", 
+        phone: "+1 (212) 555-1212", 
+        email: "itsmyrealname@example.com", 
+        isFavorite: false
+    })
+
+    const starIcon = contact.isFavorite ? starFilled : starEmpty;
+
+    function toggleFavorite() {
+        // console.log("Toggle Favorite");
+        setContact(prevContact => {
+            return {
+                ...prevContact, 
+                isFavorite: !prevContact.isFavorite
+            }
+        });
+    }
 
     return (
         <main>
@@ -29,21 +50,22 @@ export function Main() {
                 />
                 <div className="info">
                     <button
-                        // onClick={toggleFavorite}
-                        aria-pressed={false}
+                        onClick={toggleFavorite} 
+                        aria-pressed={contact.isFavorite} 
+                        aria-label={contact.isFavorite ? "Remove from favorites" : "Add to favorites"} 
                         className="favorite-button"
                     >
                         <img
-                            src={starEmpty}
-                            alt="empty star icon"
+                            src={starIcon}
+                            alt={contact.isFavorite ? "filled star icon" : "empty star icon"}
                             className="favorite"
                         />
                     </button>
                     <h2 className="name">
-                        John Doe
+                        {contact.firstName} {contact.lastName}
                     </h2>
-                    <p className="contact">+1 (212) 555-1212</p>
-                    <p className="contact">itsmyrealname@example.com</p>
+                    <p className="contact">{contact.phone}</p>
+                    <p className="contact">{contact.email}</p>
                 </div>
             </article>
             <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
