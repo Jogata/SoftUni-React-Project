@@ -16,10 +16,37 @@ export function Main() {
         setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
     }
 
+    const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/19.%20Complex%20state%20-%20Objects/images/user.png";
+    const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/19.%20Complex%20state%20-%20Objects/images/star-empty.png";
+
     return (
         <main>
-            {/* <h1>main component</h1> */}
-            <form className="recipe-form" onSubmit={handleSubmit}>
+            <article className="card">
+                <img
+                    src={avatar}
+                    className="avatar"
+                    alt="User profile picture of John Doe"
+                />
+                <div className="info">
+                    <button
+                        // onClick={toggleFavorite}
+                        aria-pressed={false}
+                        className="favorite-button"
+                    >
+                        <img
+                            src={starEmpty}
+                            alt="empty star icon"
+                            className="favorite"
+                        />
+                    </button>
+                    <h2 className="name">
+                        John Doe
+                    </h2>
+                    <p className="contact">+1 (212) 555-1212</p>
+                    <p className="contact">itsmyrealname@example.com</p>
+                </div>
+            </article>
+            <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
                 <input 
                     type="text" 
                     name="ingridient" 
