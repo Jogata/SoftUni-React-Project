@@ -40,9 +40,34 @@ export function Main() {
         });
     }
 
+    function submit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const firstName = formData.get("firstName");
+        const lastName = formData.get("lastName");
+        submitViaAPI({
+            firstName,
+            lastName
+        });
+    }
+    
+    function submitViaAPI(data) {
+        console.log(data);
+        console.log("Submitted!");
+    }
+        
     return (
         <main>
-            <article className="card">
+            <form method="POST" id="my-form" onSubmit={submit}>
+                <label htmlFor="first-name">First Name: </label>
+                <input type="text" id="first-name" name="firstName" className="test-input" />
+                <br />
+                <label htmlFor="last-name">Last Name: </label>
+                <input type="text" id="last-name" name="lastName" className="test-input" />
+                <br />
+                <input type="submit" value="Submit" />
+            </form>
+            <article className="card" style={{display: "none"}}>
                 <img
                     src={avatar}
                     className="avatar"
