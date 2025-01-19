@@ -3,6 +3,7 @@ import { useState } from "react";
 export function Main() {
     // const ingridients = ["Chicken", "Tomatoes", "Oregano"];
     const [ingridients, setIngridients] = useState([]);
+    const [value, setValue] = useState("");
 
     const ingridientsList = ingridients.map(ingridient => (
         <li key={ingridient}>{ingridient}</li>
@@ -10,41 +11,71 @@ export function Main() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
+        const form = event.currentTarget;
+        const data = new FormData(form);
         const newIngridient = data.get("ingridient");
-        console.log(newIngridient);
+        const employmentStatus = data.get("employmentStatus");
+        console.log(employmentStatus);
+        // console.log(newIngridient);
         setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
+        form.reset();
     }
 
-    function signUp(formData) {
-        const email = formData.get("email");
-        console.log(email);
-        const password = formData.get("password");
-        console.log(password);
+    function handleChange(e) {
+        setValue(e.currentTarget.value);
+        console.log(value);
     }
+
     return (
         <main>
-            <section>
-                <h1>Signup form</h1>
-                {/* <form action={signUp}> */}
-                <form onSubmit={e => signUp(new FormData(e.currentTarget))}>
-                    <label htmlFor="email">Email:</label>
-                    <input id="email" type="email" name="email" placeholder="joe@schmoe.com" />
-                    <br />
-                    <label htmlFor="password">Password:</label>
-                    <input id="password" type="password" name="password" />
-                    <br />
-                    <button>Submit</button>
-                </form>
-            </section>
-    
-            <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
+            <form className="recipe-form" onSubmit={handleSubmit}>
                 <input 
+                    className="value"
                     type="text" 
                     name="ingridient" 
                     placeholder="e.g. oregano" 
-                    aria-label="add ingridient"
+                    aria-label="add ingridient" 
+                    onChange={e => handleChange(e)} 
+                    value={value}
                 />
+                <label htmlFor="email">Email:</label>
+                <input 
+                    id="email" 
+                    defaultValue="joe@schmoe.com" 
+                    type="email" 
+                    name="email" 
+                    placeholder="joe@schmoe.com" 
+                />
+                <label htmlFor="password">Password:</label>
+                <input 
+                    id="password" 
+                    defaultValue="password123" 
+                    type="password" 
+                    name="password" 
+                />
+                
+                <label htmlFor="description">Description:</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    defaultValue="This is a description"
+                ></textarea>
+
+                <fieldset id="test">
+                    <legend>Employment Status:</legend>
+                    <label>
+                        <input type="radio" name="employmentStatus" />
+                        Unemployed
+                    </label>
+                    <label>
+                        <input type="radio" name="employmentStatus" />
+                        Part-time
+                    </label>
+                    <label>
+                        <input type="radio" name="employmentStatus" />
+                        Full-time
+                    </label>
+                </fieldset>
                 <button type="submit">Add ingridient</button>
             </form>
             <ul>

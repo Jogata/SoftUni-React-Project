@@ -1104,17 +1104,42 @@ main > .title {
   text-align: center;
 }
 
-main > .value {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+form .value {
+  /* width: 100px; */
+  /* height: 100px; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
   color: #262626;
   font-size: 2rem;
   font-weight: bold;
   /* border: none; */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: white;
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+
+label {
+  color: white;
+  font-size: 1rem;
+}
+
+#test {
+  margin-top: 2rem;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #0005;
+}
+
+#test legend {
+  margin-left: 1rem;
+  padding: 0 1rem;
+}
+
+#test input {
+  width: auto;
+}
+
+#test label {
+  color: white;
 }
