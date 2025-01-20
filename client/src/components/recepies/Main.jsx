@@ -116,6 +116,18 @@ export function Main() {
                     </label>
                 </fieldset>
 
+                <label htmlFor="favColor">What is your favorite color?</label>
+                <select id="favColor" name="favColor" defaultValue="" required>
+                    <option value="" disabled>-- Choose a color --</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="indigo">Indigo</option>
+                    <option value="violet">Violet</option>
+                </select>
+
                 <button type="submit">Add ingridient</button>
 
             </form>
