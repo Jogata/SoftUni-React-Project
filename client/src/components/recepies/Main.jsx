@@ -16,6 +16,12 @@ export function Main() {
         const newIngridient = data.get("ingridient");
         const employmentStatus = data.get("employmentStatus");
         console.log(employmentStatus);
+        const dietaryRestriction = data.get("dietaryRestrictions");
+        console.log(dietaryRestriction);
+        const dietaryRestrictions = formData.getAll("dietaryRestrictions");
+        console.log(dietaryRestrictions);
+        const favColor = data.get("favColors");
+        console.log(favColor);
         // console.log(newIngridient);
         setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
         form.reset();
