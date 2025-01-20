@@ -61,22 +61,63 @@ export function Main() {
                     defaultValue="This is a description"
                 ></textarea>
 
-                <fieldset id="test">
+                <fieldset className="test">
                     <legend>Employment Status:</legend>
                     <label>
-                        <input type="radio" name="employmentStatus" />
+                        <input 
+                            type="radio" 
+                            name="employmentStatus" 
+                            defaultChecked={true}
+                        />
                         Unemployed
                     </label>
                     <label>
-                        <input type="radio" name="employmentStatus" />
+                        <input 
+                            type="radio" 
+                            name="employmentStatus" 
+                        />
                         Part-time
                     </label>
                     <label>
-                        <input type="radio" name="employmentStatus" />
+                        <input 
+                            type="radio" 
+                            name="employmentStatus" 
+                        />
                         Full-time
                     </label>
                 </fieldset>
+
+                <fieldset className="test">
+                    <legend>Dietary restrictions:</legend>
+                    <label>
+                        <input 
+                            type="checkbox" 
+                            name="dietaryRestrictions" 
+                            value="kosher" 
+                        />
+                        Kosher
+                    </label>
+                    <label>
+                        <input 
+                            type="checkbox" 
+                            name="dietaryRestrictions" 
+                            value="vegan" 
+                        />
+                        Vegan
+                    </label>
+                    <label>
+                        <input 
+                            type="checkbox" 
+                            name="dietaryRestrictions" 
+                            defaultChecked={true} 
+                            value="gluten-free" 
+                        />
+                        Gluten-free
+                    </label>
+                </fieldset>
+
                 <button type="submit">Add ingridient</button>
+
             </form>
             <ul>
                 {ingridientsList}

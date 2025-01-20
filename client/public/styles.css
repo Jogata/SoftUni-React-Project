@@ -1124,22 +1124,22 @@ label {
   font-size: 1rem;
 }
 
-#test {
+.test {
   margin-top: 2rem;
   color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 1px #0005;
 }
 
-#test legend {
+.test legend {
   margin-left: 1rem;
   padding: 0 1rem;
 }
 
-#test input {
+.test input {
   width: auto;
 }
 
-#test label {
+.test label {
   color: white;
 }
