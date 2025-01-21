@@ -1104,42 +1104,21 @@ main > .title {
   text-align: center;
 }
 
-form .value {
-  /* width: 100px; */
-  /* height: 100px; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  color: #262626;
-  font-size: 2rem;
-  font-weight: bold;
-  /* border: none; */
-  /* border-radius: 50%; */
-  background-color: white;
-  /* cursor: pointer; */
+.jokes li {
+  padding: 0.4em 0;
+  color: #D9D9D9;
 }
 
-label {
-  color: white;
-  font-size: 1rem;
+.jokes li p {
+  padding: 0.5em 0;
 }
 
-.test {
-  margin-top: 2rem;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px #0005;
-}
-
-.test legend {
-  margin-left: 1rem;
-  padding: 0 1rem;
-}
-
-.test input {
-  width: auto;
-}
-
-.test label {
-  color: white;
+.jokes li button {
+  margin-bottom: 0.5rem;
+  padding: 0.4em 1.2em;
+  color: #eee;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 6px;
+  border: 1px solid;
 }

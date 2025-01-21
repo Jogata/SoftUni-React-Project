@@ -13,35 +13,85 @@ export function Main() {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
-        // const newIngridient = data.get("ingridient");
-        // const employmentStatus = data.get("employmentStatus");
-        // console.log(employmentStatus);
-        // const dietaryRestriction = data.get("dietaryRestrictions");
-        // console.log(dietaryRestriction);
-        const data = Object.fromEntries(formData);
-        console.log(data);
-        const dietaryRestrictions = formData.getAll("dietaryRestrictions");
-        console.log(dietaryRestrictions);
-        const allData = {
-            ...data, 
-            dietaryRestrictions
-        };
-        console.log(allData);
-        // const favColor = data.get("favColors");
-        // console.log(favColor);
-        // console.log(newIngridient);
+        // const data = Object.fromEntries(formData);
+        // console.log(data);
         // setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
         form.reset();
     }
 
+    function Joke(props) {
+        const [isShown, setIsShown] = useState(false);
+        console.log(isShown);
+
+        function toggle() {
+            console.log("toggle");
+            setIsShown(!isShown);
+        }
+
+        return (
+            <div>
+                {props.setup && <h3>{props.setup}</h3>}
+                {isShown && <p>{props.punchline}</p>}
+                <button onClick={toggle}>click</button>
+                <hr />
+            </div>
+        )
+    }
+
+    function Jokes(props) {
+        const jokes = props.jokes;
+        console.log(jokes);
+        
+        return (
+            <ul className="jokes">
+                {jokes.map(joke => {
+                    return (
+                        <li key={joke.id}>
+                            <Joke setup={joke.setup} punchline={joke.punchline} />
+                        </li>
+                    )
+                })}
+            </ul>
+        )
+    }
+
     function handleChange(e) {
         setValue(e.currentTarget.value);
-        console.log(value);
+        // console.log(value);
     }
+
+    const jokes = [
+        {
+            id: 1,
+            setup: "I got my daughter a fridge for her birthday.",
+            punchline: "I can't wait to see her face light up when she opens it."
+        },
+        {
+            id: 2,
+            setup: "How did the hacker escape the police?",
+            punchline: "He just ransomware!"
+        },
+        {
+            id: 3,
+            setup: "Why don't pirates travel on mountain roads?",
+            punchline: "Scurvy."
+        },
+        {
+            id: 4,
+            setup: "Why do bees stay in the hive in the winter?",
+            punchline: "Swarm."
+        },
+        {
+            id: 5,
+            setup: "What's the best thing about Switzerland?",
+            punchline: "I don't know, but the flag is a big plus!"
+        }
+    ]
 
     return (
         <main>
-            <form className="recipe-form" onSubmit={handleSubmit}>
+            <Jokes jokes={jokes} />
+            <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
                 <input 
                     className="value"
                     type="text" 
@@ -51,95 +101,6 @@ export function Main() {
                     onChange={e => handleChange(e)} 
                     value={value}
                 />
-                <label htmlFor="email">Email:</label>
-                <input 
-                    id="email" 
-                    defaultValue="joe@schmoe.com" 
-                    type="email" 
-                    name="email" 
-                    placeholder="joe@schmoe.com" 
-                />
-                <label htmlFor="password">Password:</label>
-                <input 
-                    id="password" 
-                    defaultValue="password123" 
-                    type="password" 
-                    name="password" 
-                />
-                
-                <label htmlFor="description">Description:</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    defaultValue="This is a description"
-                ></textarea>
-
-                <fieldset className="test">
-                    <legend>Employment Status:</legend>
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="employmentStatus" 
-                            defaultChecked={true}
-                        />
-                        Unemployed
-                    </label>
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="employmentStatus" 
-                        />
-                        Part-time
-                    </label>
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="employmentStatus" 
-                        />
-                        Full-time
-                    </label>
-                </fieldset>
-
-                <fieldset className="test">
-                    <legend>Dietary restrictions:</legend>
-                    <label>
-                        <input 
-                            type="checkbox" 
-                            name="dietaryRestrictions" 
-                            value="kosher" 
-                        />
-                        Kosher
-                    </label>
-                    <label>
-                        <input 
-                            type="checkbox" 
-                            name="dietaryRestrictions" 
-                            value="vegan" 
-                        />
-                        Vegan
-                    </label>
-                    <label>
-                        <input 
-                            type="checkbox" 
-                            name="dietaryRestrictions" 
-                            defaultChecked={true} 
-                            value="gluten-free" 
-                        />
-                        Gluten-free
-                    </label>
-                </fieldset>
-
-                <label htmlFor="favColor">What is your favorite color?</label>
-                <select id="favColor" name="favColor" defaultValue="" required>
-                    <option value="" disabled>-- Choose a color --</option>
-                    <option value="red">Red</option>
-                    <option value="orange">Orange</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                    <option value="indigo">Indigo</option>
-                    <option value="violet">Violet</option>
-                </select>
 
                 <button type="submit">Add ingridient</button>
 
