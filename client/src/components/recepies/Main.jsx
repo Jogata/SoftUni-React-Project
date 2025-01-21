@@ -12,18 +12,25 @@ export function Main() {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.currentTarget;
-        const data = new FormData(form);
-        const newIngridient = data.get("ingridient");
-        const employmentStatus = data.get("employmentStatus");
-        console.log(employmentStatus);
-        const dietaryRestriction = data.get("dietaryRestrictions");
-        console.log(dietaryRestriction);
+        const formData = new FormData(form);
+        // const newIngridient = data.get("ingridient");
+        // const employmentStatus = data.get("employmentStatus");
+        // console.log(employmentStatus);
+        // const dietaryRestriction = data.get("dietaryRestrictions");
+        // console.log(dietaryRestriction);
+        const data = Object.fromEntries(formData);
+        console.log(data);
         const dietaryRestrictions = formData.getAll("dietaryRestrictions");
         console.log(dietaryRestrictions);
-        const favColor = data.get("favColors");
-        console.log(favColor);
+        const allData = {
+            ...data, 
+            dietaryRestrictions
+        };
+        console.log(allData);
+        // const favColor = data.get("favColors");
+        // console.log(favColor);
         // console.log(newIngridient);
-        setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
+        // setIngridients(prevIngridients => [...prevIngridients, newIngridient]);
         form.reset();
     }
 
