@@ -32,7 +32,9 @@ export function Main() {
             <div>
                 {props.setup && <h3>{props.setup}</h3>}
                 {isShown && <p>{props.punchline}</p>}
-                <button onClick={toggle}>click</button>
+                <button onClick={toggle}>
+                    {isShown ? "Hide" : "Show"}
+                </button>
                 <hr />
             </div>
         )
