@@ -1104,21 +1104,8 @@ main > .title {
   text-align: center;
 }
 
-.jokes li {
+.messages li {
   padding: 0.4em 0;
   color: #D9D9D9;
-}
-
-.jokes li p {
-  padding: 0.5em 0;
-}
-
-.jokes li button {
-  margin-bottom: 0.5rem;
-  padding: 0.4em 1.2em;
-  color: #eee;
-  font-size: 1.2rem;
-  text-transform: capitalize;
-  border-radius: 6px;
-  border: 1px solid;
+  font-size: 2rem;
 }
