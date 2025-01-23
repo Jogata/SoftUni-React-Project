@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Header } from "./Header";
 
 export function Main() {
     const [ingredients, setIngredients] = useState(
-        ["all the main spices", "pasta", "ground beef", "tomato paste"]
+        // ["all the main spices", "pasta", "ground beef", "tomato paste"]
+        []
     );
     const [value, setValue] = useState("");
     const [recipeVisible, setRecipeVisible] = useState(false);
@@ -31,9 +33,37 @@ export function Main() {
         // console.log(value);
     }
 
+    const [count, setCount] = useState(0);
+
+    function add() {
+        setCount(prevCount => prevCount + 1);
+    }
+
+    function subtract() {
+        setCount(prevCount => prevCount - 1);
+    }
+
+    console.log("main rendered");
+
     return (
         <main>
-            <form className="recipe-form" onSubmit={handleSubmit}>
+            <div className="counter">
+                <button
+                    className="minus" 
+                    onClick={subtract} 
+                    aria-label="Decrease count"
+                >-</button>
+
+                <Header count={count} />
+
+                <button
+                    className="plus" 
+                    onClick={add} 
+                    aria-label="Increase count"
+                >+</button>
+            </div>
+
+            <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
                 <input 
                     className="value"
                     type="text" 
