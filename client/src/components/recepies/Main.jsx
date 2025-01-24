@@ -1,36 +1,5 @@
 import { useState } from "react";
 
-function StarButton(props) {
-    const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
-    const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
-
-    let starIcon = props.isFavorite ? starFilled : starEmpty;
-
-    function toggleFavorite() {
-        props.onClick(prevContact => {
-            return {
-                ...prevContact, 
-                isFavorite: !prevContact.isFavorite
-            }
-        })
-    }
-
-    return (
-        <button
-            onClick={toggleFavorite}
-            aria-pressed={props.isFavorite}
-            aria-label={props.isFavorite ? "Remove from favorites" : "Add to favorites"}
-            className="favorite-button"
-        >
-            <img
-                src={starIcon}
-                alt={props.isFavorite ? "filled star icon" : "empty star icon"}
-                className="favorite"
-            />
-        </button>
-    )
-}
-
 export function Main() {
     const [ingredients, setIngredients] = useState(
         ["all the main spices", "pasta", "ground beef", "tomato paste"]
@@ -62,46 +31,58 @@ export function Main() {
         // console.log(value);
     }
 
-    const [contact, setContact] = useState({
-        firstName: "John", 
-        lastName: "Doe", 
-        phone: "+1 (212) 555-1212", 
-        email: "itsmyrealname@example.com", 
-        isFavorite: true
-    })
-    
-    const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/user.png";
-    // const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
-    // const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
-    
-    // let starIcon = contact.isFavorite ? starFilled : starEmpty;
+    const data = [
+        {
+            id: 1,
+            color: "#F18D8B",
+            on: true
+        },   
+        {
+            id: 2,
+            color: "#F5C280",
+            on: false
+        },   
+        {
+            id: 3,
+            color: "#EEEC79",
+            on: true
+        },   
+        {
+            id: 4,
+            color: "#64ED98",
+            on: true
+        },   
+        {
+            id: 5,
+            color: "#63DEED",
+            on: false
+        },   
+        {
+            id: 6,
+            color: "#877FED",
+            on: false
+        },   
+        {
+            id: 7,
+            color: "#A57FE9",
+            on: false
+        },   
+        {
+            id: 8,
+            color: "#F289C1",
+            on: true
+        },   
+    ];
 
-    // function toggleFavorite() {
-    //     setContact(prevContact => {
-    //         return {
-    //             isFavorite: !prevContact.isFavorite
-    //         }
-    //     })
-    // }
-
+    const [pads, setPads] = useState(data);
+    console.log(pads);
+    
     return (
+        <>
         <main>
-            <article className="card">
-                <img
-                    src={avatar}
-                    className="avatar"
-                    alt="User profile picture of John Doe"
-                />
-                <StarButton isFavorite={contact.isFavorite} onClick={setContact} />
-                <div className="info">
-                    <h2 className="name">
-                        {contact.firstName} {contact.lastName}
-                    </h2>
-                    <p className="contact">{contact.phone}</p>
-                    <p className="contact">{contact.email}</p>
-                </div>
-            </article>
-
+            <div className="pad-container"></div>
+        </main>
+        <main style={{display: "none"}}>
             <form className="recipe-form" onSubmit={handleSubmit}>
                 <input 
                     className="value"
@@ -177,5 +158,6 @@ export function Main() {
                 </section>
             }
         </main>
+        </>
     )
 }

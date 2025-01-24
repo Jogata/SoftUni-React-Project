@@ -1115,31 +1115,3 @@ main {
   font-size: 0.875rem;
   cursor: pointer;
 }
-
-section article {
-  display: block;
-}
-
-.card {
-  display: block;
-  max-width: 500px;
-  margin: 2rem auto;
-  text-align: center;
-}
-
-.avatar {
-  display: block;
-  max-width: 220px;
-  margin: auto;
-  /* text-align: center; */
-  /* object-fit: cover; */
-  /* object-position: center; */
-}
-
-.favorite-button {
-  max-width: 50px;
-}
-
-.contact {
-  margin-top: 0.5rem;
-}
