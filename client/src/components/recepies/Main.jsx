@@ -1,5 +1,36 @@
 import { useState } from "react";
 
+function StarButton(props) {
+    const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
+    const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
+
+    let starIcon = props.isFavorite ? starFilled : starEmpty;
+
+    function toggleFavorite() {
+        props.onClick(prevContact => {
+            return {
+                ...prevContact, 
+                isFavorite: !prevContact.isFavorite
+            }
+        })
+    }
+
+    return (
+        <button
+            onClick={toggleFavorite}
+            aria-pressed={props.isFavorite}
+            aria-label={props.isFavorite ? "Remove from favorites" : "Add to favorites"}
+            className="favorite-button"
+        >
+            <img
+                src={starIcon}
+                alt={props.isFavorite ? "filled star icon" : "empty star icon"}
+                className="favorite"
+            />
+        </button>
+    )
+}
+
 export function Main() {
     const [ingredients, setIngredients] = useState(
         ["all the main spices", "pasta", "ground beef", "tomato paste"]
@@ -38,20 +69,20 @@ export function Main() {
         email: "itsmyrealname@example.com", 
         isFavorite: true
     })
-
-    const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/user.png";
-    const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
-    const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
     
-    let starIcon = contact.isFavorite ? starFilled : starEmpty;
+    const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/user.png";
+    // const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
+    // const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
+    
+    // let starIcon = contact.isFavorite ? starFilled : starEmpty;
 
-    function toggleFavorite() {
-        setContact(prevContact => {
-            return {
-                isFavorite: !prevContact.isFavorite
-            }
-        })
-    }
+    // function toggleFavorite() {
+    //     setContact(prevContact => {
+    //         return {
+    //             isFavorite: !prevContact.isFavorite
+    //         }
+    //     })
+    // }
 
     return (
         <main>
@@ -61,26 +92,14 @@ export function Main() {
                     className="avatar"
                     alt="User profile picture of John Doe"
                 />
+                <StarButton isFavorite={contact.isFavorite} onClick={setContact} />
                 <div className="info">
-                    <button
-                        onClick={toggleFavorite}
-                        aria-pressed={contact.isFavorite}
-                        aria-label={contact.isFavorite ? "Remove from favorites" : "Add to favorites"}
-                        className="favorite-button"
-                    >
-                        <img
-                            src={starIcon}
-                            alt={contact.isFavorite ? "filled star icon" : "empty star icon"}
-                            className="favorite"
-                        />
-                    </button>
                     <h2 className="name">
                         {contact.firstName} {contact.lastName}
                     </h2>
                     <p className="contact">{contact.phone}</p>
                     <p className="contact">{contact.email}</p>
                 </div>
-
             </article>
 
             <form className="recipe-form" onSubmit={handleSubmit}>
