@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Header } from "./Header";
 
 export function Main() {
     const [ingredients, setIngredients] = useState(
-        // ["all the main spices", "pasta", "ground beef", "tomato paste"]
-        []
+        ["all the main spices", "pasta", "ground beef", "tomato paste"]
     );
     const [value, setValue] = useState("");
     const [recipeVisible, setRecipeVisible] = useState(false);
@@ -33,37 +31,59 @@ export function Main() {
         // console.log(value);
     }
 
-    const [count, setCount] = useState(0);
+    const [contact, setContact] = useState({
+        firstName: "John", 
+        lastName: "Doe", 
+        phone: "+1 (212) 555-1212", 
+        email: "itsmyrealname@example.com", 
+        isFavorite: true
+    })
 
-    function add() {
-        setCount(prevCount => prevCount + 1);
+    const avatar = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/user.png";
+    const starEmpty = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-empty.png";
+    const starFilled = "https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/03.%20React%20State/20.%20Complex%20state%20-%20updating%20state%20objects/images/star-filled.png";
+    
+    let starIcon = contact.isFavorite ? starFilled : starEmpty;
+
+    function toggleFavorite() {
+        setContact(prevContact => {
+            return {
+                isFavorite: !prevContact.isFavorite
+            }
+        })
     }
-
-    function subtract() {
-        setCount(prevCount => prevCount - 1);
-    }
-
-    console.log("main rendered");
 
     return (
         <main>
-            <div className="counter">
-                <button
-                    className="minus" 
-                    onClick={subtract} 
-                    aria-label="Decrease count"
-                >-</button>
+            <article className="card">
+                <img
+                    src={avatar}
+                    className="avatar"
+                    alt="User profile picture of John Doe"
+                />
+                <div className="info">
+                    <button
+                        onClick={toggleFavorite}
+                        aria-pressed={contact.isFavorite}
+                        aria-label={contact.isFavorite ? "Remove from favorites" : "Add to favorites"}
+                        className="favorite-button"
+                    >
+                        <img
+                            src={starIcon}
+                            alt={contact.isFavorite ? "filled star icon" : "empty star icon"}
+                            className="favorite"
+                        />
+                    </button>
+                    <h2 className="name">
+                        {contact.firstName} {contact.lastName}
+                    </h2>
+                    <p className="contact">{contact.phone}</p>
+                    <p className="contact">{contact.email}</p>
+                </div>
 
-                <Header count={count} />
+            </article>
 
-                <button
-                    className="plus" 
-                    onClick={add} 
-                    aria-label="Increase count"
-                >+</button>
-            </div>
-
-            <form className="recipe-form" onSubmit={handleSubmit} style={{display: "none"}}>
+            <form className="recipe-form" onSubmit={handleSubmit}>
                 <input 
                     className="value"
                     type="text" 

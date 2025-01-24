@@ -1119,14 +1119,3 @@ main {
 section article {
   display: block;
 }
-
-.header {
-  display: inline-block;
-}
-
-.minus, 
-.plus {
-  padding: 1rem;
-  font-size: 2rem;
-  border: 1px solid;
-}
