@@ -75,9 +75,16 @@ export function Main() {
     ];
 
     function Pad(props) {
+        const [isOn, setIsOn] = useState(props.isOn);
+
+        function toggle() {
+            setIsOn(prev => !prev);
+        }
+
         return (
-            <button
-                // key={pad.id}
+            <button 
+                className={isOn ? "on" : undefined} 
+                onClick={toggle} 
                 style={{ backgroundColor: `${props.color}` }}
             ></button>
         )
@@ -87,8 +94,18 @@ export function Main() {
     // console.log(pads);
 
     const elements = pads.map(pad => (
-        <Pad key={pad.id} color={pad.color} />
+        <Pad key={pad.id} color={pad.color} isOn={pad.on} />
     ))
+
+    function all() {
+        // console.log("all");
+        // pads.map(pad => pad.on = false);
+        const newPads = [...pads];
+        newPads.map(pad => pad.on = false);
+        // console.log(pads);
+        // console.log(newPads);
+        setPads(newPads);
+    }
     
     return (
         <>
@@ -96,6 +113,7 @@ export function Main() {
             <div className="pad-container">
                 {elements}
             </div>
+            <button id="all" onClick={all}>all</button>
         </main>
         <main style={{display: "none"}}>
             <form className="recipe-form" onSubmit={handleSubmit}>
