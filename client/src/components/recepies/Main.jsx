@@ -74,14 +74,20 @@ export function Main() {
         },   
     ];
 
+    function Pad(props) {
+        return (
+            <button
+                // key={pad.id}
+                style={{ backgroundColor: `${props.color}` }}
+            ></button>
+        )
+    }
+
     const [pads, setPads] = useState(data);
     // console.log(pads);
 
     const elements = pads.map(pad => (
-        <button 
-            key={pad.id} 
-            style={{backgroundColor: `${pad.color}`}}
-        ></button>
+        <Pad key={pad.id} color={pad.color} />
     ))
     
     return (
