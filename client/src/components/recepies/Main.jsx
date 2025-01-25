@@ -75,12 +75,21 @@ export function Main() {
     ];
 
     const [pads, setPads] = useState(data);
-    console.log(pads);
+    // console.log(pads);
+
+    const elements = pads.map(pad => (
+        <button 
+            key={pad.id} 
+            style={{backgroundColor: `${pad.color}`}}
+        ></button>
+    ))
     
     return (
         <>
         <main>
-            <div className="pad-container"></div>
+            <div className="pad-container">
+                {elements}
+            </div>
         </main>
         <main style={{display: "none"}}>
             <form className="recipe-form" onSubmit={handleSubmit}>

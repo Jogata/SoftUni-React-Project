@@ -1115,3 +1115,23 @@ main {
   font-size: 0.875rem;
   cursor: pointer;
 }
+
+body {
+  background-color: #222;
+}
+
+.pad-container {
+  max-width: 460px;
+  margin: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto auto auto auto;
+}
+
+.pad-container button {
+  width: 100px;
+  height: 100px;
+  border: 3px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
