@@ -75,17 +75,17 @@ export function Main() {
     ];
 
     function Pad(props) {
-        const [isOn, setIsOn] = useState(props.isOn);
-        console.log(props.id);
+        // const [isOn, setIsOn] = useState(props.isOn);
+        // console.log(props.id);
 
-        function toggle() {
-            setIsOn(prev => !prev);
-        }
+        // function toggle() {
+        //     setIsOn(prev => !prev);
+        // }
 
         return (
             <button 
-                className={isOn ? "on" : undefined} 
-                onClick={toggle} 
+                className={props.isOn ? "on" : undefined} 
+                onClick={() => props.toggle(props.id)} 
                 style={{ backgroundColor: `${props.color}` }}
             ></button>
         )
@@ -93,10 +93,27 @@ export function Main() {
 
     const [pads, setPads] = useState(data);
     // console.log(pads);
-    const [rerender, setRerender] = useState(false);
+    // const [rerender, setRerender] = useState(false);
+
+    function toggle(id) {
+        setPads(prev => {
+            console.log(id);
+            return prev.map(item => {
+                console.log(item);
+                if (item.id === id) item.on = !item.on;
+                // return item.id === id ? {...item, on: !item.on} : item;
+                return item;
+            })
+            // const newPads = [...pads];
+            // const pad = newPads.find(x => x.id == id);
+            // console.log(pad);
+            // pad.on = !pad.on;
+            // return newPads;
+        })
+    }
 
     const elements = pads.map(pad => (
-        <Pad key={pad.id} color={pad.color} isOn={pad.on} id={pad.id} />
+        <Pad key={pad.id} color={pad.color} isOn={pad.on} toggle={toggle} id={pad.id} />
     ))
 
     function all() {
@@ -129,7 +146,7 @@ export function Main() {
     //     elements.forEach(e => console.log(e));
     // }
 
-    console.log("main");
+    // console.log("main");
     console.log(pads);
     
     return (
