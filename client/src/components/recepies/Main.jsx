@@ -76,6 +76,7 @@ export function Main() {
 
     function Pad(props) {
         const [isOn, setIsOn] = useState(props.isOn);
+        console.log(props.id);
 
         function toggle() {
             setIsOn(prev => !prev);
@@ -92,9 +93,10 @@ export function Main() {
 
     const [pads, setPads] = useState(data);
     // console.log(pads);
+    const [rerender, setRerender] = useState(false);
 
     const elements = pads.map(pad => (
-        <Pad key={pad.id} color={pad.color} isOn={pad.on} />
+        <Pad key={pad.id} color={pad.color} isOn={pad.on} id={pad.id} />
     ))
 
     function all() {
@@ -106,6 +108,29 @@ export function Main() {
         // console.log(newPads);
         setPads(newPads);
     }
+
+    function turnAllOff() {
+        console.log("off");
+        // setPads(p => p.map(pad => {
+        //     return {
+        //         ...pad, 
+        //         on: false
+        //     }
+        // }));
+        const oldPads = [...pads];
+        console.log(oldPads);
+        // console.log(pads);
+        pads.map(p => p.on = false);
+        // setRerender(!rerender);
+        console.log(pads);
+    }
+
+    // function click() {
+    //     elements.forEach(e => console.log(e));
+    // }
+
+    console.log("main");
+    console.log(pads);
     
     return (
         <>
@@ -113,7 +138,9 @@ export function Main() {
             <div className="pad-container">
                 {elements}
             </div>
-            <button id="all" onClick={all}>all</button>
+            {/* <button id="all" onClick={all}>all</button> */}
+            <button id="all" onClick={turnAllOff}>all</button>
+            {/* <button id="all" onClick={click}>all</button> */}
         </main>
         <main style={{display: "none"}}>
             <form className="recipe-form" onSubmit={handleSubmit}>
