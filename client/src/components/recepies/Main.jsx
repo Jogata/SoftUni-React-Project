@@ -1,21 +1,52 @@
 import { useState } from "react";
 
+// import Anthropic from "@anthropic-ai/sdk";
+// import { HfInference } from '@huggingface/inference';
+
+// const SYSTEM_PROMPT = `
+// You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
+// `;
+
+async function getRecipeFromMistral(ingredientsArr) {
+    const ingredientsString = ingredientsArr.join(", ");
+
+    try {
+        const response = await hf.chatCompletion({
+            model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            messages: [
+                { role: "system", content: SYSTEM_PROMPT },
+                { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
+            ],
+            max_tokens: 1024,
+        });
+        return response.choices[0].message.content;
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
 export function Main() {
     const [ingredients, setIngredients] = useState(
         ["all the main spices", "pasta", "ground beef", "tomato paste"]
     );
     const [value, setValue] = useState("");
     const [recipeVisible, setRecipeVisible] = useState(false);
+    const [recipe, setRecipe] = useState("");
 
     const ingredientsList = ingredients.map(ingredient => (
         <li key={ingredient}>{ingredient}</li>
     ))
 
+    async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromMistral(ingredients);
+        setRecipe(recipeMarkdown);
+    }
+
     function displayRecipe() {
         setRecipeVisible(prev => !prev);
     }
 
-    function handleSubmit(event) {
+    function addIngredient(event) {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
@@ -33,7 +64,7 @@ export function Main() {
     
     return (
         <main>
-            <form className="recipe-form" onSubmit={handleSubmit}>
+            <form className="recipe-form" onSubmit={addIngredient}>
                 <input 
                     className="value"
                     type="text" 
@@ -48,9 +79,16 @@ export function Main() {
 
             </form>
 
-            {ingredients.length > 0 && <IngredientsList ingredients={ingredients} ingredientsList={ingredientsList} displayRecipe={displayRecipe} />}
+            {ingredients.length > 0 && 
+                <IngredientsList 
+                    ingredients={ingredients} 
+                    ingredientsList={ingredientsList} 
+                    displayRecipe={displayRecipe} 
+                    getRecipe={getRecipe} 
+                />
+            }
 
-            {recipeVisible && <Recipe />}
+            {recipeVisible && <Recipe recipe={recipe} />}
         </main>
     )
 }
@@ -61,7 +99,7 @@ function Recipe() {
             <h2>Chef Claude Recommends:</h2>
             <article className="suggested-recipe-container" aria-live="polite">
                 <p>Based on the ingredients you have available,
-                    I would recommend making a simple a delicious
+                    I would recommend making a simple a delicious 
                     <strong>Beef Bolognese Pasta</strong>. Here is the recipe:
                 </p>
                 <h3>Beef Bolognese Pasta</h3>
@@ -78,6 +116,7 @@ function Recipe() {
                     <li>Salt and pepper to taste</li>
                     <li>8 oz pasta of your choice (e.g., spaghetti, penne, or linguine)</li>
                 </ul>
+                <hr />
                 <strong>Instructions:</strong>
                 <ol>
                     <li>Bring a large pot of salted water to a boil for the pasta.</li>
@@ -102,17 +141,27 @@ function Recipe() {
 function IngredientsList(props) {
     return (
         <section>
+
             <h2>Ingredients on hand:</h2>
+
             <ul className="ingredients-list" aria-live="polite">
                 {props.ingredientsList}
             </ul>
+
             {props.ingredients.length >= 4 &&
                 <div className="get-recipe-container">
                     <div>
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button onClick={props.displayRecipe}>Get a recipe</button>
+
+                    <button onClick={props.displayRecipe}>
+                        Get a recipe
+                    </button>
+                    
+                    <button onClick={props.getRecipe}>
+                        Get a recipe from AI
+                    </button>
                 </div>
             }
         </section>
