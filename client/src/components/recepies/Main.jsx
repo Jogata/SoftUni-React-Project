@@ -48,23 +48,7 @@ export function Main() {
 
             </form>
 
-            {ingredients.length > 0 &&
-                <section>
-                    <h2>Ingredients on hand:</h2>
-                    <ul className="ingredients-list" aria-live="polite">
-                        {ingredientsList}
-                    </ul>
-                    {ingredients.length >= 4 && 
-                        <div className="get-recipe-container">
-                            <div>
-                                <h3>Ready for a recipe?</h3>
-                                <p>Generate a recipe from your list of ingredients.</p>
-                            </div>
-                            <button onClick={displayRecipe}>Get a recipe</button>
-                        </div>
-                    }
-                </section>
-            }
+            {ingredients.length > 0 && <IngredientsList ingredients={ingredients} ingredientsList={ingredientsList} displayRecipe={displayRecipe} />}
 
             {recipeVisible && <Recipe />}
         </main>
@@ -111,6 +95,26 @@ function Recipe() {
                     <li>Serve hot, garnished with additional fresh basil or grated Parmesan cheese if desired.</li>
                 </ol>
             </article>
+        </section>
+    )
+}
+
+function IngredientsList(props) {
+    return (
+        <section>
+            <h2>Ingredients on hand:</h2>
+            <ul className="ingredients-list" aria-live="polite">
+                {props.ingredientsList}
+            </ul>
+            {props.ingredients.length >= 4 &&
+                <div className="get-recipe-container">
+                    <div>
+                        <h3>Ready for a recipe?</h3>
+                        <p>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button onClick={props.displayRecipe}>Get a recipe</button>
+                </div>
+            }
         </section>
     )
 }
