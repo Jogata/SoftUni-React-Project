@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Main() {
     const [state, setState] = useState({
@@ -7,22 +7,43 @@ export function Main() {
         src: "http://i.imgflip.com/1bij.jpg"
     });
 
+    function updateState(e) {
+        const property = e.currentTarget.name;
+        const value = e.currentTarget.value;
+        setState({
+            ...state, 
+            [property]: value
+        });
+        // console.log(state);
+    }
+
+    useEffect(() => {
+        console.log("effect");
+        return () => {
+            console.log(state);
+        }
+    }, [state]);
+
     return (
         <main>
             <div className="form">
                 <label>Top Text
                     <input
-                        type="text"
-                        placeholder="One does not simply"
-                        name="topText"
+                        type="text" 
+                        placeholder="One does not simply" 
+                        name="top" 
+                        value={state.top} 
+                        onChange={(e) => updateState(e)}
                     />
                 </label>
 
                 <label>Bottom Text
                     <input
-                        type="text"
-                        placeholder="Walk into Mordor"
-                        name="bottomText"
+                        type="text" 
+                        placeholder="Walk into Mordor" 
+                        name="bottom" 
+                        value={state.bottom} 
+                        onChange={(e) => updateState(e)}
                     />
                 </label>
                 <button>Get a new meme image 🖼</button>
