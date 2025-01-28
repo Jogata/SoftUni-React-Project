@@ -1113,3 +1113,11 @@ main {
 .top {
   top: 0;
 }
+
+.form input {
+  color: #000;
+}
+
+.form input::placeholder {
+  color: #0004;
+}
