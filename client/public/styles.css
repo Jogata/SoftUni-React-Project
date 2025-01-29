@@ -1121,16 +1121,3 @@ main {
 .form input::placeholder {
   color: #0004;
 }
-
-#count {
-  display: block;
-  margin-top: 1rem;
-  font-size: 2rem;
-}
-
-.btn {
-  display: inline-block;
-  margin: 1rem 0.5rem 0;
-  color: #18293d;
-  border: 1px solid;
-}
