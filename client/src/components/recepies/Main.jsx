@@ -17,15 +17,43 @@ export function Main() {
         // console.log(state);
     }
 
+    const [data, setData] = useState(null);
+    const [count, setCount] = useState(0);
+
     useEffect(() => {
-        console.log("effect");
-        return () => {
-            console.log(state);
-        }
-    }, [state]);
+        console.log("Effect ran");
+        fetch("https://swapi.dev/api/people/1")
+            .then(res => res.json())
+            // .then(data => console.log(data));
+            .then(data => setData(data));
+    }, [count]);
+
+    console.log("Rendered!");
+
+    function Add() {
+        setCount(prev => prev + 1);
+    }
+
+    function Subtract() {
+        setCount(prev => prev - 1);
+    }
+
+    // const temp1 = document.createElement("div");
+    // const temp0 = document.createElement("button");
+    // temp1.addEventListener("click", function () {
+    //     setTimeout(() => temp0.style.transform("scale(0)"), 0);
+    // })
 
     return (
         <main>
+            <div>
+                <pre>
+                    {JSON.stringify(data, null, 2)}
+                </pre>
+            </div>
+            <button className="btn" onClick={Add}>Add</button>
+            <button className="btn" onClick={Subtract}>Subtract</button>
+            <span id="count">{count}</span>
             <div className="form">
                 <label>Top Text
                     <input
@@ -50,11 +78,8 @@ export function Main() {
             </div>
             <div className="meme">
                 <img src={state.src} />
-                {/* <img src="http://i.imgflip.com/1bij.jpg" /> */}
                 <span className="top">{state.top}</span>
-                {/* <span className="top">One does not simply</span> */}
                 <span className="bottom">{state.bottom}</span>
-                {/* <span className="bottom">Walk into Mordor</span> */}
             </div>
         </main>
     )
