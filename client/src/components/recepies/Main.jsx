@@ -18,24 +18,24 @@ export function Main() {
     }
 
     const [data, setData] = useState(null);
-    const [count, setCount] = useState(0);
+    const [id, setId] = useState(1);
 
     useEffect(() => {
         console.log("Effect ran");
-        fetch("https://swapi.dev/api/people/1")
+        fetch(`https://swapi.dev/api/people/${id}`)
             .then(res => res.json())
             // .then(data => console.log(data));
             .then(data => setData(data));
-    }, [count]);
+    }, [id]);
 
     console.log("Rendered!");
 
-    function Add() {
-        setCount(prev => prev + 1);
+    function Next() {
+        setId(prev => prev + 1);
     }
 
-    function Subtract() {
-        setCount(prev => prev - 1);
+    function Prev() {
+        setId(prev => prev - 1);
     }
 
     // const temp1 = document.createElement("div");
@@ -51,9 +51,9 @@ export function Main() {
                     {JSON.stringify(data, null, 2)}
                 </pre>
             </div>
-            <button className="btn" onClick={Add}>Add</button>
-            <button className="btn" onClick={Subtract}>Subtract</button>
-            <span id="count">{count}</span>
+            <button className="btn" onClick={Next}>Next</button>
+            <button className="btn" onClick={Prev}>Prev</button>
+            <span id="count">{id}</span>
             <div className="form">
                 <label>Top Text
                     <input
