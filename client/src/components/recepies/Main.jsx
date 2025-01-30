@@ -47,15 +47,30 @@ export function Main() {
     }
 
     const [show, setShow] = useState(false);
-
+    
     function toggle() {
         setShow(prev => !prev);
     }
-
+    
     function WindowTracker() {
-        console.log("tracker");
+        const [width, setWidth] = useState(window.innerWidth);
+        
+        useEffect(() => {
+            console.log("event added");
+            function observe() {
+                setWidth(window.innerWidth);
+            }
+
+            window.addEventListener("resize", observe);
+
+            return function () {
+                console.log("event removed");
+                window.removeEventListener("resize", observe);
+            }
+        }, []);
+
         return (
-            <h1>Window width: {window.innerWidth}</h1>
+            <h1>Window width: {width}</h1>
         )
     }
 
