@@ -7,17 +7,22 @@ export function Main() {
         src: "http://i.imgflip.com/1bij.jpg"
     });
 
+    const [allMemes, setAllMemes] = useState([]);
+
     useEffect(() => {
+        console.log("first fetch");
         fetch("https://api.imgflip.com/get_memes")
         .then(res => res.json())
         // .then(obj => console.log(obj.data.memes));
-        .then(obj => setState(prev => {
-            return {
-                ...prev, 
-                src: obj.data.memes[1].url
-            }
-        }));
+        .then(obj => setAllMemes(obj.data.memes));
+            // return {
+            //     ...prev, 
+            //     src: obj.data.memes[1].url
+            // }
+        // }));
     }, []);
+
+    console.log(allMemes);
 
     function updateState(e) {
         const property = e.currentTarget.name;
@@ -27,6 +32,18 @@ export function Main() {
             [property]: value
         });
         // console.log(state);
+    }
+
+    function getRandomImage() {
+        const index = Math.floor(Math.random() * 100);
+        // console.log(index);
+        const imgUrl = allMemes[index].url;
+        setState(prev => {
+            return {
+                ...prev, 
+                src: imgUrl
+            }
+        });
     }
 
     return (
@@ -51,7 +68,7 @@ export function Main() {
                         onChange={(e) => updateState(e)}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button onClick={getRandomImage}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
                 <img src={state.src} />
