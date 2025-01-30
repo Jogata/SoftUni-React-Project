@@ -46,8 +46,25 @@ export function Main() {
         });
     }
 
+    const [show, setShow] = useState(false);
+
+    function toggle() {
+        setShow(prev => !prev);
+    }
+
+    function WindowTracker() {
+        console.log("tracker");
+        return (
+            <h1>Window width: {window.innerWidth}</h1>
+        )
+    }
+
     return (
         <main>
+            <button id="test" onClick={toggle}>
+                Toggle WindowTracker
+            </button>
+            {show && <WindowTracker />}
             <div className="form">
                 <label>Top Text
                     <input

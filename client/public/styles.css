@@ -1121,3 +1121,20 @@ main {
 .form input::placeholder {
   color: #0004;
 }
+
+#test {
+  margin-bottom: 1.5rem;
+  padding: 0.4em 1.2em;
+  font-size: 1.2rem;
+  font-family: Georgia, serif;
+  border: 1px solid;
+  border-radius: 2em;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-family: Georgia, serif;
+  text-align: center;
+  border-bottom: 1px solid;
+}
