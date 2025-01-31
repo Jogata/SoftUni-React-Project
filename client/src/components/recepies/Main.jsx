@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Main() {
     const [state, setState] = useState({
@@ -110,6 +110,13 @@ async function getRecipeFromMistral(ingredientsArr) {
         <li key={ingredient}>{ingredient}</li>
     ))
 
+    const recipeSection = useRef(null);
+
+    useEffect(() => {
+        console.log(recipeSection.current);
+        recipeSection.current && recipeSection.current.scrollIntoView();
+    }, [recipeVisible]);
+
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromMistral(ingredients);
         setRecipe(recipeMarkdown);
@@ -117,6 +124,7 @@ async function getRecipeFromMistral(ingredientsArr) {
 
     function displayRecipe() {
         setRecipeVisible(prev => !prev);
+        console.log("created");
     }
 
     function addIngredient(event) {
@@ -138,7 +146,7 @@ async function getRecipeFromMistral(ingredientsArr) {
 
 function Recipe() {
     return (
-        <section>
+        <section ref={recipeSection}>
             <h2>Chef Claude Recommends:</h2>
             <article className="suggested-recipe-container" aria-live="polite">
                 <p>Based on the ingredients you have available,
