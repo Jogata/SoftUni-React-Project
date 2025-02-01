@@ -1,16 +1,20 @@
-export function Main() {    
+function Die(props) {
+    return <button>{props.value}</button>
+}
+
+export function Main() {
     return (
         <main id="tenzies">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
+            <Die value={1} />
+            <Die value={2} />
+            <Die value={3} />
+            <Die value={4} />
+            <Die value={5} />
+            <Die value={6} />
+            <Die value={1} />
+            <Die value={2} />
+            <Die value={3} />
+            <Die value={4} />
         </main>
     )
 }
