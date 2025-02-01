@@ -710,6 +710,19 @@ body {
   cursor: pointer;
 }
 
-#tenzies {}
-#tenzies {}
+#tenzies .roll {
+  width: auto;
+  height: auto;
+  padding: 0.4em 1.2em;
+  color: #18293d;
+  text-transform: capitalize;
+  border-radius: 2em;
+  border: 1px solid #18293d;
+  transition: color 300ms, 
+    background-color 300ms;
+}
+#tenzies .roll:hover {
+  color: #fff;
+  background-color: #18293d;
+}
 #tenzies {}
