@@ -1,7 +1,17 @@
 import { useState } from "react";
 
 function Die(props) {
-    return <button>{props.value}</button>
+    console.log(props.id);
+    // console.log(props.isHeld);
+    const classes = props.isHeld ? "green" : "white";
+    return (
+        <button 
+        className={classes}
+            onClick={() => props.toggle(props.id)} 
+        >
+            {props.value}
+        </button>
+    )
 }
 
 export function Main() {
@@ -21,13 +31,15 @@ export function Main() {
         return arr;
     }
 
-    console.log(dice);
+    // console.log(dice);
     const buttons = dice.map(obj => {
         return (
             <Die 
                 key={obj.id} 
-                value={obj.value} 
                 id={obj.id} 
+                value={obj.value} 
+                isHeld={obj.isHeld} 
+                toggle={toggle} 
             />
         )
     })
@@ -35,6 +47,15 @@ export function Main() {
     function roll() {
         const newDice = generateArrayOfNumbers(10, 6);
         setDice(newDice);
+    }
+
+    function toggle(id) {
+        setDice(dice.map(dice => {
+            if (dice.id == id) {
+                dice.isHeld = !dice.isHeld;
+            }
+            return dice;
+        }))
     }
 
     return (
