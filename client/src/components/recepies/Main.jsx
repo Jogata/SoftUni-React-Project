@@ -11,14 +11,25 @@ export function Main() {
         const arr = new Array(length);
         for (let index = 0; index < arr.length; index++) {
             const number = Math.ceil(Math.random() * max);
-            arr[index] = number;
+            const buttonState = {
+                id: index, 
+                value: number, 
+                isHeld: false
+            }
+            arr[index] = buttonState;
         }
         return arr;
     }
 
     console.log(dice);
-    const buttons = dice.map((number, index) => {
-        return <Die key={index} value={number} />
+    const buttons = dice.map(obj => {
+        return (
+            <Die 
+                key={obj.id} 
+                value={obj.value} 
+                id={obj.id} 
+            />
+        )
     })
 
     function roll() {
