@@ -683,19 +683,30 @@ body {
 
 #root {
   width: 100%;
-  max-width: 480px;
+  /* max-width: 480px; */
+  max-width: 560px;
   min-height: 300px;
   margin: auto;
+  padding: 24px;
+  text-align: center;
   border-radius: 6px;
   background-color: #f5f5f5;
 }
 
 #tenzies {
   padding: 20px;
+  /* display: flex; */
+  /* gap: 20px; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+}
+
+.container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 #tenzies button {
@@ -709,12 +720,16 @@ body {
   box-shadow: 0px 1px 2px #0005;
   cursor: pointer;
 }
+#tenzies button:hover {
+  box-shadow: 0px 2px 4px #0005;
+}
 
 #tenzies .roll {
   width: auto;
   height: auto;
   padding: 0.4em 1.2em;
   color: #18293d;
+  font-size: 1.6rem;
   text-transform: capitalize;
   border-radius: 2em;
   border: 1px solid #18293d;
@@ -725,4 +740,24 @@ body {
   color: #fff;
   background-color: #18293d;
 }
+
+.title {
+  /* color: transparent; */
+  font-size: 3rem;
+  /* -webkit-text-stroke: 1px #000; */
+  /* filter: drop-shadow(1px 1px 0px #000); */
+}
+
+/* .title::first-letter {
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  font-size: 4rem;
+} */
+
+.instructions {
+  max-width: 420px;
+  margin: auto;
+  padding: 1rem 0;
+}
+
 #tenzies {}

@@ -39,7 +39,9 @@ export function Main() {
 
     return (
         <main id="tenzies">
-            {buttons}
+            <div className="container">
+                {buttons}
+            </div>
             <button className="roll" onClick={roll}>roll</button>
         </main>
     )
