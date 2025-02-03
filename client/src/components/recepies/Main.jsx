@@ -44,7 +44,7 @@ export function Main() {
         )
     })
 
-    function roll() {
+    function startNewGame() {
         const newDice = generateArrayOfNumbers(10, 6);
         setDice(newDice);
     }
@@ -58,12 +58,35 @@ export function Main() {
         }))
     }
 
+    function roll(max) {
+        // startNewGame();
+        const newDice = dice.map((dice, index) => {
+            if (!dice.isHeld) {
+                const oldValue = dice.value;
+                let number = Math.ceil(Math.random() * max);
+                if (number == oldValue) {
+                    // console.log(`${number} == ${oldValue}`);
+                    number = number + oldValue;
+                    number = number % max || Math.ceil(Math.random() * max);
+                }
+                const newDiceState = {
+                    id: index, 
+                    value: number, 
+                    isHeld: false
+                }
+                return newDiceState;
+            }
+            return dice;
+        })
+        setDice(newDice);
+    }
+
     return (
         <main id="tenzies">
             <div className="container">
                 {buttons}
             </div>
-            <button className="roll" onClick={roll}>roll</button>
+            <button className="roll" onClick={() => roll(6)}>roll</button>
         </main>
     )
 }
