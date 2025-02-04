@@ -674,4 +674,42 @@ article {
   animation-duration: 1s;
 }
 
-#assembly {}
+body {
+  min-height: 100vh;
+  /* margin: 0; */
+  padding: 24px;
+  display: flex;
+  color: #D9D9D9;
+  /* font-family: "Hanken Grotesk", Arial, sans-serif; */
+  font-family: Georgia, serif;
+  background-color: #262626;
+}
+
+#root {
+  max-width: 600px;
+  min-height: 320px;
+  margin: auto;
+  padding: 12px;
+}
+
+header {
+  text-align: center;
+}
+
+header > h1 {
+  color: #F9F4DA;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+header > p {
+  max-width: 350px;
+  margin: auto;
+  color: #8E8E8E;
+  font-size: 0.875rem;
+}
+
+.language {
+  display: inline-block;
+  padding: 0.4em 1.2em;
+}

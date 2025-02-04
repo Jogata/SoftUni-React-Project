@@ -52,10 +52,14 @@ export function Main() {
             <h1>main</h1>
             {languages.map(lang => {
                 return (
-                    <span style={{
-                        color: `${lang.color}`, 
-                        backgroundColor: `${lang.backgroundColor}`
-                    }}>
+                    <span 
+                        key={lang.name} 
+                        className="language" 
+                        style={{
+                            color: `${lang.color}`, 
+                            backgroundColor: `${lang.backgroundColor}`
+                        }}
+                    >
                         {lang.name}
                     </span>
                 )
