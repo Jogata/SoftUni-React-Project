@@ -44,26 +44,46 @@ const languages = [
         backgroundColor: "#2D519F",
         color: "#F9F4DA",
     },
-]
+];
 
 export function Main() {
+    const letters = new Array(26).fill(0);
+    letters.forEach((letter, index, arr) => {
+        // console.log(letter);
+        letter = String.fromCharCode((index + 65));
+        // console.log(letter);
+        arr[index] = letter;
+    });
+    // console.log(letters);
+
     return (
         <main id="assembly">
-            <h1>main</h1>
-            {languages.map(lang => {
-                return (
-                    <span 
-                        key={lang.name} 
-                        className="language" 
-                        style={{
-                            color: `${lang.color}`, 
-                            backgroundColor: `${lang.backgroundColor}`
-                        }}
-                    >
-                        {lang.name}
-                    </span>
-                )
-            })}
+            {/* <h1>main</h1> */}
+            <div className="languages-section">
+                {languages.map(lang => {
+                    return (
+                        <span
+                            key={lang.name}
+                            className="language"
+                            style={{
+                                color: `${lang.color}`,
+                                backgroundColor: `${lang.backgroundColor}`
+                            }}
+                        >
+                            {lang.name}
+                        </span>
+                    )
+                })}
+            </div>
+            <div className="letters">
+                {letters.map((letter) => {
+                    return (
+                        <button key={letter} className="letter">
+                            {letter}
+                        </button>
+                    )
+                })}
+            </div>
         </main>
     )
 }
