@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const languages = [
     {
         name: "HTML",
@@ -532,6 +534,8 @@ const words = [
 ];
 
 export function Main() {
+    const [word, setWord] = useState(() => getRandomWord(words));
+
     const letters = new Array(26).fill(0);
     letters.forEach((letter, index, arr) => {
         // console.log(letter);
@@ -540,6 +544,17 @@ export function Main() {
         arr[index] = letter;
     });
     // console.log(letters);
+
+    function getRandomWord(arr) {
+        // const decimals = arr.length.toString().length;
+        // console.log(decimals);
+        const index = Math.floor(Math.random() * arr.length);
+        const word = arr[index];
+        // console.log(word);
+        return word;
+    }
+
+    // getRandomWord(words);
 
     return (
         <main id="assembly">
@@ -561,7 +576,14 @@ export function Main() {
                 })}
             </div>
             <div className="word">
-                {words[0]}
+                {word.split("").map((letter, index) => {
+                    // console.log(letter);
+                    return (
+                        <span key={index} className="letter">
+                            {letter}
+                        </span>
+                    )
+                })}
             </div>
             <div className="letters">
                 {letters.map((letter) => {
