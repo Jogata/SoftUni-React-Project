@@ -570,6 +570,23 @@ export function Main() {
         return word;
     }
 
+    function checkForLetter(letter, wordAsArray) {
+        console.log(letter);
+        const newArray = wordAsArray.map(letterinfo => {
+            if (letterinfo.value === letter) {
+                console.log(letter);
+                letterinfo.displayedVAlue = letter;
+            }
+            return letterinfo;
+        })
+        return newArray;
+    }
+
+    function handle(letter) {
+        // console.log(letter);
+        setWord(prev => checkForLetter(letter, prev));
+    }
+
     // getRandomWord(words);
 
     return (
@@ -604,7 +621,11 @@ export function Main() {
             <div className="letters">
                 {letters.map((letter) => {
                     return (
-                        <button key={letter} className="letter">
+                        <button 
+                            key={letter} 
+                            className="letter" 
+                            onClick={() => handle(letter)}
+                        >
                             {letter}
                         </button>
                     )
