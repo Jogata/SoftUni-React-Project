@@ -563,10 +563,10 @@ export function Main() {
                 {languages.map(lang => {
                     return (
                         <span
-                            key={lang.name}
-                            className="language"
+                            key={lang.name} 
+                            className="language" 
                             style={{
-                                color: `${lang.color}`,
+                                color: `${lang.color}`, 
                                 backgroundColor: `${lang.backgroundColor}`
                             }}
                         >
