@@ -534,7 +534,22 @@ const words = [
 ];
 
 export function Main() {
-    const [word, setWord] = useState(() => getRandomWord(words));
+    const [word, setWord] = useState(() => {
+        const word = getRandomWord(words);
+        const lettersArray = word.split("");
+        // .map((letter, index) => {
+            lettersArray.forEach((letter, index) => {
+                const letterInfo = {
+                    value: letter.toUpperCase(), 
+                    displayedVAlue: ""
+                };
+                lettersArray[index] = letterInfo;
+            });
+        // });
+        return lettersArray;
+    });
+
+    console.log(word);
 
     const letters = new Array(26).fill(0);
     letters.forEach((letter, index, arr) => {
@@ -543,6 +558,7 @@ export function Main() {
         // console.log(letter);
         arr[index] = letter;
     });
+
     // console.log(letters);
 
     function getRandomWord(arr) {
@@ -576,11 +592,11 @@ export function Main() {
                 })}
             </div>
             <div className="word">
-                {word.split("").map((letter, index) => {
+                {word.map((letter, index) => {
                     // console.log(letter);
                     return (
                         <span key={index} className="letter">
-                            {letter}
+                            {letter.displayedVAlue}
                         </span>
                     )
                 })}

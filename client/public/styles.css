@@ -749,6 +749,7 @@ header > p {
 }
 
 .word .letter {
+  vertical-align: middle;
   display: inline-flex;
   align-items: center;
   justify-content: center;
