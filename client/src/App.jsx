@@ -37,11 +37,21 @@ function Loader() {
 
 function App() {
   const [attempts, setAttempts] = useState(8);
+  // const [isGameOver, setIsGameOver] = useState(false);
+  let isGameOver = false;
+
+  // useEffect(() => {
+    if (attempts == 0) {
+      // setIsGameOver(true);
+      isGameOver = true;
+    }
+  // }, [attempts]);
 
   return (
     <>
       <AuthContextProvider>
         <Header attempts={attempts} />
+        {isGameOver && <h1>Game Over</h1>}
         <Main setAttempts={setAttempts} />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
