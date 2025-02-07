@@ -541,7 +541,7 @@ export function Main(props) {
             lettersArray.forEach((letter, index) => {
                 const letterInfo = {
                     value: letter.toUpperCase(), 
-                    displayedVAlue: ""
+                    displayedValue: ""
                 };
                 lettersArray[index] = letterInfo;
             });
@@ -550,6 +550,8 @@ export function Main(props) {
     });
 
     console.log(word);
+
+    let isLeterCorrect = false;
 
     const letters = new Array(26).fill(0);
     letters.forEach((letter, index, arr) => {
@@ -571,14 +573,23 @@ export function Main(props) {
     }
 
     function checkForLetter(letter, wordAsArray) {
-        console.log(letter);
+        // console.log(letter);
         const newArray = wordAsArray.map(letterinfo => {
             if (letterinfo.value === letter) {
-                console.log(letter);
-                letterinfo.displayedVAlue = letter;
-            }
+                // console.log(letter);
+                letterinfo.displayedValue = letter;
+                isLeterCorrect = true;
+            } 
+            // else {
+            //     props.wrongAssumptions.current++;
+            //     console.log(props.wrongAssumptions.current);
+            // }
             return letterinfo;
         })
+        if (!isLeterCorrect) {
+                props.wrongAssumptions.current++;
+                console.log(props.wrongAssumptions.current);
+        }
         return newArray;
     }
 
@@ -614,7 +625,7 @@ export function Main(props) {
                     // console.log(letter);
                     return (
                         <span key={index} className="letter">
-                            {letter.displayedVAlue}
+                            {letter.displayedValue}
                         </span>
                     )
                 })}

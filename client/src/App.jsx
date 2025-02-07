@@ -22,7 +22,7 @@ import Logout from './components/logout/Logout'
 // ================================================
 import { Header } from './components/recepies/Header'
 import { Main } from './components/recepies/Main'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function Loader() {
   return (
@@ -39,6 +39,7 @@ function App() {
   const [attempts, setAttempts] = useState(8);
   // const [isGameOver, setIsGameOver] = useState(false);
   let isGameOver = false;
+  let wrongAssumptions = useRef(0);
 
   // useEffect(() => {
     if (attempts == 0) {
@@ -46,13 +47,15 @@ function App() {
       isGameOver = true;
     }
   // }, [attempts]);
+  console.log(isGameOver);
+  console.log(wrongAssumptions.current);
 
   return (
     <>
       <AuthContextProvider>
         <Header attempts={attempts} />
         {isGameOver && <h1>Game Over</h1>}
-        <Main setAttempts={setAttempts} />
+        <Main setAttempts={setAttempts} wrongAssumptions={wrongAssumptions}/>
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
