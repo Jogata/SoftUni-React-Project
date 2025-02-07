@@ -22,6 +22,7 @@ import Logout from './components/logout/Logout'
 // ================================================
 import { Header } from './components/recepies/Header'
 import { Main } from './components/recepies/Main'
+import { useEffect, useState } from 'react'
 
 function Loader() {
   return (
@@ -35,11 +36,13 @@ function Loader() {
 }
 
 function App() {
+  const [attempts, setAttempts] = useState(8);
+
   return (
     <>
       <AuthContextProvider>
-        <Header />
-        <Main />
+        <Header attempts={attempts} />
+        <Main setAttempts={setAttempts} />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />

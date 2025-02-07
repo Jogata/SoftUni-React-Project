@@ -533,7 +533,7 @@ const words = [
     "young"
 ];
 
-export function Main() {
+export function Main(props) {
     const [word, setWord] = useState(() => {
         const word = getRandomWord(words);
         const lettersArray = word.split("");
@@ -585,6 +585,7 @@ export function Main() {
     function handle(letter) {
         // console.log(letter);
         setWord(prev => checkForLetter(letter, prev));
+        props.setAttempts(prev => prev - 1);
     }
 
     // getRandomWord(words);
