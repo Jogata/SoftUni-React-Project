@@ -43,12 +43,15 @@ function App() {
   let wrongAssumptions = useRef(0);
 
   // useEffect(() => {
-    if (attempts == 0 || wrongAssumptions.current >= 9) {
-      // setIsGameOver(true);
-      isGameOver = true;
+    if (!isWordGuessed) {
+      console.log("false");
+      if (attempts == 0 || wrongAssumptions.current >= 9) {
+        // setIsGameOver(true);
+        isGameOver = true;
+      }
     }
   // }, [attempts]);
-  console.log(isGameOver);
+  // console.log(isGameOver);
   // console.log(wrongAssumptions.current);
 
   return (

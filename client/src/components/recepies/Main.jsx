@@ -597,7 +597,7 @@ export function Main(props) {
         })
         if (!isLeterCorrect) {
                 props.wrongAssumptions.current++;
-                console.log(props.wrongAssumptions.current);
+                // console.log(props.wrongAssumptions.current);
         }
         return newArray;
     }
