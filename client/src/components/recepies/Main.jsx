@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const languages = [
     {
@@ -552,13 +552,17 @@ export function Main(props) {
     console.log(word);
     // console.log(props.wrongAssumptions);
 
-    const isWordGuessed = word.every(letter => Boolean(letter.displayedValue));
-    // console.log(isWordGuessed);
+    // const isWordGuessed = word.every(letter => Boolean(letter.displayedValue));
+    // const isWordGuessed = useMemo(() => word.every(letter => Boolean(letter.displayedValue)), [word]);
     // word.forEach(letter => console.log(Boolean(letter.displayedValue)));
-
-    if (isWordGuessed) {
-        props.setIsWordGuessed(true);
-    }
+    
+    useEffect(() => {
+        const isWordGuessed = word.every(letter => Boolean(letter.displayedValue));
+        console.log(isWordGuessed);
+        if (isWordGuessed) {
+            props.setIsWordGuessed(true);
+        }
+    }, [word]);
 
     let isLeterCorrect = false;
 
