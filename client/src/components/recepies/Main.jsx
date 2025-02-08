@@ -550,6 +550,15 @@ export function Main(props) {
     });
 
     console.log(word);
+    // console.log(props.wrongAssumptions);
+
+    const isWordGuessed = word.every(letter => Boolean(letter.displayedValue));
+    // console.log(isWordGuessed);
+    // word.forEach(letter => console.log(Boolean(letter.displayedValue)));
+
+    if (isWordGuessed) {
+        props.setIsWordGuessed(true);
+    }
 
     let isLeterCorrect = false;
 
@@ -605,7 +614,7 @@ export function Main(props) {
         <main id="assembly">
             {/* <h1>main</h1> */}
             <div className="languages-section">
-                {languages.map(lang => {
+                {languages.map((lang, index) => {
                     return (
                         <span
                             key={lang.name} 
@@ -615,7 +624,7 @@ export function Main(props) {
                                 backgroundColor: `${lang.backgroundColor}`
                             }}
                         >
-                            {lang.name}
+                            {props.wrongAssumptions.current <= index ? lang.name : "skull"}
                         </span>
                     )
                 })}

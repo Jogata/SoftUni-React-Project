@@ -37,25 +37,27 @@ function Loader() {
 
 function App() {
   const [attempts, setAttempts] = useState(8);
+  const [isWordGuessed, setIsWordGuessed] = useState(false);
   // const [isGameOver, setIsGameOver] = useState(false);
   let isGameOver = false;
   let wrongAssumptions = useRef(0);
 
   // useEffect(() => {
-    if (attempts == 0) {
+    if (attempts == 0 || wrongAssumptions.current >= 9) {
       // setIsGameOver(true);
       isGameOver = true;
     }
   // }, [attempts]);
   console.log(isGameOver);
-  console.log(wrongAssumptions.current);
+  // console.log(wrongAssumptions.current);
 
   return (
     <>
       <AuthContextProvider>
         <Header attempts={attempts} />
         {isGameOver && <h1>Game Over</h1>}
-        <Main setAttempts={setAttempts} wrongAssumptions={wrongAssumptions}/>
+        {isWordGuessed && <h1>You won</h1>}
+        <Main setAttempts={setAttempts} wrongAssumptions={wrongAssumptions} setIsWordGuessed={setIsWordGuessed}/>
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
