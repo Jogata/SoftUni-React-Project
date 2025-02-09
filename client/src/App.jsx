@@ -45,7 +45,8 @@ function App() {
   // useEffect(() => {
     if (!isWordGuessed) {
       // console.log("false");
-      if (attempts == 0 || wrongAssumptions.current >= 9) {
+      console.log(wrongAssumptions.current);
+      if (attempts == 0 || wrongAssumptions.current >= 8) {
         // setIsGameOver(true);
         isGameOver = true;
       }

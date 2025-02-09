@@ -541,7 +541,8 @@ export function Main(props) {
             lettersArray.forEach((letter, index) => {
                 const letterInfo = {
                     value: letter.toUpperCase(), 
-                    displayedValue: ""
+                    displayedValue: "", 
+                    class: "hidden"
                 };
                 lettersArray[index] = letterInfo;
             });
@@ -564,7 +565,7 @@ export function Main(props) {
         }
     }, [word]);
 
-    let isLeterCorrect = false;
+    // let isLeterCorrect = false;
 
     const letters = new Array(26).fill(0);
     letters.forEach((letter, index, arr) => {
@@ -586,11 +587,13 @@ export function Main(props) {
     }
 
     function checkForLetter(letter, wordAsArray) {
+        let isLeterCorrect = false;
         // console.log(letter);
         const newArray = wordAsArray.map(letterinfo => {
             if (letterinfo.value === letter) {
                 // console.log(letter);
                 letterinfo.displayedValue = letter;
+                letterinfo.class = "visible";
                 isLeterCorrect = true;
             } 
             // else {
@@ -619,10 +622,31 @@ export function Main(props) {
             {/* <h1>main</h1> */}
             <div className="languages-section">
                 {languages.map((lang, index) => {
+                    let classes = "language";
+                    if (props.wrongAssumptions.current > index) {
+                        classes += " skull";
+                    }
                     return (
+                        // props.wrongAssumptions.current <= index ? 
+                        // <span
+                        //     key={lang.name} 
+                        //     className="language" 
+                        //     style={{
+                        //         color: `${lang.color}`, 
+                        //         backgroundColor: `${lang.backgroundColor}`
+                        //     }}
+                        // >
+                        //     {lang.name}
+                        // </span> : 
+                        // <span
+                        //     key={lang.name} 
+                        //     className="language skull" 
+                        // >
+                        //     skull
+                        // </span>
                         <span
                             key={lang.name} 
-                            className="language" 
+                            className={classes} 
                             style={{
                                 color: `${lang.color}`, 
                                 backgroundColor: `${lang.backgroundColor}`
@@ -637,7 +661,7 @@ export function Main(props) {
                 {word.map((letter, index) => {
                     // console.log(letter);
                     return (
-                        <span key={index} className="letter">
+                        <span key={index} className={`letter ${letter.class}`}>
                             {letter.displayedValue}
                         </span>
                     )
