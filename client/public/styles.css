@@ -722,6 +722,22 @@ header > p {
   padding: 0.8em 1.2em;
 }
 
+.language.skull {
+  position: relative;
+}
+.language.skull::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "skull";
+  width: 100%;
+  height: 100%;
+  color: #eee;
+  font-size: inherit;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .letters {
   /* margin-top: 2rem; */
   text-align: center;
