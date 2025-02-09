@@ -780,3 +780,10 @@ header > p {
   box-shadow: inset 1px 1px 1px #0006, 
           inset -1px -1px 1px #fff2;
 }
+
+.message {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0.5rem;
+  text-align: center;
+}

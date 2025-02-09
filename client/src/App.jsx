@@ -59,9 +59,24 @@ function App() {
     <>
       <AuthContextProvider>
         <Header attempts={attempts} />
-        {isGameOver && <h1>Game Over</h1>}
-        {isWordGuessed && <h1>You won</h1>}
-        <Main setAttempts={setAttempts} wrongAssumptions={wrongAssumptions} setIsWordGuessed={setIsWordGuessed}/>
+        {isGameOver && (
+          <div className="message" style={{backgroundColor: "darkred"}}>
+            <h1>Game Over</h1>
+            <p>You lose! Better start learning Assembly :)</p>
+          </div>
+        )}
+        {isWordGuessed && (
+          <div className="message" style={{ backgroundColor: "green" }}>
+            <h1>You win!</h1>
+            <p>Weel done!</p>
+          </div>
+        )}
+        <Main 
+          setAttempts={setAttempts} 
+          wrongAssumptions={wrongAssumptions} 
+          setIsWordGuessed={setIsWordGuessed} 
+          isGameOver={isGameOver}
+        />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
