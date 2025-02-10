@@ -20,9 +20,8 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Header } from './components/recepies/Header'
+// import { Header } from './components/recepies/Header'
 import { Main } from './components/recepies/Main'
-import { useEffect, useRef, useState } from 'react'
 
 function Loader() {
   return (
@@ -36,47 +35,11 @@ function Loader() {
 }
 
 function App() {
-  const [attempts, setAttempts] = useState(8);
-  const [isWordGuessed, setIsWordGuessed] = useState(false);
-  // const [isGameOver, setIsGameOver] = useState(false);
-  let isGameOver = false;
-  let wrongAssumptions = useRef(0);
-
-  // useEffect(() => {
-    if (!isWordGuessed) {
-      // console.log("false");
-      console.log(wrongAssumptions.current);
-      if (attempts == 0 || wrongAssumptions.current >= 8) {
-        // setIsGameOver(true);
-        isGameOver = true;
-      }
-    }
-  // }, [attempts]);
-  // console.log(isGameOver);
-  // console.log(wrongAssumptions.current);
-
   return (
     <>
       <AuthContextProvider>
-        <Header attempts={attempts} />
-        {isGameOver && (
-          <div className="message" style={{backgroundColor: "darkred"}}>
-            <h1>Game Over</h1>
-            <p>You lose! Better start learning Assembly :)</p>
-          </div>
-        )}
-        {isWordGuessed && (
-          <div className="message" style={{ backgroundColor: "green" }}>
-            <h1>You win!</h1>
-            <p>Weel done!</p>
-          </div>
-        )}
-        <Main 
-          setAttempts={setAttempts} 
-          wrongAssumptions={wrongAssumptions} 
-          setIsWordGuessed={setIsWordGuessed} 
-          isGameOver={isGameOver}
-        />
+        {/* <Header /> */}
+        <Main />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
