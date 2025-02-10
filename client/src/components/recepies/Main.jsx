@@ -74,6 +74,11 @@ export function Main() {
                     programming world safe from Assembly!</p>
             </header>
 
+            <section className="game-status">
+                <h2>You win!</h2>
+                <p>Well done! 🎉</p>
+            </section>
+
             {/* <h2>main</h2> */}
             <section className="language-chips">
                 {languageElements}
