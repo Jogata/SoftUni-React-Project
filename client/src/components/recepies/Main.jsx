@@ -49,6 +49,8 @@ const languages = [
 export function Main() {
     const word = "example";
 
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
     const languageElements = languages.map(lang => {
         const styles = {
             color: lang.color, 
@@ -70,9 +72,22 @@ export function Main() {
 
     const letterElements = word.split("").map((letter, index) => {
         return (
-            <span key={index}>
+            <span key={index} className="letter">
                 {letter}
             </span>
+        )
+    })
+
+    const keyboardElements = alphabet.split("").map(letter => {
+        const classes = "letter";
+        return (
+            <button
+                key={letter} 
+                className={classes} 
+                aria-label={`Letter ${letter}`} 
+            >
+                {letter}
+            </button>
         )
     })
 
@@ -96,6 +111,10 @@ export function Main() {
 
             <section className="word">
                 {letterElements}
+            </section>
+
+            <section className="keyboard">
+                {keyboardElements}
             </section>
         </main>
     )

@@ -749,20 +749,62 @@ section.game-status {
 }
 
 .word {
-  display: flex;
-  gap: 2px;
-  justify-content: center;
-  margin-bottom: 20px;
+  text-align: center;
+  /* display: flex; */
+  /* gap: 2px; */
+  /* justify-content: center; */
+  /* margin-bottom: 20px; */
 }
 
-.word > span {
+.letter {
+  display: inline-block;
   width: 40px;
   height: 40px;
-  display: flex;
+  margin: 0.15rem 0.25rem;
+  color: #8E8E8E;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  text-transform: uppercase;
+  border-radius: 8px;
+  /* border: 1px solid; */
+}
+
+.word .letter {
+  /* display: inline-block; */
+  /* width: 40px; */
+  width: 80px;
+  /* height: 40px; */
+  height: 80px;
+  /* margin: 0.15rem 0.25rem; */
+  /* padding: 0.5em 0.62em; */
+  /* display: flex; */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  border-bottom: 1px solid #F9F4DA;
+  /* font-size: 1.125rem; */
+  /* text-transform: uppercase; */
+  /* border-bottom: 1px solid #F9F4DA; */
   background-color: #323232;
+  box-shadow: inset 1px 1px 1px #0006, 
+          inset -1px -1px 1px #fff4;
+  user-select: none;
+}
+
+.keyboard {
+  max-width: 450px;
+  margin-bottom: 36px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.keyboard > button {
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  border: 1px solid #D7D7D7;
+  background-color: #FCBA29;
+  cursor: pointer;
 }
