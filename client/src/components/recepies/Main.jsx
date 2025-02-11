@@ -47,6 +47,8 @@ const languages = [
 ];
 
 export function Main() {
+    const word = "example";
+
     const languageElements = languages.map(lang => {
         const styles = {
             color: lang.color, 
@@ -66,6 +68,14 @@ export function Main() {
         )
     });
 
+    const letterElements = word.split("").map((letter, index) => {
+        return (
+            <span key={index}>
+                {letter}
+            </span>
+        )
+    })
+
     return (
         <main>
             <header>
@@ -82,6 +92,10 @@ export function Main() {
             {/* <h2>main</h2> */}
             <section className="language-chips">
                 {languageElements}
+            </section>
+
+            <section className="word">
+                {letterElements}
             </section>
         </main>
     )
