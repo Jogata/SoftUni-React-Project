@@ -534,7 +534,7 @@ const languages = [
 ];
 
 export function Main() {
-    const [currentWord, setCurrentWord] = useState(words[0]);
+    const [currentWord, setCurrentWord] = useState(() => getRandomWord());
     // const currentWord = "example";
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -578,6 +578,11 @@ export function Main() {
             </button>
         )
     })
+
+    function getRandomWord() {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        return words[randomIndex];
+    }
 
     return (
         <main>

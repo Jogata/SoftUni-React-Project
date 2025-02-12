@@ -758,8 +758,8 @@ section.game-status {
 
 .letter {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  /* width: 40px; */
+  /* height: 40px; */
   margin: 0.15rem 0.25rem;
   color: #8E8E8E;
   font-size: 2rem;
@@ -792,19 +792,31 @@ section.game-status {
 }
 
 .keyboard {
-  max-width: 450px;
-  margin-bottom: 36px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* max-width: 450px; */
+  max-width: 540px;
+  /* margin-bottom: 36px; */
+  margin: 36px auto;
+  /* display: flex; */
+  /* gap: 8px; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  text-align: center;
 }
 
-.keyboard > button {
-  width: 35px;
-  height: 35px;
+.keyboard .letter {
+  /* width: 35px; */
+  width: 60px;
+  /* height: 35px; */
+  height: 60px;
   border-radius: 3px;
-  border: 1px solid #D7D7D7;
+  /* border: 1px solid #D7D7D7; */
   background-color: #FCBA29;
+  box-shadow: 1px 1px 1px #0006, 
+          -1px -1px 1px #fff4;
   cursor: pointer;
+}
+
+.keyboard .letter:active {
+  box-shadow: inset 1px 1px 1px #0006, 
+          inset -1px -1px 1px #fff2;
 }
