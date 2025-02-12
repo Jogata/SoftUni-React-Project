@@ -535,6 +535,8 @@ const languages = [
 
 export function Main() {
     const [currentWord, setCurrentWord] = useState(() => getRandomWord());
+    const [guessedLetters, setGuessedLetters] = useState([]);
+    console.log(guessedLetters);
     // const currentWord = "example";
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -572,6 +574,7 @@ export function Main() {
             <button
                 key={letter} 
                 className={classes} 
+                onClick={() => addGuessedLetter(letter)} 
                 aria-label={`Letter ${letter}`} 
             >
                 {letter}
@@ -582,6 +585,14 @@ export function Main() {
     function getRandomWord() {
         const randomIndex = Math.floor(Math.random() * words.length);
         return words[randomIndex];
+    }
+
+    function addGuessedLetter(letter) {
+        setGuessedLetters(prevLetters =>
+            prevLetters.includes(letter) ?
+                prevLetters :
+                [...prevLetters, letter]
+        )
     }
 
     return (
