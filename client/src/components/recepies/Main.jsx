@@ -536,6 +536,7 @@ const languages = [
 export function Main() {
     const [currentWord, setCurrentWord] = useState(() => getRandomWord());
     const [guessedLetters, setGuessedLetters] = useState([]);
+    console.log(currentWord);
     console.log(guessedLetters);
     // const currentWord = "example";
 
@@ -561,9 +562,11 @@ export function Main() {
     });
 
     const letterElements = currentWord.split("").map((letter, index) => {
+        const shouldRevealLetter = guessedLetters.includes(letter);
         return (
             <span key={index} className="letter">
-                {letter}
+                {/* {letter} */}
+                {shouldRevealLetter ? letter.toUpperCase() : ""}
             </span>
         )
     })

@@ -779,6 +779,7 @@ section.game-status {
   /* margin: 0.15rem 0.25rem; */
   /* padding: 0.5em 0.62em; */
   /* display: flex; */
+  vertical-align: middle;
   display: inline-flex;
   align-items: center;
   justify-content: center;
