@@ -811,7 +811,7 @@ section.game-status {
   height: 60px;
   border-radius: 3px;
   /* border: 1px solid #D7D7D7; */
-  background-color: #FCBA29;
+  /* background-color: #FCBA29; */
   box-shadow: 1px 1px 1px #0006, 
           -1px -1px 1px #fff4;
   cursor: pointer;
@@ -820,4 +820,18 @@ section.game-status {
 .keyboard .letter:active {
   box-shadow: inset 1px 1px 1px #0006, 
           inset -1px -1px 1px #fff2;
+}
+
+.keyboard .letter.correct {
+  color: #262626;
+  background-color: #10A95B;
+  box-shadow: inset 2px 2px 1px #06542C, 
+              inset -2px -2px 1px #fff8;
+}
+
+.keyboard .letter.wrong {
+  color: #262626;
+  background-color: #EC5D49;
+  box-shadow: inset 2px 2px 1px #841a0b, 
+              inset -2px -2px 1px #fff8;
 }

@@ -540,6 +540,16 @@ export function Main() {
     console.log(guessedLetters);
     // const currentWord = "example";
 
+    const numGuessesLeft = languages.length - 1;
+    const wrongGuessCount =
+        guessedLetters.filter(letter => !currentWord.includes(letter)).length;
+    const isGameWon =
+        currentWord.split("").every(letter => guessedLetters.includes(letter));
+    const isGameLost = wrongGuessCount >= numGuessesLeft;
+    const isGameOver = isGameWon || isGameLost;
+    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+    const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
+
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     const languageElements = languages.map(lang => {
@@ -572,13 +582,27 @@ export function Main() {
     })
 
     const keyboardElements = alphabet.split("").map(letter => {
-        const classes = "letter";
+        const isGuessed = guessedLetters.includes(letter);
+        const isCorrect = isGuessed && currentWord.includes(letter);
+        const isWrong = isGuessed && !currentWord.includes(letter);
+
+        let classes = "letter";
+
+        if (isCorrect) {
+            classes += " correct";
+        }
+
+        if (isWrong) {
+            classes += " wrong";
+        }
+
         return (
             <button
                 key={letter} 
                 className={classes} 
                 onClick={() => addGuessedLetter(letter)} 
                 aria-label={`Letter ${letter}`} 
+                aria-disabled={guessedLetters.includes(letter)}
             >
                 {letter}
             </button>
