@@ -628,6 +628,19 @@ export function Main() {
         )
     }
 
+    function renderGameStatus() {
+        if (isGameLost) {
+            return (
+                <>
+                    <h2>Game over!</h2>
+                    <p>You lose! Better start learning Assembly 😭</p>
+                </>
+            )
+        }
+
+        return null
+    }
+
     return (
         <main>
             <header>
@@ -637,8 +650,9 @@ export function Main() {
             </header>
 
             <section className="game-status">
-                <h2>You win!</h2>
-                <p>Well done! 🎉</p>
+                {renderGameStatus()}
+                {/* <h2>You win!</h2> */}
+                {/* <p>Well done! 🎉</p> */}
             </section>
 
             {/* <h2>main</h2> */}
