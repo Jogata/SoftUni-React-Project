@@ -552,13 +552,19 @@ export function Main() {
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    const languageElements = languages.map(lang => {
+    const languageElements = languages.map((lang, index) => {
+        const isLanguageLost = index < wrongGuessCount;
+
         const styles = {
             color: lang.color, 
             backgroundColor: lang.backgroundColor,
         };
 
-        const classes = "chip";
+        let classes = "chip";
+
+        if (isLanguageLost) {
+            classes += " skull";
+        }
 
         return (
             <span
@@ -602,7 +608,7 @@ export function Main() {
                 className={classes} 
                 onClick={() => addGuessedLetter(letter)} 
                 aria-label={`Letter ${letter}`} 
-                aria-disabled={guessedLetters.includes(letter)}
+                aria-disabled={isGuessed}
             >
                 {letter}
             </button>
