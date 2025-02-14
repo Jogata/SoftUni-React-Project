@@ -705,9 +705,9 @@ header {
 } 
 
 header > h1 { 
+  color: #F9F4DA;
   font-size: 1.2rem;
   font-weight: 500; 
-  color: #F9F4DA;
 } 
 
 header > p { 
@@ -717,7 +717,7 @@ header > p {
   font-size: 0.9rem;
 } 
 
-section.game-status {
+.game-status {
   /* width: 100%; */
   max-width: 350px;
   min-height: 60px;
@@ -730,6 +730,14 @@ section.game-status {
   color: #F9F4DA;
   text-align: center;
   border-radius: 4px;
+}
+
+.game-status.won {
+  background-color: #10A95B;
+}
+
+.game-status.lost {
+  background-color: #BA2A2A;
 }
 
 .language-chips {

@@ -552,6 +552,14 @@ export function Main() {
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+    let gameStatusClass = "game-status";
+
+    if (isGameLost) {
+        gameStatusClass += " lost";
+    } else if (isGameWon) {
+        gameStatusClass += " won";
+    }
+
     const languageElements = languages.map((lang, index) => {
         const isLanguageLost = index < wrongGuessCount;
 
@@ -656,7 +664,7 @@ export function Main() {
                 </>
             )
         }
-        
+
         return null;
     }
 
@@ -668,7 +676,7 @@ export function Main() {
                     programming world safe from Assembly!</p>
             </header>
 
-            <section className="game-status">
+            <section className={gameStatusClass}>
                 {renderGameStatus()}
                 {/* <h2>You win!</h2> */}
                 {/* <p>Well done! 🎉</p> */}
