@@ -648,6 +648,15 @@ export function Main() {
             )
         }
 
+        if (isGameWon) {
+            return (
+                <>
+                    <h2>You win!</h2>
+                    <p>Well done! 🎉</p>
+                </>
+            )
+        }
+        
         return null;
     }
 
