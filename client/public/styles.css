@@ -807,6 +807,10 @@ section.game-status {
   user-select: none;
 }
 
+.word .letter.missed {
+  color: #EC5D49;
+}
+
 .keyboard {
   /* max-width: 450px; */
   max-width: 540px;

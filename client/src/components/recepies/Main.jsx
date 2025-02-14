@@ -578,9 +578,19 @@ export function Main() {
     });
 
     const letterElements = currentWord.split("").map((letter, index) => {
-        const shouldRevealLetter = guessedLetters.includes(letter);
+        let shouldRevealLetter = guessedLetters.includes(letter);
+        // const shouldRevealLetter = isGameLost || guessedLetters.includes(letter);
+        let classes = "letter";
+
+        if (isGameLost) {
+            if (!shouldRevealLetter) {
+                classes += " missed";
+                shouldRevealLetter = true;
+            }
+        }
+
         return (
-            <span key={index} className="letter">
+            <span key={index} className={classes}>
                 {/* {letter} */}
                 {shouldRevealLetter ? letter.toUpperCase() : ""}
             </span>
@@ -638,7 +648,7 @@ export function Main() {
             )
         }
 
-        return null
+        return null;
     }
 
     return (
