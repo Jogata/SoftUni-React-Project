@@ -668,6 +668,11 @@ export function Main() {
         return null;
     }
 
+    function startNewGame() {
+        setCurrentWord(getRandomWord());
+        setGuessedLetters([]);
+    }
+
     return (
         <main>
             <header>
@@ -694,6 +699,12 @@ export function Main() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
+
+            {isGameOver &&
+                <button
+                    className="new-game"
+                    onClick={startNewGame}
+                >New Game</button>}
         </main>
     )
 }
