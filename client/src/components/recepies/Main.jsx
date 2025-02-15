@@ -620,10 +620,15 @@ export function Main() {
             classes += " wrong";
         }
 
+        // if (isGameOver) {
+        //     classes += " disabled";
+        // }
+
         return (
             <button
                 key={letter} 
                 className={classes} 
+                disabled={isGameOver} 
                 onClick={() => addGuessedLetter(letter)} 
                 aria-label={`Letter ${letter}`} 
                 aria-disabled={isGuessed}
