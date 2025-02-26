@@ -20,8 +20,11 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-// import { Header } from './components/recepies/Header'
-import { Main } from './components/recepies/Main'
+// import { Header } from './components/recepies/Header';
+// import { Home } from './components/travel/commerce/pages/Homepage';
+import { Home } from './components/travel/commerce/pages/Homepage/Home'
+import { Navbar } from './components/travel/commerce/components/Navbar/Navbar'
+import { Footer } from './components/travel/commerce/components/Footer/Footer'
 
 function Loader() {
   return (
@@ -39,7 +42,9 @@ function App() {
     <>
       <AuthContextProvider>
         {/* <Header /> */}
-        <Main />
+        <Navbar />
+        <Home />
+        <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
