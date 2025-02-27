@@ -27,7 +27,7 @@ export function Hero() {
                 </div>
                 <div className="hero-content">
                     <div className="info-icon">
-                        <i class="ri-customer-service-2-fill hero-cc-icon"></i>
+                        <i className="ri-customer-service-2-fill hero-cc-icon"></i>
                     </div>
                     <div className="detail">
                         <h3>24/7 Suuport</h3>
