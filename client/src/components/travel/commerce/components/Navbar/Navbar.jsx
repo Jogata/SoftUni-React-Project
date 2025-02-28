@@ -25,10 +25,10 @@ export function Navbar() {
                 </ul>
             </div>
             <div className="nav-icons">
-                <button className="nav-cart">
+                <Link to={"/cart"} className="nav-cart">
                     <i className="ri-shopping-cart-line"></i>
                     <span className="cart-amount">0</span>
-                </button>
+                </Link>
                 <i className="fa fa-user-o"></i>
             </div>
         </nav>

@@ -27,6 +27,7 @@ import { Navbar } from './components/travel/commerce/components/Navbar/Navbar'
 import { Footer } from './components/travel/commerce/components/Footer/Footer'
 import { ShopContextProvider } from './components/travel/commerce/components/ShopContext/ShopContext'
 import { ProductDetails } from './components/travel/commerce/pages/ProductDetails/ProductDetails'
+import { Cart } from './components/travel/commerce/pages/Cart/Cart'
 
 function Loader() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/product/:id' element={<ProductDetails />} />
+            <Route path='/cart' element={<Cart />} />
           </Routes>
         <Footer />
           {/* <Routes>
