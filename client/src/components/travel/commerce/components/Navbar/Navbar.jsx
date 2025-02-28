@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./navbar.css";
 
 export function Navbar() {
@@ -10,16 +11,16 @@ export function Navbar() {
             <div className="links">
                 <ul>
                     <li>
-                        <a href="">Home</a>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <a href="">Products</a>
+                        <Link to="/">Products</Link>
                     </li>
                     <li>
-                        <a href="">Contacts</a>
+                        <Link to="/contacts">Contacts</Link>
                     </li>
                     <li>
-                        <a href="">App</a>
+                        <Link to="/app">App</Link>
                     </li>
                 </ul>
             </div>

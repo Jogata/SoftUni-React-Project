@@ -26,6 +26,7 @@ import { Home } from './components/travel/commerce/pages/Homepage/Home'
 import { Navbar } from './components/travel/commerce/components/Navbar/Navbar'
 import { Footer } from './components/travel/commerce/components/Footer/Footer'
 import { ShopContextProvider } from './components/travel/commerce/components/ShopContext/ShopContext'
+import { ProductDetails } from './components/travel/commerce/pages/ProductDetails/ProductDetails'
 
 function Loader() {
   return (
@@ -45,7 +46,10 @@ function App() {
       <ShopContextProvider>
         {/* <Header /> */}
         <Navbar />
-        <Home />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/product/:id' element={<ProductDetails />} />
+          </Routes>
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
