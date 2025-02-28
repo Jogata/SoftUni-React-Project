@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ShopContext } from "../ShopContext/ShopContext"
+import './products-list.css'
 
 export function ProductList() {
     const products = useContext(ShopContext);
@@ -20,7 +21,7 @@ export function ProductList() {
                                     <h4>{title}</h4>
                                     <p>$ {price}</p>
                                 </div>
-                                <button>Add To Cart</button>
+                                <button className="add-to-cart">Add To Cart</button>
                             </div>
                         )
                     })}
