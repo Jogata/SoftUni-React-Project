@@ -1,16 +1,17 @@
 import { CartDetails } from "../../components/CartDetails/CartDetails";
+import "./cart.css";
 
 export function Cart() {
     return (
         // <h1>Cart comp</h1>
         <div className="cart">
-            <div className="left">
-                <div className="header">
+            <div className="cart-left">
+                <div className="cart-header">
                     <h1>Shopping Cart</h1>
                     <h1>Items: (0)</h1>
                     <i className="ri-delete-bin-line clear-btn"></i>
                 </div>
-                <div className="header">
+                <div className="cart-header">
                     <span>Description</span>
                     <span>Quantity</span>
                     <span>Price</span>
@@ -23,7 +24,7 @@ export function Cart() {
                     <CartDetails />
                 </div>
             </div>
-            <div className="right">
+            <div className="cart-right">
                 <h2>Cart Summary</h2>
                 <div className="cart-summary">
                     <div className="summary-item">
