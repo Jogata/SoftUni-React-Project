@@ -1,3 +1,5 @@
+import { CartDetails } from "../../components/CartDetails/CartDetails";
+
 export function Cart() {
     return (
         // <h1>Cart comp</h1>
@@ -15,7 +17,10 @@ export function Cart() {
                     <span>Total</span>
                 </div>
                 <div className="cart-details">
-                    <em style={{fontSize: "80px"}}>place cart details here</em>
+                    {/* <em style={{fontSize: "80px"}}>place cart details here</em> */}
+                    <CartDetails />
+                    <CartDetails />
+                    <CartDetails />
                 </div>
             </div>
             <div className="right">
