@@ -5,9 +5,11 @@ export const ShopContext = createContext();
 
 export function ShopContextProvider({children}) {
     const [products, setProducts] = useState(productsData);
+    const [cart, setCart] = useState(productsData);
+    // const [cart, setCart] = useState([]);
 
     return (
-        <ShopContext.Provider value={products}>
+        <ShopContext.Provider value={{products, cart}}>
             {children}
         </ShopContext.Provider>
     )

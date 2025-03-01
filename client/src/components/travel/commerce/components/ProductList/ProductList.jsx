@@ -4,7 +4,7 @@ import './products-list.css'
 import { Link } from "react-router-dom";
 
 export function ProductList() {
-    const products = useContext(ShopContext);
+    const {products} = useContext(ShopContext);
     // console.log(products);
     // const products = [];
 

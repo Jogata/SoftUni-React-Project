@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { CartDetails } from "../../components/CartDetails/CartDetails";
 import "./cart.css";
+import { ShopContext } from "../../components/ShopContext/ShopContext";
 
 export function Cart() {
+    const {cart} = useContext(ShopContext);
+    // console.log(cart);
+
     return (
         // <h1>Cart comp</h1>
         <div className="cart">
@@ -19,9 +24,12 @@ export function Cart() {
                 </div>
                 <div className="cart-details">
                     {/* <em style={{fontSize: "80px"}}>place cart details here</em> */}
-                    <CartDetails />
-                    <CartDetails />
-                    <CartDetails />
+                    {/* <CartDetails /> */}
+                    {/* <CartDetails /> */}
+                    {/* <CartDetails /> */}
+                    {cart.map(item => (
+                        <CartDetails key={item.id} />
+                    ))}
                 </div>
             </div>
             <div className="cart-right">
