@@ -4,14 +4,15 @@ import { CartDetails } from "../../components/CartDetails/CartDetails";
 import "./cart.css";
 
 export function Cart() {
-    const {cart} = useContext(ShopContext);
+    const {cart, total} = useContext(ShopContext);
+    console.log(total);
 
     return (
         <div className="cart">
             <div className="cart-left">
                 <div className="cart-header">
                     <h1>Shopping Cart</h1>
-                    <h1>Items: (0)</h1>
+                    <h1>Items: ({total})</h1>
                     <i className="ri-delete-bin-line clear-btn"></i>
                 </div>
                 <div className="cart-header">
@@ -51,7 +52,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item total">
                         <span>Total Cost</span>
-                        <span> 0</span>
+                        <span> {total}</span>
                     </div>
                     <button className="checkout-btn">CHECKOUT</button>
                 </div>

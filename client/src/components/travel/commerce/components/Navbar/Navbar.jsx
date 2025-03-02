@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ShopContext } from "../ShopContext/ShopContext";
 import "./navbar.css";
 
 export function Navbar() {
+    const {total} = useContext(ShopContext);
+    console.log(total);
+
     return (
         <nav className="e-navbar">
             {/* <h1>navbar</h1> */}
@@ -27,7 +32,7 @@ export function Navbar() {
             <div className="nav-icons">
                 <Link to={"/cart"} className="nav-cart">
                     <i className="ri-shopping-cart-line"></i>
-                    <span className="cart-amount">0</span>
+                    <span className="cart-amount">{total}</span>
                 </Link>
                 <i className="fa fa-user-o"></i>
             </div>
