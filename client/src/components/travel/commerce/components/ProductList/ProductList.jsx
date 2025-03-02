@@ -4,17 +4,15 @@ import './products-list.css'
 import { Link } from "react-router-dom";
 
 export function ProductList() {
-    const {products} = useContext(ShopContext);
-    // console.log(products);
-    // const products = [];
+    const {products, addToCart} = useContext(ShopContext);
 
     return (
         <>
             <div className="products">
                 <h2>Our Elegant Collections</h2>
                 <div className="products-grid">
-                    {products.map(p => {
-                        const {id, image, title, price} = p;
+                    {products.map(product => {
+                        const {id, image, title, price} = product;
                         return (
                             <div className="product" key={id}>
                                 <Link to={`/product/${id}`}>
@@ -24,7 +22,12 @@ export function ProductList() {
                                         <p>$ {price}</p>
                                     </div>
                                 </Link>
-                                <button className="add-to-cart">Add To Cart</button>
+                                <button 
+                                    className="add-to-cart" 
+                                    onClick={() => {addToCart(product, id)}}
+                                >
+                                    Add To Cart
+                                </button>
                             </div>
                         )
                     })}

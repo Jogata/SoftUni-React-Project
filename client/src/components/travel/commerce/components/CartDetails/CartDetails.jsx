@@ -1,14 +1,14 @@
-export function CartDetails() {
+export function CartDetails({product}) {
+    const {id, title, image, price} = product;
+    // console.log(id, image, price, title);
+    
     return (
         <>
-            {/* <hr /> */}
-            {/* <h1>cart details component</h1> */}
-            {/* <hr /> */}
             <div className="cart-item">
                 <div className="product-details">
-                    <img src="\skyrim\equipment\armor\armor.png" alt="" />
+                    <img src={image} alt="" />
                     <div className="product-info">
-                        <h3>(title)</h3>
+                        <h3>{title}</h3>
                         <button className="remove-btn">
                             Remove
                             <i className="ri-delete-bin-line"></i>
@@ -25,7 +25,7 @@ export function CartDetails() {
                     </button>
                 </div>
                 <div className="price">
-                    $ <span>(price)</span>
+                    $ <span>{price}</span>
                 </div>
                 <div className="total">
                     (amount * price)

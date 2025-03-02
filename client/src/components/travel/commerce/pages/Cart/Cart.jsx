@@ -1,14 +1,12 @@
 import { useContext } from "react";
+import { ShopContext } from "../../components/ShopContext/ShopContext";
 import { CartDetails } from "../../components/CartDetails/CartDetails";
 import "./cart.css";
-import { ShopContext } from "../../components/ShopContext/ShopContext";
 
 export function Cart() {
     const {cart} = useContext(ShopContext);
-    // console.log(cart);
 
     return (
-        // <h1>Cart comp</h1>
         <div className="cart">
             <div className="cart-left">
                 <div className="cart-header">
@@ -23,13 +21,12 @@ export function Cart() {
                     <span>Total</span>
                 </div>
                 <div className="cart-details">
-                    {/* <em style={{fontSize: "80px"}}>place cart details here</em> */}
-                    {/* <CartDetails /> */}
-                    {/* <CartDetails /> */}
-                    {/* <CartDetails /> */}
-                    {cart.map(item => (
-                        <CartDetails key={item.id} />
-                    ))}
+                    {cart.length > 0 ? 
+                        cart.map(item => (
+                            <CartDetails key={item.id} product={item} />
+                        )) : 
+                        <p>Your cart is empty</p>
+                    }
                 </div>
             </div>
             <div className="cart-right">
