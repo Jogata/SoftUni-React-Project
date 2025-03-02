@@ -4,8 +4,8 @@ import { ShopContext } from "../ShopContext/ShopContext";
 import "./navbar.css";
 
 export function Navbar() {
-    const {total} = useContext(ShopContext);
-    console.log(total);
+    const {itemAmount, total} = useContext(ShopContext);
+    // console.log(itemAmount);
 
     return (
         <nav className="e-navbar">
@@ -32,7 +32,7 @@ export function Navbar() {
             <div className="nav-icons">
                 <Link to={"/cart"} className="nav-cart">
                     <i className="ri-shopping-cart-line"></i>
-                    <span className="cart-amount">{total}</span>
+                    <span className="cart-amount">{itemAmount}</span>
                 </Link>
                 <i className="fa fa-user-o"></i>
             </div>
