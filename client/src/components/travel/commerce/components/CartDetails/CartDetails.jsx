@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { ShopContext } from "../ShopContext/ShopContext";
+
 export function CartDetails({product}) {
-    const {id, title, image, price} = product;
+    const {id, title, image, price, amount} = product;
     // console.log(id, image, price, title);
-    
+    const {removeFromCart} = useContext(ShopContext);
+
     return (
         <>
             <div className="cart-item">
@@ -9,7 +13,10 @@ export function CartDetails({product}) {
                     <img src={image} alt="" />
                     <div className="product-info">
                         <h3>{title}</h3>
-                        <button className="remove-btn">
+                        <button 
+                            className="remove-btn" 
+                            onClick={() => removeFromCart(id)}
+                        >
                             Remove
                             <i className="ri-delete-bin-line"></i>
                         </button>
@@ -19,7 +26,7 @@ export function CartDetails({product}) {
                     <button>
                         <i className="fa fa-minus" aria-hidden="true"></i>
                     </button>
-                    <span>(amount)</span>
+                    <span>{amount}</span>
                     <button>
                         <i className="fa fa-plus" aria-hidden="true"></i>
                     </button>

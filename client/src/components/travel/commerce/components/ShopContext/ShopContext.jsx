@@ -55,8 +55,24 @@ export function ShopContextProvider({children}) {
         }
     }
 
+    function removeFromCart(id) {
+        const newCart = cart.filter(p => {
+            return p.id !== id;
+        });
+        setCart(newCart);
+    }
+
     return (
-        <ShopContext.Provider value={{products, cart, addToCart, itemAmount, total}}>
+        <ShopContext.Provider 
+            value={{
+                products, 
+                cart, 
+                addToCart, 
+                removeFromCart, 
+                itemAmount, 
+                total
+            }}
+        >
             {children}
         </ShopContext.Provider>
     )

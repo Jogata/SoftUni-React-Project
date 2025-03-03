@@ -5,7 +5,7 @@ import "./cart.css";
 
 export function Cart() {
     const {cart, itemAmount, total} = useContext(ShopContext);
-    console.log(itemAmount);
+    // console.log(itemAmount);
 
     return (
         <div className="cart">
@@ -35,7 +35,7 @@ export function Cart() {
                 <div className="cart-summary">
                     <div className="summary-item">
                         <span>Items</span>
-                        <span> 0</span>
+                        <span> {itemAmount}</span>
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
