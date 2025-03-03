@@ -62,6 +62,10 @@ export function ShopContextProvider({children}) {
         setCart(newCart);
     }
 
+    function clearCart() {
+        setCart([]);
+    }
+
     return (
         <ShopContext.Provider 
             value={{
@@ -69,6 +73,7 @@ export function ShopContextProvider({children}) {
                 cart, 
                 addToCart, 
                 removeFromCart, 
+                clearCart, 
                 itemAmount, 
                 total
             }}

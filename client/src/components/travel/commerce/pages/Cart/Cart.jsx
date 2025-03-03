@@ -4,7 +4,7 @@ import { CartDetails } from "../../components/CartDetails/CartDetails";
 import "./cart.css";
 
 export function Cart() {
-    const {cart, itemAmount, total} = useContext(ShopContext);
+    const {cart, itemAmount, total, clearCart} = useContext(ShopContext);
     // console.log(itemAmount);
 
     return (
@@ -13,7 +13,9 @@ export function Cart() {
                 <div className="cart-header">
                     <h1>Shopping Cart</h1>
                     <h1>Items: ({itemAmount})</h1>
-                    <i className="ri-delete-bin-line clear-btn"></i>
+                    <button onClick={clearCart}>
+                        <i className="ri-delete-bin-line clear-btn"></i>
+                    </button>
                 </div>
                 <div className="cart-header">
                     <span>Description</span>
