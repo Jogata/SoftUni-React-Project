@@ -41,7 +41,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
-                        <span> 0</span>
+                        <span> {total}</span>
                     </div>
                     <div className="summary-item">
                         <span>Shipping</span>

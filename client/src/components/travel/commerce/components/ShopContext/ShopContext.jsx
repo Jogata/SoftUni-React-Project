@@ -62,6 +62,27 @@ export function ShopContextProvider({children}) {
         setCart(newCart);
     }
 
+    function decreaseItemAmount(id) {
+        const cartItem = cart.find(item => {
+            return item.id === id;
+        });
+
+        if (cartItem) {
+            const newCart = cart.map(item => {
+                if (item.id === id) {
+                    return {...item, amount: cartItem.amount - 1};
+                } else {
+                    return item;
+                }
+            })
+            setCart(newCart);
+        } else {
+            if (cartItem.amount < 2) {
+                removeFromCart(id);
+            }
+        }
+    }
+
     function clearCart() {
         setCart([]);
     }
@@ -73,6 +94,7 @@ export function ShopContextProvider({children}) {
                 cart, 
                 addToCart, 
                 removeFromCart, 
+                decreaseItemAmount, 
                 clearCart, 
                 itemAmount, 
                 total
