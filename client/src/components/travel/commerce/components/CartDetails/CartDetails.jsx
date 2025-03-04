@@ -4,7 +4,7 @@ import { ShopContext } from "../ShopContext/ShopContext";
 export function CartDetails({product}) {
     const {id, title, image, price, amount} = product;
     // console.log(id, image, price, title);
-    const {removeFromCart, decreaseItemAmount} = useContext(ShopContext);
+    const {removeFromCart, decreaseItemAmount, increaseItemAmount} = useContext(ShopContext);
 
     return (
         <>
@@ -27,7 +27,7 @@ export function CartDetails({product}) {
                         <i className="fa fa-minus" aria-hidden="true"></i>
                     </button>
                     <span>{amount}</span>
-                    <button>
+                    <button onClick={() => increaseItemAmount(id)}>
                         <i className="fa fa-plus" aria-hidden="true"></i>
                     </button>
                 </div>

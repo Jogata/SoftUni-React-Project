@@ -93,6 +93,17 @@ export function ShopContextProvider({children}) {
         // }
     }
 
+    function increaseItemAmount(id) {
+        const cartItem = cart.find(item => {
+            return item.id === id;
+        });
+        
+        cartItem.amount = cartItem.amount + 1;
+        // console.log(cartItem.amount);
+
+        setCart([...cart]);
+    }
+
     function clearCart() {
         setCart([]);
     }
@@ -105,6 +116,7 @@ export function ShopContextProvider({children}) {
                 addToCart, 
                 removeFromCart, 
                 decreaseItemAmount, 
+                increaseItemAmount, 
                 clearCart, 
                 itemAmount, 
                 total
