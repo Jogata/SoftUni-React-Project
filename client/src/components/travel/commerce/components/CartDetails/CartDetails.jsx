@@ -32,10 +32,10 @@ export function CartDetails({product}) {
                     </button>
                 </div>
                 <div className="price">
-                    $ <span>{price}</span>
+                    $ <span>{price.toFixed(2)}</span>
                 </div>
                 <div className="total">
-                    (amount * price)
+                    $ {(amount * price).toFixed(2)}
                 </div>
             </div>
         </>

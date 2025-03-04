@@ -11,7 +11,7 @@ export function ShopContextProvider({children}) {
     const [itemAmount, setItemAmount] = useState(0);
 
     useEffect(() => {
-        console.log(cart);
+        // console.log(cart);
         const total = cart.reduce((acc, currentItem) => {
             const price = parseFloat(currentItem.price);
             if (isNaN(price)) {
@@ -33,7 +33,7 @@ export function ShopContextProvider({children}) {
 
     function addToCart(product, id) {
         const newProduct = {...product, amount: 1};
-        // console.log(newProduct);
+        // console.log("added");
         // setCart(prev => [...prev, newProduct]);
 
         const cartItem = cart.find(item => {
@@ -66,21 +66,31 @@ export function ShopContextProvider({children}) {
         const cartItem = cart.find(item => {
             return item.id === id;
         });
+        // console.log(cartItem.amount);
 
-        if (cartItem) {
-            const newCart = cart.map(item => {
-                if (item.id === id) {
-                    return {...item, amount: cartItem.amount - 1};
-                } else {
-                    return item;
-                }
-            })
-            setCart(newCart);
+        cartItem.amount = cartItem.amount - 1;
+        // console.log(cartItem.amount);
+
+        if (cartItem.amount == 0) {
+            removeFromCart(id);
         } else {
-            if (cartItem.amount < 2) {
-                removeFromCart(id);
-            }
+            setCart([...cart]);
         }
+
+        // if (cartItem) {
+        //     const newCart = cart.map(item => {
+        //         if (item.id === id) {
+        //             return {...item, amount: cartItem.amount - 1};
+        //         } else {
+        //             return item;
+        //         }
+        //     })
+        //     setCart(newCart);
+        // } else {
+        //     if (cartItem.amount < 2) {
+        //         removeFromCart(id);
+        //     }
+        // }
     }
 
     function clearCart() {

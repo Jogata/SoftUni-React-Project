@@ -41,7 +41,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
-                        <span> {total}</span>
+                        <span> {total.toFixed(2)}</span>
                     </div>
                     <div className="summary-item">
                         <span>Shipping</span>
@@ -54,7 +54,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item total">
                         <span>Total Cost</span>
-                        <span> {total}</span>
+                        <span> {total.toFixed(2)}</span>
                     </div>
                     <button className="checkout-btn">CHECKOUT</button>
                 </div>

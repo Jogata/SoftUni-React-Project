@@ -19,7 +19,7 @@ export function ProductList() {
                                     <img src={image} alt="" />
                                     <div className="product-info">
                                         <h4>{title}</h4>
-                                        <p>$ {price}</p>
+                                        <p>$ {price.toFixed(2)}</p>
                                     </div>
                                 </Link>
                                 <button 
