@@ -37,6 +37,7 @@ export function ShopContextProvider({children}) {
         // setCart(prev => [...prev, newProduct]);
 
         const cartItem = cart.find(item => {
+            // console.log(id);
             return item.id === id;
         });
 

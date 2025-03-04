@@ -1,0 +1,36 @@
+.product-details-info {
+    padding: 80px;
+    display: flex;
+}
+
+.details-left img {
+    width: 460px;
+}
+
+.details-right {
+    padding: 70px;
+}
+
+.details-right h3 {
+    font-size: 30px;
+}
+
+.details-right .product-price {
+    margin-top: 10px;
+    color: red;
+    font-size: 22px;
+} 
+
+.details-right .description {
+    margin-top: 16px;
+    color: #666;
+    font-size: 20px;
+}
+
+.details-right button {
+    margin-top: 16px;
+    padding: 1rem 3.6rem;
+    color: #fff;
+    /* border: none; */
+    background-color: red;
+}
