@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../ShopContext/ShopContext";
 import "./navbar.css";
 
 export function Navbar() {
-    const {itemAmount, total} = useContext(ShopContext);
-    // console.log(itemAmount);
+    const {itemAmount} = useContext(ShopContext);
+    const [classes, setClasses] = useState("e-navbar");
+    // console.log(classes);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                // console.log("fixed");
+                setClasses("e-navbar fixed");
+            } else {
+                setClasses("e-navbar");
+            }
+        })
+    })
 
     return (
-        <nav className="e-navbar">
+        <nav className={classes}>
             {/* <h1>navbar</h1> */}
             <div className="logo">
                 <span>ShopX</span>
