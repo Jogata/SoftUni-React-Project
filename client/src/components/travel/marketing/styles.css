@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    background-color: transparent;
+    border: 0px solid transparent;
+    outline: 0px solid transparent;
+    cursor: pointer;
+}
+
+button:focus-visible, 
+a:focus-visible {
+    outline: 1px solid #808080;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
