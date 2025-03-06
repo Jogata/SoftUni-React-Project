@@ -4,7 +4,7 @@ export function Navbar() {
     return (
         <nav>
             <div className="logo">
-                <span>Trevo</span>
+                <span>Infigio</span>
             </div>
             <div className="links">
                 <ul>
