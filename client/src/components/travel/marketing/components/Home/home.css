@@ -100,12 +100,15 @@
     color: white;
     /* border: 2px solid transparent; */
     background-color: transparent;
-    box-shadow: -1px -1px 1px #fff4;
-    /* transition: border-color 500ms; */
+    box-shadow: 1px 1px 1px #000, 
+            -1px -1px 1px #fff4;
+    transition: all 500ms;
 }
 .hero .btns button:hover:nth-child(2) {
     /* border-bottom: 2px solid white; */
-    box-shadow:  -2px -2px 2px #fff4;
+    transform: scale(1.1);
+    box-shadow: 2px 2px 2px #000, 
+            -2px -2px 2px #fff4;
 }
 
 .hero .btns .play-icon {
