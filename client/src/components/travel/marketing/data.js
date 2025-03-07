@@ -2,10 +2,10 @@ import lady from './images/laddy1.jpg'
 import lady2 from './images/ladyy.jpg'
 
 export const navlinks = [
-    { id:1 , title : 'Home', link: '#home'},
-    { id:1 , title : 'About', link: '#about'},
-    { id:1 , title : 'Service', link: '#service'},
-    { id:1 , title : 'Blog', link: '#blog'}
+    { id: 1, title : 'Home', link: '#home'},
+    { id: 2, title : 'About', link: '#about'},
+    { id: 3, title : 'Service', link: '#service'},
+    { id: 4, title : 'Blog', link: '#blog'}
 ]
 export const about = [
     {
