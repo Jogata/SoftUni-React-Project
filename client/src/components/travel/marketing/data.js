@@ -37,6 +37,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
     {
         icon: "ri-centos-fill",
@@ -44,6 +45,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
     {
         icon: "ri-centos-fill",
@@ -51,6 +53,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
     {
         icon: "ri-centos-fill",
@@ -58,6 +61,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
     {
         icon: "ri-centos-fill",
@@ -65,6 +69,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
     {
         icon: "ri-centos-fill",
@@ -72,6 +77,7 @@ export const services = [
         desc : 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
         action : 'Explore',
         link : "ri-arrow-right-line",
+        // link : "ri-arrow-right-double-fill",
     },
 ];
 
@@ -109,27 +115,27 @@ export const feedback =[
 
 export const menuItems = [
     {
-      title: 'How do i get mobile app',
-      content: 'Content for Section 1'
+        title: 'How do i get mobile app',
+        content: 'Content for Section 1'
     },
     {
-      title: 'How do i contact support',
-      content: 'Content for Section 2'
+        title: 'How do i contact support',
+        content: 'Content for Section 2'
     },
     {
         title: 'Ho do i track my growth',
         content: 'Content for Section 2'
-      },
-      {
+    },
+    {
         title: 'Does Infigio have paid services',
         content: 'Content for Section 2'
-      },
-      {
+    },
+    {
         title: 'How fast do i see result after using Infigio',
         content: 'Content for Section 2'
-      },
+    },
     {
-      title: 'Can i use Infigio for free',
-      content: 'Content for Section 3'
+        title: 'Can i use Infigio for free',
+        content: 'Content for Section 3'
     }
-  ];
+];

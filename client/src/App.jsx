@@ -23,6 +23,7 @@ import Logout from './components/logout/Logout'
 import { Home } from './components/travel/marketing/components/Home/Home';
 import { Navbar } from './components/travel/marketing/components/Navbar/Navbar';
 import { Footer } from './components/travel/marketing/components/Footer/Footer';
+import About from './components/travel/marketing/components/About/About'
 
 function Loader() {
   return (
@@ -41,6 +42,7 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Home />
+        <About />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
