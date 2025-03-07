@@ -1,0 +1,111 @@
+.service {
+    /* height: 70vh; */
+    padding: 80px 0;
+}
+
+.service-container {
+    /* height: 60vh; */
+    margin-top: 60px;
+    padding-inline: 150px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    /* background: black; */
+}
+
+.service-header {
+    text-align: center;
+}
+
+.service-list {
+    /* height: 280px; */
+    /* padding-inline: 30px; */
+    padding: 30px;
+    border-radius: 10px;
+    /* background-color: black; */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+/* .service-list:hover {
+    background-color: gold;
+    transform: scale(1.1);
+} */
+
+.service-list i {
+    /* color: gold; */
+    font-size: 30px;
+}
+
+.service-list > h2 {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.service-list .icon {
+    font-size: 30px;
+}
+
+/* .service-list p {
+    margin-top: 20px;
+    font-size: 16px;
+} */
+
+.service-list .action {
+    margin-top: 20px;
+    /* cursor: pointer; */
+}
+
+.service-list .action a {
+    display: inline-flex;
+    /* gap: 4px; */
+    align-items: center;
+}
+
+.service-list .action a {
+    color: #000;
+    font-size: 22px;
+}
+
+.service-list .action a span {
+    margin-right: 6px;
+}
+
+.service-list .action a:hover span {
+    margin-right: 10px;
+    /* transform: translateX(10%); */
+    transition: margin-right 300ms;
+}
+
+.service-list .action a i {
+    color: transparent;
+    font-size: 22px;
+    -webkit-text-stroke: 1px black;
+    transform: rotate(45deg);
+}
+
+.service-list:nth-child(1) {
+    background-image: 
+        linear-gradient(164deg, 
+            rgba(214, 214, 214, 0.15) 0%, 
+            transparent 44%), 
+        linear-gradient(97deg, 
+            rgba(197, 197, 197, 0.15) 0%, 
+            transparent 40%), 
+        linear-gradient(265deg, 
+            rgba(218, 210, 210, 0.15) 0%, 
+            transparent 30%), 
+        linear-gradient(316deg, 
+            rgba(158, 141, 141, 0.15) 0%, 
+            transparent 78%), 
+        repeating-linear-gradient(38deg, 
+            rgba(189, 174, 174, 0.1) 0px, 
+            transparent 3px), 
+        repeating-linear-gradient(100deg, 
+            rgba(140,140,140,0.1) 0px, 
+            transparent 3px), 
+        linear-gradient(90deg, 
+            rgb(247, 193, 47),
+            rgb(255,188,0));
+}

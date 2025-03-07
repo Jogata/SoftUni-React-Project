@@ -23,7 +23,8 @@ import Logout from './components/logout/Logout'
 import { Home } from './components/travel/marketing/components/Home/Home';
 import { Navbar } from './components/travel/marketing/components/Navbar/Navbar';
 import { Footer } from './components/travel/marketing/components/Footer/Footer';
-import About from './components/travel/marketing/components/About/About'
+import { About } from './components/travel/marketing/components/About/About'
+import { Services } from './components/travel/marketing/components/Services/Services'
 
 function Loader() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Navbar />
         <Home />
         <About />
+        <Services />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

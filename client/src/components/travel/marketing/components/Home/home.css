@@ -5,6 +5,7 @@
     display: flex;
     gap: 20px;
     justify-content: space-between;
+    color: #fff;
     background-color: black;
     background-image: 
         repeating-linear-gradient(0deg, 

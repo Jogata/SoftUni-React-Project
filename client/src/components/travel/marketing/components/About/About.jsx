@@ -2,7 +2,7 @@ import img from '../../images/img3.jpg';
 import { about } from '../../data';
 import './about.css';
 
-const About = () => {
+export function About() {
     return (
         <div className="about" id='about'>
             <div className="left">
@@ -37,5 +37,3 @@ const About = () => {
         </div>
     )
 }
-
-export default About
