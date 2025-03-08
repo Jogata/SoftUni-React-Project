@@ -27,6 +27,7 @@ import { About } from './components/travel/marketing/components/About/About'
 import { Services } from './components/travel/marketing/components/Services/Services'
 import { Feedback } from './components/travel/marketing/components/Feedback/Feedback'
 import { Faq } from './components/travel/marketing/components/FAQ/Faq'
+import { More } from './components/travel/marketing/components/More/More'
 
 function Loader() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Services />
         <Feedback />
         <Faq />
+        <More />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
