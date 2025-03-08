@@ -1,7 +1,7 @@
 .about {
     /* height: 90vh; */
-    margin-top: 90px;
-    padding-inline: 100px;
+    /* margin-top: 90px; */
+    padding: 80px 100px 0;
     display: flex;
     gap: 60px;
     /* justify-content: space-between; */
