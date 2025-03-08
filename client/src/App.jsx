@@ -26,6 +26,7 @@ import { Footer } from './components/travel/marketing/components/Footer/Footer';
 import { About } from './components/travel/marketing/components/About/About'
 import { Services } from './components/travel/marketing/components/Services/Services'
 import { Feedback } from './components/travel/marketing/components/Feedback/Feedback'
+import { Faq } from './components/travel/marketing/components/FAQ/Faq'
 
 function Loader() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <About />
         <Services />
         <Feedback />
+        <Faq />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

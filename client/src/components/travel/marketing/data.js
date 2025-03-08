@@ -115,15 +115,15 @@ export const feedback =[
 
 export const menuItems = [
     {
-        title: 'How do i get mobile app',
+        title: 'How do I get mobile app',
         content: 'Content for Section 1'
     },
     {
-        title: 'How do i contact support',
+        title: 'How do I contact support',
         content: 'Content for Section 2'
     },
     {
-        title: 'Ho do i track my growth',
+        title: 'Ho do I track my growth',
         content: 'Content for Section 2'
     },
     {
@@ -131,11 +131,11 @@ export const menuItems = [
         content: 'Content for Section 2'
     },
     {
-        title: 'How fast do i see result after using Infigio',
+        title: 'How fast do I see result after using Infigio',
         content: 'Content for Section 2'
     },
     {
-        title: 'Can i use Infigio for free',
+        title: 'Can I use Infigio for free',
         content: 'Content for Section 3'
     }
 ];
