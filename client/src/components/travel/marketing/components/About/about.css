@@ -19,7 +19,11 @@
     max-height: 600px;
     margin: auto;    
     object-fit: cover;
-    border-radius: 40px;
+    /* border-radius: 40px; */
+    /* clip-path: url("#mask-1"); */
+    /* clip-path: url("#mask-2"); */
+    /* clip-path: url("#mask-3"); */
+    clip-path: url("#mask-4");
 }
 
 .right {

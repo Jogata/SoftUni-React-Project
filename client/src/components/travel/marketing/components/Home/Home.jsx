@@ -34,8 +34,35 @@ export function Home() {
                 </div>
             </div>
             <div className="clients">
-                <div className="clients-detail">
+                <div className="clients-details">
                     <div className="imgs">
+                        <img src={stripe} alt="" />
+                        <img src={uber} alt="" />
+                        <img src={amazon} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={facebook} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={airbnb} alt="" />
+                        <img src={yahoo} alt="" />
+                        
+                        <img src={stripe} alt="" />
+                        <img src={uber} alt="" />
+                        <img src={amazon} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={facebook} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={airbnb} alt="" />
+                        <img src={yahoo} alt="" />
+
+                        <img src={stripe} alt="" />
+                        <img src={uber} alt="" />
+                        <img src={amazon} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={facebook} alt="" />
+                        <img src={spotify} alt="" />
+                        <img src={airbnb} alt="" />
+                        <img src={yahoo} alt="" />
+
                         <img src={stripe} alt="" />
                         <img src={uber} alt="" />
                         <img src={amazon} alt="" />
