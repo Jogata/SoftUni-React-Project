@@ -20,15 +20,9 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Home } from './components/travel/marketing/components/Home/Home';
-import { Navbar } from './components/travel/marketing/components/Navbar/Navbar';
-import { Footer } from './components/travel/marketing/components/Footer/Footer';
-import { About } from './components/travel/marketing/components/About/About';
-import { Services } from './components/travel/marketing/components/Services/Services';
-import { Feedback } from './components/travel/marketing/components/Feedback/Feedback';
-import { Faq } from './components/travel/marketing/components/FAQ/Faq';
-import { More } from './components/travel/marketing/components/More/More';
-import { Contact } from './components/travel/marketing/components/Contact/Contact';
+import { Navbar } from './components/travel/saas-marketing/components/Navbar/Navbar';
+import { Home } from './components/travel/saas-marketing/components/Home/Home';
+import { Footer } from './components/travel/saas-marketing/components/Footer/Footer';
 
 function Loader() {
   return (
@@ -47,12 +41,6 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Home />
-        <About />
-        <Services />
-        <Feedback />
-        <Faq />
-        <More />
-        <Contact />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
