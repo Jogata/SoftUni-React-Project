@@ -25,6 +25,7 @@ import { Home } from './components/travel/saas-marketing/components/Home/Home';
 import { Footer } from './components/travel/saas-marketing/components/Footer/Footer';
 import { Card } from './components/travel/saas-marketing/components/Card/Card'
 import { Services } from './components/travel/saas-marketing/components/Services/Services'
+import { Integrate } from './components/travel/saas-marketing/components/Integrate/Integrate'
 
 function Loader() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Home />
         <Card />
         <Services />
+        <Integrate />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
