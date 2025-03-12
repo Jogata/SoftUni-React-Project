@@ -10,14 +10,14 @@ import verge from "../../images/verge-logo.svg";
 
 export function Integrate() {
     const content = [
-        { id: 1, name: "Glovo", icon: glovo },
-        { id: 2, name: "Oracle", icon: oracle },
-        { id: 3, name: "Paypal", icon: paypal },
-        { id: 4, name: "Segment", icon: segment },
-        { id: 5, name: "Payoneer", icon: payoneer },
-        { id: 6, name: "Stripe", icon: stripe },
-        { id: 7, name: "Ionic", icon: ionic },
-        { id: 8, name: "Verge", icon: verge },
+        { id: 1, name: "Glovo", icon: glovo }, 
+        { id: 2, name: "Oracle", icon: oracle }, 
+        { id: 3, name: "Paypal", icon: paypal }, 
+        { id: 4, name: "Segment", icon: segment }, 
+        { id: 5, name: "Payoneer", icon: payoneer }, 
+        { id: 6, name: "Stripe", icon: stripe }, 
+        { id: 7, name: "Ionic", icon: ionic }, 
+        { id: 8, name: "Verge", icon: verge }
     ];
 
     return (
@@ -37,14 +37,22 @@ export function Integrate() {
                         </div>
                     </div>
                     <div className="circle">
-                        {content.map(item => {
+                        {content.map((item, index) => {
                             return (
-                                <div key={item.id} className="menu-item">
-                                    <img src={item.icon} alt="" className="icon" />
-                                    <div className="label">
-                                        {item.name}
+                                <div key={item.id} className='test' style={{"--i": index, "--length": content.length}}>
+                                    <div className="menu-item">
+                                        <img src={item.icon} alt="" className="icon" />
+                                        <div className="label">
+                                            {item.name}
+                                        </div>
                                     </div>
                                 </div>
+                                // <div key={item.id} className="menu-item">
+                                //     <img src={item.icon} alt="" className="icon" />
+                                //     <div className="label">
+                                //         {item.name}
+                                //     </div>
+                                // </div>
                             )
                         })}
                     </div>
