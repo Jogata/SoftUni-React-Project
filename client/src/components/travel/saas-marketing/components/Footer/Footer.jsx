@@ -23,7 +23,7 @@ export function Footer() {
                             <i className="fa fa-instagram"></i>
                         </a>
                         <a href="#">
-                            <i className="fa fa-youtube"></i>
+                            <i className="fa fa-youtube-play"></i>
                         </a>
                     </div>
                 </div>
@@ -43,6 +43,9 @@ export function Footer() {
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div className="copyrights">
+                Copyright © 2023. All rights reserved.
             </div>
         </footer>
     )
