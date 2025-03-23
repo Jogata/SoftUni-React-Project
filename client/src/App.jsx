@@ -20,13 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Navbar } from './components/travel/saas-marketing/components/Navbar/Navbar';
-import { Home } from './components/travel/saas-marketing/components/Home/Home';
-import { Footer } from './components/travel/saas-marketing/components/Footer/Footer';
-import { Card } from './components/travel/saas-marketing/components/Card/Card'
-import { Services } from './components/travel/saas-marketing/components/Services/Services'
-import { Integrate } from './components/travel/saas-marketing/components/Integrate/Integrate'
-import { Comments } from './components/travel/saas-marketing/components/Comments/Comments'
+import { Hero } from './components/travel/black-portfolio/Home/Hero';
 
 function Loader() {
   return (
@@ -43,13 +37,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Navbar />
-        <Home />
-        <Card />
-        <Services />
-        <Integrate />
-        <Comments />
-        <Footer />
+        <Hero />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
