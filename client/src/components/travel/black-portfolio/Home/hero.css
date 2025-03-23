@@ -1,27 +1,51 @@
+.hero {
+    max-width: 1400px;
+    margin: auto;
+}
+
 .hero-content {
-    position: relative;
+    /* position: relative; */
     /* height: 85vh; */
-    margin-top: 50px;
-    padding-inline: 100px;
+    /* margin-top: 50px; */
+    padding: 50px;
     display: flex;
+    gap: 30px;
+    flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: space-between;
     /* flex-direction: row; */
 }
 
 .hero-left {
-    display: flex;
-    gap: 15px;
-    transform: rotate(270deg);
+    max-width: 600px;
+    margin: auto;
+    /* margin-top: 100px; */
+    /* display: flex; */
+    /* gap: 15px; */
+    /* transform: rotate(270deg); */
 }
 
-.hero-center {
+.hero-left h2 {
+    font-size: 45px;
+}
+
+.hero-left h1 {
+    font-size: 70px;
+}
+
+.hero-left p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 20px;
+}
+
+/* .hero-center {
     display: grid;
     place-items: center;
     margin-right: 100px;
-}
+} */
 
-.hero-center h1 {
+/* .hero-center h1 {
     font-size: 220px;
     font-weight: 400;
     font-style: normal;
@@ -43,22 +67,43 @@
 .hero-center p {
     margin-top: 10px;
     font-size: 20px;
-}
+} */
 
 .hero-right {
-    display: flex;
-    gap: 14px;
+    max-width: 480px;
+    margin: auto;
+    /* max-width: 50%; */
+    /* display: flex;
     flex-direction: column;
+    gap: 14px; */
 }
 
-.hero-right .social-icon {
+.hero-img {
+    /* display: inline-block; */
+    /* width: 350px; */
+    padding: 20px;
+    /* max-width: 620px; */
+    border-radius: 15px;
+    border: 8px solid #212531;
+}
+
+.hero-img img {
+    width: 100%;
+    /* width: 620px; */
+    /* height: 480px; */
+    /* margin-left: 1rem; */
+    /* object-fit: contain; */
+}
+
+/* .hero-right .social-icon {
     font-size: 22px;
-}
+} */
 
-@media (max-width: 834px) {
+/* @media (max-width: 834px) {
     .hero-content {
         padding-inline: 70px;
     }
+
     .hero-center h1 {
         font-size: 180px;
     }
@@ -69,20 +114,25 @@
         width: 100%;
         padding-inline: 30px;
     }
+
     .hero-right, 
     .hero-left {
         display: none;
     }
+
     .hero-center {
         margin-top: 50px;
     }
+
     .hero-center h1 {
         font-size: 120px;
     }
+
     .hero-center .text-buttom {
         margin-top: -30px;
     }
+
     .hero-center .home-img {
         margin-top: -50px;
     }
-}
+} */
