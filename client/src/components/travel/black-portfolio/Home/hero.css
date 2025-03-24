@@ -136,3 +136,44 @@
         margin-top: -50px;
     }
 } */
+
+h1 {
+    position: relative;
+    color: transparent;
+}
+span.typewriter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* padding-right: 20px; */
+    color: white;
+    /* border: 1px solid red; */
+}
+/* span.absolute::after {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: white;
+} */
+span.letter {
+    position: relative;
+}
+span.letter::after {
+    position: absolute;
+    top: 0;
+    right: -12px;
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
