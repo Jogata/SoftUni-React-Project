@@ -21,6 +21,7 @@ import Logout from './components/logout/Logout'
 
 // ================================================
 import { Hero } from './components/travel/black-portfolio/Home/Hero';
+import { Navbar } from './components/travel/black-portfolio/Navbar/Navbar'
 
 function Loader() {
   return (
@@ -37,6 +38,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Navbar />
         <Hero />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
