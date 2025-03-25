@@ -1,0 +1,97 @@
+.about {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding-inline: 100px;
+    display: flex;
+    gap: 2rem 2%;
+    flex-wrap: wrap-reverse;
+    /* flex-direction: row; */
+}
+
+.about-left {
+    max-width: 400px;
+    margin: auto;
+}
+
+.about-img {
+    /* display: inline-block; */
+    /* max-width: 350px; */
+    /* margin: auto; */
+    padding: 20px;
+    border-radius: 10px;
+    border: 8px solid #0e1016;
+    transform: rotate(-5deg);
+    filter: drop-shadow(-1px -1px 1px #fff4) 
+            drop-shadow(1px 1px 1px #000);
+}
+
+.about-left img {
+    /* display: block; */
+    width: 100%;
+    /* margin-left: 1.9rem; */
+    margin: auto;
+    border-radius: inherit;
+    transform: rotate(10deg);
+    /* clip-path: url("#mask-1"); */
+    clip-path: url("#mask-2");
+    /* clip-path: url("#mask-3"); */
+    /* clip-path: url("#mask-4"); */
+}
+
+.about-right {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-right h2 {
+    font-size: 100px;
+    font-weight: 400;
+    font-style: normal;
+    /* font-family: "Bebas Neue", sans-serif; */
+}
+
+.about-right p {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #777;
+}
+
+/* .about-btns { */
+    /* display: flex; */
+    /* gap: 15px; */
+/* } */
+
+.about-btns button {
+    margin: 10px;
+    padding: 1rem 3rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+
+/* @media (max-width: 834px) {
+    .about {
+        padding-inline: 50px;
+        gap: 6rem;
+    }
+    
+    .about-img {
+        width: 250px;
+    }
+    
+    .about-img img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        justify-content: center;
+        padding-inline: 40px;
+    }
+
+    .about-left {
+        display: none;
+    }
+} */

@@ -22,6 +22,7 @@ import Logout from './components/logout/Logout'
 // ================================================
 import { Hero } from './components/travel/black-portfolio/Home/Hero';
 import { Navbar } from './components/travel/black-portfolio/Navbar/Navbar'
+import { About } from './components/travel/black-portfolio/About/About'
 
 function Loader() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Hero />
+        <About />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
