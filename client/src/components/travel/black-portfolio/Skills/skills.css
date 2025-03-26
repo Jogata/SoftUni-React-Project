@@ -73,6 +73,9 @@
     /* align-items: center; */
     animation: marquee 10s linear infinite;
 }
+.rel:hover {
+    animation-play-state: paused;
+}
 
 @keyframes marquee {
     100% {

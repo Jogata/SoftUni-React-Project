@@ -24,6 +24,7 @@ import { Hero } from './components/travel/black-portfolio/Home/Hero';
 import { Navbar } from './components/travel/black-portfolio/Navbar/Navbar'
 import { About } from './components/travel/black-portfolio/About/About'
 import { Skills } from './components/travel/black-portfolio/Skills/Skills'
+import { Work } from './components/travel/black-portfolio/Work/Work'
 
 function Loader() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Work />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
