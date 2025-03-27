@@ -1,5 +1,8 @@
 .work-list {
-    margin-top: 150px;
+    max-width: 1400px;
+    /* margin-top: 150px; */
+    margin: auto;
+    padding: 150px 0;
 }
 
 .work-list .work-header {
@@ -11,6 +14,7 @@
 .work-container {
     padding: 20px;
     display: grid;
+    /* columns: 2; */
     row-gap: 2rem;
     /* align-items: start; */
     grid-template-columns: repeat(2, 1fr);
