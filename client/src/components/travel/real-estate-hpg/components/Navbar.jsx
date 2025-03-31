@@ -1,7 +1,3 @@
-// export function Navbar() {
-//     return <h2 style={{textTransform: "capitalize"}}>navbar comp</h2>
-// }
-
 export function Navbar() {
     return (
         <header>
