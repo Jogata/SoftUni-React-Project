@@ -20,13 +20,9 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Hero } from './components/travel/black-portfolio/Home/Hero';
-import { Navbar } from './components/travel/black-portfolio/Navbar/Navbar'
-import { About } from './components/travel/black-portfolio/About/About'
-import { Skills } from './components/travel/black-portfolio/Skills/Skills'
-import { Work } from './components/travel/black-portfolio/Work/Work'
-import { Contact } from './components/travel/black-portfolio/Contact/Contact'
-import { Footer } from './components/travel/black-portfolio/Footer/Footer'
+import { Navbar } from './components/travel/real-estate-hpg/components/Navbar';
+import { Home } from './components/travel/real-estate-hpg/pages/Home';
+import { Footer } from './components/travel/real-estate-hpg/components/Footer';
 
 function Loader() {
   return (
@@ -44,11 +40,7 @@ function App() {
     <>
       <AuthContextProvider>
         <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Work />
-        <Contact />
+        <Home />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
