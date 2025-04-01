@@ -23,6 +23,7 @@ import Logout from './components/logout/Logout'
 import { Navbar } from './components/travel/real-estate-hpg/components/Navbar';
 import { Home } from './components/travel/real-estate-hpg/pages/Home';
 import { Footer } from './components/travel/real-estate-hpg/components/Footer';
+import { Hero } from './components/travel/real-estate-hpg/components/Hero'
 
 function Loader() {
   return (
@@ -40,7 +41,8 @@ function App() {
     <>
       <AuthContextProvider>
         <Navbar />
-        <Home />
+        {/* <Home /> */}
+        <Hero />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

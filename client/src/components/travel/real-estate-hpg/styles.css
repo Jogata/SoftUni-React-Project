@@ -70,7 +70,8 @@ html {
 
 body {
     /* min-height: 100vh; */
-    color: #fff;
+    /* color: #fff; */
+    color: #222;
     font-family: "Roboto", sans-serif;
     font-family: 'Abril Fatface', cursive;
     font-family: 'Courgette', cursive;
@@ -105,7 +106,7 @@ body {
     font-family: 'Kaushan Script', cursive;
     font-family: "Hurricane", cursive;
     font-family: Georgia, serif;
-    background-color: #080a0c;
+    /* background-color: #080a0c; */
 }
 
 header {
@@ -117,7 +118,10 @@ header {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: cyan;
+    background-color: #0bdddd;
+    box-shadow: 0px 3px 6px #0005;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -172,4 +176,47 @@ header button {
 
 header button:hover {
     background-color: rgb(12, 207, 207);
+}
+
+.hero {
+    position: relative;
+    max-width: 1600px;
+    margin: auto;
+    padding-top: 5rem;
+    text-align: center;
+    border-radius: 0 0 300px 300px;
+    /* background-color: #0bdddd; */
+    filter: drop-shadow(3px 3px 3px #0008) 
+        drop-shadow(-1px -1px 1px #fff);
+}
+
+.hero::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #0bdddd;
+    /* clip-path: url("#mask-1"); */
+    /* clip-path: url("#mask-2"); */
+    /* clip-path: url("#mask-3"); */
+    clip-path: url("#mask-4");
+    z-index: -1;
+}
+
+h1 {
+    font-size: 5rem;
+    /* text-align: center; */
+    color: transparent;
+    -webkit-text-stroke: 2px #000;
+}
+
+.hero-img {
+    max-width: 1000px;
+    /* margin: auto; */
+    aspect-ratio: 2/1.6;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 5px #000) 
+        drop-shadow(-5px -5px 5px #fff);
 }
