@@ -31,7 +31,7 @@ button {
 
 button:focus-visible,
 a:focus-visible {
-    outline: 1px solid #999;
+    outline: 1px solid #fff;
 }
 
 img {
@@ -118,7 +118,8 @@ header {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: #0bdddd;
+    /* background-color: #0bdddd; */
+    background-color: #00b8db;
     box-shadow: 0px 3px 6px #0005;
     position: relative;
     z-index: 1;
@@ -168,14 +169,18 @@ header button {
     color: #111;
     border-radius: 2em;
     font-weight: bold;
-    background-color: cyan;
+    /* background-color: cyan; */
+    background-color: #00b8db;
     box-shadow: 1px 1px 1px #0005, 
             -1px -1px 1px #fff8;
-    transition: all 300ms;
+    transition: color 300ms, 
+    background-color 300ms;
 }
 
 header button:hover {
-    background-color: rgb(12, 207, 207);
+    color: #fff;
+    /* background-color: rgb(12, 207, 207); */
+    background-color: #007595;
 }
 
 .hero {
@@ -197,7 +202,8 @@ header button:hover {
     content: "";
     width: 100%;
     height: 100%;
-    background-color: #0bdddd;
+    /* background-color: #0bdddd; */
+    background-color: #00b8db;
     /* clip-path: url("#mask-1"); */
     /* clip-path: url("#mask-2"); */
     /* clip-path: url("#mask-3"); */
@@ -219,4 +225,78 @@ h1 {
     object-fit: cover;
     filter: drop-shadow(5px 5px 5px #000) 
         drop-shadow(-5px -5px 5px #fff);
+}
+
+.search-bar {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.form {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.field {
+    flex: 1;
+    max-width: 400px;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid rgb(199, 194, 194);
+    box-shadow: inset 1px 1px 1px #0005, 
+              inset -1px -1px 1px #fff;
+}
+
+.field i {
+    padding: 0.2em 0.4em;
+    font-size: 2rem;
+    color: #00b8db;
+    filter: drop-shadow(1px 1px 1px #000) 
+        drop-shadow(-1px -1px 1px #fff);
+}
+
+.options p {
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.options select {
+    padding: 0.2rem;
+    font-size: 1.04rem;
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+}
+
+.search-bar button {
+    margin: auto 0;
+    padding: 0.6rem 1.2rem;
+    font-size: 0px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background-color: #00b8db;
+    /* transition: all 0.3s; */
+    transition: background-color 300ms;
+}
+
+.search-bar button:focus-visible {
+    /* border: 1px solid #fff; */
+    outline: 2px solid #007595;
+}
+
+.search-bar button:hover {
+    background-color: #007595;
+}
+
+.search-bar button i {
+    font-size: 2rem;
+    color: #fff;
+    /* filter: drop-shadow(1px 1px 1px #000) drop-shadow(-1px -1px 1px #fff); */
 }
