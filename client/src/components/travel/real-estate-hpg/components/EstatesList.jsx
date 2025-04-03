@@ -12,11 +12,13 @@ export function EstatesList() {
                     return (
                         <div className="estate" key={estate.id}>
                             <div className="image">
-                            <img src={estate.image} alt="" />
+                                <img src={estate.image} alt="" />
                             </div>
                             <div className="estate-info">
                                 <p className="country">{estate.country}</p>
-                                <h3 className="name"><a href="#">{estate.name}</a></h3>
+                                <h3 className="name">
+                                    <a href={`/estate/${estate.id}`}>{estate.name}</a>
+                                </h3>
                                 <p className="price">$ {estate.price}</p>
                                 <div className="features">
                                     <span>{estate.beds} Beds</span>

@@ -23,7 +23,6 @@ import Logout from './components/logout/Logout'
 import { Navbar } from './components/travel/real-estate-hpg/components/Navbar';
 import { Home } from './components/travel/real-estate-hpg/pages/Home';
 import { Footer } from './components/travel/real-estate-hpg/components/Footer';
-import { EstatesList } from './components/travel/real-estate-hpg/components/EstatesList'
 
 function Loader() {
   return (
@@ -42,10 +41,15 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <main>
-          <Home />
-          <EstatesList />
-          <Footer />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<Home />} />
+            <Route path='/properties' element={<Home />} />
+            <Route path='/mission' element={<Home />} />
+            <Route path='/estate/:id' element={<Footer />} />
+          </Routes>
         </main>
+        <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
