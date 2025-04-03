@@ -300,3 +300,94 @@ h1 {
     color: #fff;
     /* filter: drop-shadow(1px 1px 1px #000) drop-shadow(-1px -1px 1px #fff); */
 }
+
+.estates {
+    max-width: 1600px;
+    margin: auto;
+    padding: 5rem 2%;
+}
+
+.estates-header {
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem 2% 3rem;
+    text-align: center;
+}
+
+.estates-header h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.estates-header p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.estates-body {
+    display: grid;
+    gap: 2rem 2%;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+.estate {
+    padding: 2%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #0005;
+}
+
+.image {
+    /* object-fit: cover; */
+    clip-path: url("#mask-1");
+    /* clip-path: url("#mask-2"); */
+    /* clip-path: url("#mask-3"); */
+    /* clip-path: url("#mask-4"); */
+    /* transition: transform 400ms; */
+    overflow: hidden;
+}
+
+.image img {
+    aspect-ratio: 490/325;
+    object-fit: cover;
+    /* clip-path: url("#mask-1"); */
+    /* clip-path: url("#mask-2"); */
+    /* clip-path: url("#mask-3"); */
+    /* clip-path: url("#mask-4"); */
+    transition: transform 400ms;
+}
+
+.estate:hover img {
+    transform: scale(1.1);
+}
+
+.estate-info {
+    padding: 1rem 4%;
+}
+
+.country {
+    padding-bottom: 1em;
+    color: #999;
+}
+
+.name {
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.name a {
+    color: inherit;
+}
+
+.price {
+    margin: 0.5rem 0 0.6rem;
+    color: #00b8db;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.features {
+    display: flex;
+    gap: 10%;
+    /* justify-content: space-between; */
+}

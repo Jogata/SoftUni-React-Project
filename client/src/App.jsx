@@ -23,6 +23,7 @@ import Logout from './components/logout/Logout'
 import { Navbar } from './components/travel/real-estate-hpg/components/Navbar';
 import { Home } from './components/travel/real-estate-hpg/pages/Home';
 import { Footer } from './components/travel/real-estate-hpg/components/Footer';
+import { EstatesList } from './components/travel/real-estate-hpg/components/EstatesList'
 
 function Loader() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Navbar />
         <main>
           <Home />
+          <EstatesList />
           <Footer />
         </main>
           {/* <Routes>
