@@ -304,7 +304,7 @@ h1 {
 .estates {
     max-width: 1600px;
     margin: auto;
-    padding: 5rem 2%;
+    padding: 5rem 1rem;
 }
 
 .estates-header {

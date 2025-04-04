@@ -1,6 +1,10 @@
-import { properties } from "../data";
+import { useContext } from "react";
+import { Estates } from "../context/Estates";
 
 export function EstatesList() {
+    const estates = useContext(Estates);
+    // console.log(estates);
+    
     return (
         <div className="estates">
             <div className="estates-header">
@@ -8,7 +12,7 @@ export function EstatesList() {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, autem. In natus incidunt accusamus nesciunt eveniet iusto nulla adipisci perspiciatis illo veniam aliquid, voluptatibus officiis architecto labore deserunt enim ab expedita dolorum repellendus iure dignissimos et corrupti.</p>
             </div>
             <div className="estates-body">
-                {properties.map(estate => {
+                {estates.map(estate => {
                     return (
                         <div className="estate" key={estate.id}>
                             <div className="image">
