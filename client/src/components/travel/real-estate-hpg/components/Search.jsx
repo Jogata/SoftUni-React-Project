@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { Estates } from "../context/Estates";
+
 export function Search() {
+    const {handleSearch} = useContext(Estates);
+
     return (
         <div className="search-bar">
             <div className="form">
                 <div className="field">
-                    {/* <i className="ri-map-pin-2-line"></i> */}
                     <i className="ri-map-pin-2-fill"></i>
                     <div className="options">
                         <p>Location (any)</p>
@@ -17,7 +21,6 @@ export function Search() {
                 </div>
                 <div className="field">
                     <i className="fa fa-home"></i>
-                    {/* <i className="fa fa-building-o"></i> */}
                     <div className="options">
                         <p>Property type (any)</p>
                         <select name="" id="">
@@ -29,7 +32,6 @@ export function Search() {
                     </div>
                 </div>
                 <div className="field">
-                    {/* <i className="ri-money-dollar-circle-line"></i> */}
                     <i className="fa fa-usd"></i>
                     <div className="options">
                         <p>Price range (any)</p>
@@ -41,7 +43,7 @@ export function Search() {
                         </select>
                     </div>
                 </div>
-                <button>
+                <button onClick={handleSearch}>
                     search
                     <i className="ri-search-line"></i>
                 </button>

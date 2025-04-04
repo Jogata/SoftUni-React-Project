@@ -2,17 +2,22 @@ import { useContext } from "react";
 import { Estates } from "../context/Estates";
 
 export function EstatesList() {
-    const estates = useContext(Estates);
-    // console.log(estates);
+    const {homes} = useContext(Estates);
     
     return (
         <div className="estates">
             <div className="estates-header">
                 <h2>Featured Properties</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, autem. In natus incidunt accusamus nesciunt eveniet iusto nulla adipisci perspiciatis illo veniam aliquid, voluptatibus officiis architecto labore deserunt enim ab expedita dolorum repellendus iure dignissimos et corrupti.</p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Dolorem, autem. In natus incidunt accusamus nesciunt eveniet 
+                    iusto nulla adipisci perspiciatis illo veniam aliquid, 
+                    voluptatibus officiis architecto labore deserunt enim ab 
+                    expedita dolorum repellendus iure dignissimos et corrupti.
+                </p>
             </div>
             <div className="estates-body">
-                {estates.map(estate => {
+                {homes.map(estate => {
                     return (
                         <div className="estate" key={estate.id}>
                             <div className="image">
