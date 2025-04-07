@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { Estates } from "../context/Estates";
 
 export function EstatesList() {
-    const {homes} = useContext(Estates);
+    const {filteredHouses} = useContext(Estates);
+    console.log(filteredHouses);
     
     return (
         <div className="estates">
@@ -17,7 +18,7 @@ export function EstatesList() {
                 </p>
             </div>
             <div className="estates-body">
-                {homes.map(estate => {
+                {filteredHouses.map(estate => {
                     return (
                         <div className="estate" key={estate.id}>
                             <div className="image">

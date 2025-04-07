@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Estates } from "../context/Estates";
 
 export function Search() {
-    const {handleSearch} = useContext(Estates);
+    const {homes, country, setCountry, property, setProperty, price, setPrice, filteredHouses, handleSearch} = useContext(Estates);
 
     return (
         <div className="search-bar">
@@ -11,11 +11,16 @@ export function Search() {
                     <i className="ri-map-pin-2-fill"></i>
                     <div className="options">
                         <p>Location (any)</p>
-                        <select name="" id="">
+                        <select 
+                            value={country} 
+                            onChange={(e) => setCountry(e.target.value)} 
+                            name="country" 
+                            id="country"
+                        >
                             <option value="">Select your place</option>
-                            <option value="usa">USA</option>
-                            <option value="canada">Canada</option>
-                            <option value="uk">UK</option>
+                            <option value="USA">USA</option>
+                            <option value="Canada">Canada</option>
+                            <option value="UK">UK</option>
                         </select>
                     </div>
                 </div>
@@ -23,11 +28,16 @@ export function Search() {
                     <i className="fa fa-home"></i>
                     <div className="options">
                         <p>Property type (any)</p>
-                        <select name="" id="">
+                        <select 
+                            value={property} 
+                            onChange={(e) => setProperty(e.target.value)} 
+                            name="property" 
+                            id="property"
+                        >
                             <option value="default">Select your place</option>
-                            <option value="apartment">Apartment</option>
-                            <option value="villa">Villa</option>
-                            <option value="house">House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Villa">Villa</option>
+                            <option value="House">House</option>
                         </select>
                     </div>
                 </div>
@@ -35,11 +45,16 @@ export function Search() {
                     <i className="fa fa-usd"></i>
                     <div className="options">
                         <p>Price range (any)</p>
-                        <select name="" id="">
+                        <select 
+                            value={price} 
+                            onChange={(e) => setPrice(e.target.value)} 
+                            name="price" 
+                            id="price"
+                        >
                             <option value="default">Select price range</option>
-                            <option value="200000">0-200000</option>
-                            <option value="300000">200001-300000</option>
-                            <option value="400000">300001-400000</option>
+                            <option value="0-200000">0-200000</option>
+                            <option value="200001-300000">200001-300000</option>
+                            <option value="300001-400000">300001-400000</option>
                         </select>
                     </div>
                 </div>
