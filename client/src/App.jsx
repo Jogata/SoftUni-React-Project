@@ -24,6 +24,7 @@ import { Navbar } from './components/travel/real-estate-hpg/components/Navbar';
 import { Home } from './components/travel/real-estate-hpg/pages/Home';
 import { Footer } from './components/travel/real-estate-hpg/components/Footer';
 import { EstatesProvider } from './components/travel/real-estate-hpg/context/Estates'
+import { Mission } from './components/travel/real-estate-hpg/components/Mission'
 
 function Loader() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path='/estate/:id' element={<Footer />} />
           </Routes>
         </main>
+        <Mission />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
