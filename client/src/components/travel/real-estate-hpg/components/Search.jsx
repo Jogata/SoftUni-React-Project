@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Estates } from "../context/Estates";
 
 export function Search() {
-    const {homes, country, setCountry, property, setProperty, price, setPrice, filteredHouses, handleSearch} = useContext(Estates);
+    // const {homes, country, setCountry, property, setProperty, price, setPrice, filteredHouses, handleSearch} = useContext(Estates);
+    const {handleSearch} = useContext(Estates);
+    const [country, setCountry] = useState("default");
+    const [property, setProperty] = useState("default");
+    const [price, setPrice] = useState("default");
 
     return (
         <div className="search-bar">
@@ -17,7 +21,7 @@ export function Search() {
                             name="country" 
                             id="country"
                         >
-                            <option value="">Select your place</option>
+                            <option value="default">Select your place</option>
                             <option value="USA">USA</option>
                             <option value="Canada">Canada</option>
                             <option value="UK">UK</option>
@@ -58,7 +62,7 @@ export function Search() {
                         </select>
                     </div>
                 </div>
-                <button onClick={handleSearch}>
+                <button onClick={() => handleSearch(country, property, price)}>
                     search
                     <i className="ri-search-line"></i>
                 </button>

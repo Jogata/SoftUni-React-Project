@@ -3,7 +3,7 @@ import { Estates } from "../context/Estates";
 
 export function EstatesList() {
     const {filteredHouses} = useContext(Estates);
-    console.log(filteredHouses);
+    // console.log(filteredHouses);
     
     return (
         <div className="estates">
