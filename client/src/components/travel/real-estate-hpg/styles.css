@@ -29,9 +29,13 @@ button {
     cursor: pointer;
 }
 
-button:focus-visible,
+button:focus-visible, 
 a:focus-visible {
     outline: 1px solid #fff;
+}
+
+input:focus-visible {
+    outline: 1px solid #888;
 }
 
 img {

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Estates } from "../context/Estates";
+import { Link } from "react-router-dom";
 
 export function EstatesList() {
     const {filteredHouses} = useContext(Estates);
@@ -27,7 +28,7 @@ export function EstatesList() {
                             <div className="estate-info">
                                 <p className="country">{estate.country}</p>
                                 <h3 className="name">
-                                    <a href={`/estate/${estate.id}`}>{estate.name}</a>
+                                    <Link to={`/estate/${estate.id}`}>{estate.name}</Link>
                                 </h3>
                                 <p className="price">$ {estate.price}</p>
                                 <div className="features">

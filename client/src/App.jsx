@@ -25,6 +25,7 @@ import { Home } from './components/travel/real-estate-hpg/pages/Home';
 import { Footer } from './components/travel/real-estate-hpg/components/Footer';
 import { EstatesProvider } from './components/travel/real-estate-hpg/context/Estates'
 import { Mission } from './components/travel/real-estate-hpg/components/Mission'
+import { EstateDetails } from './components/travel/real-estate-hpg/pages/EstateDetails'
 
 function Loader() {
   return (
@@ -48,11 +49,10 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<Home />} />
             <Route path='/properties' element={<Home />} />
-            <Route path='/mission' element={<Home />} />
-            <Route path='/estate/:id' element={<Footer />} />
+            {/* <Route path='/#mission' element={<Home />} /> */}
+            <Route path='/estate/:id' element={<EstateDetails />} />
           </Routes>
         </main>
-        <Mission />
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
