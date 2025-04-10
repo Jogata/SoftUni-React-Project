@@ -236,7 +236,7 @@ h1 {
     margin: auto;
 }
 
-.form {
+.search-bar .form {
     width: 90%;
     margin: auto;
     display: flex;
@@ -369,7 +369,7 @@ h1 {
     padding: 1rem 4%;
 }
 
-.country {
+.estate-info .country {
     padding-bottom: 1em;
     color: #999;
 }
@@ -383,7 +383,7 @@ h1 {
     color: inherit;
 }
 
-.price {
+.estate-info .price {
     margin: 0.5rem 0 0.6rem;
     color: #00b8db;
     font-size: 1.4rem;
@@ -454,5 +454,171 @@ h1 {
 }
 
 .mission button:hover {
+    background-color: #007595;
+}
+
+.estate-details-page {
+    max-width: 1600px;
+    margin: auto;
+    padding: 2rem 1rem;
+}
+
+.details-header {
+    /* margin-bottom: 1rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details-header .name {
+    color: #00b8db;
+    font-size: 2rem;
+}
+
+.details-header .price {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.estate-details-page hr {
+    border: 1px solid #ddd;
+}
+
+.estate-details-page .country {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.estate-features {
+    padding: 2rem 2%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature {
+    font-size: 1.1rem;
+}
+
+.feature i {
+    margin-right: 8px;
+}
+
+.estate-image {
+    margin: 2rem auto;
+    clip-path: url("#mask-1");
+    /* clip-path: url("#mask-2"); */
+    /* clip-path: url("#mask-3"); */
+    /* clip-path: url("#mask-4"); */
+}
+
+.info-section {
+    display: grid;
+    gap: 2rem 2%;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info-section h3 {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.info-section .info-box p {
+    margin-bottom: 0.5rem;
+    color: #999;
+}
+
+.info-section ~ hr {
+    margin: 2rem 0;
+}
+
+.estate-details-page .form {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    border: 1px solid #ddd;
+}
+
+.estate-details-page .form p {
+    color: #999;
+    text-align: center;
+}
+
+.estate-details-page .form h4 {
+    font-size: 1.2rem;
+}
+
+.estate-details-page .description {
+    margin-bottom: 1rem;
+    color: #999;
+}
+
+.estate-details-page .form h2 {
+    padding: 1em 2%;
+    text-align: center;
+}
+
+.estate-details-page .form label {
+    width: 100%;
+    margin: 2rem 0 0.6rem 6px;
+    font-weight: bold;
+}
+
+.estate-details-page .form input {
+    color: #444;
+    border: 1px solid #ddd;
+}
+
+@media screen and (max-width: 600px) {
+    input#name {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    input#surname, 
+    input#name {
+        display: inline-block;
+        width: 49%;
+    }
+    input#name {
+        margin-right: 0.5rem;
+    }
+}
+
+.estate-details-page .form textarea {
+    width: 100%;
+    padding: 1%;
+    border: 1px solid #ddd;
+    outline: 0px solid transparent;
+}
+
+.estate-details-page .form textarea:focus-visible, 
+.estate-details-page .form input:focus-visible {
+    border: 1px solid #444;
+}
+
+.estate-details-page .form button {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.8em 1.6em;
+    color: #fff;
+    border-radius: 2em;
+    font-weight: bold;
+    /* background-color: cyan; */
+    background-color: #00b8db;
+    box-shadow: 1px 1px 1px #0005, 
+            -1px -1px 1px #fff8;
+    transition: background-color 300ms;
+}
+
+.estate-details-page .form button:hover {
+    /* color: #fff; */
+    /* background-color: rgb(12, 207, 207); */
     background-color: #007595;
 }
