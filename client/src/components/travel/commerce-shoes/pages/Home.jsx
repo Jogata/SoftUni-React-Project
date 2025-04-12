@@ -1,3 +1,7 @@
+import { HeroSection } from "../components/HeroSection";
+
 export function Home() {
-    return <h1>home page</h1>
+    return (
+        <HeroSection />
+    )
 }
