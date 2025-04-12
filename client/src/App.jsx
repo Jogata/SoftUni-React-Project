@@ -20,6 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
+import { Navigation } from './components/travel/commerce-shoes/components/Navigation';
 import { Home } from './components/travel/commerce-shoes/pages/Home';
 
 function Loader() {
@@ -37,6 +38,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Navigation />
         <Home />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
