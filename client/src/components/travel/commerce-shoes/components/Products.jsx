@@ -12,18 +12,18 @@ export function Products() {
                     const { id, image, title, price } = product;
                     return (
                         <div key={id} className="product">
-                            <div>
+                            <div className="product-image-box">
                                 <img src={image} alt="product-img" />
-                                <div>
+                                <div className="card-buttons">
                                     <button>
                                         <i className="fa fa-cart-plus"></i>
                                     </button>
-                                    <a>
+                                    <a href="#cart">
                                         <i className="fa fa-eye"></i>
                                     </a>
                                 </div>
                             </div>
-                            <div>
+                            <div className="product-info">
                                 <h3>{title}</h3>
                                 <p>${price}</p>
                             </div>
