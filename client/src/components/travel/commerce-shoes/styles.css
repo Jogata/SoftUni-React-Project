@@ -197,14 +197,20 @@ h1 {
 }
 
 .cart {
-    /* color: #fff; */
+    color: #fff;
+}
+
+.main-commerce {
+    max-width: 1600px;
+    margin: auto;
+    padding: 2%;
 }
 
 .hero-section {
     /* position: relative; */
     max-width: 1560px;
     margin: auto;
-    padding: 5rem 2%;
+    padding: 5rem 0;
 }
 
 .hero-image {
@@ -285,4 +291,31 @@ h1 {
     box-shadow: 
         inset 5px 5px 10px #0005, 
         inset -5px -5px 10px #fff5;
+}
+
+.products-section {
+    border: 1px solid red;
+}
+
+.products-section h2 {
+    padding: 1em 0;
+    font-size: 4rem;
+    /* font-weight: bold; */
+    /* text-transform: uppercase; */
+    color: transparent;
+    /* color: #fff; */
+    -webkit-text-stroke: 2px #000;
+    filter: drop-shadow(-1px -1px 1px #ddd);
+    text-align: center;
+}
+
+.products {
+    display: grid;
+    gap: 1rem 3%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.product {
+    padding: 4%;
+    border: 1px solid green;
 }
