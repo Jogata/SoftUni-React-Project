@@ -8,6 +8,7 @@ export function ShopContextProvider({children}) {
     const [products, setProducts] = useState(productsData);
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
+    const [quantity, setQuantity] = useState(0);
 
     const addToCart = (product, id) => {
         const newItem = { ...product, amount: 1 };
@@ -45,6 +46,17 @@ export function ShopContextProvider({children}) {
         // console.log("Total:", total);
         setTotal(total);
     }, [cart]);
+
+    useEffect(() => {
+        if (cart) {
+          const amount = cart.reduce((accumulator, currentItem) => {
+            return accumulator + currentItem.amount;
+          }, 0);
+
+        //   console.log("Quantity: ", amount);
+          setQuantity(amount);
+        }
+      }, [cart]);
       
     return (
         <ShopContext.Provider value={products}>
