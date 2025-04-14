@@ -7,6 +7,7 @@ export const ShopContext = createContext();
 export function ShopContextProvider({children}) {
     const [products, setProducts] = useState(productsData);
     const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState(0);
 
     const addToCart = (product, id) => {
         const newItem = { ...product, amount: 1 };
@@ -29,6 +30,22 @@ export function ShopContextProvider({children}) {
         }
     };
     
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) => {
+
+            const priceAsNumber = parseFloat(currentItem.price);
+
+            if (isNaN(priceAsNumber)) {
+                return accumulator;
+            }
+
+            return accumulator + priceAsNumber * currentItem.amount;
+        }, 0);
+
+        // console.log("Total:", total);
+        setTotal(total);
+    }, [cart]);
+      
     return (
         <ShopContext.Provider value={products}>
             {children}
