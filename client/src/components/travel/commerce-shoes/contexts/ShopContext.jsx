@@ -65,6 +65,10 @@ export function ShopContextProvider({children}) {
         setCart(newCart);
     };
 
+    const clearCart = () => {
+        setCart([]);
+    };
+
     return (
         <ShopContext.Provider value={products}>
             {children}
