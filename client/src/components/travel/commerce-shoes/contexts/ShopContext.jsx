@@ -69,6 +69,11 @@ export function ShopContextProvider({children}) {
         setCart([]);
     };
 
+    const increaseAmount = (id) => {
+        const cartItem = cart.find((item) => item.id === id);
+        addToCart(cartItem, id);
+    };
+
     return (
         <ShopContext.Provider value={products}>
             {children}
