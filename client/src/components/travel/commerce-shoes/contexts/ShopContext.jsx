@@ -49,15 +49,22 @@ export function ShopContextProvider({children}) {
 
     useEffect(() => {
         if (cart) {
-          const amount = cart.reduce((accumulator, currentItem) => {
-            return accumulator + currentItem.amount;
-          }, 0);
-
-        //   console.log("Quantity: ", amount);
-          setQuantity(amount);
+            const amount = cart.reduce((accumulator, currentItem) => {
+                return accumulator + currentItem.amount;
+            }, 0);
+            
+            //   console.log("Quantity: ", amount);
+            setQuantity(amount);
         }
-      }, [cart]);
-      
+    }, [cart]);
+    
+    const removeFromCart = (id) => {
+        const newCart = cart.filter((item) => {
+            return item.id !== id;
+        });
+        setCart(newCart);
+    };
+
     return (
         <ShopContext.Provider value={products}>
             {children}
