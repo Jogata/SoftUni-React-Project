@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShopContext } from "../contexts/ShopContext";
 
 export function Products() {
-    const { products } = useContext(ShopContext);
+    const { products, addToCart } = useContext(ShopContext);
 
     return (
         <div className="products-section">
@@ -15,7 +15,7 @@ export function Products() {
                             <div className="product-image-box">
                                 <img src={image} alt="product-img" />
                                 <div className="card-buttons">
-                                    <button>
+                                    <button onClick={() => addToCart(product, id)}>
                                         <i className="fa fa-cart-plus"></i>
                                     </button>
                                     <a href="#cart">

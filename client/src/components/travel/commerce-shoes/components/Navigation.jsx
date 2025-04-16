@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { ShopContext } from "../contexts/ShopContext";
+
 export function Navigation() {
+    const { quantity } = useContext(ShopContext);
     return (
         <nav className="navigation">
             <div className="logo">
@@ -19,7 +23,9 @@ export function Navigation() {
             <div className="user-info">
                 <div className="cart">
                     <i className="fa fa-shopping-cart"></i>
-                    <span className="amount">0</span>
+                    <span className="amount">
+                        {quantity}
+                    </span>
                 </div>
                 <i className="fa fa-user-o"></i>
             </div>
