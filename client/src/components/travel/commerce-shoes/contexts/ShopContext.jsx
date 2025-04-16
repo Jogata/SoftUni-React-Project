@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import { productsData } from "../data";
 
@@ -74,8 +74,40 @@ export function ShopContextProvider({children}) {
         addToCart(cartItem, id);
     };
 
+    const decreaseAmount = (id) => {
+        const cartItem = cart.find((item) => {
+            return item.id === id;
+        });
+
+        if (cartItem) {
+            const newCart = cart.map((item) => {
+                if (item.id === id) {
+                    return { ...item, amount: cartItem.amount - 1 };
+                } else {
+                    return item;
+                }
+            });
+
+            setCart(newCart);
+        } else {
+            if (cartItem.amount < 2) {
+                removeFromCart(id);
+            }
+        }
+    };
+
     return (
-        <ShopContext.Provider value={products}>
+        <ShopContext.Provider value={{
+            products, 
+            cart, 
+            addToCart, 
+            removeFromCart, 
+            clearCart, 
+            increaseAmount, 
+            decreaseAmount, 
+            quantity, 
+            total
+        }}>
             {children}
         </ShopContext.Provider>
     )

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShopContext } from "../contexts/ShopContext";
 
 export function Products() {
-    const products = useContext(ShopContext);
+    const { products } = useContext(ShopContext);
 
     return (
         <div className="products-section">
