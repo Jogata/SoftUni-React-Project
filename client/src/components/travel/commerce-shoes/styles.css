@@ -159,6 +159,10 @@ h1 {
     filter: drop-shadow(-1px -1px 1px #ddd);
 }
 
+.logo a {
+    color: inherit;
+}
+
 .search-form {
     width: 100%;
     max-width: 400px;
@@ -204,6 +208,11 @@ h1 {
     position: relative;
     display: inline-block;
     margin-right: 1rem;
+}
+
+.cart a {
+    color: inherit;
+    font-size: 1.6rem;
 }
 
 .user-info i {
@@ -422,4 +431,9 @@ h1 {
 .product-info p {
     color: red;
     font-size: 2rem;
+}
+
+button, 
+a {
+    color: red;
 }

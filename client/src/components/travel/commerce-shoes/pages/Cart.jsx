@@ -12,7 +12,7 @@ export function Cart() {
                     <h1>Shopping Cart</h1>
                     <h2>Items: {quantity}</h2>
                     <button onClick={clearCart}>
-                        <i className="fa fa-recycle-bin"></i>
+                        <i className="fa fa-trash"></i>
                     </button>
                 </div>
                 <div>
@@ -23,7 +23,7 @@ export function Cart() {
                 </div>
                 <div className="">
                     {cart.length > 0 ? (
-                        cart.map((item) => <CartDetails item={item} />)
+                        cart.map((item) => <CartDetails key={item.id} item={item} />)
                     ) : (
                         <p>Your cart is empty</p>
                     )}
@@ -32,20 +32,20 @@ export function Cart() {
             <div>
                 <h2 className="">Cart Summary</h2>
                 <div className="">
-                    <span>Items:</span>
+                    <span>Items: </span>
                     <span>{quantity}</span>
                 </div>
                 <div className="">
                     <div className="">
-                        <span>Subtotal</span>
+                        <span>Subtotal: </span>
                         <span>$ {isNaN(total) ? 0 : total}</span>
                     </div>
                     <div className="">
-                        <span>Shipping</span>
+                        <span>Shipping: </span>
                         <span>Free</span>
                     </div>
                     <div className="">
-                        <span>Total Cost</span>
+                        <span>Total Cost: </span>
                         <span>$ {isNaN(total) ? 0 : total}</span>
                     </div>
                     <button className="">

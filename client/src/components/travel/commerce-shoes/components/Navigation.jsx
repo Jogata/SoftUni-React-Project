@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { ShopContext } from "../contexts/ShopContext";
+import { Link } from "react-router-dom";
 
 export function Navigation() {
     const { quantity } = useContext(ShopContext);
     return (
         <nav className="navigation">
             <div className="logo">
-                <span>Logo</span>
+                <Link to={"/"}>
+                    <span>Logo</span>
+                </Link>
             </div>
             <form className="search-form">
                 <label htmlFor="search">
@@ -22,10 +25,12 @@ export function Navigation() {
             </form>
             <div className="user-info">
                 <div className="cart">
-                    <i className="fa fa-shopping-cart"></i>
-                    <span className="amount">
-                        {quantity}
-                    </span>
+                    <Link to={"/cart"}>
+                        <i className="fa fa-shopping-cart"></i>
+                        <span className="amount">
+                            {quantity}
+                        </span>
+                    </Link>
                 </div>
                 <i className="fa fa-user-o"></i>
             </div>

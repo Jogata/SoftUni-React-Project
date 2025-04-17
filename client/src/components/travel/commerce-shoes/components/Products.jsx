@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ShopContext } from "../contexts/ShopContext";
+import { Link } from "react-router-dom";
 
 export function Products() {
     const { products, addToCart } = useContext(ShopContext);
@@ -18,9 +19,9 @@ export function Products() {
                                     <button onClick={() => addToCart(product, id)}>
                                         <i className="fa fa-cart-plus"></i>
                                     </button>
-                                    <a href="#cart">
+                                    <Link to={"/cart"}>
                                         <i className="fa fa-eye"></i>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="product-info">

@@ -10,16 +10,16 @@ export function CartDetails({ item }) {
             <div className="">
                 <img src={image} alt={title} className="" />
                 <div>
-                    <h3 className="font-medium">
+                    <h3 className="">
                         <a href="">{title}</a>
                     </h3>
-                    <div
+                    <button
                         className=""
                         onClick={() => removeFromCart(id)}
                     >
-                        <i className="fa fa-recycle-bin"></i>
-                        Remove
-                    </div>
+                        <i className="fa fa-trash"></i>
+                        remove
+                    </button>
                 </div>
             </div>
             <div className="">
@@ -27,13 +27,15 @@ export function CartDetails({ item }) {
                     onClick={() => decreaseAmount(id)}
                     className=""
                 >
-                    remove
+                    decrease
+                    <i className="fa fa-minus"></i>
                 </button>
                 <span className="">{amount}</span>
                 <button
                     onClick={() => increaseAmount(id)}
                     className=""
                 >
+                    increase
                     <i className="fa fa-plus"></i>
                 </button>
             </div>

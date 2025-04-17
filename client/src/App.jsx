@@ -24,6 +24,7 @@ import { ShopContextProvider } from './components/travel/commerce-shoes/contexts
 
 import { Navigation } from './components/travel/commerce-shoes/components/Navigation';
 import { Home } from './components/travel/commerce-shoes/pages/Home';
+import { Cart } from './components/travel/commerce-shoes/pages/Cart'
 
 function Loader() {
   return (
@@ -42,7 +43,11 @@ function App() {
       {/* <AuthContextProvider> */}
       <ShopContextProvider>
         <Navigation />
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          {/* <Route path='/' element={<Home />} /> */}
+        </Routes>
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
