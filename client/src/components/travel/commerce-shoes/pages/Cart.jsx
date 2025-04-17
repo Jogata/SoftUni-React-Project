@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ShopContext } from "../contexts/ShopContext";
+import { CartDetails } from "./Cart/CartDetails";
 
 export function Cart() {
     const { cart, clearCart, total, quantity } = useContext(ShopContext);
@@ -22,7 +23,7 @@ export function Cart() {
                 </div>
                 <div className="">
                     {cart.length > 0 ? (
-                        cart.map((item) => console.log(item))
+                        cart.map((item) => <CartDetails item={item} />)
                     ) : (
                         <p>Your cart is empty</p>
                     )}
