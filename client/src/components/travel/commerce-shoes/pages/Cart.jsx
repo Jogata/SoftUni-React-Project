@@ -6,53 +6,53 @@ export function Cart() {
     const { cart, clearCart, total, quantity } = useContext(ShopContext);
 
     return (
-        <>
-            <div>
-                <div>
+        <div className="cart-page">
+            <div className="cart-table">
+                <div className="cart-header">
                     <h1>Shopping Cart</h1>
                     <h2>Items: {quantity}</h2>
                     <button onClick={clearCart}>
                         <i className="fa fa-trash"></i>
                     </button>
                 </div>
-                <div>
+                <div className="cart-table-header">
                     <span>Product Description</span>
                     <span>Quantity</span>
                     <span>Price</span>
                     <span>Total</span>
                 </div>
-                <div className="">
+                <div className="cart-table-body">
                     {cart.length > 0 ? (
                         cart.map((item) => <CartDetails key={item.id} item={item} />)
                     ) : (
-                        <p>Your cart is empty</p>
+                        <p>Your cart is currently empty</p>
                     )}
                 </div>
             </div>
-            <div>
-                <h2 className="">Cart Summary</h2>
-                <div className="">
+            <div className="cart-summary">
+                <h2>Cart Summary</h2>
+                <div className="flex-row">
                     <span>Items: </span>
                     <span>{quantity}</span>
                 </div>
-                <div className="">
-                    <div className="">
+                <div className="cart-cost">
+                    <div className="flex-row">
                         <span>Subtotal: </span>
                         <span>$ {isNaN(total) ? 0 : total}</span>
                     </div>
-                    <div className="">
+                    <div className="flex-row">
                         <span>Shipping: </span>
                         <span>Free</span>
                     </div>
-                    <div className="">
+                    <div className="flex-row total">
                         <span>Total Cost: </span>
                         <span>$ {isNaN(total) ? 0 : total}</span>
                     </div>
-                    <button className="">
+                    <button>
                         CHECKOUT
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

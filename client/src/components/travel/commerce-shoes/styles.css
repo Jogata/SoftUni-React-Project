@@ -433,7 +433,89 @@ h1 {
     font-size: 2rem;
 }
 
-button, 
-a {
-    color: red;
+.cart-page {
+    display: flex;
+    gap: 4%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 2rem 2%;
+}
+
+.cart-table {
+    flex: 3;
+    padding: 1rem 2%;
+}
+
+.cart-header {
+    padding: 1rem 0;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-header h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.cart-header h2 {
+    font-size: 1rem;
+}
+
+.cart-header button {
+    color: #fff;
+}
+
+.cart-table-header {
+    padding: 2rem 0;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cart-table-body {
+    padding: 1rem 0;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-summary {
+    flex: 1;
+    padding: 1rem 2%;
+    border-radius: 12px;
+    background-color: #222;
+}
+
+.cart-summary h2 {
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.flex-row {
+    padding: 0.5rem 0;
+    display: flex;
+    gap: 5%;
+    justify-content: space-between;
+}
+
+.total {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.cart-cost button {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 1em;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #0c68c1;
 }
