@@ -479,14 +479,79 @@ h1 {
 
 .cart-table-body {
     padding: 1rem 0;
+    /* display: flex; */
+    /* gap: 5%; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+}
+
+.cart-table-row {
+    margin-bottom: 2rem;
     display: flex;
-    gap: 5%;
+    gap: 2%;
     align-items: center;
     justify-content: space-between;
 }
 
+.cart-item-info {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    gap: 4%;
+    align-items: center;
+}
+
+.cart-item-info .info {
+    display: flex;
+    gap: 5%;
+    justify-content: space-between;
+}
+
+.cart-item-title a {
+    /* margin: 1rem 0; */
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #00d4ff;
+    transition: color 400ms;
+}
+
+.cart-item-info a:hover {
+    color: cornflowerblue;
+}
+
+.delete-btn {
+    padding: 1rem;
+    font-size: 0px;
+    margin-bottom: auto;
+}
+
+.delete-btn i {
+    color: tomato;
+    font-size: 1.2rem;
+}
+
+.cart-item-image {
+    flex-shrink: 0;
+    max-width: 100px;
+    margin: auto;
+}
+
+.quantity-buttons button {
+    font-size: 0px;
+}
+
+.quantity-buttons button i {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.quantity-buttons .quantity {
+    margin: 0.5rem;
+}
+
 .cart-summary {
     flex: 1;
+    margin-bottom: auto;
     padding: 1rem 2%;
     border-radius: 12px;
     background-color: #222;

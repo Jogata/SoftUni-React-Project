@@ -6,15 +6,15 @@ export function CartDetails({ item }) {
     const { id, title, image, price, amount } = item;
 
     return (
-        <div className="">
-            <div className="">
-                <img src={image} alt={title} className="" />
-                <div>
-                    <h3 className="">
+        <div className="cart-table-row">
+            <div className="cart-item-info">
+                <img src={image} alt={title} className="cart-item-image" />
+                <div className="info">
+                    <h3 className="cart-item-title">
                         <a href="">{title}</a>
                     </h3>
                     <button
-                        className=""
+                        className="delete-btn"
                         onClick={() => removeFromCart(id)}
                     >
                         <i className="fa fa-trash"></i>
@@ -22,7 +22,7 @@ export function CartDetails({ item }) {
                     </button>
                 </div>
             </div>
-            <div className="">
+            <div className="quantity-buttons">
                 <button
                     onClick={() => decreaseAmount(id)}
                     className=""
@@ -30,7 +30,7 @@ export function CartDetails({ item }) {
                     decrease
                     <i className="fa fa-minus"></i>
                 </button>
-                <span className="">{amount}</span>
+                <span className="quantity">{amount}</span>
                 <button
                     onClick={() => increaseAmount(id)}
                     className=""
