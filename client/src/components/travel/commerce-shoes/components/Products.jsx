@@ -3,13 +3,13 @@ import { ShopContext } from "../contexts/ShopContext";
 import { Link } from "react-router-dom";
 
 export function Products() {
-    const { products, addToCart } = useContext(ShopContext);
+    const { filteredProducts, addToCart } = useContext(ShopContext);
 
     return (
         <div className="products-section">
             <h2>Our Collection</h2>
             <div className="products">
-                {products.map(product => {
+                {filteredProducts.map(product => {
                     const { id, image, title, price } = product;
                     return (
                         <div key={id} className="product">

@@ -9,6 +9,18 @@ export function ShopContextProvider({children}) {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
     const [quantity, setQuantity] = useState(0);
+    const [filteredProducts, setFilteredProducts] = useState(productsData);
+
+    const searchProducts = (query) => {
+        if (query === "") {
+            setFilteredProducts(products);
+        } else {
+            const filtered = products.filter((product) =>
+                product.title.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredProducts(filtered);
+        }
+    };
 
     const addToCart = (product, id) => {
         const newItem = { ...product, amount: 1 };
@@ -106,7 +118,9 @@ export function ShopContextProvider({children}) {
             increaseAmount, 
             decreaseAmount, 
             quantity, 
-            total
+            total, 
+            searchProducts, 
+            filteredProducts
         }}>
             {children}
         </ShopContext.Provider>

@@ -1,9 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../contexts/ShopContext";
 import { Link } from "react-router-dom";
 
 export function Navigation() {
-    const { quantity } = useContext(ShopContext);
+    const { quantity, searchProducts } = useContext(ShopContext);
+    const [query, setQuery] = useState("");
+
+    const handleSearch = (e) => {
+        console.log("change");
+        setQuery(e.target.value);
+        searchProducts(e.target.value);
+    };
+
     return (
         <nav className="navigation">
             <div className="logo">
@@ -21,6 +29,8 @@ export function Navigation() {
                     name="search" 
                     id="search" 
                     placeholder="Search for products" 
+                    value={query}
+                    onChange={(e) => handleSearch(e)}
                 />
             </form>
             <div className="user-info">
