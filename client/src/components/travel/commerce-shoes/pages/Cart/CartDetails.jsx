@@ -2,8 +2,54 @@ import { useContext } from 'react';
 import { ShopContext } from '../../contexts/ShopContext';
 
 export function CartDetails({ item }) {
-    const { removeFromCart, increaseAmount, decreaseAmount } = useContext(ShopContext);
+    // const { removeFromCart, increaseAmount, decreaseAmount } = useContext(ShopContext);
+    const { cart, setCart } = useContext(ShopContext);
     const { id, title, image, price, amount } = item;
+
+    const removeFromCart = (id) => {
+        const newCart = cart.filter((item) => {
+            return item.id !== id;
+        });
+        setCart(newCart);
+    };
+
+    const increaseAmount = (id) => {
+        const cartItem = cart.find((item) => item.id === id);
+        addToCart(cartItem, id);
+    };
+
+    const decreaseAmount = (id) => {
+        const cartItemIndex = cart.findIndex((item) => {
+            return item.id === id;
+        });
+
+        const cartItem = cart[cartItemIndex];
+
+        if (cartItemIndex >= 0) {
+            const newCart = [...cart];
+            const newItem = { ...cartItem, amount: cartItem.amount - 1 };
+
+            if (cartItem.amount <= 0) {
+                removeFromCart(id);
+            }
+            else {
+                newCart[cartItemIndex] = newItem;
+                setCart(newCart);
+            }
+            // .map((item) => {
+            //     if (item.id === id) {
+            //         return { ...item, amount: cartItem.amount - 1 };
+            //     } else {
+            //         return item;
+            //     }
+            // });
+        }
+        // else {
+        //     if (cartItem.amount < 2) {
+        //         removeFromCart(id);
+        //     }
+        // }
+    };
 
     return (
         <div className="cart-table-row">

@@ -3,7 +3,11 @@ import { ShopContext } from "../contexts/ShopContext";
 import { CartDetails } from "./Cart/CartDetails";
 
 export function Cart() {
-    const { cart, clearCart, total, quantity } = useContext(ShopContext);
+    const { cart, total, quantity } = useContext(ShopContext);
+
+    const clearCart = () => {
+        setCart([]);
+    };
 
     return (
         <div className="cart-page">

@@ -70,53 +70,54 @@ export function ShopContextProvider({children}) {
         }
     }, [cart]);
     
-    const removeFromCart = (id) => {
-        const newCart = cart.filter((item) => {
-            return item.id !== id;
-        });
-        setCart(newCart);
-    };
+    // const removeFromCart = (id) => {
+    //     const newCart = cart.filter((item) => {
+    //         return item.id !== id;
+    //     });
+    //     setCart(newCart);
+    // };
 
-    const clearCart = () => {
-        setCart([]);
-    };
+    // const clearCart = () => {
+    //     setCart([]);
+    // };
 
-    const increaseAmount = (id) => {
-        const cartItem = cart.find((item) => item.id === id);
-        addToCart(cartItem, id);
-    };
+    // const increaseAmount = (id) => {
+    //     const cartItem = cart.find((item) => item.id === id);
+    //     addToCart(cartItem, id);
+    // };
 
-    const decreaseAmount = (id) => {
-        const cartItem = cart.find((item) => {
-            return item.id === id;
-        });
+    // const decreaseAmount = (id) => {
+    //     const cartItem = cart.find((item) => {
+    //         return item.id === id;
+    //     });
 
-        if (cartItem) {
-            const newCart = cart.map((item) => {
-                if (item.id === id) {
-                    return { ...item, amount: cartItem.amount - 1 };
-                } else {
-                    return item;
-                }
-            });
+    //     if (cartItem) {
+    //         const newCart = cart.map((item) => {
+    //             if (item.id === id) {
+    //                 return { ...item, amount: cartItem.amount - 1 };
+    //             } else {
+    //                 return item;
+    //             }
+    //         });
 
-            setCart(newCart);
-        } else {
-            if (cartItem.amount < 2) {
-                removeFromCart(id);
-            }
-        }
-    };
+    //         setCart(newCart);
+    //     } else {
+    //         if (cartItem.amount < 2) {
+    //             removeFromCart(id);
+    //         }
+    //     }
+    // };
 
     return (
         <ShopContext.Provider value={{
             products, 
             cart, 
+            setCart, 
             addToCart, 
-            removeFromCart, 
-            clearCart, 
-            increaseAmount, 
-            decreaseAmount, 
+            // removeFromCart, 
+            // clearCart, 
+            // increaseAmount, 
+            // decreaseAmount, 
             quantity, 
             total, 
             searchProducts, 
