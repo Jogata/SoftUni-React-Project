@@ -1,13 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../contexts/ShopContext";
 import { CartDetails } from "./Cart/CartDetails";
 
 export function Cart() {
-    const { cart, total, quantity } = useContext(ShopContext);
+    const { cart, quantity } = useContext(ShopContext);
+    const [total, setTotal] = useState(0);
 
     const clearCart = () => {
         setCart([]);
     };
+
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) => {
+
+            const priceAsNumber = parseFloat(currentItem.price);
+
+            if (isNaN(priceAsNumber)) {
+                return accumulator;
+            }
+
+            return accumulator + priceAsNumber * currentItem.amount;
+        }, 0);
+
+        setTotal(total);
+    }, [cart]);
 
     return (
         <div className="cart-page">

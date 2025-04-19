@@ -7,7 +7,6 @@ export const ShopContext = createContext();
 export function ShopContextProvider({children}) {
     const [products, setProducts] = useState(productsData);
     const [cart, setCart] = useState([]);
-    const [total, setTotal] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [filteredProducts, setFilteredProducts] = useState(productsData);
 
@@ -43,21 +42,20 @@ export function ShopContextProvider({children}) {
         }
     };
     
-    useEffect(() => {
-        const total = cart.reduce((accumulator, currentItem) => {
+    // useEffect(() => {
+    //     const total = cart.reduce((accumulator, currentItem) => {
 
-            const priceAsNumber = parseFloat(currentItem.price);
+    //         const priceAsNumber = parseFloat(currentItem.price);
 
-            if (isNaN(priceAsNumber)) {
-                return accumulator;
-            }
+    //         if (isNaN(priceAsNumber)) {
+    //             return accumulator;
+    //         }
 
-            return accumulator + priceAsNumber * currentItem.amount;
-        }, 0);
+    //         return accumulator + priceAsNumber * currentItem.amount;
+    //     }, 0);
 
-        // console.log("Total:", total);
-        setTotal(total);
-    }, [cart]);
+    //     setTotal(total);
+    // }, [cart]);
 
     useEffect(() => {
         if (cart) {
@@ -65,61 +63,17 @@ export function ShopContextProvider({children}) {
                 return accumulator + currentItem.amount;
             }, 0);
             
-            //   console.log("Quantity: ", amount);
             setQuantity(amount);
         }
     }, [cart]);
     
-    // const removeFromCart = (id) => {
-    //     const newCart = cart.filter((item) => {
-    //         return item.id !== id;
-    //     });
-    //     setCart(newCart);
-    // };
-
-    // const clearCart = () => {
-    //     setCart([]);
-    // };
-
-    // const increaseAmount = (id) => {
-    //     const cartItem = cart.find((item) => item.id === id);
-    //     addToCart(cartItem, id);
-    // };
-
-    // const decreaseAmount = (id) => {
-    //     const cartItem = cart.find((item) => {
-    //         return item.id === id;
-    //     });
-
-    //     if (cartItem) {
-    //         const newCart = cart.map((item) => {
-    //             if (item.id === id) {
-    //                 return { ...item, amount: cartItem.amount - 1 };
-    //             } else {
-    //                 return item;
-    //             }
-    //         });
-
-    //         setCart(newCart);
-    //     } else {
-    //         if (cartItem.amount < 2) {
-    //             removeFromCart(id);
-    //         }
-    //     }
-    // };
-
     return (
         <ShopContext.Provider value={{
             products, 
             cart, 
             setCart, 
             addToCart, 
-            // removeFromCart, 
-            // clearCart, 
-            // increaseAmount, 
-            // decreaseAmount, 
             quantity, 
-            total, 
             searchProducts, 
             filteredProducts
         }}>
