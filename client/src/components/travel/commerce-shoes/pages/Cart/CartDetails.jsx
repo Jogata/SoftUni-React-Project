@@ -14,8 +14,19 @@ export function CartDetails({ item }) {
     };
 
     const increaseAmount = (id) => {
-        const cartItem = cart.find((item) => item.id === id);
-        addToCart(cartItem, id);
+        // const cartItem = cart.find((item) => item.id === id);
+        // addToCart(cartItem, id);
+        const cartItemIndex = cart.findIndex((item) => {
+            return item.id === id;
+        });
+
+        const cartItem = cart[cartItemIndex];
+
+        const newCart = [...cart];
+        const newItem = { ...cartItem, amount: cartItem.amount + 1 };
+
+        newCart[cartItemIndex] = newItem;
+        setCart(newCart);
     };
 
     const decreaseAmount = (id) => {
