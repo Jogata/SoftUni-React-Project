@@ -42,21 +42,6 @@ export function ShopContextProvider({children}) {
         }
     };
     
-    // useEffect(() => {
-    //     const total = cart.reduce((accumulator, currentItem) => {
-
-    //         const priceAsNumber = parseFloat(currentItem.price);
-
-    //         if (isNaN(priceAsNumber)) {
-    //             return accumulator;
-    //         }
-
-    //         return accumulator + priceAsNumber * currentItem.amount;
-    //     }, 0);
-
-    //     setTotal(total);
-    // }, [cart]);
-
     useEffect(() => {
         if (cart) {
             const amount = cart.reduce((accumulator, currentItem) => {
