@@ -19,7 +19,7 @@ export function Products() {
                                     <button onClick={() => addToCart(product, id)}>
                                         <i className="fa fa-cart-plus"></i>
                                     </button>
-                                    <Link to={"/cart"}>
+                                    <Link to={`/product/${id}`}>
                                         <i className="fa fa-eye"></i>
                                     </Link>
                                 </div>

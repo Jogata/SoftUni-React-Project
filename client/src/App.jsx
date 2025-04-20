@@ -25,6 +25,7 @@ import { ShopContextProvider } from './components/travel/commerce-shoes/contexts
 import { Navigation } from './components/travel/commerce-shoes/components/Navigation';
 import { Home } from './components/travel/commerce-shoes/pages/Home';
 import { Cart } from './components/travel/commerce-shoes/pages/Cart'
+import { ProductDetails } from './components/travel/commerce-shoes/pages/ProductDetails'
 
 function Loader() {
   return (
@@ -46,7 +47,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
-          {/* <Route path='/' element={<Home />} /> */}
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
