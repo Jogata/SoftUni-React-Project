@@ -609,3 +609,33 @@ h1 {
         /* align-items: center;     */
     }
 }
+
+footer {
+    max-width: 1600px;
+    margin: auto;
+    padding: 2rem 2%;
+}
+
+footer .body {
+    padding-bottom: 2rem;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;    
+}
+
+.social-icons i {
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.copy {
+    padding: 2rem 0 1rem;
+    text-align: center;
+}

@@ -25,12 +25,14 @@ export function ShopContextProvider({children}) {
         const newItem = { ...product, amount: 1 };
         
         const cartItem = cart.find((item) => {
-            return item.id === id;
+            return item.id == id;
         });
+        // console.log(cartItem);
         
         if (cartItem) {
+            // console.log("yes");
             const newCart = [...cart].map((item) => {
-                if (item.id === id) {
+                if (item.id == id) {
                     return { ...item, amount: cartItem.amount + 1 };
                 } else {
                     return item;
@@ -38,6 +40,7 @@ export function ShopContextProvider({children}) {
             });
             setCart(newCart);
         } else {
+            // console.log("no");
             setCart([...cart, newItem]);
         }
     };

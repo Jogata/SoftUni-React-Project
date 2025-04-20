@@ -14,8 +14,6 @@ export function CartDetails({ item }) {
     };
 
     const increaseAmount = (id) => {
-        // const cartItem = cart.find((item) => item.id === id);
-        // addToCart(cartItem, id);
         const cartItemIndex = cart.findIndex((item) => {
             return item.id === id;
         });
@@ -40,7 +38,8 @@ export function CartDetails({ item }) {
             const newCart = [...cart];
             const newItem = { ...cartItem, amount: cartItem.amount - 1 };
 
-            if (cartItem.amount <= 0) {
+            // console.log(item.amount);
+            if (newItem.amount <= 0) {
                 removeFromCart(id);
             }
             else {

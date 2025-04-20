@@ -26,6 +26,7 @@ import { Navigation } from './components/travel/commerce-shoes/components/Naviga
 import { Home } from './components/travel/commerce-shoes/pages/Home';
 import { Cart } from './components/travel/commerce-shoes/pages/Cart'
 import { ProductDetails } from './components/travel/commerce-shoes/pages/ProductDetails'
+import { Footer } from './components/travel/commerce-shoes/components/Footer'
 
 function Loader() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
+        <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
