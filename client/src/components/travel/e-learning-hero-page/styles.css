@@ -1,0 +1,150 @@
+*, 
+*::before, 
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #897859;
+  --gothic-font: "Planewalker", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.bulled {
+  list-style: inside circle;
+  padding-left: 1rem;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: 0px solid transparent;
+  outline: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:focus-visible, 
+a:focus-visible {
+  outline: 1px solid #999;
+}
+
+.link {
+  display: inline;
+  color: #f1683a;
+}
+
+a.not-active {
+  color: red;
+  font-weight: bold;
+  cursor: text;
+}
+a.not-active:hover {
+  color: #fff;
+  background-color: red;
+}
+
+img {
+  width: 100%;
+}
+
+.svg {
+  /* display: none; */
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.mask-1 {
+  clip-path: url("#mask-1");
+}
+.mask-2 {
+  clip-path: url("#mask-2");
+}
+.mask-3 {
+  clip-path: url("#mask-3");
+}
+.mask-4 {
+  clip-path: url("#mask-4");
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  /* color: #fff; */
+  font-family: "Roboto", sans-serif;
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Courgette', cursive;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Great Vibes', cursive;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Limelight', cursive;
+  font-family: 'Lobster', cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Fraunces', serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Lemon', cursive;
+  font-family: "Lora", serif;
+  font-family: "Croissant One", serif;
+  font-family: "Shojumaru", system-ui;
+  font-family: "Montez", cursive;
+  font-family: "Modak", system-ui;
+  font-family: "Prosto One", sans-serif;
+  font-family: "Young Serif", serif;
+  font-family: "ZCOOL XiaoWei", sans-serif;
+  font-family: "Brawler", serif;
+  font-family: "Gloock", serif;
+  font-family: "Ephesis", cursive;
+  font-family: "Platypi", serif;
+  font-family: "Patua One", serif;
+  font-family: "Rye", serif;
+  font-family: "Arizonia", cursive;
+  font-family: "Imbue", serif;  
+  font-family: 'Kaushan Script', cursive;
+  font-family: "Hurricane", cursive;
+  font-family: Georgia, serif;
+  /* background-color: #080a0c; */
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    filter: drop-shadow(1px 1px 1px #111);
+}
+
+nav {
+    padding: 1rem 2%;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link {
+    padding: 0.4em 1em;
+}

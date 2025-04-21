@@ -18,6 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+import { Navigation } from './components/travel/e-learning-hero-page/Navigation'
 
 // ================================================
 
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Navigation />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
