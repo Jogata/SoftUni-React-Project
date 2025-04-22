@@ -1,6 +1,6 @@
 export function Navigation() {
     return (
-        <div>
+        <div className="page">
             <nav>
 
                 <div className="logo">
