@@ -3,34 +3,40 @@ export function Navigation() {
         <div>
             <nav>
 
-                <div className="">
+                <div className="logo">
                     <h2>Edukative</h2>
                 </div>
 
                 <div>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a 
+                                href="#"
+                                className="nav-link"
+                            >
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a
+                            <a 
                                 href="#about"
+                                className="nav-link"
                             >
                                 About
                             </a>
                         </li>
                         <li>
-                            <a
+                            <a 
                                 href="#services"
+                                className="nav-link"
                             >
                                 Services
                             </a>
                         </li>
                         <li>
-                            <a
+                            <a 
                                 href="#projects"
+                                className="nav-link"
                             >
                                 Projects
                             </a>
@@ -39,7 +45,10 @@ export function Navigation() {
                 </div>
 
                 <div>
-                    <a href="#contact">
+                    <a 
+                        href="#contact"
+                        className="nav-link"
+                    >
                         Contact Us
                     </a>
                 </div>

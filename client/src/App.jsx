@@ -18,9 +18,10 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
-import { Navigation } from './components/travel/e-learning-hero-page/Navigation'
 
 // ================================================
+import { Navigation } from './components/travel/e-learning-hero-page/Navigation';
+import { Hero } from './components/travel/e-learning-hero-page/Hero';
 
 function Loader() {
   return (
@@ -38,6 +39,7 @@ function App() {
     <>
       <AuthContextProvider>
         <Navigation />
+        <Hero />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
