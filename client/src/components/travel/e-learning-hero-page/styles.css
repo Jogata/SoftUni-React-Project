@@ -130,110 +130,196 @@ body {
 }
 
 h1 {
-    color: #fff;
-    font-size: 5rem;
-    /* text-align: center; */
-    text-transform: capitalize;
-    filter: drop-shadow(1px 1px 1px #111);
+  color: #fff;
+  font-size: 5rem;
+  text-align: center;
+  /* text-transform: capitalize; */
+  text-transform: uppercase;
+  filter: drop-shadow(1px 1px 1px #111);
 }
 
 h1 span {
-    color: #1fcbff;
+  display: block;
+  color: #1fcbff;
 }
 
-nav {
-    padding: 1rem 2%;
-    display: flex;
-    gap: 5%;
-    align-items: center;
-    justify-content: space-between;
+.navbar {
+  padding: 1rem 2%;
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 nav ul {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
-.nav-link {
-    padding: 0.4em 1em;
-    color: #111;
-    transition: color 400ms;
+.navbar a {
+  padding: 0.4em 1em;
+  color: #111;
+  transition: color 400ms;
 }
 
-.nav-link:hover {
-    color: #1fcbff;
+.navbar a:hover {
+  color: #1fcbff;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navbar .btn button {
+  padding: 0.6em 1.4em;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 2em;
+  background-color: #1fcbff;
 }
 
 .hero-section {
-    padding: 5rem 2% 3rem;
-    display: flex;
-    gap: 5%;
-    align-items: center;
+  padding: 5rem 2% 3rem;
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.hero-container {
+  max-width: 150rem;
+  margin: auto;
+  padding: 5rem 2% 3rem;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-content p {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  color: #555;
+  font-size: 2rem;
+}
+
+.hero-btn {
+  padding: 0.6em 1.4em;
+  color: #555;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: 3px solid #fff;
+  border-radius: 2em;
+  background-color: #fff;
+  filter: drop-shadow(1px 1px 1px #000);
+  box-shadow: -1px -1px 1px #ccc, 
+          inset 1px 1px 1px #555, 
+        inset -1px -1px 1px #ccc;
+  transition: all 300ms;        
+}
+
+.hero-btn:active {
+  filter: drop-shadow(0px 0px 0px #000);
+  box-shadow: -1px -1px 0px #ccc, 
+          inset 0px 0px 0px #555, 
+        inset -1px -1px 0px #ccc;
+}
+
+.hero-gallery {
+  padding: 10rem 0 3rem;
+  display: flex;
+  /* gap: 1rem; */
+  /* overflow: hidden; */
+}
+
+.hero-gallery img {
+  object-fit: cover;
+  border-radius: 16px;
+  /* clip-path: url("#mask-1"); */
+  /* clip-path: url("#mask-2"); */
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+  transition: transform 400ms ease;
+}
+
+.hero-gallery img:nth-child(even) {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.hero-gallery img:nth-child(odd) {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.hero-gallery img:hover {
+  transform: rotate(0) scale(1.15);
+  z-index: 1;
 }
 
 .hero-title, 
 .hero-images {
-    flex: 1;
+  flex: 1;
 }
 
 .hero-title p {
-    padding: 1em 0 1.4em;
-    color: #999;
-    font-size: 1.6rem;
+  padding: 1em 0 1.4em;
+  color: #999;
+  font-size: 1.6rem;
 }
 
 .hero-title a {
-    padding: 1em 2em;
-    border-radius: 2em;
-    transition: color 400ms, 
-    background-color 400ms;
+  padding: 1em 2em;
+  border-radius: 2em;
+  transition: color 400ms, 
+  background-color 400ms;
 }
 
 .enroll-btn {
-    margin-right: 1rem;
-    color: #fff;
-    border: 1px solid #1fcbff;
-    background-color: #1fcbff;
+  margin-right: 1rem;
+  color: #fff;
+  border: 1px solid #1fcbff;
+  background-color: #1fcbff;
 }
 
 .enroll-btn:hover {
-    color: #1fcbff;
-    background-color: #fff;
+  color: #1fcbff;
+  background-color: #fff;
 }
 
 .explore-btn {
-    color: #1fcbff;
-    border: 1px solid #1fcbff
+  color: #1fcbff;
+  border: 1px solid #1fcbff
 }
 
 .explore-btn:hover {
-    color: #fff;
-    background-color: #1fcbff;
+  color: #fff;
+  background-color: #1fcbff;
 }
 
 .images-row {
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1%;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1%;
 }
 
 .hero-image {
-    aspect-ratio: 1;
-    object-fit: cover;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 .top-left {
-    border-radius: 0 50% 0 50%;
+  border-radius: 0 50% 0 50%;
 }
 
 .top-right {
-    border-radius: 50% 0 50% 0;
+  border-radius: 50% 0 50% 0;
 }
 
 .bottom-left {
-    border-radius: 50% 0 50% 0;
+  border-radius: 50% 0 50% 0;
 }
 
 .bottom-right {
-    border-radius: 0 50% 0 50%;
+  border-radius: 0 50% 0 50%;
 }
