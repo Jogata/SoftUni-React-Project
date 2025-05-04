@@ -20,8 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Navigation } from './components/travel/e-learning-hero-page/Navigation';
-import { Hero } from './components/travel/e-learning-hero-page/Hero';
+import { Navbar } from './components/travel/execute-financial-main/components/navbar/Navbar';
 
 function Loader() {
   return (
@@ -38,8 +37,8 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Navigation />
-        <Hero />
+        <Navbar />
+        {/* <Hero /> */}
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
