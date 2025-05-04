@@ -36,6 +36,18 @@
     text-decoration: none;
   }
 
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
   img {
     width: 100%;
+  }
+
+  .svg {
+    /* display: none; */
+    position: absolute;
+    width: 0;
+    height: 0;
   }

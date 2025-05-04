@@ -1,0 +1,108 @@
+.hero {
+    position: relative;
+    /* width: 100%; */
+    /* max-width: 1600px; */
+    height: 100vh;
+    min-height: 720px;
+    max-height: 1200px;
+    /* margin: auto; */
+    padding: 10rem 2%;
+    display: flex;
+    color: #fff;
+    /* background-color: var(--overlay); */
+    background-color: #000;
+    z-index: 1;
+}
+
+.hero:before {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url('../../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    clip-path: url("#mask-1");
+    z-index: -2;
+}
+
+.hero::after {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay);
+    /* background-color: red; */
+    z-index: -1;
+}
+
+.hero .content {
+    width: 100%;
+    max-width: 1600px;
+    /* height: 100%; */
+    margin: auto;
+    padding-top: 4rem;
+    /* padding: 4rem 1rem 1rem; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero .content p:first-child {
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.hero .content p:nth-child(2) {
+    font-size: 1.9rem;
+    font-family: Georgia, serif;
+}
+
+.hero .content p:nth-child(3) {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+
+.hero .content p:nth-child(4) {
+    font-size: 2.2rem;
+    font-style: italic;
+}
+
+.hero .button {
+    /* width: 300px; */
+    margin: 1rem auto 1rem 0;
+    padding: 0.8em 1.6em;
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* font-family: Georgia, serif; */
+    text-transform: uppercase;
+    border-radius: 2em;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    transition: background-color 400ms ease-out;
+    /* cursor: pointer; */
+}
+
+.hero .button:hover {
+    color: var(--secondary-dark);
+    border: 2px solid var(--secondary-dark);
+    background-color: var(--secondary-dark);
+    background-color: transparent;
+}
+
+@media screen and (max-width:940px) {
+    .hero .content p:nth-child(3) {
+        font-size: 2.6rem;
+    }
+
+    .hero .content p:nth-child(4) {
+        font-size: 1.6rem;
+    }
+}
