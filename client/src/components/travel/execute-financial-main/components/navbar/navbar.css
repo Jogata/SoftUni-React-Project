@@ -1,3 +1,110 @@
 .header {
-    color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 90px; */
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: 300ms ease-in;
+    /* overflow: hidden; */
+    z-index: 1;
+}
+
+.header .navbar {
+    position: relative;
+    max-width: 1240px;
+    /* height: 100%; */
+    margin: auto;
+    padding: 1rem 5% 1rem 2%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .nav-menu a {
+    display: inline-block;
+    padding: 1rem;
+    color: #ffffff;
+    transition: transform 300ms ease-out;
+    /* border: 1px solid red; */
+}
+
+.header .navbar img {
+    max-width: 250px;
+    /* height: auto; */
+}
+
+.header .nav-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.header .nav-item {
+    /* padding: 1rem; */
+    font-weight: 500;
+    border: 3px solid transparent;
+    transition: border-color 300ms ease-out;
+}
+
+.header .nav-item:hover {
+    border-bottom-color: var(--secondary-color);
+}
+
+.header .nav-item:hover a {
+    transform: translateY(-20%);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 940px) {
+    .header {
+        max-width: 100%;
+        background-color: rgba(0, 0, 0, .9);
+    }
+
+    .header .navbar {
+        max-width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        /* top: 90px; */
+        top: 100%;
+        /* left: -100%; */
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        /* height: 90vh; */
+        text-align: center;
+        background-color: rgba(0, 0, 0, .9);
+        transform: translateX(-100%);
+        transition: transform 300ms ease-out;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        /* left: 0; */
+        transform: translateX(0);
+    }
+
+    .nav-item {
+        margin: 1.5rem 0;
+    }
+
+    /* .header .navbar img {
+        width: 150px;
+    } */
 }
