@@ -76,6 +76,18 @@
 
 .hero .button {
     margin: 1rem auto 1rem 0;
+    color: #222;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    transition: color 400ms ease-out, 
+    background-color 400ms ease-out;
+}
+
+.hero .button:hover {
+    color: var(--secondary-dark);
+    border: 2px solid var(--secondary-dark);
+    /* background-color: var(--secondary-dark); */
+    background-color: transparent;
 }
 
 @media screen and (max-width:940px) {

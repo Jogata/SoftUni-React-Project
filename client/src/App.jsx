@@ -24,6 +24,7 @@ import { Navbar } from './components/travel/execute-financial-main/components/na
 import { Hero } from './components/travel/execute-financial-main/components/hero/Hero';
 import { About } from './components/travel/execute-financial-main/components/about/About';
 import { Testimonials } from './components/travel/execute-financial-main/components/testimonials/Testimonials';
+import { Demo } from './components/travel/execute-financial-main/components/demo/Demo';
 
 function Loader() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Hero />
         <About />
         <Testimonials />
+        <Demo />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
