@@ -51,3 +51,25 @@
     width: 0;
     height: 0;
   }
+
+  .button {
+    /* width: 300px; */
+    padding: 0.8em 1.6em;
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* font-family: Georgia, serif; */
+    text-transform: uppercase;
+    border-radius: 2em;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    transition: background-color 400ms ease-out;
+    /* cursor: pointer; */
+}
+
+.button:hover {
+    color: var(--secondary-dark);
+    border: 2px solid var(--secondary-dark);
+    background-color: var(--secondary-dark);
+    background-color: transparent;
+}
