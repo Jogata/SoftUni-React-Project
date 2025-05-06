@@ -20,12 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Navbar } from './components/travel/execute-financial-main/components/navbar/Navbar';
-import { Hero } from './components/travel/execute-financial-main/components/hero/Hero';
-import { About } from './components/travel/execute-financial-main/components/about/About';
-import { Testimonials } from './components/travel/execute-financial-main/components/testimonials/Testimonials';
-import { Demo } from './components/travel/execute-financial-main/components/demo/Demo';
-import { Footer } from './components/travel/execute-financial-main/components/footer/Footer';
+import { Navbar } from './components/travel/aptive-react-routes-v6/components/Navbar';
 
 function Loader() {
   return (
@@ -43,11 +38,6 @@ function App() {
     <>
       <AuthContextProvider>
         <Navbar />
-        <Hero />
-        <About />
-        <Testimonials />
-        {/* <Demo /> */}
-        <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
