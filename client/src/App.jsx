@@ -46,7 +46,7 @@ function App() {
         <Hero />
         <About />
         <Testimonials />
-        <Demo />
+        {/* <Demo /> */}
         <Footer />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
