@@ -1,0 +1,39 @@
+.footer {
+    /* width: 100%; */
+    padding: 3rem 1rem;
+    color: #eee;
+    background-color: #000;
+}
+
+.footer .container {
+    max-width: 1240px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+}
+
+.footer li {
+    padding: 1rem;
+}
+
+.footer li a {
+    color: #fff;
+}
+
+.footer li a:hover {
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.bottom {
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.line {
+    margin-bottom: 1rem;
+}
