@@ -21,6 +21,7 @@ import Logout from './components/logout/Logout'
 
 // ================================================
 import { Navbar } from './components/travel/aptive-react-routes-v6/components/Navbar';
+import { Hero } from './components/travel/aptive-react-routes-v6/components/Hero';
 
 function Loader() {
   return (
@@ -38,6 +39,7 @@ function App() {
     <>
       <AuthContextProvider>
         <Navbar />
+        <Hero />
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
