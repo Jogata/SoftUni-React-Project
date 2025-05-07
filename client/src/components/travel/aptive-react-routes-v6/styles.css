@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
-  
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
-  
+    
   :root {
     --primary: #6948ff;
     --secondary: #553bcb;
@@ -24,6 +24,7 @@
   }
   
   a {
+    display: inline-block;
     color: #fff;
     text-decoration: none;
   }
@@ -35,6 +36,13 @@
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+  }
+
+  .svg {
+    /* display: none; */
+    position: absolute;
+    width: 0;
+    height: 0;
   }
   
   button {
