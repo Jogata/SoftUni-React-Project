@@ -1,0 +1,90 @@
+.pricing {
+    /* width: 100%; */
+    margin-top: 5rem;
+}
+
+.pricing .container {
+    max-width: 1240px;
+    margin: auto;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.pricing .top-content {
+    padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border-bottom: 1px solid var(--lightgrey);
+}
+
+.pricing .top-content h2 {
+    padding-bottom: .5rem;
+    font-size: 38px;
+}
+
+.pricing .top-content span {
+    color: var(--primary);
+}
+
+.pricing .top-content p {
+    color: var(--grey);
+}
+
+.pricing .bottom-content {
+    margin: 3rem auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.pricing .card {
+    padding: 1rem 1rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing .card div {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--lightgrey);
+}
+
+.pricing .card .no-border {
+    border: none;
+}
+
+.pricing .card span {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.pricing .card h3 {
+    margin: 0.7rem 0;
+    font-size: 28px;
+}
+
+@media screen and (max-width: 960px) {
+    .pricing {
+        text-align: center;
+    }
+    
+    .btn-div button {
+        width: auto;
+        margin-top: 1rem;
+        padding: 0.5em 1.4em;
+    }
+    
+    .pricing .top-content {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing .container .bottom-content {
+        display: none;
+    }
+
+    .pricing .top-content h2 {
+        font-size: 32px;
+    }
+}
