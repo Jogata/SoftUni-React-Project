@@ -21,6 +21,9 @@ import Logout from './components/logout/Logout'
 
 // ================================================
 import { Home } from './components/travel/aptive-react-routes-v6/pages/Home';
+import { ContactForm } from './components/travel/aptive-react-routes-v6/pages/Contact';
+import { Price } from './components/travel/aptive-react-routes-v6/pages/Pricing';
+import { FaqPage } from './components/travel/aptive-react-routes-v6/pages/Faq';
 
 function Loader() {
   return (
@@ -37,8 +40,12 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        {/* <Navbar /> */}
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/contact' element={<ContactForm />} />
+          <Route path='/faq' element={<FaqPage />} />
+          <Route path='/pricing' element={<Price />} />
+        </Routes>
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
