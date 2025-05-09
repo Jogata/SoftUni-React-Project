@@ -4,6 +4,7 @@ import { Pricing } from "../components/Pricing";
 import { Testimonials } from "../components/Testimonials";
 import { Faq } from "../components/Faq";
 import { Contact } from "../components/Contact";
+import { Footer } from "../components/Footer";
 
 export function Home() {
     return (
@@ -14,6 +15,7 @@ export function Home() {
             <Testimonials />
             <Faq />
             <Contact />
+            <Footer />
         </div>
     )
 }
