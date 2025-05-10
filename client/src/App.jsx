@@ -20,10 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
-import { Home } from './components/travel/aptive-react-routes-v6/pages/Home';
-import { ContactForm } from './components/travel/aptive-react-routes-v6/pages/Contact';
-import { Price } from './components/travel/aptive-react-routes-v6/pages/Pricing';
-import { FaqPage } from './components/travel/aptive-react-routes-v6/pages/Faq';
+import { Home } from './components/travel/galaxy-travel/routes/Home';
 
 function Loader() {
   return (
@@ -42,10 +39,8 @@ function App() {
       <AuthContextProvider>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/contact' element={<ContactForm />} />
-          <Route path='/faq' element={<FaqPage />} />
-          <Route path='/pricing' element={<Price />} />
         </Routes>
+
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/skyrim' element={<SkyrimHomePage />} />
