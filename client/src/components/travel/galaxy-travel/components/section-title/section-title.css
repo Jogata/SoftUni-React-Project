@@ -1,0 +1,39 @@
+.hero-img {
+    position: relative;
+    padding: 10rem 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-img:before {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    content:'';
+    width: 100%;
+    height: 95%;
+    background: url("../../assets/hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    clip-path: url("#mask-2");
+    z-index: -1;
+}
+
+.hero-img .heading {
+    text-align: center;
+}
+
+.hero-img h1 {
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+}
+
+.hero-img p {
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 640px) {
+    .hero-img h1 {
+        font-size: 2rem;
+    }
+}
