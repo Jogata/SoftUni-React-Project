@@ -1,0 +1,85 @@
+.footer {
+    padding: 6rem 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footer-container {
+    max-width: 1140px;
+    margin: auto;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.footer .left {
+    max-width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .right {
+    max-width: 700px;
+    height: 100%;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer h4 {
+    padding: 1rem 0;
+    font-size: 1.4rem;
+}
+
+.left i {
+    font-size: 1.4rem;
+    margin-right: 20px;
+}
+
+.footer p {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.footer .location {
+    display: flex;
+    align-items: center;
+}
+
+.footer .location p {
+    padding-bottom: 0.5rem;
+}
+
+.footer .location h4 {
+    padding-top: 0;
+}
+
+.social ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.social ul a {
+    font-size: 0;
+}
+
+.social ul a i {
+    font-size: 1.2rem;
+    padding: 0.2rem 0.4rem;
+}
+
+.social .fa-facebook {
+    padding: 0.2rem 0.6rem;
+}
+
+@media screen and (max-width: 640px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .right .social {
+        margin: auto;
+    }
+}
