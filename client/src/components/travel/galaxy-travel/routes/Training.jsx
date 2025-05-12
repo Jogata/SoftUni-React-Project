@@ -1,15 +1,13 @@
 import { Navbar } from "../components/navbar/Navbar";
 import { SectionTitle } from "../components/section-title/SectionTitle";
-import { PricingCards } from "../components/pricing-cards/PricingCards";
 import { Footer } from "../components/footer/Footer";
 
-export function Pricing() {
+export function Training() {
     return (
         <div>
             <Navbar />
-            <SectionTitle heading="PRICING." text="Choose your trip." />
-            <PricingCards />
-            <Footer />
+            <SectionTitle heading="TRAINING." text="Pre-Flight & In-Flight Training." />
+            <Footer/>
         </div>
     )
 }

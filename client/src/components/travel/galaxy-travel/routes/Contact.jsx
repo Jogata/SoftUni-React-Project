@@ -1,15 +1,13 @@
 import { Navbar } from "../components/navbar/Navbar";
 import { SectionTitle } from "../components/section-title/SectionTitle";
-import { PricingCards } from "../components/pricing-cards/PricingCards";
 import { Footer } from "../components/footer/Footer";
 
-export function Pricing() {
+export function Contact() {
     return (
         <div>
             <Navbar />
-            <SectionTitle heading="PRICING." text="Choose your trip." />
-            <PricingCards />
-            <Footer />
+            <SectionTitle heading="CONTACT." text="Contact GLX Travel" />
+            <Footer/>
         </div>
     )
 }
