@@ -24,6 +24,19 @@ a {
   text-decoration: none;
 }
 
+button {
+  font-family: inherit;
+  border: 0px solid transparent;
+  outline: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:focus-visible, 
+a:focus-visible {
+  outline: 1px solid #999;
+}
+
 .btn {
   padding: 12px 32px;
   color: #fff;
