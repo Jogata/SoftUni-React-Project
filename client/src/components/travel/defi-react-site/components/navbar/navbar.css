@@ -1,6 +1,77 @@
-h1 {
-    color: red;
-    font-size: 10vw;
-    text-align: center;
-    text-transform: uppercase;
+.navigation {
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.navigation .container {
+    padding: 1rem 2%;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 3.5rem;
+    line-height: 1.2;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-menu li {
+    padding: 0 1rem;
+}
+
+.nav-menu a {
+    font-weight: 600;
+}
+
+.hamburger {
+    display: none;
+    padding: 0.2rem 0.29rem;
+}
+
+.hamburger i {
+    color: #333;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1240px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        min-width: 50%;
+        min-height: 100vh;
+        justify-content: start;
+        flex-direction: column;
+        transition: 0.4s;
+        border-left: 1px solid #eee;
+        background-color: #fff;
+        z-index: 2;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        padding: 1rem;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+    }
 }
