@@ -5,7 +5,7 @@ import { Footer } from "../components/footer/Footer";
 
 export function Contact() {
     return (
-        <div>
+        <div className="page">
             <Navbar />
             <SectionTitle heading="CONTACT." text="Contact GLX Travel" />
             <Form/>

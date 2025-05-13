@@ -4,25 +4,19 @@ import "./navbar.css";
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
     const [isDark, setIsDark] = useState(false);
 
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const navMenuClass = isMenuOpen ? "nav-menu active" : "nav-menu";
+    const menuButtonClass = isMenuOpen ? "fa fa-times" : "fa fa-bars";
+
     let navClass = "nav dark-bg";
-    // console.log(window.scrollY);
 
     if (!isDark) {
-        // console.log(isDark);
         navClass = "nav";
     }
 
-    // if (window.scrollY <= 90) {
-    //     console.log(window.scrollY);
-    //     navClass = "nav";
-    // }
-
     const changeColor = () => {
-        // console.log("color");
         if (window.scrollY >= 90) {
             setIsDark(true);
         } else {
@@ -32,7 +26,6 @@ export function Navbar() {
 
     useEffect(() => {
         if (window.scrollY <= 90) {
-            // console.log(window.scrollY);
             navClass = "nav";
             setIsDark(false);
         }
@@ -40,21 +33,10 @@ export function Navbar() {
         window.addEventListener("scroll", changeColor);
     }, [])
 
-        // useEffect(() => {
-        // if (!isDark) {
-        //     console.log(isDark);
-        //     navClass = "nav";
-        // }
-    // }, [isDark])
-
-    // useEffect(() => {
-    //     console.log(window.scrollY);
-    // }, [window.scrollY])
-
     return (
         <nav className={navClass}>
             <Link to="/" className="logo">GLX TRVL</Link>
-            <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
+            <ul className={navMenuClass}>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
@@ -69,7 +51,7 @@ export function Navbar() {
                 </li>
             </ul>
             <button className="hamburger" onClick={toggleMenu}>
-                {isMenuOpen ? <i className="fa fa-times"></i> : <i className="fa fa-bars"></i>}
+                <i className={menuButtonClass}></i>
             </button>
         </nav>
     )

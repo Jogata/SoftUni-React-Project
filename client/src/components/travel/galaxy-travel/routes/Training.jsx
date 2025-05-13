@@ -5,7 +5,7 @@ import { Footer } from "../components/footer/Footer";
 
 export function Training() {
     return (
-        <div>
+        <div className="page">
             <Navbar />
             <SectionTitle heading="TRAINING." text="Pre-Flight & In-Flight Training." />
             <TrainingSection/>

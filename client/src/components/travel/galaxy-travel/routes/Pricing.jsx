@@ -5,7 +5,7 @@ import { Footer } from "../components/footer/Footer";
 
 export function Pricing() {
     return (
-        <div>
+        <div className="page">
             <Navbar />
             <SectionTitle heading="PRICING." text="Choose your trip." />
             <PricingCards />

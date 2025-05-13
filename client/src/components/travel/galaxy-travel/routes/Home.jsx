@@ -4,7 +4,7 @@ import { Footer } from "../components/footer/Footer";
 
 export function Home() {
     return (
-        <div>
+        <div className="page">
             <Navbar />
             <Video />
             <Footer />
