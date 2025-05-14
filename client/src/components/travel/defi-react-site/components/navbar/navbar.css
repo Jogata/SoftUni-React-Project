@@ -55,9 +55,9 @@
         min-height: 100vh;
         justify-content: start;
         flex-direction: column;
-        transition: 0.4s;
         border-left: 1px solid #eee;
         background-color: #fff;
+        transition: 0.4s;
         z-index: 2;
     }
 
@@ -66,8 +66,8 @@
     }
 
     .nav-menu li {
-        padding: 1rem;
         width: 100%;
+        padding: 1rem;
         border-bottom: 1px solid #eee;
     }
 
