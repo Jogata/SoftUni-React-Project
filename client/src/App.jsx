@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navbar } from './components/travel/defi-react-site/components/navbar/Navbar';
 import { Hero } from './components/travel/defi-react-site/components/hero/Hero';
+import { Featured } from './components/travel/defi-react-site/components/featured/Featured';
 import { Footer } from './components/travel/defi-react-site/components/footer/Footer';
 
 function Loader() {
@@ -45,6 +46,7 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Hero />
+        <Featured />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
