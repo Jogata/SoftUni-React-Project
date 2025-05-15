@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Raleway', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1240px;
+    margin: auto;
+}
+
+.btn {
+    padding: 12px 24px;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background-image:
+        linear-gradient(45deg,
+            #5651e5 0%,
+            #709dff 100%
+    );
+    transition: .4s;
+    cursor: pointer;
+}
+
+.btn:active {
+    border-bottom: none;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0, .2);
+    transform: translate(4px);
+}
+
+.svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
