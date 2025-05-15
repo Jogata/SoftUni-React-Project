@@ -1,7 +1,66 @@
-h1 {
-    padding: 1em 0;
-    color: red;
-    font-size: 10vw;
-    text-align: center;
-    text-transform: uppercase;
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+}
+
+.nav .container {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav span {
+    color: #5651e5;
+}
+
+.nav .nav-menu {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav li {
+    padding: 1rem;
+}
+
+.hamburger {
+    display: none;
+}
+
+.nav .icon {
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 940px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav .nav-menu {
+        position: absolute;
+        top: 90px;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(255,255,255, .98);
+        transition: 0.4s ease-in-out;
+        z-index: 10;
+    }
+
+    .nav .active {
+        right: 0;
+    }
+
+    .nav .nav-menu li a {
+        font-size: 2rem;
+    }
 }
