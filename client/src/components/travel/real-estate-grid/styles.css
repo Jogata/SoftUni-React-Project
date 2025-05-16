@@ -26,14 +26,10 @@ button {
 button:focus-visible, 
 a:focus-visible {
     outline: 1px solid #999;
-}
-  
+}  
 
 body {
-    margin: 0;
-    font-family: 'Raleway', 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

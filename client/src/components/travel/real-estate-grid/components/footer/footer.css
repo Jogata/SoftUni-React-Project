@@ -1,0 +1,43 @@
+.footer {
+    padding: 2rem 0;
+    background-color: #f8f8f8;
+}
+
+.footer .container {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.footer .col {
+    margin: auto;
+}
+
+.footer h3 {
+    margin: 0.8rem 0
+}
+
+.footer p {
+    margin: 0.4rem 0;
+}
+
+.footer .social {
+    text-align: center;
+}
+
+.footer .icon {
+    margin: 2rem 3rem;
+    color: #5651e5;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 940px) {
+    .footer .container {
+        gap: 0.5rem;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer .icon {
+        margin: 1rem;
+    }
+}
