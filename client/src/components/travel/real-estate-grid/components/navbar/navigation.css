@@ -1,8 +1,8 @@
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100%; */
     border-bottom: 1px solid #eee;
     background-color: #fff;
 }
@@ -17,6 +17,13 @@
 
 .nav span {
     color: #5651e5;
+}
+
+h1 i {
+    margin-right: 8px;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    filter: drop-shadow(1px 1px 1px #000);
 }
 
 .nav .nav-menu {
