@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navbar } from './components/travel/real-estate-grid/components/navbar/Navigation';
 import { Hero } from './components/travel/real-estate-grid/components/hero/Hero';
+import { Best } from './components/travel/real-estate-grid/components/best/Best';
 import { Footer } from './components/travel/real-estate-grid/components/footer/Footer';
 
 function Loader() {
@@ -45,6 +46,7 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Hero />
+        <Best />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
