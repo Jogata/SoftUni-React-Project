@@ -24,11 +24,6 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Navbar } from './components/travel/real-estate-grid/components/navbar/Navigation';
-import { Hero } from './components/travel/real-estate-grid/components/hero/Hero';
-import { Best } from './components/travel/real-estate-grid/components/best/Best';
-import { Featured } from './components/travel/real-estate-grid/components/featured/Featured';
-import { Footer } from './components/travel/real-estate-grid/components/footer/Footer';
 
 function Loader() {
   return (
@@ -45,11 +40,6 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Navbar />
-        <Hero />
-        <Best />
-        <Featured />
-        <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
