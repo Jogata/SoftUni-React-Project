@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { Navbar } from './components/travel/real-estate-grid/components/navbar/Navigation';
 import { Hero } from './components/travel/real-estate-grid/components/hero/Hero';
 import { Best } from './components/travel/real-estate-grid/components/best/Best';
+import { Featured } from './components/travel/real-estate-grid/components/featured/Featured';
 import { Footer } from './components/travel/real-estate-grid/components/footer/Footer';
 
 function Loader() {
@@ -47,6 +48,7 @@ function App() {
         <Navbar />
         <Hero />
         <Best />
+        <Featured />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
