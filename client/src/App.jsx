@@ -24,7 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Calculator } from './components/travel/bmi-calculator-react/Calculator';
+import { Navigation } from './components/travel/defi-react-api/components/navbar/Navigation';
 
 function Loader() {
   return (
@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Calculator />
+        <Navigation />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
