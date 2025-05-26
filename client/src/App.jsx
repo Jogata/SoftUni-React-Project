@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/defi-react-api/components/navbar/Navigation';
 import { Hero } from './components/travel/defi-react-api/components/hero/Hero';
 import { About } from './components/travel/defi-react-api/components/about/About';
+import { Developer } from './components/travel/defi-react-api/components/developer/Developer';
 import { Footer } from './components/travel/defi-react-api/components/footer/Footer';
 
 function Loader() {
@@ -47,6 +48,7 @@ function App() {
         <Navigation />
         <Hero />
         <About />
+        <Developer />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
