@@ -61,6 +61,12 @@ h2 {
     background: transparent;
 }
 
+.svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
 @media screen and (max-width: 940px) {
     h1 {
         font-size: 2.5rem;

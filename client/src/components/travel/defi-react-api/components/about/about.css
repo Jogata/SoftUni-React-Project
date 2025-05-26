@@ -1,6 +1,6 @@
 .about {
     /* width: 100%; */
-    padding: 3rem 1rem;
+    padding: 3rem 1rem 1rem;
     text-align: center;
     background-color: #000;
 }
@@ -31,11 +31,8 @@
 }
 
 .about .card {
-    height: 390px;
-    margin: auto;
+    margin: 0 auto;
     padding: 3rem 2rem;
-    flex-direction: column;
-    justify-content: space-between;
     text-align: left;
     border-radius: 24px;
     border: 1px solid #e7e8ea;
@@ -47,11 +44,33 @@
     transition: 0.4s ease-in-out;
 }
 
-.about .card h1 {
-    color: tomato;
-    font-size: 5rem;
-    text-align: center;
-    text-transform: capitalize;
+.about .card h3 {
+    margin: 1rem 0;
+    color: #f8f8f8;
+}
+
+.about .card p {
+    color: #ccc;
+}
+
+.about .icon-container {
+    display: inline-flex;
+    min-width: 70px;
+    aspect-ratio: 1/1;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+}
+
+.about .icon {
+    margin: auto;
+    color: #333;
+    font-size: 2rem;
+}
+
+.about .btn {
+    display: inline-block;
+    margin-top: 2rem;
 }
 
 @media screen and (max-width: 940px) {
