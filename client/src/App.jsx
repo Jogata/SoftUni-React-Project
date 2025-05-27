@@ -28,6 +28,7 @@ import { Navigation } from './components/travel/defi-react-api/components/navbar
 import { Hero } from './components/travel/defi-react-api/components/hero/Hero';
 import { About } from './components/travel/defi-react-api/components/about/About';
 import { Developer } from './components/travel/defi-react-api/components/developer/Developer';
+import { Subscribe } from './components/travel/defi-react-api/components/subscribe/Subscribe';
 import { Footer } from './components/travel/defi-react-api/components/footer/Footer';
 
 function Loader() {
@@ -49,6 +50,7 @@ function App() {
         <Hero />
         <About />
         <Developer />
+        <Subscribe />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
