@@ -24,12 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Navigation } from './components/travel/defi-react-api/components/navbar/Navigation';
-import { Hero } from './components/travel/defi-react-api/components/hero/Hero';
-import { About } from './components/travel/defi-react-api/components/about/About';
-import { Developer } from './components/travel/defi-react-api/components/developer/Developer';
-import { Subscribe } from './components/travel/defi-react-api/components/subscribe/Subscribe';
-import { Footer } from './components/travel/defi-react-api/components/footer/Footer';
+import { Navigation } from './components/travel/travel-react-app/navigation/Navigation';
 
 function Loader() {
   return (
@@ -47,11 +42,6 @@ function App() {
     <>
       <AuthContextProvider>
         <Navigation />
-        <Hero />
-        <About />
-        <Developer />
-        <Subscribe />
-        <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
