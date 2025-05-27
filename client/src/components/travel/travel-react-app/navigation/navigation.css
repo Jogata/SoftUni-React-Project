@@ -1,7 +1,122 @@
-h1 {
-    margin-top: 10vw;
-    color: brown;
-    font-size: 10vw;
-    text-align: center;
-    text-transform: capitalize;
+.navbar {
+    position: absolute;
+    padding: 1rem 2%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    z-index: 2;
+}
+
+.navbar-bg {
+    background-color: #f5f5f5;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-icons .fa-search {
+    margin-right: 1rem;
+}
+
+li {
+    padding: 0 1rem;
+}
+
+.navbar a {
+    color: #000;
+}
+
+.mobile-menu a {
+    color: #000;
+}
+
+.hamburger {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fa-times {
+    color: #000;
+}
+
+@media screen and (max-width: 940px) {
+    .mobile-menu {
+        position: absolute;
+        /* top: -100vh; */
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        color: #000;
+        background-color: #f5f5f5;
+        transform: translateY(-150%);
+        transition: transform 300ms;
+        z-index: -1;
+    }
+
+    .dark {
+        color: #000;
+    }
+
+    .active {
+        /* top: 80px; */
+        transform: translateY(0);
+    }
+
+    .mobile-menu li {
+        margin: 0 1rem;
+        padding: 1.2rem 1rem;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .mobile-nav {
+        margin: 1rem 0;
+    }
+
+    .mobile-menu-bottom {
+        width: 100%;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .social-icons .icon:hover {
+        transform: scale(1.5);
+        transition: transform 300ms;
+    }
+
+    .mobile-menu button {
+        min-width: 90%;
+        margin: 1rem;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
