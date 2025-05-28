@@ -10,7 +10,8 @@
 
 .footer .top {
     display: flex;
-    gap: 1rem;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
 }
 
 .footer .top {
@@ -20,7 +21,8 @@
 
 .footer .social {
     display: flex;
-    gap: 2rem;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
 }
 
 .footer .icon {
@@ -29,6 +31,7 @@
 
 .footer ul {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .footer li {
