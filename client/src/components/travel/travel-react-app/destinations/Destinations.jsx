@@ -8,7 +8,7 @@ import KeyWest from "../assets/keywest.jpg";
 
 export function Destinations() {
     return (
-        <div name="destinations" className="destinations">
+        <div id="destinations" className="destinations">
             <div className="container">
                 <h1>All-Inclusive Resorts</h1>
                 <p>On the Caribbean"s Best Beaches</p>

@@ -13,8 +13,6 @@
     padding: 2rem 0;
     display: grid;
     row-gap: 2rem;
-    /* align-items: center; */
-    /* justify-content: center; */
     grid-template-columns: 1fr 1fr;
 }
 
@@ -32,9 +30,6 @@
 
 .right {
     margin: auto 0;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* flex-direction: column; */
 }
 
 .promo {
@@ -102,10 +97,6 @@ select {
     .search .container {
         grid-template-columns: 1fr;
     }
-
-    /* .search-col-2 {
-        grid-template-columns: 1fr;
-    } */
 
     .search .right {
         max-width: 100%;

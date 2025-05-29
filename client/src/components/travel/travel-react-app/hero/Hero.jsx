@@ -7,7 +7,6 @@ export function Hero() {
             <video autoPlay loop muted id="video">
                 <source src={video} type="video/mp4" />
             </video>
-            {/* <div className="overlay"></div> */}
             <div className="content">
                 <h1>First Class Travel</h1>
                 <h2>Top 1% Locations Worldwide</h2>

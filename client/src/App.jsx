@@ -28,6 +28,7 @@ import { Navigation } from './components/travel/travel-react-app/navigation/Navi
 import { Hero } from './components/travel/travel-react-app/hero/Hero';
 import { Destinations } from './components/travel/travel-react-app/destinations/Destinations';
 import { Search } from './components/travel/travel-react-app/search/Search';
+import { Selects } from './components/travel/travel-react-app/selects/Selects';
 import { Footer } from './components/travel/travel-react-app/footer/Footer';
 
 function Loader() {
@@ -49,6 +50,7 @@ function App() {
         <Hero />
         <Destinations />
         <Search />
+        <Selects />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
