@@ -7,18 +7,19 @@ import Maldives2 from "../assets/maldives2.jpg";
 import Maldives3 from "../assets/maldives3.jpg";
 import KeyWest from "../assets/keywest.jpg";
 
+import { Image } from "./Images";
+
 export function Selects() {
     return (
         <div id="views" className="selects">
             <div className="container">
-                <img src={BoraBora1} alt="Bora Bora" />
-                <img src={BoraBora2} alt="Emerald Bay" />
-                <img src={Maldives1} alt="Maldives" />
-                <img src={Maldives2} alt="Grenada" />
-                <img src={Maldives3} alt="Barbados" />
-                <img src={KeyWest} alt="Key West" />
+                <Image bgImg={BoraBora1} text='Bora Bora' />
+                <Image bgImg={BoraBora2} text='Emerald Bay' />
+                <Image bgImg={Maldives1} text='Maldives' />
+                <Image bgImg={Maldives2} text='Grenada' />
+                <Image bgImg={Maldives3} text='Barbados' />
+                <Image bgImg={KeyWest} text='Key West' />
             </div>
-
         </div>
     )
 }
