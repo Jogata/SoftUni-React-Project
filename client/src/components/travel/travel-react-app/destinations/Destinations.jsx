@@ -13,7 +13,7 @@ export function Destinations() {
                 <h1>All-Inclusive Resorts</h1>
                 <p>On the Caribbean"s Best Beaches</p>
                 <div className="img-container">
-                    <img className="span-3 image-grid-row-2" src={BoraBora1} alt="/" />
+                    <img className="main-img" src={BoraBora1} alt="/" />
                     <img src={BoraBora2} alt="/" />
                     <img src={Maldives1} alt="/" />
                     <img src={Maldives2} alt="/" />
