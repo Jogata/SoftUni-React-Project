@@ -24,13 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Navigation } from './components/travel/travel-react-app/navigation/Navigation';
-import { Hero } from './components/travel/travel-react-app/hero/Hero';
-import { Destinations } from './components/travel/travel-react-app/destinations/Destinations';
-import { Search } from './components/travel/travel-react-app/search/Search';
-import { Selects } from './components/travel/travel-react-app/selects/Selects';
-import { Carousel } from './components/travel/travel-react-app/carousel/Carousel';
-import { Footer } from './components/travel/travel-react-app/footer/Footer';
+import { Navigation } from './components/travel/drive-react-css-modules/components/navigation/Navigation';
 
 function Loader() {
   return (
@@ -48,12 +42,6 @@ function App() {
     <>
       <AuthContextProvider>
         <Navigation />
-        <Hero />
-        <Destinations />
-        <Search />
-        <Selects />
-        <Carousel />
-        <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
