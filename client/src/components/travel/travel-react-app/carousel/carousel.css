@@ -1,11 +1,10 @@
+/* v.1 */
 .carousel {
-    /* display: flex; */
     position: relative;
     max-width: 1240px;
     margin: 4rem auto;
     clip-path: url("#mask-3");
     overflow: hidden;
-    min-height: 0;
 }
 
 .slide {
@@ -15,7 +14,9 @@
     width: 100%;
     height: 100%;
     transform: translateX(200%);
-    transition: transform 300ms;
+    /* opacity: 0; */
+    transition: transform 400ms;
+    /* transition: opacity 4000ms, transform 1000ms; */
     z-index: -1;
 }
 
@@ -29,6 +30,7 @@
 
 .active {
     transform: translateX(0);
+    /* opacity: 1; */
     z-index: 1;
 }
 
@@ -39,4 +41,45 @@
 
 .prev {
     transform: translateX(-100%);
+    /* transition: opacity 500ms, transform 1000ms; */
+}
+
+
+/* v.2 */
+.carousel {
+    position: relative;
+    max-width: 1240px;
+    margin: 4rem auto;
+    clip-path: url("#mask-3");
+    /* filter: drop-shadow(2px 2px 2px #000); */
+    /* backdrop-filter: drop-shadow(2px 2px 2px #000); */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1000ms;
+    opacity: 0;
+}
+
+.slide img {
+    width: 100%;
+}
+
+#relative {
+    position: relative;
+}
+
+.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+/* =========================================== */
+.carousel {
+    min-height: 0;
 }
