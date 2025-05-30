@@ -29,6 +29,7 @@ import { Hero } from './components/travel/travel-react-app/hero/Hero';
 import { Destinations } from './components/travel/travel-react-app/destinations/Destinations';
 import { Search } from './components/travel/travel-react-app/search/Search';
 import { Selects } from './components/travel/travel-react-app/selects/Selects';
+import { Carousel } from './components/travel/travel-react-app/carousel/Carousel';
 import { Footer } from './components/travel/travel-react-app/footer/Footer';
 
 function Loader() {
@@ -51,6 +52,7 @@ function App() {
         <Destinations />
         <Search />
         <Selects />
+        <Carousel />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
