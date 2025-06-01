@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/drive-react-css-modules/components/navigation/Navigation';
 import { Hero } from './components/travel/drive-react-css-modules/components/hero/Hero';
 import { Find } from './components/travel/drive-react-css-modules/components/find/Find';
+import { Driver } from './components/travel/drive-react-css-modules/components/driver/Driver';
 import { Footer } from './components/travel/drive-react-css-modules/components/footer/Footer';
 
 function Loader() {
@@ -47,6 +48,7 @@ function App() {
         <Navigation />
         <Hero />
         <Find />
+        <Driver />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
