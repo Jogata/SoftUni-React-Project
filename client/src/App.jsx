@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/drive-react-css-modules/components/navigation/Navigation';
 import { Hero } from './components/travel/drive-react-css-modules/components/hero/Hero';
+import { Find } from './components/travel/drive-react-css-modules/components/find/Find';
 import { Footer } from './components/travel/drive-react-css-modules/components/footer/Footer';
 
 function Loader() {
@@ -45,6 +46,7 @@ function App() {
       <AuthContextProvider>
         <Navigation />
         <Hero />
+        <Find />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
