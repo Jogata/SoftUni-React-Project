@@ -28,6 +28,7 @@ import { Navigation } from './components/travel/drive-react-css-modules/componen
 import { Hero } from './components/travel/drive-react-css-modules/components/hero/Hero';
 import { Find } from './components/travel/drive-react-css-modules/components/find/Find';
 import { Driver } from './components/travel/drive-react-css-modules/components/driver/Driver';
+import { Luxury } from './components/travel/drive-react-css-modules/components/luxury/Luxury';
 import { Footer } from './components/travel/drive-react-css-modules/components/footer/Footer';
 
 function Loader() {
@@ -49,6 +50,7 @@ function App() {
         <Hero />
         <Find />
         <Driver />
+        <Luxury />
         <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
