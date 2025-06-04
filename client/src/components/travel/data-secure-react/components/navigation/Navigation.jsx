@@ -18,10 +18,10 @@ export function Navigation() {
                 </div>
 
                 <ul className={menuClass}>
-                    <li><Link to="#top">Home</Link></li>
-                    <li><Link to="#recovery">Recovery</Link> </li>
-                    <li><Link to="#cloud">Cloud</Link></li>
-                    <li><Link to="#contact">Contact</Link></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/recovery">Recovery</Link> </li>
+                    <li><Link to="/cloud">Cloud</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                     <button>Sign in</button>
                 </ul>
                 <button className="hamburger" onClick={toggleMenu}>

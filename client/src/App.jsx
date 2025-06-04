@@ -24,11 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Navigation } from './components/travel/data-secure-react/components/navigation/Navigation';
-import { Hero } from './components/travel/data-secure-react/components/hero/Hero';
-import { Data } from './components/travel/data-secure-react/components/data/Data';
-import { Cloud } from './components/travel/data-secure-react/components/cloud/Cloud';
-import { Footer } from './components/travel/data-secure-react/components/footer/Footer';
+import { HomePage } from './components/travel/data-secure-react/pages/HomePage';
 import { ContactPage } from './components/travel/data-secure-react/pages/ContactPage';
 
 function Loader() {
@@ -46,12 +42,10 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        {/* <Navigation /> */}
-        {/* <Hero /> */}
-        {/* <Data /> */}
-        {/* <Cloud /> */}
-        <ContactPage />
-        {/* <Footer /> */}
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/contact' element={<ContactPage />} />
+        </Routes>
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
