@@ -29,6 +29,7 @@ import { Hero } from './components/travel/data-secure-react/components/hero/Hero
 import { Data } from './components/travel/data-secure-react/components/data/Data';
 import { Cloud } from './components/travel/data-secure-react/components/cloud/Cloud';
 import { Footer } from './components/travel/data-secure-react/components/footer/Footer';
+import { ContactPage } from './components/travel/data-secure-react/pages/ContactPage';
 
 function Loader() {
   return (
@@ -45,11 +46,12 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Navigation />
-        <Hero />
-        <Data />
-        <Cloud />
-        <Footer />
+        {/* <Navigation /> */}
+        {/* <Hero /> */}
+        {/* <Data /> */}
+        {/* <Cloud /> */}
+        <ContactPage />
+        {/* <Footer /> */}
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
