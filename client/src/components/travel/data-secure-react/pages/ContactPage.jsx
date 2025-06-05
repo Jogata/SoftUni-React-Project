@@ -5,8 +5,10 @@ import { Footer } from "../components/footer/Footer";
 export function ContactPage() {
     return (
         <>
-            <Navigation />
-            <Contact />
+            <div className="header full-screen contact-page">
+                <Navigation />
+                <Contact />
+            </div>
             <Footer />   
         </>
     )

@@ -2,9 +2,9 @@ import "./contact.css";
 
 export function Contact() {
     return (
-        <div className="contact">
+        <div className="contact-section">
             <div className="container">
-                <div className="form-container">
+                <div className="contact-form-container">
                     <form>
                         <h1><span>Contact</span> Us</h1>
                         <div>
