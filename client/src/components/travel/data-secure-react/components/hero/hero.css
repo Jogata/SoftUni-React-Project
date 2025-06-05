@@ -1,11 +1,9 @@
+.home-page .header::before {
+    background-image: url("../../images/cyber-bg.png");
+}
+
 .hero {
-    display: flex;
-    padding: 10rem 0;
-    min-height: 800px;
-    background-image: url('../../images/cyber-bg.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    padding: 5rem 0 10rem;
 }
 
 .hero .container {
@@ -28,10 +26,11 @@
 }
 
 .hero .blue {
+    display: block;
     color: var(--primary-color);
 }
 
-@media screen and (max-width:940px) {
+@media screen and (max-width: 940px) {
     .hero .content {
         margin-left: 1rem;
     }

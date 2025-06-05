@@ -2,6 +2,22 @@
     background-image: url('../../images/cloud-bg.png');
 }
 
+.home-page .cloud {
+    position: relative;
+}
+
+.home-page .cloud:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/cloud-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
 .cloud .content {
     width: 50%;
     padding: 5rem 2% 10rem;

@@ -7,10 +7,14 @@ import { Footer } from "../components/footer/Footer";
 export function HomePage() {
     return (
         <>
-            <Navigation />
-            <Hero />
-            <Data />
-            <Cloud />
+            <div className="full-screen home-page">
+                <div className="header">
+                    <Navigation />
+                    <Hero />
+                </div>
+                <Data />
+                <Cloud />
+            </div>
             <Footer />
         </>
     )
