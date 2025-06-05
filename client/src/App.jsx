@@ -25,6 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { HomePage } from './components/travel/data-secure-react/pages/HomePage';
+import { CloudPage } from './components/travel/data-secure-react/pages/CloudPage';
 import { ContactPage } from './components/travel/data-secure-react/pages/ContactPage';
 
 function Loader() {
@@ -42,10 +43,13 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/contact' element={<ContactPage />} />
-        </Routes>
+        <div className="page">
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/cloud' element={<CloudPage />} />
+            <Route path='/contact' element={<ContactPage />} />
+          </Routes>
+        </div>
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />

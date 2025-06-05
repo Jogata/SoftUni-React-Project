@@ -1,11 +1,12 @@
 .navigation {
-    position: absolute;
-    width: 100%;
+    /* position: absolute; */
+    /* width: 100%; */
     z-index: 10;
 }
 
 .navigation .container {
     display: flex;
+    gap: 1rem;
     align-items: center;
     justify-content: space-between;
 }
