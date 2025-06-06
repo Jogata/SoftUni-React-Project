@@ -1,0 +1,224 @@
+.header .top {
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #272343;
+}
+
+.header .top .left {
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.left .fa-check {
+    margin-right: 6px;
+}
+
+.header .top .right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.right select, 
+.right option {
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #272343;
+}
+
+.right select {
+    border: 1px solid transparent;
+    /* background-color: transparent; */
+}
+
+.header .top .right a {
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.right a .fa-info {
+    margin-right: 6px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.header .middle {
+    padding: 0.5rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f2f3;
+}
+
+.middle .logo a {
+    color: #000;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.middle .logo i {
+    margin-right: 8px;
+    color: #029fae;
+    font-size: 2rem;
+}
+
+.middle .search-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.middle form {
+    position: relative;
+}
+
+.middle form input {
+    color: #000;
+    background-color: #fff;
+}
+
+.middle form button {
+     position: absolute;
+     top: 0;
+     right: 6px;
+     bottom: 0;
+     margin: auto;
+     /* padding: 0.4em 0.5em; */
+     padding: 0;
+     color: #000;
+     box-shadow: 1px 1px 1px transparent, 
+            -2px -2px 2px #fff4;
+}
+
+.middle .right {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.right .btn {
+    position: relative;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.right .badge {
+    display: inline-block;
+    height: 24px;
+    aspect-ratio: 1;
+    /* padding: 4px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #029fae;
+}
+
+.right button .ri-heart-line {
+    font-size: 1.5rem;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    min-width: 100%;
+    padding: 0.5rem;
+    background-color: #f0f2f3;
+    box-shadow: 1px 1px 1px #0004;
+}
+
+.right .dropdown-btn {
+    font-size: 1.2rem;
+}
+
+.right .menu {
+    right: 0;
+}
+
+.menu button, 
+.menu a {
+    display: block;
+    width: 100%;
+    padding: 0.5em 1em;
+}
+
+.menu button:hover, 
+.menu a:hover {
+    background-color: #c8cbcd;
+}
+
+.right .dropdown:hover .menu {
+    display: block;
+}
+
+.header .bottom {
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e1e3e5;
+    background-color: #fff;
+}
+
+.header .bottom .left {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.header .bottom .left button {
+    font-size: 20px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+/* .bottom .left .dropdown {
+    position: relative;
+} */
+
+.bottom .left .dropdown .menu {
+    background-color: #fff;
+}
+
+.bottom .left .dropdown:hover .menu {
+    display: block;
+}
+
+.header .navigation {
+    display: flex;
+    gap: 1rem;
+}
+
+.header .navigation a {
+    color: #636270;
+    text-transform: capitalize;
+}
+
+.header .navigation a.active {
+    color: #029fae;
+}
+
+.header .bottom .contact p {
+    color: #636270;
+    text-transform: capitalize;
+}
+
+.header .bottom .contact span {
+    color: #272343;
+}

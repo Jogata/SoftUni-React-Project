@@ -18,6 +18,7 @@ ul {
 
 a {
     display: inline-block;
+    font-family: inherit;
     text-decoration: none;
 }
 
@@ -42,4 +43,8 @@ img {
     position: absolute;
     width: 0;
     height: 0;
+}
+
+body {
+    font-family: var(--font-inter);
 }

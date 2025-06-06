@@ -25,6 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
+import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation'
 
 function Loader() {
   return (
@@ -41,6 +42,7 @@ function App() {
   return (
     <>
       <AuthContextProvider>
+        <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
