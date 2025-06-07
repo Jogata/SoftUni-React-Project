@@ -39,6 +39,11 @@ img {
     width: 100%;
 }
 
+.max-width {
+    max-width: 1600px;
+    margin: auto;
+}
+
 .svg {
     position: absolute;
     width: 0;
