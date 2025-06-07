@@ -55,7 +55,7 @@
 .header .middle .max-width {
     padding: 0.5rem;
     display: flex;
-    gap: 3rem;
+    gap: 1rem 3rem;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -175,7 +175,7 @@
 .header .bottom .max-width {
     padding: 1rem;
     display: flex;
-    gap: 2rem;
+    gap: 1rem 2rem;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -183,7 +183,7 @@
 
 .header .bottom .left {
     display: flex;
-    gap: 2rem;
+    gap: 1rem 2rem;
     flex-wrap: wrap;
     align-items: center;
 }
