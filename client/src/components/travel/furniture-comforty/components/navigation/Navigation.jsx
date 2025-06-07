@@ -69,36 +69,36 @@ export function Navigation() {
                 </div>
 
                 <div className="bottom">
-                        <div className="left">
-                            <span className="dropdown">
-                                <button tabIndex={0} role="button" className="btn">
-                                    <i className="ri-menu-3-line"></i>
-                                    all categories
-                                </button>
-                                <ul tabIndex={0} className="menu">
-                                    <li><a>Chair</a></li>
-                                    <li><a>Pant</a></li>
-                                    <li><a>Shirt</a></li>
-                                    <li><a>T-Shirt</a></li>
-                                    <li><a>T-Shirt</a></li>
-                                </ul>
-                            </span>
+                    <div className="left">
+                        <span className="dropdown">
+                            <button tabIndex={0} role="button" className="btn">
+                                <i className="ri-menu-3-line"></i>
+                                all categories
+                            </button>
+                            <ul tabIndex={0} className="menu">
+                                <li><a>Chair</a></li>
+                                <li><a>Pant</a></li>
+                                <li><a>Shirt</a></li>
+                                <li><a>T-Shirt</a></li>
+                                <li><a>T-Shirt</a></li>
+                            </ul>
+                        </span>
 
-                            <nav className="navigation">
-                                <Link to='/' className="active">Home</Link>
-                                <Link className="">shop</Link>
-                                <Link className="">product</Link>
-                                <Link className="">pages</Link>
-                                <Link className="">about</Link>
-                            </nav>
-                        </div>
+                        <nav className="navigation">
+                            <Link to='/' className="active">Home</Link>
+                            <Link className="">shop</Link>
+                            <Link className="">product</Link>
+                            <Link className="">pages</Link>
+                            <Link className="">about</Link>
+                        </nav>
+                    </div>
 
 
-                        <div className="contact">
-                            <p>
-                                contact: <span>(808)555-0111</span>
-                            </p>
-                        </div>
+                    <div className="contact">
+                        <p>
+                            contact: <span>(808)555-0111</span>
+                        </p>
+                    </div>
 
                 </div>
 

@@ -1,0 +1,95 @@
+.banner {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.banner .slider {
+    width: 100%;
+}
+
+.banner .slider-track {
+    display: flex;
+    overflow: hidden;
+}
+
+.banner .slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 1rem 2%;
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    justify-content: space-between;
+    color: #272343;
+}
+
+.banner .slide-text p {
+    text-transform: uppercase;
+}
+
+.banner .slide-text h3 {
+    max-width: 630px;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+
+.banner .slide button {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1em 2em;
+    color: #fff;
+    text-transform: capitalize;
+    border-radius: 4em;
+    background-color: #029fae;
+}
+
+.banner .slide button i {
+    transform: rotate(45deg);
+}
+
+.banner .slide .slide-image {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.banner .slide .slide-image::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "";
+    width: 100vw;
+    max-width: 747px;
+    height: 100vw;
+    max-height: 747px;
+    border-radius: 50%;
+    background-color: #e1e3e5;
+    z-index: -1;
+}
+
+@media screen and (max-width: 1300px) {
+    .banner .slide {
+        display: block;
+        text-align: center;
+    }
+    .banner .slide .slide-text {
+        padding: 5rem 0;
+    }
+    .banner .slide h3 {
+        margin: auto;
+    }
+    .banner .slide .slide-image {
+        margin: auto;
+    }
+    .banner .slide .slide-image::before {
+        left: 0;
+        bottom: 0;
+        width: 90vw;
+        min-width: 700px;
+        height: 90vw;
+        min-height: 700px;
+        margin: auto auto 0;
+    }
+}
