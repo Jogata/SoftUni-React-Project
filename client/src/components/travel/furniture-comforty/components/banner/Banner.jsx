@@ -34,8 +34,10 @@ export function Banner() {
     const length = products.length;
     const slideClasses = new Array(products.length).fill("slide");
     const ids = new Array(products.length).fill(null);
+    const pageButtonsClasses = new Array(products.length).fill("page-btn");
     ids[0] = "relative";
     slideClasses[slideIndex] = "slide active";
+    pageButtonsClasses[slideIndex] = "page-btn active";
     let next = slideIndex + 1;
     next = next % length;
     slideClasses[next] = "slide next";
@@ -87,6 +89,15 @@ export function Banner() {
                             </div>
 
                         </div>
+                    ))}
+                </div>
+                <div className="pagination">
+                    {products?.map((product, index) => (
+                        <button 
+                            key={product.id} 
+                            className={pageButtonsClasses[index]} 
+                            onClick={() => changeSlide(index)}>
+                        </button>
                     ))}
                 </div>
             </div>
