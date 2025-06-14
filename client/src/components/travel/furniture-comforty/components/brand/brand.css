@@ -1,0 +1,28 @@
+.brands {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    padding: 0 2%;
+    overflow: hidden;
+}
+
+.brands .flex {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: #0005 transparent;
+    overflow-x: scroll;
+}
+
+.brand-item {
+    flex: 1;
+    flex-shrink: 0;
+    /* border: 1px solid; */
+}
+
+.brand-item img {
+    display: block;
+    min-width: 80px;
+    max-width: 100px;
+    margin: auto;
+}
