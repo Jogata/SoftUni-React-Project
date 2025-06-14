@@ -99,8 +99,12 @@
 }
 
 .pagination {
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
+    position: absolute;
+    width: 100%;
+    transform: translateY(-300%);
     text-align: center;
+    z-index: 1;
 }
 
 .pagination .page-btn {

@@ -62,7 +62,7 @@ export function Banner() {
             console.log("clear");
             clearTimeout(id);
         }
-    })
+    }, [slideIndex])
 
     function changeSlide(index) {
         setSlideIndex(index);
