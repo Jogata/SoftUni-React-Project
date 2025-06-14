@@ -53,3 +53,29 @@ img {
 body {
     font-family: var(--font-inter);
 }
+
+button {
+    color: inherit;
+}
+
+body {
+    color: white;
+    background-color: black;
+}
+
+hr {
+    margin: 2rem 2%;
+}
+
+.counter {
+    padding-top: 2rem;
+}
+
+.counter button {
+    margin-top: 1rem;
+    padding: 0.5em 1em;
+    text-transform: capitalize;
+    border-radius: 4em;
+    box-shadow: 1px 1px 1px #000, 
+            -1px -1px 1px #fff6;
+}

@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
 import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation'
+import { useState } from 'react'
 
 function Loader() {
   return (
@@ -38,13 +39,125 @@ function Loader() {
   )
 }
 
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increase() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div className="counter" style={{textAlign: "center"}}>
+      <p>{count}</p>
+      <button onClick={increase}>increase</button>
+    </div>
+  )
+}
+
+function TodoList() {
+  const [list, setList] = useState([]);
+
+  function addNewItem(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    // console.log(data.get("item"));
+    const newItem = data.get("item");
+    const newList = [...list, newItem];
+    setList(newList);
+  }
+  
+  // console.log(list);
+
+  return (
+    <div className="todo">
+      <form onSubmit={e => addNewItem(e)}>
+        <input type="text" name="item" />
+        <button>add todo</button>
+      </form>
+      <h2>Todo List: </h2>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function Profile() {
+  const [user, setUser] = useState({name: "Jogata", age: "44"});
+
+  function changeUser(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    // console.log(data);
+    const newUser = Object.fromEntries(data);
+    // console.log(newUser);
+    setUser(newUser);
+  }
+
+  return (
+    <div className="profile">
+      <h2>{user.name}</h2>
+      <span>{user.age}</span>
+      <form onSubmit={e => changeUser(e)}>
+        <input type="text" name="name" defaultValue={user.name} />
+        <input type="text" name="age" defaultValue={user.age} />
+        <button>update user</button>
+      </form>
+    </div>
+  )
+}
+
+function ShoppingList() {
+  const [list, setList] = useState([]);
+
+  function addProduct(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    // console.log(data);
+    const newProduct = Object.fromEntries(data);
+    console.log(newProduct);
+    const newList = [...list, newProduct]
+    setList(newList);
+
+  }
+
+  return (
+    <div className="shop">
+      <form onSubmit={e => addProduct(e)}>
+        <input type="text" name="name" />
+        <input type="text" name="quantity" />
+        <button>add product</button>
+      </form>
+      <ul>
+        {list.map((p, i) => (
+          <li key={i}>
+            <span>{p.name} </span>-
+            <span> {p.quantity}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 function App() {
   return (
     <>
       <AuthContextProvider>
-        <Navigation />
+        {/* <Navigation /> */}
+        <Counter />
+        <hr />
+        <TodoList />
+        <hr />
+        <Profile />
+        <hr />
+        <ShoppingList />
         <Routes>
-          <Route path='/' element={<Home />} />
+          {/* <Route path='/' element={<Home />} /> */}
         </Routes>
         {/* <Routes>
           <Route path='/' element={<Home />} />

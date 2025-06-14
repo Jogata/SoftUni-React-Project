@@ -58,7 +58,9 @@ export function Banner() {
         }, 5000);
 
         return () => {
-            clearInterval(id);
+            // clearInterval(id);
+            console.log("clear");
+            clearTimeout(id);
         }
     })
 
