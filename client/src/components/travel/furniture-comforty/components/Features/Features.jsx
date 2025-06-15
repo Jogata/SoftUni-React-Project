@@ -70,53 +70,51 @@ export function Features() {
     }
 
     return (
-        <div>
-            <div className="features max-width">
-                <h3>Featured Products</h3>
-                <div className="slider">
-                    <div className="slider-track" onMouseDown={e => console.log(e)} ref={track} >
-                        {
-                            features?.map((feature, index) => (
-                                <div key={index} className="slide">
-                                    <div className="feature-image">
-                                        <img src={feature?.image} alt={feature?.title} />
+        <div className="features max-width">
+            <h3>Featured Products</h3>
+            <div className="slider">
+                <div className="slider-track" onMouseDown={e => console.log(e)} ref={track} >
+                    {
+                        features?.map((feature, index) => (
+                            <div key={index} className="slide">
+                                <div className="feature-image">
+                                    <img src={feature?.image} alt={feature?.title} />
+                                    {
+                                        feature?.status && (
+                                            <div className="status">
+                                                <button>{feature?.status}</button>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                                <div className="feature-content">
+                                    <div className="header">
+                                        <h4>{feature?.title}</h4>
+                                        <a href="#cart" className="cart">
+                                            <i className="fa fa-shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                    <p className="prices">
+                                        {feature?.price}
                                         {
-                                            feature?.status && (
-                                                <div className="status">
-                                                    <button>{feature?.status}</button>
-                                                </div>
+                                            feature?.currentPrice && (
+                                                <span className="current">{feature?.currentPrice}</span>
                                             )
                                         }
-                                    </div>
-                                    <div className="feature-content">
-                                        <div className="header">
-                                            <h4>{feature?.title}</h4>
-                                            <a href="#cart" className="cart">
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                        <p className="prices">
-                                            {feature?.price}
-                                            {
-                                                feature?.currentPrice && (
-                                                    <span className="current">{feature?.currentPrice}</span>
-                                                )
-                                            }
-                                        </p>
-                                    </div>
+                                    </p>
                                 </div>
-                            ))
-                        }
-                    </div>
-                    <button id="prev" className="arrow" onClick={scrollLeft}>
-                        <i className="fa fa-angle-double-left"></i>
-                    </button>
-                    <button id="next" className="arrow" onClick={scrollRight}>
-                        <i className="fa fa-angle-double-right"></i>
-                    </button>
+                            </div>
+                        ))
+                    }
                 </div>
-
+                <button id="prev" className="arrow" onClick={scrollLeft}>
+                    <i className="fa fa-angle-double-left"></i>
+                </button>
+                <button id="next" className="arrow" onClick={scrollRight}>
+                    <i className="fa fa-angle-double-right"></i>
+                </button>
             </div>
+
         </div>
     );
 };

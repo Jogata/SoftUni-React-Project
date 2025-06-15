@@ -30,16 +30,16 @@ export function Categories() {
 
     function scrollLeft() {
         const width = track.current.clientWidth;
-        const slides = Math.floor(width / 300);
+        const slides = Math.floor(width / 400);
         // console.log(slides);
-        track.current.scrollLeft += slides * 300;
+        track.current.scrollLeft += slides * 400;
     }
 
     function scrollRight() {
         const width = track.current.clientWidth;
-        const slides = Math.floor(width / 300);
+        const slides = Math.floor(width / 400);
         // console.log(width);
-        track.current.scrollLeft -= slides * 300;
+        track.current.scrollLeft -= slides * 400;
     }
 
     return (
