@@ -60,14 +60,12 @@ export function Features() {
     function scrollLeft() {
         const width = track.current.clientWidth;
         const slides = Math.floor(width / 300);
-        // console.log(slides);
         track.current.scrollLeft += slides * 300;
     }
 
     function scrollRight() {
         const width = track.current.clientWidth;
         const slides = Math.floor(width / 300);
-        // console.log(width);
         track.current.scrollLeft -= slides * 300;
     }
 
