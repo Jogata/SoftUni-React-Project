@@ -1,0 +1,124 @@
+import { useRef } from "react";
+import "./features.css";
+
+export function Features() {
+    const features = [
+        {
+            title: "library stool",
+            status: "New",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_1.png",
+            currentPrice: "$200",
+        },
+        {
+            title: "library stool Chair",
+            status: "Sales",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_2.png",
+        },
+        {
+            title: "library stool Chair",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_3.png",
+        },
+        {
+            title: "library stool Chair",
+            status: "New",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_4.png",
+            currentPrice: "$200",
+        },
+        {
+            title: "library stool",
+            status: "New",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_1.png",
+            currentPrice: "$200",
+        },
+        {
+            title: "library stool Chair",
+            status: "Sales",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_2.png",
+        },
+        {
+            title: "library stool Chair",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_3.png",
+        },
+        {
+            title: "library stool Chair",
+            status: "New",
+            price: "$250",
+            image: "/src/components/travel/furniture-comforty/images/features/product_4.png",
+            currentPrice: "$200",
+        },
+    ];
+
+    const track = useRef();
+
+    function scrollLeft() {
+        const width = track.current.clientWidth;
+        const slides = Math.floor(width / 300);
+        // console.log(slides);
+        track.current.scrollLeft += slides * 300;
+    }
+
+    function scrollRight() {
+        const width = track.current.clientWidth;
+        const slides = Math.floor(width / 300);
+        // console.log(width);
+        track.current.scrollLeft -= slides * 300;
+    }
+
+    return (
+        <div>
+            <div className="features max-width">
+                <h3>Featured Products</h3>
+                <div className="slider">
+                    <div className="slider-track" onMouseDown={e => console.log(e)} ref={track} >
+                        {
+                            features?.map((feature, index) => (
+                                <div key={index} className="slide">
+                                    <div className="feature-image">
+                                        <img src={feature?.image} alt={feature?.title} />
+                                        {
+                                            feature?.status && (
+                                                <div className="status">
+                                                    <button>{feature?.status}</button>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                    <div className="feature-content">
+                                        <div className="header">
+                                            <h4>{feature?.title}</h4>
+                                            <a href="#cart" className="cart">
+                                                <i className="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <p className="prices">
+                                            {feature?.price}
+                                            {
+                                                feature?.currentPrice && (
+                                                    <span className="current">{feature?.currentPrice}</span>
+                                                )
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <button id="prev" className="arrow" onClick={scrollLeft}>
+                        <i className="fa fa-angle-double-left"></i>
+                    </button>
+                    <button id="next" className="arrow" onClick={scrollRight}>
+                        <i className="fa fa-angle-double-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    );
+};
