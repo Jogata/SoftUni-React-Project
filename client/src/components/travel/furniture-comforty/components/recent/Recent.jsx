@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import "./features.css";
+import "./recent.css";
 
-export function Features() {
+export function Recent() {
     const features = [
         {
             title: "library stool",
@@ -70,14 +70,15 @@ export function Features() {
     }
 
     return (
-        <div className="features max-width">
-            <h3>Featured Products</h3>
+        <div className="recent max-width">
+            <h3>Recently Added</h3>
+
             <div className="slider">
-                <div className="slider-track" onMouseDown={e => console.log(e)} ref={track} >
+                <div className="slider-track" ref={track}>
                     {
                         features?.map((feature, index) => (
                             <div key={index} className="slide">
-                                <div className="feature-image">
+                                <div className="recent-image">
                                     <img src={feature?.image} alt={feature?.title} />
                                     {
                                         feature?.status && (
@@ -87,12 +88,12 @@ export function Features() {
                                         )
                                     }
                                 </div>
-                                <div className="feature-content">
+                                <div className="recent-content">
                                     <div className="header">
                                         <h4>{feature?.title}</h4>
-                                        <a href="#cart" className="cart">
+                                        <span className="cart">
                                             <i className="fa fa-shopping-cart"></i>
-                                        </a>
+                                        </span>
                                     </div>
                                     <p className="prices">
                                         {feature?.price}

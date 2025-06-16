@@ -29,14 +29,14 @@ export function Categories() {
     const track = useRef();
 
     function scrollLeft() {
-        const width = track.current.clientWidth;
+        const width = Math.max(track.current.clientWidth, 400);
         const slides = Math.floor(width / 400);
         // console.log(slides);
         track.current.scrollLeft += slides * 400;
     }
 
     function scrollRight() {
-        const width = track.current.clientWidth;
+        const width = Math.max(track.current.clientWidth, 400);
         const slides = Math.floor(width / 400);
         // console.log(width);
         track.current.scrollLeft -= slides * 400;
