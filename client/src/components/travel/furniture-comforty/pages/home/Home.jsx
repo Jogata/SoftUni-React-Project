@@ -4,6 +4,7 @@ import { Brand } from "../../components/brand/Brand";
 import { Features } from "../../components/Features/Features";
 import { Categories } from "../../components/categories/Categories";
 import { Products } from "../../components/products/Products";
+import { Clients } from "../../components/clients/Clients";
 import "./home.css";
 
 export function Home() {
@@ -15,6 +16,7 @@ export function Home() {
             <Features />
             <Categories />
             <Products />
+            <Clients />
         </>
     )
 }
