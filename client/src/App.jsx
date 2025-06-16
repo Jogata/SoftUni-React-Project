@@ -24,8 +24,9 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
+import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
-import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation'
+import { Footer } from './components/travel/furniture-comforty/components/footer/Footer';
 
 function Loader() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
+        <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
