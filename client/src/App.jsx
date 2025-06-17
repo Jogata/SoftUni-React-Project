@@ -26,8 +26,8 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
+import { Register } from './components/travel/furniture-comforty/pages/Auth/Register/Register';
 import { Footer } from './components/travel/furniture-comforty/components/footer/Footer';
-import { useEffect, useState } from 'react'
 
 function Loader() {
   return (
@@ -40,64 +40,16 @@ function Loader() {
   )
 }
 
-function BasicEffect() {
-  useEffect(() => {
-    console.log("component mounts");
-  }, [])
-}
-
-function CounterEffect() {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    document.title = counter;
-  }, [counter]);
-
-  return (
-    <>
-    <h1>{counter}</h1>
-    <button onClick={() => setCounter(counter + 1)}>incr</button>
-    </>
-  )
-}
-
-function FetchDataEffect() {
-  const [posts, setData] = useState([]);
-
-  useEffect(() => {
-    async function getData() {
-      const resp = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const data = await resp.json();
-      setTimeout(() => {
-        console.log("timeout");
-        setData(data);
-      }, 10000);
-    }
-
-    getData();
-  }, [])
-
-  if (posts.length > 0) {
-    return (
-      <h1>{posts[0].title}</h1>
-    ) 
-  } else {
-    return <Loader />
-  }
-}
-
 function App() {
   return (
     <>
       <AuthContextProvider>
-        {/* <Navigation /> */}
-        <BasicEffect />
-        <CounterEffect />
-        <FetchDataEffect />
-        {/* <Routes> */}
-          {/* <Route path='/' element={<Home />} /> */}
-        {/* </Routes> */}
-        {/* <Footer /> */}
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/auth/register' element={<Register />} />
+        </Routes>
+        <Footer />
         {/* <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pricing' element={<Pricing />} />
