@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/furniture-comforty/components/navigation/Navigation';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
 import { Register } from './components/travel/furniture-comforty/pages/Auth/Register/Register';
+import { Login } from './components/travel/furniture-comforty/pages/Auth/Login/Login';
 import { Footer } from './components/travel/furniture-comforty/components/footer/Footer';
 
 function Loader() {
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth/register' element={<Register />} />
+          <Route path='/auth/login' element={<Login />} />
         </Routes>
         <Footer />
         {/* <Routes>

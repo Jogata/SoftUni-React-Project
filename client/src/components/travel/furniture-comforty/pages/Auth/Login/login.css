@@ -1,0 +1,48 @@
+.login-page {
+    padding: 5rem 2%;
+}
+
+.login {
+    max-width: 648px;
+    margin: auto;
+    padding: 2rem 2%;
+    border-radius: 16px;
+    border: 1px solid #9a9caa;
+}
+
+.login h3 {
+    margin-bottom: 2rem;
+    color: #272343;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.login form input {
+    margin-bottom: 1rem;
+    color: #222;
+    background-color: #f0f2f3;
+}
+
+.login form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+    color: #fff;
+    background-color: #007580;
+}
+
+.login form button span {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.login p a {
+    margin: 0 0.5rem;
+    color: #007580;
+}
+
+.login p {
+    color: #272343;
+    text-align: center;
+}

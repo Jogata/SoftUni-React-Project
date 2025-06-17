@@ -13,7 +13,7 @@ export function Register() {
 
             <div className="register">
 
-                <h3>Register </h3>
+                <h3>Register</h3>
 
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Your Name..." />
