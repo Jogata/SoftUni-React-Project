@@ -29,6 +29,7 @@ import { Home } from './components/travel/furniture-comforty/pages/home/Home';
 import { Register } from './components/travel/furniture-comforty/pages/Auth/Register/Register';
 import { Login } from './components/travel/furniture-comforty/pages/Auth/Login/Login';
 import { Footer } from './components/travel/furniture-comforty/components/footer/Footer';
+import { useReducer, useState } from 'react'
 
 function Loader() {
   return (
@@ -41,13 +42,79 @@ function Loader() {
   )
 }
 
+const initialState = { count: 0 };
+
+function counterReducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    case "incrementByAmount":
+      return { count: state.count + action.payload };
+    case "decrementByAmount":
+      return { count: state.count - action.payload };
+    default:
+      return state;
+  }
+}
+
+const btn = {
+  display: "inline-block",
+  margin: "1rem 0.5rem 2rem",
+  padding: "0.6em 1.4em",
+  color: "#000",
+  fontSize: "1.2rem",
+  borderRadius: "2em",
+  border: "1px solid #000",
+  transition: "all 500ms"
+
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(counterReducer, initialState);
+  const [inputValue, setInputValue] = useState(0);
+
+  const handleIncrement = () => dispatch({ type: "increment" });
+  const handleDecrement = () => dispatch({ type: "decrement" });
+
+  const handleIncrementByAmount = () => {
+    dispatch({ type: "incrementByAmount", payload: Number(inputValue) });
+    setInputValue(0);
+  };
+
+  const handleDecrementByAmount = () => {
+    dispatch({ type: "decrementByAmount", payload: Number(inputValue) });
+    setInputValue(0);
+  };
+
+  return (
+    <div style={{textAlign: "center", paddingTop: "1rem"}}>
+      <h2>Count: {state.count}</h2>
+      <button style={btn} onClick={handleIncrement}>Increment</button>
+      <button style={btn} onClick={handleDecrement}>Decrement</button>
+      <hr style={{marginBottom: "2rem", color: "#e1e3e5"}} />
+      <div>
+        <input
+          type="number"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          style={{color: "black", border: "1px solid #333", width: "auto", margin: "auto"}}
+        />
+        <button style={btn} onClick={handleIncrementByAmount}>Add</button>
+        <button style={btn} onClick={handleDecrementByAmount}>Subtract</button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <>
       <AuthContextProvider>
         <Navigation />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Counter />} />
           <Route path='/auth/register' element={<Register />} />
           <Route path='/auth/login' element={<Login />} />
         </Routes>
