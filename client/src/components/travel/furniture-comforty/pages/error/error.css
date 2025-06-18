@@ -1,0 +1,23 @@
+.error-page {
+    /* display: flex; */
+    padding: 10rem 2%;
+    text-align: center;
+}
+
+.error-page h3 {
+    margin: 0 auto 2rem;
+    color: transparent;
+    font-size: 5rem;
+    -webkit-text-stroke: 1px #000;
+}
+
+.error-page a {
+    color: #666;
+    font-size: 2rem;
+    text-transform: capitalize;
+    transition: color 300ms;
+}
+
+.error-page a:hover {
+    color: #000;
+}
