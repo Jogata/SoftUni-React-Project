@@ -19,6 +19,7 @@ import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmor
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/e-commerce-advanced-filtering/navigation/Navigation'
+import { Products } from './components/travel/e-commerce-advanced-filtering/products/Products'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
@@ -49,6 +50,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Products />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
