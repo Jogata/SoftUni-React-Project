@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600&family=Limelight&family=Lobster&family=Montserrat:wght@300;400;600&family=Oleo+Script+Swash+Caps:wght@400;700&family=Poppins:wght@300;400;700;800&family=Raleway:ital,wght@0,400;1,300;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Kaushan+Script&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Brawler:wght@400;700&family=Croissant+One&family=Ephesis&family=Gloock&family=Hurricane&family=Imbue:opsz,wght@10..100,100..900&family=Modak&family=Montez&family=Prosto+One&family=Rye&family=Shojumaru&family=Young+Serif&family=ZCOOL+XiaoWei&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Poppins:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    border: 0px solid transparent;
+    outline: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 1px solid #999;
+}
+
+img {
+    width: 100%;
+}
+
+.svg {
+    /* display: none; */
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.mask-1 {
+    clip-path: url("#mask-1");
+}
+
+.mask-2 {
+    clip-path: url("#mask-2");
+}
+
+.mask-3 {
+    clip-path: url("#mask-3");
+}
+
+.mask-4 {
+    clip-path: url("#mask-4");
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    /* min-height: 100vh; */
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-family: 'Abril Fatface', cursive;
+    font-family: 'Courgette', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Great Vibes', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Limelight', cursive;
+    font-family: 'Lobster', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Fraunces', serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Lemon', cursive;
+    font-family: "Lora", serif;
+    font-family: "Croissant One", serif;
+    font-family: "Shojumaru", system-ui;
+    font-family: "Montez", cursive;
+    font-family: "Modak", system-ui;
+    font-family: "Prosto One", sans-serif;
+    font-family: "Young Serif", serif;
+    font-family: "ZCOOL XiaoWei", sans-serif;
+    font-family: "Brawler", serif;
+    font-family: "Gloock", serif;
+    font-family: "Ephesis", cursive;
+    font-family: "Platypi", serif;
+    font-family: "Patua One", serif;
+    font-family: "Rye", serif;
+    font-family: "Arizonia", cursive;
+    font-family: "Imbue", serif;
+    font-family: 'Kaushan Script', cursive;
+    font-family: "Hurricane", cursive;
+    font-family: Georgia, serif;
+    line-height: 1.6;
+    background-color: #080a0c;
+}
