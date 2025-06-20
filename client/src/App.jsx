@@ -20,6 +20,7 @@ import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/e-commerce-advanced-filtering/navigation/Navigation'
 import { Products } from './components/travel/e-commerce-advanced-filtering/products/Products'
+import { Recommended } from './components/travel/e-commerce-advanced-filtering/recommended/Recommended'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
@@ -50,6 +51,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Recommended />
         <Products />
 
           {/* <Routes>
