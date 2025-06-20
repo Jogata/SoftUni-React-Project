@@ -21,6 +21,8 @@ import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/e-commerce-advanced-filtering/navigation/Navigation'
 import { Products } from './components/travel/e-commerce-advanced-filtering/products/Products'
 import { Recommended } from './components/travel/e-commerce-advanced-filtering/recommended/Recommended'
+import { useState } from 'react'
+import { data } from './components/travel/e-commerce-advanced-filtering/data'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
@@ -40,6 +42,7 @@ function Loader() {
 }
 
 function App() {
+  const [products, setProducts] = useState(data);
   return (
     <>
       <AuthContextProvider>
@@ -52,7 +55,7 @@ function App() {
 
         <Navigation />
         <Recommended />
-        <Products />
+        <Products data={products} />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
