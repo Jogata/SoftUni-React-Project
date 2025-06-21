@@ -45,12 +45,19 @@ function Loader() {
 function App() {
   const [products, setProducts] = useState(data);
   const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState("all");
 
   let filtered = [...products];
 
   if (searchValue.length > 0) {
     filtered = filtered.filter(p => p.title.toLowerCase().includes(searchValue.toLowerCase()));
   }
+
+  // console.log(category);
+  if (category !== "all") {
+    filtered = filtered.filter(p => p.category.toLowerCase() == category.toLowerCase());
+  }
+  console.log(filtered);
 
   return (
     <>
@@ -63,12 +70,12 @@ function App() {
         </Routes> */}
 
         <div className="body">
-        <Sidebar />
-        <div className="main">
-        <Navigation filter={setSearchValue} />
-        <Recommended />
-        <Products data={filtered} />
-        </div>
+          <Sidebar filterByCategory={setCategory} />
+          <div className="main">
+            <Navigation filter={setSearchValue} />
+            <Recommended />
+            <Products data={filtered} />
+          </div>
         </div>
 
           {/* <Routes>

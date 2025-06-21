@@ -1,0 +1,25 @@
+.sidebar {
+    padding: 1rem 2rem 1rem 0.5rem;
+}
+
+.logo {
+    font-size: 2rem;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+.filter-group {
+    margin-top: 2rem;
+    border-bottom: 1px solid #555;
+}
+
+.filter-label-container {
+    width: 100%;
+    cursor: pointer;
+}
+
+.filter-label-container input {
+    display: inline-block;
+    width: auto;
+    margin-right: 8px;
+}

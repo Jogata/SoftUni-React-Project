@@ -1,49 +1,70 @@
 import "./sidebar.css";
 
-export function Sidebar() {
+export function Sidebar({filterByCategory}) {
     return (
         <section className="sidebar">
-            <div className="logo-container">
+            <div className="logo">
                 <span><i className="fa fa-shopping-cart"></i></span>
             </div>
 
-            <div>
-                <h2 className="sidebar-title">Category</h2>
+            <div className="filter-group">
+                <h2 className="filter-title">Category</h2>
                 <div>
-                    <label className="sidebar-label-container">
-                        <input type="radio" value="" name="test" defaultChecked />
+                    <label className="filter-label-container">
+                        <input
+                            type="radio"
+                            value="all"
+                            name="category"
+                            onChange={(e) => filterByCategory(e.target.value)}
+                            defaultChecked
+                        />
                         <span className="checkmark"></span>All
                     </label>
-
-                    <input
-                        type="radio"
-                        value="sneakers"
-                        title="Sneakers"
-                        name="test"
-                    />
-                    <input
-                        type="radio"
-                        value="flats"
-                        title="Flats"
-                        name="test"
-                    />
-                    <input
-                        type="radio"
-                        value="sandals"
-                        title="Sandals"
-                        name="test"
-                    />
-                    <input
-                        type="radio"
-                        value="heels"
-                        title="Heels"
-                        name="test"
-                    />
+                    <label className="filter-label-container">
+                        <input
+                            type="radio"
+                            value="sneakers"
+                            title="Sneakers"
+                            name="category"
+                            onChange={(e) => filterByCategory(e.target.value)}
+                        />
+                        <span className="checkmark"></span>Sneakers
+                    </label>
+                    <label className="filter-label-container">
+                        <input
+                            type="radio"
+                            value="flats"
+                            title="Flats"
+                            name="category"
+                            onChange={(e) => filterByCategory(e.target.value)}
+                        />
+                        <span className="checkmark"></span>Flats
+                    </label>
+                    <label className="filter-label-container">
+                        <input
+                            type="radio"
+                            value="sandals"
+                            title="Sandals"
+                            name="category"
+                            onChange={(e) => filterByCategory(e.target.value)}
+                        />
+                        <span className="checkmark"></span>Sandals
+                    </label>
+                    <label className="filter-label-container">
+                        <input
+                            type="radio"
+                            value="heels"
+                            title="Heels"
+                            name="category"
+                            onChange={(e) => filterByCategory(e.target.value)}
+                        />
+                        <span className="checkmark"></span>Heels
+                    </label>
                 </div>
             </div>
 
-            <div>
-                <h2 className="sidebar-title color-title">Colors</h2>
+            <div className="filter-group">
+                <h2 className="filter-title color-title">Colors</h2>
                 <label className="sidebar-label-container">
                     <input type="radio" value="" name="test1" defaultChecked />
                     <span className="checkmark all"></span>
@@ -96,8 +117,8 @@ export function Sidebar() {
                 </label>
             </div>
 
-            <div className="ml">
-                <h2 className="sidebar-title price-title">Price</h2>
+            <div className="filter-group">
+                <h2 className="filter-title price-title">Price</h2>
 
                 <label className="sidebar-label-container">
                     <input type="radio" value="" name="test2" defaultChecked />
