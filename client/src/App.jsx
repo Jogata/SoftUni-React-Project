@@ -43,6 +43,14 @@ function Loader() {
 
 function App() {
   const [products, setProducts] = useState(data);
+  const [searchValue, setSearchValue] = useState("");
+
+  let filtered = [...products];
+
+  if (searchValue.length > 0) {
+    filtered = filtered.filter(p => p.title.toLowerCase().includes(searchValue.toLowerCase()));
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -53,9 +61,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Navigation />
+        <Navigation filter={setSearchValue} />
         <Recommended />
-        <Products data={products} />
+        <Products data={filtered} />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

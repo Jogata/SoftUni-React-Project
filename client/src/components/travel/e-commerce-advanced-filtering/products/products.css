@@ -1,13 +1,14 @@
 .card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 4vh 2%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    /* margin: 20px; */
     padding: 20px;
     border-radius: 12px;
     border: 1px solid #222;
