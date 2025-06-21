@@ -23,6 +23,7 @@ import { Products } from './components/travel/e-commerce-advanced-filtering/prod
 import { Recommended } from './components/travel/e-commerce-advanced-filtering/recommended/Recommended'
 import { useState } from 'react'
 import { data } from './components/travel/e-commerce-advanced-filtering/data'
+import { Sidebar } from './components/travel/e-commerce-advanced-filtering/sidebar/Sidebar'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
@@ -61,9 +62,14 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+        <div className="body">
+        <Sidebar />
+        <div className="main">
         <Navigation filter={setSearchValue} />
         <Recommended />
         <Products data={filtered} />
+        </div>
+        </div>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

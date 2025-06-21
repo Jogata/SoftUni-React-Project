@@ -105,3 +105,11 @@ body {
     line-height: 1.6;
     background-color: #080a0c;
 }
+
+.body {
+    display: flex;
+}
+
+.main {
+    flex: 1;
+}
