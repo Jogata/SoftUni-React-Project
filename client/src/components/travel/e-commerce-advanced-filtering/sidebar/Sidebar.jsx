@@ -1,6 +1,6 @@
 import "./sidebar.css";
 
-export function Sidebar({ filterByCategory, filterByColor }) {
+export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
     return (
         <section className="sidebar">
             <div className="logo">
@@ -134,38 +134,56 @@ export function Sidebar({ filterByCategory, filterByColor }) {
             <div className="filter-group">
                 <h2 className="filter-title price-title">Price</h2>
 
-                <label className="sidebar-label-container">
-                    <input type="radio" value="" name="test2" defaultChecked />
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="all"
+                        name="price"
+                        onChange={(e) => filterByPrice(e.target.value)}
+                        defaultChecked 
+                    />
                     <span className="checkmark"></span>All
                 </label>
-
-                <input
-                    type="radio"
-                    value={50}
-                    title="$0 - 50"
-                    name="test2"
-                />
-
-                <input
-                    type="radio"
-                    value={100}
-                    title="$50 - $100"
-                    name="test2"
-                />
-
-                <input
-                    type="radio"
-                    value={150}
-                    title="$100 - $150"
-                    name="test2"
-                />
-
-                <input
-                    type="radio"
-                    value={200}
-                    title="Over $150"
-                    name="test2"
-                />
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value={"0-50"}
+                        title="$0 - $50"
+                        name="price"
+                        onChange={(e) => filterByPrice(e.target.value)}
+                    />
+                    <span className="checkmark"></span>$0 - $50
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value={"51-100"}
+                        title="$50 - $100"
+                        name="price"
+                        onChange={(e) => filterByPrice(e.target.value)}
+                    />
+                    <span className="checkmark"></span>$50 - $100
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value={"101-150"}
+                        title="$100 - $150"
+                        name="price"
+                        onChange={(e) => filterByPrice(e.target.value)}
+                    />
+                    <span className="checkmark"></span>$100 - $150
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value={"151"}
+                        title="Over $150"
+                        name="price"
+                        onChange={(e) => filterByPrice(e.target.value)}
+                    />
+                    <span className="checkmark"></span>Over $150
+                </label>
             </div>
 
         </section>

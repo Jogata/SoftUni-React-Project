@@ -47,6 +47,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("all");
   const [color, setColor] = useState("all");
+  const [price, setPrice] = useState("all");
 
   let filtered = [...products];
 
@@ -60,11 +61,23 @@ function App() {
   }
   // console.log(filtered);
 
-    console.log(color);
-    if (color !== "all") {
-      filtered = filtered.filter(p => p.color.toLowerCase() == color.toLowerCase());
-    }
-    console.log(filtered);
+  // console.log(color);
+  if (color !== "all") {
+    filtered = filtered.filter(p => p.color.toLowerCase() == color.toLowerCase());
+  }
+  // console.log(filtered);
+
+  console.log(price);
+  if (price !== "all") {
+    const prices = price.split("-");
+    const minPrice = Number(prices[0]);
+    const maxPrice = Number(prices[1]) || Number.MAX_VALUE;
+    // console.log(minPrice, maxPrice);
+    filtered = filtered.filter(p => (
+      Number(p.newPrice) >= minPrice && 
+      Number(p.newPrice) <= maxPrice))
+  }
+  console.log(filtered);
 
   return (
     <>
@@ -77,7 +90,7 @@ function App() {
         </Routes> */}
 
         <div className="body">
-          <Sidebar filterByCategory={setCategory} filterByColor={setColor} />
+          <Sidebar filterByCategory={setCategory} filterByColor={setColor} filterByPrice={setPrice} />
           <div className="main">
             <Navigation filter={setSearchValue} />
             <Recommended />
