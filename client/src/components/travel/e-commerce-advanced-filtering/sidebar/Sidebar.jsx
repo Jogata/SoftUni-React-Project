@@ -1,18 +1,23 @@
 import "./sidebar.css";
 
 export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
+    const categoryFilterTitles = ["Sneakers", "Flats", "Sandals", "Heels"];
+    const colorFilterTitles = ["Black", "Blue", "Red", "Green", "White"];
+    const priceFilterTitles = ["0-50", "50-100", "100-150", "150"];
+    
     return (
         <section className="sidebar">
             <div className="logo">
                 <span><i className="fa fa-shopping-cart"></i></span>
             </div>
 
-            <div className="filter-group">
+            {/* <div className="filter-group">
                 <h2 className="filter-title">Category</h2>
                 <div>
                     <label className="filter-label-container">
                         <input
                             type="radio"
+                            value="all"
                             name="category"
                             onChange={(e) => filterByCategory(e.target.value)}
                             defaultChecked
@@ -60,9 +65,10 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                         <span className="checkmark"></span>Heels
                     </label>
                 </div>
-            </div>
+            </div> */}
+            <Filter category={"Category"} type={"radio"} inputs={categoryFilterTitles} onChangeCallback={filterByCategory} />
 
-            <div className="filter-group">
+            {/* <div className="filter-group">
                 <h2 className="filter-title color-title">Colors</h2>
                 <label className="filter-label-container">
                     <input
@@ -129,9 +135,10 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                     ></span>
                     White
                 </label>
-            </div>
+            </div> */}
+            <Filter category={"Color"} type={"radio"} inputs={colorFilterTitles} onChangeCallback={filterByColor} />
 
-            <div className="filter-group">
+            {/* <div className="filter-group">
                 <h2 className="filter-title price-title">Price</h2>
 
                 <label className="filter-label-container">
@@ -140,7 +147,7 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                         value="all"
                         name="price"
                         onChange={(e) => filterByPrice(e.target.value)}
-                        defaultChecked 
+                        defaultChecked
                     />
                     <span className="checkmark"></span>All
                 </label>
@@ -184,8 +191,43 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                     />
                     <span className="checkmark"></span>Over $150
                 </label>
-            </div>
+            </div> */}
+            <Filter category={"Price"} type={"radio"} inputs={priceFilterTitles} onChangeCallback={filterByPrice} />
 
         </section>
     )
 };
+
+function Filter({ category, type, inputs, onChangeCallback }) {
+    return (
+        <div className="filter-group">
+            <h2 className="filter-title">{category}</h2>
+            <div>
+                <label className="filter-label-container">
+                    <input
+                        type={type}
+                        name={category}
+                        value="all"
+                        onChange={(e) => onChangeCallback(e.target.value)}
+                        defaultChecked
+                    />
+                    <span className="checkmark"></span>All
+                </label>
+                {
+                    inputs.map((input, index) => (
+                        <label key={index} className="filter-label-container">
+                        <input
+                            type={type} 
+                            value={input.toLowerCase()} 
+                            title={input} 
+                            name={category} 
+                            onChange={(e) => onChangeCallback(e.target.value)}
+                        />
+                        <span className="checkmark"></span>{input}
+                    </label>
+                    ))
+                }
+            </div>
+        </div>
+    )
+}
