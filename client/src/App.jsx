@@ -46,6 +46,7 @@ function App() {
   const [products, setProducts] = useState(data);
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("all");
+  const [color, setColor] = useState("all");
 
   let filtered = [...products];
 
@@ -57,7 +58,13 @@ function App() {
   if (category !== "all") {
     filtered = filtered.filter(p => p.category.toLowerCase() == category.toLowerCase());
   }
-  console.log(filtered);
+  // console.log(filtered);
+
+    console.log(color);
+    if (color !== "all") {
+      filtered = filtered.filter(p => p.color.toLowerCase() == color.toLowerCase());
+    }
+    console.log(filtered);
 
   return (
     <>
@@ -70,7 +77,7 @@ function App() {
         </Routes> */}
 
         <div className="body">
-          <Sidebar filterByCategory={setCategory} />
+          <Sidebar filterByCategory={setCategory} filterByColor={setColor} />
           <div className="main">
             <Navigation filter={setSearchValue} />
             <Recommended />

@@ -1,6 +1,6 @@
 import "./sidebar.css";
 
-export function Sidebar({filterByCategory}) {
+export function Sidebar({ filterByCategory, filterByColor }) {
     return (
         <section className="sidebar">
             <div className="logo">
@@ -13,7 +13,6 @@ export function Sidebar({filterByCategory}) {
                     <label className="filter-label-container">
                         <input
                             type="radio"
-                            value="all"
                             name="category"
                             onChange={(e) => filterByCategory(e.target.value)}
                             defaultChecked
@@ -65,49 +64,64 @@ export function Sidebar({filterByCategory}) {
 
             <div className="filter-group">
                 <h2 className="filter-title color-title">Colors</h2>
-                <label className="sidebar-label-container">
-                    <input type="radio" value="" name="test1" defaultChecked />
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="all"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
+                        defaultChecked
+                    />
                     <span className="checkmark all"></span>
                     All
                 </label>
-
-                <input
-                    type="radio"
-                    value="black"
-                    title="Black"
-                    name="test1"
-                    color="black"
-                />
-
-                <input
-                    type="radio"
-                    value="blue"
-                    title="Blue"
-                    name="test1"
-                    color="blue"
-                />
-
-                <input
-                    type="radio"
-                    value="red"
-                    title="Red"
-                    name="test1"
-                    color="red"
-                />
-
-                <input
-                    type="radio"
-                    value="green"
-                    title="Green"
-                    name="test1"
-                    color="green"
-                />
-
-                <label className="sidebar-label-container">
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="black"
+                        title="Black"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
+                    />
+                    <span className="checkmark"></span>Black
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="blue"
+                        title="Blue"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
+                    />
+                    <span className="checkmark"></span>Blue
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="red"
+                        title="Red"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
+                    />
+                    <span className="checkmark"></span>Red
+                </label>
+                <label className="filter-label-container">
+                    <input
+                        type="radio"
+                        value="green"
+                        title="Green"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
+                    />
+                    <span className="checkmark"></span>Green
+                </label>
+                <label className="filter-label-container">
                     <input
                         type="radio"
                         value="white"
-                        name="test1"
+                        title="White"
+                        name="color"
+                        onChange={(e) => filterByColor(e.target.value)}
                     />
                     <span
                         className="checkmark"
