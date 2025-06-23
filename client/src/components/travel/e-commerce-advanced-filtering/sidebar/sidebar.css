@@ -14,12 +14,84 @@
 }
 
 .filter-label-container {
+    display: flex;
     width: 100%;
     cursor: pointer;
 }
 
+.filter-label-container .input {
+    position: relative;
+    margin: auto 8px auto 0;
+    border-radius: 50%;
+}
+
 .filter-label-container input {
-    display: inline-block;
+    /* display: inline-block; */
+    display: block;
     width: auto;
-    margin-right: 8px;
+}
+
+.checkmark {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.colors .filter-label-container .checkmark, 
+.filter-label-container input:checked ~ .checkmark {
+    display: block;
+}
+
+.colors .checkmark {
+    border: 1px solid #fff;
+}
+
+.all {
+    background: linear-gradient(blue, crimson);
+  }
+
+/* .checkmark::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: #fff;
+    z-index: 1;
+} */
+
+.checkmark::after {
+    position: absolute;
+    top: 14%;
+    left: 14%;
+    content: "";
+    width: 72%;
+    height: 72%;
+    border-radius: inherit;
+    background-color: cornflowerblue;
+    z-index: 1;
+}
+
+.checkmark.white-dot::after {
+    top: 34%;
+    left: 34%;
+    content: none;
+    width: 32%;
+    height: 32%;
+    background-color: #fff;
+}
+
+.checkmark.white-dot.white::after {
+    background-color: #000;
+}
+
+.filter-label-container input:checked ~ .checkmark.white-dot::after {
+    content: "";
 }

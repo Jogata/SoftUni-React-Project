@@ -48,6 +48,7 @@ function App() {
   const [category, setCategory] = useState("all");
   const [color, setColor] = useState("all");
   const [price, setPrice] = useState("all");
+  const [brand, setBrand] = useState("all");
 
   let filtered = [...products];
 
@@ -55,29 +56,26 @@ function App() {
     filtered = filtered.filter(p => p.title.toLowerCase().includes(searchValue.toLowerCase()));
   }
 
-  // console.log(category);
   if (category !== "all") {
     filtered = filtered.filter(p => p.category.toLowerCase() == category.toLowerCase());
   }
-  // console.log(filtered);
 
-  // console.log(color);
   if (color !== "all") {
     filtered = filtered.filter(p => p.color.toLowerCase() == color.toLowerCase());
   }
-  // console.log(filtered);
 
-  console.log(price);
   if (price !== "all") {
     const prices = price.split("-");
     const minPrice = Number(prices[0]);
     const maxPrice = Number(prices[1]) || Number.MAX_VALUE;
-    // console.log(minPrice, maxPrice);
     filtered = filtered.filter(p => (
       Number(p.newPrice) >= minPrice && 
       Number(p.newPrice) <= maxPrice))
   }
-  console.log(filtered);
+
+  if (brand !== "all") {
+    filtered = filtered.filter(p => p.company.toLowerCase() == brand.toLowerCase());
+  }
 
   return (
     <>
@@ -93,7 +91,7 @@ function App() {
           <Sidebar filterByCategory={setCategory} filterByColor={setColor} filterByPrice={setPrice} />
           <div className="main">
             <Navigation filter={setSearchValue} />
-            <Recommended />
+            <Recommended filterByBrand={setBrand} />
             <Products data={filtered} />
           </div>
         </div>
