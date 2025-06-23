@@ -18,18 +18,13 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
-import { Navigation } from './components/travel/e-commerce-advanced-filtering/navigation/Navigation'
-import { Products } from './components/travel/e-commerce-advanced-filtering/products/Products'
-import { Recommended } from './components/travel/e-commerce-advanced-filtering/recommended/Recommended'
-import { useState } from 'react'
-import { data } from './components/travel/e-commerce-advanced-filtering/data'
-import { Sidebar } from './components/travel/e-commerce-advanced-filtering/sidebar/Sidebar'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
+import { Navigation } from './components/travel/travel-weekway/components/navigation/Navigation';
 
 function Loader() {
   return (
@@ -43,40 +38,6 @@ function Loader() {
 }
 
 function App() {
-  const [products, setProducts] = useState(data);
-  const [searchValue, setSearchValue] = useState("");
-  const [category, setCategory] = useState("all");
-  const [color, setColor] = useState("all");
-  const [price, setPrice] = useState("all");
-  const [brand, setBrand] = useState("all");
-
-  let filtered = [...products];
-
-  if (searchValue.length > 0) {
-    filtered = filtered.filter(p => p.title.toLowerCase().includes(searchValue.toLowerCase()));
-  }
-
-  if (category !== "all") {
-    filtered = filtered.filter(p => p.category.toLowerCase() == category.toLowerCase());
-  }
-
-  if (color !== "all") {
-    filtered = filtered.filter(p => p.color.toLowerCase() == color.toLowerCase());
-  }
-
-  if (price !== "all") {
-    const prices = price.split("-");
-    const minPrice = Number(prices[0]);
-    const maxPrice = Number(prices[1]) || Number.MAX_VALUE;
-    filtered = filtered.filter(p => (
-      Number(p.newPrice) >= minPrice && 
-      Number(p.newPrice) <= maxPrice))
-  }
-
-  if (brand !== "all") {
-    filtered = filtered.filter(p => p.company.toLowerCase() == brand.toLowerCase());
-  }
-
   return (
     <>
       <AuthContextProvider>
@@ -87,14 +48,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <div className="body">
-          <Sidebar filterByCategory={setCategory} filterByColor={setColor} filterByPrice={setPrice} />
-          <div className="main">
-            <Navigation filter={setSearchValue} />
-            <Recommended filterByBrand={setBrand} />
-            <Products data={filtered} />
-          </div>
-        </div>
+          <Navigation />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

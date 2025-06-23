@@ -1,9 +1,6 @@
 import "./sidebar.css";
 
 export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
-    // const categoryFilterTitles = ["Sneakers", "Flats", "Sandals", "Heels"];
-    // const colorFilterTitles = ["Black", "Blue", "Red", "Green", "White"];
-    // const priceFilterTitles = ["0-50", "50-100", "100-150", "150"];
 
     return (
         <section className="sidebar">
@@ -81,7 +78,6 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                     </label>
                 </div>
             </div>
-            {/* <Filter category={"Category"} type={"radio"} inputs={categoryFilterTitles} onChangeCallback={filterByCategory} /> */}
 
             <div className="filter-group colors">
                 <h2 className="filter-title">Colors</h2>
@@ -167,7 +163,6 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                     White
                 </label>
             </div>
-            {/* <Filter category={"Color"} type={"radio"} inputs={colorFilterTitles} onChangeCallback={filterByColor} /> */}
 
             <div className="filter-group">
                 <h2 className="filter-title price-title">Price</h2>
@@ -238,42 +233,7 @@ export function Sidebar({ filterByCategory, filterByColor, filterByPrice }) {
                     Over $150
                 </label>
             </div>
-            {/* <Filter category={"Price"} type={"radio"} inputs={priceFilterTitles} onChangeCallback={filterByPrice} /> */}
 
         </section>
     )
 };
-
-// function Filter({ category, type, inputs, onChangeCallback }) {
-//     return (
-//         <div className="filter-group">
-//             <h2 className="filter-title">{category}</h2>
-//             <div>
-//                 <label className="filter-label-container">
-//                     <input
-//                         type={type}
-//                         name={category}
-//                         value="all"
-//                         onChange={(e) => onChangeCallback(e.target.value)}
-//                         defaultChecked
-//                     />
-//                     <span className="checkmark"></span>All
-//                 </label>
-//                 {
-//                     inputs.map((input, index) => (
-//                         <label key={index} className="filter-label-container">
-//                         <input
-//                             type={type}
-//                             value={input.toLowerCase()}
-//                             title={input}
-//                             name={category}
-//                             onChange={(e) => onChangeCallback(e.target.value)}
-//                         />
-//                         <span className="checkmark"></span>{input}
-//                     </label>
-//                     ))
-//                 }
-//             </div>
-//         </div>
-//     )
-// }
