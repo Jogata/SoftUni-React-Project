@@ -25,6 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/travel-weekway/components/navigation/Navigation';
+import { TopBar } from './components/travel/travel-weekway/components/top/TopBar'
 
 function Loader() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+          <TopBar />
           <Navigation />
 
           {/* <Routes>
