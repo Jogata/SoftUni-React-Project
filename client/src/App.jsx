@@ -24,8 +24,9 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
+import { TopBar } from './components/travel/travel-weekway/components/top/TopBar';
 import { Navigation } from './components/travel/travel-weekway/components/navigation/Navigation';
-import { TopBar } from './components/travel/travel-weekway/components/top/TopBar'
+import { Hero } from './components/travel/travel-weekway/components/hero/Hero';
 
 function Loader() {
   return (
@@ -49,8 +50,15 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+        <header>
+          <img
+            src='https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3433&q=80'
+            className="hero-img"
+          />
           <TopBar />
           <Navigation />
+          <Hero />
+        </header>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

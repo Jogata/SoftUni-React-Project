@@ -112,3 +112,19 @@ body {
     /* line-height: 1.6; */
     background-color: #080a0c;
 }
+
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 800px;
+}
+
+.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -1,7 +1,7 @@
 nav {
     position: relative;
-    background-color: #333;
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
 }
 
 nav a {
@@ -15,7 +15,7 @@ nav a {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: #333;
+    /* background-color: #333; */
 }
 
 nav .nav-links.desktop-menu {
@@ -47,13 +47,14 @@ nav .menu-button {
 nav .mobile-nav {
     display: none;
     position: absolute;
-    top: 100%;
+    /* top: 100%; */
+    top: 0;
     left: 0;
     width: 100%;
     min-height: 100vh;
     padding: 1rem 2%;
     text-align: center;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.9);
     transform: translateY(-100%);
     transition: transform 300ms;
     z-index: -1;

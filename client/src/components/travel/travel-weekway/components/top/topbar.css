@@ -7,18 +7,13 @@
     align-items: center;
     justify-content: space-between;
     background-color: #080a0c;
-    z-index: 2;
+    z-index: 3;
 }
 
 .top-bar .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
-
-/* .top-bar .logo span {
-    color: transparent;
-    -webkit-text-stroke: 1px #fff;
-} */
 
 .top-bar .logo i {
     display: inline-block;
@@ -41,7 +36,6 @@
     padding: 0.8em 1.6em;
     color: #fff;
     font-size: 1rem;
-    /* border-radius: 6px; */
     background: 
         linear-gradient(90deg, 
             var(--primary-dark), 

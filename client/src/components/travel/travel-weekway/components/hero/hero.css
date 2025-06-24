@@ -1,0 +1,22 @@
+.hero {
+    flex: 1;
+    display: flex;
+    padding: 5rem 2%;
+    z-index: 1;
+}
+
+.hero-title {
+    width: 100%;
+    max-width: 600px;
+    margin: auto auto auto 0;
+}
+
+.hero-title h1 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-title h1 span {
+    display: block;
+    font-style: italic;
+}
