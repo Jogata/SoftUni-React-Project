@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { TopBar } from './components/travel/travel-weekway/components/top/TopBar';
 import { Navigation } from './components/travel/travel-weekway/components/navigation/Navigation';
 import { Hero } from './components/travel/travel-weekway/components/hero/Hero';
+import { Activities } from './components/travel/travel-weekway/components/activities/Activities';
 
 function Loader() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Navigation />
           <Hero />
         </header>
+          <Activities />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
