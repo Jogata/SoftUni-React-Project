@@ -28,7 +28,8 @@ import { TopBar } from './components/travel/travel-weekway/components/top/TopBar
 import { Navigation } from './components/travel/travel-weekway/components/navigation/Navigation';
 import { Hero } from './components/travel/travel-weekway/components/hero/Hero';
 import { Activities } from './components/travel/travel-weekway/components/activities/Activities';
-import { Booking } from './components/travel/travel-weekway/components/booking/Booking'
+import { Booking } from './components/travel/travel-weekway/components/booking/Booking';
+import { Gallery } from './components/travel/travel-weekway/components/gallery/Gallery';
 
 function Loader() {
   return (
@@ -63,6 +64,7 @@ function App() {
         </header>
           <Activities />
           <Booking />
+          <Gallery />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
