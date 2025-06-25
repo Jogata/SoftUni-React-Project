@@ -5,7 +5,6 @@
 }
 
 .gallery h2 {
-    /* color: #999; */
     font-size: 4rem;
     text-align: center;
 }
@@ -28,11 +27,9 @@
 }
 
 .gallery .grid img {
-    /* display: block; */
     height: 100%;
     object-fit: cover;
     transition: transform 300ms;
-    /* clip-path: url("#mask-1"); */
 }
 
 .gallery .grid .image:hover img {

@@ -30,6 +30,7 @@ import { Hero } from './components/travel/travel-weekway/components/hero/Hero';
 import { Activities } from './components/travel/travel-weekway/components/activities/Activities';
 import { Booking } from './components/travel/travel-weekway/components/booking/Booking';
 import { Gallery } from './components/travel/travel-weekway/components/gallery/Gallery';
+import { Contact } from './components/travel/travel-weekway/components/contact/Contact';
 
 function Loader() {
   return (
@@ -65,6 +66,7 @@ function App() {
           <Activities />
           <Booking />
           <Gallery />
+          <Contact />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
