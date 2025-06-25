@@ -115,6 +115,8 @@ body {
 
 header {
     position: relative;
+    max-width: 1600px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     min-height: 800px;
@@ -122,9 +124,13 @@ header {
 
 .hero-img {
     position: absolute;
-    top: 0;
+    top: 10%;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    clip-path: url("#mask-1");
+    clip-path: url("#mask-2");
+    clip-path: url("#mask-3");
+    clip-path: url("#mask-4");
 }

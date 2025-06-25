@@ -1,0 +1,49 @@
+.booking {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 2%;
+}
+
+.booking form {
+    padding: 1rem 2%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px #000, 
+            -2px -2px 2px #fff5;
+    /* border: 1px solid red; */
+}
+
+.booking form label {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.booking form select {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 6px;
+    border: 0px solid transparent;
+    background-color: transparent;
+    box-shadow: inset 2px 2px 2px #000, 
+            inset -2px -2px 2px #fff5;
+}
+
+.booking form select option {
+    background-color: #080a0c;
+}
+
+.booking .dates {
+    display: flex;
+    gap: 0 1rem;
+    flex-wrap: wrap;
+}
+
+.booking .dates .date {
+    flex: 1;
+    min-width: 250px;
+}
+
+.booking form button {
+    width: 100%;
+}
