@@ -9,9 +9,7 @@
 body {
     margin: 0;
     color: #f4f4f4;
-    font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: Georgia, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #26272b;
@@ -25,9 +23,4 @@ a {
 h1 {
     margin: 1rem;
     text-align: center;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
 }
