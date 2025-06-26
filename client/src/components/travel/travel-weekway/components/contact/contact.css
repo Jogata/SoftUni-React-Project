@@ -19,7 +19,6 @@
 .contact .form-section {
     position: relative;
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
 }
 
 .contact .form-section .image {
@@ -29,8 +28,6 @@
 }
 
 .contact .form-section form {
-    /* flex: 1; */
-    /* grid-column: 2/3; */
     z-index: 1;
 }
 
@@ -54,7 +51,6 @@
     padding: 2%;
     color: #fff9;
     border: 1px solid #fff5;
-    /* background-color: transparent; */
 }
 
 .contact .form-section form .grid button {
@@ -70,8 +66,6 @@
 
     .contact .form-section .image {
         position: absolute;
-        /* flex: 1; */
-        /* max-height: 500px; */
         grid-column: 1/2;
     }
 

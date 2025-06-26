@@ -1,0 +1,17 @@
+footer {
+    max-width: 1600px;
+    margin: auto;
+    padding: 3rem 2%;
+    text-align: center;
+    border-top: 1px solid #777;
+}
+
+footer .logo {
+    font-size: 2rem;
+}
+
+footer .logo i {
+    display: inline-block;
+    margin-right: 0.5rem;
+    transform: rotateY(180deg);
+}

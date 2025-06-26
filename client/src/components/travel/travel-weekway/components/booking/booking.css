@@ -1,14 +1,21 @@
 .booking {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     padding: 0 2%;
 }
 
 .booking form {
-    padding: 1rem 2%;
+    padding: 0 2% 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
     border-radius: 12px;
     box-shadow: 2px 2px 2px #000, 
             -2px -2px 2px #fff5;
+}
+
+.booking form .form-group {
+    flex: 1;
 }
 
 .booking form label {
@@ -19,6 +26,7 @@
 
 .booking form select {
     width: 100%;
+    min-width: 240px;
     padding: 0.5rem 1rem;
     color: #fff;
     border-radius: 6px;
@@ -33,9 +41,10 @@
 }
 
 .booking .dates {
+    flex: 2;
     display: flex;
     gap: 0 1rem;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .booking .dates .date {
@@ -45,4 +54,13 @@
 
 .booking form button {
     width: 100%;
+    margin: 0;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+    .booking .dates {
+        width: 100%;
+        flex-wrap: wrap;
+    }
 }

@@ -31,6 +31,7 @@ import { Activities } from './components/travel/travel-weekway/components/activi
 import { Booking } from './components/travel/travel-weekway/components/booking/Booking';
 import { Gallery } from './components/travel/travel-weekway/components/gallery/Gallery';
 import { Contact } from './components/travel/travel-weekway/components/contact/Contact';
+import { Footer } from './components/travel/travel-weekway/components/footer/Footer';
 
 function Loader() {
   return (
@@ -67,6 +68,7 @@ function App() {
           <Booking />
           <Gallery />
           <Contact />
+          <Footer />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

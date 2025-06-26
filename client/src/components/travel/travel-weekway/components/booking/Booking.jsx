@@ -13,7 +13,7 @@ export function Booking() {
             <option>Cozumel</option>
           </select>
         </div>
-        <div className="dates">
+        <div className="form-group dates">
           <div className="date">
             <label>Check-In</label>
             <input type="date" />
@@ -23,7 +23,7 @@ export function Booking() {
             <input type="date" />
           </div>
         </div>
-        <div>
+        <div className="form-group">
           <label>Search</label>
           <button>Rates & Availabilities</button>
         </div>
