@@ -6,8 +6,6 @@ export function Coin({coin}) {
 
     return (
         <div className="coin-row" onClick={() => link.current.click()}>
-        {/* // <div className="coin-row"> */}
-        {/* // <div className="coin-row" onClick={e => e.stopPropagation()}> */}
             <Link to={`/coins/${coin.id}`} ref={link}>open a detailed page about {coin.name}</Link>
             <p>{coin.market_cap_rank}</p>
             <div className="img-symbol">

@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/crypto-app-react/components/navigation/Navigation';
 import { Coins } from './components/travel/crypto-app-react/components/coins/Coins';
+import { CoinDetails } from './components/travel/crypto-app-react/routes/coin-details/CoinDetails';
 
 function Loader() {
   return (
@@ -50,7 +51,10 @@ function App() {
         </Routes> */}
 
         <Navigation />
-        <Coins />
+        <Routes>
+        <Route path='/' element={<Coins />} />
+        <Route path={`/coins/:id`} element={<CoinDetails />} />
+        </Routes>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

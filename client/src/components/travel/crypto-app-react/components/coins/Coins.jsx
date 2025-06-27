@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./coins.css";
 import { Coin } from "./Coin";
+import "./coins.css";
 
 export function Coins() {
     const [coins, setCoins] = useState([]);
