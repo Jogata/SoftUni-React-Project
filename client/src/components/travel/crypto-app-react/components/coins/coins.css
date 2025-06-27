@@ -20,6 +20,7 @@
 }
 
 .coin-row {
+    position: relative;
     margin: 2rem 1rem;
     padding: 0.7rem 1rem;
     display: flex;
@@ -34,6 +35,11 @@
 .coin-row:hover {
     transform: scale(1.04);
     cursor: pointer;
+}
+
+.coin-row a {
+    position: absolute;
+    font-size: 0px;
 }
 
 img {

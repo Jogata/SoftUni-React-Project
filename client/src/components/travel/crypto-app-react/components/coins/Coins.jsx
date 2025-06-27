@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./coins.css";
+import { Coin } from "./Coin";
 
 export function Coins() {
     const [coins, setCoins] = useState([]);
@@ -9,8 +10,6 @@ export function Coins() {
     useEffect(() => {
         fetch(url)
             .then(response => response.json())
-            // .then(data => console.log(data))
-            // .then(data => setCoins(data))
             .then(data => {
                 setTimeout(() => {
                     setCoins(data);
@@ -27,6 +26,7 @@ export function Coins() {
 
     return (
         <div className="container">
+            {/* <div onClick={e => console.log(e.currentTarget)}> */}
             <div>
                 <div className="heading">
                     <p>#</p>
@@ -37,41 +37,9 @@ export function Coins() {
                     <p className="hide-mobile">Mkt Cap</p>
                 </div>
 
-                <div className="coin-row">
-                    <p>{coins[0].market_cap_rank}</p>
-                    <div className="img-symbol">
-                        <img src={coins[0].image} alt="" />
-                        <p>{coins[0].symbol.toUpperCase()}</p>
-                    </div>
-                    <p>${coins[0].current_price.toLocaleString()}</p>
-                    <p>{coins[0].price_change_percentage_24h.toFixed(2)}%</p>
-                    <p className="hide-mobile">${coins[0].total_volume.toLocaleString()}</p>
-                    <p className="hide-mobile">${coins[0].market_cap.toLocaleString()}</p>
-                </div>
-
-                <div className="coin-row">
-                    <p>{coins[1].market_cap_rank}</p>
-                    <div className="img-symbol">
-                        <img src={coins[1].image} alt="" />
-                        <p>{coins[1].symbol.toUpperCase()}</p>
-                    </div>
-                    <p>${coins[1].current_price.toLocaleString()}</p>
-                    <p>{coins[1].price_change_percentage_24h.toFixed(2)}%</p>
-                    <p className="hide-mobile">${coins[1].total_volume.toLocaleString()}</p>
-                    <p className="hide-mobile">${coins[1].market_cap.toLocaleString()}</p>
-                </div>
-
-                <div className="coin-row">
-                    <p>{coins[2].market_cap_rank}</p>
-                    <div className="img-symbol">
-                        <img src={coins[2].image} alt="" />
-                        <p>{coins[2].symbol.toUpperCase()}</p>
-                    </div>
-                    <p>${coins[2].current_price.toLocaleString()}</p>
-                    <p>{coins[2].price_change_percentage_24h.toFixed(2)}%</p>
-                    <p className="hide-mobile">${coins[2].total_volume.toLocaleString()}</p>
-                    <p className="hide-mobile">${coins[2].market_cap.toLocaleString()}</p>
-                </div>
+                {coins.map(coin => (
+                    <Coin key={coin.id} coin={coin} />
+                ))}
 
             </div>
         </div>

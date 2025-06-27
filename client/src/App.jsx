@@ -25,7 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/crypto-app-react/components/navigation/Navigation';
-import { Coins } from './components/travel/crypto-app-react/components/coins/Coins'
+import { Coins } from './components/travel/crypto-app-react/components/coins/Coins';
 
 function Loader() {
   return (
