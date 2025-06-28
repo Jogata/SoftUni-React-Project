@@ -7,8 +7,6 @@ export function Navigation() {
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
-            // const navbar = document.querySelector(".navbar");
-            // navbar.classList.toggle("active", window.scrollY > 100);
             if (window.scrollY > 100) {
                 setIsDark(true);
             } else {
@@ -20,10 +18,6 @@ export function Navigation() {
     const navClass = isDark ? "navigation active" : "navigation";
     const menuButtonIconClass = isMenuOpen ? "fa fa-times" : "fa fa-bars";
     const menuClass = isMenuOpen ? "nav-links open" : "nav-links";
-
-    //   document.querySelector(".toggle").addEventListener("click", function() {
-    //     document.querySelector(".navbar").classList.toggle("active");
-    // });
 
     return (
         <nav>

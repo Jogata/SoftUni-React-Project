@@ -24,16 +24,13 @@
 
 .nav-links ul li:hover {
     color: #bf40bf;
-    /* cursor: pointer; */
 }
 
 .nav-links ul li a {
     padding: 0.5em 1em;
-    /* border: 1px solid; */
 }
 
 .nav-btn a {
-    /* margin-top: 20px; */
     padding: 1rem 2.5rem;
     color: #fff;
     font-weight: 600;
@@ -51,10 +48,9 @@
     color: #fff;
     font-size: 2rem;
     padding: 0.2em 0.4em;
-    /* border: 1px solid; */
 }
 
-/* .navbar.active {
+.navigation.active {
     position: fixed;
     top: 0;
     width: 100%;
@@ -63,12 +59,12 @@
     box-shadow: -1px 11px 24px -11px rgba(0, 0, 0, 0.75);
     transition: 0.5s;
     z-index: 1000;
-} */
+}
 
-/* .navbar.active button{
+.navigation.active button {
     color: #ff5f1f;
     background-color: #000;
-} */
+}
 
 @media screen and (max-width: 700px) {
     .toggle-btn {

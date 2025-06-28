@@ -25,6 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/software-company-app-softify/components/navigation/Navigation';
+import { Footer } from './components/travel/software-company-app-softify/components/footer/Footer';
 
 function Loader() {
   return (
@@ -49,6 +50,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Footer />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
