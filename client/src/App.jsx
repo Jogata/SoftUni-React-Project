@@ -24,9 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Navigation } from './components/travel/crypto-app-react/components/navigation/Navigation';
-import { Coins } from './components/travel/crypto-app-react/components/coins/Coins';
-import { CoinDetails } from './components/travel/crypto-app-react/routes/coin-details/CoinDetails';
+import { Navigation } from './components/travel/software-company-app-softify/components/navigation/Navigation';
 
 function Loader() {
   return (
@@ -51,10 +49,6 @@ function App() {
         </Routes> */}
 
         <Navigation />
-        <Routes>
-        <Route path='/' element={<Coins />} />
-        <Route path={`/coins/:id`} element={<CoinDetails />} />
-        </Routes>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
