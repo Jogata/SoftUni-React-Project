@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Navigation } from './components/travel/software-company-app-softify/components/navigation/Navigation';
 import { Hero } from './components/travel/software-company-app-softify/components/hero/Hero';
+import { Services } from './components/travel/software-company-app-softify/components/services/Services';
 import { Footer } from './components/travel/software-company-app-softify/components/footer/Footer';
 
 function Loader() {
@@ -52,6 +53,7 @@ function App() {
 
         <Navigation />
         <Hero />
+        <Services />
         <Footer />
 
           {/* <Routes>

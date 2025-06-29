@@ -1,20 +1,14 @@
 .hero {
     width: 90%;
-    /* height: 120vh; */
     margin: 2rem auto;
-    /* justify-self: center; */
-    /* display: grid; */
-    /* place-items: center; */
     text-align: center;
     border-radius: 40px;
     border: 1px solid #f9f9f9;
-    /* background-color: #f9f9f9; */
 }
 
 .hero .hero-header {
     margin: 5rem 0;
     padding: 2%;
-    /* margin-top: 40px; */
     font-size: 50px;
 }
 
@@ -50,7 +44,6 @@
     text-align: center;
     border-radius: 40px;
     border-top: 1px solid #f9f9f9;
-    /* background-color: #fff; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -76,7 +69,6 @@
 .steps {
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center; */
     justify-content: center;
 }
 
@@ -95,7 +87,6 @@
 
 .step h3 {
     margin-bottom: 10px;
-    /* color: #000; */
     color: #fff;
     font-size: 1.5rem;
 }
