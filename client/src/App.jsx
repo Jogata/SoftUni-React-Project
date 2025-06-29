@@ -27,6 +27,7 @@ import Logout from './components/logout/Logout'
 import { Navigation } from './components/travel/software-company-app-softify/components/navigation/Navigation';
 import { Hero } from './components/travel/software-company-app-softify/components/hero/Hero';
 import { Services } from './components/travel/software-company-app-softify/components/services/Services';
+import { Projects } from './components/travel/software-company-app-softify/components/projects/Projects';
 import { Footer } from './components/travel/software-company-app-softify/components/footer/Footer';
 
 function Loader() {
@@ -54,6 +55,7 @@ function App() {
         <Navigation />
         <Hero />
         <Services />
+        <Projects />
         <Footer />
 
           {/* <Routes>

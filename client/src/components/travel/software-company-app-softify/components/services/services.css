@@ -1,12 +1,10 @@
 .services-container {
-    /* margin-top: -10px; */
     max-width: 1600px;
     margin: auto;
     padding: 6rem;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(2, 1fr);
-    /* background-color: #ebebeb; */
 }
 
 .service-card {
@@ -46,7 +44,6 @@
     padding: 0.9rem;
     color: #fff;
     font-size: 2rem;
-    /* border: none; */
     border-radius: 10px;
     background-color: #000;
     transition: background-color 300ms;
