@@ -29,6 +29,7 @@ import { Hero } from './components/travel/software-company-app-softify/component
 import { Services } from './components/travel/software-company-app-softify/components/services/Services';
 import { Projects } from './components/travel/software-company-app-softify/components/projects/Projects';
 import { Footer } from './components/travel/software-company-app-softify/components/footer/Footer';
+import { About } from './components/travel/software-company-app-softify/components/about/About'
 
 function Loader() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Hero />
         <Services />
         <Projects />
+        <About />
         <Footer />
 
           {/* <Routes>

@@ -41,28 +41,26 @@ export function Projects() {
     ];
 
     return (
-        <div>
-            <div className="project borders" id="projects">
-                <div className="header">
-                    <div className="info">
-                        <h3>We Build Brands That Stand Out</h3>
-                    </div>
-                    <button>Get In Tourch</button>
+        <div className="project borders" id="projects">
+            <div className="header">
+                <div className="info">
+                    <h3>We Build Brands That Stand Out</h3>
                 </div>
-                <div className="project-items">
-                    {projects.map(({ image, title, text }, index) => {
-                        return (
-                            <div className="item" key={index}>
-                                <img src={image} alt="project-img" />
-                                <div className="info">
-                                    <h4>{title}</h4>
-                                    <p>{text}</p>
-                                    <a href="#">View Project</a>
-                                </div>
+                <button>Get In Tourch</button>
+            </div>
+            <div className="project-items">
+                {projects.map(({ image, title, text }, index) => {
+                    return (
+                        <div className="item" key={index}>
+                            <img src={image} alt="project-img" />
+                            <div className="info">
+                                <h4>{title}</h4>
+                                <p>{text}</p>
+                                <a href="#">View Project</a>
                             </div>
-                        )
-                    })}
-                </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
