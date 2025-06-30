@@ -30,28 +30,26 @@ export function About() {
     ];
 
     return (
-        <div>
-            <div className="about borders" id="about">
-                <div className="left-side">
-                    <img src={img} alt="about-img" />
-                </div>
-                <div className="right-side">
-                    <h2 className="right-header">About Us</h2>
-                    <p>A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides</p>
+        <div className="about borders" id="about">
+            <div className="left-side">
+                <img src={img} alt="about-img" />
+            </div>
+            <div className="right-side">
+                <h2 className="right-header">About Us</h2>
+                <p>A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides</p>
 
-                    {aboutList.map(({ icon, title }, index) => {
-                        return (
-                            <div className="list-container" key={index}>
-                                <div className="list">
-                                    <h2 className="icon">
-                                        <i className={icon}></i>
-                                    </h2>
-                                    <p>{title}</p>
-                                </div>
+                {aboutList.map(({ icon, title }, index) => {
+                    return (
+                        <div className="list-container" key={index}>
+                            <div className="list">
+                                <h2 className="icon">
+                                    <i className={icon}></i>
+                                </h2>
+                                <p>{title}</p>
                             </div>
-                        )
-                    })}
-                </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

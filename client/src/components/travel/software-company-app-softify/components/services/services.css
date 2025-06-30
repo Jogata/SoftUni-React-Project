@@ -1,7 +1,7 @@
 .services-container {
     max-width: 1600px;
     margin: auto;
-    padding: 6rem;
+    padding: 6rem 5%;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(2, 1fr);
@@ -9,6 +9,8 @@
 
 .service-card {
     position: relative;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 3.5rem;
     border-radius: 10px;
     background-color: #fff;
@@ -52,4 +54,10 @@
 
 .expand-btn:hover {
     background-color: #333;
+}
+
+@media screen and (max-width: 980px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
 }

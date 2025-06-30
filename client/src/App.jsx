@@ -28,8 +28,9 @@ import { Navigation } from './components/travel/software-company-app-softify/com
 import { Hero } from './components/travel/software-company-app-softify/components/hero/Hero';
 import { Services } from './components/travel/software-company-app-softify/components/services/Services';
 import { Projects } from './components/travel/software-company-app-softify/components/projects/Projects';
+import { About } from './components/travel/software-company-app-softify/components/about/About';
+import { Feedback } from './components/travel/software-company-app-softify/components/feedback/Feedback';
 import { Footer } from './components/travel/software-company-app-softify/components/footer/Footer';
-import { About } from './components/travel/software-company-app-softify/components/about/About'
 
 function Loader() {
   return (
@@ -58,6 +59,7 @@ function App() {
         <Services />
         <Projects />
         <About />
+        <Feedback />
         <Footer />
 
           {/* <Routes>
