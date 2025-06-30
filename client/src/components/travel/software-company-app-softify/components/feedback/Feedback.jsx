@@ -28,28 +28,26 @@ export function Feedback() {
     ];
 
     return (
-        <div>
-            <div className="feedback borders">
-                <h5>Hear From Our Clients</h5>
-                <div className="customers">
-                    {feedback.map(({ image, icon, name, company, comment }, index) => {
-                        return (
-                            <div className="item" key={index}>
-                                <div className="user">
-                                    <img src={image} alt="" />
-                                    <div className="info">
-                                        <h5>{name} </h5>
-                                        <p>{company} </p>
-                                    </div>
+        <div className="feedback borders">
+            <h5>Hear From Our Clients</h5>
+            <div className="customers">
+                {feedback.map(({ image, icon, name, company, comment }, index) => {
+                    return (
+                        <div className="item" key={index}>
+                            <div className="user">
+                                <img src={image} alt="" />
+                                <div className="info">
+                                    <h5>{name} </h5>
+                                    <p>{company} </p>
                                 </div>
-                                <div className="comment">
-                                    <h2><i className={icon}></i></h2>
-                                </div>
-                                <p>{comment} </p>
                             </div>
-                        )
-                    })}
-                </div>
+                            <div className="comment">
+                                <h2><i className={icon}></i></h2>
+                            </div>
+                            <p>{comment} </p>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

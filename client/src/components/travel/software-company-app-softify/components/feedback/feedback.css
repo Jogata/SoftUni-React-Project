@@ -2,9 +2,6 @@
     max-width: 1600px;
     margin: auto;
     padding: 3rem 3%;
-    /* height: 75vh; */
-    /* background-color: #f9f9f9; */
-    /* margin-top: -30px; */
     overflow-x: hidden;
 }
 
@@ -30,7 +27,6 @@
     flex-direction: column;
     border-radius: 10px;
     border: 1px solid #888;
-    /* background-color: #fff; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
