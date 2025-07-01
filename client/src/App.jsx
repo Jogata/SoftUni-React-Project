@@ -37,303 +37,95 @@ function Loader() {
   )
 }
 
-function About() {
+function Navigation() {
   return (
-    <section className="tabs about">
-      <div className="max-width">
-        <h2>About me</h2>
-        <p>
-          I am a talented software engineer with a passion for creating
-          stunning user experiences. Having worked with an extensive range of
-          technologies, frameworks, and programming languages - from React and
-          Angular to Python, Golang, and more - my expertise in the field is
-          unparalleled. My diverse skill set has enabled me to build
-          countless projects for clients around the world, showcasing my
-          ability to adapt and excel in any given environment.
-        </p>
-        <p>
-          However, it was his love for User Interface Design that truly set me
-          apart. My dedication to honing his skills in this area led me
-          down a path of self-discovery, taking advantage of every resource
-          available to me - from online tutorials to workshops and beyond. With
-          my tireless efforts, I have earned my badge as a truly talented
-          UI/UX Designer.
-        </p>
+    <nav>
+      <div className="search">
+        <i className="ri-search-line"></i>
+        <input type="text" placeholder="Search..." />
       </div>
-    </section>
+      <div>
+        <i className="fa fa-user-o"></i>
+      </div>
+    </nav>
   );
 };
 
-function Contact() {
-  const links = [
-    {
-      href: "https://twitter.com", 
-      label: "Twitter", 
-      icon: "fa fa-twitter"
-    },
-    {
-      href: "https://youtube.com", 
-      label: "YouTube", 
-      icon: "fa fa-youtube-play"
-    },
-    {
-      href: "https://github.com", 
-      label: "GitHub", 
-      icon: "fa fa-github"
-    },
-    {
-      href: "https://instagram.com", 
-      label: "Instagram", 
-      icon: "fa fa-instagram"
-    },
-  ];
-
+const Modal = ({children, onClose}) => {
   return (
-    <section className="contact">
-      <h2>Contact Me</h2>
-      <div className="contacts">
-        {links.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className={link.icon}></i>
-            <span>{link.label}</span>
-          </a>
-        ))}
+    <div>
+      <div>
+        {children}
+        <button
+          onClick={onClose}
+        >
+          ✕
+        </button>
       </div>
-    </section>
+    </div>
   );
 };
 
-function Sidebar() {
+function ArticleCard({article={}, onEdit, deleteBlog}) {
   return (
-    <aside className="tabs sidebar fixed top-0 left-0 h-screen w-20 bg-[#1A1C1E] text-white">
-      <ul className="p-4 flex-col justify-between items-center h-full">
-        <div className="top">
-          <li className="mb-2">
-            <div className="flex items-center">
-              <i className="fa fa-home"></i>
-            </div>
-          </li>
-          <li className="mb-2">
-            <div className="flex items-center">
-              <i className="fa fa-user-o"></i>
-            </div>
-          </li>
-          <li className="mb-2">
-            <div className="flex items-center">
-              <i className="ri-search-line"></i>
-            </div>
-          </li>
-        </div>
-
-        <div className="bottom">
-          <li>
-            <i className="fa fa-cogs"></i>
-          </li>
-          <li>
-            <i className="fa fa-user-o"></i>
-          </li>
-        </div>
-      </ul>
-    </aside>
-  );
-};
-
-function Profile() {
-  const [bannerUrl, setBannerUrl] = useState(
-    "https://via.placeholder.com/1500x400"
-  );
-
-  const [profileUrl, setProfileUrl] = useState(
-    "https://via.placeholder.com/100"
-  );
-
-  const handleBannerChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setBannerUrl(URL.createObjectURL(file));
-    }
-  };
-
-  const handleProfileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setProfileUrl(URL.createObjectURL(file));
-    }
-  };
-
-  return (
-    <div className="profile">
-
-      <div className="banner">
-        <img
-          src={bannerUrl}
-          alt="Banner Image"
-          className="banner-img"
-        />
-        <div className="upload-btn">
-          <label htmlFor="banner-upload">
-            <i className="fa fa-camera-retro"></i>
-            <input
-              id="banner-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleBannerChange}
-            />
-          </label>
-        </div>
-      </div>
-
-      <div className="profile-img">
-        <div className="image-box">
-          <img
-            src={profileUrl}
-            alt="Profile Image"
-          />
-
-          <div className="upload-btn">
-            <label htmlFor="profile-upload">
-              <i className="fa fa-camera-retro"></i>
-              <input
-                id="profile-upload"
-                type="file"
-                accept="image/*"
-                onChange={handleProfileChange}
-              />
-            </label>
+    <div>
+      <img
+        src={article.image}
+        alt={article.title}
+      />
+      <div>
+        <h3>
+          {article.title}
+        </h3>
+        <p>{article.description}</p>
+        <div>
+          <span>{article.time}</span>
+          <div>
+            <i className="fa fa-bookmark"></i>
+            <i 
+              onClick={() => onEdit(article)} 
+              className="fa fa-pencil"
+            ></i>
+            <i 
+              onClick={() => deleteBlog(article.id)}
+              className="fa fa-trash"
+            ></i>
           </div>
         </div>
-
-        <div className="channel-info">
-          <h1 className="username">User Name</h1>
-          <p>1M views</p>
-          <p className="description">
-            This is a short description of the YouTube channel.
-            It gives an overview of the content and what viewers
-            can expect.
-          </p>
-          <button className="subscribe-btn">
-            Subscribe
-          </button>
-        </div>
-      </div>
-
-    </div>
-  );
-};
-
-function Card({ title, description, image, link }) {
-  return (
-    <div className="card">
-      <img src={image} alt={title} />
-      <div>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <a href={link}>
-          Learn More
-        </a>
       </div>
     </div>
   );
 };
 
-const tabsData = [
-  {
-    id: "home", 
-    icon: "fa fa-home", 
-    label: "Home", 
-    content: (
-      <div className="cards">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <Card 
-            key={index} 
-            title="Amazing Card" 
-            description="This is a cool-looking card component using React." 
-            image="https://via.placeholder.com/400x300"
-          />
-        ))}
-      </div>
-    ),
-  },
-  {
-    id: "about", 
-    icon: "fa fa-info", 
-    label: "About", 
-    content: <About />
-  },
-  {
-    id: "projects", 
-    icon: "fa fa-folder-open-o", 
-    label: "Projects", 
-    content: (
-      <div className="cards">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Card 
-            key={index} 
-            title="Amazing Card" 
-            description="This is a cool-looking card component using React." 
-            image="https://via.placeholder.com/400x300"
-          />
-        ))}
-      </div>
-    ),
-  },
-  {
-    id: "courses", 
-    icon: "fa fa-copyright", 
-    label: "Courses", 
-    content: (
-      <div className="cards">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <Card 
-            key={index} 
-            title="Amazing Card" 
-            description="This is a cool-looking card component using React." 
-            image="https://via.placeholder.com/400x300" 
-          />
-        ))}
-      </div>
-    ),
-  },
-  {
-    id: "contact", 
-    icon: "fa fa-phone", 
-    label: "Contact", 
-    content: <Contact />,
-  },
-];
+const ArticleList = ({onEdit}) => {
+  const [blogs, setBlogs] = useState([]);
 
-function Tabs() {
-  const [activeTabID, setActiveTabID] = useState(tabsData[0].id);
-  const btnClass = new Array(tabsData.length).fill("tab-btn");
-  const activeBtnIndex = tabsData.findIndex(tab => tab.id === activeTabID);
-  btnClass[activeBtnIndex] = "tab-btn active";
+  const addBlog = (blog) => {
+    setBlogs([...blogs, blog]);
+  };
+
+  const updateBlog = (updatedBlog) => {
+    setBlogs(
+      blogs.map(blog => (blog.id === updatedBlog.id ? updatedBlog : blog))
+    );
+  };
+
+  const deleteBlog = (id) =>
+    setBlogs(blogs.filter((blog) => blog.id !== id));
 
   return (
-    <div className="tabs-section">
-      <div className="tab-buttons">
-        {tabsData.map((tab, index) => (
-          <button
-            key={tab.id}
-            className={btnClass[index]}
-            onClick={() => setActiveTabID(tab.id)}
-          >
-            <i className={tab.icon}></i>
-            <span>{tab.label}</span>
-          </button>
-        ))}
-      </div>
-      <div className="tab-content">
-        {tabsData[activeBtnIndex].content}
-      </div>
+    <div className="blogs">
+      {blogs.map(blog => (
+        <ArticleCard 
+          key={blog.id} 
+          article={blog} 
+          deleteBlog={deleteBlog} 
+          onEdit={onEdit}
+        />
+      ))}
     </div>
   );
 };
-
 
 function App() {
   return (
@@ -346,12 +138,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<div className="tabs">
-        <Sidebar />
-  <main className="main">
-        <Profile />
-        <Tabs />
-  </main>
+<div className="blogs-project">
+        <Navigation />
+        <ArticleCard />
 </div>
 
           {/* <Routes>
