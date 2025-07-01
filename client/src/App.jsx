@@ -24,7 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Loader() {
   return (
@@ -51,13 +51,127 @@ function Navigation() {
   );
 };
 
-const Modal = ({children, onClose}) => {
+function TrendsList() {
+  const trends = [
+    {
+      title: "Be the Person You Are on Vacation",
+      author: "Maren Torff",
+    },
+    {
+      title: "Hate NFTs? I have some bad news...",
+      author: "Zain Levin",
+    },
+    {
+      title: "The real impact of dark UX patterns",
+      author: "Lindsey Curtis",
+    },
+  ];
+  
+  return (
+    <div className="trends">
+      <h3>Today's top trends</h3>
+      <ul>
+        {trends.map((trend, index) => (
+          <li key={index}>
+            <span className='title'>{trend.title}</span>
+            <span className="author">By {trend.author}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const BlogForm = ({ closeModal, existingBlog }) => {
+  let blog = {
+    id: Date.now(), 
+    title: "", 
+    description: "", 
+    image: "", 
+    time: "", 
+  };
+
+  if (existingBlog) {
+    blog = existingBlog;
+  }
+
+  // const { addBlog, updateBlog } = useBlogs();
+  const [title, setTitle] = useState(blog.title);
+  const [description, setDescription] = useState(blog.description);
+  const [image, setImage] = useState(blog.image);
+  const [time, setTime] = useState(blog.time);
+
+  const handleSubmit = () => {
+    const newBlog = {
+      id: blog.id, 
+      title, 
+      description, 
+      image, 
+      time
+    };
+
+    if (existingBlog) {
+      updateBlog(newBlog);
+    } else {
+      addBlog(newBlog);
+    }
+
+    closeModal();
+  };
+
+  return (
+    <div>
+      <h3>
+        {existingBlog ? "Edit Blog" : "Add Blog"}
+      </h3>
+      <div>
+        <input 
+          type="text" 
+          placeholder="Title" 
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea 
+          placeholder="Description" 
+          value={description} 
+          onChange={(e) => setDescription(e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="Image URL" 
+          value={image} 
+          onChange={(e) => setImage(e.target.value)} 
+        />
+        <input 
+          type="date" 
+          placeholder="Time" 
+          value={time} 
+          onChange={(e) => setTime(e.target.value)} 
+        />
+      </div>
+      <div>
+        <button 
+          onClick={handleSubmit} 
+        >
+          {existingBlog ? "Update" : "Add"}
+        </button>
+        <button 
+          onClick={closeModal} 
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const Modal = ({closeModal, blog}) => {
   return (
     <div>
       <div>
-        {children}
+        <BlogForm closeModal={closeModal} existingBlog={blog} />
         <button
-          onClick={onClose}
+          onClick={closeModal}
         >
           ✕
         </button>
@@ -68,10 +182,10 @@ const Modal = ({children, onClose}) => {
 
 function ArticleCard({article={}, onEdit, deleteBlog}) {
   return (
-    <div>
+    <div className="blog-card">
       <img
         src={article.image}
-        alt={article.title}
+        alt="image"
       />
       <div>
         <h3>
@@ -128,6 +242,19 @@ const ArticleList = ({onEdit}) => {
 };
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const test = {
+    id: "test", 
+    title: "title", 
+    description: "description", 
+    image: "image", 
+    time: "00:05:04", 
+  }
+
   return (
     <>
       <AuthContextProvider>
@@ -140,7 +267,10 @@ function App() {
 
 <div className="blogs-project">
         <Navigation />
-        <ArticleCard />
+        {/* <ArticleCard key={1} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
+        {/* <ArticleCard key={2} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
+        {isModalOpen ? <Modal closeModal={closeModal} blog={{}} /> : null}
+        <TrendsList />
 </div>
 
           {/* <Routes>

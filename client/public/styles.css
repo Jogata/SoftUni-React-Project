@@ -703,3 +703,50 @@ article {
   top: 4px;
   right: 10px;
 }
+
+.trends {
+  padding: 3rem 2%;
+  border-bottom: 2px solid #999;
+}
+
+.trends h3 {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.trends ul {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.trends ul li {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #999;
+}
+
+.trends ul li span {
+  display: block;
+}
+
+.trends ul li .title {
+  font-size: 1.6rem;
+}
+
+.trends ul li .author {
+  color: #999;
+}
+
+.blog-card {
+  max-width: 400px;
+  padding: 1rem;
+  border: 1px solid red;
+}
+
+.blog-card img {
+  display: block;
+  height: 200px;
+  border: 1px solid #897859;
+}
