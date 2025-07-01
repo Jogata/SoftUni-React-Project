@@ -696,8 +696,7 @@ article {
   padding: 2rem 1rem 1rem;
   color: #fff;
   background-color: #1A1C1E;
-
-  grid-column: 1/2;
+  /* grid-column: 1/2; */
 }
 
 .tabs .sidebar ul {
@@ -719,9 +718,9 @@ article {
   margin-top: auto;
 }
 
-.tabs .about {
+/* .tabs .about {
   background-color: #333;
-}
+} */
 
 .tabs .about .max-width {
   max-width: 1600px;
@@ -826,4 +825,74 @@ article {
   font-size: 1rem;
   border-radius: 4em;
   background-color: red;
+}
+
+.tabs-section {
+  padding: 0 2%;
+}
+
+.tab-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.5em;
+  color: #555;
+  border-bottom: 1px solid #555;
+}
+
+.tab-btn i {
+  margin-right: 8px;
+}
+
+.tab-btn.active {
+  color: #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.cards {
+  padding: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 320px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #555;
+}
+
+.card img {
+  display: block;
+  height: 100px;
+  background-color: #333;
+}
+
+.card a {
+  margin-top: 1rem;
+  padding: 0.5em 1em;
+  border: 1px solid #555;
+}
+
+.contact {
+  padding: 2rem 2%;
+}
+
+.contacts {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contacts a {
+  color: #eee;
+}
+
+.contacts a i {
+  margin-right: 8px;
 }

@@ -64,6 +64,50 @@ function About() {
   );
 };
 
+function Contact() {
+  const links = [
+    {
+      href: "https://twitter.com", 
+      label: "Twitter", 
+      icon: "fa fa-twitter"
+    },
+    {
+      href: "https://youtube.com", 
+      label: "YouTube", 
+      icon: "fa fa-youtube-play"
+    },
+    {
+      href: "https://github.com", 
+      label: "GitHub", 
+      icon: "fa fa-github"
+    },
+    {
+      href: "https://instagram.com", 
+      label: "Instagram", 
+      icon: "fa fa-instagram"
+    },
+  ];
+
+  return (
+    <section className="contact">
+      <h2>Contact Me</h2>
+      <div className="contacts">
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className={link.icon}></i>
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 function Sidebar() {
   return (
     <aside className="tabs sidebar fixed top-0 left-0 h-screen w-20 bg-[#1A1C1E] text-white">
@@ -98,7 +142,6 @@ function Sidebar() {
     </aside>
   );
 };
-
 
 function Profile() {
   const [bannerUrl, setBannerUrl] = useState(
@@ -183,6 +226,115 @@ function Profile() {
   );
 };
 
+function Card({ title, description, image, link }) {
+  return (
+    <div className="card">
+      <img src={image} alt={title} />
+      <div>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <a href={link}>
+          Learn More
+        </a>
+      </div>
+    </div>
+  );
+};
+
+const tabsData = [
+  {
+    id: "home", 
+    icon: "fa fa-home", 
+    label: "Home", 
+    content: (
+      <div className="cards">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <Card 
+            key={index} 
+            title="Amazing Card" 
+            description="This is a cool-looking card component using React." 
+            image="https://via.placeholder.com/400x300"
+          />
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "about", 
+    icon: "fa fa-info", 
+    label: "About", 
+    content: <About />
+  },
+  {
+    id: "projects", 
+    icon: "fa fa-folder-open-o", 
+    label: "Projects", 
+    content: (
+      <div className="cards">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <Card 
+            key={index} 
+            title="Amazing Card" 
+            description="This is a cool-looking card component using React." 
+            image="https://via.placeholder.com/400x300"
+          />
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "courses", 
+    icon: "fa fa-copyright", 
+    label: "Courses", 
+    content: (
+      <div className="cards">
+        {Array.from({ length: 4 }).map((_, index) => (
+          <Card 
+            key={index} 
+            title="Amazing Card" 
+            description="This is a cool-looking card component using React." 
+            image="https://via.placeholder.com/400x300" 
+          />
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "contact", 
+    icon: "fa fa-phone", 
+    label: "Contact", 
+    content: <Contact />,
+  },
+];
+
+function Tabs() {
+  const [activeTabID, setActiveTabID] = useState(tabsData[0].id);
+  const btnClass = new Array(tabsData.length).fill("tab-btn");
+  const activeBtnIndex = tabsData.findIndex(tab => tab.id === activeTabID);
+  btnClass[activeBtnIndex] = "tab-btn active";
+
+  return (
+    <div className="tabs-section">
+      <div className="tab-buttons">
+        {tabsData.map((tab, index) => (
+          <button
+            key={tab.id}
+            className={btnClass[index]}
+            onClick={() => setActiveTabID(tab.id)}
+          >
+            <i className={tab.icon}></i>
+            <span>{tab.label}</span>
+          </button>
+        ))}
+      </div>
+      <div className="tab-content">
+        {tabsData[activeBtnIndex].content}
+      </div>
+    </div>
+  );
+};
+
+
 function App() {
   return (
     <>
@@ -197,8 +349,8 @@ function App() {
 <div className="tabs">
         <Sidebar />
   <main className="main">
-        <About />
         <Profile />
+        <Tabs />
   </main>
 </div>
 
