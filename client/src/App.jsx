@@ -24,7 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Loader() {
   return (
@@ -118,20 +118,34 @@ function PeopleToFollow() {
   );
 }
 
+function TopicsList() {
+  const topics = [
+    "Technology",
+    "Design Thinking",
+    "Crypto",
+    "NFT",
+    "Personal Growth",
+    "Reading",
+  ];
+
+  return (
+    <div className="topics">
+      <h3 className="font-semibold text-lg mb-4">Topics for you</h3>
+      <ul className="flex-wrap gap-2">
+        {topics.map((topic, index) => (
+          <a href="#" 
+            key={index} 
+            className="topic"
+          >
+            {topic}
+          </a>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 const BlogForm = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
-  // let blog = {
-  //   id: Date.now(), 
-  //   title: "", 
-  //   description: "", 
-  //   image: "", 
-  //   time: "", 
-  // };
-
-  // if (existingBlog) {
-  //   blog = existingBlog;
-  // }
-
-  // const { addBlog, updateBlog } = useBlogs();
   const [title, setTitle] = useState(blog.title);
   const [description, setDescription] = useState(blog.description);
   const [image, setImage] = useState(blog.image);
@@ -222,7 +236,7 @@ const Modal = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
   );
 };
 
-function ArticleCard({article={}, onEdit, deleteBlog}) {
+function ArticleCard({article, openModalToEditBlog, deleteBlog}) {
   return (
     <div className="blog-card">
       <img
@@ -239,7 +253,7 @@ function ArticleCard({article={}, onEdit, deleteBlog}) {
           <div>
             <i className="fa fa-bookmark"></i>
             <i 
-              onClick={() => onEdit(article)} 
+              onClick={() => openModalToEditBlog(article)} 
               className="fa fa-pencil"
             ></i>
             <i 
@@ -253,7 +267,7 @@ function ArticleCard({article={}, onEdit, deleteBlog}) {
   );
 };
 
-const ArticleList = ({ blogs, openModal }) => {
+const ArticleList = ({ blogs, setBlogs, openModalToEditBlog }) => {
   const deleteBlog = (id) =>
     setBlogs(blogs.filter((blog) => blog.id !== id));
 
@@ -264,7 +278,7 @@ const ArticleList = ({ blogs, openModal }) => {
           key={blog.id} 
           article={blog} 
           deleteBlog={deleteBlog} 
-          openModal={openModal}
+          openModalToEditBlog={openModalToEditBlog}
         />
       ))}
     </div>
@@ -308,9 +322,8 @@ function App() {
       image: "image2", 
       time: "00:15:04", 
     }, 
-  ]
+  ];
 
-  // const [blogs, setBlogs] = useState([]);
   const [blogs, setBlogs] = useState(test);
   const [blog, setBlog] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -349,14 +362,6 @@ function App() {
     openModal();
   }
 
-  // const test = {
-  //   id: "test", 
-  //   title: "title", 
-  //   description: "description", 
-  //   image: "image", 
-  //   time: "00:05:04", 
-  // }
-
   return (
     <>
       <AuthContextProvider>
@@ -367,32 +372,35 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<div className="blogs-project">
-        <Navigation />
-        {/* <ArticleCard key={1} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
-        {/* <ArticleCard key={2} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
+        <div className="blogs-project">
+          <Navigation />
           <main>
-            <div className="add-btn">
-            <button 
-              onClick={openModalForNewBlog} 
-            >
-              Add New Blog <i className="fa fa-plus-circle"></i>
-            </button>
+            <div className="blogs-content">
+              <div className="add-btn">
+                <button
+                  onClick={openModalForNewBlog}
+                >
+                  Add New Blog <i className="fa fa-plus-circle"></i>
+                </button>
+              </div>
+              <ArticleList blogs={blogs} setBlogs={setBlogs} openModalToEditBlog={openModalToEditBlog} />
             </div>
-            <ArticleList blogs={blogs} openModal={openModalToEditBlog} />
-            {isModalOpen ? 
-              <Modal 
-                closeModal={closeModal} 
-                blog={blog} 
-                addBlog={addBlog} 
-                updateBlog={updateBlog} 
-                isEditing={isEditing} 
-              /> : 
+            {isModalOpen ?
+              <Modal
+                closeModal={closeModal}
+                blog={blog}
+                addBlog={addBlog}
+                updateBlog={updateBlog}
+                isEditing={isEditing}
+              /> :
               null}
-            <PeopleToFollow />
-            <TrendsList />
+            <div className="side-content">
+              <PeopleToFollow />
+              <TrendsList />
+              <TopicsList />
+            </div>
           </main>
-</div>
+        </div>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

@@ -714,6 +714,7 @@ article {
   margin: auto;
   margin-bottom: 2rem;
   font-size: 3rem;
+  text-align: center;
 }
 
 .trends ul {
@@ -749,6 +750,7 @@ article {
   margin: auto;
   margin-bottom: 2rem;
   font-size: 3rem;
+  text-align: center;
 }
 
 .users ul {
@@ -764,7 +766,8 @@ article {
 
 .user-card {
   display: flex;
-  gap: 5%;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -799,6 +802,31 @@ article {
   background-color: #eee;
 }
 
+.topics {
+  padding: 3rem 2%;
+}
+
+.topics h3 {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.topics ul {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.topics ul .topic {
+  margin: 0.5rem;
+  padding: 0.8em 1.6em;
+  color: #080a0c;
+  font-size: 1.2rem;
+  background-color: #999;
+}
+
 .blogs-project main {
   padding: 3rem 2%;
 }
@@ -819,20 +847,16 @@ article {
 }
 
 .blogs {
-  max-width: 1600px;
   margin: auto;
   padding: 3rem 2%;
   display: flex;
   gap: 1rem 2%;
-  flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  border-bottom: 2px solid #999;
 }
 
 .blog-card {
   width: 100%;
-  /* max-width: 400px; */
   padding: 1rem;
   border: 1px solid red;
 }
@@ -863,19 +887,11 @@ article {
 .modal h3 {
   margin: 3rem 0 2rem;
   font-size: 2rem;
-  /* text-align: center; */
-}
-
-.blog-form {
-  /* overflow: hidden; */
 }
 
 .blog-form form {
   max-width: 700px;
   margin: auto;
-  /* padding: 2rem 2rem 1rem; */
-  /* border-radius: 8px; */
-  /* box-shadow: -1px -1px 1px #555; */
 }
 
 .blog-form input, 
@@ -890,4 +906,25 @@ article {
 .blog-form textarea {
   padding: 0.5rem 1rem;
   border-radius: 8px;
+}
+
+@media screen and (max-width: 1600px) {
+  .blogs {
+    border-bottom: 2px solid #999;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .blogs-project main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .blogs-content {
+    border-right: 2px solid #999;
+  }
+
+  .side-content {
+    padding-left: 2vw;
+  }
 }
