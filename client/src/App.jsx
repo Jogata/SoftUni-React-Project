@@ -18,13 +18,13 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
+import { useState } from 'react'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useState } from 'react';
 
 function Loader() {
   return (
@@ -37,331 +37,256 @@ function Loader() {
   )
 }
 
-function Navigation() {
+const Sidebar = () => {
   return (
-    <nav>
-      <div className="search">
-        <i className="ri-search-line"></i>
-        <input type="text" placeholder="Search..." />
-      </div>
-      <div>
-        <i className="fa fa-user-o"></i>
-      </div>
-    </nav>
+    <aside>
+      <div className="logo">Logo</div>
+      <div className="icon"><i className="fa fa-folder"></i></div>
+      <div className="icon"><i className="fa fa-user"></i></div>
+      <div className="icon"><i className="fa fa-cog"></i></div>
+    </aside>
   );
 };
 
-function TrendsList() {
-  const trends = [
-    {
-      title: "Be the Person You Are on Vacation",
-      author: "Maren Torff",
-    },
-    {
-      title: "Hate NFTs? I have some bad news...",
-      author: "Zain Levin",
-    },
-    {
-      title: "The real impact of dark UX patterns",
-      author: "Lindsey Curtis",
-    },
-  ];
-  
+const data = [
+  {
+    client: "Alice Johnson",
+    country: "Canada",
+    email: "alice.johnson@gmail.com",
+    project: "AI Research Platform",
+    progress: "10%",
+    status: "Completed",
+    date: "10/06/2023",
+    image:
+      "https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Michael Thompson",
+    country: "Germany",
+    email: "michael.thompson@gmail.com",
+    project: "Blockchain Development",
+    progress: "20%",
+    status: "In Progress",
+    date: "22/07/2023",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Sophia Lee",
+    country: "Australia",
+    email: "sophia.lee@gmail.com",
+    project: "E-Learning System",
+    progress: "100%",
+    status: "In Progress",
+    date: "30/08/2023",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Lucas Perez",
+    country: "Mexico",
+    email: "lucas.perez@gmail.com",
+    project: "Mobile Payment App",
+    progress: "50%",
+    status: "In Progress",
+    date: "15/09/2023",
+    image:
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Ava Kim",
+    country: "South Korea",
+    email: "ava.kim@gmail.com",
+    project: "Smart Home Automation",
+    progress: "30%",
+    status: "In Progress",
+    date: "05/07/2023",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Ethan Davis",
+    country: "New Zealand",
+    email: "ethan.davis@gmail.com",
+    project: "Virtual Reality Game",
+    progress: "8%",
+    status: "In Progress",
+    date: "23/06/2023",
+    image:
+      "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=1995&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Isabella Rossi",
+    country: "Italy",
+    email: "isabella.rossi@gmail.com",
+    project: "E-Commerce Platform",
+    progress: "60%",
+    status: "In Progress",
+    date: "18/05/2023",
+    image:
+      "https://images.unsplash.com/photo-1526510747491-58f928ec870f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Noah Garcia",
+    country: "Spain",
+    email: "noah.garcia@gmail.com",
+    project: "Tourism Website",
+    progress: "80%",
+    status: "Completed",
+    date: "12/08/2023",
+    image: 
+      "https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Emma Martinez",
+    country: "Argentina",
+    email: "emma.martinez@gmail.com",
+    project: "Healthcare App",
+    progress: "90%",
+    status: "In Progress",
+    date: "27/09/2023",
+    image:
+      "https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Liam Patel",
+    country: "India",
+    email: "liam.patel@gmail.com",
+    project: "Agritech Platform",
+    progress: "100%",
+    status: "In Progress",
+    date: "09/09/2023",
+    image:
+      "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Olivia Chen",
+    country: "China",
+    email: "olivia.chen@gmail.com",
+    project: "AI Assistant",
+    progress: "20%",
+    status: "In Progress",
+    date: "01/08/2023",
+    image:
+      "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Mia Williams",
+    country: "USA",
+    email: "mia.williams@gmail.com",
+    project: "Cloud Storage Solution",
+    progress: "10%",
+    status: "In Progress",
+    date: "20/07/2023",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "William Tanaka",
+    country: "Japan",
+    email: "william.tanaka@gmail.com",
+    project: "IoT Device Integration",
+    progress: "70%",
+    status: "Completed",
+    date: "29/06/2023",
+    image:
+      "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    client: "Charlotte Wilson",
+    country: "UK",
+    email: "charlotte.wilson@gmail.com",
+    project: "Financial Analytics Tool",
+    progress: "90%",
+    status: "In Progress",
+    date: "13/09/2023",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+const ProjectTable = () => {
+  const [projects, setProjects] = useState(data);
+
   return (
-    <div className="trends">
-      <h3>Today's top trends</h3>
-      <ul>
-        {trends.map((trend, index) => (
-          <li key={index}>
-            <span className='title'>{trend.title}</span>
-            <span className="author">By {trend.author}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function UserCard({ person }) {
-  return (
-    <li className="user-card items-center justify-between">
-      <div className="info">
-        <i className="fa fa-user-o text-3xl mr-3 text-gray-500"></i>
-        <span>{person.name}</span>
-      </div>
-      <button
-        className={person.following ? "following" : "follow"}
-      >
-        {person.following ? "Following" : "Follow"}
-      </button>
-    </li>
-  );
-}
-
-function PeopleToFollow() {
-  const peopleToFollow = [
-    { name: "Alena Gouse", following: false }, 
-    { name: "Ruben Bator", following: true }, 
-    { name: "Aspen Stanton", following: false }, 
-    { name: "Madelyn George", following: false }
-  ];
-
-  return (
-    <div className="users">
-      <h3>People who to follow</h3>
-      <ul>
-        {peopleToFollow.map((person, index) => (
-          <UserCard key={index} person={person} />
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function TopicsList() {
-  const topics = [
-    "Technology",
-    "Design Thinking",
-    "Crypto",
-    "NFT",
-    "Personal Growth",
-    "Reading",
-  ];
-
-  return (
-    <div className="topics">
-      <h3 className="font-semibold text-lg mb-4">Topics for you</h3>
-      <ul className="flex-wrap gap-2">
-        {topics.map((topic, index) => (
-          <a href="#" 
-            key={index} 
-            className="topic"
-          >
-            {topic}
-          </a>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-const BlogForm = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
-  const [title, setTitle] = useState(blog.title);
-  const [description, setDescription] = useState(blog.description);
-  const [image, setImage] = useState(blog.image);
-  const [time, setTime] = useState(blog.time);
-
-  const handleSubmit = () => {
-    const newBlog = {
-      id: blog.id, 
-      title, 
-      description, 
-      image, 
-      time
-    };
-
-    if (isEditing) {
-      updateBlog(newBlog);
-    } else {
-      console.log("added");
-      addBlog(newBlog);
-    }
-
-    closeModal();
-  };
-
-  return (
-    <div className="blog-form">
-      <h3>
-        {isEditing ? "Edit Blog" : "Add Blog"}
-      </h3>
-      <form>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea 
-        rows={10} 
-          value={description}
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <div>
-          <button
-            onClick={handleSubmit}
-          >
-            {isEditing ? "Update" : "Add"}
-          </button>
-          <button
-            onClick={closeModal}
-          >
-            Cancel
+    <div className="main-content">
+      {/* Sorting */}
+      <div className="filters">
+        <div className="">
+          <button className="">
+            <i className="fa fa-sort"></i>
+            Sort
+            <i className="fa fa-angle-down"></i>
           </button>
         </div>
-      </form>
-    </div>
-  );
-};
 
-const Modal = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
-  return (
-    <div className="modal">
-      <div>
-        <button className="close" onClick={closeModal}>
-          ✕
-        </button>
-        <BlogForm
-          closeModal={closeModal} 
-          blog={blog} 
-          addBlog={addBlog} 
-          updateBlog={updateBlog} 
-          isEditing={isEditing}
-        />
-      </div>
-    </div>
-  );
-};
-
-function ArticleCard({article, openModalToEditBlog, deleteBlog}) {
-  return (
-    <div className="blog-card">
-      <img
-        src={article.image}
-        alt="image"
-      />
-      <div>
-        <h3>
-          {article.title}
-        </h3>
-        <p>{article.description}</p>
-        <div>
-          <span>{article.time}</span>
-          <div>
-            <i className="fa fa-bookmark"></i>
-            <i 
-              onClick={() => openModalToEditBlog(article)} 
-              className="fa fa-pencil"
-            ></i>
-            <i 
-              onClick={() => deleteBlog(article.id)}
-              className="fa fa-trash"
-            ></i>
-          </div>
+        {/* Filters */}
+        <div className="">
+          <button className="">
+            <i className="fa fa-sort"></i>
+            Filters
+            <i className="fa fa-angle-down"></i>
+          </button>
         </div>
       </div>
-    </div>
-  );
-};
 
-const ArticleList = ({ blogs, setBlogs, openModalToEditBlog }) => {
-  const deleteBlog = (id) =>
-    setBlogs(blogs.filter((blog) => blog.id !== id));
+      {/* Main Table */}
+      <table className="">
+        <thead>
+          <tr>
+            <th className="">Image</th>
+            <th className="">Name</th>
+            <th className="">Country</th>
+            <th className="">Email</th>
+            <th className="">Project Name</th>
+            <th className="">Task Progress</th>
+            <th className="">Status</th>
+            <th className="">Date</th>
+            <th className="">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map((project, index) => (
+            <tr key={index}>
+              <td className="">
+                <img src={project.image} alt={project.client}/>
+              </td>
+              <td className="">{project.client}</td>
+              <td className="">{project.country}</td>
+              <td className="">{project.email}</td>
+              <td className="">{project.project}</td>
+              <td className="">
+                <div className="">
+                  <div className=""></div>
+                </div>
+              </td>
+              <td className="">
+                <span className="">
+                  {project.status}
+                </span>
+              </td>
+              <td className="">{project.date}</td>
+              <td className="">
+                <div className="">
+                  <i className="fa fa-ellipsis-v"/>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-  return (
-    <div className="blogs">
-      {blogs.map(blog => (
-        <ArticleCard 
-          key={blog.id} 
-          article={blog} 
-          deleteBlog={deleteBlog} 
-          openModalToEditBlog={openModalToEditBlog}
-        />
-      ))}
+      {/* Pagination */}
+      <div className="pagination">
+        <button className="">Previous</button>
+        <span className="">Page 1 of 10</span>
+        <button className="">Next</button>
+      </div>
     </div>
   );
 };
 
 function App() {
-  const test = [
-    {
-      id: "test1", 
-      title: "title1", 
-      description: "description1", 
-      image: "image1", 
-      time: "00:05:04", 
-    }, 
-    {
-      id: "test2", 
-      title: "title2", 
-      description: "description2", 
-      image: "image2", 
-      time: "00:15:04", 
-    }, 
-    {
-      id: "test3", 
-      title: "title2", 
-      description: "description2", 
-      image: "image2", 
-      time: "00:15:04", 
-    }, 
-    {
-      id: "test4", 
-      title: "title2", 
-      description: "description2", 
-      image: "image2", 
-      time: "00:15:04", 
-    }, 
-    {
-      id: "test5", 
-      title: "title2", 
-      description: "description2", 
-      image: "image2", 
-      time: "00:15:04", 
-    }, 
-  ];
-
-  const [blogs, setBlogs] = useState(test);
-  const [blog, setBlog] = useState({});
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const addBlog = (blog) => {
-    setBlogs([...blogs, blog]);
-  };
-
-  const updateBlog = (updatedBlog) => {
-    setBlogs(
-      blogs.map(blog => (blog.id === updatedBlog.id ? updatedBlog : blog))
-    );
-  };
-
-  const openModalForNewBlog = () => {
-    const emptyBlog = {
-      id: Date.now(), 
-      title: "", 
-      description: "", 
-      image: "", 
-      time: "", 
-    };
-
-    setBlog(emptyBlog);
-    setIsEditing(false);
-    openModal();
-  }
-
-  const openModalToEditBlog = (blog) => {
-    setBlog(blog);
-    setIsEditing(true);
-    openModal();
-  }
-
   return (
     <>
       <AuthContextProvider>
@@ -372,35 +297,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <div className="blogs-project">
-          <Navigation />
-          <main>
-            <div className="blogs-content">
-              <div className="add-btn">
-                <button
-                  onClick={openModalForNewBlog}
-                >
-                  Add New Blog <i className="fa fa-plus-circle"></i>
-                </button>
-              </div>
-              <ArticleList blogs={blogs} setBlogs={setBlogs} openModalToEditBlog={openModalToEditBlog} />
-            </div>
-            {isModalOpen ?
-              <Modal
-                closeModal={closeModal}
-                blog={blog}
-                addBlog={addBlog}
-                updateBlog={updateBlog}
-                isEditing={isEditing}
-              /> :
-              null}
-            <div className="side-content">
-              <PeopleToFollow />
-              <TrendsList />
-              <TopicsList />
-            </div>
-          </main>
-        </div>
+<Sidebar />
+        <main>
+          <ProjectTable />
+        </main>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
