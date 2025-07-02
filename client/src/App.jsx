@@ -82,18 +82,54 @@ function TrendsList() {
   );
 }
 
-const BlogForm = ({ closeModal, existingBlog }) => {
-  let blog = {
-    id: Date.now(), 
-    title: "", 
-    description: "", 
-    image: "", 
-    time: "", 
-  };
+function UserCard({ person }) {
+  return (
+    <li className="user-card items-center justify-between">
+      <div className="info">
+        <i className="fa fa-user-o text-3xl mr-3 text-gray-500"></i>
+        <span>{person.name}</span>
+      </div>
+      <button
+        className={person.following ? "following" : "follow"}
+      >
+        {person.following ? "Following" : "Follow"}
+      </button>
+    </li>
+  );
+}
 
-  if (existingBlog) {
-    blog = existingBlog;
-  }
+function PeopleToFollow() {
+  const peopleToFollow = [
+    { name: "Alena Gouse", following: false }, 
+    { name: "Ruben Bator", following: true }, 
+    { name: "Aspen Stanton", following: false }, 
+    { name: "Madelyn George", following: false }
+  ];
+
+  return (
+    <div className="users">
+      <h3>People who to follow</h3>
+      <ul>
+        {peopleToFollow.map((person, index) => (
+          <UserCard key={index} person={person} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const BlogForm = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
+  // let blog = {
+  //   id: Date.now(), 
+  //   title: "", 
+  //   description: "", 
+  //   image: "", 
+  //   time: "", 
+  // };
+
+  // if (existingBlog) {
+  //   blog = existingBlog;
+  // }
 
   // const { addBlog, updateBlog } = useBlogs();
   const [title, setTitle] = useState(blog.title);
@@ -110,9 +146,10 @@ const BlogForm = ({ closeModal, existingBlog }) => {
       time
     };
 
-    if (existingBlog) {
+    if (isEditing) {
       updateBlog(newBlog);
     } else {
+      console.log("added");
       addBlog(newBlog);
     }
 
@@ -120,61 +157,66 @@ const BlogForm = ({ closeModal, existingBlog }) => {
   };
 
   return (
-    <div>
+    <div className="blog-form">
       <h3>
-        {existingBlog ? "Edit Blog" : "Add Blog"}
+        {isEditing ? "Edit Blog" : "Add Blog"}
       </h3>
-      <div>
-        <input 
-          type="text" 
-          placeholder="Title" 
-          value={title} 
+      <form>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea 
-          placeholder="Description" 
-          value={description} 
-          onChange={(e) => setDescription(e.target.value)} 
+        rows={10} 
+          value={description}
+          placeholder="Description"
+          onChange={(e) => setDescription(e.target.value)}
         />
-        <input 
-          type="text" 
-          placeholder="Image URL" 
-          value={image} 
-          onChange={(e) => setImage(e.target.value)} 
+        <input
+          type="text"
+          placeholder="Image URL"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
         />
-        <input 
-          type="date" 
-          placeholder="Time" 
-          value={time} 
-          onChange={(e) => setTime(e.target.value)} 
+        <input
+          type="date"
+          placeholder="Time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
         />
-      </div>
-      <div>
-        <button 
-          onClick={handleSubmit} 
-        >
-          {existingBlog ? "Update" : "Add"}
-        </button>
-        <button 
-          onClick={closeModal} 
-        >
-          Cancel
-        </button>
-      </div>
+        <div>
+          <button
+            onClick={handleSubmit}
+          >
+            {isEditing ? "Update" : "Add"}
+          </button>
+          <button
+            onClick={closeModal}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
 
-const Modal = ({closeModal, blog}) => {
+const Modal = ({ closeModal, blog, addBlog, updateBlog, isEditing }) => {
   return (
-    <div>
+    <div className="modal">
       <div>
-        <BlogForm closeModal={closeModal} existingBlog={blog} />
-        <button
-          onClick={closeModal}
-        >
+        <button className="close" onClick={closeModal}>
           ✕
         </button>
+        <BlogForm
+          closeModal={closeModal} 
+          blog={blog} 
+          addBlog={addBlog} 
+          updateBlog={updateBlog} 
+          isEditing={isEditing}
+        />
       </div>
     </div>
   );
@@ -211,8 +253,71 @@ function ArticleCard({article={}, onEdit, deleteBlog}) {
   );
 };
 
-const ArticleList = ({onEdit}) => {
-  const [blogs, setBlogs] = useState([]);
+const ArticleList = ({ blogs, openModal }) => {
+  const deleteBlog = (id) =>
+    setBlogs(blogs.filter((blog) => blog.id !== id));
+
+  return (
+    <div className="blogs">
+      {blogs.map(blog => (
+        <ArticleCard 
+          key={blog.id} 
+          article={blog} 
+          deleteBlog={deleteBlog} 
+          openModal={openModal}
+        />
+      ))}
+    </div>
+  );
+};
+
+function App() {
+  const test = [
+    {
+      id: "test1", 
+      title: "title1", 
+      description: "description1", 
+      image: "image1", 
+      time: "00:05:04", 
+    }, 
+    {
+      id: "test2", 
+      title: "title2", 
+      description: "description2", 
+      image: "image2", 
+      time: "00:15:04", 
+    }, 
+    {
+      id: "test3", 
+      title: "title2", 
+      description: "description2", 
+      image: "image2", 
+      time: "00:15:04", 
+    }, 
+    {
+      id: "test4", 
+      title: "title2", 
+      description: "description2", 
+      image: "image2", 
+      time: "00:15:04", 
+    }, 
+    {
+      id: "test5", 
+      title: "title2", 
+      description: "description2", 
+      image: "image2", 
+      time: "00:15:04", 
+    }, 
+  ]
+
+  // const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState(test);
+  const [blog, setBlog] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const addBlog = (blog) => {
     setBlogs([...blogs, blog]);
@@ -224,36 +329,33 @@ const ArticleList = ({onEdit}) => {
     );
   };
 
-  const deleteBlog = (id) =>
-    setBlogs(blogs.filter((blog) => blog.id !== id));
+  const openModalForNewBlog = () => {
+    const emptyBlog = {
+      id: Date.now(), 
+      title: "", 
+      description: "", 
+      image: "", 
+      time: "", 
+    };
 
-  return (
-    <div className="blogs">
-      {blogs.map(blog => (
-        <ArticleCard 
-          key={blog.id} 
-          article={blog} 
-          deleteBlog={deleteBlog} 
-          onEdit={onEdit}
-        />
-      ))}
-    </div>
-  );
-};
-
-function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const test = {
-    id: "test", 
-    title: "title", 
-    description: "description", 
-    image: "image", 
-    time: "00:05:04", 
+    setBlog(emptyBlog);
+    setIsEditing(false);
+    openModal();
   }
+
+  const openModalToEditBlog = (blog) => {
+    setBlog(blog);
+    setIsEditing(true);
+    openModal();
+  }
+
+  // const test = {
+  //   id: "test", 
+  //   title: "title", 
+  //   description: "description", 
+  //   image: "image", 
+  //   time: "00:05:04", 
+  // }
 
   return (
     <>
@@ -269,8 +371,27 @@ function App() {
         <Navigation />
         {/* <ArticleCard key={1} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
         {/* <ArticleCard key={2} article={test} onEdit={openModal} deleteBlog={closeModal} /> */}
-        {isModalOpen ? <Modal closeModal={closeModal} blog={{}} /> : null}
-        <TrendsList />
+          <main>
+            <div className="add-btn">
+            <button 
+              onClick={openModalForNewBlog} 
+            >
+              Add New Blog <i className="fa fa-plus-circle"></i>
+            </button>
+            </div>
+            <ArticleList blogs={blogs} openModal={openModalToEditBlog} />
+            {isModalOpen ? 
+              <Modal 
+                closeModal={closeModal} 
+                blog={blog} 
+                addBlog={addBlog} 
+                updateBlog={updateBlog} 
+                isEditing={isEditing} 
+              /> : 
+              null}
+            <PeopleToFollow />
+            <TrendsList />
+          </main>
 </div>
 
           {/* <Routes>
