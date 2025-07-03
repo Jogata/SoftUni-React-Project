@@ -205,6 +205,33 @@ const data = [
   },
 ];
 
+function Filter({label, options}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const classes = isOpen ? "relative-box open" : "relative-box";
+
+  function filter(e) {
+    setIsOpen(!isOpen);
+    console.log(e.target.value);
+  }
+
+  return (
+    <div className={classes}>
+    <label htmlFor="sort" onClick={() => setIsOpen(!isOpen)}>
+      <i className="fa fa-sort"></i>
+      {label}
+      <i className="fa fa-angle-down"></i>
+    </label>
+    <select name="sort" id="sort" onChange={filter}>
+      <option value="all">All</option>
+      {options.map(option => (
+        <option key={option} value={option.toLowerCase()}>{option}</option>
+      ))}
+    </select>
+  </div>
+
+  );
+}
+
 const ProjectTable = () => {
   const [projects, setProjects] = useState(data);
 
@@ -212,77 +239,86 @@ const ProjectTable = () => {
     <div className="main-content">
       {/* Sorting */}
       <div className="filters">
-        <div className="">
-          <button className="">
-            <i className="fa fa-sort"></i>
-            Sort
-            <i className="fa fa-angle-down"></i>
-          </button>
-        </div>
+        <Filter label="Sort" options={["Name", "Country", "Date"]} />
 
         {/* Filters */}
-        <div className="">
-          <button className="">
+        <Filter label="Filters" options={["Name", "Country", "Email", "Project", "Status"]} />
+        {/* <div className="filter">
+          <label htmlFor="filter">
             <i className="fa fa-sort"></i>
             Filters
             <i className="fa fa-angle-down"></i>
-          </button>
-        </div>
-      </div>
+          </label>
+          <select name="filter" id="filter">
+            <option value="name">name</option>
+            <option value="country">country</option>
+            <option value="email">email</option>
+            <option value="project">project</option>
+            <option value="status">status</option>
+          </select>
+        </div> */}
+      </div> 
 
       {/* Main Table */}
-      <table className="">
+      <table>
         <thead>
           <tr>
-            <th className="">Image</th>
-            <th className="">Name</th>
-            <th className="">Country</th>
-            <th className="">Email</th>
-            <th className="">Project Name</th>
-            <th className="">Task Progress</th>
-            <th className="">Status</th>
-            <th className="">Date</th>
-            <th className="">Actions</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>Project Name</th>
+            <th>Task Progress</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {projects.map((project, index) => (
-            <tr key={index}>
-              <td className="">
-                <img src={project.image} alt={project.client}/>
-              </td>
-              <td className="">{project.client}</td>
-              <td className="">{project.country}</td>
-              <td className="">{project.email}</td>
-              <td className="">{project.project}</td>
-              <td className="">
-                <div className="">
-                  <div className=""></div>
-                </div>
-              </td>
-              <td className="">
-                <span className="">
-                  {project.status}
-                </span>
-              </td>
-              <td className="">{project.date}</td>
-              <td className="">
-                <div className="">
-                  <i className="fa fa-ellipsis-v"/>
-                </div>
-              </td>
-            </tr>
-          ))}
+          {projects.map((project, index) => {
+            const statusClass = project.status == "Completed" ? "status completed" : "status";
+            return (
+              <tr key={index}>
+                <td className="image-col">
+                  <img src={project.image} alt={project.client} />
+                </td>
+                <td>{project.client}</td>
+                <td>{project.country}</td>
+                <td>{project.email}</td>
+                <td>{project.project}</td>
+                <td>
+                  <div className="progress" title={`${project.progress}`}>
+                    <span>{project.progress}</span>
+                    <div className="progress-bar" style={{ width: `${project.progress}` }}></div>
+                  </div>
+                </td>
+                <td className="status-col">
+                  <span className={statusClass}>
+                    {project.status}
+                  </span>
+                </td>
+                <td>{project.date}</td>
+                <td className="actions-col">
+                  <div>
+                    <i className="fa fa-ellipsis-v" />
+                  </div>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
 
       {/* Pagination */}
+      <div className="flex-container">
       <div className="pagination">
-        <button className="">Previous</button>
+        <button className="page-btn">Previous</button>
         <span className="">Page 1 of 10</span>
-        <button className="">Next</button>
+        <button className="page-btn">Next</button>
+      </div>
       </div>
     </div>
+        
   );
 };
 
