@@ -18,13 +18,13 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
-import { useState } from 'react'
 
 // ================================================
 // import { Home } from './components/travel/galaxy-travel/routes/Home';
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
+import { useState } from 'react';
 
 function Loader() {
   return (
@@ -67,7 +67,7 @@ const data = [
     project: "Blockchain Development",
     progress: "20%",
     status: "In Progress",
-    date: "22/07/2023",
+    date: "22/07/2024",
     image:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -100,7 +100,7 @@ const data = [
     project: "Smart Home Automation",
     progress: "30%",
     status: "In Progress",
-    date: "05/07/2023",
+    date: "05/07/2022",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -155,7 +155,7 @@ const data = [
     project: "Agritech Platform",
     progress: "100%",
     status: "In Progress",
-    date: "09/09/2023",
+    date: "09/09/2024",
     image:
       "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -188,7 +188,7 @@ const data = [
     project: "IoT Device Integration",
     progress: "70%",
     status: "Completed",
-    date: "29/06/2023",
+    date: "29/06/2019",
     image:
       "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -205,13 +205,53 @@ const data = [
   },
 ];
 
-function Filter({label, options}) {
+function Sort({label, options, setSortingCriteria}) {
   const [isOpen, setIsOpen] = useState(false);
   const classes = isOpen ? "relative-box open" : "relative-box";
 
-  function filter(e) {
-    setIsOpen(!isOpen);
+  function handleOnChange(e) {
+    setIsOpen(false);
     console.log(e.target.value);
+    let criteria = e.target.value;
+
+    if (criteria == "name") {
+      criteria = "client";
+    }
+
+    setSortingCriteria(criteria);
+  }
+
+  return (
+    <div className={classes}>
+    <label htmlFor="sort" onClick={() => setIsOpen(!isOpen)}>
+      <i className="fa fa-sort"></i>
+      Sort
+      <i className="fa fa-angle-down"></i>
+    </label>
+    <select name="sort" id="sort" onChange={handleOnChange}>
+      <option value="default">Default</option>
+      {options.map(option => (
+        <option key={option} value={option.toLowerCase()}>{option}</option>
+      ))}
+    </select>
+  </div>
+  )
+}
+
+function Filter({label, options, setSortingCriteria}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const classes = isOpen ? "relative-box open" : "relative-box";
+
+  function handleOnChange(e) {
+    setIsOpen(false);
+    console.log(e.target.value);
+    let criteria = e.target.value;
+
+    if (criteria == "name") {
+      criteria = "client";
+    }
+
+    setSortingCriteria(criteria);
   }
 
   return (
@@ -221,42 +261,53 @@ function Filter({label, options}) {
       {label}
       <i className="fa fa-angle-down"></i>
     </label>
-    <select name="sort" id="sort" onChange={filter}>
-      <option value="all">All</option>
+    <select name="sort" id="sort" onChange={handleOnChange}>
+      <option value="default">Default</option>
       {options.map(option => (
         <option key={option} value={option.toLowerCase()}>{option}</option>
       ))}
     </select>
   </div>
-
   );
+}
+
+function formatDate(date) {
+  // console.log(date);
+  const tokens = date.split("/");
+  const newDate = `${tokens[2]}/${tokens[1]}/${tokens[0]}`;
+  return newDate;
 }
 
 const ProjectTable = () => {
   const [projects, setProjects] = useState(data);
+  const [sortingCriteria, setSortingCriteria] = useState("default");
+  const [filterBy, setFilterBy] = useState("default");
+
+  // console.log(projects);
+  // console.log(sortingCriteria, projects[0][sortingCriteria]);
+  const sortedProjects = [...projects];
+
+  if (sortingCriteria != "default") {
+    if (sortingCriteria == "date") {
+      // console.log("if date");
+      sortedProjects.sort((a, b) => {
+        const newFirstDate = formatDate(a.date);
+        const newSecondDate = formatDate(b.date);
+        return newFirstDate > newSecondDate;
+      })
+    } else {
+      sortedProjects.sort((a, b) => a[sortingCriteria] > b[sortingCriteria]);
+      // console.log(sortedProjects);
+    }
+
+  }
 
   return (
     <div className="main-content">
-      {/* Sorting */}
-      <div className="filters">
-        <Filter label="Sort" options={["Name", "Country", "Date"]} />
 
-        {/* Filters */}
+      <div className="filters">
+        <Sort options={["Name", "Country", "Date"]} setSortingCriteria={setSortingCriteria} />
         <Filter label="Filters" options={["Name", "Country", "Email", "Project", "Status"]} />
-        {/* <div className="filter">
-          <label htmlFor="filter">
-            <i className="fa fa-sort"></i>
-            Filters
-            <i className="fa fa-angle-down"></i>
-          </label>
-          <select name="filter" id="filter">
-            <option value="name">name</option>
-            <option value="country">country</option>
-            <option value="email">email</option>
-            <option value="project">project</option>
-            <option value="status">status</option>
-          </select>
-        </div> */}
       </div> 
 
       {/* Main Table */}
@@ -275,8 +326,9 @@ const ProjectTable = () => {
           </tr>
         </thead>
         <tbody>
-          {projects.map((project, index) => {
+          {sortedProjects.map((project, index) => {
             const statusClass = project.status == "Completed" ? "status completed" : "status";
+
             return (
               <tr key={index}>
                 <td className="image-col">

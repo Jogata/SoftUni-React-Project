@@ -703,7 +703,6 @@ aside {
 aside .icon {
   margin-bottom: 1rem;
   padding: 0.5rem;
-  border: 1px solid red;
 }
 
 .main-content {
@@ -711,9 +710,8 @@ aside .icon {
 }
 
 .filters label {
-  /* display: inline-block; */
   width: auto;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   display: inline-flex;
   gap: 1rem;
   align-items: center;
@@ -721,6 +719,7 @@ aside .icon {
   font-size: 2rem;
   border: 1px solid #555;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .relative-box {
@@ -748,8 +747,6 @@ aside .icon {
 .filters option {
   color: inherit;
   background-color: inherit;
-  /* font-size: 1.4rem; */
-  /* text-transform: capitalize; */
 }
 
 .flex-container {
@@ -785,17 +782,12 @@ aside .icon {
 }
 
 table {
-  /* text-align: center; */
+  min-width: 100%;
   border: 1px solid #555;
-}
-
-th {
-  /* text-align-last: left; */
 }
 
 td, th {
   padding: 1rem;
-  /* border: 1px solid #dddddd; */
   border-bottom: 1px solid #555;
 }
 
@@ -814,7 +806,6 @@ td, th {
   margin: auto;
   height: 6px;
   border-radius: 5px;
-  /* border: 1px solid #555; */
   background-color: transparent;
 }
 
@@ -831,12 +822,9 @@ td, th {
 
 .progress-bar {
   position: absolute;
-  /* top: -1px; */
   top: 0;
-  /* left: -1px; */
   left: 0;
   content: "";
-  /* width: 90%; */
   height: 100%;
   border-radius: inherit;
   border: 1px solid #58cb17;
