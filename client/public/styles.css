@@ -709,17 +709,50 @@ aside .icon {
   padding: 3rem 0 3rem 110px;
 }
 
-.filters label {
+.filters {
+  padding-bottom: 2rem;
+}
+
+.filters .sort-btns {
+/* .filters .dropdown-btn { */
   width: auto;
   padding: 0.5em 1em;
   display: inline-flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
   color: #eee;
   font-size: 2rem;
   border: 1px solid #555;
   background-color: transparent;
+  /* cursor: pointer; */
+}
+
+.filters .sort-btns .direction {
+  font-size: 0px;
+}
+
+.filters .sort-btns .direction i {
+  color: #eee;
+  font-size: 2rem;
+}
+
+.filters .dropdown-btn {
+  width: auto;
+  margin: 0;
+  /* padding: 0.5em 1em; */
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  color: #eee;
+  font-size: 2rem;
+  /* border: 1px solid #555; */
+  background-color: transparent;
   cursor: pointer;
+}
+
+.filters button.dropdown-btn {
+  /* padding: 0.73em 1em; */
+  padding: 0.25em 0em;
 }
 
 .relative-box {
@@ -727,11 +760,11 @@ aside .icon {
   display: inline-block;
 }
 
-.relative-box.open select {
+.relative-box.open .dropdown {
   display: block;
 }
 
-.filters select {
+.filters .dropdown {
   display: none;
   position: absolute;
   top: 100%;
@@ -742,6 +775,25 @@ aside .icon {
   font-size: 1.4rem;
   text-transform: capitalize;
   background-color: #121725;
+}
+
+.filters ul.dropdown {
+  border: 1px solid #888;
+}
+
+.filters ul.dropdown li {
+  padding: 1rem 0;
+  /* border-bottom: 1px solid red; */
+}
+
+.filters ul.dropdown label {
+  width: 100%;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.filters ul.dropdown input {
+  font-size: 1rem;
 }
 
 .filters option {

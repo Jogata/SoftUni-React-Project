@@ -24,7 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Loader() {
   return (
@@ -205,46 +205,51 @@ const data = [
   },
 ];
 
-function Sort({label, options, setSortingCriteria}) {
-  const [isOpen, setIsOpen] = useState(false);
-  const classes = isOpen ? "relative-box open" : "relative-box";
-
-  function handleOnChange(e) {
-    setIsOpen(false);
-    console.log(e.target.value);
-    let criteria = e.target.value;
-
-    if (criteria == "name") {
-      criteria = "client";
+function DirectionBtn({ setSortDirection }) {
+  const [direction, setDirection] = useState(true);
+  
+  const directions = {
+    "true": {
+      text: "descending", 
+      direction: "asc", 
+      icon: "fa fa-sort-down"
+    }, 
+    "false": {
+      text: "ascending", 
+      direction: "desc", 
+      icon: "fa fa-sort-up"
     }
+  }
 
-    setSortingCriteria(criteria);
+  // useEffect(() => {
+  //   setSortDirection(directions[direction].direction);
+  // }, [direction])
+
+  function handleClick() {
+    const newDirection = !direction;
+    setDirection(newDirection);
+    // console.log(direction);
+    // console.log("change direction");
+    // console.log(directions[direction].direction);
+    setSortDirection(directions[newDirection].direction);
   }
 
   return (
-    <div className={classes}>
-    <label htmlFor="sort" onClick={() => setIsOpen(!isOpen)}>
-      <i className="fa fa-sort"></i>
-      Sort
-      <i className="fa fa-angle-down"></i>
-    </label>
-    <select name="sort" id="sort" onChange={handleOnChange}>
-      <option value="default">Default</option>
-      {options.map(option => (
-        <option key={option} value={option.toLowerCase()}>{option}</option>
-      ))}
-    </select>
-  </div>
+    <button className="direction" onClick={handleClick} >
+      sort in {directions[direction].text} order
+      <i className={directions[direction].icon}></i>
+    </button>
   )
 }
 
-function Filter({label, options, setSortingCriteria}) {
+function SortBtn({ options, setSortingCriteria, setSortDirection }) {
   const [isOpen, setIsOpen] = useState(false);
+
   const classes = isOpen ? "relative-box open" : "relative-box";
 
   function handleOnChange(e) {
     setIsOpen(false);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     let criteria = e.target.value;
 
     if (criteria == "name") {
@@ -256,18 +261,73 @@ function Filter({label, options, setSortingCriteria}) {
 
   return (
     <div className={classes}>
-    <label htmlFor="sort" onClick={() => setIsOpen(!isOpen)}>
-      <i className="fa fa-sort"></i>
-      {label}
-      <i className="fa fa-angle-down"></i>
-    </label>
-    <select name="sort" id="sort" onChange={handleOnChange}>
-      <option value="default">Default</option>
-      {options.map(option => (
-        <option key={option} value={option.toLowerCase()}>{option}</option>
-      ))}
-    </select>
-  </div>
+      <div className="sort-btns">
+        <DirectionBtn setSortDirection={setSortDirection} />
+        <label
+          htmlFor="sort" 
+          className="dropdown-btn" 
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Sort
+          <i className="fa fa-angle-down"></i>
+        </label>
+      </div>
+      <select className="dropdown" name="sort" id="sort" onChange={handleOnChange}>
+        <option value="default">Default</option>
+        {options.map(option => (
+          <option key={option} value={option.toLowerCase()}>{option}</option>
+        ))}
+      </select>
+    </div>
+  )
+}
+
+function FilterBtn({ options }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const classes = isOpen ? "relative-box open" : "relative-box";
+
+  // const inputName = useRef();
+  // focusedInput.current.focus();
+
+  function handleOnChange(e) {
+    // setIsOpen(false);
+    // console.log(e.target.value);
+    let criteria = e.target.value;
+
+    if (criteria == "name") {
+      criteria = "client";
+    }
+
+    // setSortingCriteria(criteria);
+  }
+
+  return (
+    <div className={classes}>
+      <div className="sort-btns">
+        {/* <button className="direction">
+          sort in ascending order
+          <i className="fa fa-sort-down"></i>
+        </button> */}
+        <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>
+          Filters
+          <i className="fa fa-angle-down"></i>
+        </button>
+      </div>
+      {/* {isOpen && */}
+      <ul 
+        id="filter" 
+        className="dropdown" 
+        onChange={handleOnChange}
+      >
+        {options.map(option => (
+          <li key={option}>
+            <label htmlFor={option.toLowerCase()}>{option}</label>
+              <input type="text" name={option.toLowerCase()} />
+          </li>
+        ))}
+      </ul>
+      {/* } */}
+    </div>
   );
 }
 
@@ -281,8 +341,10 @@ function formatDate(date) {
 const ProjectTable = () => {
   const [projects, setProjects] = useState(data);
   const [sortingCriteria, setSortingCriteria] = useState("default");
-  const [filterBy, setFilterBy] = useState("default");
+  const [sortDirection, setSortDirection] = useState("asc");
+  const [filterString, setFilterString] = useState("");
 
+  console.log(sortDirection);
   // console.log(projects);
   // console.log(sortingCriteria, projects[0][sortingCriteria]);
   const sortedProjects = [...projects];
@@ -300,14 +362,21 @@ const ProjectTable = () => {
       // console.log(sortedProjects);
     }
 
+    if (sortDirection == "desc") {
+      sortedProjects.reverse();
+    }
   }
 
   return (
     <div className="main-content">
 
       <div className="filters">
-        <Sort options={["Name", "Country", "Date"]} setSortingCriteria={setSortingCriteria} />
-        <Filter label="Filters" options={["Name", "Country", "Email", "Project", "Status"]} />
+        <SortBtn 
+          options={["Name", "Country", "Date"]} 
+          setSortingCriteria={setSortingCriteria} 
+          setSortDirection={setSortDirection} 
+        />
+        <FilterBtn options={["Name", "Country", "Email", "Project", "Status"]} />
       </div> 
 
       {/* Main Table */}
