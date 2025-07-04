@@ -221,17 +221,10 @@ function DirectionBtn({ setSortDirection }) {
     }
   }
 
-  // useEffect(() => {
-  //   setSortDirection(directions[direction].direction);
-  // }, [direction])
-
   function handleClick() {
     const newDirection = !direction;
     setDirection(newDirection);
-    // console.log(direction);
-    // console.log("change direction");
-    // console.log(directions[direction].direction);
-    setSortDirection(directions[newDirection].direction);
+    setSortDirection(directions[String(newDirection)].direction);
   }
 
   return (
@@ -249,7 +242,6 @@ function SortBtn({ options, setSortingCriteria, setSortDirection }) {
 
   function handleOnChange(e) {
     setIsOpen(false);
-    // console.log(e.target.value);
     let criteria = e.target.value;
 
     if (criteria == "name") {
@@ -282,57 +274,73 @@ function SortBtn({ options, setSortingCriteria, setSortDirection }) {
   )
 }
 
-function FilterBtn({ options }) {
+function FilterBtn({ options, setFilters }) {
+  const lowerCaseOptions = [...options].map(option => option.toLocaleLowerCase());
+  const [filterOptions, setFilterOptions] = useState(() => {
+    const modifiedOptions = {};
+    lowerCaseOptions.forEach(option => {
+      // console.log(option);
+      modifiedOptions[option] = "";
+    })
+    // console.log(modifiedOptions);
+    return modifiedOptions;
+  })
+  // console.log(filterOptions);
+
   const [isOpen, setIsOpen] = useState(false);
+
   const classes = isOpen ? "relative-box open" : "relative-box";
 
-  // const inputName = useRef();
-  // focusedInput.current.focus();
+  useEffect(() => {
+    setFilters(filterOptions);
+  }, [filterOptions]);
 
   function handleOnChange(e) {
-    // setIsOpen(false);
-    // console.log(e.target.value);
-    let criteria = e.target.value;
+    const criteria = e.target.name;
 
-    if (criteria == "name") {
-      criteria = "client";
-    }
+    // if (criteria == "name") {
+    //   criteria = "client";
+    // }
 
-    // setSortingCriteria(criteria);
+    const value = e.target.value;
+    // console.log(criteria, value);
+    setFilterOptions(oldFilterOptions => {
+      return { ...oldFilterOptions, [criteria]: value};
+    });
+
+    // setFilters(filterOptions);
   }
 
   return (
     <div className={classes}>
       <div className="sort-btns">
-        {/* <button className="direction">
-          sort in ascending order
-          <i className="fa fa-sort-down"></i>
-        </button> */}
         <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>
           Filters
           <i className="fa fa-angle-down"></i>
         </button>
       </div>
-      {/* {isOpen && */}
       <ul 
         id="filter" 
         className="dropdown" 
-        onChange={handleOnChange}
+        // onChange={handleOnChange}
       >
-        {options.map(option => (
+        {lowerCaseOptions.map(option => (
           <li key={option}>
-            <label htmlFor={option.toLowerCase()}>{option}</label>
-              <input type="text" name={option.toLowerCase()} />
+            <label htmlFor={option}>{option}</label>
+              <input 
+                type="text" 
+                name={option} 
+                value={filterOptions[option]} 
+                onChange={(e) => handleOnChange(e)} 
+              />
           </li>
         ))}
       </ul>
-      {/* } */}
     </div>
   );
 }
 
 function formatDate(date) {
-  // console.log(date);
   const tokens = date.split("/");
   const newDate = `${tokens[2]}/${tokens[1]}/${tokens[0]}`;
   return newDate;
@@ -342,16 +350,27 @@ const ProjectTable = () => {
   const [projects, setProjects] = useState(data);
   const [sortingCriteria, setSortingCriteria] = useState("default");
   const [sortDirection, setSortDirection] = useState("asc");
-  const [filterString, setFilterString] = useState("");
+  const [filters, setFilters] = useState({});
 
-  console.log(sortDirection);
-  // console.log(projects);
-  // console.log(sortingCriteria, projects[0][sortingCriteria]);
-  const sortedProjects = [...projects];
+  let filtered = projects;
+
+  // if (filterString.length > 0) {
+  //   filtered = projects.filter(project => {
+  //     return (
+  //       project.client.
+  //         toLocaleLowerCase().
+  //         includes(filterString.toLocaleLowerCase())
+  //     )
+  //   })
+  // }
+
+  console.log(filters);
+  // console.log(sortDirection);
+  let sortedProjects = filtered;
 
   if (sortingCriteria != "default") {
+    sortedProjects = [...filtered];
     if (sortingCriteria == "date") {
-      // console.log("if date");
       sortedProjects.sort((a, b) => {
         const newFirstDate = formatDate(a.date);
         const newSecondDate = formatDate(b.date);
@@ -359,7 +378,6 @@ const ProjectTable = () => {
       })
     } else {
       sortedProjects.sort((a, b) => a[sortingCriteria] > b[sortingCriteria]);
-      // console.log(sortedProjects);
     }
 
     if (sortDirection == "desc") {
@@ -376,7 +394,10 @@ const ProjectTable = () => {
           setSortingCriteria={setSortingCriteria} 
           setSortDirection={setSortDirection} 
         />
-        <FilterBtn options={["Name", "Country", "Email", "Project", "Status"]} />
+        <FilterBtn 
+          options={["Name", "Country", "Email", "Project", "Status"]} 
+          setFilters={setFilters} 
+        />
       </div> 
 
       {/* Main Table */}

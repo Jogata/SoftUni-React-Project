@@ -714,7 +714,6 @@ aside .icon {
 }
 
 .filters .sort-btns {
-/* .filters .dropdown-btn { */
   width: auto;
   padding: 0.5em 1em;
   display: inline-flex;
@@ -724,7 +723,6 @@ aside .icon {
   font-size: 2rem;
   border: 1px solid #555;
   background-color: transparent;
-  /* cursor: pointer; */
 }
 
 .filters .sort-btns .direction {
@@ -739,19 +737,16 @@ aside .icon {
 .filters .dropdown-btn {
   width: auto;
   margin: 0;
-  /* padding: 0.5em 1em; */
   display: inline-flex;
   gap: 1rem;
   align-items: center;
   color: #eee;
   font-size: 2rem;
-  /* border: 1px solid #555; */
   background-color: transparent;
   cursor: pointer;
 }
 
 .filters button.dropdown-btn {
-  /* padding: 0.73em 1em; */
   padding: 0.25em 0em;
 }
 
@@ -783,7 +778,6 @@ aside .icon {
 
 .filters ul.dropdown li {
   padding: 1rem 0;
-  /* border-bottom: 1px solid red; */
 }
 
 .filters ul.dropdown label {
