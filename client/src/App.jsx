@@ -279,36 +279,31 @@ function FilterBtn({ options, setFilters }) {
   const [filterOptions, setFilterOptions] = useState(() => {
     const modifiedOptions = {};
     lowerCaseOptions.forEach(option => {
-      // console.log(option);
       modifiedOptions[option] = "";
     })
-    // console.log(modifiedOptions);
     return modifiedOptions;
   })
-  // console.log(filterOptions);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const classes = isOpen ? "relative-box open" : "relative-box";
 
-  useEffect(() => {
-    setFilters(filterOptions);
-  }, [filterOptions]);
-
+  // useEffect(() => {
+  //   setFilters(filterOptions);
+  // }, [filterOptions]);
+  
   function handleOnChange(e) {
     const criteria = e.target.name;
-
-    // if (criteria == "name") {
-    //   criteria = "client";
-    // }
-
     const value = e.target.value;
-    // console.log(criteria, value);
-    setFilterOptions(oldFilterOptions => {
-      return { ...oldFilterOptions, [criteria]: value};
-    });
 
-    // setFilters(filterOptions);
+    const newFilterOptions = { ...filterOptions, [criteria]: value};
+
+    setFilterOptions(newFilterOptions);
+    // setFilterOptions(oldFilterOptions => {
+    //   return { ...oldFilterOptions, [criteria]: value};
+    // });
+
+    setFilters(newFilterOptions);
   }
 
   return (
@@ -322,7 +317,6 @@ function FilterBtn({ options, setFilters }) {
       <ul 
         id="filter" 
         className="dropdown" 
-        // onChange={handleOnChange}
       >
         {lowerCaseOptions.map(option => (
           <li key={option}>
@@ -354,18 +348,34 @@ const ProjectTable = () => {
 
   let filtered = projects;
 
-  // if (filterString.length > 0) {
-  //   filtered = projects.filter(project => {
-  //     return (
-  //       project.client.
-  //         toLocaleLowerCase().
-  //         includes(filterString.toLocaleLowerCase())
-  //     )
-  //   })
-  // }
+  // console.log(filters);
+  const filtersArray = Object.entries(filters);
+  console.log(filtersArray);
+  // console.log(filtersArray[0][0]);
+  // filtered = filtered.filter(project => {
+    //   filtersArray.forEach((filter, i) => {
+      //     const filterName = filter[0];
+      //     const filterValue = filter[1];
+      //     if (filterValue.length > 0) {
+        //       console.log(filterName, filterValue, i);
+        //     }
+        //   })
+        // })
 
-  console.log(filters);
-  // console.log(sortDirection);
+        if (filtersArray.length > 0) {
+          filtersArray[0][0] = "client";
+          // console.log(filtersArray[0]);
+          filtersArray.forEach(filter => {
+            const filterValue = filter[1].toLocaleLowerCase();
+            if (filterValue.length > 0) {
+              const filterName = filter[0];
+              // console.log(filterName, filterValue);
+              // filtered = filtered.filter(project => console.log(project));
+              filtered = filtered.filter(project => project[filterName].toLocaleLowerCase().includes(filterValue));
+            }
+          })
+        }
+
   let sortedProjects = filtered;
 
   if (sortingCriteria != "default") {
