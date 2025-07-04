@@ -288,10 +288,6 @@ function FilterBtn({ options, setFilters }) {
 
   const classes = isOpen ? "relative-box open" : "relative-box";
 
-  // useEffect(() => {
-  //   setFilters(filterOptions);
-  // }, [filterOptions]);
-  
   function handleOnChange(e) {
     const criteria = e.target.name;
     const value = e.target.value;
@@ -299,10 +295,6 @@ function FilterBtn({ options, setFilters }) {
     const newFilterOptions = { ...filterOptions, [criteria]: value};
 
     setFilterOptions(newFilterOptions);
-    // setFilterOptions(oldFilterOptions => {
-    //   return { ...oldFilterOptions, [criteria]: value};
-    // });
-
     setFilters(newFilterOptions);
   }
 
@@ -348,33 +340,21 @@ const ProjectTable = () => {
 
   let filtered = projects;
 
-  // console.log(filters);
   const filtersArray = Object.entries(filters);
-  console.log(filtersArray);
-  // console.log(filtersArray[0][0]);
-  // filtered = filtered.filter(project => {
-    //   filtersArray.forEach((filter, i) => {
-      //     const filterName = filter[0];
-      //     const filterValue = filter[1];
-      //     if (filterValue.length > 0) {
-        //       console.log(filterName, filterValue, i);
-        //     }
-        //   })
-        // })
+  // console.log(filtersArray);
 
-        if (filtersArray.length > 0) {
-          filtersArray[0][0] = "client";
-          // console.log(filtersArray[0]);
-          filtersArray.forEach(filter => {
-            const filterValue = filter[1].toLocaleLowerCase();
-            if (filterValue.length > 0) {
-              const filterName = filter[0];
-              // console.log(filterName, filterValue);
-              // filtered = filtered.filter(project => console.log(project));
-              filtered = filtered.filter(project => project[filterName].toLocaleLowerCase().includes(filterValue));
-            }
-          })
-        }
+  if (filtersArray.length > 0) {
+    filtersArray[0][0] = "client";
+    filtersArray.forEach(filter => {
+      const filterValue = filter[1].toLocaleLowerCase();
+      if (filterValue.length > 0) {
+        const filterName = filter[0];
+        filtered = filtered.filter(project => (
+          project[filterName].toLocaleLowerCase().includes(filterValue)
+        ));
+      }
+    })
+  }
 
   let sortedProjects = filtered;
 
@@ -393,6 +373,33 @@ const ProjectTable = () => {
     if (sortDirection == "desc") {
       sortedProjects.reverse();
     }
+  }
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  // console.log(currentPage, startIndex);
+  const currentProjects = sortedProjects.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+  const totalPages = Math.ceil(sortedProjects.length / itemsPerPage);
+  // const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+  function goToNextPage(currentPage) {
+    let nextPage = currentPage + 1;
+    if (nextPage > totalPages) {
+      nextPage = totalPages;
+    }
+    setCurrentPage(nextPage);
+  }
+
+  function goToPreviousPage(currentPage) {
+    let previousPage = currentPage - 1;
+    if (previousPage < 1) {
+      previousPage = 1;
+    }
+    setCurrentPage(previousPage);
   }
 
   return (
@@ -426,11 +433,11 @@ const ProjectTable = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedProjects.map((project, index) => {
+          {currentProjects.map((project) => {
             const statusClass = project.status == "Completed" ? "status completed" : "status";
 
             return (
-              <tr key={index}>
+              <tr key={project.email}>
                 <td className="image-col">
                   <img src={project.image} alt={project.client} />
                 </td>
@@ -451,9 +458,7 @@ const ProjectTable = () => {
                 </td>
                 <td>{project.date}</td>
                 <td className="actions-col">
-                  <div>
-                    <i className="fa fa-ellipsis-v" />
-                  </div>
+                  <ChangeStatusBtn status={project.status} />
                 </td>
               </tr>
             )
@@ -463,16 +468,44 @@ const ProjectTable = () => {
 
       {/* Pagination */}
       <div className="flex-container">
-      <div className="pagination">
-        <button className="page-btn">Previous</button>
-        <span className="">Page 1 of 10</span>
-        <button className="page-btn">Next</button>
-      </div>
+        <div className="pagination">
+          <button 
+            className="page-btn" 
+            onClick={() => goToPreviousPage(currentPage)}
+          > Previous
+          </button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <button 
+            className="page-btn" 
+            onClick={() => goToNextPage(currentPage)} 
+          > Next
+          </button>
+        </div>
       </div>
     </div>
-        
   );
-};
+}
+
+function ChangeStatusBtn({status}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const statusBoxClass = isOpen ? "status-box open" : "status-box";
+  // console.log(status);
+  if (status == "In Progress") {
+    status = "progress";
+  }
+
+  return (
+    <div className={statusBoxClass}>
+    <label htmlFor="status" onClick={() => setIsOpen(!isOpen)}>
+      <i className="fa fa-ellipsis-v" />
+    </label>
+    <select name="status" id="status" defaultValue={status.toLocaleLowerCase()}>
+      <option value="completed">Completed</option>
+      <option value="progress">In Progress</option>
+    </select>
+    </div>
+  )
+}
 
 function App() {
   return (

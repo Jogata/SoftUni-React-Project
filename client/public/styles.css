@@ -892,3 +892,35 @@ td, th {
 .actions-col {
   text-align: center;
 }
+
+.actions-col .status-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  /* border: 1px solid white; */
+}
+
+.actions-col label {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  /* border: 1px solid red; */
+  cursor: pointer;
+}
+
+#status {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 100%;
+  padding: 0.5rem;
+  color: #eee;
+  border: 1px solid #555;
+  background-color: #18293d;
+}
+
+.status-box.open #status {
+  display: block;
+}
