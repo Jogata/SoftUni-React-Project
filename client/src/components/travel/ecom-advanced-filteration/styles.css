@@ -111,3 +111,7 @@ body {
     background-size: contain;
   }
 } */
+
+.project {
+  display: flex;
+}

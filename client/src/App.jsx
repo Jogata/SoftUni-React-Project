@@ -48,7 +48,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+<div className="project">
 <Sidebar />
+</div>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
