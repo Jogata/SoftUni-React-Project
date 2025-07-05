@@ -310,7 +310,7 @@ function FilterBtn({ options, setFilters }) {
         id="filter" 
         className="dropdown" 
       >
-        {lowerCaseOptions.map(option => (
+        {lowerCaseOptions.map((option, i) => (
           <li key={option}>
             <label htmlFor={option}>{option}</label>
               <input 
@@ -341,7 +341,6 @@ const ProjectTable = () => {
   let filtered = projects;
 
   const filtersArray = Object.entries(filters);
-  // console.log(filtersArray);
 
   if (filtersArray.length > 0) {
     filtersArray[0][0] = "client";
@@ -378,13 +377,11 @@ const ProjectTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const startIndex = (currentPage - 1) * itemsPerPage;
-  // console.log(currentPage, startIndex);
   const currentProjects = sortedProjects.slice(
     startIndex,
     startIndex + itemsPerPage
   );
   const totalPages = Math.ceil(sortedProjects.length / itemsPerPage);
-  // const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   function goToNextPage(currentPage) {
     let nextPage = currentPage + 1;
@@ -417,7 +414,6 @@ const ProjectTable = () => {
         />
       </div> 
 
-      {/* Main Table */}
       <table>
         <thead>
           <tr>
@@ -458,7 +454,7 @@ const ProjectTable = () => {
                 </td>
                 <td>{project.date}</td>
                 <td className="actions-col">
-                  <ChangeStatusBtn status={project.status} />
+                  <ChangeStatusBtn status={project.status} email={project.email} setProjects={setProjects} />
                 </td>
               </tr>
             )
@@ -466,7 +462,6 @@ const ProjectTable = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
       <div className="flex-container">
         <div className="pagination">
           <button 
@@ -486,12 +481,33 @@ const ProjectTable = () => {
   );
 }
 
-function ChangeStatusBtn({status}) {
+function setNewStatus(newStatus, email, setProjects) {
+  const statuses = {
+    completed: "Completed", 
+    progress: "In Progress"
+  }
+  // console.log(newStatus);
+
+  setProjects(oldProjects => {
+    const newProjects = [...oldProjects];
+    const project = newProjects.find(project => project.email == email);
+    // const updatedProject = {...project, status: newStatus};
+    project.status = statuses[newStatus];
+    return newProjects;
+  })
+}
+
+function ChangeStatusBtn({status, email, setProjects}) {
   const [isOpen, setIsOpen] = useState(false);
   const statusBoxClass = isOpen ? "status-box open" : "status-box";
-  // console.log(status);
+
   if (status == "In Progress") {
     status = "progress";
+  }
+
+  function handleChangeStatus(newStatus, email, setProjects) {
+    setNewStatus(newStatus, email, setProjects);
+    setIsOpen(false);
   }
 
   return (
@@ -499,7 +515,12 @@ function ChangeStatusBtn({status}) {
     <label htmlFor="status" onClick={() => setIsOpen(!isOpen)}>
       <i className="fa fa-ellipsis-v" />
     </label>
-    <select name="status" id="status" defaultValue={status.toLocaleLowerCase()}>
+    <select 
+      name="status" 
+      id="status" 
+      defaultValue={status.toLocaleLowerCase()} 
+      onChange={(e) => handleChangeStatus(e.target.value, email, setProjects)} 
+    >
       <option value="completed">Completed</option>
       <option value="progress">In Progress</option>
     </select>
