@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFilter } from "../FiltrContext";
 import "./main-content.css";
+import { ProductCard } from "./ProductCard";
 
 export function MainContent() {
     const {
@@ -103,53 +104,57 @@ export function MainContent() {
         return buttons;
     };
 
+    console.log("main rerender");
+
     return (
         <section className="main-content">
             <div className="">
-                <div className="">
-                    <div className="">
-                        <button
+                {/* <div className=""> */}
+                    <div className="relative">
+                        <button 
                             onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className=""
+                            className="dropdown-btn"
                         >
+                            <i className="ri-menu-line"></i>
                             {filter === "all"
                                 ? "Filter"
                                 : filter.charAt(0).toUpperCase() + filter.slice(1)}
                         </button>
                         {dropdownOpen && (
-                            <div className="">
+                            <div className="dropdown">
                                 <button
                                     onClick={() => setFilter("cheap")}
-                                    className=""
+                                    className="price-btn"
                                 >
                                     Cheap
                                 </button>
                                 <button
                                     onClick={() => setFilter("expensive")}
-                                    className=""
+                                    className="price-btn"
                                 >
                                     Expensive
                                 </button>
                                 <button
                                     onClick={() => setFilter("popular")}
-                                    className=""
+                                    className="price-btn"
                                 >
                                     Popular
                                 </button>
                             </div>
                         )}
                     </div>
-                </div>
+                {/* </div> */}
 
                 <div className="products">
                     {filteredProducts.map(product => (
-                        <div className="product" key={product.id}>
-                            <a href={`/product/${product.id}`}>
-                                <img src={product.images[0]} alt={product.title} />
-                                <h2>{product.title}</h2>
-                                <p>${product.price}</p>
-                            </a>
-                        </div>
+                        <ProductCard product={product} key={product.id} />
+                        // <div className="product" key={product.id}>
+                        //     <a href={`/product/${product.id}`}>
+                        //         <img src={product.images[0]} alt={product.title} />
+                        //         <h2>{product.title}</h2>
+                        //         <p>${product.price}</p>
+                        //     </a>
+                        // </div>
                     ))}
                 </div>
 
@@ -157,7 +162,7 @@ export function MainContent() {
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className=""
+                        className="change-page-btn"
                     >
                         Previous
                     </button>
@@ -177,7 +182,7 @@ export function MainContent() {
                     <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className=""
+                        className="change-page-btn"
                     >
                         Next
                     </button>

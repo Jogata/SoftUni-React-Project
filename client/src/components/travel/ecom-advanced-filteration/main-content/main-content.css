@@ -1,13 +1,89 @@
+.main-content {
+    width: 100%;
+    padding: 1rem 2% 2rem;
+}
+
+.dropdown-btn {
+    color: #eee;
+    font-size: 2rem;
+}
+
+.dropdown-btn i {
+    transform: rotate(90deg);
+    margin-right: 0.5rem;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* padding-top: 1rem; */
+    background-color: #080a0c;
+}
+
+.dropdown .price-btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5em 1em;
+    color: #eee;
+    font-size: 1rem;
+    border: 1px solid #eee;
+}
+
 .products {
+    padding: 1rem 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    gap: 3vh 2%;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: 
+        repeat(auto-fit, minmax(440px, 1fr));
+}
+
+.product {
+    padding: 2rem 1rem;
+    /* color: #eee; */
+    border-radius: 12px;
+    border: 1px solid #555;
+    box-shadow: 2px 2px 2px #000, 
+            -2px -2px 2px #fff5;
+}
+
+.product a {
+    color: #eee;
+}
+
+.product img {
+    margin-bottom: 2rem;
+}
+
+.product h2 {
+    margin-bottom: 1rem;
+}
+
+.product p {
+    font-size: 1.2rem;
 }
 
 .pagination {
+    padding-top: 4vh;
     display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .page-btn {
-    color: #fff;
+    margin: 0.5rem;
+    padding: 0.8em 1em;
+    color: #888;
+    font-size: 1.4rem;
     border: 1px solid #555;
+    vertical-align: middle;
+}
+
+.change-page-btn {
+    padding: 0.8em 1em;
+    color: #fff;
+    font-size: 1.6rem;
+    border: 1px solid #fff;
 }

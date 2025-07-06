@@ -1,16 +1,18 @@
 input {
     display: inline-block;
     width: auto;
+    margin-bottom: 0.5rem;
 }
 
 label {
     width: auto;
+    margin: 0;
 }
 
 .sidebar {
     min-height: 100vh;
     padding: 1rem;
-    border: 1px solid red;
+    border-right: 1px solid #555;
 }
 
 .sidebar h1 {

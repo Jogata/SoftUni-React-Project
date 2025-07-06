@@ -83,20 +83,22 @@ export function Sidebar() {
                     type="text"
                     placeholder="Search Product" 
                     value={searchQuery} 
-                    onChange={e => setSearchQuery(e.target.value)}
+                    onChange={e => setSearchQuery(e.target.value)} 
                 />
                 <div className="search-btns">
                     <input
                         type="number"
                         placeholder="Min" 
+                        min={0}
                         value={minPrice ?? ""} 
-                        onChange={e => handleMinPriceChange(e)}    
+                        onChange={e => handleMinPriceChange(e)} 
                     />
                     <input
                         type="number"
                         placeholder="Max" 
+                        min={minPrice}
                         value={maxPrice ?? ""} 
-                        onChange={e => handleMaxPriceChange(e)}    
+                        onChange={e => handleMaxPriceChange(e)} 
                     />
                 </div>
 

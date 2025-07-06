@@ -50,6 +50,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+{/* <MainContent /> */}
       <FilterProvider>
         <div className="project">
           <Sidebar />
