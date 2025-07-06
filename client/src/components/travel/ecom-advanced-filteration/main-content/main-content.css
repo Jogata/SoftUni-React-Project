@@ -1,0 +1,13 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.pagination {
+    display: flex;
+}
+
+.page-btn {
+    color: #fff;
+    border: 1px solid #555;
+}

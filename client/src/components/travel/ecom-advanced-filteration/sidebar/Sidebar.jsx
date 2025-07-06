@@ -66,6 +66,14 @@ export function Sidebar() {
         setKeyword(keyword);
     };
 
+    const handleResetFilters = () => {
+        setSearchQuery("");
+        setSelectedCategory("");
+        setMinPrice(undefined);
+        setMaxPrice(undefined);
+        setKeyword("");
+    };
+        
     return (
         <div className="sidebar">
             <h1>React Store</h1>
@@ -126,7 +134,10 @@ export function Sidebar() {
                     </div>
                 </div>
 
-                <button className="reset">
+                <button 
+                    className="reset" 
+                    onClick={handleResetFilters}
+                >
                     Reset Filters
                 </button>
             </section>

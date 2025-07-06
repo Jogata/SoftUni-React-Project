@@ -26,6 +26,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Sidebar } from './components/travel/ecom-advanced-filteration/sidebar/Sidebar';
 import { FilterProvider } from './components/travel/ecom-advanced-filteration/FiltrContext'
+import { MainContent } from './components/travel/ecom-advanced-filteration/main-content/MainContent'
 
 function Loader() {
   return (
@@ -52,6 +53,7 @@ function App() {
       <FilterProvider>
         <div className="project">
           <Sidebar />
+          <MainContent />
         </div>
       </FilterProvider>
 
