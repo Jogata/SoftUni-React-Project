@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFilter } from "../FiltrContext";
 import { ProductCard } from "./ProductCard";
 import "./main-content.css";
+import { Filter } from "./Filter";
 
 export function MainContent({Loader}) {
     const {
@@ -15,7 +16,7 @@ export function MainContent({Loader}) {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState("all");
     const [currentPage, setCurrentPage] = useState(1);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
     const itemsPerPage = 12;
 
     const [isLoading, setIsLoading] = useState(false);
@@ -118,40 +119,8 @@ export function MainContent({Loader}) {
     return (
         <section className="main-content">
             {/* <div className=""> */}
-                <div className="filter relative">
-                    <button
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className="dropdown-btn"
-                    >
-                        <i className="ri-menu-line"></i>
-                        {filter === "all"
-                            ? "Filter"
-                            : filter.charAt(0).toUpperCase() + filter.slice(1)}
-                    </button>
-                    {dropdownOpen && (
-                        <div className="dropdown">
-                            <button
-                                onClick={() => setFilter("cheap")}
-                                className="price-btn"
-                            >
-                                Cheap
-                            </button>
-                            <button
-                                onClick={() => setFilter("expensive")}
-                                className="price-btn"
-                            >
-                                Expensive
-                            </button>
-                            <button
-                                onClick={() => setFilter("popular")}
-                                className="price-btn"
-                            >
-                                Popular
-                            </button>
-                        </div>
-                    )}
-                </div>
-
+            <Filter filter={filter} setFilter={setFilter} />
+            
                 <div className="products">
                     {filteredProducts.map(product => (
                         <ProductCard product={product} key={product.id} />
