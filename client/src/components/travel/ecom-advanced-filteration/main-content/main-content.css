@@ -3,6 +3,10 @@
     padding: 1rem 2% 2rem;
 }
 
+.filter {
+    padding: 1rem 0;
+}
+
 .dropdown-btn {
     color: #eee;
     font-size: 2rem;
@@ -17,7 +21,6 @@
     position: absolute;
     top: 100%;
     left: 0;
-    /* padding-top: 1rem; */
     background-color: #080a0c;
 }
 
@@ -35,14 +38,12 @@
     padding: 1rem 0;
     display: grid;
     gap: 3vh 2%;
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: 
         repeat(auto-fit, minmax(440px, 1fr));
 }
 
 .product {
     padding: 2rem 1rem;
-    /* color: #eee; */
     border-radius: 12px;
     border: 1px solid #555;
     box-shadow: 2px 2px 2px #000, 
@@ -81,9 +82,98 @@
     vertical-align: middle;
 }
 
+.page-btn.active {
+    /* padding: 1em; */
+    color: #080a0c;
+    background-color: #eee;
+}
+
 .change-page-btn {
     padding: 0.8em 1em;
     color: #fff;
     font-size: 1.6rem;
     border: 1px solid #fff;
 }
+
+.loader {
+    margin: auto;
+    border-radius: 50%;
+}
+
+/* .logo:focus {
+    outline: 1px solid steelblue;
+    outline-offset: 8px;
+} */
+
+.logo-ring {
+    position: absolute;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+}
+
+.logo-ring:nth-child(1) {
+    border-top: 3px solid steelblue;
+    animation: loaderv321 2s linear infinite;
+}
+
+@keyframes loaderv321 {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+.logo-ring:nth-child(2) {
+    border-right: 3px solid #f00;
+    animation: loaderv322 2s linear infinite;
+}
+
+@keyframes loaderv322 {
+    0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+.logo-ring:nth-child(3) {
+    border-bottom: 3px solid steelblue;
+    animation: loaderv323 2s linear infinite;
+}
+
+@keyframes loaderv323 {
+    0% {
+        transform: rotateX(35deg) rotateY(65deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(35deg) rotateY(65deg) rotateZ(360deg);
+    }
+}
+
+.logo-ring:nth-child(4) {
+    position: relative;
+    border-left: 3px solid #f00;
+    animation: loaderv324 2s linear infinite;
+}
+
+@keyframes loaderv324 {
+    0% {
+        transform: rotateX(50deg) rotateY(150deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateX(50deg) rotateY(150deg) rotateZ(360deg);
+    }
+}
+
+/* .logo:focus .logo-ring,
+.logo:hover .logo-ring {
+    animation-duration: 1s;
+} */
