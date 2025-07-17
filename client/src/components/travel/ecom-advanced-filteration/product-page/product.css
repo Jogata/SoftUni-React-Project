@@ -1,0 +1,34 @@
+.product-page {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem 2%;
+    color: #fff;
+    text-align: center;
+}
+
+.product-page .description {
+    margin: 1rem 0 2rem;
+}
+
+.product-page .flex {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.back-btn {
+    padding: 0.5em 1em;
+    font-size: 2rem;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: color 400ms, 
+        /* border-color 400ms,  */
+    background-color 400ms;
+}
+
+.back-btn:hover {
+    color: #000;
+    background-color: #fff;
+}

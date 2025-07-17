@@ -16,7 +16,6 @@ export function MainContent({Loader}) {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState("all");
     const [currentPage, setCurrentPage] = useState(1);
-    // const [dropdownOpen, setDropdownOpen] = useState(false);
     const itemsPerPage = 12;
 
     const [isLoading, setIsLoading] = useState(false);
@@ -109,8 +108,6 @@ export function MainContent({Loader}) {
 
         return buttons;
     };
-
-    console.log("main rerender");
 
     if (isLoading) {
         return <Loader />

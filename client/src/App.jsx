@@ -25,8 +25,9 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { Sidebar } from './components/travel/ecom-advanced-filteration/sidebar/Sidebar';
-import { FilterProvider } from './components/travel/ecom-advanced-filteration/FiltrContext'
-import { MainContent } from './components/travel/ecom-advanced-filteration/main-content/MainContent'
+import { FilterProvider } from './components/travel/ecom-advanced-filteration/FiltrContext';
+import { MainContent } from './components/travel/ecom-advanced-filteration/main-content/MainContent';
+import { ProductPage } from './components/travel/ecom-advanced-filteration/product-page/ProductPage';
 
 function Loader() {
   return (
@@ -53,7 +54,11 @@ function App() {
       <FilterProvider>
         <div className="project">
           <Sidebar />
-          <MainContent Loader={Loader} />
+          <Routes>
+            <Route path='/' element={<MainContent Loader={Loader} />} />
+            <Route path='/product/:id' element={<ProductPage />} />
+          </Routes>
+          {/* <MainContent Loader={Loader} /> */}
         </div>
       </FilterProvider>
 
