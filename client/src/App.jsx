@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom'
 
 import { AuthContextProvider } from './contexts/AuthContext'
 
@@ -24,11 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { Sidebar } from './components/travel/ecom-advanced-filteration/sidebar/Sidebar';
-import { FilterProvider } from './components/travel/ecom-advanced-filteration/FiltrContext';
-import { MainContent } from './components/travel/ecom-advanced-filteration/main-content/MainContent';
-import { ProductPage } from './components/travel/ecom-advanced-filteration/product-page/ProductPage';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 function Loader() {
   return (
@@ -64,83 +60,101 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-const data = [
-  {id: 1, name: "Kyle", age: 27}, 
-  {id: 2, name: "Sally", age: 32}, 
-  {id: 3, name: "Mike", age: 54}, 
-  {id: 4, name: "Jim", age: 16}, 
-]
-
-function Test() {
-  const [name, setName] = useState("");
-  const [state, setState] = useState({
-    name: "", 
-    selected: false
-  });
-
+function User() {
+  const [user, setUser] = useState({});
+  const id = useLocation().pathname.split("/")[2];
+  
   useEffect(() => {
-    console.log(state);
-  }, [state])
-
-  function handleAdd() {
-    setState(prev => ({...prev, name}));
-  }
-
-  function handleSelect() {
-    setState(prev => ({...prev, selected: true}));
-  }
+    let isCancelled = false;
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("data is ready");
+        if (!isCancelled) {
+          setUser(data);
+        }
+      })
+      
+      return () => {
+        console.log("cancel");
+        isCancelled = true;
+      }
+  }, [id]);
 
   return (
-    <div id='test'>
-      <input 
-        type="text" 
-        onChange={e => setName(e.target.value)}
-      />
-      <button onClick={handleAdd}>
-        Add Name
-      </button>
-      <button onClick={handleSelect}>
-        Select
-      </button>
-      {`{name: ${state.name}, selected: ${state.selected}}`}
+    <div>
+      <p>Name: {user.name}</p>
+      <p>Username: {user.username}</p>
+      <p>Email: {user.email}</p>
+      <Link to="/user/1">Fetch user 1</Link>
+      <Link to="/user/2">Fetch user 2</Link>
+      <Link to="/user/3">Fetch user 3</Link>
     </div>
   )
 }
 
-function App() {
-  const [ users, setUsers ] = useState(data);
-  // const [ selectedUser, setSelectedUser ] = useState();
-  const [ selectedUserID, setSelectedUserID ] = useState();
+const TopSellers = () => {
+  const [authors, setAuthors] = useState([]);
 
-  function incrementAge(id) {
-    setUsers(currentUsers => {
-      return currentUsers.map(user => {
-        if (user.id === id) {
-          return { ...user, age: user.age + 1};
-          // user.age = user.age + 1;
-          // return user;
-        } else {
-          return user;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=5");
+        const data = await response.json();
+        const authorsData = data.results.map((user) => ({
+          name: `${user.name.first} ${user.name.last}`,
+          isFollowing: false,
+          image: user.picture.medium,
+        }));
+        setAuthors(authorsData);
+      } catch (error) {
+        console.error("Error fetching authors:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleFollowClick = (index) => {
+    setAuthors((prevAuthors) =>
+      prevAuthors.map((author, i) =>
+        i === index ? { ...author, isFollowing: !author.isFollowing } : author
+      )
+    );
+  };
+
+  return (
+    <div className="sellers">
+      <h2>Top Sellers</h2>
+      <ul>
+        {authors.map((author, index) => {
+          const buttonClass = author.isFollowing ? "button following" : "button";
+
+          return (
+          <li key={index} className="seller">
+            <div>
+              <img
+                src={author.image}
+                alt={author.name}
+              />
+              <span className="name">{author.name}</span>
+            </div>
+            <button 
+              onClick={() => handleFollowClick(index)} 
+              className={buttonClass}
+            >
+              {author.isFollowing ? "Unfollow" : "Follow"}
+            </button>
+          </li>
+          )
         }
-      })
-    })
-  }
+        )}
+      </ul>
+    </div>
+  );
+};
 
-  const selectedUser = users.find(user => user.id === selectedUserID);
-
-  // function selectUser(user) {
-  //   setSelectedUser(user);
-  // }
-
-  // function selectUser(id) {
-  //   const user = users.find(user => user.id === id);
-  //   setSelectedUser(user);
-  // }
-
-  function selectUser(id) {
-    setSelectedUserID(id);
-  }
-
+function App() {
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -151,20 +165,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Test />
-        <h3>Selected User: {!selectedUser ? "None" : 
-          `${selectedUser.name} is ${selectedUser.age} years old`
-        }
-        </h3>
-        {users.map((user, index) => (
-          <div key={index}>
-          <span>{user.name} is {user.age} years old</span>
-          <button onClick={() => incrementAge(user.id)}>Increment</button>
-          {/* <button onClick={() => selectUser(user.id)}>Select</button> */}
-          <button onClick={() => selectUser(user.id)}>Select</button>
-          {/* <button onClick={() => selectUser(user)}>Select</button> */}
-          </div>
-        ))}
+        {/* <User /> */}
+        <TopSellers />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

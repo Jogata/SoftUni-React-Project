@@ -674,31 +674,60 @@ article {
   animation-duration: 1s;
 }
 
-span {
-  display: inline-block;
-  margin-right: 1rem;
-  font-size: 2rem;
+.sellers {
+  padding: 2rem 2%;
 }
 
-button {
-  margin-right: 1rem;
-  padding: 0.5em 1em;
-  color: #fff;
-  font-size: 2rem;
-  border: 1px solid #fff;
+.sellers h2 {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-#test {
-  padding: 3rem 2%;
+.sellers ul {
+  display: flex;
+  gap: 2rem 5%;
+  flex-wrap: wrap;
+}
+
+.seller {
+  /* flex: 1; */
+  /* display: flex; */
+  margin: 1rem 0;
   text-align: center;
 }
 
-#test input {
-  font-size: 2rem;
+.name {
+  display: inline-block;
+  padding: 0.5em 0;
+  font-size: 1.4rem;
 }
 
-#test button {
+.seller img {
   display: block;
-  margin-inline: auto;
-  margin-bottom: 1rem;
+  max-width: 80px;
+  margin: auto;
+}
+
+.seller button {
+  padding: 0.5em 1em;
+  color: #eee;
+  font-size: 1.2rem;
+  border: 1px solid #555;
+  background-color: #f1683a;
+  transition: all 400ms;
+}
+
+.seller button:hover {
+  color: #000;
+  background-color: #888;
+}
+
+.seller button.following {
+  /* color: #eee; */
+  background-color: #000;
+}
+
+.seller button.following:hover {
+  color: #222;
+  background-color: #555;
 }
