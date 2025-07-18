@@ -674,60 +674,29 @@ article {
   animation-duration: 1s;
 }
 
-.sellers {
-  padding: 2rem 2%;
+.blogs {
+  padding: 3rem 2%;
 }
 
-.sellers h2 {
+.blogs h1 {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
-.sellers ul {
+.blogs ul {
   display: flex;
-  gap: 2rem 5%;
+  gap: 2rem 6%;
   flex-wrap: wrap;
 }
 
-.seller {
-  /* flex: 1; */
-  /* display: flex; */
-  margin: 1rem 0;
-  text-align: center;
+.comments {
+  padding-top: 1rem;
+  display: flex;
+  gap: 5%;
+  justify-content: space-between;
 }
 
-.name {
+.comments i {
   display: inline-block;
-  padding: 0.5em 0;
-  font-size: 1.4rem;
-}
-
-.seller img {
-  display: block;
-  max-width: 80px;
-  margin: auto;
-}
-
-.seller button {
-  padding: 0.5em 1em;
-  color: #eee;
-  font-size: 1.2rem;
-  border: 1px solid #555;
-  background-color: #f1683a;
-  transition: all 400ms;
-}
-
-.seller button:hover {
-  color: #000;
-  background-color: #888;
-}
-
-.seller button.following {
-  /* color: #eee; */
-  background-color: #000;
-}
-
-.seller button.following:hover {
-  color: #222;
-  background-color: #555;
+  margin-right: 6px;
 }

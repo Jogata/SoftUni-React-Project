@@ -24,7 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 function Loader() {
   return (
@@ -60,99 +60,123 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-function User() {
-  const [user, setUser] = useState({});
-  const id = useLocation().pathname.split("/")[2];
-  
-  useEffect(() => {
-    let isCancelled = false;
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("data is ready");
-        if (!isCancelled) {
-          setUser(data);
-        }
-      })
-      
-      return () => {
-        console.log("cancel");
-        isCancelled = true;
-      }
-  }, [id]);
+const PopularBlogs = () => {
+  const blogs = [
+    {
+      title: "My Amazing Blog Title 1",
+      author: "Jordan",
+      likes: 142,
+      comments: 44,
+    },
+    {
+      title: "My Amazing Blog Title 2",
+      author: "John",
+      likes: 153,
+      comments: 25,
+    },
+    {
+      title: "My Amazing Blog Title 4",
+      author: "HuXn",
+      likes: 50,
+      comments: 14,
+    },
+  ];
 
   return (
-    <div>
-      <p>Name: {user.name}</p>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-      <Link to="/user/1">Fetch user 1</Link>
-      <Link to="/user/2">Fetch user 2</Link>
-      <Link to="/user/3">Fetch user 3</Link>
-    </div>
-  )
-}
-
-const TopSellers = () => {
-  const [authors, setAuthors] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://randomuser.me/api/?results=5");
-        const data = await response.json();
-        const authorsData = data.results.map((user) => ({
-          name: `${user.name.first} ${user.name.last}`,
-          isFollowing: false,
-          image: user.picture.medium,
-        }));
-        setAuthors(authorsData);
-      } catch (error) {
-        console.error("Error fetching authors:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleFollowClick = (index) => {
-    setAuthors((prevAuthors) =>
-      prevAuthors.map((author, i) =>
-        i === index ? { ...author, isFollowing: !author.isFollowing } : author
-      )
-    );
-  };
-
-  return (
-    <div className="sellers">
-      <h2>Top Sellers</h2>
+    <div className="blogs">
+      <h1>Popular Blogs</h1>
       <ul>
-        {authors.map((author, index) => {
-          const buttonClass = author.isFollowing ? "button following" : "button";
-
-          return (
-          <li key={index} className="seller">
-            <div>
-              <img
-                src={author.image}
-                alt={author.name}
-              />
-              <span className="name">{author.name}</span>
+        {blogs.map((blog, index) => (
+          <li key={index} className="blog">
+            <div className="title">
+              <h2>{blog.title}</h2>
             </div>
-            <button 
-              onClick={() => handleFollowClick(index)} 
-              className={buttonClass}
-            >
-              {author.isFollowing ? "Unfollow" : "Follow"}
-            </button>
+            <span className="author">Published by {blog.author}</span>
+            <div className="comments">
+              <i className="fa fa-comment-o"></i>
+              <span>
+                <i className="fa fa-thumbs-up"></i> 
+                {blog.likes}
+              </span>
+              <i className="fa fa-thumbs-up"></i>
+              <span>
+                <i className="fa fa-comments"></i>
+                {blog.comments}
+              </span>
+            </div>
           </li>
-          )
-        }
-        )}
+        ))}
       </ul>
     </div>
   );
 };
+
+function MemoTest() {
+  const [name, setName ] = useState("");
+  const [age, setAge ] = useState(0);
+  const [country, setCountry ] = useState("UK");
+  const [number, setNumber ] = useState("");
+
+  const sum = useMemo(() => expensiveFunction(number), [number]);
+
+  const userType = useMemo(() => {
+    return {
+      underAge: age <= 18 ? true : false, 
+      citizen: country === "USA" ? true : false
+    }
+  }, [age, country]);
+
+  useEffect(() => {
+    console.count("user type was changed");
+  }, [userType])
+
+  console.log("rerender");
+
+  function expensiveFunction(n) {
+    let total = 0;
+
+    for (let index = 0; index < n; index++) {
+      total += 1;
+    }
+
+    return total;
+  }
+
+  return (
+    <div>
+      {/* <input 
+        type="text" 
+        placeholder='enter a text' 
+        value={name}
+        onChange={e => setName(e.target.value)}
+      /> */}
+      <input 
+        type="number" 
+        placeholder='enter a number' 
+        value={number} 
+        onChange={e => setNumber(e.target.value)}
+      />
+      <input 
+        type="number" 
+        placeholder='enter an age' 
+        min={0} 
+        value={age} 
+        onChange={e => setAge(e.target.value)}
+      />
+      <input 
+        type="text" 
+        placeholder='enter a name' 
+        value={name} 
+        onChange={e => setName(e.target.value)}
+      />
+      <select onChange={e => setCountry(e.target.value)} value={country}>
+        <option value="UK">UK</option>
+        <option value="USA">USA</option>
+      </select>
+      <span>Total: {sum}</span>
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -165,8 +189,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <User /> */}
-        <TopSellers />
+        <PopularBlogs />
+        <MemoTest />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
@@ -206,4 +230,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
