@@ -24,7 +24,6 @@
     color: #fff;
     border: 1px solid #fff;
     transition: color 400ms, 
-        /* border-color 400ms,  */
     background-color 400ms;
 }
 

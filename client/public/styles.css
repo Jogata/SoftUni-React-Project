@@ -673,3 +673,32 @@ article {
 .logo:hover .logo-ring {
   animation-duration: 1s;
 }
+
+span {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+button {
+  margin-right: 1rem;
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 2rem;
+  border: 1px solid #fff;
+}
+
+#test {
+  padding: 3rem 2%;
+  text-align: center;
+}
+
+#test input {
+  font-size: 2rem;
+}
+
+#test button {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+}

@@ -28,6 +28,7 @@ import { Sidebar } from './components/travel/ecom-advanced-filteration/sidebar/S
 import { FilterProvider } from './components/travel/ecom-advanced-filteration/FiltrContext';
 import { MainContent } from './components/travel/ecom-advanced-filteration/main-content/MainContent';
 import { ProductPage } from './components/travel/ecom-advanced-filteration/product-page/ProductPage';
+import { useEffect, useState } from 'react'
 
 function Loader() {
   return (
@@ -40,7 +41,106 @@ function Loader() {
   )
 }
 
+function useFetch(url) {
+  const [ loading, setIsLoading ] = useState(true);
+  const [ data, setData ] = useState();
+  const [ error, setError ] = useState();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setIsLoading(true);
+
+    fetch(url, { signal: controller.signal })
+     .then(response => response.json())
+     .then(data => setData(data))
+     .catch(error => setError(error))
+     .finally(() => setIsLoading(false));
+
+    return () => {
+      controller.abort();
+    }
+  }, [url])
+
+  return { loading, data, error };
+}
+
+const data = [
+  {id: 1, name: "Kyle", age: 27}, 
+  {id: 2, name: "Sally", age: 32}, 
+  {id: 3, name: "Mike", age: 54}, 
+  {id: 4, name: "Jim", age: 16}, 
+]
+
+function Test() {
+  const [name, setName] = useState("");
+  const [state, setState] = useState({
+    name: "", 
+    selected: false
+  });
+
+  useEffect(() => {
+    console.log(state);
+  }, [state])
+
+  function handleAdd() {
+    setState(prev => ({...prev, name}));
+  }
+
+  function handleSelect() {
+    setState(prev => ({...prev, selected: true}));
+  }
+
+  return (
+    <div id='test'>
+      <input 
+        type="text" 
+        onChange={e => setName(e.target.value)}
+      />
+      <button onClick={handleAdd}>
+        Add Name
+      </button>
+      <button onClick={handleSelect}>
+        Select
+      </button>
+      {`{name: ${state.name}, selected: ${state.selected}}`}
+    </div>
+  )
+}
+
 function App() {
+  const [ users, setUsers ] = useState(data);
+  // const [ selectedUser, setSelectedUser ] = useState();
+  const [ selectedUserID, setSelectedUserID ] = useState();
+
+  function incrementAge(id) {
+    setUsers(currentUsers => {
+      return currentUsers.map(user => {
+        if (user.id === id) {
+          return { ...user, age: user.age + 1};
+          // user.age = user.age + 1;
+          // return user;
+        } else {
+          return user;
+        }
+      })
+    })
+  }
+
+  const selectedUser = users.find(user => user.id === selectedUserID);
+
+  // function selectUser(user) {
+  //   setSelectedUser(user);
+  // }
+
+  // function selectUser(id) {
+  //   const user = users.find(user => user.id === id);
+  //   setSelectedUser(user);
+  // }
+
+  function selectUser(id) {
+    setSelectedUserID(id);
+  }
+
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -51,16 +151,20 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-      <FilterProvider>
-        <div className="project">
-          <Sidebar />
-          <Routes>
-            <Route path='/' element={<MainContent Loader={Loader} />} />
-            <Route path='/product/:id' element={<ProductPage />} />
-          </Routes>
-          {/* <MainContent Loader={Loader} /> */}
-        </div>
-      </FilterProvider>
+        <Test />
+        <h3>Selected User: {!selectedUser ? "None" : 
+          `${selectedUser.name} is ${selectedUser.age} years old`
+        }
+        </h3>
+        {users.map((user, index) => (
+          <div key={index}>
+          <span>{user.name} is {user.age} years old</span>
+          <button onClick={() => incrementAge(user.id)}>Increment</button>
+          {/* <button onClick={() => selectUser(user.id)}>Select</button> */}
+          <button onClick={() => selectUser(user.id)}>Select</button>
+          {/* <button onClick={() => selectUser(user)}>Select</button> */}
+          </div>
+        ))}
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
