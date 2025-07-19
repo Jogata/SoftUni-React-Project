@@ -6,11 +6,11 @@ export default function PageNavigation() {
     const { isAuthenticated } = useContext(AuthContext);
     return (
         <>
-            <nav className="main-nav">
+            <nav className="main-nav alt">
                 {/* <a href="#" className="logo">Logo</a> */}
-                <a href="#" className="logo skyrim-logo">
-                    <img src="/skyrim-favicon-192.png" alt="" />
-                </a>
+                <Link to="/skyrim" className="logo skyrim-logo">
+                    <img src="/skyrim-favicon-192.png" alt="Skyrim logo" />
+                </Link>
                 <ul className="nav-list">
                     <li><Link to='/' className="nav-link">main</Link></li>
                     <li><Link to="/skyrim" className="nav-link">home</Link></li>
@@ -38,6 +38,9 @@ export default function PageNavigation() {
                         </>
                     )}
                 </ul>
+                <button id="menu-btn">
+                    menu <i className="ri-menu-3-line"></i>
+                </button>
             </nav>
         </>
     )

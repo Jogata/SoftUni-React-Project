@@ -42,7 +42,7 @@ export default function SkyrimEquipmentPage() {
                 <p>Armor is a type of apparel that is worn on the body to increases a character's armor rating and thus helps to reduce the overall damage inflicted from physical attacks. Armor comes in two varieties: Heavy Armor and Light Armor. Both types have their advantages and disadvantages. There are also shields which provide an additional passive increase to armor rating. In addition armor can be enchanted to grant additional effects, such as, to boost certain skills, protect from magic attacks or to increase stats like Stamina, Health and Magicka.</p>
                 <Link to="/skyrim-armor" className="details-btn">Learn More</Link>
               </div>
-              <div className="article-image">
+              <div className="article-image mask-3">
                 {/* <!-- <img src="./img/00test2/file(10).png" alt=""> --> */}
                 {/* <!-- <img src="./img/00test2/an-armor-made-of-white-bones-engraved-with-patterns-with-green-glowing-power-gems-set-floating-in-453316929 – Копие.png" alt=""> --> */}
                 {/* <!-- <img src="./img/00test3/kneeling-knight-with-shield--tattoo-with-style-gothic--high-quality-12285050.png" alt=""> --> */}

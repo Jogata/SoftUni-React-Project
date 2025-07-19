@@ -10,14 +10,21 @@
     background-size: cover;
 }
 
-.overview-page main {
-    max-width: 1600px;
-    margin: auto;
+/* .overview-page main { */
+    /* max-width: 1600px; */
+    /* margin: auto; */
+/* } */
+
+.overview-page .header-content {
+    max-width: 1300px;
+    padding: 3rem 2%;
 }
 
 .middle-section {
     position: relative;
-    padding: 4rem 0;
+    max-width: 1600px;
+    margin: auto;
+    padding: 4rem 2%;
     color: #fff;
     text-align: center;
     /* background-color: #060612; */
@@ -82,14 +89,17 @@
     /* clip-path: url("#mask-4"); */
 }
 
-.section {
+.overview-page .section {
     position: relative;
+    min-height: 102vh;
+    padding: 10rem 2%;
+    display: flex;
     /* background-color: transparent; */
     /* background-image: none; */
     isolation: isolate;
 }
 
-.section::before {
+.overview-page .section::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,7 +111,7 @@
     z-index: -1;
 }
 
-.section::after {
+.overview-page .section::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -120,18 +130,21 @@
 
 .inner {
     width: 100%;
-    min-height: 102vh;
+    /* min-height: 102vh; */
+    margin: auto 0;
     padding: 1rem 0;
-    display: flex;
+    /* display: flex; */
+    /* gap: 10%; */
     /* background: rgba(0, 0, 0, 0.3); */
     /* align-items: center; */
     /* justify-content: space-around; */
 }
 
 .inner-section {
+    flex: 1;
     /* width: 100%; */
     /* min-height: 100vh; */
-    margin: auto;
+    /* margin: auto; */
 }
 
 .inner-section h2,
@@ -182,8 +195,21 @@
 
 .inner-section img {
     display: block;
-    max-width: 320px;
+    /* max-width: 320px; */
     margin: auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .inner-section img {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .inner {
+        display: flex;
+        gap: 10%;
+    }
 }
 
 .inner-section .title h2,
@@ -240,6 +266,7 @@
 }
 
 #section-1 {
+    padding: 10rem 10%;
     /* position: relative; */
     /* background-color: transparent; */
     /* background-image: none; */
@@ -271,9 +298,11 @@
     /* position: absolute; */
     /* left: 40px; */
     /* bottom: 10%; */
-    max-width: 50%;
+    /* max-width: 50%; */
+    max-width: 1000px;
     /* min-width: 290px; */
-    margin: 15rem 0 auto 4vw;
+    /* margin: 15rem 0 auto 4vw; */
+    /* margin: auto 0; */
     padding: 48px 40px;
     /* height: 70vh; */
     /* font-family: initial; */
@@ -347,7 +376,7 @@
 }
 
 .magic-schools img {
-    width: 100%;
+    /* width: 100%; */
     animation: rotate 30s linear infinite;
 }
 
@@ -363,6 +392,7 @@
 
 .magic-schools h2 {
     max-width: 320px;
+    margin: auto;
     font-size: 50px;
     text-align: center;
     text-transform: capitalize;
@@ -403,7 +433,7 @@
 .bestiary img {
     /* position: relative; */
     /* width: 100%; */
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 /* #splash {
@@ -465,4 +495,9 @@
 
 #tigrex-img {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }

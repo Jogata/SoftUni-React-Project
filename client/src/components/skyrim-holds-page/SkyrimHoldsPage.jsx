@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
-import { useState } from "react"
+import Thumbnail from "./thumbnail/Thumbnail";
+import PageNavigation from "../navigation/PageNavigation";
 
-import Thumbnail from './thumbnail/Thumbnail'
-
-import "./skyrim-holds-page.css"
-import PageNavigation from '../navigation/PageNavigation';
+import "./skyrim-holds-page.css";
 
 const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
 const thumbnailsData = [
@@ -92,7 +91,7 @@ export default function SkyrimHoldsPage() {
 
   return (
     <>
-      <div className="page">
+      <div className="page full-screen">
 
         <PageNavigation />
         
@@ -101,7 +100,7 @@ export default function SkyrimHoldsPage() {
           <div className="carousel">
 
             <div className="slider">
-              <div className={classes[0]} id="relative">
+              <div className={classes[0]}>
                 <img src="/skyrim/holds/Eastmarch-bg.jpg" />
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
@@ -115,7 +114,7 @@ export default function SkyrimHoldsPage() {
                   </div>
                 </div>
               </div>
-              <div className={classes[1]}>
+              <div className={classes[1]} id="relative">
                 <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>

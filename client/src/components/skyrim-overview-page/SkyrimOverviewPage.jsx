@@ -99,10 +99,10 @@ export default function SkyrimOverviewPage() {
                 {/* <!-- <h2>locations</h2> --> */}
               </div>
               <div className="inner-section factions">
-                <div className="flex">
+                {/* <div className="flex"> */}
                   {/* <!-- <img src="./asset/skyrim/overview/00test/fractions-logo-copy.png" alt="Monster"> --> */}
                   <img src="/skyrim/overview/factions-logo-2-copy.png" alt="different races" />
-                </div>
+                {/* </div> */}
                 <div className="title flex">
                   <img src="/skyrim/overview/ornament-1.png" alt="" className="ornament-left" />
                   <h2>factions</h2>
@@ -128,11 +128,13 @@ export default function SkyrimOverviewPage() {
             <div className="inner">
               <div className="inner-section magic-schools">
                 {/* <!-- <img src="./asset/skyrim/overview/00test/magic-circle-symbol-blue-copy.png" alt="Magic Circle Symbol"> --> */}
-                <img src="/skyrim/overview/magic-circle-symbol-red-copy.png" alt="Magic Circle Symbol" />
+                <div className="overflow-hidden">
+                  <img src="/skyrim/overview/magic-circle-symbol-red-copy.png" alt="Magic Circle Symbol" />
+                </div>
                 <h2>school of magic</h2>
               </div>
               <div className="inner-section bestiary">
-                <div className="flex">
+                <div className="relative">
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/splash-black-2-copy.png" alt=""> --> */}
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/torn-edges_6177521-copy.png" alt=""> --> */}
                   {/* <!-- <img id="splash" src="./asset/skyrim/overview/00test/torn-edges-effect-6020235-copy.png" alt=""> --> */}

@@ -1,16 +1,20 @@
 nav {
+    position: relative;
+    /* width: 96%; */
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    /* padding: 0.5rem 0; */
+    padding: 1rem 2%;
     display: flex;
     gap: 3rem;
-    width: 96%;
-    max-width: 1600px;
-    margin: auto;
-    padding: 0.5rem 0;
-    position: relative;
+    justify-content: space-between;
     z-index: 7000;    /* TODO */
 }
 
 .nav-list {
-    display: flex;
+    /* display: flex; */
+    display: none;
     gap: 1rem;
     flex-wrap: wrap;
     margin: auto;
@@ -88,7 +92,44 @@ nav li {
 }
 
 .main-nav .skyrim-logo {
-    max-width: 7rem;
-    padding: 1rem;
+    /* max-width: 7rem; */
+    /* padding: 1rem; */
+    padding: 1vw;
     border-radius: 50%;
+}
+
+.main-nav .skyrim-logo img {
+    min-width: 3rem;
+    max-width: 5rem;
+    width: 10vw;
+}
+
+@media screen and (min-width: 1600px) {
+    .main-nav .skyrim-logo {
+        padding: 1rem;
+    }
+}
+
+#menu-btn {
+    font-size: 0px;
+}
+
+#menu-btn i {
+    padding: 0.5em;
+    color: #000;
+    font-size: 2rem;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (min-width: 1300px) {
+    .nav-list {
+        display: flex;
+    }
+
+    #menu-btn {
+        display: none;
+        /* display: block; */
+    }
 }

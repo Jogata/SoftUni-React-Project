@@ -58,8 +58,12 @@
 }
 
 .start-page {
+    flex: 1;
     position: relative;
     width: 100%;
+    /* padding: 3rem 0; */
+    display: flex;
+    flex-direction: column;
     /* min-height: 100vh; */
     /* background: url('./img/pngegg74-copy.png'), 
     url('./img/skyrim_mountains__transparent_background__by_sosinizter_d71jn48-copy.png');
@@ -75,12 +79,14 @@
     left: 20%;
     /* width: 150px; */
     width: 10vw;
+    min-width: 100px;
     /* height: 150px; */
     height: 10vw;
+    min-height: 100px;
 }
 
 .moon img {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
 }
 
@@ -192,11 +198,13 @@
   } */
 
 .main-title-container {
+    flex: 1;
     /* position: absolute; */
     /* position: relative; */
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
+    padding: 15rem 5% 5rem;
     /* align-items: center; */
     /* justify-content: center; */
     /* background-position: bottom right, center; */
@@ -233,14 +241,27 @@
 }
 
 .main-title {
-    width: 50%;
+    /* width: 50%; */
     /* max-width: 1600px; */
     max-width: 100rem;
     margin: auto;
-    padding: 10rem 0;
+    /* padding: 10rem 0; */
     z-index: 5000;
     animation: zooming 5s linear backwards;
     filter: invert(1) brightness(0.75);
+}
+
+@media screen and (max-width: 800px) {
+    .main-title {
+        /* width: 50%; */
+        max-width: 400px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .main-title {
+        width: 50%;
+    }
 }
 
 /* @keyframes hidetitle {
@@ -261,11 +282,11 @@
 
 .bottom-section {
     /* visibility: hidden; */
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    min-height: 30vh;
-    display: flex;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* width: 100%; */
+    /* min-height: 30vh; */
+    /* display: flex; */
     /* align-items: center; */
     /* justify-content: center; */
     z-index: 6000;
@@ -274,7 +295,9 @@
 
 .play-btn {
     position: relative;
-    min-width: 300px;
+    /* min-width: 300px; */
+    min-width: 220px;
+    /* min-width: 300px; */
     /* max-width: 350px; */
     max-width: min(32%, 350px);
     margin: auto;
@@ -293,7 +316,8 @@
     padding: 0.8em 1.5em;
     /* color: #000; */
     color: #fff;
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: 0.8rem;
     font-weight: bolder;
     text-transform: uppercase;
     /* letter-spacing: 1px; */
@@ -302,6 +326,12 @@
     border: 2px solid #fff;
     /* background: rgba(255, 255, 255, 0.5); */
     background: rgba(35, 35, 35, 0.5);
+}
+
+@media screen and (min-width: 800px) {
+    .play-btn {
+        min-width: 300px;
+    }
 }
 
 @keyframes show-up {

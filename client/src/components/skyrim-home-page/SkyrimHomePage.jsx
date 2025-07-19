@@ -1,7 +1,7 @@
 import PageNavigation from "../navigation/PageNavigation";
 import "./skyrim-home-page.css";
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function SkyrimHomePage() {
   return (
@@ -52,7 +52,7 @@ export default function SkyrimHomePage() {
             <div className="bottom-section">
               <div className="play-btn">
                 <img src="/skyrim/home/skyrim-icon-41590-copy.png" alt="warrior" />
-                <a href="/skyrim-overview"> explore </a>
+                <Link to="/skyrim-overview"> explore </Link>
               </div>
             </div>
           </section>

@@ -2,11 +2,14 @@
 .carousel {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
     /* overflow: hidden; */
     /* border: 1px solid red; */
   }
   .slider {
+    flex: 1;
     position: relative;
   }
   .item#relative {
@@ -91,9 +94,11 @@
     bottom: 50px;
     left: 50%; */
     position: relative;
-    width: max-content;
+    /* width: max-content; */
+    width: 100%;
     max-width: 600px;
     margin-left: auto;
+    padding-left: 20px;
     display: flex;
     gap: 20px;
     overflow: hidden;
@@ -218,7 +223,8 @@
       padding-right: 0;
     }
     .carousel .slider .item .slide-content .slide-title {
-      font-size: 30px;
+      /* font-size: 30px; */
+      font-size: 60px;
     }
   }
   
