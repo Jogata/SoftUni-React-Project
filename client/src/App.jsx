@@ -25,6 +25,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useMemo, useState } from 'react';
+import { WeatherApp } from './components/travel/weather-app-v1/WeatherApp'
 
 function Loader() {
   return (
@@ -60,68 +61,6 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-const slides = [
-  {
-    url: "/skyrim/holds/Eastmarch-bg.jpg", 
-  }, 
-  {
-    url: "/skyrim/holds/Eastmarch-bg.jpg", 
-  }, 
-  {
-    url: "/skyrim/holds/Eastmarch-bg.jpg", 
-  }, 
-  {
-    url: "/skyrim/holds/Eastmarch-bg.jpg", 
-  }, 
-  {
-    url: "/skyrim/holds/Eastmarch-bg.jpg", 
-  }
-]
-
-function ImageSlider() {
-  const [ current, setCurrent ] = useState(0);
-  const length = slides.length;
-
-  if (!Array.isArray(slides) && slides.length === 0) {
-    return null;
-  }
-
-  function next() {
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  }
-  // console.log(current);
-  
-  function prev() {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  }
-  console.log(current);
-
-  return (
-    <div className="test-slider">
-      <h1>slider</h1>
-      <div className="slider">
-      {slides.map((slide, index) => {
-        const classes = index === current ? "image-slide active" : "image-slide";
-        return (
-          // <h2>slide</h2>
-          <div key={index} className={classes}>
-            {index === current && <img src={slide.url} alt="" />}
-          </div>
-        )
-      })}
-      </div>
-      <div className="control">
-        <button id="next" onClick={next}>
-          next <i className="ri-arrow-left-double-line"></i>
-        </button>
-        <button id="prev" onClick={prev}>
-          prev <i className="ri-arrow-right-double-line"></i>
-        </button>
-      </div>
-    </div>
-  )
-}
-
 function App() {
   return (
     <>
@@ -133,7 +72,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <ImageSlider />
+        <WeatherApp />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
