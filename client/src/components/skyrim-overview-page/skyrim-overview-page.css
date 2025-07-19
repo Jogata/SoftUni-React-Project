@@ -141,7 +141,7 @@
 }
 
 .inner-section {
-    flex: 1;
+    /* flex: 1; */
     /* width: 100%; */
     /* min-height: 100vh; */
     /* margin: auto; */
@@ -150,9 +150,13 @@
 .inner-section h2,
 .inner-section a {
     position: relative;
-    padding: 2rem 0;
     display: flex;
     align-items: center;
+}
+
+.inner-section h2 {
+    border: 10px solid red;
+    background-color: red;
 }
 
 .inner-section h2::before,
@@ -346,8 +350,16 @@
     /* flex-direction: column; */
 }
 
-.factions {}
+.overview-page .inner-section {
+    flex: 1;
+    max-width: 400px;
+    margin: auto;
+}
 
+.overview-page .magic-schools, 
+.overview-page .locations {
+    margin-bottom: 3rem;
+}
 
 #section-3::after {
     /* position: relative; */

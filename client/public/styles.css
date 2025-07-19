@@ -713,3 +713,77 @@ main.max-width {
 .logo:hover .logo-ring {
   animation-duration: 1s;
 }
+
+
+
+h1 {
+  margin: 2vw 0;
+  font-size: 5vw;
+  color: brown;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.slider {
+  position: relative;
+  height: 100vh;
+  /* margin-top: 2rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider img {
+  width: 1000px;
+  height: 600px;
+  border-radius: 10px;
+}
+
+.test-slider .control {
+  /* margin-top: 2rem; */
+  /* text-align: center; */
+}
+
+.test-slider button {
+  /* color: var(--white); */
+  color: #000;
+  font-size: 0px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: var(--text-dark);
+}
+
+button#prev {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  padding: 0.45rem 0.5rem 0.45rem 0.7rem;
+  background-color: #eee;
+  user-select: none;
+  cursor: pointer;
+}
+
+button#next {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  padding: 0.45rem 0.7rem 0.45rem 0.5rem;
+  background-color: #eee;
+  user-select: none;
+  cursor: pointer;
+}
+
+.test-slider button i {
+  font-size: 2rem;
+}
+
+.image-slide {
+  opacity: 0;
+  transition: opacity 1000ms, 
+          transform 1000ms;
+}
+
+.image-slide.active {
+  opacity: 1;
+  transform: scale(1.08);
+}
