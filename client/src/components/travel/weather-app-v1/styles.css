@@ -9,8 +9,8 @@ ul {
 }
 
 .bulled {
-    list-style: inside circle;
-    padding-left: 1rem;
+    /* list-style: inside circle; */
+    /* padding-left: 1rem; */
 }
 
 a {
@@ -130,7 +130,7 @@ body {
   } */
 
 .dark-bg {
-    background-color: #18293d;
+    /* background-color: #18293d; */
 }
 
 .btn {
@@ -155,10 +155,10 @@ p {
 
 h1 {
     font-size: 6rem;
-    margin-top: 10vw;
-    color: brown;
-    text-align: center;
-    text-transform: capitalize;
+    /* margin-top: 10vw; */
+    /* color: brown; */
+    /* text-align: center; */
+    /* text-transform: capitalize; */
 }
 
 .weather-app {
@@ -180,4 +180,14 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
+}
+
+.search {
+    padding: 1rem 2%;
+    text-align: center;
+}
+
+.search input {
+    display: inline-block;
+    width: auto;
 }
