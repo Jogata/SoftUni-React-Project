@@ -33,6 +33,25 @@ export function WeatherApp() {
                     placeholder="Enter Location" 
                 />
             </div>
+
+            {data.name ? <Location data={data} /> : null}
+
+            {data.name ? <LocationInfo data={data} /> : null}
+        </div>
+    )
+}
+
+function Location({ data }) {
+    // console.log(data);
+    return (
+        <div className="location">
+            <h1>{data.name}</h1>
+            <div className="temperature">
+                {data.main ? <h2>{data.main.temp.toFixed()}&deg;F</h2> : null}
+            </div>
+            <div className="description">
+                {data.weather ? <p>{data.weather[0].description}</p> : null}
+            </div>
         </div>
     )
 }

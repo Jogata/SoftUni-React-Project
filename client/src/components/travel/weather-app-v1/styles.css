@@ -19,14 +19,20 @@ a {
 }
 
 button {
+    cursor: pointer;
+}
+
+button, 
+input {
     font-family: inherit;
     border: 0px solid transparent;
     outline: 1px solid transparent;
     background-color: transparent;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-button:focus-visible,
+button:focus-visible, 
+input:focus-visible, 
 a:focus-visible {
     outline: 1px solid #999;
 }
@@ -165,6 +171,8 @@ h1 {
     position: relative;
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.4);
 }
@@ -175,7 +183,7 @@ h1 {
     left: 0;
     content: "";
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: url('./images/bg.PNG');
     background-repeat: no-repeat;
     background-size: cover;
@@ -189,5 +197,33 @@ h1 {
 
 .search input {
     display: inline-block;
+    padding: 0.7rem 1.5rem;
     width: auto;
+    font-size: 1.2rem;
+    border-radius: 2em;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search input::placeholder {
+    color: #fff;
+}
+
+.location, 
+.location-info {
+    text-align: center;
+}
+
+.location {
+    /* flex: 1; */
+    margin: auto 0;
+    padding: 3rem 2%;
+}
+
+.location h1 {
+    /* margin-top: auto; */
+}
+
+.location .description {
+    /* margin-bottom: auto; */
 }
