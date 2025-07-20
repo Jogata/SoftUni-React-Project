@@ -220,10 +220,32 @@ h1 {
     padding: 3rem 2%;
 }
 
-.location h1 {
-    /* margin-top: auto; */
+.location h2 {
+    font-size: 3rem;
+    margin: 1rem 0 3rem;
 }
 
 .location .description {
     /* margin-bottom: auto; */
+    text-transform: capitalize;
+}
+
+.location-info {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.location-info .box {
+    padding: 1rem 5%;
+}
+
+.location-info .box p {
+    padding: 0.5rem 0;
 }
