@@ -27,14 +27,14 @@ export function WeatherApp() {
 
     return (
         <div className="weather-app">
+            <div className="bg"></div>
             <div className="search">
-                <input 
-                    type="text" 
-                    value={location} 
-                    onKeyDown={(e) => searchLocation(e)} 
-                    onChange={event => setLocation(event.target.value)} 
-                    // onSubmit={event => console.log(event)} 
-                    placeholder="Enter Location" 
+                <input
+                    type="text"
+                    value={location}
+                    onKeyDown={(e) => searchLocation(e)}
+                    onChange={event => setLocation(event.target.value)}
+                    placeholder="Enter Location"
                 />
             </div>
 
@@ -46,9 +46,9 @@ export function WeatherApp() {
 }
 
 function Location({ data }) {
-    // console.log(data);
     return (
         <div className="location">
+            <Image data={data} />
             <h1>{data.name}</h1>
             <div className="temperature">
                 {data.main ? <h2>{data.main.temp.toFixed()}&deg;F</h2> : null}
@@ -61,7 +61,6 @@ function Location({ data }) {
 }
 
 function LocationInfo({ data }) {
-    // console.log(data);
     return (
         <div className="location-info">
             <div className="box">
@@ -89,5 +88,52 @@ function LocationInfo({ data }) {
                 <p>Wind Speed</p>
             </div>
         </div>
+    )
+}
+
+function Image({ data }) {
+    const icons = {
+        "01d": clear, 
+        "01n": clear, 
+        "02d": cloud, 
+        "02n": cloud, 
+        "03d": cloud, 
+        "04d": cloud, 
+        "09d": drizzle, 
+        "10d": rain, 
+        "11d": rain, 
+        "11n": rain, 
+        "13d": snow, 
+        "13n": snow, 
+        "50d": cloud,
+        "50n": cloud
+    }
+
+    return (
+        // <div className="container">
+        // <div className="top">
+          <div className="weather-image">
+            <img className="image" src={icons[data.weather[0].icon]} alt="weather"/>
+            {/* The subsequent code uses a series of conditional (ternary) operators to determine 
+                the appropriate weather icon based on the value of data.weather[0].icon. 
+                Each condition corresponds to a specific weather condition.
+              data.weather[0].icon === "01d" || data.weather[0].icon === "01n"
+              ? clear
+              : data.weather[0].icon === "02d" || data.weather[0].icon === "02n"
+              ? cloud
+              : data.weather[0].icon === "03d" || data.weather[0].icon === "04d"
+              ? cloud
+              : data.weather[0].icon === "09d" || data.weather[0].icon === "10d"
+              ? rain
+              : data.weather[0].icon === "11d" || data.weather[0].icon === "11n"
+              ? rain
+              : data.weather[0].icon === "13d" || data.weather[0].icon === "13n"
+              ? snow
+              : data.weather[0].icon === "50d"  || data.weather[0].icon === "50n"
+              ? cloud
+              : null */}
+        </div>
+        // </div>          
+    //   </div>
     )
 }
