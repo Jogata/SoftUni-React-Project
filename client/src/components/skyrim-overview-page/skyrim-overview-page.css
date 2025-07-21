@@ -352,8 +352,14 @@
 
 .overview-page .inner-section {
     flex: 1;
-    max-width: 400px;
+    /* max-width: 400px; */
     margin: auto;
+}
+
+@media screen and (min-width: 1000px) {
+    .overview-page .inner-section {
+        max-width: 30%;
+    }    
 }
 
 .overview-page .magic-schools, 

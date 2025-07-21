@@ -22,7 +22,6 @@ export function WeatherApp() {
 
             setLocation("");
         }
-
     }
 
     return (
@@ -110,30 +109,8 @@ function Image({ data }) {
     }
 
     return (
-        // <div className="container">
-        // <div className="top">
           <div className="weather-image">
             <img className="image" src={icons[data.weather[0].icon]} alt="weather"/>
-            {/* The subsequent code uses a series of conditional (ternary) operators to determine 
-                the appropriate weather icon based on the value of data.weather[0].icon. 
-                Each condition corresponds to a specific weather condition.
-              data.weather[0].icon === "01d" || data.weather[0].icon === "01n"
-              ? clear
-              : data.weather[0].icon === "02d" || data.weather[0].icon === "02n"
-              ? cloud
-              : data.weather[0].icon === "03d" || data.weather[0].icon === "04d"
-              ? cloud
-              : data.weather[0].icon === "09d" || data.weather[0].icon === "10d"
-              ? rain
-              : data.weather[0].icon === "11d" || data.weather[0].icon === "11n"
-              ? rain
-              : data.weather[0].icon === "13d" || data.weather[0].icon === "13n"
-              ? snow
-              : data.weather[0].icon === "50d"  || data.weather[0].icon === "50n"
-              ? cloud
-              : null */}
         </div>
-        // </div>          
-    //   </div>
     )
 }

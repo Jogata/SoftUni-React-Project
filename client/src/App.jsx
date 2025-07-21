@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 
 import { AuthContextProvider } from './contexts/AuthContext'
 
@@ -24,8 +24,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useMemo, useState } from 'react';
-import { WeatherApp } from './components/travel/weather-app-v1/WeatherApp'
+import { useEffect, useState } from 'react';
 
 function Loader() {
   return (
@@ -61,6 +60,53 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
+const Login = () => {
+  return (
+    <>
+        <div className="container">
+            <h1>Login</h1>
+            <form action="">
+                <input type="text" placeholder='Username' />
+                <input type="password" placeholder='Password' />
+                <div className="recover">
+                    <a href="#">Forgot password</a>
+                </div>
+            </form>
+            <button>Login</button>
+            <div className="member">
+                Don't have an account? <Link to='/signup'>Sign Up</Link>
+            </div>
+        </div>
+    </>
+  )
+}
+
+const SignUp = () => {
+  return (
+    <>
+        <div className="container">
+            <h1>Sign Up</h1>
+            <form action="">
+                <input type="text" placeholder='Full name' />
+                <input type="text" placeholder='Username' />
+                <input type="password" placeholder='Password' />
+                <input type="password" placeholder='Re-Enter Password' />
+                <input type="email" placeholder='Email' />
+                <input type="tel" placeholder='Phone Number' />
+            </form>
+            <div className="terms">
+                <input type="checkbox"  id="checkbox" />
+                <label htmlFor="checkbox">I agree to the <a href="#">Terms & Condition</a></label>
+            </div>
+            <button>Sign Up</button>
+            <div className="member">
+                Already have an account? <Link to='/'>Login</Link>
+            </div>
+        </div>
+    </>
+  )
+}
+
 function App() {
   return (
     <>
@@ -72,7 +118,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <WeatherApp />
+        {/* <WeatherApp /> */}
+
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<SignUp />}/>
+        </Routes>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

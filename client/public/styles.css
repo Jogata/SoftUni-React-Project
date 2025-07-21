@@ -713,3 +713,103 @@ main.max-width {
 .logo:hover .logo-ring {
   animation-duration: 1s;
 }
+
+
+* {
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(#b70071, #003b6c);
+}
+
+.container {
+  width: 390px;
+  margin: 50px auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 1.2rem;
+  color: #07001f;
+  font-size: 2rem;
+}
+
+form input {
+  width: 92%;
+  /* margin-bottom: 10px; */
+  margin: 0 auto 10px;
+  padding: 12px 20px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background-color: #e4e4e4;
+}
+
+button {
+  width: 90%;
+  margin-top: 1.8rem;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1rem;
+  /* outline: none; */
+  /* border: none; */
+  border-radius: 20px;
+  background-color: rgb(17, 67, 143);
+}
+
+button:hover {
+  background-color: rgba(17, 107, 143, 0.8);
+}
+
+input:focus {
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.terms {
+  margin-top: 0.2rem;
+}
+
+.terms input {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.terms a {
+  text-decoration: none;
+}
+
+.member {
+  margin-top: 1.4rem;
+  color: #636363;
+  font-size: 1rem;
+}
+
+.member a {
+  text-decoration: none;
+}
+
+.recover {
+  margin: 0.3rem 1.4rem 0 0;
+  text-align: right;
+}
+
+.recover a {
+  text-decoration: none;
+}
+
+.terms input, 
+.terms label {
+  width: auto;
+  display: inline-block;
+  color: initial;
+}
