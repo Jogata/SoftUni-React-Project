@@ -60,52 +60,87 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-const Login = () => {
+const Nav = () => {
+  const [menu, setMenu] = useState('home');
+
   return (
-    <>
-        <div className="container">
-            <h1>Login</h1>
-            <form action="">
-                <input type="text" placeholder='Username' />
-                <input type="password" placeholder='Password' />
-                <div className="recover">
-                    <a href="#">Forgot password</a>
-                </div>
-            </form>
-            <button>Login</button>
-            <div className="member">
-                Don't have an account? <Link to='/signup'>Sign Up</Link>
-            </div>
-        </div>
-    </>
+    // <div>
+    // <div className="container">
+    <nav className='nav-container'>
+      <ul>
+        <li
+          onClick={() => { setMenu("home") }}
+          className="nav-link">
+          <Link to='/'>
+            {/* <img src={home} alt='home' className='img' /> */}
+            Home {menu === "home" ? <hr /> : <></>}
+          </Link>
+        </li>
+        <li
+          onClick={() => { setMenu("about") }}
+          className="nav-link">
+          <Link to='/about'>
+            {/* <img src={work} alt="" className='img' /> */}
+            About {menu === "about" ? <hr /> : <></>}
+          </Link>
+        </li>
+        <li
+          onClick={() => { setMenu("work") }}
+          className="nav-link">
+          <Link to='/work'>
+            {/* <img src={email} alt="" className='img' /> */}
+            Work {menu === "work" ? <hr /> : <></>}
+          </Link>
+        </li>
+        <li
+          onClick={() => { setMenu("contact") }}
+          className="nav-link">
+          <Link to='/contact'>
+            {/* <img src={contacts} alt="" className='img' /> */}
+            Contact {menu === "contact" ? <hr /> : <></>}
+          </Link>
+        </li>
+      </ul>
+    </nav>
+
+    // </div>
+    // </div>
   )
 }
 
-const SignUp = () => {
+const Home = () => {
   return (
-    <>
-        <div className="container">
-            <h1>Sign Up</h1>
-            <form action="">
-                <input type="text" placeholder='Full name' />
-                <input type="text" placeholder='Username' />
-                <input type="password" placeholder='Password' />
-                <input type="password" placeholder='Re-Enter Password' />
-                <input type="email" placeholder='Email' />
-                <input type="tel" placeholder='Phone Number' />
-            </form>
-            <div className="terms">
-                <input type="checkbox"  id="checkbox" />
-                <label htmlFor="checkbox">I agree to the <a href="#">Terms & Condition</a></label>
-            </div>
-            <button>Sign Up</button>
-            <div className="member">
-                Already have an account? <Link to='/'>Login</Link>
-            </div>
-        </div>
-    </>
+    <div className='menu'>
+      <h1>Home</h1>
+    </div>
   )
 }
+
+const Work = () => {
+  return (
+    <div className='menu'>
+      <h1>Work</h1>
+    </div>
+  )
+}
+
+const About = () => {
+  return (
+    <div className='menu'>
+      <h1>About</h1>
+    </div>
+  )
+}
+
+const Contact = () => {
+  return (
+    <div className='menu'>
+      <h1>Contact</h1>
+    </div>
+  )
+}
+
+
 
 function App() {
   return (
@@ -118,12 +153,13 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <WeatherApp /> */}
-
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/signup' element={<SignUp />}/>
-        </Routes>
+        <Nav />
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/work' element={<Work/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+      </Routes>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
