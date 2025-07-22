@@ -1,6 +1,10 @@
-.page-content.armor .header .image-mask {
-    /* clip-path: url("#mask-1"); */
-    min-width: min(90vw, 24rem);
+.page-content.armor .header-section .image-mask {
+    clip-path: none;
+    /* min-width: min(90vw, 24rem); */
+}
+
+.page-content.armor .header-section .image-mask img {
+    object-fit: contain;
 }
 
 .page-content.armor .article-image {
