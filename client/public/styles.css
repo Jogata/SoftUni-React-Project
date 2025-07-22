@@ -64,6 +64,10 @@ img {
   width: 100%;
 }
 
+p {
+  line-height: 1.6;
+}
+
 .svg {
   /* display: none; */
   position: absolute;
@@ -127,7 +131,7 @@ body {
   font-family: 'Kaushan Script', cursive;
   font-family: "Hurricane", cursive;
   font-family: Georgia, serif;
-  line-height: 1.6;
+  /* line-height: 1.6; */
   background-color: #080a0c;
 }
 
@@ -451,7 +455,8 @@ main.max-width {
   width: 100%;
   max-width: 100rem;
   margin: 0 auto;
-  padding: 3rem 0;
+  /* padding: 3rem 0; */
+  padding: 3rem 2%;
 }
   
 .page-content h1 {
@@ -498,52 +503,61 @@ main.max-width {
   text-align: center;
 }
 
-.header-section .image, 
-.raids.page-content .header-section .image, 
-.equipment.page-content .header-section .image, 
-.locations.page-content .header-section .image {
+/* .raids.page-content .header-section .image,  */
+/* .equipment.page-content .header-section .image,  */
+/* .locations.page-content .header-section .image,  */
+.header-section .image {
   /* position: relative; */
   /* max-width: 100%; */
   /* width: 30%; */
   position: absolute;
-  top: -20%;
+  /* top: -20%; */
+  top: 0;
   /* right: 20%; */
   right: 0;
   /* width: auto; */
   width: 100%;
   max-width: 650px;
-  height: 140%;
+  height: 100%;
+  /* height: 140%; */
   /* clip-path: url("#mask-3"); */
   /* z-index: -2; */
   z-index: -1;
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 1000px) {
   .header-section .image {
-    top: -10%;
-    height: 120%;
+      /* top: 0; */
   }
 }
-.header-section .image-mask, 
-.raids.page-content .header-section .image-mask, 
-.equipment.page-content .header-section .image-mask, 
-.locations.page-content .header-section .image-mask {
-  position: absolute;
+
+@media screen and (max-width: 680px) {
+  .header-section .image {
+    /* top: -10%; */
+    /* height: 120%; */
+  }
+}
+
+/* .raids.page-content .header-section .image-mask,  */
+/* .equipment.page-content .header-section .image-mask,  */
+/* .locations.page-content .header-section .image-mask,  */
+.header-section .image-mask {
+  /* position: absolute; */
   /* top: 0; */
   /* right: 0; */
   /* width: 140%; */
   width: 100%;
   /* min-width: min(90vw, 30rem); */
-  height: 100%;
+  /* height: 100%; */
   /* transform: translateY(-15%); */
   /* height: 100%; */
   clip-path: url("#mask-3");
   z-index: -1;
 }
-.header-section .image-mask::before, 
-.raids.page-content .header-section .image-mask::before, 
-.equipment.page-content .header-section .image-mask::before, 
-.locations.page-content .header-section .image-mask::before {
+/* .raids.page-content .header-section .image-mask::before,  */
+/* .equipment.page-content .header-section .image-mask::before,  */
+/* .locations.page-content .header-section .image-mask::before,  */
+.header-section .image-mask::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -562,7 +576,24 @@ main.max-width {
 
 .header-section .image-mask img {
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
+  object-fit: contain;
+}
+
+.armor-sets .header-section .image-mask {
+  position: relative;
+  /* height: auto; */
+  clip-path: url("#mask-1");
+}
+
+@media screen and (max-width: 1000px) {
+  .header-section .image {
+      /* top: 0; */
+  }
+
+  .armor-sets .header-section .image-mask {
+      /* height: 100%; */
+  }
 }
 
 .page-content article {
@@ -715,14 +746,6 @@ main.max-width {
   animation-duration: 1s;
 }
 
-
-h1 {
-  padding-top: 10vw;
-  color: brown;
-  font-size: 10vw;
-  text-align: center;
-  text-transform: capitalize;
-}
 
 #test {
   min-height: 200vh;

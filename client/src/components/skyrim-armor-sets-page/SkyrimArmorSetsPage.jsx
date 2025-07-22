@@ -54,7 +54,7 @@ export default function SkyrimArmorSetsPage() {
                   <li><a>Orcish Armor</a></li>
                   <li><a>Stalhrim Armor</a></li>
                   {/* <!-- <li><a>Steel Armor</a></li> --> */}
-                  <li><a className="link" href="./skyrim-steel-plate-armor-set.html">Steel Plate Armor</a></li>
+                  <li><Link className="link" to="/skyrim-steel-plate-armor-set">Steel Plate Armor</Link></li>
                   <li><a>Wolf Armor</a></li>
                 </ul>
                 <Link to="/skyrim-heavy-armor-sets" className="details-btn">Learn More</Link>
