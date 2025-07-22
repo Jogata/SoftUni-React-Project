@@ -714,3 +714,76 @@ main.max-width {
 .logo:hover .logo-ring {
   animation-duration: 1s;
 }
+
+
+h1 {
+  padding-top: 10vw;
+  color: brown;
+  font-size: 10vw;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#test {
+  min-height: 200vh;
+  background-color: white;
+}
+
+#test header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 3px 3px #0005;
+}
+
+#test header {
+  position: relative;
+  width: 100%;
+  padding: 1rem 2%;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+#test .nav-logo a {
+  color: brown;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+#test .nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+}
+
+#test .nav-menu a {
+  padding: 0.5em 1em;
+  color: #222;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  /* border: 1px solid; */
+}
+
+#test .login {
+  padding: 0.5em 1em;
+  color: #eee;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  background-color: steelblue;
+  cursor: pointer;
+  /* border: 1px solid; */
+}
+
+#test .nav-menu a:focus-visible, 
+#test .login:focus-visible {
+  outline: 1px solid #ccc;
+}
