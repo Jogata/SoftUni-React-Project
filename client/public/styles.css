@@ -542,16 +542,17 @@ main.max-width {
 /* .equipment.page-content .header-section .image-mask,  */
 /* .locations.page-content .header-section .image-mask,  */
 .header-section .image-mask {
-  /* position: absolute; */
+  /* position: relative; */
+  position: absolute;
   /* top: 0; */
-  /* right: 0; */
+  right: 0;
   /* width: 140%; */
   width: 100%;
   /* min-width: min(90vw, 30rem); */
   /* height: 100%; */
   /* transform: translateY(-15%); */
   /* height: 100%; */
-  clip-path: url("#mask-3");
+  /* clip-path: url("#mask-3"); */
   z-index: -1;
 }
 /* .raids.page-content .header-section .image-mask::before,  */
@@ -581,9 +582,9 @@ main.max-width {
 }
 
 .armor-sets .header-section .image-mask {
-  position: relative;
+  /* position: relative; */
   /* height: auto; */
-  clip-path: url("#mask-1");
+  /* clip-path: url("#mask-1"); */
 }
 
 @media screen and (max-width: 1000px) {
@@ -643,8 +644,8 @@ main.max-width {
 .equipment .header-section, 
 .locations .header-section {
   /* position: relative; */
-  padding-bottom: 10rem;
-  isolation: isolate;
+  /* padding-bottom: 10rem; */
+  /* isolation: isolate; */
 }
 .locations .header-section::after {
   /* position: absolute; */

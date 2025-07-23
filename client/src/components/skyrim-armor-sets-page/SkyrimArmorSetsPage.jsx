@@ -23,7 +23,7 @@ export default function SkyrimArmorSetsPage() {
                   <p>Most of the sets can be crafted at Forges or improved at a Workbench, by using the Smithing skill. But there is some sets of Armors that belong to a specific faction and can be obtained only from members of that faction or unique sets that can be obtained only during special quests.</p>
                 </div>
                 <div className="image">
-                  <div className="image-mask">
+                  <div className="image-mask mask-1">
                     {/* <!-- <img src="./img/00test3/blue-dwarven-full-plate-armor.png" alt=""> --> */}
                     <img src="/skyrim/equipment/armor/sets/hero.png" alt="" />
                     {/* <!-- <img src="./img/00test3/female-warrior-full-body-viewmultiple-angle.jpeg" alt=""> --> */}
