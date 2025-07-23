@@ -26,8 +26,9 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/commerce-oil-product/components/Navigation/Navigation';
+import { Home } from './components/travel/commerce-oil-product/components/Home/Home';
 import { Footer } from './components/travel/commerce-oil-product/components/Footer/Footer';
 
 function Loader() {
@@ -76,6 +77,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Home />
         <Footer />
 
           {/* <Routes>
