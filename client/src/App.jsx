@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/commerce-oil-product/components/Navigation/Navigation';
 import { Home } from './components/travel/commerce-oil-product/components/Home/Home';
+import { Info } from './components/travel/commerce-oil-product/components/Info/Info';
 import { Footer } from './components/travel/commerce-oil-product/components/Footer/Footer';
 
 function Loader() {
@@ -78,6 +79,7 @@ function App() {
 
         <Navigation />
         <Home />
+        <Info />
         <Footer />
 
           {/* <Routes>
