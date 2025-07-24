@@ -55,60 +55,6 @@
     background-color: #582a13;
 }
 
-.spark-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height:100%;
-}
-
-.spark-container > div  {
-    position: absolute;
-    top: 0;
-    right: 0;
-    max-width: 36px;
-    /* width: 20px; */
-    /* height: 20px; */
-    display: flex;
-    align-items: center;  
-    justify-content: center;
-    flex-direction: column;
-    /* box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5); */
-    backdrop-filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.5));
-    /* filter: drop-shadow(rgba); */
-}
-
-.spark-container > div > img {
-    /* width: 100%; */
-    /* height: 120px; */
-}
-
-.spark-container > div:nth-child(1) {
-    top: 150px;
-    right: 50px;
-}
-
-.spark-container > div:nth-child(2) {
-    top: 300px;
-    right: 600px;
-}
-
-.spark-container > div:nth-child(3) {
-    top: 30px;
-    right: 500px;
-}
-
-.spark-container > div:nth-child(4) {
-    top: 80px;
-    left: 350px;
-}
-
-.spark-container > div:nth-child(5) {
-    top: 550px;
-    right: 600px;
-}
-
 .info {
     display: grid;
     gap: 1rem;

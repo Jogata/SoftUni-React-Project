@@ -1,8 +1,6 @@
 import oil from "../../images/oil.png";
 import "./home.css";
 
-const spark = "https://raw.githubusercontent.com/Zhully18/oil-product-landing-page/refs/heads/main/src/Components/Assets/spark.png";
-
 export function Home() {
     return (
         <section className="home">
@@ -18,23 +16,6 @@ export function Home() {
                 <div className="image">
                     <img src={oil} alt="" />
                     <div className="circle"></div>
-                    <div className="spark-container">
-                    <div className="spark1">
-                        <img src={spark} alt=""/>
-                    </div>
-                    <div className="spark2">
-                        <img src={spark} alt=""/>
-                    </div>
-                    <div className="spark3">
-                        <img src={spark} alt=""/>
-                    </div>
-                    <div className="spark4">
-                        <img src={spark} alt=""/>
-                    </div>
-                    <div className="spark5">
-                        <img src={spark} alt=""/>
-                    </div>
-                </div>
                 </div>
             </div>
 
