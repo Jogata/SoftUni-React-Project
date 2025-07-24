@@ -30,6 +30,7 @@ import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/commerce-oil-product/components/Navigation/Navigation';
 import { Home } from './components/travel/commerce-oil-product/components/Home/Home';
 import { Info } from './components/travel/commerce-oil-product/components/Info/Info';
+import { Testimonials } from './components/travel/commerce-oil-product/components/Testimonials/Testimonials';
 import { Product } from './components/travel/commerce-oil-product/components/Product/Product';
 import { Footer } from './components/travel/commerce-oil-product/components/Footer/Footer';
 
@@ -82,6 +83,7 @@ function App() {
         <Home />
         <Info />
         <Product />
+        <Testimonials />
         <Footer />
 
           {/* <Routes>

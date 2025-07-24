@@ -45,7 +45,8 @@
     width: 82%;
     height: 47%;
     border-radius: 0 0 50% 50% / 0 0 100% 100%;
-    background: rgb(255, 229, 111);
+    /* background: rgb(255, 229, 111); */
+    background-color: #582a13;
     z-index: -1;
 }
 
