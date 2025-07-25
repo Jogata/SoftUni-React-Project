@@ -1,0 +1,76 @@
+.footer {
+    max-width: 1600px;
+    /* height: 20vh; */
+    margin: auto;
+}
+
+.footer-body {
+    padding: 0 2% 5rem;
+    /* width: 90%; */
+    /* height: 100px; */
+    /* margin-left: 47px; */
+    display: flex;
+    gap: 3rem 5%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    background-color: black;
+}
+
+.right {
+    flex: 1;
+    max-width: 600px;
+    /* margin-left: 10px; */
+    /* color: white; */
+}
+
+.footer-talk h2 {
+    /* margin-top: 10px; */
+    margin-bottom: 1rem;
+    font-size: 30px;
+}
+
+.footer-talk p {
+    /* margin-top: 6px; */
+    font-size: 16px;
+}
+
+.subscribe-form {
+    flex: 1;
+    display: flex;
+}
+
+.subscribe-form input {
+    width: 100%;
+    max-width: 400px;
+    /* height: 50px; */
+    /* margin-top: 20px; */
+    margin-left: auto;
+    padding: 1rem;
+    border-radius: 4em;
+}
+
+.subscribe-form button {
+    /* margin-right: auto; */
+    padding: 1em;
+    /* width: 120px; */
+    /* height: 50px; */
+    /* margin-top: 20px; */
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 4em;
+    background-color: orangered;
+}
+
+@media screen and (max-width: 1000px) {
+    .footer-body {
+        flex-direction: column;
+    }
+    .subscribe-form {
+        width: 100%;
+    }
+    .subscribe-form button {
+        margin-right: auto;
+    }
+}
