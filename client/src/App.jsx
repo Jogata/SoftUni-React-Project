@@ -27,12 +27,8 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/commerce-oil-product/components/Navigation/Navigation';
-import { Home } from './components/travel/commerce-oil-product/components/Home/Home';
-import { Info } from './components/travel/commerce-oil-product/components/Info/Info';
-import { Testimonials } from './components/travel/commerce-oil-product/components/Testimonials/Testimonials';
-import { Product } from './components/travel/commerce-oil-product/components/Product/Product';
-import { Footer } from './components/travel/commerce-oil-product/components/Footer/Footer';
+import { Login } from './components/travel/login-animated/components/Login/Login';
+import { Register } from './components/travel/login-animated/components/Register/Register';
 
 function Loader() {
   return (
@@ -79,12 +75,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Navigation />
-        <Home />
-        <Info />
-        <Product />
-        <Testimonials />
-        <Footer />
+        <Login />
+        <Register />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
