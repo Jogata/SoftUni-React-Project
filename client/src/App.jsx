@@ -28,7 +28,6 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Login } from './components/travel/login-animated/components/Login/Login';
-import { Register } from './components/travel/login-animated/components/Register/Register';
 
 function Loader() {
   return (
@@ -76,7 +75,7 @@ function App() {
         </Routes> */}
 
         <Login />
-        <Register />
+        {/* <Register /> */}
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
