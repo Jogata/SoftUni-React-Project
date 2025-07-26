@@ -1,9 +1,6 @@
-// import "./register.css";
-
-export function Register() {
+export function Register({ tabindex }) {
     return (
-        <form className="register">
-            {/* <pre></pre> */}
+        <form className="register" id="register-form" role="tabpanel" tabIndex={tabindex} aria-labelledby="register-form-tab">
             <div className="field">
                 <input type="text" placeholder="Name" />
             </div>
@@ -17,7 +14,6 @@ export function Register() {
                 <input type="password" placeholder="Confirm password" />
             </div>
             <div className="submit-btn">
-                {/* <div className="btn-layer"></div> */}
                 <button type="submit">Register</button>
             </div>
             <div className="redirect">

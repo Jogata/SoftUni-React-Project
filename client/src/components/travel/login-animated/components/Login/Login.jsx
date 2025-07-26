@@ -1,9 +1,6 @@
-// import "./login.css";
-
-export function Login() {
+export function Login({ tabindex }) {
     return (
-        <form className="login" id="login-form" role="tabpanel" tabindex="0" aria-labelledby="login-form-tab">
-            {/* <pre></pre> */}
+        <form className="login" id="login-form" role="tabpanel" tabIndex={tabindex} aria-labelledby="login-form-tab">
             <div className="field">
                 <input type="text" placeholder="Email address" />
             </div>
@@ -14,7 +11,6 @@ export function Login() {
                 <a href="#reset">Forgot password ?</a>
             </div>
             <div className="submit-btn">
-                {/* <div className="btn-layer"></div> */}
                 <button type="submit">Login</button>
             </div>
             <div className="redirect">
