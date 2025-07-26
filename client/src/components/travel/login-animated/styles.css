@@ -31,11 +31,16 @@ a {
   text-decoration: none;
 }
 
-button {
+button, 
+input {
   font-family: inherit;
   border: 0px solid transparent;
   outline: 1px solid transparent;
   background-color: transparent;
+  /* cursor: pointer; */
+}
+
+button {
   cursor: pointer;
 }
 
@@ -352,14 +357,17 @@ body {
 }
 
 .form-details form .field input {
-  /* width: 100%; */
+  display: block;
+  width: 100%;
   /* height: 100%; */
-  padding-left: 15px;
+  /* padding-left: 15px; */
+  padding: 0.5em;
   font-size: 18px;
   font-family: Georgia, serif;
-  outline: none;
-  border: none;
+  /* outline: none; */
+  /* border: none; */
   /* border-bottom: 2px solid #adadad; */
+  background-color: transparent;
   transition: all 300ms ease;
 }
 
@@ -382,6 +390,10 @@ form .field input:focus::placeholder {
   text-align: center;
 }
 
+.redirect a {
+  margin-left: 6px;
+}
+
 .forms .reset a, 
 .forms .redirect a {
   color: #f1683a;
@@ -389,7 +401,8 @@ form .field input:focus::placeholder {
   transition: color 300ms ease;
 }
 
-.forms .reset:hover a {
+.forms .reset:hover a, 
+.forms .redirect a:hover {
   color: #5a91cf;
 }
 

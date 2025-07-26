@@ -18,7 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import SkyrimHeavyArmorSets from './components/skyrim-heavy-armor-sets/SkyrimHeavyArmorSets'
 import SkyrimSteelPlateArmorSet from './components/skyrim-steel-plate-armor-set/SkyrimSteelPlateArmorSet'
-import AuthPage from './components/auth-page/AuthPage'
+// import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
@@ -27,7 +27,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Login } from './components/travel/login-animated/components/Login/Login';
+import { AuthPage } from './components/travel/login-animated/components/AuthPage/AuthPage';
 
 function Loader() {
   return (
@@ -74,7 +74,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Login />
+        <AuthPage />
         {/* <Register /> */}
 
           {/* <Routes>
