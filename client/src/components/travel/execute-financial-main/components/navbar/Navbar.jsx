@@ -67,43 +67,41 @@ export function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
 
     return (
-        <div>
-            <nav className="navbar" >
-                <img src={logo} alt="Logo" className="logo" />
-                <div className="menu">
-                    <Link 
-                        to="#intro" 
-                        className="menuList" 
-                        onClick={() => setShowMenu(!showMenu)}
-                    >
-                        Home
-                    </Link>
-                    <Link 
-                        to="#skills" 
-                        className="menuList" 
-                        onClick={() => setShowMenu(!showMenu)}
-                    >
-                        About
-                    </Link>
-                    <Link 
-                        to="#works" 
-                        className="menuList" 
-                        onClick={() => setShowMenu(!showMenu)}
-                    >
-                        Project
-                    </Link>
-                    <Link 
-                        to="#clients" 
-                        className="menuList" 
-                        onClick={() => setShowMenu(!showMenu)}
-                    >
-                        Blog
-                    </Link>
-                </div>
-                <Link to="#contact" className="menubtn">
-                    Contact Me
+        <nav className="navbar" >
+            <img src={logo} alt="Logo" className="logo" />
+            <div className="menu">
+                <Link
+                    to="#intro"
+                    className="menuList"
+                    onClick={() => setShowMenu(!showMenu)}
+                >
+                    Home
                 </Link>
-            </nav>
-        </div>
+                <Link
+                    to="#skills"
+                    className="menuList"
+                    onClick={() => setShowMenu(!showMenu)}
+                >
+                    About
+                </Link>
+                <Link
+                    to="#works"
+                    className="menuList"
+                    onClick={() => setShowMenu(!showMenu)}
+                >
+                    Project
+                </Link>
+                <Link
+                    to="#clients"
+                    className="menuList"
+                    onClick={() => setShowMenu(!showMenu)}
+                >
+                    Blog
+                </Link>
+            </div>
+            <Link to="#contact" className="menubtn">
+                Contact Me
+            </Link>
+        </nav>
     )
 }
