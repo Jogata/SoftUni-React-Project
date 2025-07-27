@@ -106,7 +106,6 @@
     right: 0;
     width: 100%;
     max-width: 75rem;
-    /* height: 5rem; */
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
@@ -118,14 +117,12 @@
 
 .logo {
     max-width: 4rem;
-    /* height: 3rem; */
     object-fit: contain;
 }
 
 .menuList {
     margin: 1rem;
     color: white;
-    /* cursor: pointer; */
     transition: all 400ms ease;
 }
 
@@ -138,23 +135,14 @@
 }
 
 .menubtn {
-    height: 3rem;
-    padding: 0 1rem;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* height: 3rem; */
+    padding: 1rem;
+    /* color: black; */
+    color: darkslateblue;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     border: none;
     border-radius: 2rem;
     background-color: white;
-}
-
-.menubtn img {
-    /* width: 1rem; */
-    /* height: 1rem; */
-    /* object-fit: cover; */
-}
-
-.active {
-    /* color: yellow; */
 }
