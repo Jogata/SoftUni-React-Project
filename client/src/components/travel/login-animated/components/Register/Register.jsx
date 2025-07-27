@@ -1,6 +1,6 @@
 export function Register({ tabindex }) {
     return (
-        <form className="register" id="register-form" role="tabpanel" tabIndex={tabindex} aria-labelledby="register-form-tab">
+        <form className="register-form" id="register-form" role="tabpanel" tabIndex={tabindex} aria-labelledby="register-form-tab">
             <div className="field">
                 <input type="text" placeholder="Name" />
             </div>

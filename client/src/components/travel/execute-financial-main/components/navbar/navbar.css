@@ -1,25 +1,20 @@
-.header {
+/* .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    /* height: 90px; */
-    /* background-color: rgba(0, 0, 0, 0.9); */
     transition: transform 300ms ease-in, 
         background-color 300ms ease-in;
-    /* overflow: hidden; */
     z-index: 2;
 }
 
 .dark-bg {
     background-color: rgba(0, 0, 0, 0.9);
-    /* background-color: red; */
 }
 
 .header .navbar {
     position: relative;
     max-width: 1240px;
-    /* height: 100%; */
     margin: auto;
     padding: 1rem 5% 1rem 2%;
     display: flex;
@@ -33,12 +28,10 @@
     padding: 1rem;
     color: #ffffff;
     transition: transform 300ms ease-out;
-    /* border: 1px solid red; */
 }
 
 .header .navbar img {
     max-width: 250px;
-    /* height: auto; */
 }
 
 .header .nav-menu {
@@ -47,7 +40,6 @@
 }
 
 .header .nav-item {
-    /* padding: 1rem; */
     font-weight: 500;
     border: 3px solid transparent;
     transition: border-color 300ms ease-out;
@@ -87,13 +79,10 @@
 
     .nav-menu {
         position: absolute;
-        /* top: 90px; */
         top: 100%;
-        /* left: -100%; */
         left: 0;
         flex-direction: column;
         width: 100%;
-        /* height: 90vh; */
         text-align: center;
         background-color: rgba(0, 0, 0, .9);
         transform: translateX(-100%);
@@ -102,15 +91,70 @@
     }
 
     .nav-menu.active {
-        /* left: 0; */
         transform: translateX(0);
     }
 
     .nav-item {
         margin: 1.5rem 0;
     }
+} */
 
-    /* .header .navbar img {
-        width: 150px;
-    } */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 75rem;
+    /* height: 5rem; */
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(30, 30, 30);
+    z-index: 1000;
+}
+
+.logo {
+    max-width: 4rem;
+    /* height: 3rem; */
+    object-fit: contain;
+}
+
+.menuList {
+    margin: 1rem;
+    color: white;
+    /* cursor: pointer; */
+    transition: all 400ms ease;
+}
+
+.menuList:hover {
+    padding-bottom: 0.5rem;
+    color: coral;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid coral;
+}
+
+.menubtn {
+    height: 3rem;
+    padding: 0 1rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 2rem;
+    background-color: white;
+}
+
+.menubtn img {
+    /* width: 1rem; */
+    /* height: 1rem; */
+    /* object-fit: cover; */
+}
+
+.active {
+    /* color: yellow; */
 }

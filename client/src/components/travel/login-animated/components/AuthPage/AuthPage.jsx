@@ -6,8 +6,6 @@ export function AuthPage() {
     const [currentForm, setCurrentForm] = useState("login");
     const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
-    // console.log(currentForm, currentTabIndex);
-
     const tabsAccessability = new Array(2).fill("false");
     tabsAccessability[currentTabIndex] = "true";
 

@@ -27,7 +27,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { AuthPage } from './components/travel/login-animated/components/AuthPage/AuthPage';
+import { Navbar } from './components/travel/execute-financial-main/components/navbar/Navbar'
 
 function Loader() {
   return (
@@ -74,8 +74,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <AuthPage />
-        {/* <Register /> */}
+        <Navbar />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
