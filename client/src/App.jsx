@@ -31,6 +31,7 @@ import { Navbar } from './components/travel/execute-financial-main/components/na
 import { Hero } from './components/travel/execute-financial-main/components/hero/Hero';
 import { Skills } from './components/travel/execute-financial-main/components/demo/Demo';
 import { Work } from './components/travel/execute-financial-main/components/testimonials/Testimonials';
+import { Contact } from './components/travel/execute-financial-main/components/about/About';
 
 function Loader() {
   return (
@@ -81,6 +82,7 @@ function App() {
         <Hero />
         <Skills />
         <Work />
+        <Contact />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
