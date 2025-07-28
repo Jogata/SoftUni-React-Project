@@ -7,7 +7,6 @@ export function Navigation() {
     const mobileNavClass = isNavOpen ? "mobile-nav" : "mobile-nav open";
 
     function toggleNavigation() {
-        // console.log("click");
         setIsNavOpen(!isNavOpen);
     };
 

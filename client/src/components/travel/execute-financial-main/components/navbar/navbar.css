@@ -1,4 +1,4 @@
-/* .header {
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -97,52 +97,4 @@
     .nav-item {
         margin: 1.5rem 0;
     }
-} */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 75rem;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(30, 30, 30);
-    z-index: 1000;
-}
-
-.logo {
-    max-width: 4rem;
-    object-fit: contain;
-}
-
-.menuList {
-    margin: 1rem;
-    color: white;
-    transition: all 400ms ease;
-}
-
-.menuList:hover {
-    padding-bottom: 0.5rem;
-    color: coral;
-    font-size: 20px;
-    font-weight: 500;
-    border-bottom: 1px solid coral;
-}
-
-.menubtn {
-    /* height: 3rem; */
-    padding: 1rem;
-    /* color: black; */
-    color: darkslateblue;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    border: none;
-    border-radius: 2rem;
-    background-color: white;
 }

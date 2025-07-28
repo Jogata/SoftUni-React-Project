@@ -1,4 +1,4 @@
-/* .hero {
+.hero {
     position: relative;
     height: 100vh;
     min-height: 720px;
@@ -90,87 +90,4 @@
     .hero .content p:nth-child(4) {
         font-size: 1.6rem;
     }
-} */
-
-#hero {
-    width: 100%;
-    max-width: 75rem;
-    /* height: calc(100vh - 4rem); */
-    margin: 0 auto;
-    margin-top: 5rem;
-    /* padding: 15rem 2% 10rem; */
-    display:flex;
-    /* overflow: hidden; */
 }
-
-.hero-right {
-   width: 50%;
-   /* height: 75vh; */
-   /* padding-left: 150px; */
-   /* background-image: url(../Asset/my_image.jpg); */
-   /* background: url("https://raw.githubusercontent.com/Jogataback/Front-end/refs/heads/main/portfolio-black/img/about-bg.jpg"); */
-   background-position: center;
-   background-size: cover;
-   /* clip-path: url("#mask-1"); */
-   /* clip-path: url("#mask-2"); */
-   /* clip-path: url("#mask-3"); */
-   /* clip-path: url("#mask-4"); */
-   border: 1px solid red;
-}
-
-.hero-right img {
-    /* position: absolute; */
-    /* margin-top: -400px; */
-}
-
-.hero-left {
-    flex: 1;
-    padding: 15rem 2% 10rem;
-    /* width: 100vw; */
-    /* height: 100vh; */
-    /* padding-left: 100px; */
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 3rem;
-    font-weight: 500; 
-    line-height: 1.1;
-}
-
-.hello {
-   font-size: 1.75rem;
-   font-weight: 100; 
-}
-
-.name {
-    color: brown;
-}
-
-.introPara {
-    font-size: medium;
-    font-weight: 100;   
-}
-
-.btn{
-    margin: 1rem auto 1rem 0;
-    padding: 0.5em 1em;
-    color: darkslateblue;
-    border: none;
-    border-radius: 4rem;
-    background-color: white;
-}
-
-.btn img {
-    /* height: 1rem; */
-    /* margin: 0 0.25rem; */
-    /* object-fit: cover; */
-}
-
-@media screen and (max-width:900px) {
-    .hello, .intro {
-        font-size: 35px;
-    }
-}
-
-@media screen and (max-width:600px) {}
