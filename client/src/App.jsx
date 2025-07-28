@@ -27,9 +27,10 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navbar } from './components/travel/execute-financial-main/components/navbar/Navbar'
-import { Hero } from './components/travel/execute-financial-main/components/hero/Hero'
-import { Skills } from './components/travel/execute-financial-main/components/demo/Demo'
+import { Navbar } from './components/travel/execute-financial-main/components/navbar/Navbar';
+import { Hero } from './components/travel/execute-financial-main/components/hero/Hero';
+import { Skills } from './components/travel/execute-financial-main/components/demo/Demo';
+import { Work } from './components/travel/execute-financial-main/components/testimonials/Testimonials';
 
 function Loader() {
   return (
@@ -79,6 +80,7 @@ function App() {
         <Navbar />
         <Hero />
         <Skills />
+        <Work />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
