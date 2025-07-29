@@ -1,0 +1,28 @@
+.partners {
+    padding: 3rem 2% 0;
+    /* width: 100%; */
+    /* height: 20vh; */
+    /* margin-top: -20px; */
+    background-color: #f9f9f9;
+}
+
+.partners-header {
+    /* margin-top: 20px; */
+    color: #043927;
+    font-size: 32px;
+    text-align: center;
+}
+
+.logos {
+    margin-top: 10px;
+    /* padding-inline: 2%; */
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-logo {
+    max-width: 180px;
+    /* height: 60px; */
+}
