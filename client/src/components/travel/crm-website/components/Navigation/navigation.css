@@ -22,7 +22,6 @@
     color: #043927;
     font-size: 1.2rem;
     font-weight: bold;
-    /* border: 1px solid; */
     transition: color 400ms ease;
 }
 
@@ -30,39 +29,21 @@
     color: #159740;
 }
 
-/* .btn {
-    display: inline-block;
-    margin: 2rem 0;
-    padding: 0.6em 1.4em;
-    color: #fff;
-    font-size: 1.2rem;
-    border-radius: 2em;
-    border: 1px solid #fff;
-    transition: all 500ms;
-}
-
-.btn:hover {
-    color: #f1683a;
-    border: 1px solid #f1683a;
-} */
-
 .nav-btns .btn {
     margin: 0 1rem;
     padding: 0.6em 2em;
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
-    /* border: none; */
     border-radius: 6px;
+    border: 1px solid #043927;
     background-color: #043927;
     transition: color 400ms ease, 
     background-color 400ms ease;
-    /* cursor: pointer; */
 }
 
 .nav-btns .btn:nth-child(1) {
     color: #000;
-    border: 1px solid #043927;
     background-color: transparent;
 }
 

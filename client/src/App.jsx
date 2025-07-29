@@ -28,6 +28,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
+import { Home } from './components/travel/crm-website/components/Home/Home';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -76,6 +77,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Home />
         <Footer />
 
           {/* <Routes>
