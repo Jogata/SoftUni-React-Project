@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
+import { Services } from './components/travel/crm-website/components/Services/Services';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -78,6 +79,7 @@ function App() {
 
         <Navigation />
         <Home />
+        <Services />
         <Footer />
 
           {/* <Routes>

@@ -9,7 +9,6 @@ export function How() {
                     <div className="bg">
                         <span className="num">1</span>
                     </div>
-                    {/* <img src={arrow} alt="" /> */}
                     <h2>Sign Up</h2>
                     <p>
                         Create your account and set up your
@@ -20,7 +19,6 @@ export function How() {
                     <div className="bg">
                         <span className="num">2</span>
                     </div>
-                    {/* <img src={arrow} alt="" /> */}
                     <h2>Add Contacts</h2>
                     <p>
                         Import your contacts or add them manually
@@ -31,7 +29,6 @@ export function How() {
                     <div className="bg">
                         <span className="num">3</span>
                     </div>
-                    {/* <img src={arrow} alt="" /> */}
                     <h2>Track Interactions</h2>
                     <p>
                         Keep track of customer interactions,
