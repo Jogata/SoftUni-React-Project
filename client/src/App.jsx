@@ -30,6 +30,7 @@ import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
 import { Services } from './components/travel/crm-website/components/Services/Services';
+import { Details } from './components/travel/crm-website/components/Details/Details';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -80,6 +81,7 @@ function App() {
         <Navigation />
         <Home />
         <Services />
+        <Details />
         <Footer />
 
           {/* <Routes>

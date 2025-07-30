@@ -1,5 +1,9 @@
 const coin = "ri-coin-fill";
 const link = "ri-arrow-right-double-line";
+const phone = "fa fa-phone";
+const folder = "fa fa-folder-open";
+const mail = "fa fa-envelope";
+const lead = "ri-dashboard-3-line";
 
 export const services = [
     {
@@ -45,3 +49,26 @@ export const services = [
         link: link,
     }
 ];
+
+export const details = [
+    {
+      icon: phone,
+      head: 'Enhanced Contacts Management',
+      desc: 'You can create connections, log sales activities, add notes, create tasks, qualify leads, view deals, and more with our multipurpose digital contact book.',
+    },
+    {
+      icon: folder,
+      head: 'Sales Automation',
+      desc: ' Our CRM helps with automation helps you be more productive by handling routine tasks for you.'
+    },
+    {
+      icon: mail,
+      head: 'Email Marketing',
+      desc: 'You can write beautiful copies with our powerful editor, equipped with a ton of formatting options, and add important attachments.'
+    },
+    {
+      icon: lead,
+      head: 'Leads Generation',
+      desc: 'For small businesses, a good website can serve as a goldmine for new and repeat business opportunities.'
+    }
+  ];
