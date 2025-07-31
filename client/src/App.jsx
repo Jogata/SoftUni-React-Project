@@ -32,6 +32,7 @@ import { Home } from './components/travel/crm-website/components/Home/Home';
 import { Services } from './components/travel/crm-website/components/Services/Services';
 import { Details } from './components/travel/crm-website/components/Details/Details';
 import { Faq } from './components/travel/crm-website/components/FAQ/Faq';
+import { Trial } from './components/travel/crm-website/components/Trial/Trial';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -84,6 +85,7 @@ function App() {
         <Services />
         <Details />
         <Faq />
+        <Trial />
         <Footer />
 
           {/* <Routes>
