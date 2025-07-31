@@ -8,11 +8,11 @@ section.services {
 }
 
 .services-header {
-    font-size: 36px;
+    font-size: 2.25rem;
 }
 
 .services-text {
-    font-size: 18px;
+    font-size: 1.25rem;
     margin: 1rem 0 3.5rem;
 }
 
@@ -22,7 +22,6 @@ div.services {
     padding: 2rem;
     display: grid;
     gap: 2rem;
-    /* grid-template-columns: repeat(3, 1fr); */
     border-radius: 12px;
     background-color: #f9f9f9;
 }
@@ -52,9 +51,6 @@ div.services {
 
 .service .icon {
     display: inline-block;
-    /* width: 35px; */
-    /* height: 30px; */
-    /* margin-bottom: 1.2rem; */
     padding: 0.8rem 1rem;
     color: #fff;
     border-radius: 12px;
@@ -72,7 +68,6 @@ div.services {
 }
 
 .service p {
-    /* margin-top: 1rem; */
     font-size: 1rem;
 }
 
@@ -81,7 +76,6 @@ div.services {
 }
 
 .service .action a {
-    /* padding: 0.5em 1em; */
     display: inline-flex;
     gap: 0.5rem;
     color: #043927;

@@ -1,0 +1,30 @@
+.faq {
+    max-width: 1300px;
+    margin: auto;
+    padding: 3rem 1rem;
+}
+
+.accordion {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion:last-child {
+    border-width: 0px;
+}
+
+.question {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+.question i {
+    font-size: 1.4rem;
+}
+
+.answer {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
