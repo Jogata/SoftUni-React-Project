@@ -4,6 +4,7 @@ const phone = "fa fa-phone";
 const folder = "fa fa-folder-open";
 const mail = "fa fa-envelope";
 const lead = "ri-dashboard-3-line";
+import person from "./images/person.jpg";
 
 export const services = [
     {
@@ -122,4 +123,32 @@ export const questions = [
         question: 'Have more questions?',
         answer: 'Feel free to contact our support team for any additional questions you may have.'
     }
+];
+
+export const feedbacks = [
+    {
+        image: person,
+        name: 'Customer 1',
+        comment: '"Cantar Solutions has transformed the way we manage our customer relationships. Highly recommended!"'
+    },
+    {
+        image: person,
+        name: 'Customer 2',
+        comment: '"The sales automation features have saved us countless hours. Its a game-changer."'
+    },
+    {
+        image: person,
+        name: 'Customer 3',
+        comment: '"Cantar Solutions has transformed the way we manage our customer relationships. Highly recommended!"'
+    },
+    {
+        image: person,
+        name: 'Customer 4',
+        comment: '"Cantar Solutions has transformed the way we manage our customer relationships. Highly recommended!"'
+    },
+    {
+        image: person,
+        name: 'Customer 5',
+        comment: '"Cantar Solutions has transformed the way we manage our customer relationships. Highly recommended!"'
+    },
 ];

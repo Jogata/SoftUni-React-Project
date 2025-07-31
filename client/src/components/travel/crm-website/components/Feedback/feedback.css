@@ -1,0 +1,55 @@
+.feedbacks {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10rem 1rem;
+}
+
+.feedbacks h2 {
+    margin-bottom: 5rem;
+    font-size: 2.25rem;
+    text-align: center;
+}
+
+.feedback {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.feedback img {
+    clip-path: url("#mask-4");
+}
+
+.feedback h3 {
+    margin: 2rem 0 1rem;
+}
+
+.feedback p {
+    max-width: 500px;
+    margin: auto;
+}
+
+.slider .control {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.slider button {
+    color: var(--white);
+    font-size: 0px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: var(--text-dark);
+}
+
+button#prev {
+    padding: 0.45rem 0.5rem 0.45rem 0.7rem;
+}
+
+button#next {
+    padding: 0.45rem 0.7rem 0.45rem 0.5rem;
+}
+
+.slider button i {
+    font-size: 2rem;
+}
