@@ -1,8 +1,7 @@
 .feedbacks {
     max-width: 1200px;
     margin: auto;
-    padding: 10rem 1rem;
-    /* background-color: #080a0c; */
+    padding: 10rem 1rem 5rem;
 }
 
 .feedbacks h2 {
@@ -13,7 +12,6 @@
 
 .slider {
     width: 100%;
-    /* background-color: #fff; */
     overflow: hidden;
 }
 
@@ -22,24 +20,23 @@
 }
 
 .feedbacks .slide {
-    /* flex-shrink: 0; */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     padding: 1rem 2%;
-    /* display: flex; */
-    /* gap: 10%; */
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    /* color: #272343; */
-    background-color: #080a0c;
-    transform: translateX(200%);
-    /* opacity: 0; */
-    /* transition: transform 400ms; */
-    /* transition: opacity 4000ms, transform 1000ms; */
+    /* background-color: #080a0c; */
+    /* transform: translateX(200%); */
     z-index: -1;
+}
+
+.to-left .slide {
+    transform: translateX(200%);
+}
+
+.to-right .slide {
+    transform: translateX(-200%);
 }
 
 #relative {
@@ -48,21 +45,19 @@
 
 .feedbacks .slide.active {
     transform: translateX(0);
-    /* opacity: 1; */
-    transition: transform 400ms;
+    transition: transform 4000ms;
     z-index: 1;
 }
 
 .feedbacks .slide.next {
     transform: translateX(100%);
-    transition: transform 400ms;
+    transition: transform 4000ms;
     z-index: -2;
 }
 
 .feedbacks .slide.prev {
     transform: translateX(-100%);
-    /* transition: opacity 500ms, transform 1000ms; */
-    transition: transform 400ms;
+    transition: transform 4000ms;
 }
 
 .feedback {

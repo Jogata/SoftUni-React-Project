@@ -3,9 +3,8 @@ import { feedbacks } from "../../data";
 import { useState } from "react";
 
 export function Feedback() {
-    // const [ current, setCurrent] = useState(0);
-    const [slideIndex, setSlideIndex] = useState(0);
-    console.log("index: ", slideIndex);
+    const [ direction, setDirection ] = useState("to-left");
+    const [ slideIndex, setSlideIndex ] = useState(0);
 
     const length = feedbacks.length;
     const slideClasses = new Array(feedbacks.length).fill("slide");
@@ -23,20 +22,28 @@ export function Feedback() {
     function nextSlide() {
         let next = slideIndex + 1;
         next = next % feedbacks.length;
-        setSlideIndex(next);
+        // setSlideIndex(next);
+        setTimeout(() => {
+            setSlideIndex(next);
+        }, 0);
+        setDirection("to-left");
     }
 
     function prevSlide() {
         let prev = slideIndex - 1;
         prev = prev + feedbacks.length;
         prev = prev % feedbacks.length;
-        setSlideIndex(prev);
+        // setSlideIndex(prev);
+        setTimeout(() => {
+            setSlideIndex(prev);
+        }, 0);    
+        setDirection("to-right");
     }
 
     return (
         <section className="feedbacks">
             <h2>What Our Clients Are Saying</h2>
-            <div className="slider">
+            <div className={`slider ${direction}`}>
                 <div className="slider-track">
                     {feedbacks?.map((feedback, index) => (
                         <div key={index} className={slideClasses[index]} id={ids[index]}>
@@ -57,19 +64,6 @@ export function Feedback() {
                     </button>
                 </div>
             </div>
-            {/* <div className="feedback"> */}
-            {/* <img src={feedbacks[current].image} alt="" /> */}
-            {/* <h3>{feedbacks[current].name}</h3> */}
-            {/* <p>{feedbacks[current].comment}</p> */}
-            {/* </div> */}
-            {/* <div className="control">
-                <button id="next" onClick={() => nextSlide()}>
-                    next <i className="ri-arrow-left-double-line"></i>
-                </button>
-                <button id="prev" onClick={() => prevSlide()}>
-                    prev <i className="ri-arrow-right-double-line"></i>
-                </button>
-            </div> */}
         </section>
     )
 }
