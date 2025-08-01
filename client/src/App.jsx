@@ -29,11 +29,11 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
-import { Services } from './components/travel/crm-website/components/Services/Services';
-import { Details } from './components/travel/crm-website/components/Details/Details';
-import { Faq } from './components/travel/crm-website/components/FAQ/Faq';
-import { Trial } from './components/travel/crm-website/components/Trial/Trial';
-import { Feedback } from './components/travel/crm-website/components/Feedback/Feedback';
+// import { Services } from './components/travel/crm-website/components/Services/Services';
+// import { Details } from './components/travel/crm-website/components/Details/Details';
+// import { Faq } from './components/travel/crm-website/components/FAQ/Faq';
+// import { Trial } from './components/travel/crm-website/components/Trial/Trial';
+// import { Feedback } from './components/travel/crm-website/components/Feedback/Feedback';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -45,6 +45,73 @@ function Loader() {
       <div className="logo-ring"></div>
     </span>
   )
+}
+
+const ExampleComponent = () => {
+  const [state, setState] = useState(0);
+  const [renderCount, setRenderCount] = useState(0);
+
+  console.count();
+
+  useEffect(() => {
+    setRenderCount((prev) => prev + 1);
+  }, [state]);
+
+  const handleButtonClick = (newState) => {
+    setState(newState);
+  };
+
+  return (
+    <div className='test'>
+      <p>State: {state}</p>
+      <p>Render Count: {renderCount}</p>
+      <button onClick={() => handleButtonClick(1)}>Increment by 1</button>
+      <button onClick={() => handleButtonClick(2)}>Increment by 2</button>
+    </div>
+  );
+};
+
+const CounterComponent = () => {
+  const [state, setState] = useState({ count: 0 });
+  const [renderCount, setRenderCount] = useState(0);
+
+  // Updating render count whenever state changes
+  useEffect(() => {
+    setRenderCount((prev) => prev + 1);
+  }, [state]);
+
+  const handleButtonClick = (newState) => {
+    setState({ count: newState });
+  };
+
+  return (
+    <div className='test'>
+      <p>State: {state.count}</p>
+      <p>Render Count: {renderCount}</p>
+      <button onClick={() => handleButtonClick(1)}>Increment by 1</button>
+      <button onClick={() => handleButtonClick(2)}>Increment by 2</button>
+    </div>
+  );
+};
+
+function About() {
+  return <h1>About</h1>
+}
+
+function Pricing() {
+  return <h1>Pricing</h1>
+}
+
+function Contact() {
+  return <h1>Contact</h1>
+}
+
+function Login() {
+  return <h1>Login</h1>
+}
+
+function Register() {
+  return <h1>Register</h1>
 }
 
 function useFetch(url) {
@@ -82,13 +149,17 @@ function App() {
         </Routes> */}
 
         <Navigation />
-        <Home />
-        <Services />
-        <Details />
-        <Faq />
-        <Trial />
-        <Feedback />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/pricing' element={<Pricing />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
         <Footer />
+        <ExampleComponent />
+        <CounterComponent />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

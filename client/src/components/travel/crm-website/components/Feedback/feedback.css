@@ -45,19 +45,19 @@
 
 .feedbacks .slide.active {
     transform: translateX(0);
-    transition: transform 4000ms;
+    transition: transform 400ms;
     z-index: 1;
 }
 
 .feedbacks .slide.next {
     transform: translateX(100%);
-    transition: transform 4000ms;
+    transition: transform 400ms;
     z-index: -2;
 }
 
 .feedbacks .slide.prev {
     transform: translateX(-100%);
-    transition: transform 4000ms;
+    transition: transform 400ms;
 }
 
 .feedback {
@@ -77,6 +77,7 @@
 .feedback p {
     max-width: 500px;
     margin: auto;
+    font-style: italic;
 }
 
 .slider .control {
@@ -102,4 +103,30 @@ button#next {
 
 .slider button i {
     font-size: 2rem;
+}
+
+.test {
+    max-width: 1200px;
+    margin: auto;
+    padding: 3rem 2%;
+    color: #043927;
+    text-align: center;
+    background-color: #dbe9db;
+}
+
+.test:nth-child(11) {
+    margin-top: 5rem;
+}
+
+.test p {
+    /* margin-left: 1rem; */
+    font-size: 1.8rem;
+}
+
+.test button {
+    margin: 1rem;
+    padding: 0.5em 1em;
+    font-size: 1.4rem;
+    color: #043927;
+    border: 1px solid;
 }
