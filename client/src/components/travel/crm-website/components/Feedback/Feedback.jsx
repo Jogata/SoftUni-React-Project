@@ -22,10 +22,10 @@ export function Feedback() {
     function nextSlide() {
         let next = slideIndex + 1;
         next = next % feedbacks.length;
-        // setSlideIndex(next);
-        setTimeout(() => {
-            setSlideIndex(next);
-        }, 0);
+        setSlideIndex(next);
+        // setTimeout(() => {
+        //     setSlideIndex(next);
+        // }, 0);
         setDirection("to-left");
     }
 
@@ -33,10 +33,10 @@ export function Feedback() {
         let prev = slideIndex - 1;
         prev = prev + feedbacks.length;
         prev = prev % feedbacks.length;
-        // setSlideIndex(prev);
-        setTimeout(() => {
-            setSlideIndex(prev);
-        }, 0);    
+        setSlideIndex(prev);
+        // setTimeout(() => {
+        //     setSlideIndex(prev);
+        // }, 0);    
         setDirection("to-right");
     }
 

@@ -10,7 +10,7 @@ import { Feedback } from "../Feedback/Feedback";
 
 export function Home() {
     return (
-        <>
+        <div className="page">
             <Hero />
             <Partners />
             <How />
@@ -19,6 +19,6 @@ export function Home() {
             <Faq />
             <Trial />
             <Feedback />
-        </>
+        </div>
     )
 }
