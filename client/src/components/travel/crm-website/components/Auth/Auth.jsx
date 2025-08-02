@@ -3,7 +3,7 @@ import facebook from "../../images/facebook-icon.png";
 import twitter from "../../images/twitter.png";
 import instagram from "../../images/instagram.png";
 
-export function Login() {
+export function Register() {
     return (
         <div className="container">
             <div className="form-container">
@@ -12,7 +12,7 @@ export function Login() {
                     <p>Lets get you all set up so you can begin</p>
                 </div>
                 <div className="form-input">
-                    <form action="#">
+                    <form onClick={e => e.preventDefault()}>
                         <div className="names">
                             <div className="first-name">
                                 <label htmlFor="name">First Name</label>
@@ -38,6 +38,41 @@ export function Login() {
                 </div>
                 <div className="option">
                     <p>or signup with</p>
+                    <div className="icons">
+                        <img src={facebook} alt="" />
+                        <img src={twitter} alt="" />
+                        <img src={instagram} alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function Login() {
+    return (
+        <div className="container">
+            <div className="form-container">
+                <div className="form-header">
+                    <h2>Login</h2>
+                </div>
+                <div className="form-input">
+                    <form onClick={e => e.preventDefault()}>
+                        <div className="email">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email" />
+                        </div>
+                        <div className="password">
+                            <label htmlFor="pass">Password</label>
+                                <input type="password" name="password" />
+                        </div>
+                        <div className="btn">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div className="option">
+                    <p>or login with</p>
                     <div className="icons">
                         <img src={facebook} alt="" />
                         <img src={twitter} alt="" />

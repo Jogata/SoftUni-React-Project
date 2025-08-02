@@ -26,18 +26,9 @@
     width: 100%;
     height: 100%;
     padding: 1rem 2%;
-    /* background-color: #080a0c; */
     transform: translateX(200%);
     z-index: -1;
 }
-
-/* .to-left .slide { */
-    /* transform: translateX(200%); */
-/* } */
-
-/* .to-right .slide { */
-    /* transform: translateX(-200%); */
-/* } */
 
 #relative {
     position: relative;
@@ -51,7 +42,6 @@
 
 .feedbacks .slide.next {
     transform: translateX(100%);
-    /* transition: transform 400ms; */
     z-index: -2;
 }
 
@@ -61,7 +51,6 @@
 
 .feedbacks .slide.prev {
     transform: translateX(-100%);
-    /* transition: transform 400ms; */
 }
 
 .to-left .slide.prev {
