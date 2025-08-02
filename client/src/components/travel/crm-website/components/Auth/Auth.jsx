@@ -12,7 +12,7 @@ export function Register() {
                     <p>Lets get you all set up so you can begin</p>
                 </div>
                 <div className="form-input">
-                    <form onClick={e => e.preventDefault()}>
+                    <form onSubmit={e => e.preventDefault()}>
                         <div className="names">
                             <div className="first-name">
                                 <label htmlFor="name">First Name</label>
@@ -57,7 +57,7 @@ export function Login() {
                     <h2>Login</h2>
                 </div>
                 <div className="form-input">
-                    <form onClick={e => e.preventDefault()}>
+                    <form onSubmit={e => e.preventDefault()}>
                         <div className="email">
                             <label htmlFor="email">Email</label>
                             <input type="email" name="email" />

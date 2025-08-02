@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
+import { Contact } from './components/travel/crm-website/components/Contact/Contact';
 import { Login } from './components/travel/crm-website/components/Auth/Auth';
 import { Register } from './components/travel/crm-website/components/Auth/Auth';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
@@ -133,10 +134,6 @@ function About() {
 
 function Pricing() {
   return <h1>Pricing</h1>
-}
-
-function Contact() {
-  return <h1>Contact</h1>
 }
 
 function useFetch(url) {
