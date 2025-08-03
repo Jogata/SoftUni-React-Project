@@ -10,7 +10,7 @@ import { Feedback } from "../Feedback/Feedback";
 
 export function Home() {
     return (
-        <div className="page">
+        <div className="crm-page">
             <Hero />
             <Partners />
             <How />

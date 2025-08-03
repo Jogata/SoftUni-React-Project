@@ -242,12 +242,13 @@ body {
   /* flex-direction: column; */
 }
 
-.page.full-screen {
+.full-screen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.page.full-screen main {
+
+.full-screen main {
   flex: 1;
   display: flex;
   width: 100%;

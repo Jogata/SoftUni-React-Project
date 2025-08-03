@@ -18,7 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import SkyrimHeavyArmorSets from './components/skyrim-heavy-armor-sets/SkyrimHeavyArmorSets'
 import SkyrimSteelPlateArmorSet from './components/skyrim-steel-plate-armor-set/SkyrimSteelPlateArmorSet'
-// import AuthPage from './components/auth-page/AuthPage'
+import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
+import { About } from './components/travel/crm-website/components/About/About';
 import { Contact } from './components/travel/crm-website/components/Contact/Contact';
 import { Login } from './components/travel/crm-website/components/Auth/Auth';
 import { Register } from './components/travel/crm-website/components/Auth/Auth';
@@ -42,93 +43,6 @@ function Loader() {
       <div className="logo-ring"></div>
       <div className="logo-ring"></div>
     </span>
-  )
-}
-
-function About() {
-  return (
-    <section className="about">
-      <h1>About Cantar</h1>
-      <p>
-        Cantar is a leading provider of innovative solutions in
-        digital infrastructure. Since our founding, we've built
-        a reputation for delivering excellence through insight,
-        technology, and integrity.
-      </p>
-      <p>
-        At Cantar, we believe in empowering organizations through
-        intelligent solutions tailored to their unique needs. Our
-        mission is to simplify complexity, drive operational
-        efficiency, and unlock new growth opportunities for
-        businesses around the world.
-      </p>
-
-      <div className="subsection">
-        <h2>Who We Are</h2>
-        <p>
-          Cantar brings together a team of forward-thinking professionals,
-          engineers, and strategists who are passionate about creating
-          value for our partners and clients. We operate at the intersection
-          of industry knowledge and technological innovation, ensuring our
-          solutions are always ahead of the curve.
-        </p>
-      </div>
-
-      <div className="subsection">
-        <h2>What We Do</h2>
-        <p>Through the Corporate Resource Network (CRN), we deliver:</p>
-
-        <ul>
-          <li>
-            Strategic Consulting: From business transformation to process optimization.
-          </li>
-          <li>
-            Technology Solutions: Scalable platforms and tools that evolve with your business.
-          </li>
-          <li>
-            Workforce Enablement: Training, support, and systems designed to empower teams.
-          </li>
-          <li>
-            Data & Insights: Actionable intelligence that drives smarter decisions.
-          </li>
-        </ul>
-      </div>
-      <div className="subsection">
-        <h2>Our Commitment</h2>
-
-        <ul>
-          <li>
-            Innovation — We invest in research, development, and continuous improvement.
-          </li>
-          <li>
-            Collaboration — We work side by side with our clients to understand their vision.
-          </li>
-          <li>
-            Sustainability — We design with longevity and environmental responsibility in mind.
-          </li>
-          <li>
-            Integrity — Our work is built on trust, transparency, and accountability.
-          </li>
-        </ul>
-      </div>
-      <div className="subsection">
-        <h2>Why CRN by Cantar?</h2>
-        <p>
-          The Corporate Resource Network is more than a service platform —
-          it's a partnership. CRN enables our clients to access a curated
-          network of tools, insights, and expertise that grow with them.
-          With Cantar as your strategic partner, your challenges become
-          opportunities — and your potential becomes performance.
-        </p>
-      </div>
-      <div className="subsection">
-        <h2>Ready to learn more?</h2>
-        <p>
-          <a href="/contact">Contact us</a> or <a href="/">explore our services</a> to
-          see how Cantar's CRN can support your goals.
-        </p>
-      </div>
-    </section>
   )
 }
 
