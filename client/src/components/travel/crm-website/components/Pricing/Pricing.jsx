@@ -6,6 +6,7 @@ export function Pricing() {
     const [selectedCard, setSelectedCard] = useState(2);
 
     const sectionClass = prices === "month" ? "pricing" : "pricing annualy";
+
     const cardWrapClasses = [
         "card-3d-wrap",
         "card-3d-wrap",
@@ -15,9 +16,6 @@ export function Pricing() {
     cardWrapClasses[selectedCard] = "card-3d-wrap selected";
 
     function myFunction(input) {
-        // console.log(input);
-        // const pricing = document.getElementById("pricing");
-
         if (input.checked) {
             setPrices("year");
         }
@@ -156,7 +154,6 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/month</span>
                                             </div>
-                                            {/* <button className="btn">Choose</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(1)}
@@ -193,7 +190,6 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/year</span>
                                             </div>
-                                            {/* <button className="btn">Choose</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(1)}
@@ -237,12 +233,11 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/month</span>
                                             </div>
-                                            {/* <button className="btn">Try 1 month</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(2)}
                                             >
-                                                Try 1 year
+                                                Try 1 month
                                             </button>
                                         </div>
                                     </div>
@@ -274,7 +269,6 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/year</span>
                                             </div>
-                                            {/* <button className="btn">Try 1 year</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(2)}
@@ -318,7 +312,6 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/month</span>
                                             </div>
-                                            {/* <button className="btn">Choose</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(3)}
@@ -355,7 +348,6 @@ export function Pricing() {
                                             <div className="price">
                                                 $<span>123</span><span className="time">/year</span>
                                             </div>
-                                            {/* <button className="btn">Choose</button> */}
                                             <button
                                                 className="btn"
                                                 onClick={() => setSelectedCard(3)}
@@ -367,6 +359,7 @@ export function Pricing() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
