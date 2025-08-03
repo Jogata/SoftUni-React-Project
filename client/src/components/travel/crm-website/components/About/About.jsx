@@ -26,17 +26,23 @@ export function About() {
                 <section>
                     <h2>Who We Are</h2>
                     <p>
-                        Cantar is a trusted leader in <strong>digital infrastructure</strong>, committed to transforming how organizations operate and grow. With a strong foundation in innovation and service excellence, we deliver customized solutions that create lasting value.
+                        Cantar is a trusted leader in <strong>digital infrastructure</strong>, 
+                        committed to transforming how organizations operate and grow. With a 
+                        strong foundation in innovation and service excellence, we deliver 
+                        customized solutions that create lasting value.
                     </p>
                     <p>
-                        We bring together experienced professionals, forward-thinking engineers, and strategic advisors to help businesses thrive in a fast-changing world.
+                        We bring together experienced professionals, forward-thinking engineers, 
+                        and strategic advisors to help businesses thrive in a fast-changing world.
                     </p>
                 </section>
 
                 <section>
                     <h2>What We Do</h2>
                     <p>
-                        Through the <strong>Corporate Resource Network (CRN)</strong>, Cantar provides an ecosystem of services that enable operational success and business transformation:
+                        Through the <strong>Corporate Resource Network (CRN)</strong>, 
+                        Cantar provides an ecosystem of services that enable operational 
+                        success and business transformation:
                     </p>
                     <ul>
                         <li>

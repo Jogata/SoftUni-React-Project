@@ -30,6 +30,7 @@ import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
 import { About } from './components/travel/crm-website/components/About/About';
+import { Pricing } from './components/travel/crm-website/components/Pricing/Pricing';
 import { Contact } from './components/travel/crm-website/components/Contact/Contact';
 import { Login } from './components/travel/crm-website/components/Auth/Auth';
 import { Register } from './components/travel/crm-website/components/Auth/Auth';
@@ -44,10 +45,6 @@ function Loader() {
       <div className="logo-ring"></div>
     </span>
   )
-}
-
-function Pricing() {
-  return <h1>Pricing</h1>
 }
 
 function useFetch(url) {
