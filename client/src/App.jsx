@@ -27,15 +27,8 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
-import { Home } from './components/travel/crm-website/components/Home/Home';
-import { About } from './components/travel/crm-website/components/About/About';
-import { Pricing } from './components/travel/crm-website/components/Pricing/Pricing';
-import { Contact } from './components/travel/crm-website/components/Contact/Contact';
-// import { Login } from './components/travel/crm-website/components/Auth/Auth';
-// import { Register } from './components/travel/crm-website/components/Auth/Auth';
-import { AuthPage } from './components/travel/crm-website/components/Auth/Auth';
-import { Footer } from './components/travel/crm-website/components/Footer/Footer';
+import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
+import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
 
 function Loader() {
   return (
@@ -83,14 +76,6 @@ function App() {
         </Routes> */}
 
       <Navigation />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/pricing' element={<Pricing />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<AuthPage initial={"login"} />} />
-        <Route path='/register' element={<AuthPage initial={"register"} />} />
-      </Routes>
       <Footer />
 
       {/* <Routes>

@@ -2,10 +2,11 @@ import "./footer.css";
 import facebook from "../../images/facebook_icon.png";
 import twitter from "../../images/twitter_icon.png";
 import linkedin from "../../images/linkedin_icon.png";
+import { Link } from "react-router-dom";
 
 export function Footer() {
     return (
-        <footer className="footer">
+        <footer className="crm-footer">
             <div className="footer-content">
                 <div className="footer-col">
                     <h2>CANTAR</h2>
@@ -29,8 +30,12 @@ export function Footer() {
                 <div className="footer-col">
                     <h2>COMPANY</h2>
                     <ul>
-                        <li>Home</li>
-                        <li>About us</li>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About us</Link>
+                        </li>
                         <li>Service</li>
                         <li>Privacy policy</li>
                     </ul>
