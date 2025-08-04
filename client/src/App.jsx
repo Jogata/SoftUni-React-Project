@@ -18,7 +18,7 @@ import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
 import SkyrimHeavyArmorSets from './components/skyrim-heavy-armor-sets/SkyrimHeavyArmorSets'
 import SkyrimSteelPlateArmorSet from './components/skyrim-steel-plate-armor-set/SkyrimSteelPlateArmorSet'
-import AuthPage from './components/auth-page/AuthPage'
+// import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
 // ================================================
@@ -32,8 +32,9 @@ import { Home } from './components/travel/crm-website/components/Home/Home';
 import { About } from './components/travel/crm-website/components/About/About';
 import { Pricing } from './components/travel/crm-website/components/Pricing/Pricing';
 import { Contact } from './components/travel/crm-website/components/Contact/Contact';
-import { Login } from './components/travel/crm-website/components/Auth/Auth';
-import { Register } from './components/travel/crm-website/components/Auth/Auth';
+// import { Login } from './components/travel/crm-website/components/Auth/Auth';
+// import { Register } from './components/travel/crm-website/components/Auth/Auth';
+import { AuthPage } from './components/travel/crm-website/components/Auth/Auth';
 import { Footer } from './components/travel/crm-website/components/Footer/Footer';
 
 function Loader() {
@@ -87,8 +88,8 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/pricing' element={<Pricing />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<AuthPage initial={"login"} />} />
+        <Route path='/register' element={<AuthPage initial={"register"} />} />
       </Routes>
       <Footer />
 

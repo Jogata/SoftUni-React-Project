@@ -1,20 +1,12 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"); */
-
 :root {
-    /* --header-height: 3rem; */
-
     --first-color: #181059;
     --two-color: #8645ff;
     --greay-color: #f8f4ff;
     --yellow-color: #edbb01;
     --white-color: #fcf8f8;
     --black-color: #000000;
-
-    /* --body-font: "Inter", sans-serif; */
     --big-font-size: 2rem;
     --normal-font-size: 0.938rem;
-
-    /* --z-fixed: 100; */
 }
 
 @media screen and (min-width: 768px) {
@@ -24,24 +16,12 @@
     }
 }
 
-body {
-    /* color: var(--first-color); */
-    /* font-family: var(--body-font); */
-    /* font-size: var(--normal-font-size); */
-    /* background: var(--white-color); */
-    /* background: #F6F5FA; */
-    /* font-weight: 400; */
-}
-
 .main.pricing {
     position: relative;
     max-width: 100rem;
     margin: auto;
     color: var(--first-color);
-    /* font-family: var(--body-font); */
     font-size: var(--normal-font-size);
-    /* background: var(--white-color); */
-    /* background-color: #F6F5FA; */
 }
 
 .main.pricing::after {
@@ -52,10 +32,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: #DBE9DB;
-    /* background-color: cornflowerblue; */
-    /* background-color: #dbe9db; */
-    /* background-color: #043927; */
-    /* background-color: cadetblue; */
     clip-path: url("#mask-4");
     z-index: -1;
 }
@@ -64,25 +40,11 @@ body {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: 100%;
-    /* margin-left: 1rem; */
-    /* margin-right: 1rem; */
 }
 
 .pricing .container {
-    /* position: relative; */
     max-width: 1170px;
     margin: 0 auto;
-}
-
-.main {
-    /* background-image: url(img/bg-mask.svg); */
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
-    /* background-size: cover; */
-}
-
-.pricing section {
-    /* padding: 80px 0; */
 }
 
 /* ========================== Base ========================== */
@@ -100,9 +62,7 @@ body {
     width: 56px;
     height: 24px;
     margin: 0 24px;
-    /* color: var(--first-color); */
     font-size: 0px;
-    /* text-indent: -9999px; */
     border-radius: 5rem;
     background-color: var(--first-color);
     cursor: pointer;
@@ -119,10 +79,6 @@ body {
     background-color: var(--yellow-color);
     transition: 0.3s;
 }
-
-/* input:checked + label {
-    background: var(--two-color);
-} */
 
 input:checked+label:after {
     left: calc(100% - 4px);
@@ -164,28 +120,16 @@ label:active:after {
 
 .pricing-cards.grid {
     margin-top: 2.5rem;
-    /* position: relative; */
     padding: 10px;
-    /* height: 100%; */
     row-gap: 1rem;
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* grid-template-rows: 1fr; */
 }
 
 /********************************************************************************/
-.card-3d-part {
-    /* position: relative; */
-}
-
 .card-3d-wrap {
-    /* position: relative; */
-    /* width: 280px; */
-    /* max-width: calc(100% - 20px); */
-    /* height: 417px; */
     margin: 0 auto;
-    /* margin-top: 90px; */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     perspective: 1000px;
@@ -193,7 +137,6 @@ label:active:after {
 }
 
 .card-3d-wrapper {
-    /* position: absolute; */
     position: relative;
     top: 0;
     left: 0;
@@ -206,11 +149,6 @@ label:active:after {
 
 .card-front,
 .card-back {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* width: 100%; */
-    /* height: 100%; */
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.07);
@@ -251,40 +189,7 @@ label:active:after {
     backface-visibility: hidden;
 }
 
-
-@keyframes border-transform {
-    /* 0%,
-    100% {
-        border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-    }
-
-    14% {
-        border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
-    }
-
-    28% {
-        border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
-    }
-
-    42% {
-        border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
-    }
-
-    56% {
-        border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
-    }
-
-    70% {
-        border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
-    }
-
-    84% {
-        border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
-    } */
-}
-
 .title {
-    /* margin-top: 0; */
     margin-bottom: 16px;
     font-size: 32px;
     font-weight: 700;
@@ -300,8 +205,6 @@ span.sale {
 }
 
 p.description {
-    /* font-size: 16px; */
-    /* margin-bottom: 40px; */
     max-width: 700px;
     margin: 0 auto 2.5rem;
     opacity: 0.7;
@@ -359,10 +262,8 @@ button.btn {
     color: var(--two-color);
     font-size: 16px;
     font-weight: 700;
-    /* border: none; */
     border-radius: 8px;
     background-color: #F8F4FF;
-    /* cursor: pointer; */
 }
 
 .btn:hover {
@@ -370,28 +271,22 @@ button.btn {
     background-color: var(--first-color);
 }
 
-/* .card-3d-part:nth-child(3) .card-3d-wrap { */
 .card-3d-part .card-3d-wrap.selected {
-    /* margin-top: 50px; */
     transform: translateY(-1rem);
 }
 
-/* .card-3d-part:nth-child(3) .card-front, */
 .card-3d-part .selected .card-front,
-/* .card-3d-part:nth-child(3) .card-back { */
 .card-3d-part .selected .card-back {
     color: var(--white-color);
     background-color: var(--first-color);
 }
 
-/* .card-3d-part:nth-child(3) .btn { */
 .card-3d-part .selected .btn {
     color: var(--white-color);
     font-size: 20px;
     background-color: var(--two-color);
 }
 
-/* .card-3d-part:nth-child(3) .btn:hover { */
 .card-3d-part .selected .btn:hover {
     color: var(--first-color);
     background-color: var(--greay-color);
