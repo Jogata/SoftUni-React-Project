@@ -45,9 +45,8 @@
 .pricing .container {
     max-width: 1170px;
     margin: 0 auto;
+    padding: 10rem 2% 5rem;
 }
-
-/* ========================== Base ========================== */
 
 .pricing input[type="checkbox"] {
     display: none;
