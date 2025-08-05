@@ -12,11 +12,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --gold: #897859;
-  --gothic-font: "Planewalker", sans-serif;
-}
-
 ul {
   list-style: none;
 }
@@ -42,21 +37,6 @@ button {
 button:focus-visible, 
 a:focus-visible {
   outline: 1px solid #999;
-}
-
-.link {
-  display: inline;
-  color: #f1683a;
-}
-
-a.not-active {
-  color: red;
-  font-weight: bold;
-  cursor: text;
-}
-a.not-active:hover {
-  color: #fff;
-  background-color: red;
 }
 
 img {
@@ -180,4 +160,9 @@ body {
   background-color: #eee8;
   box-shadow: inset 2px 2px 2px #000, 
             inset -2px -2px 2px #fff;
+}
+
+.e-learning-edukative {
+    max-width: 1600px;
+    margin: auto;
 }

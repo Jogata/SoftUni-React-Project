@@ -14,7 +14,6 @@
     color: #0000FF;
     font-size: 1.5rem;
     font-weight: bold;
-    /* border: 1px solid; */
 }
 
 .edukative-nav-links ul {
@@ -28,9 +27,7 @@
     color: #333;
     font-size: 18px;
     font-weight: 600;
-    /* border: 1px solid; */
     transition: color 400ms;
-    /* cursor: pointer; */
 }
 
 .edukative-nav-links ul li a:hover {
@@ -38,9 +35,7 @@
 }
 
 .edukative-nav-btn button {
-    /* margin-top: 20px; */
     padding: 1rem 3rem;
-    /* border: none; */
     color: #fff;
     font-weight: 600;
     border-radius: 30px;
@@ -66,10 +61,8 @@
 
     .edukative-navbar .edukative-nav-links.open {
         position: absolute;
-        /* top: 50%; */
         top: 0;
         left: 0;
-        /* transform: translateY(-50%); */
         display: block;
         width: 100%;
         height: 100vh;
@@ -94,13 +87,7 @@
  
     .edukative-navbar .edukative-toggle-btn {
         display: block;
-        /* position: absolute; */
-        /* top: 20px; */
-        /* right: 20px; */
-        /* color: #000; */
         font-size: 30px;
         border: 1px solid navajowhite;
-        /* background-color: transparent; */
-        /* z-index: 999; */
     }
 }

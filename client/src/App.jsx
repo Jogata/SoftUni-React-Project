@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
 import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
+import { Hero } from './components/travel/e-learning-edukative/components/Hero/Hero'
 
 function Loader() {
   return (
@@ -77,6 +78,7 @@ function App() {
 
 <div className="e-learning-edukative">
       <Navigation />
+      <Hero />
       <Footer />
 </div>
 
