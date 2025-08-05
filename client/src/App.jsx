@@ -75,8 +75,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+<div className="e-learning-edukative">
       <Navigation />
       <Footer />
+</div>
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

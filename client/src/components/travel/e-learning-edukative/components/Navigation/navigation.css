@@ -1,7 +1,106 @@
-h1 {
-    margin-top: 5rem;
-    color: brown;
-    font-size: 10vw;
-    text-align: center;
-    text-transform: capitalize;
+.e-learning-edukative .edukative-navbar {
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #cde9ff;
+    z-index: 1;
+}
+
+.edukative-nav-logo a {
+    color: #0000FF;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* border: 1px solid; */
+}
+
+.edukative-nav-links ul {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.edukative-nav-links ul li a {
+    padding: 0.5em;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    /* border: 1px solid; */
+    transition: color 400ms;
+    /* cursor: pointer; */
+}
+
+.edukative-nav-links ul li a:hover {
+    color: #0000FF;
+}
+
+.edukative-nav-btn button {
+    /* margin-top: 20px; */
+    padding: 1rem 3rem;
+    /* border: none; */
+    color: #fff;
+    font-weight: 600;
+    border-radius: 30px;
+    background-color: #1fcbff;
+}
+
+.edukative-toggle-btn {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .edukative-nav-logo a {
+        margin-left: -60px;
+    }
+
+    .edukative-nav-btn button {
+        display: none;
+    }
+
+    .edukative-navbar .edukative-nav-links {
+        display: none;
+    }
+
+    .edukative-navbar .edukative-nav-links.open {
+        position: absolute;
+        /* top: 50%; */
+        top: 0;
+        left: 0;
+        /* transform: translateY(-50%); */
+        display: block;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        transition: all 500ms ease-in-out;
+        z-index: -1;
+    }
+
+    .edukative-navbar ul li {
+        width: 100%;
+        margin-top: 50px;
+        line-height: 70px;
+    }
+
+    .edukative-navbar ul li a {
+        color: #1fcbff;
+        font-size: 24px;
+        font-weight: 600;
+    }
+ 
+    .edukative-navbar .edukative-toggle-btn {
+        display: block;
+        /* position: absolute; */
+        /* top: 20px; */
+        /* right: 20px; */
+        /* color: #000; */
+        font-size: 30px;
+        border: 1px solid navajowhite;
+        /* background-color: transparent; */
+        /* z-index: 999; */
+    }
 }
