@@ -1,7 +1,7 @@
 .edukative-hero {
-    max-width: 1600px;
+    /* max-width: 1600px; */
     /* height: 100vh; */
-    margin: auto;
+    /* margin: auto; */
     /* padding-inline: 100px; */
     padding: 5rem 2%;
     display: flex;
@@ -38,23 +38,30 @@
     margin-right: 10px;
     padding: 20px 30px;
     font-weight: 600;
-    transition: background-color 400ms ease;
+    border: 1px solid #1fcbff;
+    transition: color 400ms ease,
+    background-color 400ms ease;
 }
 
 .edukative-cta-button {
+    color: #222;
     border-radius: 30px;
     background-color: #1fcbff;
 }
 
 .edukative-courses-button {
     border-radius: 30px;
-    border: 1px solid #1fcbff;
+    color: #1fcbff;
     background-color: transparent;
+}
+
+.edukative-cta-button:hover {
+    color: #1fcbff;
 }
 
 .edukative-cta-button:hover, 
 .edukative-courses-button:hover {
-    background-color: #555;
+    background-color: #222;
 }
 
 .edukative-hero-images {

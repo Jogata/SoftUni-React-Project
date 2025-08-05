@@ -141,27 +141,6 @@ body {
   border: 1px solid #f1683a;
 }
 
-.details-btn {
-  margin-top: 3rem;
-  padding: 0.4em 1.4em;
-  color: #fff;
-  font-size: 2rem;
-  /* font-weight: 500; */
-  font-family: inherit;
-  text-transform: capitalize;
-  border-radius: 2em;
-  border: 1px solid #eee;
-  background-color: transparent;
-  transition: all 400ms;
-  cursor: pointer;
-}
-.details-btn:hover {
-  color: #000;
-  background-color: #eee8;
-  box-shadow: inset 2px 2px 2px #000, 
-            inset -2px -2px 2px #fff;
-}
-
 .e-learning-edukative {
     max-width: 1600px;
     margin: auto;

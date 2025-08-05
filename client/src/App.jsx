@@ -28,8 +28,8 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
+import { Home } from './components/travel/e-learning-edukative/components/Home';
 import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
-import { Hero } from './components/travel/e-learning-edukative/components/Hero/Hero'
 
 function Loader() {
   return (
@@ -78,7 +78,12 @@ function App() {
 
 <div className="e-learning-edukative">
       <Navigation />
-      <Hero />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          {/* <Route path='/pricing' element={<Pricing />} /> */}
+          {/* <Route path='/training' element={<Training />} /> */}
+          {/* <Route path='/contact' element={<Contact />} /> */}
+        </Routes>
       <Footer />
 </div>
 

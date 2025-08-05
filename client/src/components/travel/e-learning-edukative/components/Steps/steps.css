@@ -1,0 +1,56 @@
+.e-learning-edukative .edukative-steps-section {
+    /* max-width: 1600px; */
+    /* margin: auto; */
+    padding: 3rem 2%;
+    text-align: center;
+}
+
+.e-learning-edukative .edukative-steps {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.e-learning-edukative .edukative-step {
+    flex: 1;
+    max-width: 320px;
+    margin: 40px;
+    text-align: center;
+}
+
+.e-learning-edukative .edukative-step .edukative-icon {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #1fcbff;
+    font-size: 100px;
+    font-weight: 500;
+}
+
+.e-learning-edukative .edukative-step .edukative-icon.ri-award-line {
+    margin-bottom: 16px;
+}
+
+.e-learning-edukative .edukative-step h3 {
+    margin-bottom: 24px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.e-learning-edukative .edukative-step p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 480px){
+    .e-learning-edukative .edukative-steps {
+        margin-top: 110px;
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+    }
+
+    .e-learning-edukative .edukative-step {
+        margin: 0;
+    }
+}
