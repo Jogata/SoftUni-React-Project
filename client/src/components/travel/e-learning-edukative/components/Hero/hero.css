@@ -1,13 +1,6 @@
 .edukative-hero {
     --round-border: 100px;
-    /* max-width: 1600px; */
-    /* height: 100vh; */
-    /* margin: auto; */
-    /* padding-inline: 100px; */
     padding: 5rem 2%;
-    /* display: flex; */
-    /* gap: 20px;
-    justify-content: space-between; */
 }
 
 @media screen and (max-width: 500px) {
@@ -25,7 +18,6 @@
 }
 
 .edukative-hero-content {
-    /* max-width: 50%; */
     flex: 1;
     max-width: 900px;
     margin-top: 30px;
@@ -52,13 +44,11 @@
 }
 
 .edukative-buttons {
-    /* margin-top: 80px; */
     margin-top: 64px;
 }
 
 .edukative-cta-button, 
 .edukative-courses-button {
-    /* margin-right: 10px; */
     margin: 10px;
     padding: 20px 30px;
     font-weight: 600;
@@ -89,8 +79,6 @@
 }
 
 .edukative-hero-images {
-    /* max-width: 50%; */
-    /* margin-top: 30px; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -104,7 +92,6 @@
 
 .edukative-hero-image {
     max-width: 250px;
-    /* height: 270px; */
     object-fit: cover;
     border-radius: 5px;
 }
@@ -122,30 +109,22 @@
 }
 
 .edukative-hero-images .edukative-top-left {
-    /* border-top-right-radius: 100px; */
     border-top-right-radius: var(--round-border);
-    /* border-bottom-left-radius: 100px ; */
     border-bottom-left-radius: var(--round-border) ;
 }
 
 .edukative-hero-images .edukative-top-right {
-    /* border-top-left-radius: 100px; */
     border-top-left-radius: var(--round-border);
-    /* border-bottom-right-radius: 100px; */
     border-bottom-right-radius: var(--round-border);
 }
 
 .edukative-hero-images .edukative-bottom-left {
-    /* border-bottom-right-radius: 100px; */
     border-bottom-right-radius: var(--round-border);
-    /* border-top-left-radius: 100px; */
     border-top-left-radius: var(--round-border);
 }
 
 .edukative-hero-images .edukative-bottom-right {
-    /* border-bottom-left-radius: 100px; */
     border-bottom-left-radius: var(--round-border);
-    /* border-top-right-radius: 100px; */
     border-top-right-radius: var(--round-border);
 }
 
@@ -170,12 +149,6 @@
 } */
 
 @media screen and (max-width: 480px) {
-    .edukative-hero {
-        /* height: 140vh; */
-        /* padding-inline: 30px; */
-        /* flex-direction: column; */
-    }
-
     .edukative-hero-content {
         max-width: 100%;
         margin-top: 10px;
@@ -194,15 +167,5 @@
     .edukative-courses-button {
         padding: 14px 16px;
         font-size: 14px;
-    }
-
-    .edukative-hero-images {
-        /* margin-top: -70px; */
-        /* align-self: center; */
-    }
-
-    .edukative-hero-image {
-        /* width: 150px; */
-        /* height: 170px; */
     }
 }

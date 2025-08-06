@@ -31,7 +31,7 @@ export default function SkyrimSteelPlateArmorSet() {
 
                         <article>
                             <div className="article-content">
-                                <p>The Steel Plate Armor set has 4 pieces: <a href="./skyrim-steel-plate-armor.html" className="link">Steel Plate Armor</a>, Steel Plate Boots, Steel Plate Helmet, Steel Plate Gauntlets.</p>
+                                <p>The Steel Plate Armor set has 4 pieces: <Link to="/skyrim-steel-plate-armor" className="link">Steel Plate Armor</Link>, Steel Plate Boots, Steel Plate Helmet, Steel Plate Gauntlets.</p>
                                 <p>The total weight of the basic set is 59 points and the total Armor Rating is 87 points. Using a Steel Shield will increase the Armor Rating with 24 points.</p>
                                 <p>All four pieces can be purchased from Blacksmiths and general goods merchants, found as random loot in chests, worn by mid-level bandit chiefs and hired thugs or forged at a blacksmith's forge. The materials needed to forge a Steel Plate Armor set are Corundum Ingot, Leather Strips, Iron Ingot, Steel Ingot. The amount of materials is different for the different pieces.</p>
                                 <p>Each piece can be upgraded with a Corundum ingot at a workbench.</p>

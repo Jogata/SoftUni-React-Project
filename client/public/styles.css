@@ -498,6 +498,7 @@ main.max-width {
 .locations h1, 
 .equipment h1, 
 .armor-sets h1, 
+.steel-armor h1, 
 .armor h1 {
   margin: 2rem 0;
   font-size: 4rem;
@@ -615,11 +616,48 @@ main.max-width {
   max-width: 1000px;
 }
 
-@media screen and (min-width: 680px) {
+.main-article .article-content {
+  flex: 1;
+}
+
+@media screen and (min-width: 681px) {
   .article-image {
     max-width: 250px;
     margin: auto auto auto 0;
   }
+}
+
+@media screen and (min-width: 800px) {
+  .main-article {
+    align-items: center;
+  }
+
+  .main-article .article-image {
+    max-width: 400px;
+  }
+}
+
+.main-article .basic-stats {
+  margin-top: 2rem;
+}
+
+.basic-stats li {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+#shadow {
+  position: relative;
+  display: flex;
+}
+#shadow::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  content: "";
+  width: 52%;
+  height: 12%;
+  background-color: black;
 }
 
 .todo {}
