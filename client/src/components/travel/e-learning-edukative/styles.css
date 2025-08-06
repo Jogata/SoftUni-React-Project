@@ -126,21 +126,6 @@ body {
   background-color: #18293d;
 }
 
-.btn {
-  display: inline-block;
-  margin: 2rem 0;
-  padding: 0.6em 1.4em;
-  color: #fff;
-  font-size: 1.2rem;
-  border-radius: 2em;
-  border: 1px solid #fff;
-  transition: all 500ms;
-}
-.btn:hover {
-  color: #f1683a;
-  border: 1px solid #f1683a;
-}
-
 .e-learning-edukative {
     max-width: 1600px;
     margin: auto;

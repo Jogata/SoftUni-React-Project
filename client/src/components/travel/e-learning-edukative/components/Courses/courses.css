@@ -1,0 +1,88 @@
+.e-learning-edukative .edukative-course-container {
+    padding: 5rem 2%;
+    color: #fff;
+    background-color: #000;
+}
+
+.e-learning-edukative .edukative-course-container h2 {
+    padding: 1.5rem 2%;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.e-learning-edukative .edukative-courses-cards {
+    /* padding: 4rem; */
+    padding-top: 1.5rem;
+    display: grid;
+    column-gap: 1rem;
+    row-gap: 3rem;
+    justify-content: center;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.e-learning-edukative .edukative-course-card {
+    /* max-width: 400px; */
+    max-width: 94vw;
+    margin: auto;
+    color: #fff;
+    /* text-align: left; */
+    border-radius: 10px;
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: color 400ms ease-in-out;
+    overflow: hidden;
+}
+
+.e-learning-edukative .edukative-course-card:hover {
+    color: #1fcbff;
+}
+
+.e-learning-edukative .edukative-course-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.e-learning-edukative .edukative-course-details {
+    padding: 1rem;
+}
+
+.e-learning-edukative .edukative-course-details h3 {
+    margin: 0.9rem 0;
+    font-size: 1.5rem;
+}
+
+.e-learning-edukative .edukative-course-info {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.e-learning-edukative .edukative-course-info span {
+    font-size: 0.9rem;
+}
+
+.e-learning-edukative .edukative-course-card .edukative-course-price {
+    color: #1fcbff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media screen and (max-width : 480px){
+    .e-learning-edukative .edukative-courses-cards {
+        /* padding: 1rem; */
+        /* grid-template-columns: repeat(2, 1fr); */
+    }
+    .e-learning-edukative .edukative-course-card {
+        /* max-width: 200px; */
+    }
+    .e-learning-edukative .edukative-course-card img {
+        height: 200px;
+    }
+    .e-learning-edukative .edukative-course-details h3 {
+        font-size: 1.2rem;
+    }
+}

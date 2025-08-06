@@ -1,6 +1,4 @@
 .e-learning-edukative .edukative-steps-section {
-    /* max-width: 1600px; */
-    /* margin: auto; */
     padding: 3rem 2%;
     text-align: center;
 }
@@ -8,7 +6,6 @@
 .e-learning-edukative .edukative-steps {
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center; */
     justify-content: center;
 }
 

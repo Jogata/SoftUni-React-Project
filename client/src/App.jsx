@@ -29,6 +29,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
 import { Home } from './components/travel/e-learning-edukative/components/Home';
+import { Courses } from './components/travel/e-learning-edukative/components/Courses/Courses';
 import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
 
 function Loader() {
@@ -80,7 +81,7 @@ function App() {
       <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
-          {/* <Route path='/pricing' element={<Pricing />} /> */}
+          <Route path='/courses' element={<Courses />} />
           {/* <Route path='/training' element={<Training />} /> */}
           {/* <Route path='/contact' element={<Contact />} /> */}
         </Routes>
