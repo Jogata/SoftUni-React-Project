@@ -1,18 +1,40 @@
 .edukative-hero {
+    --round-border: 100px;
     /* max-width: 1600px; */
     /* height: 100vh; */
     /* margin: auto; */
     /* padding-inline: 100px; */
     padding: 5rem 2%;
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+    /* display: flex; */
+    /* gap: 20px;
+    justify-content: space-between; */
+}
+
+@media screen and (max-width: 500px) {
+    .edukative-hero {
+        --round-border: 20vw;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .edukative-hero {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;    
+    }
 }
 
 .edukative-hero-content {
     /* max-width: 50%; */
+    flex: 1;
     max-width: 900px;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+    .edukative-hero-content {
+        text-align: center;
+    }
 }
 
 .edukative-hero-content h1 {
@@ -30,12 +52,14 @@
 }
 
 .edukative-buttons {
-    margin-top: 80px;
+    /* margin-top: 80px; */
+    margin-top: 64px;
 }
 
 .edukative-cta-button, 
 .edukative-courses-button {
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    margin: 10px;
     padding: 20px 30px;
     font-weight: 600;
     border: 1px solid #1fcbff;
@@ -72,11 +96,23 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 1000px) {
+    .edukative-hero-images {
+        margin-top: 80px;
+    }
+}
+
 .edukative-hero-image {
-    width: 250px;
+    max-width: 250px;
     /* height: 270px; */
     object-fit: cover;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .edukative-hero-image {
+        max-width: 400px;
+    }
 }
 
 .edukative-images-row {
@@ -86,23 +122,31 @@
 }
 
 .edukative-hero-images .edukative-top-left {
-    border-top-right-radius: 100px;
-    border-bottom-left-radius: 100px ;
+    /* border-top-right-radius: 100px; */
+    border-top-right-radius: var(--round-border);
+    /* border-bottom-left-radius: 100px ; */
+    border-bottom-left-radius: var(--round-border) ;
 }
 
 .edukative-hero-images .edukative-top-right {
-    border-top-left-radius: 100px;
-    border-bottom-right-radius: 100px;
+    /* border-top-left-radius: 100px; */
+    border-top-left-radius: var(--round-border);
+    /* border-bottom-right-radius: 100px; */
+    border-bottom-right-radius: var(--round-border);
 }
 
 .edukative-hero-images .edukative-bottom-left {
-    border-bottom-right-radius: 100px;
-    border-top-left-radius: 100px;
+    /* border-bottom-right-radius: 100px; */
+    border-bottom-right-radius: var(--round-border);
+    /* border-top-left-radius: 100px; */
+    border-top-left-radius: var(--round-border);
 }
 
 .edukative-hero-images .edukative-bottom-right {
-    border-bottom-left-radius: 100px;
-    border-top-right-radius: 100px;
+    /* border-bottom-left-radius: 100px; */
+    border-bottom-left-radius: var(--round-border);
+    /* border-top-right-radius: 100px; */
+    border-top-right-radius: var(--round-border);
 }
 
 /* .edukative-hero-content .edukative-hero-icon {
@@ -128,8 +172,8 @@
 @media screen and (max-width: 480px) {
     .edukative-hero {
         /* height: 140vh; */
-        padding-inline: 30px;
-        flex-direction: column;
+        /* padding-inline: 30px; */
+        /* flex-direction: column; */
     }
 
     .edukative-hero-content {
@@ -153,12 +197,12 @@
     }
 
     .edukative-hero-images {
-        margin-top: -70px;
-        align-self: center;
+        /* margin-top: -70px; */
+        /* align-self: center; */
     }
 
     .edukative-hero-image {
-        width: 150px;
+        /* width: 150px; */
         /* height: 170px; */
     }
 }

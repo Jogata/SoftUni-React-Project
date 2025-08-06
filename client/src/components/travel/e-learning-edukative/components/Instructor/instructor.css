@@ -1,0 +1,91 @@
+.e-learning-edukative .edukative-instructor-section  {
+    padding: 5rem 2%;
+    display: flex;
+    gap: 3rem 5%;
+}
+
+.e-learning-edukative .edukative-instructor {
+    flex: 1;
+    max-width: 400px;
+    /* padding: 4rem; */
+    margin: 0 auto;
+}
+
+.e-learning-edukative .edukative-instructor img {
+    /* height: 500px; */
+    /* border-radius: 180px; */
+}
+
+.e-learning-edukative .edukative-instructor-text {
+    flex: 1;
+    /* padding: 6rem; */
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+}
+
+.e-learning-edukative .edukative-instructor-text h2 {
+    font-size: 50px;
+}
+
+.e-learning-edukative .edukative-instructor-text p {
+    font-size: 20px;
+}
+
+.e-learning-edukative .edukative-instructor-text button {
+    margin-top: 1rem;
+    margin-right: auto;
+    padding: 1rem 2rem;
+    /* width: 16rem; */
+    /* height: 4rem; */
+    color: #1fcbff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 36px;
+    border: 2px solid #1fcbff;
+    /* background-color: #fff; */
+    transition: color 400ms ease, 
+    background-color 400ms ease;
+}
+
+.e-learning-edukative .edukative-instructor-text button:hover {
+    color: #000;
+    background-color: #1fcbff;
+}
+
+@media screen and (max-width: 1050px) {
+    .e-learning-edukative .edukative-instructor-section {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .e-learning-edukative .edukative-instructor {
+        /* padding: 4rem; */
+    }
+    .e-learning-edukative .edukative-instructor img {
+        /* width: 250px; */
+        /* height: 320px; */
+        /* border-radius: 20px; */
+    }
+    .e-learning-edukative .edukative-instructor-text {
+        /* padding: 1.5rem; */
+        text-align: center;
+    }
+    .e-learning-edukative .edukative-instructor-text h2 {
+        font-size: 35px;
+        /* margin-top: -60px; */
+    }
+    .e-learning-edukative .edukative-instructor-text p {
+        font-size: 18px;
+    }
+    .e-learning-edukative .edukative-instructor-text button {
+        /* align-self: center; */
+        margin: 1rem auto 0;
+        color: #fff;
+        /* border-radius: 10px; */
+        background-color: #1fcbff;
+    }
+}
