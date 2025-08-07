@@ -1,9 +1,5 @@
 .course.edukative-course-details {
     padding: 6rem 2%;
-    /* margin-top: 40px; */
-    /* padding-inline: 50px; */
-    /* max-width: 1600px; */
-    /* margin: auto; */
 }
 
 .edukative-details-header {
@@ -47,12 +43,6 @@
     font-size: 28px;
 }
 
-.price-container {
-    /* margin-top: 26px; */
-    /* display: flex; */
-    /* gap: 26px; */
-}
-
 .edukative-course-details button {
     margin-top: 1.6rem;
     padding: 16px 32px;
@@ -68,32 +58,3 @@
     color: rgb(0, 195, 255);
     background-color: transparent;
 }
-
-/* .edukative-course-details .field-container {
-    margin-top: 16px;
-    margin-bottom: 32px;
-    padding-inline: 50px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px;
-}
-
-.edukative-course-details .field-container .p-name {
-    margin-top: 12px;
-    margin-bottom: 10px;
-    margin-left: 16px;
-    font-size: 22px;
-}
-
-.edukative-course-details .field-container .phase {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.edukative-course-details .field-container ul {
-    margin-bottom: 12px;
-    padding-inline: 50px;
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
-} */

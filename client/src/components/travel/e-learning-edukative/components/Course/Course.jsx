@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 
 export function Course() {
     const { id } = useParams();
-    // console.log(id);
     const course = courses.find(course => course.id === Number(id));
-    // console.log(course);
 
     return (
         <div className="course edukative-course-details">
@@ -23,7 +21,6 @@ export function Course() {
                     <button>Apply Now</button>
                 </div>
             </div>
-            <div className="course_details"></div>
         </div>
     )
 }

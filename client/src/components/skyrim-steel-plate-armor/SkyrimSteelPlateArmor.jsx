@@ -70,10 +70,10 @@ export default function SkyrimSteelPlateArmor() {
                                     <li>Resist Poison</li>
                                 </ul>
                             </div>
-                            <div className="article-image mask-1">
+                            {/* <div className="article-image mask-1"> */}
                                 {/* <img className="mask-1" src="./img/00test3/dwarven-bronze-plate-cuirass-firewalker.png" alt="" /> */}
                                 {/* <img src="./img/00test/armors/heavy-steel-armor.png" alt="" /> */}
-                            </div>
+                            {/* </div> */}
                         </article>
                     </div>
                 </main>

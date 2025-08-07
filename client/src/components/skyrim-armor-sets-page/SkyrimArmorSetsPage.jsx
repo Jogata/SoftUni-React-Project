@@ -85,7 +85,7 @@ export default function SkyrimArmorSetsPage() {
                   <li><a>Stormcloak Armor</a></li>
                   <li><a>Stormcloak Officer Armor</a></li>
                 </ul>
-                <a href="./skyrim-light-armor-sets.html" className="details-btn">Learn More</a>
+                <a href="/skyrim-light-armor-sets" className="details-btn">Learn More</a>
               </div>
             </article>
           </div>
