@@ -20,6 +20,7 @@ import SkyrimHeavyArmorSets from './components/skyrim-heavy-armor-sets/SkyrimHea
 import SkyrimLightArmorSets from './components/skyrim-light-armor-sets/SkyrimLightArmorSets'
 import SkyrimSteelPlateArmorSet from './components/skyrim-steel-plate-armor-set/SkyrimSteelPlateArmorSet'
 import SkyrimSteelPlateArmor from './components/skyrim-steel-plate-armor/SkyrimSteelPlateArmor'
+import SkyrimSteelArmor from './components/skyrim-steel-armor/SkyrimSteelArmor'
 import AuthPage from './components/auth-page/AuthPage'
 import Logout from './components/logout/Logout'
 
@@ -105,6 +106,8 @@ function App() {
             <Route path='/skyrim-light-armor-sets' element={<SkyrimLightArmorSets />} />
             <Route path='/skyrim-steel-plate-armor-set' element={<SkyrimSteelPlateArmorSet />} />
             <Route path='/skyrim-steel-plate-armor' element={<SkyrimSteelPlateArmor />} />
+            {/* <Route path='/skyrim-steel-armor-set' element={<SkyrimSteelArmorSet />} /> */}
+            <Route path='/skyrim-steel-armor' element={<SkyrimSteelArmor />} />
             <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
             <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
             <Route path='/witcher' element={<TheWitcherHomePage />} />

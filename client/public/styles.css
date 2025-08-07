@@ -642,8 +642,12 @@ main.max-width {
 }
 
 .basic-stats li {
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
   font-size: 1.2rem;
+}
+
+.vertical-list li {
+  padding: 0.5rem 0;
 }
 
 #shadow {

@@ -54,7 +54,11 @@ export default function SkyrimArmorSetsPage() {
                   <li><a>Orcish Armor</a></li>
                   <li><a>Stalhrim Armor</a></li>
                   {/* <!-- <li><a>Steel Armor</a></li> --> */}
-                  <li><Link className="link" to="/skyrim-steel-plate-armor-set">Steel Plate Armor</Link></li>
+                  <li>
+                    <Link to="/skyrim-steel-plate-armor-set" className="link">
+                      Steel Plate Armor
+                    </Link>
+                  </li>
                   <li><a>Wolf Armor</a></li>
                 </ul>
                 <Link to="/skyrim-heavy-armor-sets" className="details-btn">Learn More</Link>
@@ -78,14 +82,18 @@ export default function SkyrimArmorSetsPage() {
                   <li><a>Morag Tong Armor</a></li>
                   <li><a>Penitus Oculatus Armor</a></li>
                   <li><a>Scaled Armor</a></li>
-                  <li><a className="link" href="./skyrim-steel-armor.html">Steel Armor</a></li>
+                  <li>
+                    <Link to="/skyrim-steel-armor-set" className="link">
+                      Steel Armor
+                    </Link>
+                  </li>
                   <li><a>Shrouded Armor</a></li>
                   <li><a>Skaal Armor</a></li>
                   <li><a>Stalhrim Light Armor</a></li>
                   <li><a>Stormcloak Armor</a></li>
                   <li><a>Stormcloak Officer Armor</a></li>
                 </ul>
-                <a href="/skyrim-light-armor-sets" className="details-btn">Learn More</a>
+                <Link to="/skyrim-light-armor-sets" className="details-btn">Learn More</Link>
               </div>
             </article>
           </div>

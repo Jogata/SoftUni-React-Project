@@ -19,7 +19,7 @@ export default function SkyrimLightArmorSets() {
         </div>
         <article>
           <div className="article-content">
-            <p>The Steel Armor set has 5 pieces: <a href="./skyrim-steel-armor.html" className="link">Steel Armor</a>, Steel Cuffed Boots, Steel Helmet or Steel Horned Helmet, Steel Nordic Gauntlets, Steel Shield.</p>
+            <p>The Steel Armor set has 5 pieces: <Link to="/skyrim-steel-armor" className="link">Steel Armor</Link>, Steel Cuffed Boots, Steel Helmet or Steel Horned Helmet, Steel Nordic Gauntlets, Steel Shield.</p>
             <p>The total weight of the basic set is 11 points and the total Armor Rating is 46 points. Using a Steel Shield will increase the Armor Rating with 24 points.</p>
             <p>All five pieces can be purchased from Blacksmiths and general goods merchants, found as random loot in chests, worn by mid-level bandit chiefs and hired thugs or forged at a blacksmith's forge. The materials needed to forge a Steel Armor set are Steel Ingot, Iron Ingot and Leather Strips. The amount of materials is different for the different pieces.</p>
             <p>Each piece can be upgraded with a Steel ingot at a workbench.</p>
@@ -65,15 +65,15 @@ export default function SkyrimLightArmorSets() {
                             <div className="article-content">
                                 <h2 className="cursive">Steel Armor Set</h2>
                                 <p>The Steel Armor Set can be purchased from Blacksmiths and general goods merchants, found as random loot in chests, worn by mid-level bandit chiefs and hired thugs or forged at a blacksmith's forge with Steel Ingots, Iron Ingots, Leather Strips and requires the Steel Smithing perk. All pieces can be upgraded with a Steel Ingot at a workbench.</p>
-                                <p>The set has 5 pieces: <a href="./skyrim-steel-armor.html" className="link">Steel Armor</a>, Steel Cuffed Boots, Steel Helmet or Steel Horned Helmet, Steel Nordic Gauntlets, Steel Shield.</p>
-                                <a href="./skyrim-steel-armor-set.html" className="details-btn">Learn More</a>
+                                <p>The set has 5 pieces: <Link to="/skyrim-steel-armor" className="link">Steel Armor</Link>, Steel Cuffed Boots, Steel Helmet or Steel Horned Helmet, Steel Nordic Gauntlets, Steel Shield.</p>
+                                <Link to="/skyrim-steel-armor-set" className="details-btn">Learn More</Link>
                             </div>
                         </article>
                         <article>
                             <div className="article-content">
                                 <h2 className="cursive">Dragonscale Armor Set</h2>
                                 <p>The Dragonscale Armor Set can be found very rarely as random loot in chests or forged at a blacksmith's forge with Dragon Scales, Iron Ingots, Leather, Leather Strips and requires the Dragon Armor perk. All pieces can be upgraded with a Dragon Scale at a workbench.</p>
-                                <p>The set has 5 pieces: <a href="./skyrim-steel-plate-armor.html" className="link">Dragonscale Armor</a>, Dragonscale Boots, Dragonscale Helmet, Dragonscale Gauntlets, Dragonscale Shield.</p>
+                                <p>The set has 5 pieces: Dragonscale Armor, Dragonscale Boots, Dragonscale Helmet, Dragonscale Gauntlets, Dragonscale Shield.</p>
                                 <a href="#" className="btn not-active">Learn More</a>
                             </div>
                         </article>

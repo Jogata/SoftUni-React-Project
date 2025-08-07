@@ -20,13 +20,13 @@ export default function SkyrimSteelPlateArmor() {
                             <div className="article-content">
                                 <p>The Steel Plate Armor can be purchased from Blacksmiths and general goods merchants, found as random loot in chests, worn by mid-level bandit chiefs and hired thugs or forged at a blacksmith's forge.</p>
                                 <h2 className="cursive">Basic Stats</h2>
-                                <ul className="basic-stats">
-                                    <li className="bulled">Type: Heavy Armor</li>
-                                    <li className="bulled">Slot: Chest</li>
-                                    <li className="bulled">Armor rating: 31</li>
-                                    <li className="bulled">Weight: 35</li>
-                                    <li className="bulled">Price: 275 gold</li>
-                                    <li className="bulled">Set Name: Steel Plate Armor Set</li>
+                                <ul className="vertical-list bulled basic-stats">
+                                    <li>Type: Heavy Armor</li>
+                                    <li>Slot: Chest</li>
+                                    <li>Armor rating: 31</li>
+                                    <li>Weight: 35</li>
+                                    <li>Price: 275 gold</li>
+                                    <li>Set Name: Steel Plate Armor Set</li>
                                 </ul>
                             </div>
                             <div className="article-image mask-1" id="shadow">
@@ -47,7 +47,7 @@ export default function SkyrimSteelPlateArmor() {
                             <div className="article-content">
                                 <h3>Enchanting</h3>
                                 <p>Steel Armor can be enchanted at Arcane Enchanter. Unlike weapon enchantments, apparel enchantments do not require recharging and stay enchanted indefinitely. There are 38 apparel enchantments available but only 20 of them can be applied on the chest armor.</p>
-                                <ul className="bulled">
+                                <ul className="vertical-list bulled">
                                     <li>Fortify Alteration</li>
                                     <li>Fortify Alteration and Magicka Regen</li>
                                     <li>Fortify Conjuration</li>
