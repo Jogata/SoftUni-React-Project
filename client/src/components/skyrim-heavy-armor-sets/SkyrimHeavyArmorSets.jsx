@@ -34,7 +34,7 @@ export default function SkyrimHeavyArmorSets() {
                             <div className="article-content">
                                 <h2 className="cursive">Steel Plate Armor Set</h2>
                                 <p>The Steel Armor Set can be purchased from Blacksmiths and general goods merchants, found as random loot in chests, worn by mid-level bandit chiefs and hired thugs or forged at a blacksmith's forge with Steel Ingots, Iron Ingots, Leather Strips and requires the Steel Smithing perk. Can be upgraded with a steel ingot at a workbench.</p>
-                                <p>The set has 4 pieces: <a href="./skyrim-steel-plate-armor.html" className="link">Steel Plate Armor</a>, Steel Plate Boots, Steel Plate Helmet, Steel Plate Gauntlets.</p>
+                                <p>The set has 4 pieces: <Link to="/skyrim-steel-plate-armor" className="link">Steel Plate Armor</Link>, Steel Plate Boots, Steel Plate Helmet, Steel Plate Gauntlets.</p>
                                 <Link to="/skyrim-steel-plate-armor-set" className="details-btn">Learn More</Link>
                             </div>
                         </article>

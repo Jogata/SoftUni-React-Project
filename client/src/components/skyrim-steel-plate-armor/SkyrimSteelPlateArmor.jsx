@@ -1,6 +1,6 @@
 import PageNavigation from "../navigation/PageNavigation";
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default function SkyrimSteelPlateArmor() {
     return (

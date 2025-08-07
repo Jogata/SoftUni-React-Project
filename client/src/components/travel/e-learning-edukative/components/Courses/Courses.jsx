@@ -1,5 +1,6 @@
 import "./courses.css";
 import { courses } from "../../data";
+import { Link } from "react-router-dom";
 
 export function Courses() {
     return (
@@ -14,8 +15,9 @@ export function Courses() {
                                 <span><i className={course.icon}></i> 4.5</span>
                                 <span>{course.student}</span>
                             </div>
-                            <h3>{course.title}</h3>
+                            <h3>{course.name}</h3>
                             <p className="edukative-course-price">{course.price}</p>
+                            <Link to={`/course/${course.id}`}>View Details</Link>
                         </div>
                     </div>
                 ))}
