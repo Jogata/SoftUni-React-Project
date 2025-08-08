@@ -1,0 +1,82 @@
+.about-us-edukative-page {
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 5rem;
+    color: #aaa;
+    /* background-color: #f9f9f9; */
+}
+
+.about-us-edukative-page header {
+    position: relative;
+    padding: 3rem 1rem;
+    color: #fff;
+    text-align: center;
+    /* background-color: #1d3557; */
+}
+
+header::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #1d3557;
+    clip-path: url("#mask-1");
+    z-index: -1;
+}
+
+.about-us-edukative-page header h1 {
+    /* margin-bottom: 2rem; */
+    /* padding-top: 1rem; */
+    font-size: 2.5rem;
+}
+
+.about-us-edukative-page header h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.8rem;
+}
+
+.about-us-edukative-page header p {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 2%;
+}
+
+.about-us-edukative-page main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 2%;
+}
+
+.about-us-edukative-page section {
+    margin-bottom: 2rem;
+}
+
+.about-us-edukative-page section h2 {
+    /* color: #1d3557; */
+    color: #1fcbff;
+    margin-bottom: 0.5rem;
+}
+
+/* .about-us-edukative-page ul {
+    padding-left: 1.2rem;
+} */
+
+.about-us-edukative-page li {
+    margin-bottom: 0.5rem;
+}
+
+/* footer {
+    padding: 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #1d3557;
+} */
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+}

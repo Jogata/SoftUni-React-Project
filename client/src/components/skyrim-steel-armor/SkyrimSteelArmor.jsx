@@ -1,51 +1,29 @@
 import { useState } from "react";
 import PageNavigation from "../navigation/PageNavigation";
 
-// import { Link } from 'react-router-dom';
-
 export default function SkyrimSteelArmor() {
     const [ current, setCurrent ] = useState(2);
     const [ isGalleryOpen, setIsGalleryOpen ] = useState(false);
 
     const slides = ["slide-image", "slide-image", "slide-image", "slide-image", "slide-image"];
-    // let prevSlide = 0;
     let left = current - 1;
     left = left + slides.length;
     left = left % slides.length;
-    // let middle = 2;
     let right = current + 1;
     right = right % slides.length;
-    // let nextSlide = 4;
-    // console.log("parent");
-    
-    //   slides[left].classList.replace("left", "hidden");
-    //   slides[middle].classList.replace("middle", "left");
-    //   slides[right].classList.replace("right", "middle");
-    //   slides[nextSlide].classList.replace("hidden", "right");
-    //   prevSlide++;
-    //   left++;
-    //   middle++;
-    //   right++;
-    //   nextSlide++;
-    //   prevSlide = prevSlide % slides.length;
-    //   left = left % slides.length;
-    //   middle = middle % slides.length;
-    //   right = right % slides.length;
-    //   nextSlide = nextSlide % slides.length;
 
     slides[current] = "slide-image middle";
     slides[left] = "slide-image left";
     slides[right] = "slide-image right";
-    // console.log(slides);
 
-    function prevSlide() {
+    function rotateLeft() {
         let newSlide = current - 1;
         newSlide = newSlide + slides.length;
         newSlide = newSlide % slides.length;
         setCurrent(newSlide);
     }
     
-    function nextSlide() {
+    function rotateRight() {
         let newSlide = current + 1;
         newSlide = newSlide % slides.length;
         setCurrent(newSlide);
@@ -140,31 +118,19 @@ export default function SkyrimSteelArmor() {
                 </main>
 
                 {isGalleryOpen ? (
-                    <div className="gallery hidden">
+                    <div className="fixed-3d-gallery">
                         <button id="close-btn" onClick={closeGallery}>x</button>
                         <div className="slider">
-                            {/* <img className="slide-image hidden" src="/skyrim/equipment/armor/light/steel/a-male-scales-breastplate-01.png" alt="" />
-                                        <img className="slide-image left" src="/skyrim/equipment/armor/light/steel/an-elven-male-full-scales-armor-02.png" alt="" />
-                                        <img className="slide-image middle" id="relative" src="/skyrim/equipment/armor/light/steel/light-blue-magic-male-scale-armor-03.jpeg" alt="" />
-                                        <img className="slide-image right" src="/skyrim/equipment/armor/light/steel/light-blue-magic-male-scale-armor-04.jpeg" alt="" />
-                                        <img className="slide-image hidden" src="/skyrim/equipment/armor/light/steel/wind-magic-armor-male-scale-mail-05.jpeg" alt="" /> */}
                             <img className={slides[0]} src="/skyrim/equipment/armor/light/steel/a-male-scales-breastplate-01.png" alt="" />
                             <img className={slides[1]} src="/skyrim/equipment/armor/light/steel/an-elven-male-full-scales-armor-02.png" alt="" />
                             <img className={slides[2]} id="relative" src="/skyrim/equipment/armor/light/steel/light-blue-magic-male-scale-armor-03.jpeg" alt="" />
                             <img className={slides[3]} src="/skyrim/equipment/armor/light/steel/light-blue-magic-male-scale-armor-04.jpeg" alt="" />
                             <img className={slides[4]} src="/skyrim/equipment/armor/light/steel/wind-magic-armor-male-scale-mail-05.jpeg" alt="" />
-                            {/* <img className="slide-image hidden" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286(1).png" alt="" /> */}
-                            {/* <img className="slide-image left" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286(2).png" alt="" /> */}
-                            {/* <img className="slide-image middle relative" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286.png" alt="" /> */}
-                            {/* <img className="slide-image right" src="./img/00test/armors/paladin-in-full-plate-armor-embroidered-with-blue-and-gold-dwarven-patterns-and-runes-glowing-blue-616490374(1).png" alt="" /> */}
-                            {/* <img className="slide-image hidden" src="./img/00test/armors/paladin-in-full-plate-armor-embroidered-with-blue-and-gold-dwarven-patterns-and-runes-glowing-blue-616490374.png" alt="" /> */}
                         </div>
 
                         <div className="arrows">
-                            {/* <button id="prev" onClick={nextSlide}>&#139;</button> */}
-                            <button id="prev" onClick={nextSlide}>prev</button>
-                            {/* <button id="next" onClick={prevSlide}>&#155;</button> */}
-                            <button id="next" onClick={prevSlide}>next</button>
+                            <button onClick={rotateRight}>prev</button>
+                            <button onClick={rotateLeft}>next</button>
                         </div>
 
                     </div>
