@@ -74,35 +74,14 @@ export default function SkyrimSteelArmor() {
                                     <li>Resist Poison</li>
                                 </ul>
                             </div>
-                            <div className="article-image mask-1">
-                                <img src="./img/00test/armors/steel/wind-magic-armor-male-scale-mail-05.jpeg" alt="" />
-                                <img className="mask-1" src="./img/00test3/dwarven-bronze-plate-cuirass-firewalker.png" alt="" />
-                                <img src="./img/00test/armors/heavy-steel-armor.png" alt="" />
-                            </div>
+                            {/* <div className="article-image mask-1"> */}
+                                {/* <img src="/skyrim/equipment/armor/light/steel/wind-magic-armor-male-scale-mail-05.jpeg" alt="" /> */}
+                                {/* <img className="mask-1" src="./img/00test3/dwarven-bronze-plate-cuirass-firewalker.png" alt="" /> */}
+                                {/* <img src="./img/00test/armors/heavy-steel-armor.png" alt="" /> */}
+                            {/* </div> */}
                         </article>
                     </div>
                 </main>
-                <div className="gallery hidden">
-                    <button id="close-btn">x</button>
-                    <div className="slider">
-                        <img className="slide-image hidden" src="./img/00test/armors/steel/a-male-scales-breastplate-01.png" alt="" />
-                        <img className="slide-image left" src="./img/00test/armors/steel/an-elven-male-full-scales-armor-02.png" alt="" />
-                        <img className="slide-image middle relative" src="./img/00test/armors/steel/light-blue-magic-male-scale-armor-03.jpeg" alt="" />
-                        <img className="slide-image right" src="./img/00test/armors/steel/light-blue-magic-male-scale-armor-04.jpeg" alt="" />
-                        <img className="slide-image hidden" src="./img/00test/armors/steel/wind-magic-armor-male-scale-mail-05.jpeg" alt="" />
-                        {/* <img className="slide-image hidden" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286(1).png" alt="" /> */}
-                        {/* <img className="slide-image left" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286(2).png" alt="" /> */}
-                        {/* <img className="slide-image middle relative" src="./img/00test/armors/a-piece-of-pristine-white-steel-armor-uniquely-designed-with-intricate-dwarven-patterns-and-arcane--475226286.png" alt="" /> */}
-                        {/* <img className="slide-image right" src="./img/00test/armors/paladin-in-full-plate-armor-embroidered-with-blue-and-gold-dwarven-patterns-and-runes-glowing-blue-616490374(1).png" alt="" /> */}
-                        {/* <img className="slide-image hidden" src="./img/00test/armors/paladin-in-full-plate-armor-embroidered-with-blue-and-gold-dwarven-patterns-and-runes-glowing-blue-616490374.png" alt="" /> */}
-                    </div>
-
-                    <div className="arrows">
-                        <button id="prev">&#139;</button>
-                        <button id="next">&#155;</button>
-                    </div>
-
-                </div>
             </div>
         </>
     )
