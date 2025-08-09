@@ -14,7 +14,8 @@ import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocati
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
 import SkyrimEastmarchHistoryPage from './components/skyrim-eastmarch-history/SkyrimEastmarchHistoryPage';
-import { SkyrimWindhelmPage } from './components/skyrim-windhelm/SkyrimWindhelmPage';
+import SkyrimWindhelmPage from './components/skyrim-windhelm/SkyrimWindhelmPage';
+import SkyrimWindhelmHistoryPage from './components/skyrim-windhelm-history/SkyrimWindhelmHistoryPage'
 import SkyrimEquipmentPage from './components/skyrim-equipment-page/SkyrimEquipmentPage'
 import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
@@ -117,6 +118,7 @@ function App() {
             <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
             <Route path='/skyrim-eastmarch-hold-history' element={<SkyrimEastmarchHistoryPage />} />
             <Route path='/skyrim-windhelm' element={<SkyrimWindhelmPage />} />
+            <Route path='//skyrim-windhelm-history' element={<SkyrimWindhelmHistoryPage />} />
             <Route path='/witcher' element={<TheWitcherHomePage />} />
             <Route path='/god-of-war' element={<GodOfWarHomePage />} />
             <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} />} />

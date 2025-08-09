@@ -107,7 +107,7 @@ export default function SkyrimHoldsPage() {
                   <div className="slide-title">Eastmarch</div>
                   {/* <!-- <div className="topic"></div> --> */}
                   <p className="des">
-                    Eastmarch or the Eastmarch Hold makes up the volcanic tundra of the Old Holds, within the province of Skyrim; it is one of the nine holds of the province. Eastmarch is largely a rural area, with sulfur pools that stretch the inner wastes. Eastmarch and its capital, <a href="#" className="valid">Windhelm</a> was formerly the seat of power for the First Empire of the Nords, beginning with Ysgramor and continuing through the Ysgramor Dynasty.
+                    Eastmarch or the Eastmarch Hold makes up the volcanic tundra of the Old Holds, within the province of Skyrim; it is one of the nine holds of the province. Eastmarch is largely a rural area, with sulfur pools that stretch the inner wastes. Eastmarch and its capital, <Link to="/skyrim-windhelm" className="valid">Windhelm</Link> was formerly the seat of power for the First Empire of the Nords, beginning with Ysgramor and continuing through the Ysgramor Dynasty.
                   </p>
                   <div className="buttons">
                     <a href="/skyrim-eastmarch">SEE MORE</a>

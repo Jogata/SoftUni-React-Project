@@ -1,0 +1,90 @@
+.hold-page {
+    position: relative;
+}
+
+.hold-page::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    z-index: 1;
+}
+
+#windhelm.hold-page::after {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* position: relative; */
+    /* min-height: 100vh; */
+    /* background-color: #000; */
+    /* background-image: url('./img/bg/Eastmarch-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+}
+
+.hold-page::before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 120%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: animated-bg 60s linear infinite;
+    z-index: 0;
+}
+
+
+#windhelm::before {
+    background-image: url('/skyrim/holds/Windhelm-bg.jpg');
+}
+
+.fixed-bg {
+    background-attachment: fixed;
+}
+
+.hold-page main {
+    padding: 3rem 0;
+}
+
+.bordered-section {
+    /* min-width: 290px; */
+    /* height: 70vh; */
+    /* font-family: initial; */
+    width: 80%;
+    /* margin: 3rem auto 3rem 3vw; */
+    margin: auto;
+    /* margin: 0px 20px; */
+    padding: 40px 32px;
+    border-radius: 20px;
+    text-indent: 12px;
+    font-size: 18px;
+    color: #fff;
+    /* background-image: 
+    url('./img/border_patterns_03_preview-copyhw.png'), 
+    url('./img/border_patterns_03_preview-copyvw.png'), 
+    url('./img/border_patterns_03_preview-copyvw.png'), 
+    url('./img/border_patterns_03_preview-copyhw.png'); */
+    background-repeat: repeat-x, repeat-y, repeat-y, repeat-x;
+    background-position: top, left, right, bottom;
+    background-size: 290px, 20px, 20px, 290px;
+}
+
+.bordered-section h1 {
+    text-align: center;
+}
+
+.hold-page .bordered-section {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes animated-bg {
+    50% {
+        transform: translateX(-15%);
+    }
+}
