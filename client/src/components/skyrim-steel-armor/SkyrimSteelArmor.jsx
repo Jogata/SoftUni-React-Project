@@ -129,8 +129,14 @@ export default function SkyrimSteelArmor() {
                         </div>
 
                         <div className="arrows">
-                            <button onClick={rotateRight}>prev</button>
-                            <button onClick={rotateLeft}>next</button>
+                            <button id="prev" onClick={rotateRight}>
+                                Previous Slide
+                                <i className="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </button>
+                            <button id="next" onClick={rotateLeft}>
+                                Next Slide
+                                <i className="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </button>
                         </div>
 
                     </div>

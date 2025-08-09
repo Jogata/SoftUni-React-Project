@@ -3,7 +3,6 @@
     margin: auto;
     padding-bottom: 5rem;
     color: #aaa;
-    /* background-color: #f9f9f9; */
 }
 
 .about-us-edukative-page header {
@@ -11,7 +10,6 @@
     padding: 3rem 1rem;
     color: #fff;
     text-align: center;
-    /* background-color: #1d3557; */
 }
 
 header::after {
@@ -27,8 +25,6 @@ header::after {
 }
 
 .about-us-edukative-page header h1 {
-    /* margin-bottom: 2rem; */
-    /* padding-top: 1rem; */
     font-size: 2.5rem;
 }
 
@@ -54,26 +50,13 @@ header::after {
 }
 
 .about-us-edukative-page section h2 {
-    /* color: #1d3557; */
     color: #1fcbff;
     margin-bottom: 0.5rem;
 }
 
-/* .about-us-edukative-page ul {
-    padding-left: 1.2rem;
-} */
-
 .about-us-edukative-page li {
     margin-bottom: 0.5rem;
 }
-
-/* footer {
-    padding: 1rem;
-    color: #fff;
-    font-size: 0.9rem;
-    text-align: center;
-    background-color: #1d3557;
-} */
 
 @media (max-width: 600px) {
     header h1 {

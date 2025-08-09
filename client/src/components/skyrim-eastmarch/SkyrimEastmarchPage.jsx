@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import "./skyrim-eastmarch-page.css"
-import PageNavigation from '../navigation/PageNavigation'
+import "./skyrim-eastmarch-page.css";
+import PageNavigation from "../navigation/PageNavigation";
 
 export default function SkyrimEastmarchPage() {
   return (
@@ -18,9 +18,9 @@ export default function SkyrimEastmarchPage() {
               <p>
                 Eastmarch is one of the nine holds governing its region in Skyrim. 
                 It's capital city is <a className="link" href="./skyrim-windhelm.html">Windhelm</a> and 
-                Eastmarch is in the northeastern corner of Skyrim.
+                it is in the northeastern corner of Skyrim.
               </p>
-              <a className="details-btn" href="./skyrim-eastmarch-hold-history.html">details</a>
+              <Link className="details-btn" to="/skyrim-eastmarch-hold-history">details</Link>
             </div>
           </div>
 

@@ -1,8 +1,8 @@
 import "./auth-page.css";
 
-import { useEffect, useState } from "react"
+import { useState } from "react";
 
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm";
 import { useLogin, useRegister } from "../../hooks/useAuth";
 import PageNavigation from "../navigation/PageNavigation";
