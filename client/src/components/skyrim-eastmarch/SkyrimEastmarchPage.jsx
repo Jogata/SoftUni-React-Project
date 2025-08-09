@@ -17,7 +17,7 @@ export default function SkyrimEastmarchPage() {
               <h1 className="animated-title" data-text="Eastmarch">Eastmarch</h1>
               <p>
                 Eastmarch is one of the nine holds governing its region in Skyrim. 
-                It's capital city is <a className="link" href="./skyrim-windhelm.html">Windhelm</a> and 
+                It's capital city is <Link className="link" to="/skyrim-windhelm">Windhelm</Link> and 
                 it is in the northeastern corner of Skyrim.
               </p>
               <Link className="details-btn" to="/skyrim-eastmarch-hold-history">details</Link>

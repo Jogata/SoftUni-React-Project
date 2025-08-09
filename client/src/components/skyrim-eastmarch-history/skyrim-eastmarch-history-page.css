@@ -1,6 +1,5 @@
 .hold-page {
     position: relative;
-    /* padding-bottom: 3rem; */
 }
 
 .hold-page::after {
@@ -12,16 +11,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
-}
-
-#eastmarch {
-    /* position: relative; */
-    /* min-height: 100vh; */
-    /* background-color: #000; */
-    /* background-image: url('./img/bg/Eastmarch-bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
 }
 
 .hold-page::before {
@@ -39,7 +28,6 @@
 }
 
 #eastmarch::before {
-    /* background-image: url('./img/bg/Eastmarch-bg.jpg'); */
     background-image: url("/skyrim/holds/Eastmarch-bg.jpg");
 }
 
@@ -52,15 +40,10 @@
 }
 
 .bordered-section {
-    /* min-width: 290px; */
-    /* height: 70vh; */
-    /* font-family: initial; */
     width: 80%;
     max-width: 1600px;
-    /* margin: 0 auto 0 3vw; */
     margin: auto;
-    /* margin: 0px 20px; */
-    padding: 40px 32px;
+    padding: 2.5rem 2rem;
     border-radius: 20px;
     text-indent: 12px;
     font-size: 18px;

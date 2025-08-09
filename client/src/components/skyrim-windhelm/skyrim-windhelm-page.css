@@ -1,0 +1,92 @@
+#windhelm {
+  /* min-height: 100vh; */
+  background-image: url('/skyrim/holds/Windhelm-bg.jpg');
+}
+
+.darken-bg {
+  position: relative;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.darken-bg::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.animated-title-container {
+  /* position: relative; */
+  /* min-height: 100vh; */
+  display: flex;
+}
+
+.animated-title-page-content {
+  /* margin: auto; */
+  margin: auto auto 0 0;
+}
+
+.darken-bg .animated-title-page-content {
+  z-index: 1;
+}
+
+.animated-title-page-content h1 {
+  position: relative;
+  padding-right: 1vw;
+  /* position: absolute; */
+  /* text-transform: capitalize; */
+  /* text-align: center; */
+  letter-spacing: 0.5rem;
+  color: transparent;
+  user-select: none;
+}
+#windhelm h1 {
+  font-size: min(15vw, 20rem);
+}
+
+.animated-title-page-content p {
+  font-size: 1.2rem;
+  max-width: 68rem;
+}
+
+/* .title-hold-animated span {
+    text-transform: uppercase;
+} */
+.animated-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  border-right: 2px solid rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  text-shadow: 1px 2px 1px rgba(255, 255, 255, 0.2);
+  animation: titleanimation 60s linear infinite backwards;
+  /* animation-delay: 5s; */
+  overflow: hidden;
+  z-index: 1;
+}
+.banner::after {
+  position: absolute;
+  left: 3%;
+  bottom: 50%;
+  content: '';
+  width: 100%;
+  height: 70%;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+#windhelm .banner::after {
+  /* background-image: url('./img/WindhelmGuardsShield.png'); */
+  background-image: url('/skyrim/locations/capital-banners/WindhelmGuardsShield.png');
+}

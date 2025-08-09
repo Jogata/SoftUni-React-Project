@@ -13,6 +13,8 @@ import CrateRaidPage from './components/raids/create-raid/CreateRaid'
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
+import SkyrimEastmarchHistoryPage from './components/skyrim-eastmarch-history/SkyrimEastmarchHistoryPage';
+import { SkyrimWindhelmPage } from './components/skyrim-windhelm/SkyrimWindhelmPage';
 import SkyrimEquipmentPage from './components/skyrim-equipment-page/SkyrimEquipmentPage'
 import SkyrimArmorPage from './components/skyrim-armor-page/SkyrimArmorPage'
 import SkyrimArmorSetsPage from './components/skyrim-armor-sets-page/SkyrimArmorSetsPage'
@@ -37,7 +39,6 @@ import { Courses } from './components/travel/e-learning-edukative/components/Cou
 import { Course } from './components/travel/e-learning-edukative/components/Course/Course';
 import { About } from './components/travel/e-learning-edukative/components/About/About';
 import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
-import SkyrimEastmarchHistoryPage from './components/skyrim-eastmarch-history/SkyrimEastmarchHistoryPage'
 
 function Loader() {
   return (
@@ -115,6 +116,7 @@ function App() {
             <Route path='/skyrim-holds' element={<SkyrimHoldsPage />} />
             <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
             <Route path='/skyrim-eastmarch-hold-history' element={<SkyrimEastmarchHistoryPage />} />
+            <Route path='/skyrim-windhelm' element={<SkyrimWindhelmPage />} />
             <Route path='/witcher' element={<TheWitcherHomePage />} />
             <Route path='/god-of-war' element={<GodOfWarHomePage />} />
             <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} />} />
