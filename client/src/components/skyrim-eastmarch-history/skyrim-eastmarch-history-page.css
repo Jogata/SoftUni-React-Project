@@ -42,7 +42,8 @@
 .bordered-section {
     width: 80%;
     max-width: 1600px;
-    margin: auto;
+    /* margin: auto; */
+    margin: 0 auto auto;
     padding: 2.5rem 2rem;
     border-radius: 20px;
     text-indent: 12px;

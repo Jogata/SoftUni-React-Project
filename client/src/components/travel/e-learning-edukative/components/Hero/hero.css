@@ -1,5 +1,7 @@
 .edukative-hero {
     --round-border: 100px;
+    max-width: 1600px;
+    margin: auto;
     padding: 5rem 2%;
 }
 

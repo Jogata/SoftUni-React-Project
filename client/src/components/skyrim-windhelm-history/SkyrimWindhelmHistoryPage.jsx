@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function SkyrimWindhelmHistoryPage() {
     return (
         <>
-            <div className="page hold-page fixed-bg" id="windhelm">
+            <div className="page hold-page full-screen fixed-bg" id="windhelm">
 
                 <PageNavigation />
 

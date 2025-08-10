@@ -1,0 +1,126 @@
+.contact-edukative-page {
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 5rem;
+    color: #aaa;
+    /* color: #fff; */
+    /* background-color: #f5f7fa; */
+}
+
+.contact-edukative-page header {
+    position: relative;
+    /* padding: 2rem 1rem; */
+    padding: 3rem 1rem;
+    color: #fff;
+    text-align: center;
+    /* background-color: #1d3557; */
+}
+
+.contact-edukative-page header::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #1d3557;
+    clip-path: url("#mask-1");
+    z-index: -1;
+}
+
+.contact-edukative-page header h1 {
+    font-size: 2.5rem;
+}
+
+.contact-edukative-page header h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.8rem;
+}
+
+.contact-edukative-page header p {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 2%;
+}
+
+.contact-edukative-page main {
+    /* max-width: 900px; */
+    max-width: 1000px;
+    margin: 2rem auto;
+    /* padding: 0 1rem; */
+    padding: 0 2%;
+}
+
+.contact-edukative-page section {
+    margin-bottom: 3rem;
+}
+
+.contact-edukative-page h2 {
+    /* margin-bottom: 1rem; */
+    margin-bottom: 0.5rem;
+    /* color: #1d3557; */
+    color: #1fcbff;
+}
+
+.contact-edukative-page form {
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    /* background-color: #fff; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-edukative-page label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-edukative-page input, 
+.contact-edukative-page textarea {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+}
+
+.contact-edukative-page button {
+    padding: 0.8rem 1.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    /* border: none; */
+    border-radius: 4px;
+    background-color: #1d3557;
+    transition: color 400ms ease, 
+    background-color 400ms ease;
+    /* cursor: pointer; */
+}
+
+.contact-edukative-page button:hover {
+    color: #fff;
+    background-color: #16314f;
+}
+
+.contact-edukative-page .contact-info {
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    /* background-color: #fff; */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-edukative-page .contact-info p {
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+    .contact-edukative-page header h1 {
+        font-size: 2rem;
+    }
+}

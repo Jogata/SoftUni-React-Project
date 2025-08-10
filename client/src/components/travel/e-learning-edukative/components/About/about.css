@@ -12,7 +12,7 @@
     text-align: center;
 }
 
-header::after {
+.about-us-edukative-page header::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,8 +50,8 @@ header::after {
 }
 
 .about-us-edukative-page section h2 {
-    color: #1fcbff;
     margin-bottom: 0.5rem;
+    color: #1fcbff;
 }
 
 .about-us-edukative-page li {
