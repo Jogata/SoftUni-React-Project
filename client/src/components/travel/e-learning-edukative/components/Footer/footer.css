@@ -4,7 +4,6 @@
     margin: auto;
     padding: 3rem 0;
     color: #fff;
-    /* background-color: #000; */
     filter: drop-shadow(1px 1px 1px #fff2)
 }
 
@@ -75,10 +74,6 @@
 
 .edukative .footer-socials .icons a:hover {
     color: #1fcbff;
-}
-
-.edukative .footer-socials .footer-icon {
-    /* font-size: 32px; */
 }
 
 @media screen and (max-width: 480px) {

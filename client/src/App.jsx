@@ -33,14 +33,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
-import { Home } from './components/travel/e-learning-edukative/components/Home';
-import { Courses } from './components/travel/e-learning-edukative/components/Courses/Courses';
-import { Course } from './components/travel/e-learning-edukative/components/Course/Course';
-import { About } from './components/travel/e-learning-edukative/components/About/About';
-import { Contact } from './components/travel/e-learning-edukative/components/Contact/Contact';
-import { Footer } from './components/travel/e-learning-edukative/components/Footer/Footer';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 function Loader() {
   return (
@@ -77,6 +70,131 @@ function useFetch(url) {
 }
 
 function App() {
+  function UserForm() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+  
+    async function handleSubmit(e) {
+      // Do something with data...
+    }
+  
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+          />
+          <p>Name: {name}</p>
+        </div>
+        <div>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+          />
+          <p>Email: {email}</p>
+        </div>
+        <UserFormItems />
+      </form>
+    );
+  }
+  
+  function UserFormItems() {
+    const [isVisible, setIsVisible] = useState(true);
+    const [items, setItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const inputRef = useRef(null);
+  
+    function addItem() {
+      if (inputRef.current && inputRef.current.value) {
+        setItems([...items, inputRef.current.value]);
+        inputRef.current.value = '';
+      }
+    }
+  
+    return (
+      <div>
+        <div>
+          <button onClick={() => setIsVisible(!isVisible)}>
+            {isVisible ? 'Hide' : 'Show'} Items
+          </button>
+          {isVisible && (
+            <div>
+              <input type="text" ref={inputRef} placeholder="Add item" />
+              <button onClick={addItem}>Add Item</button>
+              <ul>
+                {items.map((item, index) => (
+                  <li key={index} onClick={() => setSelectedItem(item)}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <div>
+          <p>Selected Item: {selectedItem}</p>
+        </div>
+      </div>
+    );
+  }
+
+function DarkModeToggle() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setIsDarkMode(!isDarkMode)}>
+        Toggle Dark Mode
+      </button>
+    </div>
+  );
+}
+
+function Counter() {
+  const { count, increment, decrement } = useCount();
+
+  return (
+    <div>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <p>Count: {count}</p>
+    </div>
+  );
+}
+
+function initializeCount() {
+  const savedCount = localStorage.getItem('count');
+  return savedCount ? Number(savedCount) : 0;
+}
+
+function useCount() {
+  const [count, setCount] = useState(initializeCount);
+
+  useEffect(() => {
+    // localStorage.setItem('count', count.toString());
+  }, [count]);
+
+  const increment = useCallback(() => {
+    setCount(count + 1);
+  }, []);
+
+  const decrement = useCallback(() => {
+    setCount(count - 1);
+  }, []);
+
+  return {
+    count,
+    increment,
+    decrement,
+  };
+}
+  
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -87,17 +205,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<div className="e-learning-edukative">
-      <Navigation />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/course/:id' element={<Course />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-        </Routes>
-      <Footer />
-</div>
+        <UserForm />
+        <DarkModeToggle />
+        <Counter />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
