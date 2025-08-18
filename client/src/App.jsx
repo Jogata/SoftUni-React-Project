@@ -34,6 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation'
 
 function Loader() {
   return (
@@ -69,132 +70,7 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-function App() {
-  function UserForm() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-  
-    async function handleSubmit(e) {
-      // Do something with data...
-    }
-  
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-          />
-          <p>Name: {name}</p>
-        </div>
-        <div>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
-          <p>Email: {email}</p>
-        </div>
-        <UserFormItems />
-      </form>
-    );
-  }
-  
-  function UserFormItems() {
-    const [isVisible, setIsVisible] = useState(true);
-    const [items, setItems] = useState([]);
-    const [selectedItem, setSelectedItem] = useState(null);
-
-    const inputRef = useRef(null);
-  
-    function addItem() {
-      if (inputRef.current && inputRef.current.value) {
-        setItems([...items, inputRef.current.value]);
-        inputRef.current.value = '';
-      }
-    }
-  
-    return (
-      <div>
-        <div>
-          <button onClick={() => setIsVisible(!isVisible)}>
-            {isVisible ? 'Hide' : 'Show'} Items
-          </button>
-          {isVisible && (
-            <div>
-              <input type="text" ref={inputRef} placeholder="Add item" />
-              <button onClick={addItem}>Add Item</button>
-              <ul>
-                {items.map((item, index) => (
-                  <li key={index} onClick={() => setSelectedItem(item)}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-        <div>
-          <p>Selected Item: {selectedItem}</p>
-        </div>
-      </div>
-    );
-  }
-
-function DarkModeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  return (
-    <div>
-      <button onClick={() => setIsDarkMode(!isDarkMode)}>
-        Toggle Dark Mode
-      </button>
-    </div>
-  );
-}
-
-function Counter() {
-  const { count, increment, decrement } = useCount();
-
-  return (
-    <div>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <p>Count: {count}</p>
-    </div>
-  );
-}
-
-function initializeCount() {
-  const savedCount = localStorage.getItem('count');
-  return savedCount ? Number(savedCount) : 0;
-}
-
-function useCount() {
-  const [count, setCount] = useState(initializeCount);
-
-  useEffect(() => {
-    // localStorage.setItem('count', count.toString());
-  }, [count]);
-
-  const increment = useCallback(() => {
-    setCount(count + 1);
-  }, []);
-
-  const decrement = useCallback(() => {
-    setCount(count - 1);
-  }, []);
-
-  return {
-    count,
-    increment,
-    decrement,
-  };
-}
-  
+function App() { 
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -205,9 +81,7 @@ function useCount() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <UserForm />
-        <DarkModeToggle />
-        <Counter />
+        <Navigation />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
