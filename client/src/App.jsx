@@ -37,6 +37,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
 import { Hero1 } from './components/travel/e-learning-edukative/components/Hero/Hero';
 import { Steps1 } from './components/travel/e-learning-edukative/components/Steps/Steps';
+import { Services } from './components/travel/e-learning-edukative/components/Instructor/Instructor';
 
 function Loader() {
   return (
@@ -86,6 +87,7 @@ function App() {
         <Navigation />
         <Hero1 />
         <Steps1 />
+        <Services />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
