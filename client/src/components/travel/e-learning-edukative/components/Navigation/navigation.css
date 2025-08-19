@@ -1,4 +1,6 @@
 .tabloor-navbar {
+    max-width: 1400px;
+    margin: auto;
     padding: 1.5rem;
     color: #eee;
     display: flex;
