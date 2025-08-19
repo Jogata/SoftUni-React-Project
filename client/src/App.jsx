@@ -34,8 +34,9 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation'
-import { Hero1 } from './components/travel/e-learning-edukative/components/Hero/Hero'
+import { Navigation } from './components/travel/e-learning-edukative/components/Navigation/Navigation';
+import { Hero1 } from './components/travel/e-learning-edukative/components/Hero/Hero';
+import { Steps1 } from './components/travel/e-learning-edukative/components/Steps/Steps';
 
 function Loader() {
   return (
@@ -84,6 +85,7 @@ function App() {
 
         <Navigation />
         <Hero1 />
+        <Steps1 />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

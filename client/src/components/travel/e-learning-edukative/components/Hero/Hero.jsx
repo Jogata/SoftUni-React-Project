@@ -14,10 +14,10 @@ export function Hero1() {
                     development services.
                 </p>
                 <div className="hero-logos">
-                    <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/glovo-logo.svg" alt="" className="hero-logo" />
-                    <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/oracle-logo.svg" alt="" className="hero-logo" />
-                    <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/payoneer-logo.svg" alt="" className="hero-logo" />
-                    <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/stripe-logo.svg" alt="" className="hero-logo" />
+                    {/* <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/glovo-logo.svg" alt="" className="hero-logo" /> */}
+                    {/* <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/oracle-logo.svg" alt="" className="hero-logo" /> */}
+                    {/* <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/payoneer-logo.svg" alt="" className="hero-logo" /> */}
+                    {/* <img src="https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/4bc7a72b7765b599ee5411465aaba7ac2b9085f5/client/src/components/travel/saas-marketing/images/stripe-logo.svg" alt="" className="hero-logo" /> */}
                 </div>
             </div>
             <div className="hero-right">

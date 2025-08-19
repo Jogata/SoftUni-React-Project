@@ -1,3 +1,151 @@
+.how-it-works {
+    padding: 5rem 2%;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+}
+
+.how-it-works p {
+    margin-bottom: 40px;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.steps .step .icon-background {
+    /* display: inline-block; */
+    /* width: 30px; */
+    /* height: 30px; */
+    /* margin-bottom: 1rem; */
+    /* padding: 0.7rem; */
+    /* color: #fff; */
+    /* border-radius: 50%; */
+    /* background-color: #000; */
+}
+
+.steps .step .icon-background h2 {
+    /* font-size: 26px; */
+}
+
+.steps {
+    display: flex;
+    row-gap: 4rem;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.steps .step {
+    /* flex: 1; */
+    /* max-width: 300px; */
+    /* margin: 40px; */
+    /* text-align: center; */
+}
+
+.steps {
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.step {
+    flex: 1;
+    max-width: 380px;
+    text-align: center;
+}
+
+.step .bg {
+    position: relative;
+    z-index: -1;
+}
+
+.step .bg::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: "";
+    width: 100%;
+    border-bottom: 4px dashed #fff;
+    z-index: -1;
+}
+
+.step:first-child .bg::after, 
+.step:last-child .bg::after {
+    width: 50%;
+}
+
+.step:first-child .bg::after {
+    right: 0;
+    margin-left: auto;
+}
+
+.step .bg h2 {
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 0.6rem 1.1rem;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 50%;
+    outline: 8px solid #080a0c;
+    background-color: #159740;
+}
+
+.step h3 {
+    margin: 1rem 0;
+    /* margin-bottom: 1rem; */
+    padding: 16px 40px 0;
+    font-size: 2rem;
+}
+
+.step p {
+    margin-bottom: 0;
+    padding: 0 40px;
+    color: #666;
+    /* font-size: 1.2rem; */
+}
+
+/* .step img {
+    width: 320px;
+    height: 80px;
+    margin-top: -100px;
+    margin-left: 190px;
+    object-fit: cover;
+} */
+
+.steps .step h3 {
+    /* margin-bottom: 10px; */
+    /* color: #000; */
+    /* font-size: 1.5rem; */
+}
+
+.steps .step p {
+    /* color: #666; */
+    /* font-size: 1rem; */
+}
+
+@media screen and (max-width: 480px) {
+    /* .step img {
+        display: none;
+    } */
+    .step .bg::after {
+        content: none;
+    }
+    
+    .steps {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .steps .step h3 {
+        font-size: 20px;
+    }
+ 
+    .steps .step {
+        margin: 0;
+    }
+}
+
 .e-learning-edukative .edukative-steps-section {
     padding: 3rem 2%;
     text-align: center;
@@ -39,7 +187,7 @@
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
     .e-learning-edukative .edukative-steps {
         margin-top: 110px;
         display: flex;
