@@ -38,6 +38,7 @@ import { Navigation } from './components/travel/e-learning-edukative/components/
 import { Hero1 } from './components/travel/e-learning-edukative/components/Hero/Hero';
 import { Steps1 } from './components/travel/e-learning-edukative/components/Steps/Steps';
 import { Services } from './components/travel/e-learning-edukative/components/Instructor/Instructor';
+import { Details } from './components/travel/e-learning-edukative/components/About/About';
 
 function Loader() {
   return (
@@ -88,6 +89,7 @@ function App() {
         <Hero1 />
         <Steps1 />
         <Services />
+        <Details />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

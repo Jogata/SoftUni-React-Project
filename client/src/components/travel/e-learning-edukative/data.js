@@ -53,6 +53,29 @@ export const services = [
   },
 ];
 
+export const details = [
+  {
+    icon: "ri-phone-fill",
+    head : 'Project Planning',
+    desc : 'We collect detailed requirements from stakeholders to understand project goals, scope and constraints. We develop a detailed plan including timeline and resources and milestones',
+  },
+  {
+    icon : "fa fa-folder",
+    head: 'System Design',
+    desc: ' We create designs specifications, including user interfaces, databases and system integration points, build prototype to visualize and gather feedback'
+  },
+  {
+    icon: "fa fa-envelope",
+    head: 'Development',
+    desc: 'We write actual code to implement the features and functionalities using appropriate programming languages'
+  },
+  {
+    icon: "ri-bar-chart-2-fill",
+    head : 'Testing and Deployment',
+    desc: 'We conduct various testing phases including unit testing and useer acceptance testing to identify and fix bugs the deploy.'
+  }
+];
+
 // export const courses = [
 //     {
 //         id: 1,
