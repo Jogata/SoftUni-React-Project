@@ -8,6 +8,13 @@
 // import forex from "./images/forex.png";
 // import shake from "./images/ai-shake.png";
 
+import crm from "./images/crm.jpg";
+import finance from "./images/finance.jpg";
+import kitchen from "./images/kitchen.jpg";
+import landing from "./images/landing.jpg";
+import medical from "./images/medical.jpg";
+import staff from "./images/staff.jpg";
+
 export const services = [
   {
     icon: "ri-coin-fill",
@@ -74,6 +81,39 @@ export const details = [
     head : 'Testing and Deployment',
     desc: 'We conduct various testing phases including unit testing and useer acceptance testing to identify and fix bugs the deploy.'
   }
+];
+
+export const projects = [
+  {
+    image: medical,
+    title: 'Martins Hospital Managemeny',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
+  {
+    image: crm,
+    title: 'Oland CRM Software',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
+  {
+    image: staff,
+    title: 'Roland Staff Management',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
+  {
+    image: landing,
+    title: 'Eduka Landing Page website',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
+  {
+    image: kitchen,
+    title: 'Glory & Jane Kitchen',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
+  {
+    image: finance,
+    title: 'Charity Bank App',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+  },
 ];
 
 // export const courses = [
