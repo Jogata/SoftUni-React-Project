@@ -9,7 +9,11 @@ export function Contact() {
             <div className="contact-info">
                 <div className="contact-left">
                     <h2>Let's talk buisness</h2>
-                    <p>Type something very very catchy that will make your potential</p>
+                    <p>
+                        Type something very very catchy that will make your potential 
+                        clients send a message and make further enquiry about your 
+                        business.
+                    </p>
                     <div className="contact-details">
                         <div className="detail">
                             <i className="fa fa-envelope"></i>

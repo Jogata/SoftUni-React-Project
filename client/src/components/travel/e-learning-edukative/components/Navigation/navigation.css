@@ -68,21 +68,22 @@
 
 @media screen and (max-width: 480px) {
     .tabloor-nav-logo {
-        margin-left: -100px;
+        /* margin-left: -100px; */
     }
 
     .tabloor-navbar .tabloor-nav-links,
     .tabloor-nav-btn {
-        /* display: none; */
+        display: none;
     }
 
-    .tabloor-navbar ul {
+    .tabloor-nav-links {
+    /* .tabloor-navbar ul { */
         position: absolute;
-        display: block;
+        /* display: block; */
         /* list-style: none; */
         left: 0;
         top: 0;
-        width: 60%;
+        /* width: 60%; */
         height: 100vh;
         background-color: #fff;
         box-shadow: 
@@ -91,13 +92,27 @@
         z-index: 888;
     }
 
+    .tabloor-nav-links.open {
+        display: block;
+    }
+
+    .tabloor-nav-links ul {
+        display: block;
+        padding: 3rem;
+        text-align: center;
+    }
+
     .tabloor-navbar ul li {
-        margin-left: 20px;
+        /* margin-left: 20px; */
         width: 100%;
-        color: #424040;
+        /* color: #424040; */
         font-weight: 600;
         line-height: 70px;
         text-transform: uppercase;
+    }
+
+    .tabloor-navbar ul li a {
+        color: #424040;
     }
 
     .tabloor-navbar ul li:hover {
@@ -105,10 +120,10 @@
     }
 
     .tabloor-navbar .tabloor-toggle-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: block;
+        /* position: absolute; */
+        /* top: 20px; */
+        /* right: 20px; */
+        display: inline-block;
         color: #eee;
         font-size: 30px;
         /* border: none; */
