@@ -41,6 +41,7 @@ import { Services } from './components/travel/e-learning-edukative/components/In
 import { Details } from './components/travel/e-learning-edukative/components/About/About';
 import { Projects } from './components/travel/e-learning-edukative/components/Courses/Courses';
 import { Feedback } from './components/travel/e-learning-edukative/components/Course/Course';
+import { Contact } from './components/travel/e-learning-edukative/components/Contact/Contact'
 
 function Loader() {
   return (
@@ -94,6 +95,7 @@ function App() {
         <Details />
         <Projects />
         <Feedback />
+        <Contact />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

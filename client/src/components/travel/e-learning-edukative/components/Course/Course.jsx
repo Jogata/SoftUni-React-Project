@@ -10,7 +10,7 @@ export function Feedback() {
             <h3>Here's what our satisfied clients have to say about our work</h3>
             <div className="customers">
                 {feedback.map((feed, index) => (
-                    <div className="item">
+                    <div className="item" key={index}>
                         <div className="user">
                             <img src={feed.image} alt="" />
                             <div className="info">
