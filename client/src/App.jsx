@@ -40,6 +40,7 @@ import { Steps1 } from './components/travel/e-learning-edukative/components/Step
 import { Services } from './components/travel/e-learning-edukative/components/Instructor/Instructor';
 import { Details } from './components/travel/e-learning-edukative/components/About/About';
 import { Projects } from './components/travel/e-learning-edukative/components/Courses/Courses';
+import { Feedback } from './components/travel/e-learning-edukative/components/Course/Course';
 
 function Loader() {
   return (
@@ -92,6 +93,7 @@ function App() {
         <Services />
         <Details />
         <Projects />
+        <Feedback />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

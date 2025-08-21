@@ -116,6 +116,31 @@ export const projects = [
   },
 ];
 
+export const feedback =[
+  {
+    image: "https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/refs/heads/main/client/src/components/travel/software-company-app-softify/images/laddy1.jpg",
+    icon : "fa fa-quote-left",
+    name: 'Dianne Russell',
+    company: 'Company',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+  },
+  {
+    image: "https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/refs/heads/main/client/src/components/travel/software-company-app-softify/images/laddy1.jpg",
+    icon : "fa fa-quote-left",
+    name: 'Dianne Russell',
+    company: 'Company',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+  },
+  {
+    image: "https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/refs/heads/main/client/src/components/travel/software-company-app-softify/images/laddy1.jpg",
+    icon : "fa fa-quote-left",
+    name: 'Dianne Russell',
+    company: 'Company',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+  },
+
+];
+
 // export const courses = [
 //     {
 //         id: 1,
