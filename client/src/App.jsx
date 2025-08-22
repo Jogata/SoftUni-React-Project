@@ -33,7 +33,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Loader() {
   return (
@@ -67,6 +67,44 @@ function useFetch(url) {
   }, [url])
 
   return { loading, data, error };
+}
+
+function UncontrolledForm() {
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const subscribeRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      firstName: firstNameRef.current?.value ?? "",
+      lastName: lastNameRef.current?.value ?? "",
+      email: emailRef.current?.value ?? "",
+      subscribe: subscribeRef.current?.checked ?? false,
+      message: messageRef.current?.value ?? "",
+    };
+
+    console.log(formData);
+  };
+
+  return (
+    <div className="test">
+      <form onSubmit={handleSubmit}>
+        <input ref={firstNameRef} type="text" placeholder="First Name" />
+        <input ref={lastNameRef} type="text" placeholder="Last Name" />
+        <input ref={emailRef} type="email" placeholder="Email" />
+        <label>
+          <input ref={subscribeRef} type="checkbox" />
+          Subscribe to Newsletter
+        </label>
+        <textarea ref={messageRef} placeholder="Message" rows={10}></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
 const coursesData = [
@@ -157,6 +195,8 @@ const coursesData = [
 ]
 
 function App() { 
+  const [search, setSearch] = useState ('');
+
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -169,20 +209,27 @@ function App() {
 
       <div className="course-wrapper">
         <h2>In-Demand <span>Courses</span></h2>
-        <div className="search-input">
+        <label htmlFor='search' className="search-input">
           <i className='fa fa-search search-icon'></i>
           <input
             type="text"
             id="search"
             placeholder='Search for any course'
+            onChange={(event) => setSearch(event.target.value)}
           />
-        </div>
+        </label>
       </div>
       <div className="course-container">
-        {coursesData
-          .map(({ image, name, price, standard }) => {
+        {coursesData.filter((val) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLocaleLowerCase())) {
+            return val;
+          }
+        })
+          .map(({ id, image, name, price, standard }) => {
             return (
-              <div className="course-card">
+              <div className="course-card" key={id}>
                 <img src={image} alt="" className='course-img' />
                 <h3 className="course-name">{name}</h3>
                 <h4 className="course-price">${price}</h4>
@@ -193,6 +240,8 @@ function App() {
           })
         }
       </div>
+
+      <UncontrolledForm />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

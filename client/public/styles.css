@@ -980,9 +980,11 @@ main.max-width {
 }
 
 .course-wrapper {
-  width: 100%;
+  /* width: 100%; */
+  max-width: 1000px;
+  margin: auto;
   display: grid;
-  background-color: rgb(245, 245, 255);
+  /* background-color: rgb(245, 245, 255); */
 }
 
 .course-wrapper h2 {
@@ -997,6 +999,7 @@ main.max-width {
 }
 
 .course-container {
+  padding-bottom: 3rem;
   display: grid;
   gap: 2.5rem;
   justify-content: center;
@@ -1008,7 +1011,7 @@ main.max-width {
   padding: 2rem 0;
   text-align: center;
   border: 1px solid hsl(0, 0%, 94%);
-  background-color: #fff;
+  /* background-color: #fff; */
   transition: 300ms;
 }
 
@@ -1077,4 +1080,62 @@ main.max-width {
   .course-button {
     padding: 0.3rem 1.2rem
   }
+}
+
+.test {
+  min-height: 100vh;
+  padding: 3rem 2%;
+  display: flex;
+}
+
+.test form {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 2px 2px 2px #000, 
+          -2px -2px 2px #fff5;
+}
+
+.test form > input, 
+.test form label, 
+.test form textarea {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  color: #eee;
+  background-color: transparent;
+}
+
+.test form > input {
+  border: 1px solid transparent;
+  border-bottom: 1px solid #555;
+}
+
+.test form textarea {
+  border: 1px solid #555;
+}
+
+.test form > input, 
+.test form > textarea {
+  padding: 0.5em 1em;
+}
+
+.test form label input {
+  margin-right: 0.5rem;
+}
+
+.test form button {
+  padding: 0.5em 1.5em;
+  color: #eee;
+  font-size: 1.2rem;
+  border-radius: 4em;
+  border: 1px solid #eee;
+  transition: all 400ms;
+}
+
+.test form button:hover {
+  background-color: #eee;
 }
