@@ -2,6 +2,7 @@
 
 import "./skyrim-eastmarch-history-page.css";
 import PageNavigation from "../navigation/PageNavigation";
+import { Link } from "react-router-dom";
 
 export default function SkyrimEastmarchHistoryPage() {
     return (
@@ -40,7 +41,7 @@ export default function SkyrimEastmarchHistoryPage() {
                         <ul className="main-list">
                             <li className="sub-list">Hold Capital
                                 <ul className="bulled">
-                                    <li><a className="link" href="#">Windhelm</a></li>
+                                    <li><Link className="link" to="/skyrim-windhelm">Windhelm</Link></li>
                                     <li>Palace of the Kings</li>
                                     <li>Windhelm Stables</li>
                                 </ul>

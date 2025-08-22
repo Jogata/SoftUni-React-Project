@@ -92,6 +92,17 @@ export default function SkyrimHoldsPage() {
   return (
     <>
       <div className="page full-screen">
+        <div className="carousel-images">
+          <img className={classes[0]} src="/skyrim/holds/Eastmarch-bg.jpg" />
+          <img className={classes[1]} src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
+          <img className={classes[2]} src="/skyrim/holds/Haafingar-2.jpg" />
+          <img className={classes[3]} src="/skyrim/holds/Hjaalmarch.png" />
+          <img className={classes[4]} src="/skyrim/holds/The-Pale-bg-1-copy.jpg" />
+          <img className={classes[5]} src="/skyrim/holds/the-Reach-bg-copy.jpg" />
+          <img className={classes[6]} src="/skyrim/holds/the-rift-copy.jpg" />
+          <img className={classes[7]} src="/skyrim/holds/whiterun-hold-bg.png" />
+          <img className={classes[8]} src="/skyrim/holds/Winterhold-region.jpg" />
+        </div>
 
         <PageNavigation />
         
@@ -101,7 +112,7 @@ export default function SkyrimHoldsPage() {
 
             <div className="slider">
               <div className={classes[0]}>
-                <img src="/skyrim/holds/Eastmarch-bg.jpg" />
+                {/* <img src="/skyrim/holds/Eastmarch-bg.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Eastmarch</div>
@@ -115,7 +126,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[1]} id="relative">
-                <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
+                {/* <img src="/skyrim/holds/Falkreath-hold-copy.jpeg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Falkreath</div>
@@ -129,7 +140,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[2]}>
-                <img src="/skyrim/holds/Haafingar-2.jpg" />
+                {/* <img src="/skyrim/holds/Haafingar-2.jpg" /> */}
                 {/* <!-- <img src="/skyrim/holds/Haafingar-3a.jpg"> --> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
@@ -144,7 +155,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[3]}>
-                <img src="/skyrim/holds/Hjaalmarch.png" />
+                {/* <img src="/skyrim/holds/Hjaalmarch.png" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Hjaalmarch</div>
@@ -158,7 +169,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[4]}>
-                <img src="/skyrim/holds/The-Pale-bg-1-copy.jpg" />
+                {/* <img src="/skyrim/holds/The-Pale-bg-1-copy.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">The Pale</div>
@@ -172,7 +183,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[5]}>
-                <img src="/skyrim/holds/the-Reach-bg-copy.jpg" />
+                {/* <img src="/skyrim/holds/the-Reach-bg-copy.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">The Reach</div>
@@ -186,7 +197,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[6]}>
-                <img src="/skyrim/holds/the-rift-copy.jpg" />
+                {/* <img src="/skyrim/holds/the-rift-copy.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">The Rift</div>
@@ -200,7 +211,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[7]}>
-                <img src="/skyrim/holds/whiterun-hold-bg.png" />
+                {/* <img src="/skyrim/holds/whiterun-hold-bg.png" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Whiterun hold</div>
@@ -214,7 +225,7 @@ export default function SkyrimHoldsPage() {
                 </div>
               </div>
               <div className={classes[8]}>
-                <img src="/skyrim/holds/Winterhold-region.jpg" />
+                {/* <img src="/skyrim/holds/Winterhold-region.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Winterhold</div>
