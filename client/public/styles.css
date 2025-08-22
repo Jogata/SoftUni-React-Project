@@ -955,3 +955,126 @@ main.max-width {
   margin: 1rem 0 2rem;
   padding: 0.6em 1em;
 }
+
+
+.search-input {
+  margin-top: 20px;
+}
+
+.search-input input {
+  position: relative;
+  margin-left: 75px;
+  margin-bottom: 30px;
+  padding: 1rem 14rem;
+  border-radius: 30px;
+  border: 1px solid #666;
+}
+
+.search-input .search-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 90px;
+  color: blue;
+  font-size: 30px;
+  z-index: 1000;
+}
+
+.course-wrapper {
+  width: 100%;
+  display: grid;
+  background-color: rgb(245, 245, 255);
+}
+
+.course-wrapper h2 {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-left: 90px;
+  font-size: 35px;
+}
+
+.course-wrapper h2 span {
+  color: rgb(59, 59, 223);
+}
+
+.course-container {
+  display: grid;
+  gap: 2.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(4, 250px);
+}
+
+.course-card {
+  position: relative;
+  padding: 2rem 0;
+  text-align: center;
+  border: 1px solid hsl(0, 0%, 94%);
+  background-color: #fff;
+  transition: 300ms;
+}
+
+.course-img {
+  height: 125px;
+  margin-bottom: 1rem;
+}
+
+.course-name,
+.course-price,
+.course-standard {
+  margin-left: 10px;
+  text-align: start;
+}
+
+.course-name {
+  margin-bottom: .5rem;
+}
+
+.course-price {
+  display: block;
+  margin-bottom: 1rem;
+  color: rgb(59, 59, 223);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.course-standard {
+  color: #8d8c8c;
+  font-size: 16px;
+}
+
+.course-standard .analytics {
+  margin-right: 5px;
+  color: black;
+  font-size: 18px;
+}
+
+.course-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0.5rem 1.8rem;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 30px;
+  background-color: #0041C2;
+  transition: 300ms;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 32px hsla(0, 0%, 10%, .1);
+}
+
+@media (max-width: 480px) {
+  .course-container {
+    justify-content: center;
+    grid-template-columns: repeat(2, 130px);
+  }
+
+  .course-name {
+    font-size: 16px;
+  }
+
+  .course-button {
+    padding: 0.3rem 1.2rem
+  }
+}
