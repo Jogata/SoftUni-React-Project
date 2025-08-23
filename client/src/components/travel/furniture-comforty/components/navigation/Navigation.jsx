@@ -1,6 +1,29 @@
-// import { Armchair, Check, Heart, Info, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./navigation.css";
+
+export function Navigation1() {
+    return (
+        <nav className="navigation">
+            <div className="nav-logo">
+                <h2>FURNITURE</h2>
+            </div>
+            <div className="link">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div className="nav-icon">
+                <button>
+                    <i className="fa fa-shopping-cart icon"></i>
+                </button>
+                <i className="fa fa-user-o icon"></i>
+            </div>
+        </nav>
+    )
+}
 
 export function Navigation() {
     return (

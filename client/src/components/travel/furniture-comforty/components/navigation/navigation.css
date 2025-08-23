@@ -1,4 +1,64 @@
-.header .top {
+a {
+    color: inherit;
+}
+
+.navigation {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+}
+
+.nav-logo h2 {
+    font-size: 1.5rem;
+}
+
+.link ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.link ul li {
+    color: #2b1e0d;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 400ms;
+    /* cursor: pointer; */
+}
+
+.link ul li:hover {
+    color: cornflowerblue;
+}
+
+.nav-icon {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-icon .icon {
+    font-size: 26px;
+    transition: color 400ms;
+}
+
+.nav-icon .icon:hover {
+    color: cornflowerblue;
+}
+
+/* .navigation.active{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #fca120;
+    box-shadow: -1px 11px 24px -11px rgba(0, 0, 0, 0.75);
+    transition: 500ms;
+    z-index: 1000;
+} */
+    
+
+
+/* .header .top {
     background-color: #272343;
 }
 
@@ -225,4 +285,4 @@
 
 .header .bottom .contact span {
     color: #272343;
-}
+} */
