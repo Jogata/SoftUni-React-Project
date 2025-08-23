@@ -3,6 +3,8 @@ a {
 }
 
 .navigation {
+    max-width: 1600px;
+    margin: auto;
     padding: 1.5rem;
     display: flex;
     align-items: center;
