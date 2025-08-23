@@ -71,9 +71,118 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-function App() { 
-  const [search, setSearch] = useState ('');
+const ProductInfo = ({ product }) => {
+  const { name, description, price, rating, imageUrl } = product;
 
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          className={`${i < rating ? "yellow" : "gray"}`}
+        >
+          &#9733;
+        </span>
+      );
+    }
+    return stars;
+  };
+
+  return (
+    <div className="test-card">
+      <img
+        src={imageUrl}
+        alt={name}
+      />
+
+      <div className="info">
+        <h2>{name}</h2>
+
+        <p className="description">{description}</p>
+
+        <p className="price">{price}</p>
+
+        <div className="stars">{renderStars(rating)}</div>
+      </div>
+    </div>
+  );
+};
+
+const RenderList = ({
+  data,
+  resourceName,
+  dataToRender: ItemComponent,
+}) => {
+  return (
+    <div className="product-list">
+      {data.map((item, i) => (
+        <ItemComponent key={i} {...{ [resourceName]: item }} />
+      ))}
+    </div>
+  );
+};
+
+const electronics = [
+  {
+    name: "Smartphone XYZ",
+    description:
+      "Latest model with 5G connectivity and exceptional camera quality.",
+    price: "$799.99",
+    rating: 4.5,
+    imageUrl:
+      "https://images.unsplash.com/photo-1502096472573-eaac515392c6?q=80&w=3600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "4K Ultra HD TV",
+    description: "120Hz refresh rate with stunning color accuracy and clarity.",
+    price: "$1,299.99",
+    rating: 4.7,
+    imageUrl:
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2957&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+const clothing = [
+  {
+    name: "Casual Shirt",
+    description: "Comfortable and stylish shirt for daily wear.",
+    price: "$29.99",
+    rating: 3.3,
+    imageUrl:
+      "https://images.unsplash.com/photo-1603252110971-b8a57087be18?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "Jeans",
+    description: "Slim fit jeans with stretch for comfort and style.",
+    price: "$49.99",
+    rating: 4.6,
+    imageUrl:
+      "https://images.unsplash.com/photo-1479492591199-eb2492814e73?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+const homeGoods = [
+  {
+    name: "Dining Table Set",
+    description: "Modern wooden dining table with 6 chairs.",
+    price: "$499.99",
+    rating: 4.8,
+    imageUrl:
+      "https://images.unsplash.com/photo-1586718520679-67716c8f1b9b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "Air Purifier",
+    description:
+      "Keep your home air clean with this high-performance air purifier.",
+    price: "$199.99",
+    rating: 4.4,
+    imageUrl:
+      "https://images.unsplash.com/photo-1565536076053-784a322e08eb?q=80&w=3857&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+function App() {
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -84,8 +193,28 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Navigation1 />
-        <Home />
+        {/* <Navigation1 /> */}
+        {/* <Home /> */}
+
+    <div className="test-cont">
+      <RenderList
+        data={electronics}
+        resourceName="product"
+        dataToRender={ProductInfo}
+      />
+
+      <RenderList
+        data={clothing}
+        resourceName="product"
+        dataToRender={ProductInfo}
+      />
+
+      <RenderList
+        data={homeGoods}
+        resourceName="product"
+        dataToRender={ProductInfo}
+      />
+    </div>
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
