@@ -9,8 +9,9 @@ export function Hero() {
             <div className="hero-text">
                 <h1>Discover Elegance and Comfort in Every Piece</h1>
                 <p>
-                    Welcome to Furniture , where craftmanship meets .. to 
-                    transform your living spaces into heaven of comfort and s..
+                    Welcome to Furniture , where craftmanship meets style. Our collection 
+                    features exquisite furniture designed to transform your living spaces 
+                    into haven of comfort and sophistication.
                 </p>
             </div>
             <button>View Products</button>

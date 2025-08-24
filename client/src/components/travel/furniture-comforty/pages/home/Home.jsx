@@ -7,12 +7,18 @@
 // import { Clients } from "../../components/clients/Clients";
 // import { Recent } from "../../components/recent/Recent";
 
+import { useState } from "react";
 import { Hero } from "../../components/banner/Banner";
+import { Explore } from "../../components/brand/Brand";
 
 export function Home() {
+    const [selectedCategory, setSelectedCategory ] = useState("All");
+    // console.log(selectedCategory);
+
     return (
         <>
             <Hero />
+            <Explore selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             {/* <Banner />
             <Delivery />
             <Brand />
