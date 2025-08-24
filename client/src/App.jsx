@@ -34,9 +34,9 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
+import { AuthCont } from './components/travel/furniture-comforty/components/AuthCont/AuthCont';
 import { Navigation1 } from './components/travel/furniture-comforty/components/navigation/Navigation';
-import { Home } from './components/travel/furniture-comforty/pages/home/Home'
-import { AuthCont } from './components/travel/furniture-comforty/components/AuthCont/AuthCont'
+import { Home } from './components/travel/furniture-comforty/pages/home/Home';
 
 function Loader() {
   return (
@@ -85,7 +85,12 @@ function App() {
 
 <AuthCont>
         <Navigation1 />
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          {/* <Route path='/products' element={<Products1 />} /> */}
+          {/* <Route path='/training' element={<Training />} /> */}
+          {/* <Route path='/contact' element={<Contact />} /> */}
+        </Routes>
 </AuthCont>
 
       {/* <Routes>

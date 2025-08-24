@@ -10,6 +10,7 @@
 import { useState } from "react";
 import { Hero } from "../../components/banner/Banner";
 import { Explore } from "../../components/brand/Brand";
+import { Products1 } from "../../components/products/Products";
 
 export function Home() {
     const [selectedCategory, setSelectedCategory ] = useState("All");
@@ -19,6 +20,7 @@ export function Home() {
         <>
             <Hero />
             <Explore selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <Products1 selectedCategory={selectedCategory} />
             {/* <Banner />
             <Delivery />
             <Brand />

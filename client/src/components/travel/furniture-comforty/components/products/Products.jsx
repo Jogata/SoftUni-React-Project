@@ -1,5 +1,40 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { userContext } from "../AuthCont/AuthCont";
 import "./products.css";
+
+export function Products1({ selectedCategory }) {
+    const { products } = useContext(userContext);
+    // console.log(products);
+    let filtered = products;
+
+    if (selectedCategory !== "All") {
+        filtered = [...products].filter(product => product.category === selectedCategory);
+    }
+
+    return (
+        <div className="products-test">
+            <div className="product-items">
+                {filtered.map(product => {
+                    // console.log(product);
+                    const { id, image, name, price } = product;
+
+                    return (
+                        <div className="item" key={id}>
+                            <img src={image} alt={name} />
+                            <div className="product-info">
+                                <h4>{name}</h4>
+                                <p>${price}</p>
+                                <button>Buy</button>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
+
+
 
 export function Products() {
     const [active, setActive] = useState({

@@ -267,7 +267,7 @@ const data = [
     },
     {
         id: 20,
-        name: "Rable",
+        name: "Table",
         image: table_4,
         price: 18,
         category: "Table",
@@ -339,7 +339,7 @@ const data = [
     },
     {
         id: 26,
-        name: "Rable",
+        name: "Table",
         image: table_5,
         price: 18,
         category: "Table",
@@ -411,7 +411,7 @@ const data = [
     },
     {
         id: 32,
-        name: "Rable",
+        name: "Table",
         image: table_6,
         price: 18,
         category: "Table",
