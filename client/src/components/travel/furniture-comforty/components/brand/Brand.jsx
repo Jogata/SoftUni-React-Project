@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./brand.css";
+import { userContext } from "../AuthCont/AuthCont";
 
 const productCategoryList = [
     {
@@ -33,6 +35,10 @@ export function Explore({ selectedCategory, setSelectedCategory }) {
     }
 
     const classes = selectedCategory == category.name ? "menu-list-item active" : "menu-list-item";
+
+
+    const { products } = useContext(userContext);
+    console.log(products);
 
     return (
         <div className="explore-menu">
