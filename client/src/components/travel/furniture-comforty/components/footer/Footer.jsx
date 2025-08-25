@@ -1,52 +1,6 @@
 import { Link } from "react-router-dom";
 import "./footer.css";
 
-export function Footer1() {
-    return (
-        <div>
-            <div className='footer'>
-                <div className="footer-content">
-                    <div className="footer-content-left">
-                        <h2>FURNITURE</h2>
-                        <p>
-                            From beginners to advanced learners, find courses
-                            that fit your level and interests. Invest in your
-                            growth with our comprehensive e-learning platform.
-                        </p>
-                    </div>
-                    <div className="footer-content-center">
-                        <h2>COMPANY</h2>
-                        <ul>
-                            <li>Home</li>
-                            <li>About Us</li>
-                            <li>Products</li>
-                            <li>Privacy policy</li>
-                        </ul>
-                    </div>
-                    <div className="footer-content-right">
-                        <h2>GET IN TOUCH</h2>
-                        <ul>
-                            <li>Phone: (123) 456-7890</li>
-                            <li>Email: support@furniture.com</li>
-                            <li>Address: 123 Business St, Suite 100, City, State</li>
-                        </ul>
-                    </div>
-                    <div className="footer-social-icons">
-                        <h2>CONNECT WITH US</h2>
-                        <i className="fa fa-facebook"></i>
-                        <i className="fa fa-twitter"></i>
-                        <i className="fa fa-linkedin"></i>
-                    </div>
-                </div>
-                <hr />
-                <p className="footer-copyright">
-                    Copyright &copy; 2024 Company. All right Reserved
-                </p>
-            </div>
-        </div>
-    )
-}
-
 export function Footer() {
     return (
         <footer className="max-width">

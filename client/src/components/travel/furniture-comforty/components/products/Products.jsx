@@ -1,99 +1,5 @@
-import { useContext, useRef, useState } from "react";
-import { userContext } from "../AuthCont/AuthCont";
+import { useState } from "react";
 import "./products.css";
-import { Link, useParams } from "react-router-dom";
-
-export function Products1({ selectedCategory }) {
-    const { products } = useContext(userContext);
-    let filtered = products;
-
-    if (selectedCategory !== "All") {
-        filtered = [...products].filter(product => product.category === selectedCategory);
-    }
-
-    return (
-        <div className="products-test">
-            <div className="product-items">
-                {filtered.map(product => <Product product={product} key={product.id} />)}
-            </div>
-        </div>
-    )
-}
-
-
-function Product({product}) {
-    const link = useRef(null);
-    const { id, image, name, price } = product;
-
-    return (
-        <div className="item" onClick={() => link.current.click()}>
-            <Link to={`/product/${id}`} ref={link} />
-            <img src={image} alt={name} />
-            <div className="product-info">
-                <h4>{name}</h4>
-                <p>${price}</p>
-                <button>Buy</button>
-            </div>
-        </div>
-    )
-}
-
-export function ProductDetails() {
-    const { id } = useParams();
-    const { products } = useContext(userContext);
-
-    const product = products.find(product => product.id == id);
-
-    return (
-        <div className="product-details">
-            <div className="details-top">
-                <div className="details-left">
-                    <img src={product.image} alt={product.name} />
-                </div>
-                <div className="details-right">
-                    <h1 className="name">{product.name}</h1>
-                    <hr />
-                    <p>
-                        {product.productDetail.description}
-                    </p>
-                    <h3 className="price">
-                        Price : ${product.price}
-                    </h3>
-                    <p className="shipping">
-                        <i className="fa fa-truck truck"></i>
-                        <span>Free Shipping & Return : </span>
-                        {product.productDetail.shipping}
-                    </p>
-                    <p className="delivery">
-                        <i className="fa fa-clock-o truck"></i> 
-                        <span>Estimated Delivery: </span>
-                        {product.productDetail.delivery}
-                    </p>
-                    <div className="star-icons">
-                        <i className="fa fa-star star-icon"></i>
-                        <i className="fa fa-star star-icon"></i>
-                        <i className="fa fa-star star-icon"></i>
-                        <i className="fa fa-star star-icon"></i>
-                        <i className="fa fa-star-half star-icon"></i>
-                    </div>
-                    <div className="btns">
-                        <button>ADD TO CART</button>
-                        <button>BUY NOW</button>
-                    </div>
-                </div>
-            </div>
-            <div className="product-description">
-                <h2>Product Description</h2>
-                <hr />
-                <p>
-                    {product.productDetail.description}
-                </p>
-            </div>
-        </div>
-    )
-}
-
-
 
 export function Products() {
     const [active, setActive] = useState({
@@ -306,11 +212,9 @@ export function Products() {
     const filteredProducts = active.product === "all" ? products : (
         products.filter(product => product.product == active?.product)
     );
-    // console.log(filteredProducts);
 
     return (
         <div className="products max-width">
-            {/* <div className="header"> */}
             <h3>our products</h3>
 
             <div className="categories">
@@ -327,7 +231,6 @@ export function Products() {
                     ))
                 }
             </div>
-            {/* </div> */}
 
             <div className="products-list">
                 {

@@ -34,11 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { AuthCont } from './components/travel/furniture-comforty/components/AuthCont/AuthCont';
-import { Navigation1 } from './components/travel/furniture-comforty/components/navigation/Navigation';
-import { Home } from './components/travel/furniture-comforty/pages/home/Home';
-import { ProductDetails } from './components/travel/furniture-comforty/components/products/Products';
-import { Footer1 } from './components/travel/furniture-comforty/components/footer/Footer';
+import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
 
 function Loader() {
   return (
@@ -85,16 +81,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<AuthCont>
-        <Navigation1 />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/product/:id' element={<ProductDetails />} />
-          {/* <Route path='/training' element={<Training />} /> */}
-          {/* <Route path='/contact' element={<Contact />} /> */}
-        </Routes>
-        <Footer1 />
-</AuthCont>
+        <Navigation2 />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

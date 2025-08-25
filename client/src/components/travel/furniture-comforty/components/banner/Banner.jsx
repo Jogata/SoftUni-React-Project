@@ -1,23 +1,5 @@
 import { useEffect, useState } from "react";
 import "./banner.css";
-import hero from "../../images/test/hero-furniture.jpg";
-
-export function Hero() {
-    return (
-        <div className="hero">
-            <img src={hero} alt="" />
-            <div className="hero-text">
-                <h1>Discover Elegance and Comfort in Every Piece</h1>
-                <p>
-                    Welcome to Furniture , where craftmanship meets style. Our collection 
-                    features exquisite furniture designed to transform your living spaces 
-                    into haven of comfort and sophistication.
-                </p>
-            </div>
-            <button>View Products</button>
-        </div>
-    )
-}
 
 export function Banner() {
     const products = [
