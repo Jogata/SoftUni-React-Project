@@ -38,6 +38,7 @@ import { AuthCont } from './components/travel/furniture-comforty/components/Auth
 import { Navigation1 } from './components/travel/furniture-comforty/components/navigation/Navigation';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
 import { ProductDetails } from './components/travel/furniture-comforty/components/products/Products';
+import { Footer1 } from './components/travel/furniture-comforty/components/footer/Footer';
 
 function Loader() {
   return (
@@ -92,6 +93,7 @@ function App() {
           {/* <Route path='/training' element={<Training />} /> */}
           {/* <Route path='/contact' element={<Contact />} /> */}
         </Routes>
+        <Footer1 />
 </AuthCont>
 
       {/* <Routes>
