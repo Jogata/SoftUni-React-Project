@@ -37,6 +37,7 @@ import { useEffect, useState } from 'react';
 import { AuthCont } from './components/travel/furniture-comforty/components/AuthCont/AuthCont';
 import { Navigation1 } from './components/travel/furniture-comforty/components/navigation/Navigation';
 import { Home } from './components/travel/furniture-comforty/pages/home/Home';
+import { ProductDetails } from './components/travel/furniture-comforty/components/products/Products';
 
 function Loader() {
   return (
@@ -87,7 +88,7 @@ function App() {
         <Navigation1 />
         <Routes>
           <Route path='/' element={<Home />} />
-          {/* <Route path='/products' element={<Products1 />} /> */}
+          <Route path='/product/:id' element={<ProductDetails />} />
           {/* <Route path='/training' element={<Training />} /> */}
           {/* <Route path='/contact' element={<Contact />} /> */}
         </Routes>

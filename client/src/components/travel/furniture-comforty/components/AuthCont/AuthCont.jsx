@@ -87,7 +87,7 @@ const data = [
     },
     {
         id: 5,
-        name: "Costume made Light",
+        name: "Custom Made Light",
         image: chandalier_1,
         price: 12,
         category: "Lightning",
