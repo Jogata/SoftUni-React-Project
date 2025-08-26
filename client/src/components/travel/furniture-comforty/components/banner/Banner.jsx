@@ -1,5 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./banner.css";
+
+export function Hero() {
+    const [num, setNum] = useState(0);
+    const tnRef = useRef();
+    // let outnum = 20;
+    console.log(typeof tnRef.current);
+    // console.log(outnum);
+    function test() {
+        // const num = 2 + 2;
+        // console.log(num);
+        // outnum += num;
+        // console.log(2);
+        console.log(tnRef);
+        console.log(typeof tnRef.current);
+    }
+    test();
+    return (
+        <div className="hero">
+            <input type="text" ref={tnRef} />
+            <div className="hero-content">
+                <h1>Welcome to BlogWise</h1>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Nobis fugit numquam aperiam eveniet dolore excepturi
+                    veniam quod architecto modi, expedita eligendi sit neque 
+                    perspiciatis recusandae.
+                </p>
+                <button className="cta-button" onClick={() => setNum(num + 1)}>Read Our Latest Blog Post</button>
+                <button className="cta-button" onClick={test}>Read Our Latest Blog Post</button>
+            </div>
+        </div>
+    )
+}
 
 export function Banner() {
     const products = [
