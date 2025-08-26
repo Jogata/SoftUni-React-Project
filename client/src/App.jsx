@@ -36,6 +36,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
 import { Home } from './components/travel/furniture-comforty/pages/home/Home'
+import { BlogContextProvider } from './components/travel/furniture-comforty/components/AuthCont/AuthCont'
 
 function Loader() {
   return (
@@ -82,8 +83,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+<BlogContextProvider>
         <Navigation2 />
         <Home />
+</BlogContextProvider>
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
