@@ -1,6 +1,53 @@
 import { useRef } from "react";
 import "./categories.css";
 
+const topics = [
+    {
+        title: "Politics",
+    },
+    {
+        title: "Health",
+    },
+    {
+        title: "Entertainment",
+    },
+    {
+        title: "Business",
+    },
+    {
+        title: "Tech",
+    },
+    {
+        title: "Sport",
+    },
+]
+
+export function Topics({topic, setTopic}) {
+    return (
+        <div className="topics-section">
+            <h1>Here are trending topics</h1>
+            <div className="topics">
+                {topics.map((item, index) => {
+                    const boxClass = topic === item.title ? "btn-box active" : "btn-box";
+                    return (
+                        <div 
+                            key={index} 
+                            className="topic" 
+                            onClick={() => setTopic((prev) => (prev === item.title ? "All" : item.title))}
+                        >
+                            <div className={boxClass} >
+                                <button className="topic-button">
+                                    <span>{item.title}</span>
+                                </button>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
+
 export function Categories() {
     const categories = [
         {

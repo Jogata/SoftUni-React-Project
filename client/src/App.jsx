@@ -35,6 +35,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
+import { Home } from './components/travel/furniture-comforty/pages/home/Home'
 
 function Loader() {
   return (
@@ -82,6 +83,7 @@ function App() {
         </Routes> */}
 
         <Navigation2 />
+        <Home />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
