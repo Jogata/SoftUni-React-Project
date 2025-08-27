@@ -34,9 +34,10 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
+import { BlogContextProvider } from './components/travel/furniture-comforty/components/AuthCont/AuthCont'
 import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
 import { Home } from './components/travel/furniture-comforty/pages/home/Home'
-import { BlogContextProvider } from './components/travel/furniture-comforty/components/AuthCont/AuthCont'
+import { Subscribe } from './components/travel/furniture-comforty/components/delivery/Delivery'
 
 function Loader() {
   return (
@@ -86,6 +87,7 @@ function App() {
 <BlogContextProvider>
         <Navigation2 />
         <Home />
+        <Subscribe />
 </BlogContextProvider>
 
       {/* <Routes>

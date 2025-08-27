@@ -1,5 +1,20 @@
-// import { Clock3, Percent, ShieldCheck, Truck } from "lucide-react";
 import "./delivery.css";
+
+export function Subscribe() {
+    return (
+        <div className="subscribe">
+            <div className="left">
+                <h3>Subscribe to</h3>
+                <h2>Our Newsletter</h2>
+            </div>
+            <div className="right">
+                <input type="text" placeholder="Enter Email" />
+                <button>Subscribe</button>
+            </div>
+        </div>
+    )
+}
+
 
 export function Delivery() {
     return (

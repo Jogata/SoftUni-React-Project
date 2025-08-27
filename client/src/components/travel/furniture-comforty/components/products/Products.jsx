@@ -38,7 +38,6 @@ export function Blog({ blog }) {
 
     return (
         <div className="blog">
-            <Link to={`/blog/${blog.id}`} className="link" />
             <img src={blog_image} alt="" />
             <div className="info">
                 <div className="category">
@@ -50,6 +49,7 @@ export function Blog({ blog }) {
                     <p> <i className="fa fa-eye icon"></i>10k views</p>
                 </div>
                 <span>Read More <i className="fa fa-angle-double-right"></i></span>
+                <Link to={`/blog/${blog.id}`} className="link" />
             </div>
         </div>
     )
