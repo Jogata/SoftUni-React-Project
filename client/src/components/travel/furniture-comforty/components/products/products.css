@@ -1,4 +1,105 @@
-.products {
+.blogs-section {
+    max-width: 1600px;
+    margin: auto;
+    /* padding: 60px 85px; */
+    padding: 5rem 1rem;
+    background-color: hsl(0, 0%, 99%);
+}
+
+.blogs-section .blogs {
+    display: grid;
+    gap: 40px;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.blog {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    /* width: 90%; */
+    display: flex;
+    flex-direction: column;
+    /* border-bottom: 4px solid transparent; */
+    background-color: #fff;
+    box-shadow: 0 5px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    /* cursor: pointer; */
+}
+
+.blog .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #0005; */
+    /* border-bottom: 4px solid transparent; */
+    z-index: 1;
+}
+
+.blog img {
+    display: inline-block;
+    /* width: 100%; */
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.9s ease-in-out;
+}
+
+.blog:hover img {
+    transform: rotateY(360deg);
+}
+
+.blog .info {
+    flex: 1;
+    padding: 20px 32px 42px;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    /* text-align: start; */
+}
+
+.blog .info h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.details {
+    margin-top: auto;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details .icon {
+    margin-bottom: -3px;
+}
+
+.info span {
+    /* margin-left: 130px; */
+    margin-top: 24px;
+    margin-left: auto;
+    border-bottom: 2px solid purple;
+}
+
+@media screen and (min-width: 900px) {
+    .blogs-section .blogs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .blogs-section .blogs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+/* .products {
     padding: 1rem 2%;
 }
 
@@ -97,4 +198,4 @@
 
 .product .content .prices .current {
     color: #9a9caa;
-}
+} */

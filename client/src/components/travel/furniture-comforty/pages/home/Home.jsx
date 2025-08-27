@@ -7,20 +7,19 @@
 // import { Clients } from "../../components/clients/Clients";
 // import { Recent } from "../../components/recent/Recent";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Hero } from "../../components/banner/Banner";
 import { Topics } from "../../components/categories/Categories";
-import { BlogContext } from "../../components/AuthCont/AuthCont";
+import { Blogs } from "../../components/products/Products";
 
 export function Home() {
     const [topic, setTopic] = useState("All");
-    const {blogs} = useContext(BlogContext);
-    console.log(blogs);
 
     return (
         <>
             <Hero />
             <Topics topic={topic} setTopic={setTopic} />
+            <Blogs topic={topic} />
             {/* <Banner />
             <Delivery />
             <Brand />

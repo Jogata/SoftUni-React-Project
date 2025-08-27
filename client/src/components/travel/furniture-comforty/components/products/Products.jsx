@@ -1,5 +1,59 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./products.css";
+
+import { BlogContext } from "../AuthCont/AuthCont";
+import { Link } from "react-router-dom";
+
+export function Blogs({topic}) { 
+  const {blogs} = useContext(BlogContext);
+
+  let filtered = blogs;
+
+  if (topic !== "All") {
+    filtered = [...filtered].filter(blog => topic === blog.category);
+  }
+
+  return (
+    <div>
+      <div className="blogs-section">
+        <div className="blogs">
+          {filtered.map((blog) => {
+            // if(topic === "All" || topic === blog.category) {
+              return (
+                // <Link to={`/blog/${blog.id}`} key={blog.id}>
+                  <Blog blog={blog} key={blog.id}/>
+                // </Link>
+              )
+            // }
+            // return null
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function Blog({ blog }) {
+    const { blog_image, title, category } = blog;
+
+    return (
+        <div className="blog">
+            <Link to={`/blog/${blog.id}`} className="link" />
+            <img src={blog_image} alt="" />
+            <div className="info">
+                <div className="category">
+                    <p> # {category} </p>
+                </div>
+                <h4>{title}</h4>
+                <div className="details">
+                    <p> <i className="fa fa-clock-o icon"></i>3 mins read</p>
+                    <p> <i className="fa fa-eye icon"></i>10k views</p>
+                </div>
+                <span>Read More <i className="fa fa-angle-double-right"></i></span>
+            </div>
+        </div>
+    )
+}
 
 export function Products() {
     const [active, setActive] = useState({
