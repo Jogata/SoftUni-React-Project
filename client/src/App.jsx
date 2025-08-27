@@ -38,6 +38,7 @@ import { BlogContextProvider } from './components/travel/furniture-comforty/comp
 import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
 import { Home } from './components/travel/furniture-comforty/pages/home/Home'
 import { Subscribe } from './components/travel/furniture-comforty/components/delivery/Delivery'
+import { Footer } from './components/travel/furniture-comforty/components/footer/Footer'
 
 function Loader() {
   return (
@@ -84,11 +85,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<BlogContextProvider>
         <Navigation2 />
+<BlogContextProvider>
         <Home />
-        <Subscribe />
 </BlogContextProvider>
+        <Subscribe />
+        <Footer />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

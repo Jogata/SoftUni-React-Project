@@ -1,4 +1,108 @@
-footer .header {
+.footer {
+    margin-top: 3rem;
+    /* padding: 10px ; */
+    /* padding: 70px; */
+    padding: 3rem 1rem 2rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    background-color: #000;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+}
+
+.footer-content-left h2 {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.footer-content-left, 
+.footer-content-center, 
+.footer-content-right{
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    /* align-items: start; */
+    flex-direction: column;
+}
+
+.footer-content li {
+    /* list-style: none; */
+    margin-bottom: 10px;
+    transition: all 400ms;
+    cursor: pointer;
+}
+
+.footer-content li:hover {
+    /* margin-left: 10px; */
+    color: red;
+    transform: translateX(10px);
+}
+
+.footer-content h2 {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.footer-content-center h2::before, 
+.footer-social-icons h2::before, 
+.footer-content-right h2::before {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    width: 65px;
+    height: 2px;
+    /* margin-top: 38px; */
+    background-color: red;
+}
+
+.footer-social-icons {
+    flex: 1;
+}
+
+.footer-social-icons ul {
+    margin-top: 40px;
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social-icons ul .icon {
+    font-size: 35px;
+    color: #fff;
+}
+
+.footer hr {
+    width: 100%;
+    height: 2px;
+    margin: 10px 0;
+    background-color: grey;
+    /* border: none; */
+}
+
+@media (max-width: 750px) {
+    .footer-content {
+        display: flex;
+        gap: 35px;
+        flex-direction: column;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+}
+
+/* footer .header {
     padding: 2rem 2%;
     display: flex;
     gap: 2rem 4rem;
@@ -148,4 +252,4 @@ footer .copyright .icons span i {
     footer .header .col.newsletter input {
         min-width: 100%;
     }    
-}
+} */

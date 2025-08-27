@@ -4,33 +4,28 @@ import "./products.css";
 import { BlogContext } from "../AuthCont/AuthCont";
 import { Link } from "react-router-dom";
 
-export function Blogs({topic}) { 
-  const {blogs} = useContext(BlogContext);
+export function Blogs({ topic }) {
+    const { blogs } = useContext(BlogContext);
 
-  let filtered = blogs;
+    let filtered = blogs;
 
-  if (topic !== "All") {
-    filtered = [...filtered].filter(blog => topic === blog.category);
-  }
+    if (topic !== "All") {
+        filtered = [...filtered].filter(blog => topic === blog.category);
+    }
 
-  return (
-    <div>
-      <div className="blogs-section">
-        <div className="blogs">
-          {filtered.map((blog) => {
-            // if(topic === "All" || topic === blog.category) {
-              return (
-                // <Link to={`/blog/${blog.id}`} key={blog.id}>
-                  <Blog blog={blog} key={blog.id}/>
-                // </Link>
-              )
-            // }
-            // return null
-          })}
+    return (
+        <div>
+            <div className="blogs-section">
+                <div className="blogs">
+                    {filtered.map((blog) => {
+                        return (
+                            <Blog blog={blog} key={blog.id} />
+                        )
+                    })}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export function Blog({ blog }) {
