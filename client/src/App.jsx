@@ -34,12 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { BlogContextProvider } from './components/travel/furniture-comforty/components/AuthCont/AuthCont'
-import { Navigation2 } from './components/travel/furniture-comforty/components/navigation/Navigation'
-import { Home } from './components/travel/furniture-comforty/pages/home/Home'
-import { Subscribe } from './components/travel/furniture-comforty/components/delivery/Delivery'
-import { Footer } from './components/travel/furniture-comforty/components/footer/Footer'
-import { BlogDetails } from './components/travel/furniture-comforty/components/Features/Features'
+import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 
 function Loader() {
   return (
@@ -86,15 +81,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Navigation2 />
-<BlogContextProvider>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/blog/:id' element={<BlogDetails />} />
-        </Routes>
-</BlogContextProvider>
-        <Subscribe />
-        <Footer />
+        <Navigation />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

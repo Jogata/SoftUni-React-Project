@@ -1,29 +1,6 @@
 import { Link } from "react-router-dom";
 import "./navigation.css";
 
-export function Navigation2() {
-    return ( 
-        <header>
-            <nav className="navigation">
-                <div className="nav-logo">
-                    <h2><i className="fa fa-eercast"></i> BLOGWISE</h2>
-                </div>
-                <div className="link">
-                    <ul>
-                        <li>Home</li>
-                        <li>About Us</li>
-                        <li>Contact</li>
-                        <li>Advert</li>
-                    </ul>
-                </div>
-                <div className="subscribtion">
-                    <button>Subscribe</button>
-                </div>
-            </nav>
-        </header>
-    )
-}
-
 export function Navigation() {
     return (
         <header>
