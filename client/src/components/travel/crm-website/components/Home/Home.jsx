@@ -10,15 +10,18 @@ import { Feedback } from "../Feedback/Feedback";
 
 export function Home() {
     return (
-        <div className="crm-page">
+        <>
             <Hero />
-            <Partners />
-            <How />
-            <Services />
-            <Details />
-            <Faq />
-            <Trial />
-            <Feedback />
-        </div>
+        </>
+        // <div className="crm-page">
+        //     <Hero />
+        //     <Partners />
+        //     <How />
+        //     <Services />
+        //     <Details />
+        //     <Faq />
+        //     <Trial />
+        //     <Feedback />
+        // </div>
     )
 }
