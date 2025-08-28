@@ -1,5 +1,73 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { useParams } from "react-router-dom";
 import "./features.css";
+import { BlogContext } from "../AuthCont/AuthCont";
+
+export function BlogDetails() {
+    const { id } = useParams();
+    const { blogs } = useContext(BlogContext);
+
+    const blog = blogs.find(blog => {
+        return blog.id === parseInt(id);
+    })
+
+    const latest = blogs.slice(0, 5);
+
+    return (
+        <div>
+            <div className="blog-details">
+                <div className="blog-details-right">
+                    <div className="detail-category">
+                        <p>{blog.category}</p>
+                    </div>
+                    <h2 className="blog-title">{blog.title} </h2>
+                    <div className="author-date">
+                        <div className="author">
+                            <img src={blog.blogDetail.author_image} alt="" />
+                            <p>By: {blog.blogDetail.author_name}</p>
+                        </div>
+                        <p className="date">Published on {blog.blogDetail.date} </p>
+                    </div>
+                    <img src={blog.blog_image} alt="" />
+                    <p className="desc">{blog.blogDetail.description} </p>
+                </div>
+                <div className="blog-details-left">
+                    <h2>LATEST</h2>
+                    {latest.map((blog, index) => {
+                        return (
+                            <div className="popular-post" key={index}>
+                                <div className="post">
+                                    <img src={blog.blog_image} alt="" />
+                                    <h3>{blog.title} </h3>
+                                    <div className="author-name-date">
+                                        <p className="name"> By <span>{blog.blogDetail.author_name}</span></p>
+                                        <p className="date-written">{blog.blogDetail.date} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            <div className="comment">
+                <h2 className="comment-header">WRITE A COMMENT</h2>
+                <form action="#">
+                    <div className="comment-details">
+                        <input type="text" placeholder='Name' />
+                        <input type="email" placeholder='Email' />
+                    </div>
+                    <textarea name="comment" placeholder='Write yout comment here'></textarea>
+                    <div className="check">
+                        <input type="checkbox" />
+                        <label htmlFor="#">Save my name and email</label>
+                    </div>
+                    <button>Send</button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
 
 export function Features() {
     const features = [
