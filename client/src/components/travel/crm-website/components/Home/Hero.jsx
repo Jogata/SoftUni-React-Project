@@ -3,6 +3,11 @@
 import { Link } from "react-router-dom";
 import hero1 from "../../images/clean/cleaner 2.jpg";
 import hero2 from "../../images/clean/cleaner 3.jpg";
+import zapier from "../../images/zapier-logo.png";
+import spotify from "../../images/spotify-logo.png";
+import stripe from "../../images/stripe.png";
+import netflix from "../../images/netflix-logo.png";
+import walmart from "../../images/walmart-logo.png";
 
 export function Hero() {
     return (
@@ -26,6 +31,23 @@ export function Hero() {
                 </div>
                 <div className="image-container-small">
                     <img src={hero2} alt="" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function Trusted() {
+    return (
+        <div className="trusted">
+            <div className="trusted-content">
+                <h2>Trusted by 1000+ Customers</h2>
+                <div className="imgs">
+                    <img src={zapier} className="logo" alt="" />
+                    <img src={spotify} className="logo" alt="" />
+                    <img src={stripe} className="logo" alt="" />
+                    <img src={netflix} className="logo" alt="" />
+                    <img src={walmart} className="logo" alt="" />
                 </div>
             </div>
         </div>

@@ -71,117 +71,6 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-
-const RenderList = ({
-  data,
-  resourceName,
-  dataToRender: ItemComponent, 
-  property
-}) => {
-  return (
-    <div className='list'>
-      {data.map((item, i) => (
-        <ItemComponent key={item[property]} {...{ [resourceName]: item }} />
-      ))}
-    </div>
-  );
-};
-
-const MoviesInfo = ({ movies }) => {
-  const { movieTitle: title, moviePrice, movieDescription, movieRating } = movies;
-
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p className='price'>Price: {moviePrice}</p>
-      <p className='desc'>Description: {movieDescription}</p>
-      <p className='rating'>Ratings: {movieRating}</p>
-    </div>
-  );
-};
-
-const GamesInfo = ({ games }) => {
-  const { gameName: title, gameRating, gameGenre, gameLanguages } = games;
-
-  return (
-    <div>
-      <h1>Game Name: {title}</h1>
-      <p className='rating'>Game Rating: {gameRating}</p>
-      <p>Game Genre: {gameGenre}</p>
-      <ul>
-        Languages:
-        {gameLanguages.map((lang) => (
-          <li className='bulled'>{lang}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const games = [
-  {
-    gameName: "The Elder Scrolls V: Skyrim",
-    gameRating: 9.5,
-    gameGenre: "RPG",
-    gameLanguages: ["English", "Spanish", "French", "German", "Russian"],
-  },
-
-  {
-    gameName: "Cyberpunk 2077",
-    gameRating: 8.7,
-    gameGenre: "Action RPG",
-    gameLanguages: ["English", "Japanese", "French", "Italian", "German"],
-  },
-
-  {
-    gameName: "Minecraft",
-    gameRating: 10.0,
-    gameGenre: "Sandbox",
-    gameLanguages: ["English", "Spanish", "Chinese", "Russian", "Portuguese"],
-  },
-
-  {
-    gameName: "The Witcher 3: Wild Hunt",
-    gameRating: 9.8,
-    gameGenre: "Action RPG",
-    gameLanguages: ["English", "Polish", "French", "Spanish", "Italian"],
-  },
-];
-
-const movies = [
-  {
-    movieTitle: "Inception",
-    moviePrice: "$19.99",
-    movieDescription:
-      "A mind-bending thriller about dream manipulation and a thief who steals secrets from people's subconscious.",
-    movieRating: 4.8,
-  },
-
-  {
-    movieTitle: "The Matrix",
-    moviePrice: "$14.99",
-    movieDescription:
-      "A hacker discovers a dystopian reality controlled by machines and joins a rebellion to free humanity.",
-    movieRating: 4.9,
-  },
-
-  {
-    movieTitle: "The Dark Knight",
-    moviePrice: "$19.99",
-    movieDescription:
-      "Batman faces off against the Joker, a criminal mastermind who seeks to create chaos in Gotham City.",
-    movieRating: 4.9,
-  },
-
-  {
-    movieTitle: "Forrest Gump",
-    moviePrice: "$9.99",
-    movieDescription:
-      "The life story of Forrest Gump, an extraordinary man with a simple heart, whose life intersects with key moments in history.",
-    movieRating: 4.7,
-  },
-];
-
 function App() {
   return (
     <>
@@ -193,28 +82,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-      <RenderList
-        data={games}
-        resourceName="games"
-        dataToRender={GamesInfo}
-        property="gameName"
-      />
-
-      <hr />
-      <br />
-      <br />
-
-      <RenderList
-        data={movies}
-        resourceName="movies"
-        dataToRender={MoviesInfo}
-        property="movieTitle"
-      />
-
-        {/* <Navigation />
+        <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
-        </Routes> */}
+        </Routes>
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

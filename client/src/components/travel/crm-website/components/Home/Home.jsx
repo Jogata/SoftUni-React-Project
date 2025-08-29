@@ -1,5 +1,5 @@
 import "./home.css";
-import { Hero } from "./Hero";
+import { Hero, Trusted } from "./Hero";
 import { Partners } from "../Partners/Partners";
 import { How } from "../How/How";
 import { Services } from "../Services/Services";
@@ -12,6 +12,7 @@ export function Home() {
     return (
         <>
             <Hero />
+            <Trusted />
         </>
         // <div className="crm-page">
         //     <Hero />
