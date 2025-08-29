@@ -1,12 +1,12 @@
 import "./home.css";
 import { Hero, Trusted } from "./Hero";
-import { Partners } from "../Partners/Partners";
-import { How } from "../How/How";
-import { Services } from "../Services/Services";
-import { Details } from "../Details/Details";
-import { Faq } from "../FAQ/Faq";
-import { Trial } from "../Trial/Trial";
-import { Feedback } from "../Feedback/Feedback";
+// import { Partners } from "../Partners/Partners";
+// import { How } from "../How/How";
+// import { Services } from "../Services/Services";
+// import { Details } from "../Details/Details";
+// import { Faq } from "../FAQ/Faq";
+// import { Trial } from "../Trial/Trial";
+// import { Feedback } from "../Feedback/Feedback";
 
 export function Home() {
     return (

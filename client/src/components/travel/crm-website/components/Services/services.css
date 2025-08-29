@@ -1,4 +1,106 @@
-section.services {
+.services {
+    max-width: 1600px;
+    /* height: 70vh; */
+    /* margin-top: 80px; */
+    margin: auto;
+    padding: 3rem 1rem;
+}
+
+.services-header, 
+.services-text {
+    text-align: center;
+}
+
+.services-text {
+    font-size: 18px;
+}
+
+.service-header {
+    margin-bottom: 5px;
+    font-size: 35px;
+}
+
+.services-container {
+    /* height: 60vh; */
+    margin-top: 60px;
+    padding-inline: 150px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.service {
+    /* height: 280px; */
+    /* padding-top: 30px; */
+    padding: 1rem;
+    border: 1px solid #000;
+    box-shadow: 6px 6px #666;
+    transition: all 500ms;
+}
+
+.service:nth-child(2) {
+    color: #fff;
+    background-color: #6F00FF;
+}
+
+.service:hover {
+    color: #000;
+    background-color: #f9f9f9;
+}
+
+.service:nth-child(2) .action a {
+    color: #fff;
+    /* transform: rotateY(360deg); */
+}
+
+.service:nth-child(2):hover .action a {
+    color: #6F00FF;
+    /* transform: rotateY(360deg); */
+}
+
+.services-container .service-icon {
+    display: inline-block;
+    /* width: 35px; */
+    /* height: 30px; */
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    background-color: #6F00FF;
+}
+
+.service-icon i {
+    margin-top: -1.5px;
+    color: #fff;
+    font-size: 2rem;
+    transition: transform 500s ease-in-out;
+}
+
+.service h2 {
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.service p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.service .action {
+    margin-top: 1rem;
+    display: flex;
+    gap: 20px;
+    /* align-items: center; */
+}
+
+.service .action a {
+    /* margin-top: 1rem; */
+    color: #6F00FF;
+    font-size: 1.2rem;
+    transition: all 500ms;
+}
+
+/* section.services {
     padding: 5rem 2%;
 }
 
@@ -96,4 +198,4 @@ div.services {
     div.services {
         grid-template-columns: repeat(3, 1fr);
     }
-}
+} */

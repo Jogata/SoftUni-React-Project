@@ -36,6 +36,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
 import { Home } from './components/travel/crm-website/components/Home/Home';
+import { Services } from './components/travel/crm-website/components/Services/Services'
 
 function Loader() {
   return (
@@ -85,6 +86,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/services' element={<Services />} />
         </Routes>
 
       {/* <Routes>
