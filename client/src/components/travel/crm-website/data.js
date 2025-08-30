@@ -6,6 +6,10 @@ const mail = "fa fa-envelope";
 const lead = "ri-dashboard-3-line";
 import person from "./images/person.jpg";
 
+import clean4 from './images/clean/clean4.jpg'
+import clean5 from './images/clean/clean5.jpg'
+import clean6 from './images/clean/clean6.jpg'
+
 export const services = [
     {
         icon: coin,
@@ -71,6 +75,24 @@ export const details = [
         icon: "ri-brush-2-line",
         head: 'Swift Delivery',
         desc: 'We conduct various testing phases including unit testing and useer acceptance testing to identify and fix bugs the deploy.'
+    }
+]
+
+export const projects = [
+    {
+        image: clean4,
+        title: 'Martins Hospital Cleaning',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: clean5,
+        title: 'Oland Company Cleaning',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: clean6,
+        title: 'Roland Agency Cleaning',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     }
 ]
 
