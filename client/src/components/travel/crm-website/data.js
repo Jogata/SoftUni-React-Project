@@ -51,6 +51,29 @@ export const services = [
     },
 ];
 
+export const details = [
+    {
+        icon: "ri-phone-fill",
+        head: 'Consultation',
+        desc: 'We collect detailed requirements from stakeholders to understand project goals, scope and constraints. We develop a detailed plan including timeline and resources and milestones',
+    },
+    {
+        icon: "ri-money-dollar-circle-line",
+        head: 'Affordable Price',
+        desc: 'We create designs specifications, including user interfaces, databases and system integration points, build prototype to visualize and gather feedback'
+    },
+    {
+        icon: "fa fa-users",
+        head: 'Professional Team',
+        desc: 'We write actual code to implement the features and functionalities using appropriate programming languages'
+    },
+    {
+        icon: "ri-brush-2-line",
+        head: 'Swift Delivery',
+        desc: 'We conduct various testing phases including unit testing and useer acceptance testing to identify and fix bugs the deploy.'
+    }
+]
+
 
 // export const services = [
 //     {

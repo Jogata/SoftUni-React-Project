@@ -1,4 +1,102 @@
-section.details {
+.details {
+    max-width: 1600px;
+    /* height: 120vh; */
+    /* margin-top: 400px; */
+    margin: auto;
+    /* padding-inline: 100px; */
+    padding: 3rem 1rem;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #f9f9f9;
+}
+
+.left-details, 
+.right-details {
+    /* margin-top: 50px; */
+    padding-top: 3rem;
+}
+
+.left-details {
+    width: 100%;
+    max-width: 500px;
+    filter: drop-shadow(1px 1px 1px #0006);
+}
+
+.left-details img {
+    /* height: 720px; */
+    /* object-fit: cover; */
+    /* border-radius: 160px; */
+    /* clip-path: url("#mask-1"); */
+    clip-path: url("#mask-2");
+    /* clip-path: url("#mask-3"); */
+    /* clip-path: url("#mask-4"); */
+}
+
+.right-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-details h2 {
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: start;
+}
+
+.details .box-container {
+    margin-top: 50px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.details .box {
+    max-width: 400px;
+    /* height: 270px; */
+    padding: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    border-radius: 12px;
+    /* border: 1px solid #0005; */
+    box-shadow: 3px 3px 3px #0005, 
+            -3px -3px 3px #fff;
+}
+
+.detail-icon-container {
+    display: inline-block;
+    /* width: 30px; */
+    /* height: 25px; */
+    /* margin-top: 25px; */
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+
+.detail-icon {
+    display: inline-block;
+    /* margin-left: 3px; */
+    /* margin-bottom: 20px; */
+    padding: 0.4rem 0.6rem;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 5px;
+    background-color: #6F00FF;
+    transition: transform 500ms ease-in-out;
+}
+
+.details .box:hover .detail-icon {
+    transform: rotateY(360deg);
+}
+
+.detail-head, 
+.text {
+    /* margin-left: 15px; */
+    /* text-align: start; */
+}
+
+/* section.details {
     max-width: 1300px;
     margin: auto;
     padding: 5rem 1rem;
@@ -52,4 +150,4 @@ div.details {
     div.details {
         grid-template-columns: repeat(2, 1fr);
     }
-}
+} */
