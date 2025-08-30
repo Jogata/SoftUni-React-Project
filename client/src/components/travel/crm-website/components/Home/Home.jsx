@@ -1,6 +1,7 @@
 import "./home.css";
 import { Hero, Trusted } from "./Hero";
 import { Details } from "../Details/Details";
+import { Feedback } from "../Feedback/Feedback";
 // import { Partners } from "../Partners/Partners";
 // import { How } from "../How/How";
 // import { Services } from "../Services/Services";
@@ -15,6 +16,7 @@ export function Home() {
             <Hero />
             <Trusted />
             <Details />
+            <Feedback />
         </>
         // <div className="crm-page">
         //     <Hero />

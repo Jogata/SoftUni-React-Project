@@ -6,9 +6,11 @@ const mail = "fa fa-envelope";
 const lead = "ri-dashboard-3-line";
 import person from "./images/person.jpg";
 
-import clean4 from './images/clean/clean4.jpg'
-import clean5 from './images/clean/clean5.jpg'
-import clean6 from './images/clean/clean6.jpg'
+import clean4 from './images/clean/clean4.jpg';
+import clean5 from './images/clean/clean5.jpg';
+import clean6 from './images/clean/clean6.jpg';
+// import lady1 from './images/clean/clean6.jpg';
+// import lady2 from './images/clean/clean6.jpg';
 
 export const services = [
     {
@@ -94,6 +96,30 @@ export const projects = [
         title: 'Roland Agency Cleaning',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     }
+]
+
+export const feedbacks = [
+    {
+        image: person,
+        icon: "ri-double-quotes-r",
+        name: 'Dianne Russell',
+        company: 'Company',
+        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+    },
+    {
+        image: person,
+        icon: "ri-double-quotes-r",
+        name: 'Dianne Russell',
+        company: 'Company',
+        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+    },
+    {
+        image: person,
+        icon: "ri-double-quotes-r",
+        name: 'Dianne Russell',
+        company: 'Company',
+        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra.',
+    },
 ]
 
 
