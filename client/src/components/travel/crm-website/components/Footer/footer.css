@@ -1,4 +1,31 @@
-.crm-footer {
+.footer {
+    max-width: 1600px;
+    margin: auto;
+    /* height: 10vh; */
+    margin-top: 5rem;
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    background-color: #000;
+}
+
+.right, 
+.left {
+    /* margin-top: 20px; */
+}
+
+.left ul {
+    display: flex;
+    gap: 15px;
+}
+
+.left ul li {
+    font-size: 18px;
+}
+
+/* .crm-footer {
     position: relative;
     max-width: 1600px;
     margin: auto;
@@ -66,4 +93,4 @@
 
 .crm-footer .copyright {
     text-align: center;
-}
+} */

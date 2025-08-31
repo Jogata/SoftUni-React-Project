@@ -38,6 +38,7 @@ import { Navigation } from './components/travel/crm-website/components/Navigatio
 import { Home } from './components/travel/crm-website/components/Home/Home';
 import { Services } from './components/travel/crm-website/components/Services/Services';
 import { Projects } from './components/travel/crm-website/components/About/About';
+import { Footer } from './components/travel/crm-website/components/Footer/Footer'
 
 function Loader() {
   return (
@@ -90,6 +91,7 @@ function App() {
           <Route path='/services' element={<Services />} />
           <Route path='/projects' element={<Projects />} />
         </Routes>
+        <Footer />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
