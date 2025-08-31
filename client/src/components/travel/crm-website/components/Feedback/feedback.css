@@ -1,86 +1,4 @@
 .feedbacks {
-    max-width: 1600px;
-    /* height: 55vh; */
-    margin: auto;
-    padding: 3rem 1rem;
-    color: #fff;
-    background-color: #000;
-}
-
-.feedbacks h5 {
-    /* margin-top: 20px; */
-    text-align: center;
-}
-
-.feedbacks h5 {
-    font-size: 20px;
-}
-
-.feedbacks h3 {
-    margin-top: 15px;
-    font-size: 35px;
-}
-
-.feedbacks .customers {
-    margin-top: 30px;
-    display: flex;
-    gap: 40px;
-}
-
-.feedbacks .customers .item {
-    padding: 30px;
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    border-radius: 10px;
-    border: 2px solid #666;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.feedbacks .customers .slide:nth-child(2) .item {
-    color: #000;
-    background-color: #fff;
-}
-
-.feedbacks .customers .item p {
-    font-size: 14px;
-    line-height: 22px;
-}
-
-.feedbacks .customers .item .user {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.feedbacks .customers .item .user img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.feedbacks .customers .item .user h5 {
-    margin-bottom: 3px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.feedbacks .customers .item .user p {
-    font-size: 12px;
-}
-
-.feedbacks .customers .comment .icon i {
-    color: #6F00FF;
-    font-size: 2rem;
-}
-
-.control {
-    display: none;
-}
-
-/* .feedbacks {
     max-width: 1200px;
     margin: auto;
     padding: 10rem 1rem 5rem;
@@ -187,4 +105,4 @@ button#next {
 
 .slider button i {
     font-size: 2rem;
-} */
+}

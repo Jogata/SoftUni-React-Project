@@ -1,36 +1,53 @@
-import { Entry, data } from "./Entry";
+// import { Entry, data } from "./Entry";
+
+import { useState } from "react";
+
+export function Navigation() {
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    const buttonIconClass = isNavOpen ? "fa fa-times close" : "fa fa-bars open";
+
+    return (
+        <header className="navigation">
+            <div className="nav-logo">
+                <h2>ASH PROPERTY</h2>
+            </div>
+            <nav className={isNavOpen ? "nav-links" : "links"} onClick={() => setIsNavOpen(false)}>
+                <ul>
+                    <li>Home</li>
+                    <li>Properties</li>
+                    <li>About Us</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+            <div className="btn1">
+                <button>Register</button>
+            </div>
+            <button className="toggle" onClick={() => setIsNavOpen(!isNavOpen)}>
+                <i className={buttonIconClass}></i>
+            </button>
+        </header>
+    )
+}
 
 export function Main() {
 
-    const entries = data.map(entry => {
-        return (
-            <Entry 
-                key={entry.id}
-                img={entry.img} 
-                title={entry.title} 
-                country={entry.country} 
-                googleMapsLink={entry.googleMapsLink}
-                dates={entry.dates} 
-                text={entry.text}
-            />
-        )
-    });
+    // const entries = data.map(entry => {
+    //     return (
+    //         <Entry 
+    //             key={entry.id}
+    //             img={entry.img} 
+    //             title={entry.title} 
+    //             country={entry.country} 
+    //             googleMapsLink={entry.googleMapsLink}
+    //             dates={entry.dates} 
+    //             text={entry.text}
+    //         />
+    //     )
+    // });
 
-    return (
-        <main>
-            {/* <h1>main component</h1> */}
-            {entries}
-            {/* <Entry
-                img={{
-                    src: "https://raw.githubusercontent.com/Jogata/CSS/refs/heads/main/assets/img/stock-photo-131318185-copy.jpg", 
-                    alt: "Mount Fuji"
-                }} 
-                country="Japan" 
-                title="Mount Fuji" 
-                googleMapsLink="https://www.google.com/maps/place/Mount+Fuji/@35.3606421,138.7170637,15z/data=!3m1!4b1!4m6!3m5!1s0x6019629a42fdc899:0xa6a1fcc916f3a4df!8m2!3d35.3606255!4d138.7273634!16zL20vMGNrczA?entry=ttu" 
-                dates="12 Jan, 2021 - 24 Jan, 2021" 
-                text="Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
-            /> */}
-        </main>
-    )
+    // return (
+    //     <main>
+    //         {entries}
+    //     </main>
+    // )
 }

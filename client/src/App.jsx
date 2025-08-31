@@ -34,11 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/crm-website/components/Navigation/Navigation';
-import { Home } from './components/travel/crm-website/components/Home/Home';
-import { Services } from './components/travel/crm-website/components/Services/Services';
-import { Projects } from './components/travel/crm-website/components/About/About';
-import { Footer } from './components/travel/crm-website/components/Footer/Footer'
+import { Navigation } from './components/travel/Main'
 
 function Loader() {
   return (
@@ -86,12 +82,6 @@ function App() {
         </Routes> */}
 
         <Navigation />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/projects' element={<Projects />} />
-        </Routes>
-        <Footer />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />
