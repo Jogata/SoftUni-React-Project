@@ -3,6 +3,27 @@
 import { useState } from "react";
 // import "./hero.css";
 
+const categories = [
+    {
+        title: "Smart Home",
+    },
+    {
+        title: "Apartment",
+    },
+    {
+        title: "Villa",
+    },
+    {
+        title: "Bungalow",
+    },
+    {
+        title: "Office",
+    },
+    {
+        title: "Glass House",
+    },
+  ]
+
 export function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const buttonIconClass = isNavOpen ? "fa fa-times close" : "fa fa-bars open";
@@ -31,9 +52,12 @@ export function Navigation() {
 }
 
 export function Homepage() {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
     return (
         <>
             <Hero />
+            <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         </>
     )
 }
@@ -54,6 +78,27 @@ function Hero() {
                 <div className="hero-button">
                     <button>Buy Property</button>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+function Categories({ selectedCategory, setSelectedCategory }) {
+    return (
+        <div className="categories-section">
+            <h1>Explore Our Properties</h1>
+            <div className="categories">
+                {categories.map((category, index) => {
+                    return (
+                        <div onClick={() => setSelectedCategory((prev) => (prev === category.title ? "All" : category.title))} key={index} className="category">
+                            <div className={selectedCategory === category.title ? "selected" : ""}>
+                                <div className="name">
+                                    <p>{category.title}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
