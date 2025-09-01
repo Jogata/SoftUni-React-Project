@@ -1,6 +1,7 @@
 // import { Entry, data } from "./Entry";
 
 import { useState } from "react";
+// import "./hero.css";
 
 export function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -29,7 +30,37 @@ export function Navigation() {
     )
 }
 
-export function Main() {
+export function Homepage() {
+    return (
+        <>
+            <Hero />
+        </>
+    )
+}
+
+function Hero() {
+    return (
+        <div className="hero-container">
+            <div className="hero-overlay"></div>
+            <div className="hero-content">
+                <h1>
+                    Welcome to Ash-Estate, where your dream home becomes a reality.
+                </h1>
+                <p>
+                    From cozy starter homes to luxurious estates, we offer a diverse
+                    range of properties to suit your unique lifestyle. Discover your
+                    dream home with Ash-Estate today.
+                </p>
+                <div className="hero-button">
+                    <button>Buy Property</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+// export function Main() {
 
     // const entries = data.map(entry => {
     //     return (
@@ -50,4 +81,4 @@ export function Main() {
     //         {entries}
     //     </main>
     // )
-}
+// }
