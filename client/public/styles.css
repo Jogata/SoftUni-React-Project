@@ -1207,3 +1207,18 @@ main.max-width {
   border-radius: 30px;
   background-color: #edebeb;
 }
+
+.ads {
+  max-width: 1600px;
+  margin: auto;
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #f9f9f9;
+}
+
+.ads a {
+  border: 1px solid red;
+}
