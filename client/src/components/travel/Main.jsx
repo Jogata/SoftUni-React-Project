@@ -461,12 +461,28 @@ function Ads({ selectedCategory }) {
                 if (selectedCategory === "All" || selectedCategory === ad.category) {
                     return (
                         <Link to={`/home/${ad.id}`} key={ad.id} >
-                            {/* <Ad ad={ad} /> */}
-                            to do AD
+                            <Ad ad={ad} />
                         </Link>
                     )
                 }
             })}
+        </div>
+    )
+}
+
+function Ad({ ad }) {
+    return (
+        <div className="ad">
+            <img src={ad.image} alt="" className="ad-img" />
+            <div className="ad-details">
+                <h3>{ad.name} </h3>
+                <p>{ad.price} </p>
+                <p>{ad.location} </p>
+                <div className="ad-info">
+                    <span>{ad.beds} Beds </span>
+                    <span>{ad.baths} Bath </span>
+                </div>
+            </div>
         </div>
     )
 }
