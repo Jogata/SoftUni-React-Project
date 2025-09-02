@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { AdDetails, Homepage, Navigation } from './components/travel/Main'
+import { AdDetails, Footer, Homepage, Navigation } from './components/travel/Main'
 
 function Loader() {
   return (
@@ -86,6 +86,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/ad/:id' element={<AdDetails />} />
       </Routes>
+      <Footer />
 
       {/* <Routes>
             <Route path='/' element={<MainPage />} />

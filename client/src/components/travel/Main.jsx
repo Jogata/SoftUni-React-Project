@@ -496,8 +496,8 @@ export const AdDetails = () => {
     })
 
     return (
-        <div>
-            <div className="ad-details">
+        <>
+            <div className="ad-details-page">
                 <div className="ad-name-price">
                     <h2>{ad.name} </h2>
                     <p>{ad.price} </p>
@@ -580,7 +580,39 @@ export const AdDetails = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+    )
+}
+
+export function Footer() {
+    return (
+        <>
+            <div className="subscribe">
+                <div className="left">
+                    <h3>Subscribe to</h3>
+                    <h2>Our Newsletter</h2>
+                </div>
+                <div className="right">
+                    <input type="text" placeholder='Enter Email' />
+                    <button>Subscribe</button>
+                </div>
+            </div>
+            <footer className="footer">
+                <div className="footer-name">
+                    <h2>ASH ESTATE</h2>
+                </div>
+                <div className="footer-links">
+                    <ul>
+                        <li>Home</li>
+                        <li>About Us</li>
+                        <li>Privacy policy</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </footer>
+            <hr />
+            <p className="copy">Copyright 2024 Ash Estate</p>
+        </>
     )
 }
 

@@ -1220,8 +1220,9 @@ main.max-width {
 }
 
 .ad {
-  max-width: 420px;
+  /* max-width: 420px; */
   margin: auto;
+  height: 100%;
   /* text-align: left; */
   border-radius: 10px;
   background-color: #fff;
@@ -1240,7 +1241,9 @@ main.max-width {
   object-fit: cover;
 }
 
-.ad-details {
+.ad-details-page {
+  max-width: 1600px;
+  margin: auto;
   padding: 1rem;
 }
 
@@ -1292,14 +1295,14 @@ main.max-width {
   font-size: 22px;
 }
 
-.ad-details .location {
+.ad-details-page .location {
   margin-top: 10px;
   margin-bottom: 15px;
   color: #666;
   font-size: 24px;
 }
 
-.ad-details .service {
+.ad-details-page .service {
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -1319,13 +1322,13 @@ main.max-width {
   color: #666;
 }
 
-.ad-details .property-img {
+.ad-details-page .property-img {
   width: 900px;
   height: 500px;
   margin-top: 15px;
 }
 
-.ad-details .desc {
+.ad-details-page .desc {
   margin-top: 15px;
   font-weight: 20px;
 }
@@ -1348,8 +1351,13 @@ main.max-width {
   font-size: 16px;
 }
 
+.agent {
+  max-width: 1600px;
+  margin: auto;
+}
+
 .agent h2 {
-  margin-top: 4rem;
+  margin: 4rem 0 2rem;
   text-align: center;
 }
 
@@ -1357,6 +1365,7 @@ main.max-width {
   padding-inline: 100px;
   display: flex;
   gap: 3rem;
+  justify-content: center;
 }
 
 .agent-details .left {
@@ -1443,4 +1452,88 @@ main.max-width {
 
 .contact-form button:hover {
   background-color: #555;
+}
+
+.subscribe {
+  width: 80%;
+  max-width: 1600px;
+  /* height: 20vh; */
+  /* margin-top: 2rem; */
+  /* margin-bottom: 30px; */
+  margin: 2rem auto 2rem;
+  display: flex;
+  gap: 9rem;
+  /* flex-direction: row; */
+  justify-content: center;
+  border-radius: 16px;
+  /* background-color: #f9f9f9; */
+  box-shadow: 0px 5px 32px rgba(0, 0, 0, 0.15);
+}
+
+.left h2 {
+  font-size: 25px;
+}
+
+.left, 
+.right {
+  padding: 40px;
+}
+
+.right input {
+  width: 24rem;
+  padding: 15px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+
+.subscribe .right button {
+  width: 8rem;
+  margin-left: 10px;
+  padding: 15px;
+  /* border: none; */
+  border-radius: 30px;
+  background-color: blue;
+}
+
+.footer {
+  max-width: 1600px;
+  /* margin-top: 4rem; */
+  margin: 4rem auto 0;
+  padding-inline: 100px;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-links ul {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links ul li {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footer-name h2 {
+  font-size: 30px;
+}
+
+hr {
+  width: 80%;
+  max-width: 1600px;
+  /* margin-top: 20px; */
+  /* margin-left: 7rem; */
+  margin: 1.2rem auto 0;
+  color: #555;
+}
+
+.copy {
+  max-width: 1600px;
+  /* margin-top: 2rem; */
+  margin: 2rem auto 0;
+  color: #666;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }
