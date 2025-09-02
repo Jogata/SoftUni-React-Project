@@ -1,7 +1,7 @@
 // import { Entry, data } from "./Entry";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import agent1 from "./images/agent1.jpg";
 import agent2 from "./images/agent2.jpg";
 import agent3 from "./images/agent3.jpg";
@@ -460,7 +460,7 @@ function Ads({ selectedCategory }) {
             {ads.map((ad) => {
                 if (selectedCategory === "All" || selectedCategory === ad.category) {
                     return (
-                        <Link to={`/home/${ad.id}`} key={ad.id} >
+                        <Link to={`/ad/${ad.id}`} key={ad.id} >
                             <Ad ad={ad} />
                         </Link>
                     )
@@ -481,6 +481,103 @@ function Ad({ ad }) {
                 <div className="ad-info">
                     <span>{ad.beds} Beds </span>
                     <span>{ad.baths} Bath </span>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+export const AdDetails = () => {
+    const { id } = useParams();
+
+    const ad = ads.find(ad => {
+        return ad.id === Number(id);
+    })
+
+    return (
+        <div>
+            <div className="ad-details">
+                <div className="ad-name-price">
+                    <h2>{ad.name} </h2>
+                    <p>{ad.price} </p>
+                </div>
+                <h3 className="location">{ad.location} </h3>
+                <hr />
+                <div className="service">
+                    <p>
+                        <i className="fa fa-bed"></i>
+                        {ad.beds} Bedrooms
+                    </p>
+                    <p>
+                        <i className="fa fa-bath"></i>
+                        {ad.baths} Bathrooms
+                    </p>
+                    <p>
+                        <i className="fa fa-location"></i>
+                        {ad.propertyDetails.landsize}
+                    </p>
+                </div>
+                <hr />
+                <img src={ad.image} alt="" className='ad-img' />
+                <h2 className="desc-header">Property Description</h2>
+                <div className="features">
+                    <div className="feature">
+                        <p>PROPERTY TYPE</p>
+                        <h4>Condominiums</h4>
+                    </div>
+                    <div className="feature">
+                        <p>STATUS</p>
+                        <h4>Available</h4>
+                    </div>
+                    <div className="feature">
+                        <p>YEAR BUILT</p>
+                        <h4>2022</h4>
+                    </div>
+                    <div className="feature">
+                        <p>PROPERTY ID</p>
+                        <h4>CRFT8Y16R</h4>
+                    </div>
+                </div>
+                <hr />
+                <p className="desc">{ad.propertyDetails.description} </p>
+                <p className="desc">{ad.propertyDetails.description} </p>
+                <p className="desc">{ad.propertyDetails.description} </p>
+                <p className="desc">{ad.propertyDetails.description} </p>
+            </div>
+            <div className="agent">
+                <h2>Contact Agent</h2>
+                <div className="agent-details">
+                    <div className="left">
+                        <img src={ad.propertyDetails.agentImage} alt="" />
+                        <h3>{ad.propertyDetails.agentName} </h3>
+                        <h3>{ad.propertyDetails.agentPhone} </h3>
+                        <h3>{ad.propertyDetails.agentEmail} </h3>
+                    </div>
+                    <div className="right">
+                        <div className="contact-form">
+                            <p>Please fill this form properly</p>
+                            <form onSubmit={e => e.preventDefault()}>
+                                <h2>Contact Us</h2>
+                                <div>
+                                    <label htmlFor="first"> Full Name *</label>
+                                    <div className="names">
+                                        <input type="text" id="first" placeholder='First Name' />
+                                        <input type="text" id="last" placeholder='Last Name' />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label htmlFor="email">E-mail *</label>
+                                    <input type="email" id="email" placeholder='example@example.com' />
+                                </div>
+                                <div>
+                                    <label htmlFor="message"> Message *</label>
+                                    <textarea name="message" id="message"></textarea>
+                                </div>
+                                <button type='submit'>Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

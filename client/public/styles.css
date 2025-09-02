@@ -1266,3 +1266,181 @@ main.max-width {
   color: #777;
   font-size: 0.9rem;
 }
+
+.ad-details {
+  width: 70%;
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+
+.desc-header {
+  margin-top: 3rem;
+}
+
+.ad-name-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-name-price h2 {
+  color: #6F00FF;
+  font-size: 45px;
+}
+
+.ad-name-price p {
+  color: #555;
+  font-size: 22px;
+}
+
+.ad-details .location {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 24px;
+}
+
+.ad-details .service {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.service p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.service p .icon {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.ad-details hr {
+  color: #666;
+}
+
+.ad-details .property-img {
+  width: 900px;
+  height: 500px;
+  margin-top: 15px;
+}
+
+.ad-details .desc {
+  margin-top: 15px;
+  font-weight: 20px;
+}
+
+.features {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.feature h4 {
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.feature p {
+  color: #666;
+  font-size: 16px;
+}
+
+.agent h2 {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.agent-details {
+  padding-inline: 100px;
+  display: flex;
+  gap: 3rem;
+}
+
+.agent-details .left {
+  display: flex;
+  flex-direction: column;
+}
+
+.left img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.left h3 {
+  margin-top: 10px;
+  text-align: start;
+}
+
+
+.contact-form {
+  max-width: 800px;
+  margin: auto;
+  /* margin-top: 5rem; */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-form p {
+  margin-bottom: 20px;
+  color: #777;
+  text-align: center;
+}
+
+.contact-form form div {
+  margin-bottom: 15px;
+}
+
+.names {
+  display: flex;
+}
+
+.contact-form form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+  width: calc(50% - 25px);
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.contact-form form input[type="email"],
+.contact-form form textarea {
+  width: 95%;
+}
+
+.contact-form form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  /* border: none; */
+  border-radius: 6px;
+  background-color: #3f00ff;
+  /* cursor: pointer; */
+}
+
+.contact-form button:hover {
+  background-color: #555;
+}
