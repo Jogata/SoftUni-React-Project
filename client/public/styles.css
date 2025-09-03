@@ -1271,9 +1271,10 @@ main.max-width {
 }
 
 .ad-details {
-  width: 70%;
-  margin-top: 2rem;
-  margin-left: 4rem;
+  /* width: 70%; */
+  /* margin-top: 2rem; */
+  /* margin-left: 4rem; */
+  padding: 1rem 2rem 2rem;
 }
 
 .desc-header {
@@ -1384,7 +1385,6 @@ main.max-width {
   text-align: start;
 }
 
-
 .contact-form {
   max-width: 800px;
   margin: auto;
@@ -1454,8 +1454,79 @@ main.max-width {
   background-color: #555;
 }
 
+.agent-section {
+  max-width: 1600px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.agent-section h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.agent-section p {
+  margin-bottom: 2rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.agent-buttons {
+  margin-bottom: 2rem;
+}
+
+.agent-buttons .btn {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  /* border: none; */
+  border-radius: 5px;
+  /* cursor: pointer; */
+}
+
+.agent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.agent-member {
+  max-width: 200px;
+  margin: 1rem;
+  text-align: left;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.agent-member img {
+  width: 100%;
+  height: auto;
+}
+
+.agent-member h3 {
+  margin: 0.5rem;
+  /* margin-top: -2rem; */
+  font-size: 1.2rem;
+}
+
+.agent-member p {
+  /* margin-top: -3rem; */
+  margin: 0.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.agent-member:hover {
+  transform: scale(1.05);
+}
+
 .subscribe {
-  width: 80%;
+  /* width: 80%; */
   max-width: 1600px;
   /* height: 20vh; */
   /* margin-top: 2rem; */
@@ -1464,6 +1535,7 @@ main.max-width {
   display: flex;
   gap: 9rem;
   /* flex-direction: row; */
+  align-items: center;
   justify-content: center;
   border-radius: 16px;
   /* background-color: #f9f9f9; */
@@ -1489,7 +1561,8 @@ main.max-width {
 .subscribe .right button {
   width: 8rem;
   margin-left: 10px;
-  padding: 15px;
+  padding: 1rem;
+  color: #eee;
   /* border: none; */
   border-radius: 30px;
   background-color: blue;

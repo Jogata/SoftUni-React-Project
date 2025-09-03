@@ -373,6 +373,34 @@ const ads = [
     },
 ];
 
+const agents = [
+    {
+        name: 'Oliver Jonah',
+        role: 'Miami Realtor',
+        img: agent1,
+    },
+    {
+        name: 'Angela Jonah',
+        role: 'New York Realtor',
+        img: agent2,
+    },
+    {
+        name: 'Samuel Clark',
+        role: 'Realtor',
+        img: agent3,
+    },
+    {
+        name: 'Oliver Jonah',
+        role: 'Miami Realtor',
+        img: agent1,
+    },
+    {
+        name: 'Angela Jonah',
+        role: 'New York Realtor',
+        img: agent2,
+    },
+];
+
 export function Navigation() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const buttonIconClass = isNavOpen ? "fa fa-times close" : "fa fa-bars open";
@@ -408,6 +436,7 @@ export function Homepage() {
             <Hero />
             <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <Ads selectedCategory={selectedCategory} />
+            <Agents />
         </>
     )
 }
@@ -581,6 +610,24 @@ export const AdDetails = () => {
                 </div>
             </div>
         </>
+    )
+}
+
+export function Agents() {
+    return (
+        <div className="agent-section">
+            <h1>Meet Our Agents</h1>
+            <p>Meet our agents that makes buying and selling propertieseasy and stress free</p>
+            <div className="agent">
+                {agents.map((member, index) => (
+                    <div key={index} className="agent-member">
+                        <img src={member.img} alt="agent-img" />
+                        <h3>{member.name} </h3>
+                        <p>{member.role} </p>
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
 
