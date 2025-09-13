@@ -1288,3 +1288,75 @@ main.max-width {
   margin-top: 30px;
   color: #008080;
 }
+
+.about {
+  max-width: 1200px;
+  /* margin-top: 30px; */
+  /* padding-inline: 100px; */
+  margin: 2rem auto 0;
+  padding: 3rem 1rem;
+  display: flex;
+  /* background-color: #f9f9f9; */
+}
+
+.about-left img {
+  width: 500px;
+  height: 500px;
+}
+
+.about-right {
+  margin-top: 60px;
+}
+
+.about-right h2 {
+  text-align: start;
+}
+
+.about-right h3 {
+  margin-top: 20px;
+  /* margin-bottom: 15px; */
+  font-size: 30px;
+}
+
+.about-right p {
+  margin-top: 1rem;
+  font-size: 20px;
+}
+
+/* .about-right .skills {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.skill {
+  padding: 22px;
+  border-radius: 10px;
+  border: 1px solid #008080;
+}
+
+.skill h4 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.icon {
+  margin-top: 10px;
+  color: #008080;
+  font-size: 50px;
+} */
+
+.about-right button {
+  margin-top: 20px;
+  padding: 1rem 3rem;
+  color: #fff;
+  font-weight: 600;
+  /* border: none; */
+  background-color: #008080;
+}
+
+.about-right button:hover {
+  color: #000;
+  background-color: #edc2a2;
+  box-shadow: 6px 6px #555;
+}
