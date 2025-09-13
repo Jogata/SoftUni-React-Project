@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import man from "./images/man2.png";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const linksClass = isOpen ? "nav-links" : "link";
+    const linksClass = isOpen ? "nav-links" : "links";
     const toggleButtonIcon = isOpen ? "ri-close-fill close" : "ri-menu-fill open";
 
     useEffect(() => {
-        const navbar = document.querySelector(".navbar");
+        const navbar = document.querySelector(".navigation");
         window.addEventListener("scroll", toggleNavbarOnScroll);
 
         function toggleNavbarOnScroll() {
@@ -17,7 +18,7 @@ export function Navbar() {
     }, [])
 
     return (
-        <nav className="navbar">
+        <nav className="navigation">
             <div className="navbar-logo">
                 <h2>JOHN DOE</h2>
             </div>
@@ -30,14 +31,40 @@ export function Navbar() {
                 </ul>
             </div>
             <div className="navbar-btn">
-                <a href="#contact"><button>Hit Me Up</button></a>
+                <a href="#contact">Hit Me Up</a>
             </div>
-            <button className="toggle" onClick={() => setIsOpen(!Mobile)}>
+            <button className="toggle" onClick={() => setIsOpen(!isOpen)}>
                 <i className={toggleButtonIcon}></i>
             </button>
         </nav>
     );
 };
+
+export function Hero() {
+    return (
+        <>
+            <div className="hero">
+                <div className="hero-content">
+                    <h1>I'm John Doe, </h1>
+                    <h2>A Fullstack developer </h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <button>Hit Me Up</button>
+                    <div className="icons">
+                        {/* <FaStarOfLife className='one' /> */}
+                        {/* <GiBeveledStar className='two' /> */}
+                        {/* <GiFallingStar className='three' /> */}
+                        {/* <GiFlatStar className='four' /> */}
+                        {/* <MdStar className='five' /> */}
+                        {/* <MdStarHalf className='six' /> */}
+                    </div>
+                </div>
+                <div className="hero-img">
+                    <img src={man} alt="" />
+                </div>
+            </div>
+        </>
+    )
+}
 
 // export function Header() {
 //     return (
