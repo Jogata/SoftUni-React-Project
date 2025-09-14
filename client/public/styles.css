@@ -1591,3 +1591,35 @@ main.max-width {
     grid-template-columns: 1fr;
   }
 }
+
+
+.footer {
+  max-width: 1600px;
+  /* margin-top: 50px; */
+  margin: auto;
+  /* padding-inline: 100px; */
+  padding: 3rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-icon{
+  margin-left: 20px;
+  color: #008080;
+  font-size: 30px;
+}
+
+.copy {
+  max-width: 1600px;
+  margin: auto;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 20px; */
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+hr {
+  max-width: 1600px;
+  margin: auto;
+}

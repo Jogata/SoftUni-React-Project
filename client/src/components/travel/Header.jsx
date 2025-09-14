@@ -165,12 +165,12 @@ export function Projects() {
         <>
             <div className="projects" id="projects">
                 <h2>My Portfolio</h2>
-                <div class="project-items">
+                <div className="project-items">
                     {projects.map(({ image, title, text }) => {
                         return (
-                            <div class="item">
+                            <div className="item" key={title}>
                                 <img src={image} alt='project-img' />
-                                <div class="info">
+                                <div className="info">
                                     <h4>{title}</h4>
                                     <p>{text}</p>
                                     <a href="#">View Project</a>
@@ -187,16 +187,16 @@ export function Projects() {
 export function Services() {
     return (
         <div>
-            <section class="services" id="services">
+            <section className="services" id="services">
                 <h2 className="service-header">My Services</h2>
                 <p className="text">
                     Our team of expert is dedicated to turning your vision
                     into reality with innovative and reliable technology.
                 </p>
-                <div class="service-container">
+                <div className="service-container">
                     {services.map(({ icon, head, desc }) => {
                         return (
-                            <div className="service">
+                            <div className="service" key={icon}>
                                 <div className="service-icon">
                                     <h2 className="icon">
                                         <i className={icon}></i>
@@ -210,6 +210,26 @@ export function Services() {
                 </div>
             </section>
         </div>
+    )
+}
+
+export function Footer() {
+    return (
+        <>
+            <div className="footer">
+                <div className="footer-name">
+                    <h2>John Doe</h2>
+                </div>
+                <div className="footer-links">
+                    <i className="fa fa-nstagram footer-icon"></i>
+                    <i className="fa fa-facebook footer-icon"></i>
+                    <i className="fa fa-twitter footer-icon"></i>
+                    <i className="fa fa-linkedin footer-icon"></i>
+                </div>
+            </div>
+            <hr />
+            <p className="copy">Copyright John Doe 2025. All Rights Reserved</p>
+        </>
     )
 }
 
