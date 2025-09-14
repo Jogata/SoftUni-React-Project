@@ -1,5 +1,44 @@
 import { useEffect, useState } from "react";
 import man from "./images/man2.png";
+import crm from './images/crm.jpg';
+import finance from "./images/finance.jpg";
+import kitchen from "./images/kitchen.jpg";
+import landing from "./images/landing.jpg";
+import medical from "./images/medical.jpg";
+import staff from "./images/staff.jpg";
+
+const projects = [
+    {
+        image: medical,
+        title: 'Martins Hospital Managemeny',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: crm,
+        title: 'Oland CRM Software',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: staff,
+        title: 'Roland Staff Management',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: landing,
+        title: 'Eduka Landing Page website',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: kitchen,
+        title: 'Glory & Jane Kitchen',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+    {
+        image: finance,
+        title: 'Charity Bank App',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+    },
+];
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -87,6 +126,30 @@ export function About() {
                         veritatis voluptate? Illo incidunt nostrum recusandae rem. Cumque, dolores.
                     </p>
                     <button>Hit Me Up</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export function Projects() {
+    return (
+        <>
+            <div className="projects" id="projects">
+                <h2>My Portfolio</h2>
+                <div class="project-items">
+                    {projects.map(({ image, title, text }) => {
+                        return (
+                            <div class="item">
+                                <img src={image} alt='project-img' />
+                                <div class="info">
+                                    <h4>{title}</h4>
+                                    <p>{text}</p>
+                                    <a href="#">View Project</a>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>
