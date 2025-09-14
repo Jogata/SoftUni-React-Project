@@ -1460,3 +1460,134 @@ main.max-width {
     width: 100%;
   }
 }
+
+.services {
+  max-width: 1600px;
+  /* height: 70vh; */
+  /* margin-top: 80px; */
+  margin: auto;
+  padding: 3rem 1rem;
+  color: #015252;
+}
+
+.services .header,
+.services .text {
+  text-align: center;
+}
+
+.services .text {
+  font-size: 18px;
+}
+
+.services .service-header {
+  margin-bottom: 5px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.service-container {
+  /* height: 60vh; */
+  margin-top: 60px;
+  /* padding-inline: 60px; */
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  /* background: black; */
+}
+
+.service {
+  /* height: 350px; */
+  /* padding-top: 30px; */
+  /* padding-inline: 20px; */
+  padding: 30px 20px;
+  color: #ccc;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* background-color: #f1c4a4; */
+  /* box-shadow: 2px 2px #015252; */
+}
+
+/* .service:nth-child(1),
+.service:nth-child(4) {
+  margin-top: 50px;
+}
+
+.service:nth-child(2),
+.service:nth-child(5) {
+  margin-top: 20px;
+} */
+
+.service:nth-child(1) {
+  color: #fff;
+  background-color: #015252;
+  box-shadow: 6px 6px #666;
+}
+
+.service:nth-child(1) .service-icon {
+  background-color: #fff;
+}
+
+.service:nth-child(1) .icon {
+  color: #015252;
+}
+
+.service:hover {
+  color: #015252;
+  background-color: #f9f9f9;
+  box-shadow: 6px 6px #666;
+}
+
+.service:hover .icon {
+  transform: rotateY(360deg);
+}
+
+.service-container .service-icon {
+  display: inline-block;
+  /* width: 45px; */
+  /* height: 40px; */
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background-color: #015252;
+}
+
+.service-icon .icon {
+  margin-top: -1.5px;
+  color: #fff;
+  font-size: 2.6rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+.service h2 {
+  margin-top: 40px;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: start;
+}
+
+.service p {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.service .action {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+.service .action h2 {
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 480px) {
+  .services .service-header {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .service-container {
+    padding-inline: 20px;
+    grid-template-columns: 1fr;
+  }
+}

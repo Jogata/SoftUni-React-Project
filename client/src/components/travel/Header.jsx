@@ -40,6 +40,34 @@ const projects = [
     },
 ];
 
+const services = [
+    {
+        icon: "fa fa-empire",
+        head: 'UI/UX Design',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "fa fa-xing",
+        head: 'Web Development',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "fa fa-eercast",
+        head: 'Mobile App Design',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "fa fa-first-order",
+        head: 'Content Creation',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "fa fa-envelope-o",
+        head: 'Email Marketing',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+];
+
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const linksClass = isOpen ? "nav-links" : "links";
@@ -153,6 +181,35 @@ export function Projects() {
                 </div>
             </div>
         </>
+    )
+}
+
+export function Services() {
+    return (
+        <div>
+            <section class="services" id="services">
+                <h2 className="service-header">My Services</h2>
+                <p className="text">
+                    Our team of expert is dedicated to turning your vision
+                    into reality with innovative and reliable technology.
+                </p>
+                <div class="service-container">
+                    {services.map(({ icon, head, desc }) => {
+                        return (
+                            <div className="service">
+                                <div className="service-icon">
+                                    <h2 className="icon">
+                                        <i className={icon}></i>
+                                    </h2>
+                                </div>
+                                <h2>{head}</h2>
+                                <p>{desc}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            </section>
+        </div>
     )
 }
 
