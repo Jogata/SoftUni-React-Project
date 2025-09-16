@@ -158,6 +158,33 @@ export function Services() {
     )
 }
 
+export function Footer() {
+    return (
+        <footer className="footer">
+            <div className="footer-left">
+                <h1 className="footer-logo">Orange Media</h1>
+                <p className="footer-contact">
+                    <i className="ri-phone-fill p-icon"></i> +1 929-367-8993
+                </p>
+                <p className="footer-location">
+                    New York, NY. Los Angeles, CA. Worldwide.
+                </p>
+            </div>
+            <div className="footer-right">
+                <div className="footer-social">
+                    <p>Follow us on :</p>
+                    <div className="footer-social-icons">
+                        <i className="fa fa-instagram icon"></i>
+                        <i className="fa fa-linkedin icon"></i>
+                        <i className="fa fa-facebook icon"></i>
+                        <i className="fa fa-twitter icon"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
 // export function Footer() {
 //     return (
 //         <footer>
