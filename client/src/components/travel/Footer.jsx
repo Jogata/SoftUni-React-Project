@@ -13,9 +13,13 @@ import sm from "./images/sm.png";
 import branding from "./images/branding.png";
 import analytics from "./images/analytics.png";
 import awareness from "./images/brand-awareness.png";
+import milk from "./images/milk.jpg";
+import car from "./images/car.jpg";
+import cloth from "./images/cloth-launch.jpg";
+import drink from "./images/drink.jpg";
+import wine from "./images/wine.jpg";
 
-
-export const services = [
+const services = [
     {
         image: brand,
         content: 'BRAND COMMUNICATION'
@@ -47,6 +51,34 @@ export const services = [
     {
         image: analytics,
         content: 'BUSINESS ANALYTICS'
+    },
+]
+
+const projects = [
+    {
+        image: car,
+        title: 'Bens Motor Campaign',
+        content: 'Bens Motor, one of the worlds biggest car manufacturers, launched its T300 series of trucks in Lagos, Nigeria. To publicise the new fleet in Nigeria, Orange Media invited an extended network of celebrities, social media influencers, and media partners for the launch event.  Video content filmed from the event was promoted via social media and it generated over 200 million views. '
+    },
+    {
+        image: milk,
+        title: 'Jaguar Milk',
+        content: 'Jaguar Milk, one of the worlds biggest milk manufacturers, launched its T300 series of trucks in Lagos, Nigeria. To publicise the new fleet in Nigeria, Orange Media invited an extended network of celebrities, social media influencers, and media partners for the launch event.  Video content filmed from the event was promoted via social media and it generated over 200 million views.'
+    },
+    {
+        image: cloth,
+        title: 'Sedens Clothing',
+        content: 'Sedens Clothing, one of the worlds biggest clothing manufacturers, launched its T300 series of trucks in Lagos, Nigeria. To publicise the new fleet in Nigeria, Orange Media invited an extended network of celebrities, social media influencers, and media partners for the launch event.  Video content filmed from the event was promoted via social media and it generated over 200 million views'
+    },
+    {
+        image: drink,
+        title: 'Quins Drink',
+        content: 'Quins Drink, one of the worlds biggest beverage manufacturers, launched its T300 series of trucks in Lagos, Nigeria. To publicise the new fleet in Nigeria, Orange Media invited an extended network of celebrities, social media influencers, and media partners for the launch event.  Video content filmed from the event was promoted via social media and it generated over 200 million views'
+    },
+    {
+        image: wine,
+        title: 'Taquilla Winery',
+        content: 'Taquilla Winery, one of the worlds biggest wine manufacturers, launched its T300 series of trucks in Lagos, Nigeria. To publicise the new fleet in Nigeria, Orange Media invited an extended network of celebrities, social media influencers, and media partners for the launch event.  Video content filmed from the event was promoted via social media and it generated over 200 million views'
     },
 ]
 
@@ -156,6 +188,36 @@ export function Services() {
             </div>
         </>
     )
+}
+
+export function Projects() {
+    return (
+        <div className="projects">
+            <div className="project-header">
+                <h2>Projects</h2>
+                <p>
+                    We are proud to have worked with a diverse range of clients across various industries. 
+                    <br />
+                    Here are some of the brands we have helped elevate.
+                </p>
+            </div>
+            <div className="project-wrapper">
+                {projects.map(({ image, title, content }, index) => {
+                    return (
+                        <div className="project-container" key={index}>
+                            <div className="project-img-detail">
+                                <img src={image} alt="" />
+                            </div>
+                            <div className="project-text-detail">
+                                <h1>{title} </h1>
+                                <p>{content} </p>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    );
 }
 
 export function Footer() {
