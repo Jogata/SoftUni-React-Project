@@ -5,6 +5,50 @@ import pix3 from "./images/hero1.jpg";
 import pix4 from "./images/man3.jpg";
 import pix5 from "./images/lady2.jpg";
 
+import brand from "./images/brand.png";
+import content from "./images/content.png";
+import digital from "./images/digital.png";
+import external from "./images/external.png";
+import sm from "./images/sm.png";
+import branding from "./images/branding.png";
+import analytics from "./images/analytics.png";
+import awareness from "./images/brand-awareness.png";
+
+
+export const services = [
+    {
+        image: brand,
+        content: 'BRAND COMMUNICATION'
+    },
+    {
+        image: content,
+        content: 'CONTENT CREATION'
+    },
+    {
+        image: digital,
+        content: 'DIGITAL MARKETING'
+    },
+    {
+        image: awareness,
+        content: 'BRAND AWARENESS'
+    },
+    {
+        image: branding,
+        content: 'BRAND STRATEGY'
+    },
+    {
+        image: external,
+        content: 'PUBLIC RELATION'
+    },
+    {
+        image: sm,
+        content: 'SOCIAL MEDIA MNAGEMENT'
+    },
+    {
+        image: analytics,
+        content: 'BUSINESS ANALYTICS'
+    },
+]
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,7 +138,25 @@ export function Hero() {
     )
 }
 
-export default Hero
+export function Services() {
+    return (
+        <>
+            <div className="services">
+                <h1>Our Services</h1>
+                <div className="service-container">
+                    {services.map(({ image, content }, index) => {
+                        return (
+                            <div className="service-content" key={index}>
+                                <img src={image} alt="" className="service-icon" />
+                                <h2>{content} </h2>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+        </>
+    )
+}
 
 // export function Footer() {
 //     return (
