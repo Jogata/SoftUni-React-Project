@@ -269,6 +269,39 @@ export function Impact() {
     )
 }
 
+export function Contact() {
+    return (
+        <>
+            <div className="contact">
+                <div className="c-left">
+                    <h2>Ready to elevate your brand?</h2>
+                    <p>
+                        Get in touch with us today to discuss your PR needs
+                        and discover how we can help you achieve your goals.
+                    </p>
+                </div>
+                <div className="c-right">
+                    <form onSubmit={e => e.preventDefault()}>
+                        <div>
+                            <label htmlFor="last">First Name *</label>
+                            <input type="text" name="firstName" placeholder="First Name" />
+                        </div>
+                        <div>
+                            <label htmlFor="last">Last Name *</label>
+                            <input type="text" name="secondName" placeholder="Last Name" />
+                        </div>
+                        <div>
+                            <label htmlFor="message">Message *</label>
+                            <textarea name="Message"></textarea>
+                        </div>
+                    </form>
+                    <button>Send Message</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export function Footer() {
     return (
         <footer className="footer">

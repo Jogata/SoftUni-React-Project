@@ -1085,7 +1085,8 @@ main.max-width {
   /* padding-inline: 100px; */
   padding: 3rem 6rem;
   display: flex;
-  gap: 20px;
+  /* gap: 20px; */
+  gap: 2rem;
   /* align-items: center; */
   justify-content: space-between;
   color: #fff;
@@ -1162,10 +1163,15 @@ main.max-width {
 
 .image-container-small .small-clean-img,
 .image-container-small-one .small-clean-img {
-  width: 150px;
+  /* width: 150px; */
+  width: 250px;
   height: 340px;
   object-fit: cover;
-  border-radius: 120px;
+  /* border-radius: 120px; */
+  clip-path: url("#mask-1");
+  clip-path: url("#mask-2");
+  clip-path: url("#mask-3");
+  clip-path: url("#mask-4");
 }
 
 .hero-trusted {
@@ -1498,10 +1504,11 @@ main.max-width {
   margin-top: -10px;
   margin-left: 30rem;
   padding: 22px 42px;
-  /* border: none; */
+  color: #eee;
   font-size: 24px;
   font-weight: bold;
   /* border-radius: 30px; */
+  /* border: none; */
   border-radius: 4em;
   background-color: red;
 }
@@ -1546,6 +1553,87 @@ main.max-width {
 
   .impact button {
     display: none;
+  }
+}
+
+.contact {
+  max-width: 1600px;
+  margin: auto;
+  padding: 50px;
+  display: flex;
+  gap: 50px;
+  /* background-color: #66cdaa; */
+}
+
+.c-left h2 {
+  font-size: 50px;
+}
+
+.c-left p {
+  font-size: 18px;
+}
+
+.c-right form {
+  width: 35rem;
+}
+
+.c-right form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-right form > div label {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.c-right form > div input {
+  /* height: 3rem; */
+  padding: 16px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.c-right form > div textarea {
+  min-height: 13rem;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.c-right button {
+  margin-top: 15px;
+  padding: 20px 32px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 4em;
+  /* border: none; */
+  background-color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .contact {
+    padding: 20px;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .c-left h2 {
+    font-size: 23px;
+  }
+
+  .c-left p {
+    display: none;
+  }
+
+  .c-right form {
+    width: 18rem;
+  }
+
+  .c-right form > div input {
+    /* height: 1.5rem; */
   }
 }
 
