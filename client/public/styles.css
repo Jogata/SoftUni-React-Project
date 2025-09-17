@@ -1359,6 +1359,11 @@ main.max-width {
   /* height: 400px; */
 }
 
+.project-img-detail img {
+  height: 100%;
+  object-fit: contain;
+}
+
 /* .project-img-detail img:hover {
   background: rgba(0, 0, 0, 0.1);
 } */
@@ -1426,6 +1431,121 @@ main.max-width {
     display: flex;
     gap: 70px;
     flex-direction: column;
+  }
+}
+
+.impact {
+  max-width: 1600px;
+  margin: auto;
+  padding: 80px;
+  /* background-color: #66cdaa; */
+}
+
+.impact-txt {
+  display: flex;
+  gap: 150px;
+}
+
+.impact-txt h1 {
+  font-size: 40px;
+}
+
+.impact-txt p {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.impact-container {
+  margin-top: 30px;
+  display: flex;
+  gap: 100px;
+  /* align-items: center; */
+}
+
+.impact-container .left {
+  width: 100%;
+  max-width: 480px;
+  /* height: 500px; */
+  /* border-radius: 30px; */
+  clip-path: url("#mask-1");
+  /* clip-path: url("#mask-2"); */
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+}
+
+.right {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  column-gap: 80px;
+  /* row-gap: 5px; */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.right-num {
+  margin: auto;
+}
+
+.right-num h1 {
+  font-size: 80px;
+}
+
+.right-num p {
+  font-size: 20px;
+}
+
+.impact button {
+  margin-top: -10px;
+  margin-left: 30rem;
+  padding: 22px 42px;
+  /* border: none; */
+  font-size: 24px;
+  font-weight: bold;
+  /* border-radius: 30px; */
+  border-radius: 4em;
+  background-color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .impact {
+    padding: 30px;
+    margin-top: 90px;
+  }
+
+  .impact-txt {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .impact-txt h1 {
+    font-size: 26px;
+  }
+
+  .impact-txt p {
+    font-size: 16px;
+  }
+
+  .impact-container .left img {
+    display: none;
+  }
+
+  .right {
+    margin-left: -110px;
+    padding: 15px;
+    row-gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .right-num h1 {
+    font-size: 50px;
+  }
+
+  .right-num p {
+    font-size: 16px;
+  }
+
+  .impact button {
+    display: none;
   }
 }
 
