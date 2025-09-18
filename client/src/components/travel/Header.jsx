@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classroom from './images/coin_up.jpg';
 
 export function Navbar() {
@@ -7,11 +7,17 @@ export function Navbar() {
     const linksClass = isMenuOpen ? "nav-links" : "links";
     const toggleButtonIcon = isMenuOpen ? "ri-close-fill close-icon" : "ri-menu-fill open-icon";
 
-    window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar")
-        navbar.classList.toggle("active", window.scrollY > 100)
+    useEffect(() => {
+        const navbar = document.querySelector(".navigation");
 
-    });
+        window.addEventListener("scroll", toggleClass);
+
+        function toggleClass() {
+            navbar.classList.toggle("active", window.scrollY > 100);
+        }
+
+        return window.removeEventListener("click", toggleClass);
+    }, [])
     return (
         <>
             <div className="navigation">
@@ -64,6 +70,42 @@ export function Hero() {
     )
 }
 
+export function Footer() {
+    return (
+        <>
+            <div className="footer">
+                <div className="footer-top">
+                    <h2>Ready To Get Started ?</h2>
+                    <p>Join our community of Investors</p>
+                    <div className="input">
+                        <input type="email" name="email" id="" placeholder="Enter your Email" />
+                        <button>Join Now</button>
+                    </div>
+                </div>
+                <hr />
+                <div className="footer-bottom">
+                    <div className="footer-left">
+                        <h2>Investo</h2>
+                        <div className="socials">
+                            <i className="fa fa-facebook social-icon"></i>
+                            <i className="fa fa-instagram social-icon"></i>
+                            <i className="fa fa-youtube social-icon"></i>
+                        </div>
+                    </div>
+                    <div className="footer-right">
+                        <ul>
+                            <li>Home</li>
+                            <li>Services</li>
+                            <li>About Us</li>
+                            <li>Privacy policy</li>
+                        </ul>
+                    </div>
+                </div>
+                <p className="copy">© 2024 Investo. All rights reserved.</p>
+            </div>
+        </>
+    )
+}
 
 // export function Navbar() {
 //     return (
