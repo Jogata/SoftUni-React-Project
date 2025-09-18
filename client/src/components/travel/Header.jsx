@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classroom from './images/coin_up.jpg';
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +36,34 @@ export function Navbar() {
         </>
     )
 }
+
+export function Hero() {
+    return (
+        <>
+            <div className="hero">
+                <div className="media-container">
+                    <h1 className="hero-header">EMPOWER</h1>
+                    <div className="invest">
+                        <p>Growth Investing</p>
+                    </div>
+                    <div className="invest">
+                        <p>Income Investing</p>
+                    </div>
+                    <div className="invest">
+                        <p>Value Investing</p>
+                    </div>
+                    <div className="invest">
+                        <p>ESG Investing</p>
+                    </div>
+                </div>
+                <img src={classroom} alt="hero-img" className="hero-img" />
+                <h1 className="hero-bottom-header">YOUR FINANCIAL FUTURE</h1>
+                <h1 className="hero-txt">ONE SMART INVESTMENT AT A TIME.</h1>
+            </div>
+        </>
+    )
+}
+
 
 // export function Navbar() {
 //     return (

@@ -1097,3 +1097,125 @@ main.max-width {
     background-color: transparent;
   }
 }
+
+.hero {
+  /* position: relative; */
+  max-width: 1600px;
+  /* width: 100%; */
+  /* height: 100vh; */
+  margin: auto;
+  padding: 5rem 1rem;
+  /* display: grid; */
+  /* place-items: center; */
+  color: #000;
+  background-color: #cdfab8;
+}
+
+.media-container {
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* height: 100%; */
+  position: relative;
+  border: 1px solid red;
+}
+
+.media-container .invest {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, .5);
+}
+
+.media-container .invest:nth-child(1) {
+  left: 11rem;
+  top: 18rem;
+}
+
+.media-container .invest:nth-child(2) {
+  left: 28rem;
+  top: 12rem;
+}
+
+.media-container .invest:nth-child(3) {
+  left: 44rem;
+  top: 22rem;
+}
+
+.media-container>div:nth-child(4) {
+  left: 63rem;
+  top: 14rem;
+}
+
+.hero .hero-header {
+  margin-top: 20px;
+  color: #000;
+  font-size: 275px;
+  font-weight: 400;
+  /* font-family: "Bebas Neue", sans-serif; */
+  text-align: center;
+  /* font-style: normal; */
+}
+
+.hero .hero-img {
+  max-width: 950px;
+  /* height: 550px; */
+  /* margin-top: -30px; */
+  margin: auto;
+  border-radius: 20px;
+}
+
+.hero_bottom-header {
+  font-size: 140px;
+  font-weight: 400;
+  /* font-style: normal; */
+  /* font-family: "Bebas Neue", sans-serif; */
+}
+
+@media (max-width: 480px) {
+  .hero {
+    /* width: 100%; */
+    /* height: 70vh; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero .hero-header {
+    margin-top: 5px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .hero p {
+    /* margin-top: 10px; */
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .hero .btns {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .hero .btns button {
+    padding: 0.2rem 1rem;
+  }
+
+  .hero .hero-img {
+    width: 300px;
+    height: 200px;
+    margin-top: 40px;
+    border-radius: 20px;
+    /* place-content: center; */
+  }
+}
