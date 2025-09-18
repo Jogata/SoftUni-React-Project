@@ -70,6 +70,31 @@ export function Hero() {
     )
 }
 
+export function Insight() {
+    return (
+        <>
+            <div className="insight">
+                <div className="insight-container">
+                    <div className="insight-list">
+                        <h2>16,000</h2>
+                        <p>Investment Managed</p>
+                    </div>
+                    <hr />
+                    <div className="insight-list">
+                        <h2>20,000</h2>
+                        <p>Wealth Created</p>
+                    </div>
+                    <hr />
+                    <div className="insight-list">
+                        <h2>15,000</h2>
+                        <p>Asset Management</p>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export function Footer() {
     return (
         <>
