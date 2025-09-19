@@ -29,6 +29,24 @@ const aboutItems = [
     },
 ]
 
+export const services = [
+    {
+        icon: "ri-coin-fill",
+        head: 'Wealth Management',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "ri-bank-line",
+        head: 'Retirement Planning',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+    {
+        icon: "fa fa-folder-open",
+        head: 'Portfolio Management',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
+    },
+]
+
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -155,11 +173,36 @@ export function About() {
     )
 }
 
+export function Services() {
+  return (
+    <>
+        <div className="services" id="services">
+            <h2 className="service-header">Our Services</h2>
+            <p className="text">Tailored Investment Solutions to Meet Your Needs</p>
+            <div className="service-container">
+                {services.map(({icon, head, desc}, index) => {
+                    return (
+                        <div className="service-list" key={index}>
+                            <div className="service-icon">
+                                <h2 className="icon">
+                                    <i className={icon}></i>
+                                </h2>
+                            </div>
+                            <h2>{head} </h2>
+                            <p>{desc}</p>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    </>
+  )
+}
+
 export function Footer() {
     return (
         <>
             <div className="footer">
-                <hr />
                 <div className="footer-top">
                     <h2>Ready To Get Started ?</h2>
                     <p>Join our community of Investors</p>
