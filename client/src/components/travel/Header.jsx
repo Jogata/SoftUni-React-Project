@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import classroom from "./images/coin_up.jpg";
 import about from "./images/about.jpg";
+import coins from './images/piless.png';
 
 const aboutItems = [
     {
@@ -29,7 +30,7 @@ const aboutItems = [
     },
 ]
 
-export const services = [
+const services = [
     {
         icon: "ri-coin-fill",
         head: 'Wealth Management',
@@ -45,6 +46,21 @@ export const services = [
         head: 'Portfolio Management',
         desc: 'A short description of the service your company provides and how it helps your clients business increase revenue using the technology and strategy your company provides',
     },
+]
+
+const resources = [
+    {
+        title: 'Investment Guides',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue'
+    },
+    {
+        title: 'Market Insights',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue'
+    },
+    {
+        title: 'Educational Webinars',
+        desc: 'A short description of the service your company provides and how it helps your clients business increase revenue'
+    }
 ]
 
 export function Navbar() {
@@ -199,10 +215,37 @@ export function Services() {
   )
 }
 
+export function Resources() {
+    return (
+        <>
+            <div className="resource" id='resource'>
+                <div className="left-resource">
+                    <img src={coins} alt="" />
+                </div>
+                <div className="right-resource">
+                    <h2 className='right-header'>Resources for Investors</h2>
+                    {resources.map(({ title, desc }, index) => {
+                        return (
+                            <div className="right-container" key={index}>
+                                <div className="right">
+                                    <h2>{title} </h2>
+                                    <p>{desc} </p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <button>Access All Resources</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export function Footer() {
     return (
         <>
             <div className="footer">
+                <hr />
                 <div className="footer-top">
                     <h2>Ready To Get Started ?</h2>
                     <p>Join our community of Investors</p>
