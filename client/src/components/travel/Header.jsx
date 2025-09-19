@@ -1,5 +1,33 @@
 import { useEffect, useState } from "react";
-import classroom from './images/coin_up.jpg';
+import classroom from "./images/coin_up.jpg";
+import about from "./images/about.jpg";
+
+const aboutItems = [
+    {
+        icon: "fa fa-check-circle",
+        title: "Trusted Advisors with Decades of Experience",
+    },
+    {
+        icon: "fa fa-check-circle",
+        title: "Personalized, Client-Centric Approach",
+    },
+    {
+        icon: "fa fa-check-circle",
+        title: "Proven Track Record of Success",
+    },
+    {
+        icon: "fa fa-check-circle",
+        title: "Strategic planning to ensure a secure and comfortable retirement.",
+    },
+    {
+        icon: "fa fa-check-circle",
+        title: "Expert management of your investment portfolio to maximize returns.",
+    },
+    {
+        icon: "fa fa-check-circle",
+        title: "Strategies to minimize tax liability and maximize investment returns.",
+    },
+]
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,10 +123,43 @@ export function Insight() {
     )
 }
 
+export function About() {
+    return (
+        <>
+            <div className="about" id="about">
+                <div className="left-about">
+                    <img src={about} alt="" />
+                </div>
+                <div className="right-about">
+                    <h2 className="right-header"> About Us</h2>
+                    <p>At Investo, we are committed to guiding you through the complex world
+                        of investing with confidence and clarity. With over 16 years of experience in the
+                        financial industry, our team of experts is dedicated to crafting investment strategies
+                        that align with your unique financial goals.</p>
+                    {aboutItems.map(({ icon, title }, index) => {
+                        return (
+                            <div className="list-container" key={index}>
+                                <div className="list">
+                                    <h2 className="icon">
+                                        <i className={icon}></i>
+                                    </h2>
+                                    <p>{title} </p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <button>Book A Call</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export function Footer() {
     return (
         <>
             <div className="footer">
+                <hr />
                 <div className="footer-top">
                     <h2>Ready To Get Started ?</h2>
                     <p>Join our community of Investors</p>
