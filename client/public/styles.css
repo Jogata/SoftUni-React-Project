@@ -1617,10 +1617,74 @@ main.max-width {
   }
 }
 
+.blog {
+  padding: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.blog h2,
+.blog p {
+  text-align: center;
+}
+
+.blog-content {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.blog-list {
+  max-width: 320px;
+  /* height: 530px; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-list img {
+  flex: 1;
+  max-width: 320px;
+  /* height: 380px; */
+  object-fit: cover;
+  /* border-radius: 10px; */
+  clip-path: url("#mask-1");
+  /* clip-path: url("#mask-2"); */
+  /* clip-path: url("#mask-3"); */
+  /* clip-path: url("#mask-4"); */
+}
+
+.blog-list h3,
+.blog-list p {
+  margin-top: 10px;
+  text-align: start;
+}
+
+.blog-list h3 {
+  font-size: 24px;
+}
+
+.blog-list p {
+  color: #666;
+}
+
+.blog-list button {
+  /* margin-top: 1rem; */
+  margin: 1rem auto 0 0;
+  padding-bottom: 0.5rem;
+  color: #eee;
+  font-size: 18px;
+  /* border: none; */
+  border-bottom: 2px solid green;
+  /* background-color: #fff; */
+}
+
 .footer {
   max-width: 1800px;
   margin: auto;
-  padding: 60px 60px 20px;
+  padding: 6rem 4rem 1.25rem;
   display: flex;
   gap: 30px;
   flex-direction: column;
@@ -1629,9 +1693,10 @@ main.max-width {
 }
 
 .footer-top {
-  display: grid;
-  gap: 30px;
-  place-content: center;
+  padding: 2rem 0;
+  /* display: grid; */
+  /* gap: 30px; */
+  /* place-content: center; */
 }
 
 .footer-top h2 {
@@ -1640,6 +1705,7 @@ main.max-width {
 }
 
 .footer-top p {
+  margin: 1rem 0 2rem;
   color: #555;
   font-size: 18px;
   text-align: center;
@@ -1655,6 +1721,8 @@ main.max-width {
   width: 40rem;
   /* height: 2.5rem; */
   padding: 16px;
+  font-size: 24px;
+  font-family: inherit;
   border-radius: 30px;
   border: none;
   background-color: #fff;
@@ -1662,7 +1730,9 @@ main.max-width {
 
 .input button {
   /* margin-left: -100px; */
-  padding: 14px 16px;
+  padding: 14px 28px;
+  color: #fff;
+  font-size: 24px;
   /* border: none; */
   border-radius: 30px;
   background-color: #4cbb17;

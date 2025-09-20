@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import classroom from "./images/coin_up.jpg";
 import about from "./images/about.jpg";
-import coins from './images/piless.png';
+import coins from "./images/piless.png";
+import coin from "./images/coin.jpg";
+import write from "./images/write.jpg";
+import write2 from "./images/write2.jpg";
 
 const aboutItems = [
     {
@@ -60,6 +63,24 @@ const resources = [
     {
         title: 'Educational Webinars',
         desc: 'A short description of the service your company provides and how it helps your clients business increase revenue'
+    }
+]
+
+const blogs = [
+    {
+        image: coin,
+        title: "5 Investment Strategies for 2024",
+        text: "Explore the top strategies that can help you stay ahead in the coming year"
+    },
+    {
+        image: write,
+        title: "Understanding the Power of Compound Interest",
+        text: "Learn how compounding can significantly impact your long-term wealth"
+    },
+    {
+        image: write2,
+        title: "The Benefits of Diversification in Your Portfolio",
+        text: "Discover why a diversified portfolio is essential for managing risk"
     }
 ]
 
@@ -235,6 +256,29 @@ export function Resources() {
                         )
                     })}
                     <button>Access All Resources</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export function Blogs() {
+    return (
+        <>
+            <div className="blog">
+                <h2>Insights and Updates from Our Experts</h2>
+                <p>Stay Ahead with the Latest News and Market Trends</p>
+                <div className="blog-content">
+                    {blogs.map((item, index) => {
+                        return (
+                            <div className="blog-list" key={index}>
+                                <img src={item.image} alt="" />
+                                <h3>{item.title}</h3>
+                                <p>{item.text}</p>
+                                <button>Read More</button>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>
