@@ -971,8 +971,51 @@ main.max-width {
   padding: 0.6em 1em;
 }
 
-
 .navigation {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  width: 230px;
+  margin: auto;
+  padding: 1.2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #07070a;
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.navigation ul {
+  display: flex;
+  gap: 25px;
+  font-weight: 600;
+}
+
+.navigation ul a {
+  padding: 0.5em 1em;
+  color: #f9f9f9;
+  border: 1px solid;
+  transition: color 300ms, 
+    background-color 300ms;
+}
+
+.navigation ul a:hover {
+  color: #000;
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    width: 200px;
+    margin-left: 50px;
+    z-index: 100;
+  }
+}
+
+/* .navigation {
   max-width: 1800px;
   margin: auto;
   display: flex;
@@ -1000,7 +1043,6 @@ main.max-width {
   font-size: 18px;
   font-weight: 600;
   transition: color 300ms;
-  /* cursor: pointer; */
 }
 
 .links ul li a:hover {
@@ -1008,13 +1050,14 @@ main.max-width {
 }
 
 .nav-btn a {
-  /* margin-top: 20px; */
   padding: 1rem 3rem;
   color: #fff;
   font-weight: 600;
-  /* border: none; */
+  border: 1px solid;
   border-radius: 30px;
   background-color: #4cbb17;
+  transition: color 300ms, 
+    background-color 300ms;
 }
 
 .nav-btn a:hover {
@@ -1025,20 +1068,27 @@ main.max-width {
   display: none;
 }
 
-/* .navigation.active{
+.navigation.active {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  margin: auto;
   padding: 0.8rem;
-  background-color: #ff5f1f;
+  background-color: #eee;
   box-shadow: -1px 11px 24px -11px rgba(0, 0, 0, 0.75);
   transition: 0.5s;
   z-index: 1000;
-} */
+}
 
-.navigation.active button {
-  color: #4cbb17;
+.navigation.active .nav-btn a {
   background-color: #000;
+}
+
+.navigation.active .nav-btn:hover a {
+  color: #4cbb17;
+  background-color: #eee;
 }
 
 @media screen and (max-width: 480px) {
@@ -1083,7 +1133,6 @@ main.max-width {
     right: 20px;
     color: #fff;
     font-size: 30px;
-    /* border: none; */
     background-color: #000;
     z-index: 999;
   }
@@ -1101,7 +1150,7 @@ main.max-width {
     right: 40px;
     background-color: transparent;
   }
-}
+} */
 
 .hero {
   position: relative;
@@ -1270,8 +1319,9 @@ main.max-width {
   /* height: 40px; */
   max-width: 1800px;
   /* margin-top: 32rem; */
-  margin: auto;
+  margin: 3rem auto;
   padding: 3rem 1rem;
+  border: 1px solid #cdfab8;
 }
 
 .insight-container {
@@ -1401,8 +1451,9 @@ main.max-width {
   max-width: 1800px;
   /* height: 70vh; */
   /* margin-top: 20px; */
-  margin: auto;
+  margin: 3rem auto;
   padding: 3rem 0;
+  border: 1px solid #cdfab8;
 }
 
 .service-header,
@@ -1618,9 +1669,12 @@ main.max-width {
 }
 
 .blog {
-  padding: 40px;
-  display: grid;
-  place-items: center;
+  max-width: 1800px;
+  margin: 3rem auto;
+  padding: 5rem 1rem 3rem;
+  /* display: grid; */
+  /* place-items: center; */
+  border: 1px solid #cdfab8;
 }
 
 .blog h2,
@@ -1629,11 +1683,12 @@ main.max-width {
 }
 
 .blog-content {
-  padding: 20px;
+  padding: 3rem 1rem;
   display: flex;
-  gap: 10px;
-  flex-direction: row;
-  cursor: pointer;
+  gap: 1rem;
+  justify-content: center;
+  /* flex-direction: row; */
+  /* cursor: pointer; */
 }
 
 .blog-list {

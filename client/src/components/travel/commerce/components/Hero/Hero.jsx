@@ -3,7 +3,6 @@ import "./hero.css";
 
 export function Hero() {
     return (
-        // <h1>hero</h1>
         <div className="hero">
             <div className="hero-top">
                 <div className="left">

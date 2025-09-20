@@ -1,3 +1,12 @@
+{/* <Navbar />
+<Hero />
+<Insight />
+<About />
+<Services />
+<Resources />
+<Blogs />
+<Footer /> */}
+
 import { useEffect, useState } from "react";
 import classroom from "./images/coin_up.jpg";
 import about from "./images/about.jpg";
