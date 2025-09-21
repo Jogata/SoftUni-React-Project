@@ -142,6 +142,33 @@ export function Work() {
     )
 }
 
+export function Contact() {
+    return (
+        <div className="contact-form" id="contact">
+            <h2>Contact Me</h2>
+            <p>Please fil the form to book my services</p>
+            <form onClick={e => e.preventDefault()}>
+                <div>
+                    <label htmlFor="first">Full Name</label>
+                    <div className="names">
+                        <input type="text" name="first" id="first" placeholder="First Name" required />
+                        <input type="text" name="last" id="last" placeholder="Last Name" />
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="example@gmail.com" required />
+                </div>
+                <div>
+                    <label htmlFor="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    )
+}
+
 // export function Footer() {
 //     return (
 //         <footer>

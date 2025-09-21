@@ -1377,3 +1377,83 @@ main.max-width {
     font-size: 30px;
   }
 }
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  /* margin-top: 3rem; */
+  padding: 3rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid #212531;
+}
+
+.contact-form h2 {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.contact-form p {
+  margin-bottom: 1.25rem;
+  color: #777;
+  text-align: center;
+}
+
+.contact-form form div {
+  margin-bottom: 1rem;
+}
+
+.names {
+  display: flex;
+  gap: 1rem;
+}
+
+.contact-form form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.contact-form form input, 
+.contact-form form textarea {
+  /* width: calc(50% - 25px); */
+  padding: 10px;
+  /* margin-right: 10px; */
+  /* margin-bottom: 5px; */
+  color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #212531;
+  background-color: transparent;
+}
+
+.contact-form form input {
+  flex: 1;
+}
+
+.contact-form form input[type="email"],
+.contact-form form textarea {
+  width: 100%;
+}
+
+.contact-form form textarea {
+  /* height: 160px; */
+  resize: none;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 10px;
+  color: #000;
+  border-radius: 6px;
+  /* border: none; */
+  background-color: #fff;
+  /* cursor: pointer; */
+}
+
+.contact-form button:hover {
+  color: #000;
+  background-color: #888;
+}
+
+::placeholder {
+  color: #777;
+}
