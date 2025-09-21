@@ -51,6 +51,38 @@ export function Hero() {
     )
 }
 
+export function About() {
+    return (
+        <div className="about" id="about">
+            <div className="about-left">
+                <div className="about-img">
+                    <img src={john} alt="" />
+                </div>
+            </div>
+            <div className="about-right">
+                <h2>About Me</h2>
+                <p>
+                    Hi, I'm John Trumble - a passionate software developer who 
+                    believes in building clean, efficient, and scalable 
+                    solutions that solve real-world problems.
+                </p>
+                <p>
+                    With a background in computer science and years of hands-on 
+                    experience in both front-end and back-end development, I 
+                    specialize in creating full-stack applications using modern 
+                    technologies such as JavaScript, React, Node.js, and Python. 
+                    Whether it's designing intuitive user interfaces or engineering 
+                    robust backend architectures, I love turning complex challenges 
+                    into elegant, functional code.
+                </p>
+                <div className="about-btns">
+                    <button>Download CV</button>
+                    <button>Hire Me</button>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 // export function Footer() {
 //     return (
