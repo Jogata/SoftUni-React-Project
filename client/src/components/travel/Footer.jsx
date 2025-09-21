@@ -1,4 +1,31 @@
 import john from "./images/john.jpg";
+import work1 from "./images/drink.jpg";
+import work2 from "./images/milk.jpg";
+import work3 from "./images/wine.jpg";
+import work4 from "./images/work4.jpeg";
+
+const works = [
+    {
+        image: work1, 
+        title: "SipSunny - Refreshing Summer Drinks", 
+        text: "A vibrant, mobile-first website featuring colorful summer drink recipes, user-submitted photos, and a cocktail creator tool. Optimized for speed and designed with a fun, seasonal vibe to keep users engaged."
+    }, 
+    {
+        image: work2, 
+        title: "Milko - The Story of Fresh Dairy", 
+        text: "A beautifully designed informational website that educates visitors about the journey of milk — from farm to table. Includes engaging animations, nutritional facts, and interactive infographics to promote transparency and health awareness."
+    }, 
+    {
+        image: work3, 
+        title: "VinoVault - Discover the World of Wine", 
+        text: "An elegant, content-rich website dedicated to wine enthusiasts. Features include wine pairing guides, region-based browsing, and a blog for wine reviews and tips. Designed with a focus on visual storytelling and a refined aesthetic."
+    }, 
+    {
+        image: work4, 
+        title: "ShopSphere - Modern E-Commerce Platform", 
+        text: "A full-featured e-commerce site built from the ground up. Includes product listings, shopping cart, secure checkout, admin dashboard, and user authentication. Fully responsive with Stripe payment integration."
+    }, 
+]
 
 export function Navigation() {
     return (
@@ -79,6 +106,37 @@ export function About() {
                     <button>Download CV</button>
                     <button>Hire Me</button>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+export function Work() {
+    return (
+        <div className="works" id="work">
+            <h2 className="work-header">WORK</h2>
+            <div className="works-container">
+                {works.map((work, index) => {
+                    return (
+                        <div className="work" key={index}>
+                            <div className="work-content">
+                                <div className="work-links">
+                                    <a href="#">
+                                        <i className="fa fa-github"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i className="fa fa-link"></i>
+                                    </a>
+                                </div>
+                                <h2>{work.title}</h2>
+                                <p>{work.text}</p>
+                            </div>
+                            <div className="work-image">
+                                <img src={work.image} alt="" />
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
