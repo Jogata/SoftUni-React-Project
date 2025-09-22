@@ -970,3 +970,87 @@ main.max-width {
   margin: 1rem 0 2rem;
   padding: 0.6em 1em;
 }
+
+
+
+.navigation {
+  /* padding-inline: 80px; */
+  padding: 30px 80px;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo a {
+  color: #fff;
+}
+
+.navigation input {
+  position: relative;
+  padding: 0.5em 1.2em;
+  border-radius: 4em;
+  border: 2px solid #777;
+}
+
+.navigation .search .search-icon {
+  position: absolute;
+  /* margin-top: 12px; */
+  /* margin-left: 10px; */
+  font-size: 24px;
+  z-index: 100;
+}
+
+.navigation .search .cancel-icon {
+  position: absolute;
+  /* margin-top: 7px; */
+  font-size: 2rem;
+  /* margin-left: -36px; */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-icon {
+  /* margin-left: 35px; */
+  color: #fff;
+  font-size: 34px;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  /* cursor: pointer; */
+}
+
+.cart-amount {
+  position: absolute;
+  /* right: -8px; */
+  right: 0;
+  transform: translate(50%, -25%);
+  width: 20px;
+  height: 20px;
+  /* padding: 0.5em; */
+  /* aspect-ratio: 1; */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50%;
+  background-color: #ef4444;
+}
+
+/* .navbar.active{
+  padding: 20px;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: #f9f9f9;
+  transition: 0.5s;
+} */

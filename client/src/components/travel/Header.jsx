@@ -138,6 +138,33 @@ export const productsData = [
 
 ]
 
+export function Navigation() {
+    return (
+        <nav className="navigation">
+            <div className="logo">
+                <a href="/">Logo</a>
+            </div>
+            <div className="serch">
+                <i className="ri-search-line search-icon"></i>
+                <input type="search" name="search" id="search" placeholder="Search for product" />
+                <i className="ri-close-line cancel-icon"></i>
+            </div>
+            <div className="nav-icons">
+                <div className="cart">
+                    <a href="/">
+                        <i className="fa fa-shopping-cart nav-icon"></i>
+                    </a>
+                    <span className="cart-amount">0</span>
+                </div>
+                <button>
+                    <i className="fa fa-user-o nav-icon"></i>
+                </button>
+            </div>
+        </nav>
+    )
+}
+
+
 // export function Header() {
 //     return (
 //         <header>
