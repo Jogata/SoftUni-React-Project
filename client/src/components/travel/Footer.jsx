@@ -169,6 +169,34 @@ export function Contact() {
     )
 }
 
+export function Footer() {
+    return (
+        <div className="footer">
+            <div className="footer-bottom">
+                <div className="footer-left">
+                    <h2>John Trumble</h2>
+                    <div className="socials">
+                        <i className="fa fa-facebook social-icon"></i>
+                        <i className="fa fa-instagram social-icon"></i>
+                        <i className="fa fa-youtube-play social-icon"></i>
+                    </div>
+                </div>
+                <div className="footer-right">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li>Services</li>
+                        <li><a href="#about">About Me</a></li>
+                        <li>Hire Me</li>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <p className="copy">© 2024 John Trumble. All rights reserved.</p>
+        </div>
+    )
+}
+
+
 // export function Footer() {
 //     return (
 //         <footer>
