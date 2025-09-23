@@ -974,7 +974,6 @@ main.max-width {
 
 
 .navigation {
-  /* padding-inline: 80px; */
   padding: 30px 80px;
   display: flex;
   gap: 2rem;
@@ -986,26 +985,34 @@ main.max-width {
   color: #fff;
 }
 
-.navigation input {
+.navigation .search {
   position: relative;
-  padding: 0.5em 1.2em;
+  display: flex;
+  align-items: center;
   border-radius: 4em;
   border: 2px solid #777;
+  background-color: #fff;
+}
+
+.navigation input {
+  padding: 0.5em 1.2em;
+  border: 0px solid transparent;
+  background-color: transparent;
 }
 
 .navigation .search .search-icon {
-  position: absolute;
-  /* margin-top: 12px; */
-  /* margin-left: 10px; */
+  /* position: absolute; */
+  padding: 0.2em 0.5em;
+  color: #000;
   font-size: 24px;
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 .navigation .search .cancel-icon {
-  position: absolute;
-  /* margin-top: 7px; */
+  /* position: absolute; */
+  padding: 0.2em;
+  color: #000;
   font-size: 2rem;
-  /* margin-left: -36px; */
 }
 
 .nav-icons {
@@ -1015,7 +1022,6 @@ main.max-width {
 }
 
 .nav-icon {
-  /* margin-left: 35px; */
   color: #fff;
   font-size: 34px;
 }
@@ -1023,18 +1029,14 @@ main.max-width {
 .cart {
   position: relative;
   display: flex;
-  /* cursor: pointer; */
 }
 
 .cart-amount {
   position: absolute;
-  /* right: -8px; */
   right: 0;
   transform: translate(50%, -25%);
   width: 20px;
   height: 20px;
-  /* padding: 0.5em; */
-  /* aspect-ratio: 1; */
   color: #fff;
   display: flex;
   align-items: center;
@@ -1054,3 +1056,55 @@ main.max-width {
   background-color: #f9f9f9;
   transition: 0.5s;
 } */
+
+
+.hero {
+  max-width: 1600px;
+  margin: 3rem auto;
+  /* height: 60vh; */
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  /* background-color: orange; */
+  border: 4px solid orange;
+}
+
+.hero-content {
+  /* margin-top: -20px; */
+  /* padding-inline: 110px; */
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-header {
+  /* max-width: 50%; */
+  max-width: 700px;
+  /* margin-top: 100px; */
+  margin: auto;
+}
+
+.hero-header h1 {
+  /* margin-top: 10px; */
+  font-size: 4.5rem;
+  /* color: transparent; */
+  /* -webkit-text-stroke: 1px orange; */
+}
+
+.hero-header p {
+  margin-top: 1rem;
+  color: #888;
+  font-size: 18px;
+}
+
+.hero-image {
+  /* max-width: 50%; */
+  max-width: 640px;
+}
+
+.hero-image img {
+  /* width: 640px; */
+  /* height: 500px; */
+  /* margin-top: -15px; */
+  /* object-fit: contain; */
+}

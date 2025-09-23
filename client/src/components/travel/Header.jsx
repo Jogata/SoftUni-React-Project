@@ -13,6 +13,7 @@ import watch12 from "./images/watch12.jpg";
 import watch13 from "./images/watch13.jpg";
 import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
+import hero from "./images/hero-w.png";
 
 export const productsData = [
     {
@@ -144,7 +145,7 @@ export function Navigation() {
             <div className="logo">
                 <a href="/">Logo</a>
             </div>
-            <div className="serch">
+            <div className="search">
                 <i className="ri-search-line search-icon"></i>
                 <input type="search" name="search" id="search" placeholder="Search for product" />
                 <i className="ri-close-line cancel-icon"></i>
@@ -161,6 +162,22 @@ export function Navigation() {
                 </button>
             </div>
         </nav>
+    )
+}
+
+export function Hero() {
+    return (
+        <div className="hero">
+            <div className="hero-content">
+                <div className="hero-header">
+                    <h1>Our Elegant Collection Just For You</h1>
+                    <p>Shop the latest trends and classic essentials just for you</p>
+                </div>
+                <div className="hero-image">
+                    <img src={hero} alt="" />
+                </div>
+            </div>
+        </div>
     )
 }
 
