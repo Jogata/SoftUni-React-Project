@@ -42,3 +42,26 @@ export function AuthContextProvider(props) {
         </AuthContext.Provider>
     )
 }
+
+import { productsData } from "../components/travel/Header";
+
+export const CartContext = createContext(null);
+
+export function CartContextProvider(props) {
+    const [cart, setCart] = useState([]);
+    const [products, setProducts] = useState(productsData);
+
+    const addToCart = (id) => {}
+
+    const deleteFromCart = () => {}
+    
+    const clearCart = () => {
+        setCart([]);
+    }
+
+    return (
+        <CartContext.Provider value={{cart, products}}>
+            {props.children}
+        </CartContext.Provider>
+    )
+}

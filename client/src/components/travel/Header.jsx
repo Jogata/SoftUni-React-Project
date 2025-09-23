@@ -14,6 +14,8 @@ import watch13 from "./images/watch13.jpg";
 import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/AuthContext";
 
 export const productsData = [
     {
@@ -165,7 +167,16 @@ export function Navigation() {
     )
 }
 
-export function Hero() {
+export function Home() {
+    return (
+        <>
+            <Hero />
+            <Products />
+        </>
+    )
+}
+
+function Hero() {
     return (
         <div className="hero">
             <div className="hero-content">
@@ -181,6 +192,26 @@ export function Hero() {
     )
 }
 
+function Products() {
+    const { products } = useContext(CartContext);
+
+    return (
+        <div className="products">
+            <h2>Our Elegant Collection</h2>
+            <div className="products-grid">
+                {
+                    products.map(product => {
+                        return (
+                            <div className="product" key={product.id}>
+                                <h3>{product.title}</h3>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    )
+}
 
 // export function Header() {
 //     return (
