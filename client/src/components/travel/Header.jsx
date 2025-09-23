@@ -109,7 +109,7 @@ export const productsData = [
     {
         id: 12,
         image: watch12,
-        title: "2piece Gold Wristwatch",
+        title: "Two piece Gold Wristwatch",
         price: 85,
         category: "men",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores nulla eos fuga maiores dolore, cum facere aperiam doloremque praesentium totam expedita quibusdam excepturi necessitatibus autem perspiciatis sunt eligendi minima quam.",
@@ -138,7 +138,6 @@ export const productsData = [
         category: "men",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores nulla eos fuga maiores dolore, cum facere aperiam doloremque praesentium totam expedita quibusdam excepturi necessitatibus autem perspiciatis sunt eligendi minima quam.",
     },
-
 ]
 
 export function Navigation() {
@@ -203,7 +202,12 @@ function Products() {
                     products.map(product => {
                         return (
                             <div className="product" key={product.id}>
-                                <h3>{product.title}</h3>
+                                <img src={product.image} alt="" className="product-image" />
+                                <div className="product-info">
+                                    <h4>{product.title}</h4>
+                                    <p>${product.price}</p>
+                                </div>
+                                <button className="add-to-cart">Add to Cart</button>
                             </div>
                         )
                     })
