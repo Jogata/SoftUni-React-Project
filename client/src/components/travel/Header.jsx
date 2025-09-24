@@ -14,7 +14,7 @@ import watch13 from "./images/watch13.jpg";
 import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../contexts/AuthContext";
 
 export const productsData = [
@@ -179,25 +179,38 @@ export function Navigation({query, setQuery}) {
 
 export function Home({query}) {
     return (
-        <HomeContent>
-            <Hero />
-            <Products query={query} />
-        </HomeContent>
-    )
-}
-
-function HomeContent({children}) {
-    return (
         <>
-        {children}
+            <Hero query={query} />
+            <Products query={query} />
         </>
     )
 }
 
-function Hero() {
-    console.log("hero");
+// function HomeContent({children}) {
+//     return (
+//         <>
+//         {children}
+//         </>
+//     )
+// }
+
+function Hero({query}) {
+    // useEffect(() => {
+    //     console.log("hero");
+
+    //     return () => {
+    //         console.log("unmounted hero");
+    //     }
+    // }, [])
+
+    // if (query.length > 0) {
+    //     return null;
+    // }
+
+    const classes = query.length > 0 ? "hero hidden" : "hero";
+
     return (
-        <div className="hero">
+        <div className={classes}>
             <div className="hero-content">
                 <div className="hero-header">
                     <h1>Our Elegant Collection Just For You</h1>

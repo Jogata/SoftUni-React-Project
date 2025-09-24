@@ -1171,3 +1171,7 @@ main.max-width {
   border: 1px solid orange;
   background-color: transparent;
 }
+
+.hidden {
+  display: none;
+}
