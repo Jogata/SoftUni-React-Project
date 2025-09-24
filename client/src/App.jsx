@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
-import { AuthContextProvider, CartContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider, CartContextProvider, ProductsContextProvider } from './contexts/AuthContext'
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -84,13 +84,15 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-      <CartContextProvider>
-        <Navigation query={query} setQuery={setQuery} />
-        <Routes>
-          <Route path='/' element={<Home query={query} />} />
-        </Routes>
-        <Footer />
-      </CartContextProvider>
+      <ProductsContextProvider>
+        <CartContextProvider>
+          <Navigation query={query} setQuery={setQuery} />
+          <Routes>
+            <Route path='/' element={<Home query={query} />} />
+          </Routes>
+        </CartContextProvider>
+      </ProductsContextProvider>
+      <Footer />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

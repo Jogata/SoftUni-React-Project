@@ -15,7 +15,7 @@ import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../contexts/AuthContext";
+import { CartContext, ProductsContext } from "../../contexts/AuthContext";
 
 export const productsData = [
     {
@@ -207,13 +207,14 @@ function Hero({query}) {
     //     return null;
     // }
 
-    const classes = query.length > 0 ? "hero hidden" : "hero";
+    const classes = query.length > 0 ? "hidden" : "hero";
 
     return (
         <div className={classes}>
+        {/* <div className="hero"> */}
             <div className="hero-content">
                 <div className="hero-header">
-                    <h1>Our Elegant Collection Just For You</h1>
+                    <h1 className="animated">Our Elegant Collection Just For You</h1>
                     <p>Shop the latest trends and classic essentials just for you</p>
                 </div>
                 <div className="hero-image">
@@ -225,7 +226,8 @@ function Hero({query}) {
 }
 
 function Products({query}) {
-    const { products } = useContext(CartContext);
+    const { products } = useContext(ProductsContext);
+    const { addToCart } = useContext(CartContext);
 
     let filtered = products;
 
@@ -239,6 +241,7 @@ function Products({query}) {
             <div className="products-grid">
                 {
                     filtered.map(product => {
+                        // console.log(product.id);
                         return (
                             <div className="product" key={product.id}>
                                 <img src={product.image} alt="" className="product-image" />
@@ -246,7 +249,12 @@ function Products({query}) {
                                     <h4>{product.title}</h4>
                                     <p>${product.price}</p>
                                 </div>
-                                <button className="add-to-cart">Add to Cart</button>
+                                <button 
+                                    className="add-to-cart" 
+                                    onClick={() => addToCart(product)} 
+                                >
+                                    Add to Cart
+                                </button>
                             </div>
                         )
                     })

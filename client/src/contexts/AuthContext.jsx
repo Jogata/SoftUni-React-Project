@@ -45,13 +45,26 @@ export function AuthContextProvider(props) {
 
 import { productsData } from "../components/travel/Header";
 
+export const ProductsContext = createContext(null);
 export const CartContext = createContext(null);
 
 export function CartContextProvider(props) {
     const [cart, setCart] = useState([]);
-    const [products, setProducts] = useState(productsData);
 
-    const addToCart = (id) => {}
+    const addToCart = (product) => {
+        let index = cart.findIndex(item => item.id == product.id);
+        const newCart = [...cart];
+
+        if (index === -1) {
+            newCart.push({...product, amount: 0});
+            index = newCart.length - 1;
+        }
+
+        newCart[index].amount += 1;
+        console.log(newCart);
+
+        setCart(newCart);
+    }
 
     const deleteFromCart = () => {}
     
@@ -60,8 +73,18 @@ export function CartContextProvider(props) {
     }
 
     return (
-        <CartContext.Provider value={{cart, products}}>
+        <CartContext.Provider value={{cart, addToCart}}>
             {props.children}
         </CartContext.Provider>
+    )
+}
+
+export function ProductsContextProvider(props) {
+    const [products, setProducts] = useState(productsData);
+
+    return (
+        <ProductsContext.Provider value={{products}}>
+            {props.children}
+        </ProductsContext.Provider>
     )
 }
