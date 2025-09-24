@@ -1000,6 +1000,10 @@ main.max-width {
   background-color: transparent;
 }
 
+.navigation input:focus-visible {
+  outline: none;
+}
+
 .navigation .search .search-icon {
   padding: 0.2em 0.5em;
   color: #000;

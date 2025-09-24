@@ -14,7 +14,7 @@ import watch13 from "./images/watch13.jpg";
 import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/AuthContext";
 
 export const productsData = [
@@ -140,7 +140,9 @@ export const productsData = [
     },
 ]
 
-export function Navigation() {
+export function Navigation({query, setQuery}) {
+    // const [query, setQuery] = useState("");
+
     return (
         <nav className="navigation">
             <div className="logo">
@@ -148,8 +150,17 @@ export function Navigation() {
             </div>
             <div className="search">
                 <i className="ri-search-line search-icon"></i>
-                <input type="search" name="search" id="search" placeholder="Search for product" />
-                <i className="ri-close-line cancel-icon"></i>
+                <input 
+                    type="search" 
+                    name="search" 
+                    id="search" 
+                    value={query}
+                    onChange={e => setQuery(e.target.value)} 
+                    placeholder="Search for product" 
+                />
+                <button className="cancel-btn" onClick={() => setQuery("")}>
+                    <i className="ri-close-line cancel-icon"></i>
+                </button>
             </div>
             <div className="nav-icons">
                 <div className="cart">
@@ -166,16 +177,25 @@ export function Navigation() {
     )
 }
 
-export function Home() {
+export function Home({query}) {
+    return (
+        <HomeContent>
+            <Hero />
+            <Products query={query} />
+        </HomeContent>
+    )
+}
+
+function HomeContent({children}) {
     return (
         <>
-            <Hero />
-            <Products />
+        {children}
         </>
     )
 }
 
 function Hero() {
+    console.log("hero");
     return (
         <div className="hero">
             <div className="hero-content">
@@ -191,15 +211,21 @@ function Hero() {
     )
 }
 
-function Products() {
+function Products({query}) {
     const { products } = useContext(CartContext);
+
+    let filtered = products;
+
+    if (query.length > 0) {
+        filtered = products.filter(product => product.title.toLowerCase().includes(query.toLowerCase()));
+    }
 
     return (
         <div className="products">
             <h2>Our Elegant Collection</h2>
             <div className="products-grid">
                 {
-                    products.map(product => {
+                    filtered.map(product => {
                         return (
                             <div className="product" key={product.id}>
                                 <img src={product.image} alt="" className="product-image" />
@@ -214,6 +240,15 @@ function Products() {
                 }
             </div>
         </div>
+    )
+}
+
+export function Footer() {
+    console.log("footer");
+    return (
+        <footer>
+            <h1>Footer</h1>
+        </footer>
     )
 }
 
