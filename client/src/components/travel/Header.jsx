@@ -289,41 +289,53 @@ export function Cart() {
                             Clear Cart
                         </button>
                     </div>
-                {cart.map(item => {
-                    return (
-                        <div className="cart-item" key={item.id}>
-                            <div className="product-details">
-                                <img src={item.image} alt={item.title} />
-                                <div className="cart-product-info">
-                                    <h3>{item.title}</h3>
-                                    <button className="remove-item-btn">
-                                        <i className="ri-delete-bin-line"></i>
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="quantity">
-                                <button>
-                                    <i className="ri-subtract-line"></i>
-                                </button>
-                                <span>{item.amount}</span>
-                                <button>
-                                    <i className="ri-add-line"></i>
-                                </button>
-                            </div>
-                            <span className="price">
-                                ${item.price}
-                            </span>
-                            <span className="total">
-                                ${(item.price * item.amount).toFixed(2)}
-                            </span>
-                        </div>
-                    )
-                })}
+                    {cart.length == 0 ? <EmptyCart /> : <CartItems cart={cart} />}
                 </div>
                 <div className="cart-right"></div>
             </div>
         </div>
+    )
+}
+
+export function EmptyCart() {
+    return (
+        <h1 className="empty-cart">The cart is empty</h1>
+    )
+}
+
+export function CartItems({ cart }) {
+    return (
+        cart.map(item => {
+            return (
+                <div className="cart-item" key={item.id}>
+                    <div className="product-details">
+                        <img src={item.image} alt={item.title} />
+                        <div className="cart-product-info">
+                            <h3>{item.title}</h3>
+                            <button className="remove-item-btn">
+                                <i className="ri-delete-bin-line"></i>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div className="quantity">
+                        <button>
+                            <i className="ri-subtract-line"></i>
+                        </button>
+                        <span>{item.amount}</span>
+                        <button>
+                            <i className="ri-add-line"></i>
+                        </button>
+                    </div>
+                    <span className="price">
+                        ${item.price}
+                    </span>
+                    <span className="total">
+                        ${(item.price * item.amount).toFixed(2)}
+                    </span>
+                </div>
+            )
+        })
     )
 }
 

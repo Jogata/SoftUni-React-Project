@@ -1189,7 +1189,13 @@ main.max-width {
   }
 }
 
+/* .cart-page {
+  display: flex;
+  flex-direction: column;
+} */
+
 .cart-container {
+  /* flex: 1; */
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -1342,4 +1348,10 @@ main.max-width {
 .total {
   color: #666;
   font-size: 18px;
+}
+
+.empty-cart {
+  padding: 3rem 1rem;
+  font-size: 3rem;
+  text-align: center;
 }
