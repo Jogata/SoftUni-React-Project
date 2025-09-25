@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "react-router-dom";
@@ -66,14 +66,17 @@ export function CartContextProvider(props) {
         setCart(newCart);
     }
 
-    const deleteFromCart = () => {}
+    const deleteFromCart = (id) => {
+        const filtered = cart.filter(item => item.id != id);
+        setCart(filtered);
+    }
     
     const clearCart = () => {
         setCart([]);
     }
 
     return (
-        <CartContext.Provider value={{cart, addToCart}}>
+        <CartContext.Provider value={{cart, addToCart, deleteFromCart, clearCart}}>
             {props.children}
         </CartContext.Provider>
     )
