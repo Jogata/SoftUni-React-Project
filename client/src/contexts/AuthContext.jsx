@@ -49,7 +49,13 @@ export const ProductsContext = createContext(null);
 export const CartContext = createContext(null);
 
 export function CartContextProvider(props) {
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    productsData.map(p => p.amount = 2);
+    const [cart, setCart] = useState(productsData);
+    // console.log(cart);
+
+    const cartTotalItems = cart.reduce((acc, item) => acc + item.amount, 0);
+    console.log(cartTotalItems);
 
     const addToCart = (product) => {
         let index = cart.findIndex(item => item.id == product.id);
@@ -76,7 +82,7 @@ export function CartContextProvider(props) {
     }
 
     return (
-        <CartContext.Provider value={{cart, addToCart, deleteFromCart, clearCart}}>
+        <CartContext.Provider value={{cart, cartTotalItems, addToCart, deleteFromCart, clearCart}}>
             {props.children}
         </CartContext.Provider>
     )

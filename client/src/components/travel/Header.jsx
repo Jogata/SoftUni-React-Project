@@ -16,6 +16,7 @@ import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
 import { useContext, useEffect, useState } from "react";
 import { CartContext, ProductsContext } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 export const productsData = [
     {
@@ -146,7 +147,7 @@ export function Navigation({query, setQuery}) {
     return (
         <nav className="navigation">
             <div className="logo">
-                <a href="/">Logo</a>
+                <Link to="/">Logo</Link>
             </div>
             <div className="search">
                 <i className="ri-search-line search-icon"></i>
@@ -164,9 +165,9 @@ export function Navigation({query, setQuery}) {
             </div>
             <div className="nav-icons">
                 <div className="cart">
-                    <a href="/">
+                    <Link to="/cart">
                         <i className="fa fa-shopping-cart nav-icon"></i>
-                    </a>
+                    </Link>
                     <span className="cart-amount">0</span>
                 </div>
                 <button>
@@ -214,7 +215,7 @@ function Hero({query}) {
         {/* <div className="hero"> */}
             <div className="hero-content">
                 <div className="hero-header">
-                    <h1 className="animated">Our Elegant Collection Just For You</h1>
+                    <h1>Our Elegant Collection Just For You</h1>
                     <p>Shop the latest trends and classic essentials just for you</p>
                 </div>
                 <div className="hero-image">
@@ -270,6 +271,59 @@ export function Footer() {
         <footer>
             <h1>Footer</h1>
         </footer>
+    )
+}
+
+export function Cart() {
+    const { cart, cartTotalItems, clearCart } = useContext(CartContext);
+
+    return (
+        <div className="cart-page">
+            <div className="cart-container">
+                <div className="cart-left">
+                    <div className="cart-header">
+                        <h1>Shopping Cart</h1>
+                        <h1>{cartTotalItems} Items</h1>
+                        <button className="clear-cart-btn" onClick={clearCart}>
+                            <i className="ri-delete-bin-line"></i>
+                            Clear Cart
+                        </button>
+                    </div>
+                {cart.map(item => {
+                    return (
+                        <div className="cart-item" key={item.id}>
+                            <div className="product-details">
+                                <img src={item.image} alt={item.title} />
+                                <div className="cart-product-info">
+                                    <h3>{item.title}</h3>
+                                    <button className="remove-item-btn">
+                                        <i className="ri-delete-bin-line"></i>
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="quantity">
+                                <button>
+                                    <i className="ri-subtract-line"></i>
+                                </button>
+                                <span>{item.amount}</span>
+                                <button>
+                                    <i className="ri-add-line"></i>
+                                </button>
+                            </div>
+                            <span className="price">
+                                ${item.price}
+                            </span>
+                            <span className="total">
+                                ${(item.price * item.amount).toFixed(2)}
+                            </span>
+                        </div>
+                    )
+                })}
+                </div>
+                <div className="cart-right"></div>
+            </div>
+        </div>
     )
 }
 

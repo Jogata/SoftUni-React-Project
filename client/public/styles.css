@@ -1188,3 +1188,158 @@ main.max-width {
     transform: translateY(-1rem);
   }
 }
+
+.cart-container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #eee;
+}
+
+.cart-left {
+  width: 65%;
+  padding: 20px;
+  /* background-color: #fff; */
+}
+
+.cart-right {
+  width: 30%;
+  padding: 20px;
+  padding-top: 60px;
+}
+
+.cart-header {
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 2px solid #666;
+}
+
+.cart-header .clear-cart-btn {
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #eee;
+  font-size: 22px;
+  transition: color 300ms;
+}
+
+.cart-header .clear-cart-btn:hover {
+  color: tomato;
+}
+
+.cart-header span {
+  margin-left: 90px;
+  font-size: 20px;
+}
+
+.cart-right h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.summary_item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary_item.total_cost {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.checkout_btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 1rem;
+  color: #fff;
+  /* border: none; */
+  background-color: orange;
+  cursor: pointer;
+}
+
+.cart-item {
+  margin-top: 20px;
+  padding: 10px 0;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.product-details {
+  /* width: 50%; */
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-details img {
+  max-width: 100px;
+  /* height: 100px; */
+  /* margin-right: 20px; */
+}
+
+.cart-product-info {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-product-info h3 {
+  /* margin: 0; */
+  font-size: 18px;
+}
+
+.cart-product-info p {
+  margin: 5px 0;
+  color: #888;
+}
+
+.remove-item-btn {
+  margin: 1rem auto 0;
+  padding: 0.5em;
+  color: #eee;
+  transition: color 300ms;
+}
+
+.remove-item-btn:hover {
+  color: tomato;
+}
+
+.remove-item-btn i {
+  margin-right: 0.5rem;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  /* border: none; */
+  background-color: #f0f0f0;
+  /* cursor: pointer; */
+}
+
+.quantity span {
+  margin: 0 10px;
+}
+
+.price,
+.total {
+  color: #666;
+  font-size: 18px;
+}
