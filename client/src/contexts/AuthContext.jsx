@@ -51,25 +51,32 @@ export const CartContext = createContext(null);
 export function CartContextProvider(props) {
     // const [cart, setCart] = useState([]);
     productsData.map(p => p.amount = 2);
-    const [cart, setCart] = useState(productsData);
+    const [cart, setCart] = useState([...productsData]);
     // console.log(cart);
 
     const cartTotalItems = cart.reduce((acc, item) => acc + item.amount, 0);
-    console.log(cartTotalItems);
+    // console.log(cartTotalItems);
 
     const addToCart = (product) => {
         let index = cart.findIndex(item => item.id == product.id);
-        const newCart = [...cart];
+        const updatedCart = [...cart];
+        // console.log(updatedCart[index].amount);
 
         if (index === -1) {
-            newCart.push({...product, amount: 0});
-            index = newCart.length - 1;
+            updatedCart.push({...product, amount: 0});
+            index = updatedCart.length - 1;
         }
 
-        newCart[index].amount += 1;
-        console.log(newCart);
+        const currentProduct = updatedCart[index];
+        const updatedProduct = {...currentProduct};
+        updatedProduct.amount += 1;
+        // console.log(updatedProduct);
+        // updatedCart[index].amount += 1;
+        updatedCart[index] = updatedProduct;
+        // console.log(updatedCart[index].amount);
+        console.log(updatedCart);
 
-        setCart(newCart);
+        setCart(updatedCart);
     }
 
     const deleteFromCart = (id) => {

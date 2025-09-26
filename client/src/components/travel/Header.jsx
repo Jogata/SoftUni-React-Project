@@ -143,6 +143,7 @@ export const productsData = [
 
 export function Navigation({query, setQuery}) {
     // const [query, setQuery] = useState("");
+    const { cartTotalItems } = useContext(CartContext);
 
     return (
         <nav className="navigation">
@@ -168,7 +169,7 @@ export function Navigation({query, setQuery}) {
                     <Link to="/cart">
                         <i className="fa fa-shopping-cart nav-icon"></i>
                     </Link>
-                    <span className="cart-amount">0</span>
+                    <span className="cart-amount">{cartTotalItems}</span>
                 </div>
                 <button>
                     <i className="fa fa-user-o nav-icon"></i>
@@ -277,6 +278,8 @@ export function Footer() {
 export function Cart() {
     const { cart, cartTotalItems, clearCart } = useContext(CartContext);
 
+    const total = cart.reduce((acc, item) => acc + (item.price * item.amount), 0);
+
     return (
         <div className="cart-page">
             <div className="cart-container">
@@ -291,7 +294,26 @@ export function Cart() {
                     </div>
                     {cart.length == 0 ? <EmptyCart /> : <CartItems cart={cart} />}
                 </div>
-                <div className="cart-right"></div>
+                <div className="cart-right">
+                    <h2>Cart Summary</h2>
+                    <div className="summary-item">
+                        <span>Items: </span>
+                        <span>{cartTotalItems}</span>
+                    </div>
+                    <div className="cart-summary">
+                        <div className="summary-item">
+                            <span>Shipping: </span>
+                            <span>Free</span>
+                        </div>
+                        <div className="summary-item total-cost">
+                            <span>Total Cost: </span>
+                            <span>$ {total.toFixed(2)}</span>
+                        </div>
+                        <button className="checkout-btn">
+                            CHECKOUT
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
