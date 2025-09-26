@@ -229,7 +229,7 @@ function Hero({query}) {
 
 function Products({query}) {
     const { products } = useContext(ProductsContext);
-    const { addToCart } = useContext(CartContext);
+    // const { addToCart } = useContext(CartContext);
 
     let filtered = products;
 
@@ -251,18 +251,32 @@ function Products({query}) {
                                     <h4>{product.title}</h4>
                                     <p>${product.price}</p>
                                 </div>
-                                <button 
+                                {/* <button 
                                     className="add-to-cart" 
                                     onClick={() => addToCart(product)} 
                                 >
                                     Add to Cart
-                                </button>
+                                </button> */}
+                                <AddToCartButton product={product} />
                             </div>
                         )
                     })
                 }
             </div>
         </div>
+    )
+}
+
+function AddToCartButton({ product }) {
+    const { addToCart } = useContext(CartContext);
+    console.log(product.id);
+    return (
+        <button
+            className="add-to-cart"
+            onClick={() => addToCart(product)}
+        >
+            Add to Cart
+        </button>
     )
 }
 
@@ -276,7 +290,7 @@ export function Footer() {
 }
 
 export function Cart() {
-    const { cart, cartTotalItems, clearCart } = useContext(CartContext);
+    const { cart, cartTotalItems, clearCart, deleteFromCart, incrementItemAmount } = useContext(CartContext);
 
     const total = cart.reduce((acc, item) => acc + (item.price * item.amount), 0);
 
@@ -292,7 +306,15 @@ export function Cart() {
                             Clear Cart
                         </button>
                     </div>
-                    {cart.length == 0 ? <EmptyCart /> : <CartItems cart={cart} />}
+                    {
+                        cart.length == 0 ? 
+                            <EmptyCart /> : 
+                            <CartItems 
+                                cart={cart} 
+                                deleteFromCart={deleteFromCart} 
+                                incrementItemAmount={incrementItemAmount} 
+                            />
+                    }
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -325,7 +347,7 @@ export function EmptyCart() {
     )
 }
 
-export function CartItems({ cart }) {
+export function CartItems({ cart, deleteFromCart, incrementItemAmount }) {
     return (
         cart.map(item => {
             return (
@@ -334,7 +356,10 @@ export function CartItems({ cart }) {
                         <img src={item.image} alt={item.title} />
                         <div className="cart-product-info">
                             <h3>{item.title}</h3>
-                            <button className="remove-item-btn">
+                            <button 
+                                className="remove-item-btn" 
+                                onClick={() => deleteFromCart(item.id)}
+                            >
                                 <i className="ri-delete-bin-line"></i>
                                 Remove
                             </button>
@@ -345,7 +370,7 @@ export function CartItems({ cart }) {
                             <i className="ri-subtract-line"></i>
                         </button>
                         <span>{item.amount}</span>
-                        <button>
+                        <button onClick={() => incrementItemAmount(item.id)}>
                             <i className="ri-add-line"></i>
                         </button>
                     </div>

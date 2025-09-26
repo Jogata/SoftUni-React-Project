@@ -83,13 +83,25 @@ export function CartContextProvider(props) {
         const filtered = cart.filter(item => item.id != id);
         setCart(filtered);
     }
+
+    const incrementItemAmount = (id) => {
+        const updatedCart = cart.map(item => {
+            if (item.id == id) {
+                return {...item, amount: item.amount + 1};
+            } else {
+                return item;
+            }
+        })
+
+        setCart(updatedCart);
+    }
     
     const clearCart = () => {
         setCart([]);
     }
 
     return (
-        <CartContext.Provider value={{cart, cartTotalItems, addToCart, deleteFromCart, clearCart}}>
+        <CartContext.Provider value={{cart, cartTotalItems, addToCart, deleteFromCart, clearCart, incrementItemAmount}}>
             {props.children}
         </CartContext.Provider>
     )
