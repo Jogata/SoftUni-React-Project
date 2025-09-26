@@ -229,7 +229,6 @@ function Hero({query}) {
 
 function Products({query}) {
     const { products } = useContext(ProductsContext);
-    // const { addToCart } = useContext(CartContext);
 
     let filtered = products;
 
@@ -269,7 +268,7 @@ function Products({query}) {
 
 function AddToCartButton({ product }) {
     const { addToCart } = useContext(CartContext);
-    console.log(product.id);
+    // console.log(product.id);
     return (
         <button
             className="add-to-cart"
@@ -290,7 +289,7 @@ export function Footer() {
 }
 
 export function Cart() {
-    const { cart, cartTotalItems, clearCart, deleteFromCart, incrementItemAmount } = useContext(CartContext);
+    const { cart, cartTotalItems, clearCart, deleteFromCart, incrementItemAmount, decrementItemAmount } = useContext(CartContext);
 
     const total = cart.reduce((acc, item) => acc + (item.price * item.amount), 0);
 
@@ -313,6 +312,7 @@ export function Cart() {
                                 cart={cart} 
                                 deleteFromCart={deleteFromCart} 
                                 incrementItemAmount={incrementItemAmount} 
+                                decrementItemAmount={decrementItemAmount} 
                             />
                     }
                 </div>
@@ -347,7 +347,9 @@ export function EmptyCart() {
     )
 }
 
-export function CartItems({ cart, deleteFromCart, incrementItemAmount }) {
+export function CartItems(props) {
+    const { cart, deleteFromCart, incrementItemAmount, decrementItemAmount } = props;
+
     return (
         cart.map(item => {
             return (
@@ -366,7 +368,7 @@ export function CartItems({ cart, deleteFromCart, incrementItemAmount }) {
                         </div>
                     </div>
                     <div className="quantity">
-                        <button>
+                        <button onClick={() => decrementItemAmount(item.id)}>
                             <i className="ri-subtract-line"></i>
                         </button>
                         <span>{item.amount}</span>

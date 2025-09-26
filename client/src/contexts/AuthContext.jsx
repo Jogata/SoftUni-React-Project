@@ -51,6 +51,7 @@ export const CartContext = createContext(null);
 export function CartContextProvider(props) {
     // const [cart, setCart] = useState([]);
     productsData.map(p => p.amount = 2);
+    // console.log(productsData);
     const [cart, setCart] = useState([...productsData]);
     // console.log(cart);
 
@@ -74,13 +75,14 @@ export function CartContextProvider(props) {
         // updatedCart[index].amount += 1;
         updatedCart[index] = updatedProduct;
         // console.log(updatedCart[index].amount);
-        console.log(updatedCart);
+        // console.log(updatedCart);
 
         setCart(updatedCart);
     }
 
     const deleteFromCart = (id) => {
         const filtered = cart.filter(item => item.id != id);
+        // console.log(filtered);
         setCart(filtered);
     }
 
@@ -95,13 +97,54 @@ export function CartContextProvider(props) {
 
         setCart(updatedCart);
     }
+
+    const decrementItemAmount = (id) => {
+        // const updatedCart = cart.map(item => {
+        //     if (item.id == id) {
+        //         const newAmount = item.amount - 1;
+        //         console.log(newAmount);
+        //         if (newAmount == 0) {
+        //             deleteFromCart(id);
+        //         } else {
+        //             return {...item, amount: newAmount};
+        //         }
+        //     } else {
+        //         return item;
+        //     }
+        // })
+        const index = cart.findIndex(item => item.id == id);
+        const item = cart[index];
+        const newAmount = item.amount - 1;
+        console.log(newAmount);
+
+        if (newAmount == 0) {
+            const filtered = cart.filter(item => item.id != id);
+            console.log(filtered);
+            setCart(filtered);
+        } else {
+            const updatedItem = {...item, amount: newAmount};
+            const updatedCart = [...cart];
+            updatedCart[index] = updatedItem;
+            setCart(updatedCart);
+        }
+    }
     
     const clearCart = () => {
         setCart([]);
     }
 
+    const cartContextValue = {
+        cart, 
+        cartTotalItems, 
+        addToCart, 
+        deleteFromCart, 
+        clearCart, 
+        incrementItemAmount, 
+        decrementItemAmount
+    };
+
     return (
-        <CartContext.Provider value={{cart, cartTotalItems, addToCart, deleteFromCart, clearCart, incrementItemAmount}}>
+        <CartContext.Provider value={cartContextValue}>
             {props.children}
         </CartContext.Provider>
     )
