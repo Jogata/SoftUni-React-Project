@@ -143,7 +143,8 @@ export const productsData = [
 
 export function Navigation({query, setQuery}) {
     // const [query, setQuery] = useState("");
-    const { cartTotalItems } = useContext(CartContext);
+    // const { cartTotalItems } = useContext(CartContext);
+    // console.log("navigation");
 
     return (
         <nav className="navigation">
@@ -169,13 +170,22 @@ export function Navigation({query, setQuery}) {
                     <Link to="/cart">
                         <i className="fa fa-shopping-cart nav-icon"></i>
                     </Link>
-                    <span className="cart-amount">{cartTotalItems}</span>
+                    {/* <span className="cart-amount">{cartTotalItems}</span> */}
+                    <CartAmouut />
                 </div>
                 <button>
                     <i className="fa fa-user-o nav-icon"></i>
                 </button>
             </div>
         </nav>
+    )
+}
+
+function CartAmouut() {
+    const { cartTotalItems } = useContext(CartContext);
+
+    return (
+        <span className="cart-amount">{cartTotalItems}</span>
     )
 }
 
@@ -279,49 +289,49 @@ function AddToCartButton({ product }) {
     )
 }
 
-export function TestContainer() {
-    return (
-        <>
-            <Test>
-            <Section1 />
-            <Section2 />
-            <Section3 />
-            <Section4 />
-            </Test>
-        </>
-    )
-}
+// export function TestContainer() {
+//     return (
+//         <>
+//             <Test>
+//             <Section1 />
+//             <Section2 />
+//             <Section3 />
+//             <Section4 />
+//             </Test>
+//         </>
+//     )
+// }
 
-function Test({children}) {
-    const [num, setNum] = useState(0);
-    return (
-        <div className="test">
-            <span>{num}</span>
-            {children}
-            <button onClick={() => setNum(num + 1)}>add</button>
-      </div>
-    )
-}
+// function Test({children}) {
+//     const [num, setNum] = useState(0);
+//     return (
+//         <div className="test">
+//             <span>{num}</span>
+//             {children}
+//             <button onClick={() => setNum(num + 1)}>add</button>
+//       </div>
+//     )
+// }
 
-function Section1() {
-    console.log("section1");
-    return <h1>section 1</h1>
-}
+// function Section1() {
+//     console.log("section1");
+//     return <h1>section 1</h1>
+// }
 
-function Section2() {
-    console.log("section2");
-    return <h1>section 1</h1>
-}
+// function Section2() {
+//     console.log("section2");
+//     return <h1>section 1</h1>
+// }
 
-function Section3() {
-    console.log("section3");
-    return <h1>section 1</h1>
-}
+// function Section3() {
+//     console.log("section3");
+//     return <h1>section 1</h1>
+// }
 
-function Section4() {
-    console.log("section4");
-    return <h1>section 1</h1>
-}
+// function Section4() {
+//     console.log("section4");
+//     return <h1>section 1</h1>
+// }
 
 export function Footer() {
     console.log("footer");
