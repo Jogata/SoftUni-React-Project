@@ -1367,3 +1367,18 @@ main.max-width {
   font-size: 3rem;
   text-align: center;
 }
+
+.test {
+  text-align: center;
+}
+
+.test span {
+  font-size: 4rem;
+}
+
+.test button {
+  padding: 1em 2em;
+  color: #eee;
+  font-size: 3rem;
+  border: 1px solid;
+}

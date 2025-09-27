@@ -99,28 +99,16 @@ export function CartContextProvider(props) {
     }
 
     const decrementItemAmount = (id) => {
-        // const updatedCart = cart.map(item => {
-        //     if (item.id == id) {
-        //         const newAmount = item.amount - 1;
-        //         console.log(newAmount);
-        //         if (newAmount == 0) {
-        //             deleteFromCart(id);
-        //         } else {
-        //             return {...item, amount: newAmount};
-        //         }
-        //     } else {
-        //         return item;
-        //     }
-        // })
         const index = cart.findIndex(item => item.id == id);
         const item = cart[index];
         const newAmount = item.amount - 1;
-        console.log(newAmount);
+        // console.log(newAmount);
 
         if (newAmount == 0) {
-            const filtered = cart.filter(item => item.id != id);
-            console.log(filtered);
-            setCart(filtered);
+            // const filtered = cart.filter(item => item.id != id);
+            // console.log(filtered);
+            // setCart(filtered);
+            deleteFromCart(id);
         } else {
             const updatedItem = {...item, amount: newAmount};
             const updatedCart = [...cart];
