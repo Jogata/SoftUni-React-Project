@@ -1368,7 +1368,40 @@ main.max-width {
   text-align: center;
 }
 
-.test {
+.footer {
+  /* bottom: 0; */
+  max-width: 1600px;
+  margin: auto;
+  padding-bottom: 3rem 1rem 1rem;
+  /* color: #fff; */
+  /* background: #000; */
+}
+
+.footer-content {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #666;
+}
+
+.footer-socials .footer-icon {
+  margin: 0 0.5rem;
+  padding: 0.25rem;
+  font-size: 22px;
+  /* border: 1px solid; */
+  transition: color 300ms;
+  cursor: pointer;
+}
+
+.footer-socials .footer-icon:hover {
+  color: orange;
+}
+
+.copy {
+  padding: 1rem;
+  text-align: center;
+}
+/* .test {
   text-align: center;
 }
 
@@ -1381,4 +1414,4 @@ main.max-width {
   color: #eee;
   font-size: 3rem;
   border: 1px solid;
-}
+} */

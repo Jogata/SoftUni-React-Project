@@ -171,7 +171,7 @@ export function Navigation({query, setQuery}) {
                         <i className="fa fa-shopping-cart nav-icon"></i>
                     </Link>
                     {/* <span className="cart-amount">{cartTotalItems}</span> */}
-                    <CartAmouut />
+                    <CartAmount />
                 </div>
                 <button>
                     <i className="fa fa-user-o nav-icon"></i>
@@ -181,7 +181,7 @@ export function Navigation({query, setQuery}) {
     )
 }
 
-function CartAmouut() {
+function CartAmount() {
     const { cartTotalItems } = useContext(CartContext);
 
     return (
@@ -289,55 +289,23 @@ function AddToCartButton({ product }) {
     )
 }
 
-// export function TestContainer() {
-//     return (
-//         <>
-//             <Test>
-//             <Section1 />
-//             <Section2 />
-//             <Section3 />
-//             <Section4 />
-//             </Test>
-//         </>
-//     )
-// }
-
-// function Test({children}) {
-//     const [num, setNum] = useState(0);
-//     return (
-//         <div className="test">
-//             <span>{num}</span>
-//             {children}
-//             <button onClick={() => setNum(num + 1)}>add</button>
-//       </div>
-//     )
-// }
-
-// function Section1() {
-//     console.log("section1");
-//     return <h1>section 1</h1>
-// }
-
-// function Section2() {
-//     console.log("section2");
-//     return <h1>section 1</h1>
-// }
-
-// function Section3() {
-//     console.log("section3");
-//     return <h1>section 1</h1>
-// }
-
-// function Section4() {
-//     console.log("section4");
-//     return <h1>section 1</h1>
-// }
-
 export function Footer() {
-    console.log("footer");
+    // console.log("footer");
     return (
-        <footer>
-            <h1>Footer</h1>
+        <footer className="footer">
+            <div className="footer-content">
+                <div className="footer-name">
+                    <h2>LOGO</h2>
+                </div>
+                <div className="footer-socials">
+                    <i className="fa fa-facebook footer-icon"></i>
+                    <i className="fa fa-instagram footer-icon"></i>
+                    <i className="fa fa-twitter footer-icon"></i>
+                </div>
+            </div>
+            <div className="copy">
+                <p>Copyright © Company 2025. All rights reserved</p>
+            </div>
         </footer>
     )
 }
