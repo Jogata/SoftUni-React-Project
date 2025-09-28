@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
-import { AuthContextProvider, CartContextProvider, ProductsContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext'
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Cart, Footer, Home, Navigation, ProductDetails } from './components/travel/Header'
+import Navbar from './components/travel/Footer'
 
 function Loader() {
   return (
@@ -71,9 +71,6 @@ function useFetch(url) {
 }
 
 function App() {
-  // const [filter, setFilter] = useState("");
-  const [query, setQuery] = useState("");
-
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -84,19 +81,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <TestContainer /> */}
-
-      <ProductsContextProvider>
-        <CartContextProvider>
-          <Navigation query={query} setQuery={setQuery} />
-          <Routes>
-            <Route path='/' element={<Home query={query} />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/product/:id' element={<ProductDetails />} />
-          </Routes>
-        </CartContextProvider>
-      </ProductsContextProvider>
-      <Footer />
+        <Navbar />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
