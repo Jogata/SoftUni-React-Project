@@ -14,9 +14,9 @@ import watch13 from "./images/watch13.jpg";
 import watch14 from "./images/watch14.jpg";
 import watch15 from "./images/watch15.jpg";
 import hero from "./images/hero-w.png";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useRef } from "react";
 import { CartContext, ProductsContext } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const productsData = [
     {
@@ -198,14 +198,6 @@ export function Home({query}) {
     )
 }
 
-// function HomeContent({children}) {
-//     return (
-//         <>
-//         {children}
-//         </>
-//     )
-// }
-
 function Hero({query}) {
     // useEffect(() => {
     //     console.log("hero");
@@ -251,30 +243,42 @@ function Products({query}) {
             <h2>Our Elegant Collection</h2>
             <div className="products-grid">
                 {
-                    filtered.map(product => {
-                        // console.log(product.id);
-                        return (
-                            <div className="product" key={product.id}>
-                                <img src={product.image} alt="" className="product-image" />
-                                <div className="product-info">
-                                    <h4>{product.title}</h4>
-                                    <p>${product.price}</p>
-                                </div>
-                                {/* <button 
-                                    className="add-to-cart" 
-                                    onClick={() => addToCart(product)} 
-                                >
-                                    Add to Cart
-                                </button> */}
-                                <AddToCartButton product={product} />
-                            </div>
-                        )
-                    })
+                    filtered.map(product => <Product product={product} key={product.id} />)
                 }
             </div>
         </div>
     )
 }
+
+function Product({ product }) {
+    // console.log(product.id);
+    const link = useRef(null);
+
+    return (
+        <div
+            // key={product.id}
+            className="product"
+            onClick={() => link.current.click()}
+        >
+            <img src={product.image} alt="" className="product-image" />
+            <div className="product-info">
+                <h4>{product.title}</h4>
+                <p>${product.price}</p>
+            </div>
+            {/* <button
+                className="add-to-cart"
+                onClick={() => addToCart(product)}
+            >
+                Add to Cart
+            </button> */}
+            <AddToCartButton product={product} />
+            <Link to={`/product/${product.id}`} ref={link}>
+                {product.title}
+            </Link>
+        </div>
+    )
+}
+
 
 function AddToCartButton({ product }) {
     const { addToCart } = useContext(CartContext);
@@ -282,7 +286,10 @@ function AddToCartButton({ product }) {
     return (
         <button
             className="add-to-cart"
-            onClick={() => addToCart(product)}
+            onClick={(e) => {
+                e.stopPropagation();
+                addToCart(product);
+            }}
         >
             Add to Cart
         </button>
@@ -407,6 +414,32 @@ export function CartItems(props) {
                 </div>
             )
         })
+    )
+}
+
+export function ProductDetails() {
+    const { addToCart } = useContext(CartContext);
+
+    const { id } = useParams();
+
+    const product = productsData.find(product => {
+        return product.id === parseInt(id);
+    })
+
+    return (
+        <>
+            <div className="product-page">
+                <div className="detail-left">
+                    <img src={product.image} alt="" />
+                </div>
+                <div className="detail-right">
+                    <h3>{product.title} </h3>
+                    <p className="product-price">$ {product.price} </p>
+                    <p className="desc">{product.description} </p>
+                    <button onClick={() => addToCart(product)}>ADD TO CART</button>
+                </div>
+            </div>
+        </>
     )
 }
 
