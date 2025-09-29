@@ -1047,11 +1047,126 @@ nav {
 }
 
 .hero-left h1 {
+  /* position: relative; */
+  color: transparent;
   font-size: 60px;
 }
 
+/* .hero-left h1::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Professional FullStack Developer";
+  width: 100%;
+  width: 0;
+  height: 100%;
+  color: red;
+  border: 1px solid;
+} */
+
 .hero-left h1 span {
-  color: #1ae7b4;
+  position: relative;
+  /* color: #1ae7b4; */
+  /* overflow: hidden; */
+}
+
+.hero-left h1 .first::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Professional";
+  /* width: 100%; */
+  width: 0;
+  height: 100%;
+  color: #fff;
+  /* border: 1px solid; */
+  animation: reveal-1 15s linear infinite;
+  /* animation-delay: 0s; */
+  overflow: hidden;
+}
+
+.hero-left h1 .second::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "FullStack";
+  /* width: 100%; */
+  width: 0;
+  height: 100%;
+  color: #2aaa8a;
+  /* border: 1px solid; */
+  animation: reveal-2 15s linear infinite;
+  /* animation-delay: 3s; */
+  overflow: hidden;
+}
+
+.hero-left h1 .third::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Developer";
+  /* width: 100%; */
+  width: 0;
+  height: 100%;
+  color: #fff;
+  /* border: 1px solid; */
+  animation: reveal-3 15s linear infinite;
+  /* animation-delay: 6s; */
+  overflow: hidden;
+}
+
+@keyframes reveal-1 {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 100%;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes reveal-2 {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 0;
+  }
+  40% {
+    width: 100%;
+  }
+  /* 60% {
+    width: 100%;
+  } */
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes reveal-3 {
+  0% {
+    width: 0;
+  }
+  40% {
+    width: 0;
+  }
+  60% {
+    width: 100%;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }
 
 .hero .hero-left p {

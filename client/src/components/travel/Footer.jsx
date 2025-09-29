@@ -1,26 +1,18 @@
 import derek from "./images/derek.jpg";
 
-export function Navbar() { 
-    return ( 
+export function Navbar() {
+    return (
         <nav>
             <div className="navigation">
-                {/* <div className="logo">
-                    <h2>Derek</h2>
-                </div>  */}
-                {/* <div className="links"> */}
-                    <ul className="links">
-                        <li>About</li>
-                        <li>Projects</li>
-                        <li>Services</li>
-                        <li>Contact</li>
-                    </ul>
-                {/* </div> */}
-                {/* <div className="button">
-                    <button>Hire Me</button>
-                </div>  */}
-            </div> 
+                <ul className="links">
+                    <li>About</li>
+                    <li>Projects</li>
+                    <li>Services</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
         </nav>
-    ) 
+    )
 }
 
 export function Hero() {
@@ -30,7 +22,8 @@ export function Hero() {
                 <div className="hero-top">
                     <div className="hero-left">
                         <h2>I'm Derek Einstein</h2>
-                        <h1>Professional <span>FullStack</span> Developer </h1>
+                        {/* <h1>Professional <span>FullStack</span> Developer</h1> */}
+                        <h1><span className="first">Professional</span> <span className="second">FullStack</span> <span className="third">Developer</span></h1>
                         <p>
                             I'm a senior fullstack engineer with over 15 years 
                             of industrial working experience.
