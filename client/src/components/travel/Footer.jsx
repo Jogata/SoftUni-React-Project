@@ -60,6 +60,31 @@ export function Hero() {
     )
 }
 
+export function About() {
+    return (
+        <div className="about">
+            <div className="about-left">
+                <div className="about-img">
+                    <img src={derek} alt="" />
+                </div>
+            </div>
+            <div className="about-right">
+                <h2>About Me</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Porro rem nihil, veritatis dolores beatae dolor id nesciunt 
+                    quis quisquam saepe sapiente unde, at itaque ex ducimus 
+                    aliquid. Ea saepe nihil mollitia omnis.
+                </p>
+                <div className="about-btns">
+                    <button>Download CV</button>
+                    <button>Hire Me</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 // export function Footer() {
 //     return (
 //         <footer>
