@@ -9,6 +9,37 @@ import tailwindcss from "./images/tailwindcss.svg";
 import visualstudio from "./images/visualstudio.svg";
 import react from "./images/reactjs.svg";
 import javascript from "./images/javascript.svg";
+import work1 from "./images/drink.jpg";
+import work2 from "./images/milk.jpg";
+import work3 from "./images/wine.jpg";
+import work4 from "./images/work4.jpeg";
+
+const works = [
+    {
+        image: work1,
+        title: "Responsive E-commerce Website",
+        github: "#github",
+        link: "#link",
+    },
+    {
+        image: work2,
+        title: "SaaS Marketing Website",
+        github: "#github",
+        link: "#link",
+    },
+    {
+        image: work3,
+        title: "Investement Website",
+        github: "#github",
+        link: "#link",
+    },
+    {
+        image: work4,
+        title: "E-learning Website",
+        github: "#github",
+        link: "#link",
+    },
+]
 
 export function Navbar() {
     return (
@@ -31,11 +62,11 @@ export function Hero() {
             <div className="hero">
                 <div className="hero-top">
                     <div className="hero-left">
-                        <h2>I'm Derek Einstein</h2>
+                        <h2>I"m Derek Einstein</h2>
                         {/* <h1>Professional <span>FullStack</span> Developer</h1> */}
                         <h1><span className="first">Professional</span> <span className="second">FullStack</span> <span className="third">Developer</span></h1>
                         <p>
-                            I'm a senior fullstack engineer with over 15 years 
+                            I"m a senior fullstack engineer with over 15 years 
                             of industrial working experience.
                         </p>
                         <div className="buttons">
@@ -116,6 +147,36 @@ export function Skills() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export function Work() {
+    return (
+        <>
+            <div className="work-list" id="work">
+                <h2 className="work-header">Explore My Recent Works</h2>
+                <div className="work-container">
+                    {works.map((work, index) => (
+                        <div key={index} className="work">
+                            <div className="work-content">
+                                <h2>{work.title} </h2>
+                                <div className="work-link">
+                                    <a href={work.github}>
+                                        <i className="fa fa-github"></i>
+                                    </a>
+                                    <a href={work.link}>
+                                        <i className="fa fa-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="work-image">
+                                <img src={work.image} alt="" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </>
     )
 }
 
