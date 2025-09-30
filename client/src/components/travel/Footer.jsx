@@ -13,6 +13,7 @@ import work1 from "./images/drink.jpg";
 import work2 from "./images/milk.jpg";
 import work3 from "./images/wine.jpg";
 import work4 from "./images/work4.jpeg";
+import { Link } from "react-router-dom";
 
 const works = [
     {
@@ -46,8 +47,8 @@ export function Navbar() {
         <nav>
             <div className="navigation">
                 <ul className="links">
-                    <li>About</li>
-                    <li>Projects</li>
+                    <li><Link to={"#about"}>About</Link></li>
+                    <li><Link to={"#work"}>Projects</Link></li>
                     <li>Services</li>
                     <li>Contact</li>
                 </ul>
@@ -103,7 +104,7 @@ export function Hero() {
 
 export function About() {
     return (
-        <div className="about">
+        <div className="about" id="about">
             <div className="about-left">
                 <div className="about-img">
                     <img src={derek} alt="" />
@@ -179,6 +180,57 @@ export function Work() {
         </>
     )
 }
+
+export function Contact() {
+    return (
+        <div className="contact-form" id="contact">
+            <h2>Contact Me</h2>
+            <p>Please fill this form to book my services</p>
+            <form >
+                <div>
+                    <label htmlFor="first">Full Name *</label>
+                    <div className="names">
+                        <input
+                            type="text"
+                            id="first"
+                            name="first"
+                            placeholder="First Name"
+                            required
+                        />
+                        <input
+                            type="text"
+                            id="last"
+                            name="last"
+                            placeholder="Last Name"
+                            required
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor="email">E-mail *</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@example.com"
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="message">Message *</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="10"
+                        required
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+};
+
 
 // export function Footer() {
 //     return (
