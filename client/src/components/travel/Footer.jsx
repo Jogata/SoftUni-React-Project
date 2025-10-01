@@ -1,3 +1,11 @@
+{/* <Navbar />
+<Hero />
+<About />
+<Skills />
+<Work />
+<Contact />
+<Footer /> */}
+
 import derek from "./images/derek.jpg";
 import figma from "./images/figma.svg";
 import css from "./images/css.svg";
@@ -227,9 +235,8 @@ export function Contact() {
 }
 
 export function Footer() {
-  return (
-    <>
-        <div className="footer">
+    return (
+        <footer className="footer">
             <div className="footer-bottom">
                 <div className="footer-left">
                     <h2>Derek Einstein</h2>
@@ -252,11 +259,9 @@ export function Footer() {
             <p className="copy">
                 © 2024 Derek Einstein. All rights reserved.
             </p>
-        </div>
-    </>
-  )
+        </footer>
+    )
 }
-
 
 // export function Footer() {
 //     return (
