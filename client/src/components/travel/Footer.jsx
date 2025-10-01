@@ -59,46 +59,43 @@ export function Navbar() {
 
 export function Hero() {
     return (
-        <>
-            <div className="hero">
-                <div className="hero-top">
-                    <div className="hero-left">
-                        <h2>I"m Derek Einstein</h2>
-                        {/* <h1>Professional <span>FullStack</span> Developer</h1> */}
-                        <h1><span className="first">Professional</span> <span className="second">FullStack</span> <span className="third">Developer</span></h1>
-                        <p>
-                            I"m a senior fullstack engineer with over 15 years 
-                            of industrial working experience.
-                        </p>
-                        <div className="buttons">
-                            <button>Hire Me</button>
-                            <button>View My Projects</button>
-                        </div>
-                    </div>
-                    <div className="hero-right">
-                        <div className="hero-img">
-                            <img src={derek} alt="" />
-                        </div>
+        <div className="hero">
+            <div className="hero-top">
+                <div className="hero-left">
+                    <h2>I"m Derek Einstein</h2>
+                    <h1><span className="first">Professional</span> <span className="second">FullStack</span> <span className="third">Developer</span></h1>
+                    <p>
+                        I"m a senior fullstack engineer with over 15 years
+                        of industrial working experience.
+                    </p>
+                    <div className="buttons">
+                        <button>Hire Me</button>
+                        <button>View My Projects</button>
                     </div>
                 </div>
-                <div className="hero-bottom">
-                    <div className="inner">
-                        <div className="hero-info">
-                            <h1>3+</h1>
-                            <p>Years of Experience</p>
-                        </div>
-                        <div className="hero-info">
-                            <h1>1000+</h1>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div className="hero-info">
-                            <h1>800+</h1>
-                            <p>Satisfied Clients</p>
-                        </div>
+                <div className="hero-right">
+                    <div className="hero-img">
+                        <img src={derek} alt="" />
                     </div>
                 </div>
             </div>
-        </>
+            <div className="hero-bottom">
+                <div className="inner">
+                    <div className="hero-info">
+                        <h1>3+</h1>
+                        <p>Years of Experience</p>
+                    </div>
+                    <div className="hero-info">
+                        <h1>1000+</h1>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div className="hero-info">
+                        <h1>800+</h1>
+                        <p>Satisfied Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
@@ -153,31 +150,29 @@ export function Skills() {
 
 export function Work() {
     return (
-        <>
-            <div className="work-list" id="work">
-                <h2 className="work-header">Explore My Recent Works</h2>
-                <div className="work-container">
-                    {works.map((work, index) => (
-                        <div key={index} className="work">
-                            <div className="work-content">
-                                <h2>{work.title} </h2>
-                                <div className="work-link">
-                                    <a href={work.github}>
-                                        <i className="fa fa-github"></i>
-                                    </a>
-                                    <a href={work.link}>
-                                        <i className="fa fa-link"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="work-image">
-                                <img src={work.image} alt="" />
+        <div className="work-list" id="work">
+            <h2 className="work-header">Explore My Recent Works</h2>
+            <div className="work-container">
+                {works.map((work, index) => (
+                    <div key={index} className="work">
+                        <div className="work-content">
+                            <h2>{work.title} </h2>
+                            <div className="work-link">
+                                <a href={work.github}>
+                                    <i className="fa fa-github"></i>
+                                </a>
+                                <a href={work.link}>
+                                    <i className="fa fa-link"></i>
+                                </a>
                             </div>
                         </div>
-                    ))}
-                </div>
+                        <div className="work-image">
+                            <img src={work.image} alt="" />
+                        </div>
+                    </div>
+                ))}
             </div>
-        </>
+        </div>
     )
 }
 
@@ -229,7 +224,38 @@ export function Contact() {
             </form>
         </div>
     );
-};
+}
+
+export function Footer() {
+  return (
+    <>
+        <div className="footer">
+            <div className="footer-bottom">
+                <div className="footer-left">
+                    <h2>Derek Einstein</h2>
+                    <div className="socials">
+                        <i className="fa fa-facebook social-icon"></i>
+                        <i className="fa fa-instagram social-icon"></i>
+                        <i className="fa fa-youtube-play social-icon"></i>
+                    </div>
+                </div>
+                <div className="footer-right">
+                    <ul>
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>About Me</li>
+                        <li>Hire Me</li>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <p className="copy">
+                © 2024 Derek Einstein. All rights reserved.
+            </p>
+        </div>
+    </>
+  )
+}
 
 
 // export function Footer() {

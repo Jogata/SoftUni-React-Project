@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { About, Contact, Hero, Navbar, Skills, Work } from './components/travel/Footer'
+import { About, Contact, Footer, Hero, Navbar, Skills, Work } from './components/travel/Footer'
 
 function Loader() {
   return (
@@ -88,6 +88,7 @@ function App() {
         <Skills />
         <Work />
         <Contact />
+        <Footer />
 {/* </Routes> */}
 
           {/* <Routes>
