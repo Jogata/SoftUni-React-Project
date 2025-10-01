@@ -62,7 +62,7 @@ export function Hero() {
         <div className="hero">
             <div className="hero-top">
                 <div className="hero-left">
-                    <h2>I"m Derek Einstein</h2>
+                    <h2>I'm Derek Einstein</h2>
                     <h1><span className="first">Professional</span> <span className="second">FullStack</span> <span className="third">Developer</span></h1>
                     <p>
                         I"m a senior fullstack engineer with over 15 years

@@ -1038,7 +1038,7 @@ nav {
   max-width: 1600px;
   /* height: 80vh; */
   margin: auto;
-  padding: 5rem 1rem;
+  padding: 1rem 1rem 5rem;
 }
 
 .hero-top {
@@ -1126,6 +1126,72 @@ nav {
   overflow: hidden;
 }
 
+@keyframes reveal-1 {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: 100%;
+  }
+  74% {
+    width: 100%;
+  }
+  76% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes reveal-2 {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: 0;
+  }
+  20% {
+    width: 100%;
+  }
+  72% {
+    width: 100%;
+  }
+  74% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes reveal-3 {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 0;
+  }
+  30% {
+    width: 100%;
+  }
+  /* 40% {
+    width: 100%;
+  }
+  60% {
+    width: 100%;
+  } */
+  70% {
+    width: 100%;
+  }
+  72% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
 /* @keyframes reveal-1 {
   0% {
     width: 0;
@@ -1141,7 +1207,7 @@ nav {
   }
 } */
 
-@keyframes reveal-1 {
+/* @keyframes reveal-1 {
   0% {
     width: 0;
   }
@@ -1151,16 +1217,13 @@ nav {
   30% {
     width: 100%;
   }
-  /* 40% {
-    width: 100%;
-  } */
   90% {
     width: 100%;
   }
   100% {
     width: 0;
   }
-}
+} */
 
 /* @keyframes reveal-2 {
   0% {
@@ -1180,7 +1243,7 @@ nav {
   }
 } */
 
-@keyframes reveal-2 {
+/* @keyframes reveal-2 {
   0% {
     width: 0;
   }
@@ -1190,9 +1253,6 @@ nav {
   40% {
     width: 100%;
   }
-  /* 40% {
-    width: 100%;
-  } */
   80% {
     width: 100%;
   }
@@ -1202,7 +1262,7 @@ nav {
   100% {
     width: 0;
   }
-}
+} */
 
 /* @keyframes reveal-3 {
   0% {
@@ -1222,7 +1282,7 @@ nav {
   }
 } */
 
-@keyframes reveal-3 {
+/* @keyframes reveal-3 {
   0% {
     width: 0;
   }
@@ -1232,12 +1292,6 @@ nav {
   50% {
     width: 100%;
   }
-  /* 40% {
-    width: 100%;
-  }
-  60% {
-    width: 100%;
-  } */
   70% {
     width: 100%;
   }
@@ -1247,7 +1301,7 @@ nav {
   100% {
     width: 0;
   }
-}
+} */
 
 .hero .hero-left p {
   margin-top: 1rem;
@@ -1283,6 +1337,7 @@ nav {
   color: #fff;
   border-radius: 5px;
   /* border: none; */
+  border: 1px solid #2aaa8a;
   background-color: #2aaa8a;
   /* cursor: pointer; */
 }
@@ -1293,7 +1348,7 @@ nav {
 }
 
 .hero .buttons button:nth-child(1):hover {
-  border: 1px solid #2aaa8a;
+  /* border: 1px solid #2aaa8a; */
   background-color: transparent;
 }
 
