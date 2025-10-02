@@ -1549,8 +1549,10 @@ body {
   background-color: #1f0f58;
 }
 
-.navbar {
+.navigation {
   position: relative;
+  max-width: 1600px;
+  margin: auto;
   padding: 20px 10%;
   display: flex;
   gap: 1rem;
@@ -1570,5 +1572,91 @@ body {
   font-weight: 600;
   border-radius: 30px;
   /* border: none; */
+  background-color: #eee;
   /* cursor: pointer; */
+}
+
+.coin-table {
+  max-width: 1600px;
+  margin: auto;
+  padding: 5rem 1rem 10rem;
+}
+
+.hero {
+  max-width: 900px;
+  margin: auto;
+  /* margin-top: 8rem; */
+  padding: 4rem 0;
+  /* display: flex; */
+  /* gap: 30px; */
+  /* align-items: center; */
+  /* flex-direction: column; */
+  text-align: center;
+}
+
+.hero-container {
+  /* position: absolute; */
+  /* width: 100%; */
+  /* height: 100vh; */
+  background-image: url('./images/btc.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.hero h1 {
+  font-size: 56px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 2rem auto;
+  /* width: 75%; */
+  color: #e3e3e3;
+  line-height: 1.5;
+}
+
+.hero form {
+  /* width: 60%; */
+  max-width: 600px;
+  margin: auto;
+  padding: 8px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  font-size: 20px;
+  /* text-align: center; */
+  border-radius: 6px;
+  background-color: white;
+}
+
+.hero input {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+}
+
+.hero button {
+  padding: 10px 30px;
+  font-size: 16px;
+  color: white;
+  border-radius: 6px;
+  /* border: none; */
+  background-color: #4727ff;
+  /* cursor: pointer; */
+}
+
+@media screen and (max-width: 500px) {
+  .hero form {
+    display: block;
+    background-color: transparent;
+  }
+  .hero input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.6em 1em;
+    border-radius: 6px;
+    background-color: white;
+  }
 }

@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/Header'
+import { CoinTable, Navigation } from './components/travel/Header'
 
 function Loader() {
   return (
@@ -82,6 +82,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <CoinTable />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

@@ -1,7 +1,7 @@
 export function Navigation() {
   return (
     <>
-        <div className="navbar">
+        <div className="navigation">
             <div className="nav-logo">
                 <h2 className="logo">Crypto Check</h2>
             </div>
@@ -19,6 +19,30 @@ export function Navigation() {
         </div>
     </>
   )
+}
+
+export function CoinTable() {
+    return (
+        <div>
+            <div className="coin-table">
+                <div className="hero-container">
+                    <div className="hero">
+                        <h1>Your Gateway to the Latest Crypto Price Trends</h1>
+                        <p>
+                            Get real-time insights on Bitcoin, Ethereum and
+                            altcoins. Analyze trends, make informed decisions
+                            and take control of your investments with ease.
+                        </p>
+                        <form>
+                            <input type="search" name="search" id="search" placeholder="Search crypto" required />
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div className="crypto-table"></div>
+            </div>
+        </div>
+    )
 }
 
 // export function Header() {
