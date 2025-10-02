@@ -1,3 +1,6 @@
+import { useContext } from "react"
+import { CoinContext } from "../../contexts/AuthContext"
+
 export function Navigation() {
   return (
     <>
@@ -22,6 +25,8 @@ export function Navigation() {
 }
 
 export function CoinTable() {
+    const { coins } = useContext(CoinContext);
+
     return (
         <div>
             <div className="coin-table">
@@ -39,7 +44,34 @@ export function CoinTable() {
                         </form>
                     </div>
                 </div>
-                <div className="crypto-table"></div>
+                <div className="crypto-table">
+                    <div className="table-layout">
+                        <p>Rank</p>
+                        <p>Coin</p>
+                        <p>Symbol</p>
+                        <p>Current Price</p>
+                        <p>Price Change</p>
+                        <p>Market Cap</p>
+                    </div>
+                    {
+                        coins.map(coin => {
+                            const classes = coin.price_change_percentage_24h >= 0 ? "green" : "red";
+                            return (
+                                <div className="table-layout" key={coin.id}>
+                                    <p>{coin.market_cap_rank}</p>
+                                    <div>
+                                        <img src={coin.image} alt="" />
+                                        <p>{coin.name}</p>
+                                    </div>
+                                    <p className="symbol">{coin.symbol}</p>
+                                    <p>{coin.current_price}</p>
+                                    <p className={classes}>{coin.price_change_percentage_24h}</p>
+                                    <p>{coin.market_cap}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

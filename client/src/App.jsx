@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
-import { AuthContextProvider } from './contexts/AuthContext'
+import CoinContextProver, { AuthContextProvider } from './contexts/AuthContext'
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -82,7 +82,9 @@ function App() {
         </Routes> */}
 
         <Navigation />
+      <CoinContextProver>
         <CoinTable />
+      </CoinContextProver>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

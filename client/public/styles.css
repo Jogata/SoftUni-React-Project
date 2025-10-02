@@ -1598,7 +1598,7 @@ body {
   /* position: absolute; */
   /* width: 100%; */
   /* height: 100vh; */
-  background-image: url('./images/btc.jpg');
+  background-image: url("./images/btc.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -1659,4 +1659,47 @@ body {
     border-radius: 6px;
     background-color: white;
   }
+}
+
+.crypto-table {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  /* margin-top: 6rem; */
+}
+
+.table-layout {
+  padding: 15px 20px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1.5fr;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.market-cap {
+  text-align: right;
+}
+
+.table-layout div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.table-layout .symbol {
+  text-transform: uppercase;
+}
+
+.table-layout div img {
+  width: 35px;
+}
+
+.table-layout .green {
+  color: #00d515;
+  text-align: center;
+}
+
+.table-layout .red {
+  color: #ff4646;
+  text-align: center;
 }

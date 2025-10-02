@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "react-router-dom";
@@ -42,3 +42,33 @@ export function AuthContextProvider(props) {
         </AuthContext.Provider>
     )
 }
+
+export const CoinContext = createContext();
+
+const CoinContextProver = ({children})=> {
+    const [coins, setCoins] = useState([]);
+
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false";
+    
+    useEffect(() => {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(() => {
+                    setCoins(data);
+                    console.log(data);
+                }, 10000);        
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    return (
+        <CoinContext.Provider value={{coins}}>
+        {children}
+    </CoinContext.Provider>
+    )
+}
+
+export default CoinContextProver;
