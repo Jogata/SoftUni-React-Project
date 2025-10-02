@@ -30,49 +30,61 @@ export function CoinTable() {
     return (
         <div>
             <div className="coin-table">
-                <div className="hero-container">
-                    <div className="hero">
-                        <h1>Your Gateway to the Latest Crypto Price Trends</h1>
-                        <p>
-                            Get real-time insights on Bitcoin, Ethereum and
-                            altcoins. Analyze trends, make informed decisions
-                            and take control of your investments with ease.
-                        </p>
-                        <form>
-                            <input type="search" name="search" id="search" placeholder="Search crypto" required />
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-                <div className="crypto-table">
-                    <div className="table-layout">
-                        <p>Rank</p>
-                        <p>Coin</p>
-                        <p>Symbol</p>
-                        <p>Current Price</p>
-                        <p>Price Change</p>
-                        <p>Market Cap</p>
-                    </div>
-                    {
-                        coins.map(coin => {
-                            const classes = coin.price_change_percentage_24h >= 0 ? "green" : "red";
-                            return (
-                                <div className="table-layout" key={coin.id}>
-                                    <p>{coin.market_cap_rank}</p>
-                                    <div>
-                                        <img src={coin.image} alt="" />
-                                        <p>{coin.name}</p>
-                                    </div>
-                                    <p className="symbol">{coin.symbol}</p>
-                                    <p>{coin.current_price}</p>
-                                    <p className={classes}>{coin.price_change_percentage_24h}</p>
-                                    <p>{coin.market_cap}</p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                <Hero />
+                <Table coins={coins} />
             </div>
+        </div>
+    )
+}
+
+function Hero() {
+    return (
+        <div className="hero-container">
+            <div className="hero">
+                <h1>Your Gateway to the Latest Crypto Price Trends</h1>
+                <p>
+                    Get real-time insights on Bitcoin, Ethereum and
+                    altcoins. Analyze trends, make informed decisions
+                    and take control of your investments with ease.
+                </p>
+                <form onSubmit={e => e.preventDefault()}>
+                    <input type="search" name="search" id="search" placeholder="Search crypto" required />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+function Table({ coins }) {
+    return (
+        <div className="crypto-table">
+            <div className="table-layout">
+                <p>Rank</p>
+                <p>Coin</p>
+                <p>Symbol</p>
+                <p>Current Price</p>
+                <p>Price Change</p>
+                <p className="market-cap">Market Cap</p>
+            </div>
+            {
+                coins.map(coin => {
+                    const classes = coin.price_change_percentage_24h >= 0 ? "green" : "red";
+                    return (
+                        <div className="table-layout" key={coin.id}>
+                            <p>{coin.market_cap_rank}</p>
+                            <div>
+                                <img src={coin.image} alt="" />
+                                <p>{coin.name}</p>
+                            </div>
+                            <p className="symbol">{coin.symbol}</p>
+                            <p>{coin.current_price}</p>
+                            <p className={classes}>{coin.price_change_percentage_24h}</p>
+                            <p className="market-cap">${coin.market_cap.toLocaleString()}USD</p>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

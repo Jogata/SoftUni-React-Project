@@ -1579,14 +1579,16 @@ body {
 .coin-table {
   max-width: 1600px;
   margin: auto;
-  padding: 5rem 1rem 10rem;
+  /* padding: 5rem 1rem 10rem; */
+  /* padding: 0 1rem; */
 }
 
 .hero {
   max-width: 900px;
   margin: auto;
   /* margin-top: 8rem; */
-  padding: 4rem 0;
+  /* padding: 4rem 0; */
+  padding: 10rem 2%;
   /* display: flex; */
   /* gap: 30px; */
   /* align-items: center; */
@@ -1666,6 +1668,7 @@ body {
   max-width: 1000px;
   margin: auto;
   /* margin-top: 6rem; */
+  text-align: center;
 }
 
 .table-layout {
@@ -1681,6 +1684,7 @@ body {
 }
 
 .table-layout div {
+  margin: auto;
   display: flex;
   gap: 10px;
   align-items: center;
