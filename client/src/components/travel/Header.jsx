@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { CoinContext } from "../../contexts/AuthContext"
+import { useContext, useState } from "react";
+import { CoinContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
   return (
@@ -25,19 +25,20 @@ export function Navigation() {
 }
 
 export function CoinTable() {
-    const { coins } = useContext(CoinContext);
-
+    // const { coins, query } = useContext(CoinContext);
+    // console.log(query);
     return (
         <div>
             <div className="coin-table">
                 <Hero />
-                <Table coins={coins} />
+                <Table />
             </div>
         </div>
     )
 }
 
 function Hero() {
+    // console.log("hero");
     return (
         <div className="hero-container">
             <div className="hero">
@@ -47,16 +48,51 @@ function Hero() {
                     altcoins. Analyze trends, make informed decisions
                     and take control of your investments with ease.
                 </p>
-                <form onSubmit={e => e.preventDefault()}>
-                    <input type="search" name="search" id="search" placeholder="Search crypto" required />
-                    <button type="submit">Search</button>
-                </form>
+                <SearchForm />
             </div>
         </div>
     )
 }
 
-function Table({ coins }) {
+function SearchForm() {
+    const { setQuery } = useContext(CoinContext);
+
+    function handleSubmit(e) {
+        // console.log(e);
+        e.preventDefault();
+        const q = new FormData(e.target).get("search");
+        // console.log(q);
+        setQuery(q);
+    }
+
+    return (
+        <form onSubmit={e => handleSubmit(e)}>
+            <Input />
+            <button type="submit">Search</button>
+        </form>
+    )
+}
+
+function Input() {
+    const [ value, setValue ] = useState("");
+
+    return (
+        <input 
+            type="search" 
+            name="search" 
+            id="search" 
+            value={value} 
+            onChange={e => setValue(e.target.value)} 
+            placeholder="Search crypto" 
+            required 
+        />
+    )
+}
+
+function Table() {
+    const { coins, query } = useContext(CoinContext);
+    console.log(query);
+
     return (
         <div className="crypto-table">
             <div className="table-layout">
