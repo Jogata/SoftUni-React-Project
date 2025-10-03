@@ -45,20 +45,20 @@ export function AuthContextProvider(props) {
 
 export const CoinContext = createContext();
 
-const CoinContextProver = ({children})=> {
+const CoinContextProver = ({ children }) => {
     const [coins, setCoins] = useState([]);
     const [query, setQuery] = useState("");
 
     const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false";
-    
+
     useEffect(() => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 setTimeout(() => {
                     setCoins(data);
-                    console.log(data);
-                }, 10000);        
+                    // console.log(data);
+                }, 1000);
             })
             .catch((error) => {
                 console.log(error);
@@ -66,9 +66,9 @@ const CoinContextProver = ({children})=> {
     }, [])
 
     return (
-        <CoinContext.Provider value={{coins, query, setQuery}}>
-        {children}
-    </CoinContext.Provider>
+        <CoinContext.Provider value={{ coins, query, setQuery }}>
+            {children}
+        </CoinContext.Provider>
     )
 }
 

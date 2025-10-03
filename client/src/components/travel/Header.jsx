@@ -2,8 +2,7 @@ import { useContext, useState } from "react";
 import { CoinContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
-  return (
-    <>
+    return (
         <div className="navigation">
             <div className="nav-logo">
                 <h2 className="logo">Crypto Check</h2>
@@ -20,13 +19,10 @@ export function Navigation() {
                 <button>Sign Up</button>
             </div>
         </div>
-    </>
-  )
+    )
 }
 
 export function CoinTable() {
-    // const { coins, query } = useContext(CoinContext);
-    // console.log(query);
     return (
         <div>
             <div className="coin-table">
@@ -38,7 +34,7 @@ export function CoinTable() {
 }
 
 function Hero() {
-    console.log("hero");
+    // console.log("hero");
     return (
         <div className="hero-container">
             <div className="hero">
@@ -56,12 +52,11 @@ function Hero() {
 
 function SearchForm() {
     const { setQuery } = useContext(CoinContext);
+    // console.log("form");
 
     function handleSubmit(e) {
-        // console.log(e);
         e.preventDefault();
         const q = new FormData(e.target).get("search");
-        // console.log(q);
         setQuery(q);
     }
 
@@ -90,12 +85,12 @@ function Input() {
 
 function Table() {
     const { coins, query } = useContext(CoinContext);
-    console.log(query);
+    // console.log(query);
 
     let filtered = coins;
 
     if (query.length > 0) {
-        console.log(">");
+        // console.log(">");
         filtered = coins.filter(
             coin => (
                 coin.name
@@ -103,7 +98,15 @@ function Table() {
                     .includes(query.toLowerCase())
             )
         );
-        console.log(filtered);
+        // console.log(filtered);
+    }
+
+    if (coins.length == 0) {
+        return (
+            <div style={{paddingBottom: "10rem"}}>
+                <Loader />
+            </div>
+        )
     }
 
     return (
@@ -137,6 +140,28 @@ function Table() {
         </div>
     )
 }
+
+export function Footer() {
+    return (
+        // <div>
+        <div className="footer">
+            <p>Copyright &copy; 2025 CryptoCheck. All Righs Reserved</p>
+        </div>
+        // </div>
+    )
+}
+
+function Loader() {
+    return (
+        <div className="loader">
+            <span className="logo-ring"></span>
+            <span className="logo-ring"></span>
+            <span className="logo-ring"></span>
+            <span className="logo-ring"></span>
+        </div>
+    )
+}
+  
 
 // export function Header() {
 //     return (
