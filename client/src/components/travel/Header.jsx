@@ -38,7 +38,7 @@ export function CoinTable() {
 }
 
 function Hero() {
-    // console.log("hero");
+    console.log("hero");
     return (
         <div className="hero-container">
             <div className="hero">
@@ -84,7 +84,6 @@ function Input() {
             value={value} 
             onChange={e => setValue(e.target.value)} 
             placeholder="Search crypto" 
-            required 
         />
     )
 }
@@ -92,6 +91,20 @@ function Input() {
 function Table() {
     const { coins, query } = useContext(CoinContext);
     console.log(query);
+
+    let filtered = coins;
+
+    if (query.length > 0) {
+        console.log(">");
+        filtered = coins.filter(
+            coin => (
+                coin.name
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+            )
+        );
+        console.log(filtered);
+    }
 
     return (
         <div className="crypto-table">
@@ -104,7 +117,7 @@ function Table() {
                 <p className="market-cap">Market Cap</p>
             </div>
             {
-                coins.map(coin => {
+                filtered.map(coin => {
                     const classes = coin.price_change_percentage_24h >= 0 ? "green" : "red";
                     return (
                         <div className="table-layout" key={coin.id}>
