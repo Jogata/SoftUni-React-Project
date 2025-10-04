@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
-import CoinContextProver, { AuthContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext'
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { CoinTable, Footer, Navigation } from './components/travel/Header';
+import { Page } from './components/travel/Footer'
 
 function Loader() {
   return (
@@ -81,11 +81,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-      <Navigation />
-      <CoinContextProver>
-        <CoinTable />
-      </CoinContextProver>
-      <Footer />
+      {/* <Navigation /> */}
+      <Page />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

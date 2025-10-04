@@ -34,7 +34,6 @@ export function CoinTable() {
 }
 
 function Hero() {
-    // console.log("hero");
     return (
         <div className="hero-container">
             <div className="hero">
@@ -52,7 +51,6 @@ function Hero() {
 
 function SearchForm() {
     const { setQuery } = useContext(CoinContext);
-    // console.log("form");
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -85,12 +83,10 @@ function Input() {
 
 function Table() {
     const { coins, query } = useContext(CoinContext);
-    // console.log(query);
 
     let filtered = coins;
 
     if (query.length > 0) {
-        // console.log(">");
         filtered = coins.filter(
             coin => (
                 coin.name
@@ -98,7 +94,6 @@ function Table() {
                     .includes(query.toLowerCase())
             )
         );
-        // console.log(filtered);
     }
 
     if (coins.length == 0) {
@@ -143,11 +138,9 @@ function Table() {
 
 export function Footer() {
     return (
-        // <div>
         <div className="footer">
             <p>Copyright &copy; 2025 CryptoCheck. All Righs Reserved</p>
         </div>
-        // </div>
     )
 }
 
