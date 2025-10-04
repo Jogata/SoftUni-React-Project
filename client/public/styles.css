@@ -978,7 +978,19 @@ main.max-width {
 }
 
 
+body {
+  color: #000;
+  background-color: transparent;
+}
 
+a {
+  color: #000;
+  transition: color 400ms;
+}
+
+a:hover {
+  color: red;
+}
 
 .navigation {
   max-width: 1600px;
@@ -999,7 +1011,7 @@ main.max-width {
   /* list-style: none; */
   /* text-decoration: none; */
   padding: 0.5em 1em;
-  color: #fff;
+  /* color: #000; */
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -1034,31 +1046,87 @@ main.max-width {
   font-size: 34px;
 }
 
-/* .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: red;
-} 
-
-section {
+.hero {
+  max-width: 1600px;
+  margin: auto;
+  /* height: 100vh; */
   padding: 5rem 1rem;
-  text-align: center; 
-  background-color: black;
-} 
+}
 
-section h1 {
-  text-transform: capitalize;
-} 
+.hero-top {
+  /* padding-inline: 100px; */
+  padding: 0 2%;
+  display: flex;
+  gap: 5%;
+  /* align-items: center; */
+  justify-content: space-between;
+}
 
-button {
-  padding: 0.5em 1.2em;
-  color: #000;
+.hero-left {
+  max-width: 800px;
+  /* max-width: 50%; */
+  /* margin-top: 70px; */
+  margin: auto;
+}
+
+.hero-left h2 {
+  font-size: 30px;
+}
+
+.hero-left h1 {
+  margin-top: 1rem;
+  font-size: 4.5rem;
+}
+
+.hero-left button {
+  margin-top: 3rem;
+  padding: 1rem 3.5rem;
+  color: #fff;
   font-size: 1.4rem;
-  font-weight: bold;
-  text-transform: capitalize;
-  border-radius: 4em;
-  background-color: white;
-} */
+  /* border: none; */
+  background-color: red;
+}
+
+.hero-right {
+  width: 100%;
+  max-width: 800px;
+  /* max-width: 50%; */
+  margin: auto;
+}
+
+.hero-right img {
+  /* width: 640px; */
+  /* height: 500px; */
+  /* object-fit: contain; */
+}
+
+.hero-bottom {
+  width: 90%;
+  margin: 5rem auto 0;
+  /* margin-left: 7rem; */
+  padding: 2rem 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  border-radius: 10px;
+  box-shadow: -1px 11px 24px rgba(196, 196, 196, 0.75);
+}
+
+.hero-content {
+  display: flex;
+  gap: 25px;
+}
+
+.info-icon .hero-cc-icon {
+  color: red;
+  font-size: 44px;
+}
+
+.hero-content .detail h3 {
+  font-size: 22px;
+}
+
+.hero-content .detail p {
+  color: #555;
+  font-size: 18px;
+}

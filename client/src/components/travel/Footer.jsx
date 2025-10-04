@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import hero from "./images/sneakers2.jpg";
 
 export function Navigation() {
     return (
-        <div>
+        // <div>
             <div className="navigation">
                 <div className="logo">
                     <h2>Nika Shoes</h2>
@@ -23,104 +24,71 @@ export function Navigation() {
                     <i className="fa fa-user-o nav-icon"></i>
                 </div>
             </div>
-        </div>
+        // </div>
     )
 }
 
 export function Home() {
-        return (
-        <div>
+    return (
+        <>
             <Hero />
             <Products />
-        </div>
-    ) 
-} 
-export function Hero() {
-        return (
+        </>
+    )
+}
+
+function Hero() {
+    return (
         <div>
-            <h1>Hero</h1>
+            <div className="hero">
+                <div className="hero-top">
+                    <div className="hero-left">
+                        <h2>Step Into The Future</h2>
+                        <h1>Discover the latest collection of sneakers that gives comfort</h1>
+                        <button>Shop Now</button>
+                    </div>
+                    <div className="hero-right">
+                        <img src={hero} alt="" />
+                    </div>
+                </div>
+                <div className="hero-bottom">
+                    <div className="hero-content">
+                        <div className="info-icon">
+                            <i className="ri-truck-line hero-cc-icon" />
+                        </div>
+                        <div className="detail">
+                            <h3>Free Shipping</h3>
+                            <p>Free shipping on order</p>
+                        </div>
+                    </div>
+                    <div className="hero-content">
+                        <div className="info-icon">
+                            <i className="ri-customer-service-2-line hero-cc-icon" />
+                        </div>
+                        <div className="detail">
+                            <h3>24/7 Support</h3>
+                            <p>Full support on process</p>
+                        </div>
+                    </div>
+                    <div className="hero-content">
+                        <div className="info-icon">
+                            <i className="fa fa-credit-card-alt hero-cc-icon" />
+                        </div>
+                        <div className="detail">
+                            <h3>Secure Payment</h3>
+                            <p>Your payment is secure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    ) 
-} 
-export function Products() {
-        return (
+    )
+}
+
+function Products() {
+    return (
         <div>
             <h1>Product</h1>
-    </div>
-)
-} 
-  
-// export function Page() {
-//     return (
-//         <Modal>
-//             <Section1 />
-//             <Section2 />
-//             <Section3 />
-//             <Section4 />
-//         </Modal>
-//     )
-// }
-
-// function Modal({ children }) {
-//     const [isVisible, setIsVisible] = useState(false);
-
-//     return (
-//         <>
-//             {children}
-//             {isVisible ? <Test setIsVisible={setIsVisible} /> : null}
-//             <button onClick={() => setIsVisible(true)}>open</button>
-//         </>
-//     )
-// }
-
-// function Test({ setIsVisible }) {
-//     return (
-//         <div className="modal">
-//             <button onClick={() => setIsVisible(false)}>close</button>
-//         </div>
-//     )
-// }
-
-// function Section1() {
-//     console.log("section1");
-//     return (
-//         <section>
-//             <h1>section 1</h1>
-//         </section>
-//     )
-// }
-
-// function Section2() {
-//     console.log("section2");
-//     return (
-//         <section>
-//             <h1>section 2</h1>
-//         </section>
-//     )
-// }
-
-// function Section3() {
-//     console.log("section3");
-//     return (
-//         <section>
-//             <h1>section 3</h1>
-//         </section>
-//     )
-// }
-
-// function Section4() {
-//     console.log("section4");
-//     return ( 
-//         <section>
-//             <h1>section 4</h1>
-//         </section>
-//     ) 
-// } 
-
-// export function Footer() {
-//     return (
-//         <footer>
-//             <h1>footer component</h1>
-//         </footer>
-//     )
-// }
+        </div>
+    )
+}
