@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Navigation() {
     return (
@@ -7,9 +8,9 @@ export function Navigation() {
                 <div className="logo">
                     <h2>Nika Shoes</h2>
                 </div>
-                <div className="link">
+                <div className="links">
                     <ul>
-                        <li>Home</li>
+                        <li><Link to="/">Home</Link></li>
                         <li>About</li>
                         <li>Contact</li>
                     </ul>
@@ -19,79 +20,102 @@ export function Navigation() {
                         <i className="fa fa-shopping-cart nav-icon"></i>
                         <span className="nav-cart-amount">0</span>
                     </div>
-                    <i className="fa fa-user-onav-icon"></i>
+                    <i className="fa fa-user-o nav-icon"></i>
                 </div>
             </div>
         </div>
     )
 }
 
-export function Page() {
-    return (
-        <Modal>
-            <Section1 />
-            <Section2 />
-            <Section3 />
-            <Section4 />
-        </Modal>
-    )
-}
-
-function Modal({ children }) {
-    const [isVisible, setIsVisible] = useState(false);
-
-    return (
-        <>
-            {children}
-            {isVisible ? <Test setIsVisible={setIsVisible} /> : null}
-            <button onClick={() => setIsVisible(true)}>open</button>
-        </>
-    )
-}
-
-function Test({ setIsVisible }) {
-    return (
-        <div className="modal">
-            <button onClick={() => setIsVisible(false)}>close</button>
+export function Home() {
+        return (
+        <div>
+            <Hero />
+            <Products />
         </div>
-    )
-}
-
-function Section1() {
-    console.log("section1");
-    return (
-        <section>
-            <h1>section 1</h1>
-        </section>
-    )
-}
-
-function Section2() {
-    console.log("section2");
-    return (
-        <section>
-            <h1>section 2</h1>
-        </section>
-    )
-}
-
-function Section3() {
-    console.log("section3");
-    return (
-        <section>
-            <h1>section 3</h1>
-        </section>
-    )
-}
-
-function Section4() {
-    console.log("section4");
-    return ( 
-        <section>
-            <h1>section 4</h1>
-        </section>
     ) 
 } 
+export function Hero() {
+        return (
+        <div>
+            <h1>Hero</h1>
+        </div>
+    ) 
+} 
+export function Products() {
+        return (
+        <div>
+            <h1>Product</h1>
+    </div>
+)
+} 
+  
+// export function Page() {
+//     return (
+//         <Modal>
+//             <Section1 />
+//             <Section2 />
+//             <Section3 />
+//             <Section4 />
+//         </Modal>
+//     )
+// }
+
+// function Modal({ children }) {
+//     const [isVisible, setIsVisible] = useState(false);
+
+//     return (
+//         <>
+//             {children}
+//             {isVisible ? <Test setIsVisible={setIsVisible} /> : null}
+//             <button onClick={() => setIsVisible(true)}>open</button>
+//         </>
+//     )
+// }
+
+// function Test({ setIsVisible }) {
+//     return (
+//         <div className="modal">
+//             <button onClick={() => setIsVisible(false)}>close</button>
+//         </div>
+//     )
+// }
+
+// function Section1() {
+//     console.log("section1");
+//     return (
+//         <section>
+//             <h1>section 1</h1>
+//         </section>
+//     )
+// }
+
+// function Section2() {
+//     console.log("section2");
+//     return (
+//         <section>
+//             <h1>section 2</h1>
+//         </section>
+//     )
+// }
+
+// function Section3() {
+//     console.log("section3");
+//     return (
+//         <section>
+//             <h1>section 3</h1>
+//         </section>
+//     )
+// }
+
+// function Section4() {
+//     console.log("section4");
+//     return ( 
+//         <section>
+//             <h1>section 4</h1>
+//         </section>
+//     ) 
+// } 
 
 // export function Footer() {
 //     return (

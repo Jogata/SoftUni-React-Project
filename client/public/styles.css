@@ -979,7 +979,62 @@ main.max-width {
 
 
 
-.modal {
+
+.navigation {
+  max-width: 1600px;
+  margin: auto;
+  padding: 2rem 1rem;
+  /* padding-inline: 80px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navigation .links a {
+  /* list-style: none; */
+  /* text-decoration: none; */
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-icons {
+  display: flex;
+  cursor: pointer;
+}
+
+.nav-cart {
+  position: relative;
+  display: flex;
+}
+
+.nav-cart-amount {
+  position: absolute;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffff;
+  font-size: 12px;
+  border-radius: 50%;
+  background-color: #ef4444;
+}
+
+.nav-icon {
+  margin-left: 35px;
+  font-size: 34px;
+}
+
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -1006,4 +1061,4 @@ button {
   text-transform: capitalize;
   border-radius: 4em;
   background-color: white;
-}
+} */
