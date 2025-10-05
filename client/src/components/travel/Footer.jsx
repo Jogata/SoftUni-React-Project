@@ -85,7 +85,7 @@ function Hero() {
 }
 
 function Products() {
-    const { products } = useContext(ShopContext);
+    const { products, addToCart } = useContext(ShopContext);
 
     return (
         <div className="products">
@@ -98,12 +98,14 @@ function Products() {
                             <div className="product-image">
                                 <img src={image} alt={title} />
                                 <div className="hover-icons">
-                                    <button className="icon-button">
+                                    <button className="icon-button" onClick={() => addToCart(product)}>
                                         <i className="fa fa-shopping-cart main-icon"></i>
                                     </button>
-                                    <button className="icon-button">
+                                    <Link to={`product/${product.id}`} className="icon-button">
+                                    {/* <button className="icon-button"> */}
                                         <i className="fa fa-eye main-icon"></i>
-                                    </button>
+                                    {/* </button> */}
+                                    </Link>
                                 </div>
                             </div>
                             <div className="product-info">
@@ -115,5 +117,11 @@ function Products() {
                 })
             }
         </div>
+    )
+}
+
+export function ProductPage() {
+    return (
+        <h1>ProductPage</h1>
     )
 }

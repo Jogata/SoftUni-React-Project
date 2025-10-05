@@ -1136,8 +1136,8 @@ a:hover {
   margin: auto;
   padding: 3rem 1rem;
   display: grid;
-  row-gap: 20px;
   column-gap: 10px;
+  row-gap: 20px;
   /* justify-content: center; */
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1205,6 +1205,7 @@ a:hover {
 }
 
 .icon-button:hover {
+  color: #fff;
   background-color: #d63333;
 }
 
@@ -1225,6 +1226,6 @@ a:hover {
 
 .product-price {
   padding-bottom: 1rem;
-  font-size: 20px;
   color: red;
+  font-size: 20px;
 }

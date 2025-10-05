@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "react-router-dom";
@@ -203,10 +203,35 @@ export const productsData = [
 export const ShopContext = createContext(null);
 
 export function ShopContextProvider(props) {
-    const [products, sePproducts] = useState(productsData);
+    const [products, setPproducts] = useState(productsData);
+    const [cart, setCart] = useState([]);
+
+    function addToCart(product) {
+        const newItem = {...product, amount: 1};
+        console.log(newItem);
+
+        const cartItem = cart.find(item => {
+            return item.id === product.id;
+        })
+        console.log(cartItem);
+
+        if (cartItem) {
+            const newCart = [...cart].map(item => {
+                if (item.id === product.id) {
+                    const newItem = {...item, amount: item.amount + 1};
+                    return newItem;
+                } else {
+                    return item;
+                }
+            })
+            setCart(newCart);
+        } else {
+            setCart([...cart, newItem]);
+        }
+    }
 
     return (
-        <ShopContext.Provider value={{products}}>
+        <ShopContext.Provider value={{products, addToCart}}>
             {props.children}
         </ShopContext.Provider>
     )
