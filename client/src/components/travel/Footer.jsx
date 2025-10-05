@@ -88,12 +88,29 @@ function Products() {
     const { products } = useContext(ShopContext);
 
     return (
-        <div>
-            <h1>Product</h1>
+        <div className="products">
             {
-                products.map((p, i) => {
+                products.map(product => {
+                    const { id, image, title, price } = product;
+
                     return (
-                        <h2>{p.title} {i}</h2>
+                        <div className="product-card" key={id}>
+                            <div className="product-image">
+                                <img src={image} alt={title} />
+                                <div className="hover-icons">
+                                    <button className="icon-button">
+                                        <i className="fa fa-shopping-cart main-icon"></i>
+                                    </button>
+                                    <button className="icon-button">
+                                        <i className="fa fa-eye main-icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="product-info">
+                                <h3 className="product-name">{title}</h3>
+                                <p className="product-price">${price}</p>
+                            </div>
+                        </div>
                     )
                 })
             }
