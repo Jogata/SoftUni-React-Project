@@ -1,30 +1,29 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import hero from "./images/sneakers2.jpg";
+import { ShopContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
 
 export function Navigation() {
     return (
-        // <div>
-            <div className="navigation">
-                <div className="logo">
-                    <h2>Nika Shoes</h2>
-                </div>
-                <div className="links">
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li>About</li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-                <div className="nav-icons">
-                    <div className="nav-cart">
-                        <i className="fa fa-shopping-cart nav-icon"></i>
-                        <span className="nav-cart-amount">0</span>
-                    </div>
-                    <i className="fa fa-user-o nav-icon"></i>
-                </div>
+        <div className="navigation">
+            <div className="logo">
+                <h2>Nika Shoes</h2>
             </div>
-        // </div>
+            <div className="links">
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div className="nav-icons">
+                <div className="nav-cart">
+                    <i className="fa fa-shopping-cart nav-icon"></i>
+                    <span className="nav-cart-amount">0</span>
+                </div>
+                <i className="fa fa-user-o nav-icon"></i>
+            </div>
+        </div>
     )
 }
 
@@ -39,7 +38,7 @@ export function Home() {
 
 function Hero() {
     return (
-        <div>
+        <>
             <div className="hero">
                 <div className="hero-top">
                     <div className="hero-left">
@@ -81,14 +80,23 @@ function Hero() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
 function Products() {
+    const { products } = useContext(ShopContext);
+
     return (
         <div>
             <h1>Product</h1>
+            {
+                products.map((p, i) => {
+                    return (
+                        <h2>{p.title} {i}</h2>
+                    )
+                })
+            }
         </div>
     )
 }
