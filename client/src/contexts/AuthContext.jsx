@@ -208,12 +208,12 @@ export function ShopContextProvider(props) {
 
     function addToCart(product) {
         const newItem = {...product, amount: 1};
-        console.log(newItem);
+        // console.log(newItem);
 
         const cartItem = cart.find(item => {
             return item.id === product.id;
         })
-        console.log(cartItem);
+        // console.log(cartItem);
 
         if (cartItem) {
             const newCart = [...cart].map(item => {
@@ -228,6 +228,17 @@ export function ShopContextProvider(props) {
         } else {
             setCart([...cart, newItem]);
         }
+    }
+
+    function removeItemFromCart(id) {
+        const newCart = cart.filter(item => {
+            return item.id !== id;
+        })
+        setCart(newCart);
+    }
+
+    function clearCart() {
+        setCart([]);
     }
 
     return (
