@@ -34,8 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Home, Navigation, ProductPage } from './components/travel/Footer'
-import React from "react";
+import { Home, Navigation, ProductPage } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -71,59 +70,6 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-const SingleTodoLoader = ({ children }) => {
-  const [todo, setTodo] = useState(null);
-  console.log(children);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-      const data = await response.json();
-      // console.log(data);
-      setTodo(data);
-    })();
-  }, []);
-
-  const cloned = React.cloneElement(children, {todo}, "Done");
-  console.log(cloned);
-
-  return (
-    <>
-    {/* <h1> */}
-      {/* {React.Children.count()} */}
-    {/* </h1> */}
-      {
-      // React.Children.map(children, (child) => {
-        // if (React.isValidElement(child)) {
-          // return 
-          // React.cloneElement(children, {todo}, "Done")
-        // }
-        // return child;
-        cloned
-      }
-      {/* ) */}
-      {/* } */}
-    </>
-  );
-};
-
-const TodoList = ({ todo }) => {
-  const { id, title } = todo || {};
-
-  return todo ? (
-    <div>
-      <p>
-        <strong>Todo ID:</strong> {id}
-      </p>
-      <h1>
-        <strong>Todo Title:</strong> {title}
-      </h1>
-    </div>
-  ) : (
-    <p>Loading...</p>
-  );
-};
-
 function App() {
   return (
     <>
@@ -135,17 +81,13 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-      {/* <ShopContextProvider>
+      <ShopContextProvider>
         <Navigation />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product/:id' element={<ProductPage />} />
         </Routes>
-      </ShopContextProvider> */}
-
-      <SingleTodoLoader>
-        <TodoList />
-      </SingleTodoLoader>
+      </ShopContextProvider>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
