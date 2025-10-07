@@ -129,9 +129,6 @@ export function ProductPage() {
 export function Cart() {
     const {
         cart, 
-        removeItemFromCart, 
-        increaseItemInCart, 
-        decreaseItemInCart, 
         clearCart, 
         itemsAmount, 
         total
@@ -154,10 +151,33 @@ export function Cart() {
                     <span>Total</span>
                 </div>
                 <div className="product-details">
-                    {cart.length > 0 ? "cart" : <EmptyCart />}
+                    {cart.length > 0 ? <CartTable cart={cart} /> : <EmptyCart />}
                 </div>
             </div>
-            <div className="cart-right"></div>
+            <div className="cart-right">
+                <h2>Cart Summary</h2>
+                <div className="summary-item">
+                    <span>Quantity: </span>
+                    <span>{itemsAmount}</span>
+                </div>
+                <div className="cart-summary">
+                    <div className="summary-item">
+                        <span>Subtotal</span>
+                        <span>$ {isNaN(total) ? 0 : total}</span>
+                    </div>
+                    <div className="summary-item">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div className="summary-item">
+                        <span>Total Cost</span>
+                        <span>$ {isNaN(total) ? 0 : total}</span>
+                    </div>
+                    <button className="checkout-btn">
+                        CHECKOUT
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
@@ -165,5 +185,27 @@ export function Cart() {
 function EmptyCart() {
     return (
         <h3>The cart is empty</h3>
+    )
+}
+
+function CartTable({ cart }) {
+    return (
+        <>
+            {
+                cart.map(item => <CartItem item={item} key={item.id} />)
+            }
+        </>
+    )
+}
+
+function CartItem({item}) {
+    const {
+        removeItemFromCart, 
+        increaseItemInCart, 
+        decreaseItemInCart
+    } = useContext(ShopContext);
+
+    return (
+        <h1>{item.title}</h1>
     )
 }

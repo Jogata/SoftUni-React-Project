@@ -1266,3 +1266,24 @@ a:hover {
   margin-left: 90px;
   font-size: 20px;
 }
+
+.summary-item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-item.total-cost {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  color: #fff;
+  /* border: none; */
+  background-color: #4c4cff;
+  /* cursor: pointer; */
+}
