@@ -212,7 +212,7 @@ export function ShopContextProvider(props) {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        console.log(cart);
+        // console.log(cart);
         console.log("total");
         const total = cart.reduce((acc, item) => {
             const price = parseFloat(item.price);
@@ -225,7 +225,7 @@ export function ShopContextProvider(props) {
     }, [cart])
 
     useEffect(() => {
-        console.log(cart);
+        // console.log(cart);
         console.log("amount");
         if (cart) {            
             const amount = cart.reduce((acc, item) => {
@@ -294,8 +294,20 @@ export function ShopContextProvider(props) {
         setCart([]);
     }
 
+    const contextValue = {
+        products, 
+        cart, 
+        addToCart, 
+        removeItemFromCart, 
+        increaseItemInCart, 
+        decreaseItemInCart, 
+        clearCart, 
+        itemsAmount, 
+        total
+    }
+
     return (
-        <ShopContext.Provider value={{products, addToCart}}>
+        <ShopContext.Provider value={contextValue}>
             {props.children}
         </ShopContext.Provider>
     )

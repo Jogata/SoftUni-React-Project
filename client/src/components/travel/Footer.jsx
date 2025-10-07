@@ -17,10 +17,10 @@ export function Navigation() {
                 </ul>
             </div>
             <div className="nav-icons">
-                <div className="nav-cart">
+                <Link to="/cart" className="nav-cart">
                     <i className="fa fa-shopping-cart nav-icon"></i>
                     <span className="nav-cart-amount">0</span>
-                </div>
+                </Link>
                 <i className="fa fa-user-o nav-icon"></i>
             </div>
         </div>
@@ -123,5 +123,47 @@ function Products() {
 export function ProductPage() {
     return (
         <h1>ProductPage</h1>
+    )
+}
+
+export function Cart() {
+    const {
+        cart, 
+        removeItemFromCart, 
+        increaseItemInCart, 
+        decreaseItemInCart, 
+        clearCart, 
+        itemsAmount, 
+        total
+    } = useContext(ShopContext);
+
+    return (
+        <div className="cart-container">
+            <div className="cart-left">
+                <div className="cart-header">
+                    <h1>Shopping Cart</h1>
+                    <h2>Quantity: {itemsAmount}</h2>
+                    <button onClick={clearCart}>
+                        <i className="fa fa-trash clear-cart"></i>
+                    </button>
+                </div>
+                <div className="cart-header">
+                    <span>Product</span>
+                    <span>Quantity</span>
+                    <span>Price</span>
+                    <span>Total</span>
+                </div>
+                <div className="product-details">
+                    {cart.length > 0 ? "cart" : <EmptyCart />}
+                </div>
+            </div>
+            <div className="cart-right"></div>
+        </div>
+    )
+}
+
+function EmptyCart() {
+    return (
+        <h3>The cart is empty</h3>
     )
 }

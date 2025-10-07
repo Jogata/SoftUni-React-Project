@@ -1229,3 +1229,40 @@ a:hover {
   color: red;
   font-size: 20px;
 }
+
+.cart-container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-left {
+  width: 65%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.cart-right {
+  width: 30%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.cart-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.clear-cart {
+  font-size: 23px;
+  border: 1px solid red;
+}
+
+.cart-header span {
+  margin-left: 90px;
+  font-size: 20px;
+}
