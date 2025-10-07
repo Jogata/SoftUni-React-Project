@@ -204,8 +204,34 @@ function CartItem({item}) {
         increaseItemInCart, 
         decreaseItemInCart
     } = useContext(ShopContext);
+    const {id, title, image, price, amount} = item;
 
     return (
-        <h1>{item.title}</h1>
+        <div className="cart-item">
+            <div className="product">
+                <img src={image} alt="" />
+                <div className="product-info">
+                    <h3>{title}</h3>
+                    <button className="remove" onClick={() => removeItemFromCart(id)}>
+                        <i className="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div className="quantity">
+                <button onClick={() => decreaseItemInCart(id)}>
+                    <i className="fa fa-minus"></i>
+                </button>
+                <span>{amount}</span>
+                <button onClick={() => increaseItemInCart(id)}>
+                    <i className="fa fa-plus"></i>
+                </button>
+            </div>
+            <div className="price">
+                $ {price}
+            </div>
+            <div className="total">
+                $ {(amount * price).toFixed(2)}
+            </div>
+        </div>
     )
 }
