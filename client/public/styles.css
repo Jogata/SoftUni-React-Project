@@ -1440,3 +1440,48 @@ a:hover {
   /* border-top: 1px solid red; */
   border-bottom: 1px solid red;
 }
+
+.contact {
+  max-width: 800px;
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.contact h2 {
+  padding: 30px 0;
+  /* color: #fff; */
+  font-size: 40px;
+  text-align: center;
+  /* background-color: red; */
+  border-bottom: 1px solid red;
+}
+
+.contact-container {
+  /* margin-top: 20px; */
+  padding-top: 3rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.contact-left {
+  /* max-width: 50%; */
+  max-width: 400px;
+  margin: auto;
+  padding: 80px;
+}
+
+.contact-left p {
+  font-size: 20px;
+}
+
+.contact-right {
+  /* max-width: 50%; */
+  max-width: 450px;
+}
+
+.contact-right img {
+  /* width: 450px; */
+  clip-path: url("#mask-1");
+  /* clip-path: url("#mask-3"); */
+}

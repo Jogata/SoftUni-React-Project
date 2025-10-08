@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import hero from "./images/sneakers2.jpg";
+import contact from './images/contact.jpg';
 import { ShopContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 
@@ -13,7 +14,7 @@ export function Navigation() {
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
-                    <li>Contact</li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </div>
             <div className="nav-icons">
@@ -101,6 +102,7 @@ function Products() {
             {
                 products.map(product => {
                     const { id, image, title, price } = product;
+                    console.log(id);
 
                     return (
                         <div className="product-card" key={id}>
@@ -230,7 +232,8 @@ function CartTable({ cart }) {
     )
 }
 
-function CartItem({item}) {
+function CartItem({ item }) {
+    console.log(item.id);
     const {
         removeItemFromCart, 
         increaseItemInCart, 
@@ -288,6 +291,32 @@ export function About() {
                 that cater to every style, occasion, and need, all while delivering
                 an exceptional shopping experience.
             </p>
+        </div>
+    )
+}
+
+export function Contact() {
+    return (
+        <div>
+            <div className="contact">
+                <h2>NEED HELP ?</h2>
+                <div className="contact-container">
+                    <div className="conact-left">
+                        <p>
+                            At Nika Shoes, we're committed to bringing you the latest
+                            styles and trusted brands, combined with the comfort you
+                            need to get through the day.
+                        </p>
+                        <p>
+                            If you have inquiries about any of our products or services
+                            or need assistance, do not hesitate to chat or call us.
+                        </p>
+                    </div>
+                    <div className="contact-right">
+                        <img src={contact} alt="" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
