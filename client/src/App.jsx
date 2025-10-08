@@ -33,7 +33,7 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { cloneElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Cart, Home, Navigation, ProductPage } from './components/travel/Footer';
 
 function Loader() {
@@ -70,32 +70,7 @@ function useFetch(url) {
   return { loading, data, error };
 }
 
-function Row({title, children}) {
-  return (
-    <>
-    <h1>{title}</h1>
-    {children}
-    </>
-  )
-}
-
 function App() {
-  const clonedElement = cloneElement(
-    <Row title="Cabbage">
-      Hello
-    </Row>,
-    { isHighlighted: true },
-    'Goodbye'
-  );
-  
-  console.log(clonedElement);
-
-  const test = [1,2,3];
-  const test1 = test.map(num => num + 1);
-  console.log("....");
-  console.log(test);
-  console.log(test1);
-
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -106,7 +81,6 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-{clonedElement}
       <ShopContextProvider>
         <Navigation />
         <Routes>

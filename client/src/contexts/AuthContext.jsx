@@ -200,11 +200,17 @@ export const productsData = [
     },
 ]
 
+const mockedData = productsData.map(i => {
+    i.amount = 2;
+    return i;
+});
+
 export const ShopContext = createContext(null);
 
 export function ShopContextProvider(props) {
     const [products, setPproducts] = useState(productsData);
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(mockedData);
     console.log(cart);
 
     const [itemsAmount, setItemsAmount] = useState(0);
@@ -213,7 +219,7 @@ export function ShopContextProvider(props) {
 
     useEffect(() => {
         // console.log(cart);
-        console.log("total");
+        // console.log("total");
         const total = cart.reduce((acc, item) => {
             const price = parseFloat(item.price);
             if (isNaN(price)) {
@@ -226,7 +232,7 @@ export function ShopContextProvider(props) {
 
     useEffect(() => {
         // console.log(cart);
-        console.log("amount");
+        // console.log("amount");
         if (cart) {            
             const amount = cart.reduce((acc, item) => {
                 return acc + item.amount;

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import hero from "./images/sneakers2.jpg";
 import { ShopContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
@@ -19,11 +19,20 @@ export function Navigation() {
             <div className="nav-icons">
                 <Link to="/cart" className="nav-cart">
                     <i className="fa fa-shopping-cart nav-icon"></i>
-                    <span className="nav-cart-amount">0</span>
+                    <Amount />
                 </Link>
                 <i className="fa fa-user-o nav-icon"></i>
             </div>
         </div>
+    )
+}
+
+function Amount() {
+    const {itemsAmount} = useContext(ShopContext);
+    return (
+        <span className="nav-cart-amount">
+            {itemsAmount}
+        </span>
     )
 }
 
@@ -121,8 +130,31 @@ function Products() {
 }
 
 export function ProductPage() {
+    const { products, addToCart } = useContext(ShopContext);
+
+    const { id } = useParams();
+    console.log(id);
+    const product = products.find(p => p.id == id);
+    // console.log(product);
+
     return (
-        <h1>ProductPage</h1>
+        <div className="product-details-page">
+            <div className="detail-left">
+                <img src={product.image} alt="" />
+            </div>
+            <div className="detail-right">
+                <h3>{product.title}</h3>
+                <p className="product-price">
+                    $ {product.price}
+                </p>
+                <p className="desc">
+                    {product.description}
+                </p>
+                <button onClick={() => addToCart(product)}>
+                    ADD TO CART
+                </button>
+            </div>
+        </div>
     )
 }
 
@@ -205,6 +237,8 @@ function CartItem({item}) {
         decreaseItemInCart
     } = useContext(ShopContext);
     const {id, title, image, price, amount} = item;
+    // console.log(typeof price);
+    // console.log(typeof amount);
 
     return (
         <div className="cart-item">
