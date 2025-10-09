@@ -1485,3 +1485,28 @@ a:hover {
   clip-path: url("#mask-1");
   /* clip-path: url("#mask-3"); */
 }
+
+.footer {
+  max-width: 1600px;
+  margin: auto;
+  padding-top: 1rem;
+  /* color: #fff; */
+  /* background-color: #000; */
+}
+
+.footer-content {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #666;
+}
+
+.footer-socials .footer-icon {
+  margin: 0 10px;
+  font-size: 22px;
+}
+
+.copy {
+  padding: 1rem;
+  text-align: center;
+}

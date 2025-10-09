@@ -297,26 +297,46 @@ export function About() {
 
 export function Contact() {
     return (
-        <div>
-            <div className="contact">
-                <h2>NEED HELP ?</h2>
-                <div className="contact-container">
-                    <div className="conact-left">
-                        <p>
-                            At Nika Shoes, we're committed to bringing you the latest
-                            styles and trusted brands, combined with the comfort you
-                            need to get through the day.
-                        </p>
-                        <p>
-                            If you have inquiries about any of our products or services
-                            or need assistance, do not hesitate to chat or call us.
-                        </p>
-                    </div>
-                    <div className="contact-right">
-                        <img src={contact} alt="" />
-                    </div>
+        <div className="contact">
+            <h2>NEED HELP ?</h2>
+            <div className="contact-container">
+                <div className="conact-left">
+                    <p>
+                        At Nika Shoes, we're committed to bringing you the latest
+                        styles and trusted brands, combined with the comfort you
+                        need to get through the day.
+                    </p>
+                    <p>
+                        If you have inquiries about any of our products or services
+                        or need assistance, do not hesitate to chat or call us.
+                    </p>
+                </div>
+                <div className="contact-right">
+                    <img src={contact} alt="" />
                 </div>
             </div>
         </div>
     )
+}
+
+export function Footer() {
+  return (
+    <div>
+      <div className="footer">
+        <div className="footer-content">
+          <div className="footer-name">
+            <h2>Nika Shoes</h2>
+          </div>
+          <div className="footer-socials">
+          <i className="fa fa-facebook footer-icon"></i>
+          <i className="fa fa-instagram footer-icon"></i>
+          <i className="fa fa-twitter footer-icon"></i>
+        </div>
+        </div>
+        <div className="copy">
+        <p>Copyright © Nika Shoes 2024. All rights reserved</p>
+      </div>
+      </div>
+    </div>
+  )
 }
