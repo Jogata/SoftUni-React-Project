@@ -208,10 +208,10 @@ const mockedData = productsData.map(i => {
 export const ShopContext = createContext(null);
 
 export function ShopContextProvider(props) {
-    const [products, setPproducts] = useState(productsData);
-    // const [cart, setCart] = useState([]);
-    const [cart, setCart] = useState(mockedData);
-    console.log(cart);
+    const [products, setProducts] = useState(productsData);
+    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState(mockedData);
+    // console.log(cart);
 
     const [itemsAmount, setItemsAmount] = useState(0);
     

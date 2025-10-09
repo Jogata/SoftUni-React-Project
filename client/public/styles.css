@@ -1285,20 +1285,26 @@ a:hover {
 }
 
 .cart-container {
+  max-width: 1600px;
+  margin: auto;
   padding: 20px;
   display: flex;
+  gap: 5%;
   justify-content: space-between;
 }
 
 .cart-left {
-  width: 65%;
+  width: 100%;
+  /* width: 65%; */
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
 }
 
 .cart-right {
-  width: 30%;
+  /* width: 30%; */
+  width: 100%;
+  max-width: 400px;
   padding: 20px;
   border-radius: 10px;
   background-color: #f9f9f9;
@@ -1406,6 +1412,12 @@ a:hover {
   /* border: none; */
   background-color: #4c4cff;
   /* cursor: pointer; */
+}
+
+.empty-cart {
+  padding: 3rem 1rem;
+  font-size: 3rem;
+  text-align: center;
 }
 
 .about {

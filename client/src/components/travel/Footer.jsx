@@ -218,7 +218,7 @@ export function Cart() {
 
 function EmptyCart() {
     return (
-        <h3>The cart is empty</h3>
+        <h3 className="empty-cart">The cart is empty</h3>
     )
 }
 
@@ -320,23 +320,23 @@ export function Contact() {
 }
 
 export function Footer() {
-  return (
-    <div>
-      <div className="footer">
-        <div className="footer-content">
-          <div className="footer-name">
-            <h2>Nika Shoes</h2>
-          </div>
-          <div className="footer-socials">
-          <i className="fa fa-facebook footer-icon"></i>
-          <i className="fa fa-instagram footer-icon"></i>
-          <i className="fa fa-twitter footer-icon"></i>
+    return (
+        <div>
+            <div className="footer">
+                <div className="footer-content">
+                    <div className="footer-name">
+                        <h2>Nika Shoes</h2>
+                    </div>
+                    <div className="footer-socials">
+                        <i className="fa fa-facebook footer-icon"></i>
+                        <i className="fa fa-instagram footer-icon"></i>
+                        <i className="fa fa-twitter footer-icon"></i>
+                    </div>
+                </div>
+                <div className="copy">
+                    <p>Copyright © Nika Shoes 2024. All rights reserved</p>
+                </div>
+            </div>
         </div>
-        </div>
-        <div className="copy">
-        <p>Copyright © Nika Shoes 2024. All rights reserved</p>
-      </div>
-      </div>
-    </div>
-  )
+    )
 }
