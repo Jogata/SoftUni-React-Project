@@ -3,6 +3,16 @@ import project1 from "./images/wine.jpg";
 import project2 from "./images/milk.jpg";
 import project3 from "./images/drink.jpg";
 import project4 from "./images/work4.jpeg";
+import figma from "./images/figma.svg";
+import css from "./images/css.svg";
+import html5 from "./images/html5.svg";
+import php from "./images/php.svg";
+import nodejs from "./images/nodejs.svg";
+import mongodb from "./images/mongodb.svg";
+import tailwindcss from "./images/tailwindcss.svg";
+import visualstudio from "./images/visualstudio.svg";
+import react from "./images/reactjs.svg";
+import javascript from "./images/javascript.svg";
 import { Link } from "react-router-dom";
 
 const projects = [
@@ -41,7 +51,7 @@ export function Navigation() {
             <div className="links">
                 <ul>
                     <li>About</li>
-                    <li><Link to="/projects"></Link></li>
+                    <li><Link to="/projects">Projects</Link></li>
                     <li>Services</li>
                     <li>Contact</li>
                 </ul>
@@ -94,29 +104,55 @@ export function Hero() {
 }
 
 export function Projects() {
-  return (
-    <div>
+    return (
+        // <div>
         <div className="projects" id="projects">
             <h2 className="projects-header">Explore My Recent Projects</h2>
             <div className="projects-container">
                 {projects.map((project, index) => (
                     <div key={index} className="project">
                         <div className="project-content">
-                            <h2>{project.title} </h2> 
+                            <h2>{project.title} </h2>
                             <div className="project-links">
                                 <a href={project.github}>
                                     <i className="fa fa-github"></i>
-                                    </a>
+                                </a>
                                 <a href={project.link}>
                                     <i className="fa fa-link"></i>
-                                    </a>
-                            </div>                            
+                                </a>
+                            </div>
                         </div>
                         <div className="project-image">
                             <img src={project.image} alt="" />
                         </div>
                     </div>
                 ))}
+            </div>
+        </div>
+        // </div>
+    )
+}
+
+export function Skills() {
+  return (
+    <div>
+        <div className="skills">
+            <h2>My Work Tools</h2> 
+            <div className="skills-container">
+                <div className="skills-img">
+                    <img src={figma} alt="" />
+                    <img src={tailwindcss} alt="" />
+                    <img src={html5} alt="" />
+                    <img src={css} alt="" />
+                    <img src={php} alt="" />
+                </div>
+                <div className="skills-img">
+                    <img src={nodejs} alt="" />
+                    <img src={mongodb} alt="" />
+                    <img src={javascript} alt="" />
+                    <img src={react} alt="" />
+                    <img src={visualstudio} alt="" />
+                </div>
             </div>
         </div>
     </div>

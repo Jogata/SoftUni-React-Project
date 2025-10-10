@@ -1001,9 +1001,16 @@ body {
   gap: 1rem;
 }
 
-.navigation .links ul li {
+.navigation .links ul li a {
+  padding: 0.5em 1em;
+  color: #fff;
   font-size: 18px;
   font-weight: 600;
+  transition: color 300ms;
+}
+
+.navigation .links ul li a:hover {
+  color: #2aaa8a;
 }
 
 .navigation .button button {
@@ -1211,4 +1218,45 @@ body {
     margin-top: 10px;
     font-size: 30px;
   }
+}
+
+.skills {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+  /* display: grid; */
+  /* place-items: center; */
+  /* margin-top: 4rem; */
+}
+
+.skills h2 {
+  font-size: 38px;
+  text-align: center;
+}
+
+.skills-container {
+  padding: 20px;
+  /* display: grid; */
+  /* place-items: center; */
+}
+
+.skills-img {
+  /* display: flex; */
+  /* gap: 2rem; */
+  /* align-items: center; */
+}
+
+.skills-img img {
+  /* width: 12rem; */
+}
+
+.skills-img {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.skills-img img {
+  /* width: 10rem; */
 }
