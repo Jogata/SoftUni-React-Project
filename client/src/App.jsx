@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
-import { AuthContextProvider, ShopContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext'
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Navigation } from './components/travel/Header'
+import { Hero, Navigation } from './components/travel/Header'
 
 function Loader() {
   return (
@@ -82,6 +82,7 @@ function App() {
         </Routes> */}
 
         <Navigation />
+        <Hero />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

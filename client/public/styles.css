@@ -979,34 +979,123 @@ main.max-width {
 
 
 
-body { 
-  /* padding-inline: 80px; */ 
-  color: #fff; 
+body {
+  /* padding-inline: 80px; */
+  color: #fff;
   background-color: #121214;
-} 
- 
-.navigation { 
+}
+
+.navigation {
   padding: 25px;
-  display: flex; 
-  gap: 1rem; 
-  justify-content: space-between; 
-} 
- 
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
 .navigation .links ul {
-  display: flex; 
-  gap: 1rem; 
-} 
- 
+  display: flex;
+  gap: 1rem;
+}
+
 .navigation .links ul li {
-  font-size: 18px; 
-  font-weight: 600; 
-} 
- 
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .navigation .button button {
   padding: 0.8rem 2.6rem;
-  color: #fff; 
-  /* border: none; */ 
+  color: #fff;
+  /* border: none; */
   border-radius: 6px;
   background-color: #2aaa8a;
-  /* cursor: pointer; */ 
-} 
+  /* cursor: pointer; */
+}
+
+.hero {
+  /* height: 80vh; */
+  padding: 25px;
+}
+
+.hero-top {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.hero-left {
+  max-width: 50%;
+  margin-top: 100px;
+}
+
+.hero .hero-left h2 {
+  font-size: 35px;
+}
+
+.hero-left h1 {
+  font-size: 60px;
+}
+
+.hero-left h1 span {
+  color: #1ae7b4;
+}
+
+.hero .hero-left p {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 20px;
+}
+
+.hero-right {
+  max-width: 50%;
+}
+
+.hero-right img {
+  width: 620px;
+  height: 480px;
+  object-fit: contain;
+}
+
+.hero .buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.hero .buttons button {
+  padding: 1rem 2.1rem;
+  color: #fff;
+  border-radius: 5px;
+  /* border: none; */
+  background-color: #2aaa8a;
+  /* cursor: pointer; */
+}
+
+.hero .buttons button:nth-child(2) {
+  border: 1px solid #2aaa8a;
+  background-color: transparent;
+}
+
+.hero .buttons button:nth-child(1):hover {
+  border: 1px solid #2aaa8a;
+  background-color: transparent;
+}
+
+.hero-bottom {
+  width: 80%;
+  margin-top: 10px;
+  margin-left: 7rem;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: #232324;
+}
+
+.hero-info h1 {
+  font-size: 45px;
+  text-align: center;
+}
+
+.hero-info p {
+  font-size: 18px;
+}
