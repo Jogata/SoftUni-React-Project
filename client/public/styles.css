@@ -1301,6 +1301,89 @@ body {
   /* clip-path: url("#mask-4"); */
 }
 
+.contact {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+  /* background-color: #f9f9f9; */
+}
+
+.contact .inner-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.contact p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.contact form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact form input {
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.contact form textarea {
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.contact form button {
+  padding: 0.8rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  /* border: none; */
+  background-color: #2aaa8a;
+  /* cursor: pointer; */
+}
+
+.contact ::placeholder {
+  color: #ccc;
+  font-family: inherit;
+}
+
+.contacts {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.contacts p {
+  max-width: 100%;
+  margin: 0 0 1rem;
+}
+
+.contacts strong {
+  /* margin-right: 1rem; */
+}
+
+.contacts a {
+  margin-left: 1rem;
+  /* margin-bottom: 1rem; */
+  color: #2aaa8a;
+  transition: color 300ms;
+}
+
+.contacts a:hover {
+  color: #1ae7b4;
+}
+
 .list {
   max-width: 1600px;
   margin: auto;

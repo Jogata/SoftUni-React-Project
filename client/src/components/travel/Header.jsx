@@ -51,10 +51,10 @@ export function Navigation() {
             </div>
             <div className="links">
                 <ul>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/projects">Projects</Link></li>
+                    <li><Link to="#about">About</Link></li>
+                    <li><Link to="#projects">Projects</Link></li>
                     <li>Services</li>
-                    <li>Contact</li>
+                    <li><Link to="#contact">Contacts</Link></li>
                 </ul>
             </div>
             <div className="button">
@@ -177,6 +177,48 @@ export function About() {
                     technologies, and collaborating with teams to bring
                     ideas to life.
                 </p>
+            </div>
+        </section>
+    )
+}
+
+export function Contact() {
+    return (
+        <section className="contact" id="contact">
+            <div className="inner-box">
+                <h2>Contact Me</h2>
+                <p>
+                    Interested in working together or have a question? 
+                    Fill out the form below or reach me directly via 
+                    email or LinkedIn.
+                </p>
+
+                <form>
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Email" required />
+                    <textarea name="message" rows="5" placeholder="Your Message" required ></textarea>
+                    <button type="submit">
+                        Send Message
+                    </button>
+                </form>
+
+                <div className="contacts">
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:youremail@example.com">
+                            youremail@example.com
+                            </a>
+                            </p>
+                    <p>
+                        <strong>Phone:</strong>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        </p>
+                    <div>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
             </div>
         </section>
     )
