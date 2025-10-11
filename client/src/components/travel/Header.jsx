@@ -51,7 +51,7 @@ export function Navigation() {
             </div>
             <div className="links">
                 <ul>
-                    <li>About</li>
+                    <li><Link to="/about">About</Link></li>
                     <li><Link to="/projects">Projects</Link></li>
                     <li>Services</li>
                     <li>Contact</li>
@@ -155,6 +155,30 @@ export function Skills() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export function About() {
+    return (
+        <section className="about" id="about">
+            <div className="about-image">
+                <img src={hero} alt="" />
+            </div>
+            <div className="about-info">
+                <h1>About Me</h1>
+                <p className="subheader">Professional Full Stack Developer</p>
+                <h2>Hello, I'm Derek Einstain</h2>
+                <p>
+                    I'm a passionate Full Stack Developer with over 5 years
+                    of experience building high-quality web applications.
+                    I specialize in both frontend and backend development,
+                    creating seamless user experiences and robust backend
+                    systems.I enjoy solving complex problems, learning new
+                    technologies, and collaborating with teams to bring
+                    ideas to life.
+                </p>
+            </div>
+        </section>
     )
 }
 

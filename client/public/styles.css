@@ -1261,6 +1261,46 @@ body {
   /* width: 10rem; */
 }
 
+.about {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.about-info h1 {
+  font-size: 3rem;
+}
+
+.about-info p {
+  margin: 1rem 0;
+}
+
+.about-info .subheader {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+}
+
+.about-info {
+  max-width: 800px;
+}
+
+.about-image {
+  max-width: 500px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 6px solid #444;
+}
+
+.about-image img {
+  /* clip-path: url("#mask-1"); */
+  /* clip-path: url("#mask-2"); */
+  clip-path: url("#mask-3");
+  /* clip-path: url("#mask-4"); */
+}
+
 .list {
   max-width: 1600px;
   margin: auto;
