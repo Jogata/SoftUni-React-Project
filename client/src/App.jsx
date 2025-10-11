@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Hero, Navigation, Projects, Skills } from './components/travel/Header'
+import { Hero, List, Navigation, Projects, Row, Skills, products } from './components/travel/Header'
 
 function Loader() {
   return (
@@ -81,6 +81,13 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+      <List
+        items={products}
+        renderItem={(product) =>
+          <Row title={product.title} />
+        }
+      />
+      
         <Navigation />
         <Hero />
         <Projects />

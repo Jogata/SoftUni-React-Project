@@ -14,6 +14,7 @@ import visualstudio from "./images/visualstudio.svg";
 import react from "./images/reactjs.svg";
 import javascript from "./images/javascript.svg";
 import { Link } from "react-router-dom";
+import { createContext, useContext, useState } from "react";
 
 const projects = [
     {
@@ -134,10 +135,9 @@ export function Projects() {
 }
 
 export function Skills() {
-  return (
-    <div>
+    return (
         <div className="skills">
-            <h2>My Work Tools</h2> 
+            <h2>My Work Tools</h2>
             <div className="skills-container">
                 <div className="skills-img">
                     <img src={figma} alt="" />
@@ -155,8 +155,56 @@ export function Skills() {
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
+}
+
+export const products = [
+    { title: 'Cabbage', id: 1 },
+    { title: 'Garlic', id: 2 },
+    { title: 'Apple', id: 3 },
+  ];
+
+  export const HighlightContext = createContext(false);
+
+  export function Row({ title }) {
+    const isHighlighted = useContext(HighlightContext);
+
+    return (
+      <div className={[
+        'row',
+        isHighlighted ? 'highlighted' : ''
+      ].join(' ')}>
+        {title}
+      </div>
+    );
+  }
+
+export function List({ items, renderItem }) {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    return (
+        <div className="list">
+            {items.map((item, index) => {
+                const isHighlighted = index === selectedIndex;
+                return (
+                    <HighlightContext.Provider
+                        key={item.id}
+                        value={isHighlighted}
+                    >
+                        {renderItem(item)}
+                    </HighlightContext.Provider>
+                );
+            })}
+            <hr />
+            <button onClick={() => {
+                setSelectedIndex(i =>
+                    (i + 1) % items.length
+                );
+            }}>
+                Next
+            </button>
+        </div>
+    );
 }
 
 

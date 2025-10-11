@@ -1260,3 +1260,25 @@ body {
 .skills-img img {
   /* width: 10rem; */
 }
+
+.list {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+}
+
+.row {
+  padding: 1rem;
+}
+
+.highlighted {
+  background-color: green;
+}
+
+.list button {
+  margin-top: 1rem;
+  padding: 0.5em 1.2em;
+  color: #eee;
+  font-size: 2rem;
+  border: 1px solid;
+}
