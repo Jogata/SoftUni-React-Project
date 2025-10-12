@@ -979,6 +979,10 @@ main.max-width {
 
 
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /* padding-inline: 80px; */
   color: #fff;
@@ -1371,6 +1375,70 @@ body {
 
 .contacts strong {
   /* margin-right: 1rem; */
+}
+
+.footer {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  color: #fff;
+}
+
+.footer-bottom {
+  display: flex;
+  gap: 2rem;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+
+.footer-right ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-right ul li {
+  font-size: 18px;
+}
+
+.footer-left h2 {
+  font-size: 28px;
+}
+
+.socials {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.socials .social-icon {
+  padding: 0.5em;
+  font-size: 20px;
+}
+
+.footer .copy {
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 50px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+
+  .footer-right {
+    display: none;
+  }
+
+  .footer .copy {
+    font-size: 14px;
+  }
 }
 
 .contacts a {

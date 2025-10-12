@@ -51,10 +51,10 @@ export function Navigation() {
             </div>
             <div className="links">
                 <ul>
-                    <li><Link to="#about">About</Link></li>
-                    <li><Link to="#projects">Projects</Link></li>
-                    <li>Services</li>
-                    <li><Link to="#contact">Contacts</Link></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contacts</a></li>
                 </ul>
             </div>
             <div className="button">
@@ -136,7 +136,7 @@ export function Projects() {
 
 export function Skills() {
     return (
-        <div className="skills">
+        <div className="skills" id="services">
             <h2>My Work Tools</h2>
             <div className="skills-container">
                 <div className="skills-img">
@@ -222,6 +222,35 @@ export function Contact() {
             </div>
         </section>
     )
+}
+
+export function Footer() {
+  return (
+    <div>
+        <footer className="footer">
+            <div className="footer-bottom">
+                <div className="footer-left">
+                    <h2>Derek Einstein</h2>
+                    <div className="socials">
+                        <i className="fa fa-facebook social-icon" ></i>
+                        <i className="fa fa-instagram social-icon" ></i>
+                        <i className="fa fa-youtube-play social-icon" ></i>
+                    </div>
+                </div>
+                <div className="footer-right">
+                    <ul>
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>About Me</li>
+                        <li>Hire Me</li>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <p className="copy">© 2024 Derek Einstein. All rights reserved.</p>
+        </footer>
+    </div>
+  )
 }
 
 export const products = [
