@@ -1,0 +1,53 @@
+.hero-container {
+    /* position: absolute; */
+    /* width: 100%; */
+    max-width: 1600px;
+    /* height: 100vh; */
+    margin: auto;
+    padding: 1rem;
+    background-image: url('../../images/hero-furniture.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* background-color: red; */
+    /* z-index: 1; */
+}
+
+.hero {
+    /* position: relative; */
+    max-width: 900px;
+    /* margin-top: 8rem; */
+    margin: auto;
+    padding: 10rem 0;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
+    /* z-index: 2; */
+}
+
+.hero h1 {
+    font-size: max(4vw, 70px);
+}
+
+.hero h1 span {
+    color: #ff7518;
+    font-style: normal;
+    font-weight: 400;
+    font-family: "Great Vibes", cursive;
+}
+
+.hero p {
+    width: 90%;
+    color: #e3e3e3;
+    line-height: 1.5;
+}
+
+.hero button {
+    padding: 1.1rem 4rem;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: #fff;
+}
