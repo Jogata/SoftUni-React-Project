@@ -34,7 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Hero } from './components/travel/furniture-kento/components/hero/Hero'
+import { Home } from './components/travel/furniture-kento/pages/Home'
 
 function Loader() {
   return (
@@ -81,7 +81,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Hero />
+        <Home />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

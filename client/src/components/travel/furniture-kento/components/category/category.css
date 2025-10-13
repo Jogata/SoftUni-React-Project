@@ -1,0 +1,36 @@
+.category-menu {
+    max-width: 1600px;
+    /* height: 25vh; */
+    margin: auto;
+    /* padding-left: 40px; */
+    /* padding-top: 105vh; */
+    padding: 3rem 1rem;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+    /* z-index: 3; */
+}
+
+.categories {
+    margin: auto;
+    padding: 1rem 0;
+    display: inline-flex;
+    gap: 10px;
+    /* flex-direction: row; */
+    /* cursor: pointer; */
+}
+
+.category {
+    padding: 0.9rem 3rem;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.category:hover {
+    color: #fff;
+    background-color: #000;
+    /* border: none; */
+}
