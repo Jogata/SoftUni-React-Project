@@ -34,7 +34,8 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Home } from './components/travel/furniture-kento/pages/Home'
+import { Home } from './components/travel/furniture-kento/pages/Home';
+import { ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
 
 function Loader() {
   return (
@@ -81,7 +82,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+      <ShopContextProvider>
         <Home />
+      </ShopContextProvider>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

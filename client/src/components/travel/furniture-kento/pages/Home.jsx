@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Hero } from "../components/hero/Hero";
 import { Categories } from "../components/category/Category";
+import { Products } from "../components/products/Products";
 
 export function Home() {
     const [category, setCategory] = useState("All");
@@ -9,6 +10,7 @@ export function Home() {
         <>
             <Hero />
             <Categories category={category} setCategory={setCategory} />
+            <Products category={category} />
         </>
     )
 }
