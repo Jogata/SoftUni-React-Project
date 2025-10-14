@@ -15,12 +15,12 @@ export function Navigation() {
                 </ul>
             </div>
             <div className="nav-icons">
-                <a href='#cart'>
+                <Link to="/cart">
                     <div className="nav-cart">
                         <i className="ri-shopping-cart-line nav-icon"></i>
                         <span className="nav-cart-amount">0</span>
                     </div>
-                </a>
+                </Link>
                 <i className="fa fa-user-o nav-icon"></i>
             </div>
         </nav>

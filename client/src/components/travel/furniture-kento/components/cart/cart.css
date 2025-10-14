@@ -1,0 +1,34 @@
+.cart-container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-left {
+    width: 65%;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.cart-right {
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.cart-header {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.cart-header .delete-cart {
+    font-size: 22px;
+}
+
+.cart-header span {
+    margin-left: 90px;
+    font-size: 20px;
+}

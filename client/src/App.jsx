@@ -36,6 +36,7 @@ import Logout from './components/logout/Logout'
 import { useEffect, useState } from 'react';
 import { Home } from './components/travel/furniture-kento/pages/Home';
 import { ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
+import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
 
 function Loader() {
   return (
@@ -85,6 +86,7 @@ function App() {
       <ShopContextProvider>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </ShopContextProvider>
 
