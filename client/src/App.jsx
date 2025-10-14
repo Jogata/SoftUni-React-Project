@@ -83,7 +83,9 @@ function App() {
         </Routes> */}
 
       <ShopContextProvider>
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
       </ShopContextProvider>
 
           {/* <Routes>

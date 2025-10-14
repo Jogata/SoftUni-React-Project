@@ -9,7 +9,7 @@ export function Home() {
     return (
         <>
             <Hero />
-            <Categories category={category} setCategory={setCategory} />
+            <Categories setCategory={setCategory} />
             <Products category={category} />
         </>
     )

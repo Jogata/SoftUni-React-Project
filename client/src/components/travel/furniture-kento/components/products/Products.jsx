@@ -2,19 +2,24 @@ import { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import { Link } from "react-router-dom";
 import "./products.css";
-// import { productsData } from "../../data";
 
 export function Products({ category }) {
     const { products } = useContext(ShopContext);
 
+    let filtered = products;
+
+    if (category != "All") {
+        filtered = products.filter(p => p.category === category)
+    }
+
     return (
         <div>
             <div className="products">
-                <h2>Our Elegant Collections</h2>
+                <h2>Our <span>Elegant Collections</span></h2>
                 <div className="products-grid">
-                    {products.map(product => {
+                    {filtered.map(product => {
                         const { id, image, name, price } = product;
-                        if (category === "All" || category === product.category) {
+                        // if (category === "All" || category === product.category) {
                             return (
                                 <div className="product-card" key={id}>
                                     <Link to={`/product/${product.id}`}>
@@ -23,13 +28,13 @@ export function Products({ category }) {
                                     </Link>
                                     <div className="product-info">
                                         <p className="price">${price}</p>
-                                        <p className="add-to-cart">
+                                        <button className="add-to-cart">
                                             <i className="fa fa-plus cart-icon"></i>
-                                        </p>
+                                        </button>
                                     </div>
                                 </div>
                             )
-                        }
+                        // }
                     })}
                 </div>
             </div>

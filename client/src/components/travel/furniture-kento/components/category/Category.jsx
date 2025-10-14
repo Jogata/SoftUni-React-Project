@@ -1,7 +1,7 @@
 import { categories } from "../../data";
 import "./category.css";
 
-export function Categories({category, setCategory}) {
+export function Categories({ setCategory }) {
     return (
         <div>
             <div className="category-menu">

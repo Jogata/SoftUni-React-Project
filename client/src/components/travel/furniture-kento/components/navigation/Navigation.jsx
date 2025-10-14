@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./navigation.css";
 
 export function Navigation() {
@@ -8,7 +9,7 @@ export function Navigation() {
             </div>
             <div className="links">
                 <ul>
-                    <li>Home</li>
+                    <li><Link to="/">Home</Link></li>
                     <li>About</li>
                     <li>Products</li>
                 </ul>

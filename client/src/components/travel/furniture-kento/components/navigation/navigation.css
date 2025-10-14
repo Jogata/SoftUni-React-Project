@@ -13,8 +13,9 @@
     gap: 20px;
 }
 
-.links ul li {
+.links ul li a {
     padding: 0.5em 1em;
+    color: inherit;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
