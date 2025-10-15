@@ -39,6 +39,12 @@
     font-size: 20px;
 }
 
+.cart-rows h2 {
+    padding: 3rem 1rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
 .cart-row {
     margin-top: 20px;
     padding: 10px 0;

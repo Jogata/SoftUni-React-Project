@@ -1,11 +1,10 @@
 import { Navigation } from "../navigation/Navigation";
-import "./cart.css";
-// import { productsData } from "../../data";
 import { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
+import "./cart.css";
 
 export function Cart() {
-    const { cart, clearCart } = useContext(ShopContext);
+    const { cart, clearCart, itemsAmount } = useContext(ShopContext);
 
     return (
         <>
@@ -14,7 +13,7 @@ export function Cart() {
                 <div className="cart-table">
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
-                        <h1>Items: ({cart.length})</h1>
+                        <h1>Items: {itemsAmount}</h1>
                         <button className="delete-btn" onClick={clearCart}>
                             <i className="ri-delete-bin-line"></i>
                         </button>
@@ -31,7 +30,7 @@ export function Cart() {
                                 <Product product={item} key={item.id} />
                             ))
                         ) : (
-                            <p>Your cart is empty</p>
+                            <h2>Your cart is empty</h2>
                         )}
                     </div>
                 </div>
@@ -39,7 +38,7 @@ export function Cart() {
                     <h2>Cart Summary</h2>
                     <div className="summary-item">
                         <span>Items : </span>
-                        <span>{cart.length}</span>
+                        <span>{itemsAmount}</span>
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>

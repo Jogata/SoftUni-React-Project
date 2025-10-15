@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 import { Link } from "react-router-dom";
 import "./navigation.css";
 
 export function Navigation() {
+    const { itemsAmount } = useContext(ShopContext);
+
     return (
         <nav className="navigation">
             <div className="logo">
@@ -18,7 +22,7 @@ export function Navigation() {
                 <Link to="/cart">
                     <div className="nav-cart">
                         <i className="ri-shopping-cart-line nav-icon"></i>
-                        <span className="nav-cart-amount">0</span>
+                        <span className="nav-cart-amount">{itemsAmount}</span>
                     </div>
                 </Link>
                 <i className="fa fa-user-o nav-icon"></i>
