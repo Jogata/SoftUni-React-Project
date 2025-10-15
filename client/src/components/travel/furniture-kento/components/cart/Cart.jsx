@@ -1,13 +1,11 @@
 import { Navigation } from "../navigation/Navigation";
 import "./cart.css";
-import { productsData } from "../../data";
+// import { productsData } from "../../data";
+import { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 
 export function Cart() {
-    const cart = productsData.map(p => {
-        console.log(p);
-        p.amount = 2;
-        return p;
-    });
+    const { cart, clearCart } = useContext(ShopContext);
 
     return (
         <>
@@ -17,7 +15,7 @@ export function Cart() {
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
                         <h1>Items: ({cart.length})</h1>
-                        <button className="delete-btn">
+                        <button className="delete-btn" onClick={clearCart}>
                             <i className="ri-delete-bin-line"></i>
                         </button>
                     </div>
