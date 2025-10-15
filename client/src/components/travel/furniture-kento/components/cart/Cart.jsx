@@ -3,7 +3,11 @@ import "./cart.css";
 import { productsData } from "../../data";
 
 export function Cart() {
-    const cart = productsData;
+    const cart = productsData.map(p => {
+        console.log(p);
+        p.amount = 2;
+        return p;
+    });
 
     return (
         <>
@@ -14,7 +18,7 @@ export function Cart() {
                         <h1>Shopping Cart</h1>
                         <h1>Items: ({cart.length})</h1>
                         <button className="delete-btn">
-                        <i className="ri-delete-bin-line"></i>
+                            <i className="ri-delete-bin-line"></i>
                         </button>
                     </div>
                     <div className="cart-header">
@@ -23,10 +27,10 @@ export function Cart() {
                         <span>Price</span>
                         <span>Total</span>
                     </div>
-                    <div className="cart-details">
+                    <div className="cart-rows">
                         {cart.length > 0 ? (
                             cart.map(item => (
-                                <h1>{item.name}</h1>
+                                <Product product={item} key={item.id} />
                             ))
                         ) : (
                             <p>Your cart is empty</p>
@@ -60,5 +64,37 @@ export function Cart() {
                 </div>
             </div>
         </>
+    )
+}
+
+function Product({ product }) {
+    const { id, name, image, price, amount } = product;
+    console.log(product);
+
+    return (
+        <div className="cart-row">
+            {/* <div className="cart-item"> */}
+            <div className="cart-product-details">
+                <img src={image} alt="" />
+                <div className="cart-product-info">
+                    <h3>{name}</h3>
+                    <div className="delete-btn">
+                        <i className="ri-delete-bin-line"></i> Remove
+                    </div>
+                </div>
+            </div>
+            <div className="quantity">
+                <button>
+                    <i className="fa fa-plus"></i>
+                </button>
+                <span>{amount}</span>
+                <button>
+                    <i className="fa fa-minus"></i>
+                </button>
+            </div>
+            <div className="price">${price}</div>
+            <div className="total">${parseFloat(price * amount).toFixed(2)}</div>
+        </div>
+        // </div>
     )
 }
