@@ -23,6 +23,7 @@ export function ShopContextProvider({ children }) {
             const amount = cart.reduce((accumulator, currentItem) => {
                 return accumulator + currentItem.amount;
             }, 0);
+            console.log('Amount:', amount);
             setItemsAmount(amount);
         }
     }, [cart]);
@@ -39,12 +40,19 @@ export function ShopContextProvider({ children }) {
         setTotal(total);
     }, [cart]);
 
+    function removeItemFromCart(id) {
+        const newCart = cart.filter((item) => {
+            return item.id !== id;
+        });
+        setCart(newCart);
+    }
+
     function clearCart() {
         setCart([]);
     }
 
     return (
-        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount }}>
+        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, removeItemFromCart }}>
             {children}
         </ShopContext.Provider>
   )

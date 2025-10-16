@@ -4,7 +4,7 @@ import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
 export function Cart() {
-    const { cart, clearCart, itemsAmount } = useContext(ShopContext);
+    const { cart, clearCart, itemsAmount, removeItemFromCart } = useContext(ShopContext);
 
     return (
         <>
@@ -27,7 +27,11 @@ export function Cart() {
                     <div className="cart-rows">
                         {cart.length > 0 ? (
                             cart.map(item => (
-                                <Product product={item} key={item.id} />
+                                <Product 
+                                    key={item.id} 
+                                    product={item} 
+                                    removeItemFromCart={removeItemFromCart} 
+                                />
                             ))
                         ) : (
                             <h2>Your cart is empty</h2>
@@ -64,20 +68,21 @@ export function Cart() {
     )
 }
 
-function Product({ product }) {
+function Product({ product, removeItemFromCart }) {
+    // const { removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
-    console.log(product);
+    console.log(name);
 
     return (
         <div className="cart-row">
-            {/* <div className="cart-item"> */}
             <div className="cart-product-details">
                 <img src={image} alt="" />
                 <div className="cart-product-info">
                     <h3>{name}</h3>
-                    <div className="delete-btn">
+                    {/* <RemoveItemFromCartButton id={id} /> */}
+                    <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
                         <i className="ri-delete-bin-line"></i> Remove
-                    </div>
+                    </button>
                 </div>
             </div>
             <div className="quantity">
@@ -92,6 +97,15 @@ function Product({ product }) {
             <div className="price">${price}</div>
             <div className="total">${parseFloat(price * amount).toFixed(2)}</div>
         </div>
-        // </div>
     )
 }
+
+// function RemoveItemFromCartButton({ id }) {
+//     const { removeItemFromCart } = useContext(ShopContext);
+
+//     return (
+//         <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
+//             <i className="ri-delete-bin-line"></i> Remove
+//         </button>
+//     )
+// }
