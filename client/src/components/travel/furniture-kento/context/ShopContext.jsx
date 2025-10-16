@@ -16,6 +16,8 @@ export function ShopContextProvider({ children }) {
 
     const [ itemsAmount, setItemsAmount ] = useState(0);
 
+    const [ total, setTotal ] = useState(0);
+
     useEffect(() => {
         if (cart) {
             const amount = cart.reduce((accumulator, currentItem) => {
@@ -23,6 +25,18 @@ export function ShopContextProvider({ children }) {
             }, 0);
             setItemsAmount(amount);
         }
+    }, [cart]);
+
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) => {
+            const priceAsNumber = parseFloat(currentItem.price);
+            if (isNaN(priceAsNumber)) {
+                return accumulator;
+            }
+            return accumulator + priceAsNumber * currentItem.amount;
+        }, 0);
+        console.log('Total:', total);
+        setTotal(total);
     }, [cart]);
 
     function clearCart() {
