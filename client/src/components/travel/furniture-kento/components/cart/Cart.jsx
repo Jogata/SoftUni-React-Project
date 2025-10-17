@@ -4,7 +4,7 @@ import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
 export function Cart() {
-    const { cart, clearCart, itemsAmount, removeItemFromCart } = useContext(ShopContext);
+    // const { cart, clearCart, itemsAmount, removeItemFromCart } = useContext(ShopContext);
 
     return (
         <>
@@ -13,10 +13,10 @@ export function Cart() {
                 <div className="cart-table">
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
-                        <h1>Items: {itemsAmount}</h1>
-                        <button className="delete-btn" onClick={clearCart}>
+                        {/* <h1>Items: {itemsAmount}</h1> */}
+                        {/* <button className="delete-btn" onClick={clearCart}>
                             <i className="ri-delete-bin-line"></i>
-                        </button>
+                        </button> */}
                     </div>
                     <div className="cart-header">
                         <span>Product Description</span>
@@ -24,7 +24,7 @@ export function Cart() {
                         <span>Price</span>
                         <span>Total</span>
                     </div>
-                    <div className="cart-rows">
+                    {/* <div className="cart-rows">
                         {cart.length > 0 ? (
                             cart.map(item => (
                                 <Product 
@@ -36,17 +36,18 @@ export function Cart() {
                         ) : (
                             <h2>Your cart is empty</h2>
                         )}
-                    </div>
+                    </div> */}
+                    <CartRows />
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
                     <div className="summary-item">
                         <span>Items : </span>
-                        <span>{itemsAmount}</span>
+                        {/* <span>{itemsAmount}</span> */}
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
-                        <span> $ {cart.length}</span>
+                        {/* <span> $ {cart.length}</span> */}
                     </div>
                     <div className="summary-item">
                         <span>Shipping</span>
@@ -59,7 +60,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item total-cost">
                         <span>Total Cost</span>
-                        <span>$ {cart.length} </span>
+                        {/* <span>$ {cart.length} </span> */}
                     </div>
                     <button className="checkout">CHECKOUT</button>
                 </div>
@@ -68,8 +69,38 @@ export function Cart() {
     )
 }
 
-function Product({ product, removeItemFromCart }) {
-    // const { removeItemFromCart } = useContext(ShopContext);
+function CartRows() {
+    const { cart } = useContext(ShopContext);
+
+    return (
+        <div className="cart-rows">
+            <List>
+            {cart.length > 0 ? (
+                    cart.map(item => (
+                        <Product
+                            key={item.id}
+                            product={item}
+                            // removeItemFromCart={removeItemFromCart}
+                        />
+                    ))
+                ) : (
+                    <h2>Your cart is empty</h2>
+                )}
+            </List>
+        </div>
+    )
+}
+
+function List({ children }) {
+    return (
+        <>
+        {children}
+        </>
+    )
+}
+
+function Product({ product }) {
+    const { removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
     console.log(name);
 
