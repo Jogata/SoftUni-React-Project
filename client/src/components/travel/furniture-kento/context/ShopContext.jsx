@@ -47,12 +47,38 @@ export function ShopContextProvider({ children }) {
         setCart(newCart);
     }
 
+    const addToCart = (product) => {
+        const newItem = { ...product, amount: 1 };
+        // console.log(newItem)
+        // console.log(`item ${product.title} added to cart`)
+
+        const cartItem = cart.find((item) => {
+            return item.id === product.id;
+        });
+        console.log(cartItem);
+
+        if (cartItem) {
+            const newCart = [...cart].map(item => {
+                if (item.id === product.id) {
+                    return { ...item, amount: cartItem.amount + 1 };
+                } else {
+                    return item;
+                }
+            });
+            setCart(newCart);
+        } else {
+            setCart([...cart, newItem])
+        }
+
+    }
+    console.log(cart);
+
     function clearCart() {
         setCart([]);
     }
 
     return (
-        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, removeItemFromCart }}>
+        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, addToCart, removeItemFromCart }}>
             {children}
         </ShopContext.Provider>
   )

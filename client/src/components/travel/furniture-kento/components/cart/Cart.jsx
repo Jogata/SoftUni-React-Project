@@ -4,7 +4,7 @@ import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
 export function Cart() {
-    // const { cart, clearCart, itemsAmount, removeItemFromCart } = useContext(ShopContext);
+    const { clearCart, itemsAmount } = useContext(ShopContext);
 
     return (
         <>
@@ -13,10 +13,10 @@ export function Cart() {
                 <div className="cart-table">
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
-                        {/* <h1>Items: {itemsAmount}</h1> */}
-                        {/* <button className="delete-btn" onClick={clearCart}>
+                        <h1>Items: {itemsAmount}</h1>
+                        <button className="delete-btn" onClick={clearCart}>
                             <i className="ri-delete-bin-line"></i>
-                        </button> */}
+                        </button>
                     </div>
                     <div className="cart-header">
                         <span>Product Description</span>
@@ -43,7 +43,7 @@ export function Cart() {
                     <h2>Cart Summary</h2>
                     <div className="summary-item">
                         <span>Items : </span>
-                        {/* <span>{itemsAmount}</span> */}
+                        <span>{itemsAmount}</span>
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
@@ -70,37 +70,37 @@ export function Cart() {
 }
 
 function CartRows() {
-    const { cart } = useContext(ShopContext);
+    const { cart, removeItemFromCart } = useContext(ShopContext);
 
     return (
         <div className="cart-rows">
-            <List>
+            {/* <List> */}
             {cart.length > 0 ? (
                     cart.map(item => (
                         <Product
                             key={item.id}
                             product={item}
-                            // removeItemFromCart={removeItemFromCart}
+                            removeItemFromCart={removeItemFromCart}
                         />
                     ))
                 ) : (
                     <h2>Your cart is empty</h2>
                 )}
-            </List>
+            {/* </List> */}
         </div>
     )
 }
 
-function List({ children }) {
-    return (
-        <>
-        {children}
-        </>
-    )
-}
+// function List({ children }) {
+//     return (
+//         <>
+//         {children}
+//         </>
+//     )
+// }
 
 function Product({ product }) {
-    const { removeItemFromCart } = useContext(ShopContext);
+    // const { removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
     console.log(name);
 

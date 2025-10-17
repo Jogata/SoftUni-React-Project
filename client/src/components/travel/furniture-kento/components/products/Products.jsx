@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./products.css";
 
 export function Products({ category }) {
-    const { products } = useContext(ShopContext);
+    const { products, addToCart } = useContext(ShopContext);
 
     let filtered = products;
 
@@ -19,22 +19,20 @@ export function Products({ category }) {
                 <div className="products-grid">
                     {filtered.map(product => {
                         const { id, image, name, price } = product;
-                        // if (category === "All" || category === product.category) {
-                            return (
-                                <div className="product-card" key={id}>
-                                    <Link to={`/product/${product.id}`}>
-                                        <img src={image} alt="" className="product-image" />
-                                        <h4>{name}</h4>
-                                    </Link>
-                                    <div className="product-info">
-                                        <p className="price">${price}</p>
-                                        <button className="add-to-cart">
-                                            <i className="fa fa-plus cart-icon"></i>
-                                        </button>
-                                    </div>
+                        return (
+                            <div className="product-card" key={id}>
+                                <Link to={`/product/${product.id}`}>
+                                    <img src={image} alt="" className="product-image" />
+                                    <h4>{name}</h4>
+                                </Link>
+                                <div className="product-info">
+                                    <p className="price">${price}</p>
+                                    <button className="add-to-cart" onClick={() => addToCart(product)}>
+                                        <i className="fa fa-plus cart-icon"></i>
+                                    </button>
                                 </div>
-                            )
-                        // }
+                            </div>
+                        )
                     })}
                 </div>
             </div>
