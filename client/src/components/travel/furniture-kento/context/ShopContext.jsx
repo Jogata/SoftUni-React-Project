@@ -47,7 +47,7 @@ export function ShopContextProvider({ children }) {
         setCart(newCart);
     }
 
-    const addToCart = (product) => {
+    function addToCart(product) {
         const newItem = { ...product, amount: 1 };
         // console.log(newItem)
         // console.log(`item ${product.title} added to cart`)
@@ -73,12 +73,17 @@ export function ShopContextProvider({ children }) {
     }
     console.log(cart);
 
+    function increaseAmount(id) {
+        const cartItem = cart.find((item) => item.id === id);
+        addToCart(cartItem)
+    }
+
     function clearCart() {
         setCart([]);
     }
 
     return (
-        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, addToCart, removeItemFromCart }}>
+        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, addToCart, removeItemFromCart, increaseAmount }}>
             {children}
         </ShopContext.Provider>
   )

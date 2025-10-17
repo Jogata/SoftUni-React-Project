@@ -70,7 +70,7 @@ export function Cart() {
 }
 
 function CartRows() {
-    const { cart, removeItemFromCart } = useContext(ShopContext);
+    const { cart } = useContext(ShopContext);
 
     return (
         <div className="cart-rows">
@@ -80,7 +80,7 @@ function CartRows() {
                         <Product
                             key={item.id}
                             product={item}
-                            removeItemFromCart={removeItemFromCart}
+                            // removeItemFromCart={removeItemFromCart}
                         />
                     ))
                 ) : (
@@ -100,7 +100,7 @@ function CartRows() {
 // }
 
 function Product({ product }) {
-    // const { removeItemFromCart } = useContext(ShopContext);
+    const { increaseAmount, removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
     console.log(name);
 
@@ -118,11 +118,11 @@ function Product({ product }) {
             </div>
             <div className="quantity">
                 <button>
-                    <i className="fa fa-plus"></i>
+                    <i className="ri-subtract-line"></i>
                 </button>
                 <span>{amount}</span>
-                <button>
-                    <i className="fa fa-minus"></i>
+                <button onClick={() => increaseAmount(id)}>
+                    <i className="ri-add-line"></i>
                 </button>
             </div>
             <div className="price">${price}</div>
