@@ -39,7 +39,6 @@
 }
 
 .footer-menu {
-    /* list-style: none; */
     margin: 0;
     padding: 0;
     display: flex;
@@ -50,7 +49,6 @@
 .footer-menu li a {
     color: #fff;
     font-size: 14px;
-    /* text-decoration: none; */
 }
 
 .footer-menu li a:hover {

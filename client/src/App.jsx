@@ -38,6 +38,7 @@ import { Home } from './components/travel/furniture-kento/pages/Home';
 import { ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
 import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
 import { Footer } from './components/travel/furniture-kento/components/footer/Footer'
+import { Product } from './components/travel/furniture-kento/components/product/Product'
 
 function Loader() {
   return (
@@ -88,6 +89,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/product/:id' element={<Product />} />
         </Routes>
       </ShopContextProvider>
       <Footer />

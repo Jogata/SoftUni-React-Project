@@ -24,19 +24,6 @@ export function Cart() {
                         <span>Price</span>
                         <span>Total</span>
                     </div>
-                    {/* <div className="cart-rows">
-                        {cart.length > 0 ? (
-                            cart.map(item => (
-                                <Product 
-                                    key={item.id} 
-                                    product={item} 
-                                    removeItemFromCart={removeItemFromCart} 
-                                />
-                            ))
-                        ) : (
-                            <h2>Your cart is empty</h2>
-                        )}
-                    </div> */}
                     <CartRows />
                 </div>
                 <div className="cart-right">
