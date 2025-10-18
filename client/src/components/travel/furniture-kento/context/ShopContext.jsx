@@ -78,12 +78,33 @@ export function ShopContextProvider({ children }) {
         addToCart(cartItem)
     }
 
+    function decreaseAmount(id) {
+        const cartItem = cart.find((item) => {
+            return item.id === id;
+        });
+
+        if (cartItem) {
+            const newCart = cart.map((item) => {
+                if (item.id === id) {
+                    return { ...item, amount: cartItem.amount - 1 };
+                } else {
+                    return item;
+                }
+            });
+            setCart(newCart);
+        } else {
+            if (cartItem.amount < 2) {
+                removeItemFromCart(id);
+            }
+        }
+    }
+
     function clearCart() {
         setCart([]);
     }
 
     return (
-        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, addToCart, removeItemFromCart, increaseAmount }}>
+        <ShopContext.Provider value={{ products, cart, clearCart, itemsAmount, total, addToCart, increaseAmount, decreaseAmount, removeItemFromCart }}>
             {children}
         </ShopContext.Provider>
   )
