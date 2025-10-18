@@ -37,6 +37,7 @@ import { useEffect, useState } from 'react';
 import { Home } from './components/travel/furniture-kento/pages/Home';
 import { ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
 import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
+import { Footer } from './components/travel/furniture-kento/components/footer/Footer'
 
 function Loader() {
   return (
@@ -81,7 +82,7 @@ function App() {
           <Route path='/pricing' element={<Pricing />} />
           <Route path='/training' element={<Training />} />
           <Route path='/contact' element={<Contact />} />
-        </Routes> */}
+        </Routes> */} 
 
       <ShopContextProvider>
         <Routes>
@@ -89,6 +90,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
         </Routes>
       </ShopContextProvider>
+      <Footer />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

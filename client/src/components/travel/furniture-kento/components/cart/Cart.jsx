@@ -4,7 +4,7 @@ import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
 export function Cart() {
-    const { clearCart, itemsAmount } = useContext(ShopContext);
+    const { clearCart, itemsAmount, total } = useContext(ShopContext);
 
     return (
         <>
@@ -47,7 +47,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item">
                         <span>Subtotal</span>
-                        {/* <span> $ {cart.length}</span> */}
+                        <span> $ {total}</span>
                     </div>
                     <div className="summary-item">
                         <span>Shipping</span>
@@ -60,7 +60,7 @@ export function Cart() {
                     </div>
                     <div className="summary-item total-cost">
                         <span>Total Cost</span>
-                        {/* <span>$ {cart.length} </span> */}
+                        <span>$ {total} </span>
                     </div>
                     <button className="checkout">CHECKOUT</button>
                 </div>
@@ -100,7 +100,7 @@ function CartRows() {
 // }
 
 function Product({ product }) {
-    const { increaseAmount, removeItemFromCart } = useContext(ShopContext);
+    const { increaseAmount, decreaseAmount, removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
     console.log(name);
 
@@ -117,7 +117,7 @@ function Product({ product }) {
                 </div>
             </div>
             <div className="quantity">
-                <button>
+                <button onClick={() => decreaseAmount(id)}>
                     <i className="ri-subtract-line"></i>
                 </button>
                 <span>{amount}</span>
