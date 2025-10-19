@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
+let propcount = 0;
+
 export function Cart() {
     const { clearCart, itemsAmount, total } = useContext(ShopContext);
 
     return (
         <>
             <Navigation />
-            <div className="cart-container">
+            <Test count={propcount} />
+            <div className="cart-container" style={{display: "none"}}>
                 <div className="cart-table">
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
@@ -85,6 +88,18 @@ function CartRows() {
 //         </>
 //     )
 // }
+
+function Test({count}) {
+    console.log(count);
+    return (
+        <>
+        <h1>{count}</h1>
+        <button onClick={() => propcount = propcount + 1}>
+            increase
+        </button>
+        </>
+    )
+}
 
 function Product({ product }) {
     const { increaseAmount, decreaseAmount, removeItemFromCart } = useContext(ShopContext);
