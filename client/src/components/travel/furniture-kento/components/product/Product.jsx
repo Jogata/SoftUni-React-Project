@@ -8,7 +8,7 @@ import "./product.css";
 export function Product() {
     const [activeTab, setActiveTab] = useState("description");
 
-    const { itemAmount, addToCart } = useContext(ShopContext);
+    const { itemsAmount, addToCart } = useContext(ShopContext);
     const { id } = useParams();
 
     const product = productsData.find(product => {
@@ -29,7 +29,7 @@ export function Product() {
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
-                            <p className="qty-amt">{itemAmount}</p>
+                            <p className="qty-amt">{itemsAmount}</p>
                         </div>
                         <button onClick={() => addToCart(product)}>
                             Add To Cart

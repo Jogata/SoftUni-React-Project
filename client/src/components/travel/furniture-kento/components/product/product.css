@@ -1,0 +1,105 @@
+.product-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px;
+    display: flex;
+    gap: 30px;
+}
+
+.detail-left img {
+    width: 460px;
+}
+
+.detail-right h3 {
+    font-size: 34px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #9e9e9e;
+}
+
+.detail-right .product-price {
+    margin-top: 20px;
+    color: #ff7518;
+    font-size: 22px;
+}
+
+.detail-right .desc {
+    margin-top: 15px;
+    color: #666;
+    font-size: 20px;
+}
+
+.product-qty-cart {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.p-qty {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-qty .qty {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.p-qty .qty-amt {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #666;
+}
+
+.detail-right button {
+    padding: 1rem 3.6rem;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    background-color: #ff7518;
+}
+
+.tab-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: -50px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.tab-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-header button {
+    padding: 10px 20px;
+    color: #666;
+    font-size: 16px;
+    /* border: none; */
+    border-bottom: 2px solid transparent;
+    /* background: none; */
+    transition: all 0.3s ease;
+    /* cursor: pointer; */
+}
+
+.tab-header button.active {
+    color: #ff7518;
+    border-bottom: 2px solid #ff7518;
+}
+
+.tab-content {
+    padding: 20px 0;
+}
+
+.tab-pane {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
