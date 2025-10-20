@@ -48,25 +48,38 @@ export function ShopContextProvider({ children }) {
     }
 
     function addToCart(product) {
-        const newItem = { ...product, amount: 1 };
+        // const newItem = { ...product, amount: 1 };
         // console.log(newItem)
         // console.log(`item ${product.title} added to cart`)
 
-        const cartItem = cart.find((item) => {
+        // const cartItem = cart.find((item) => {
+        //     return item.id === product.id;
+        // });
+        // console.log(cartItem);
+        const index = cart.findIndex(item => {
             return item.id === product.id;
         });
-        console.log(cartItem);
+        console.log(index);
 
-        if (cartItem) {
-            const newCart = [...cart].map(item => {
-                if (item.id === product.id) {
-                    return { ...item, amount: cartItem.amount + 1 };
-                } else {
-                    return item;
-                }
-            });
+
+        // if (cartItem) {
+        if (index >= 0) {
+            // const product = products[index];
+            const newCart = [...cart];
+            const newItem = {...newCart[index]};
+            newItem.amount = newItem.amount + 1;
+            newCart[index] = newItem;
+            // const newCart = [...cart].map(item => {
+            //     if (item.id === product.id) {
+            //         return { ...item, amount: cartItem.amount + 1 };
+            //     } else {
+            //         return item;
+            //     }
+            // });
             setCart(newCart);
         } else {
+            const product = products[index];
+            const newItem = {...product, amount: 1};
             setCart([...cart, newItem])
         }
 
@@ -75,7 +88,7 @@ export function ShopContextProvider({ children }) {
 
     function increaseAmount(id) {
         const cartItem = cart.find((item) => item.id === id);
-        addToCart(cartItem)
+        addToCart(cartItem);
     }
 
     function decreaseAmount(id) {

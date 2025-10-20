@@ -16,7 +16,7 @@ export function Product() {
     })
 
     return (
-        <div>
+        <>
             <Navigation />
             <div className="product-details">
                 <div className="details-left">
@@ -70,6 +70,6 @@ export function Product() {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     )
 }

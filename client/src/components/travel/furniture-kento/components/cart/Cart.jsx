@@ -3,16 +3,13 @@ import { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import "./cart.css";
 
-let propcount = 0;
-
 export function Cart() {
     const { clearCart, itemsAmount, total } = useContext(ShopContext);
 
     return (
         <>
             <Navigation />
-            <Test count={propcount} />
-            <div className="cart-container" style={{display: "none"}}>
+            <div className="cart-container">
                 <div className="cart-table">
                     <div className="cart-header">
                         <h1>Shopping Cart</h1>
@@ -64,40 +61,17 @@ function CartRows() {
 
     return (
         <div className="cart-rows">
-            {/* <List> */}
             {cart.length > 0 ? (
                     cart.map(item => (
                         <Product
                             key={item.id}
                             product={item}
-                            // removeItemFromCart={removeItemFromCart}
                         />
                     ))
                 ) : (
                     <h2>Your cart is empty</h2>
                 )}
-            {/* </List> */}
         </div>
-    )
-}
-
-// function List({ children }) {
-//     return (
-//         <>
-//         {children}
-//         </>
-//     )
-// }
-
-function Test({count}) {
-    console.log(count);
-    return (
-        <>
-        <h1>{count}</h1>
-        <button onClick={() => propcount = propcount + 1}>
-            increase
-        </button>
-        </>
     )
 }
 
@@ -112,7 +86,6 @@ function Product({ product }) {
                 <img src={image} alt="" />
                 <div className="cart-product-info">
                     <h3>{name}</h3>
-                    {/* <RemoveItemFromCartButton id={id} /> */}
                     <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
                         <i className="ri-delete-bin-line"></i> Remove
                     </button>
@@ -132,13 +105,3 @@ function Product({ product }) {
         </div>
     )
 }
-
-// function RemoveItemFromCartButton({ id }) {
-//     const { removeItemFromCart } = useContext(ShopContext);
-
-//     return (
-//         <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
-//             <i className="ri-delete-bin-line"></i> Remove
-//         </button>
-//     )
-// }
