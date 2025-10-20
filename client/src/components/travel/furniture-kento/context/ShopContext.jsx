@@ -108,24 +108,41 @@ export function ShopContextProvider({ children }) {
         setCart(newCart);
     }
 
+    // function decreaseAmount(id) {
+    //     const cartItem = cart.find((item) => {
+    //         return item.id === id;
+    //     });
+
+    //     if (cartItem) {
+    //         const newCart = cart.map((item) => {
+    //             if (item.id === id) {
+    //                 return { ...item, amount: cartItem.amount - 1 };
+    //             } else {
+    //                 return item;
+    //             }
+    //         });
+    //         setCart(newCart);
+    //     } else {
+    //         if (cartItem.amount < 2) {
+    //             removeItemFromCart(id);
+    //         }
+    //     }
+    // }
+
     function decreaseAmount(id) {
-        const cartItem = cart.find((item) => {
+        const index = cart.findIndex(item => {
             return item.id === id;
         });
 
-        if (cartItem) {
-            const newCart = cart.map((item) => {
-                if (item.id === id) {
-                    return { ...item, amount: cartItem.amount - 1 };
-                } else {
-                    return item;
-                }
-            });
+        const newItem = {...cart[index]};
+        newItem.amount = newItem.amount - 1;
+        
+        if (newItem.amount === 0) {
+            removeItemFromCart(id);
+        } else {            
+            const newCart = [...cart];
+            newCart[index] = newItem;
             setCart(newCart);
-        } else {
-            if (cartItem.amount < 2) {
-                removeItemFromCart(id);
-            }
         }
     }
 
