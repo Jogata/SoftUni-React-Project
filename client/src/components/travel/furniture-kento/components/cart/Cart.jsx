@@ -18,13 +18,14 @@ export function Cart() {
                             <i className="ri-delete-bin-line"></i>
                         </button>
                     </div>
-                    <div className="cart-header">
+                    <CartTable />
+                    {/* <div className="cart-header">
                         <span>Product Description</span>
                         <span>Quantity</span>
                         <span>Price</span>
                         <span>Total</span>
-                    </div>
-                    <CartRows />
+                    </div> */}
+                    {/* <CartRows /> */}
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -56,22 +57,52 @@ export function Cart() {
     )
 }
 
+function CartTable() {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <CartRows />
+            </tbody>
+        </table>
+    )
+}
+
 function CartRows() {
     const { cart } = useContext(ShopContext);
 
     return (
-        <div className="cart-rows">
+        // <div className="cart-rows">
+        //     {cart.length > 0 ? (
+        //             cart.map(item => (
+        //                 <Product
+        //                     key={item.id}
+        //                     product={item}
+        //                 />
+        //             ))
+        //         ) : (
+        //             <h2>Your cart is empty</h2>
+        //         )}
+        // </div>
+        <>
             {cart.length > 0 ? (
-                    cart.map(item => (
-                        <Product
-                            key={item.id}
-                            product={item}
-                        />
-                    ))
-                ) : (
-                    <h2>Your cart is empty</h2>
-                )}
-        </div>
+                cart.map(item => (
+                    <Product
+                        key={item.id}
+                        product={item}
+                    />
+                ))
+            ) : (
+                <h2>Your cart is empty</h2>
+            )}
+        </>
     )
 }
 
@@ -81,27 +112,31 @@ function Product({ product }) {
     console.log(name);
 
     return (
-        <div className="cart-row">
-            <div className="cart-product-details">
-                <img src={image} alt="" />
-                <div className="cart-product-info">
-                    <h3>{name}</h3>
-                    <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
-                        <i className="ri-delete-bin-line"></i> Remove
+        <tr>
+            <td>
+                <div className="cart-product-details">
+                    <img src={image} alt="" />
+                    <div className="cart-product-info">
+                        <h3>{name}</h3>
+                        <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
+                            <i className="ri-delete-bin-line"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            </td>
+            <td className="cell">
+                <div className="quantity">
+                    <button onClick={() => decreaseAmount(id)}>
+                        <i className="ri-subtract-line"></i>
+                    </button>
+                    <span>{amount}</span>
+                    <button onClick={() => increaseAmount(id)}>
+                        <i className="ri-add-line"></i>
                     </button>
                 </div>
-            </div>
-            <div className="quantity">
-                <button onClick={() => decreaseAmount(id)}>
-                    <i className="ri-subtract-line"></i>
-                </button>
-                <span>{amount}</span>
-                <button onClick={() => increaseAmount(id)}>
-                    <i className="ri-add-line"></i>
-                </button>
-            </div>
-            <div className="price">${price}</div>
-            <div className="total">${parseFloat(price * amount).toFixed(2)}</div>
-        </div>
+            </td>
+            <td className="price cell">${price}</td>
+            <td className="total cell">${parseFloat(price * amount).toFixed(2)}</td>
+        </tr>
     )
 }
