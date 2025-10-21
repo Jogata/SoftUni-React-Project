@@ -19,13 +19,6 @@ export function Cart() {
                         </button>
                     </div>
                     <CartTable />
-                    {/* <div className="cart-header">
-                        <span>Product Description</span>
-                        <span>Quantity</span>
-                        <span>Price</span>
-                        <span>Total</span>
-                    </div> */}
-                    {/* <CartRows /> */}
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -79,18 +72,6 @@ function CartRows() {
     const { cart } = useContext(ShopContext);
 
     return (
-        // <div className="cart-rows">
-        //     {cart.length > 0 ? (
-        //             cart.map(item => (
-        //                 <Product
-        //                     key={item.id}
-        //                     product={item}
-        //                 />
-        //             ))
-        //         ) : (
-        //             <h2>Your cart is empty</h2>
-        //         )}
-        // </div>
         <>
             {cart.length > 0 ? (
                 cart.map(item => (

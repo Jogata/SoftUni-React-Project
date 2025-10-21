@@ -14,7 +14,7 @@ export function Navigation() {
             <div className="links">
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li>About</li>
+                    <li><Link to="/about">About</Link></li>
                     <li>Products</li>
                 </ul>
             </div>

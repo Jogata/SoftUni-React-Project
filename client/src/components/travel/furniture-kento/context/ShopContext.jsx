@@ -14,14 +14,10 @@ export function ShopContextProvider({ children }) {
 
     const [ cart, setCart ] = useState(data);
 
-    // const [ itemsAmount, setItemsAmount ] = useState(0);
     const itemsAmount = cart.reduce((accumulator, currentItem) => {
         return accumulator + currentItem.amount;
     }, 0);
     console.log('Amount:', itemsAmount);
-    // setItemsAmount(amount);
-
-    // const [ total, setTotal ] = useState(0);
 
     const total = cart.reduce((accumulator, currentItem) => {
         const priceAsNumber = parseFloat(currentItem.price);
@@ -31,29 +27,6 @@ export function ShopContextProvider({ children }) {
         return accumulator + priceAsNumber * currentItem.amount;
     }, 0);
     console.log('Total:', total);
-    // setTotal(total);
-
-    // useEffect(() => {
-    //     if (cart) {
-    //         const amount = cart.reduce((accumulator, currentItem) => {
-    //             return accumulator + currentItem.amount;
-    //         }, 0);
-    //         console.log('Amount:', amount);
-    //         setItemsAmount(amount);
-    //     }
-    // }, [cart]);
-
-    // useEffect(() => {
-    //     const total = cart.reduce((accumulator, currentItem) => {
-    //         const priceAsNumber = parseFloat(currentItem.price);
-    //         if (isNaN(priceAsNumber)) {
-    //             return accumulator;
-    //         }
-    //         return accumulator + priceAsNumber * currentItem.amount;
-    //     }, 0);
-    //     console.log('Total:', total);
-    //     setTotal(total);
-    // }, [cart]);
 
     function removeItemFromCart(id) {
         const newCart = cart.filter((item) => {
@@ -66,12 +39,10 @@ export function ShopContextProvider({ children }) {
         const index = cart.findIndex(item => {
             return item.id === product.id;
         });
-        // console.log(index);
 
         if (index >= 0) {
             increaseAmount(product.id);
         } else {
-            // const product = products[index];
             const newItem = {...product, amount: 1};
             setCart([...cart, newItem])
         }
@@ -82,7 +53,6 @@ export function ShopContextProvider({ children }) {
         const index = cart.findIndex(item => {
             return item.id === id;
         });
-        // console.log(index);
 
         const newCart = [...cart];
         const newItem = {...newCart[index]};

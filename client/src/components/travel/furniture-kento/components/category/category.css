@@ -1,15 +1,11 @@
 .category-menu {
     max-width: 1600px;
-    /* height: 25vh; */
     margin: auto;
-    /* padding-left: 40px; */
-    /* padding-top: 105vh; */
     padding: 3rem 1rem;
     display: flex;
     gap: 20px;
     flex-direction: column;
     text-align: center;
-    /* z-index: 3; */
 }
 
 .categories {
@@ -17,8 +13,6 @@
     padding: 1rem 0;
     display: inline-flex;
     gap: 10px;
-    /* flex-direction: row; */
-    /* cursor: pointer; */
 }
 
 .category {
@@ -32,5 +26,4 @@
 .category:hover {
     color: #fff;
     background-color: #000;
-    /* border: none; */
 }

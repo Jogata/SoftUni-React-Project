@@ -23,7 +23,7 @@
 }
 
 .detail-right .desc {
-    margin-top: 15px;
+    margin-top: 1rem;
     color: #666;
     font-size: 20px;
 }
@@ -82,11 +82,8 @@
     padding: 10px 20px;
     color: #666;
     font-size: 16px;
-    /* border: none; */
     border-bottom: 2px solid transparent;
-    /* background: none; */
     transition: all 0.3s ease;
-    /* cursor: pointer; */
 }
 
 .tab-header button.active {
@@ -100,6 +97,5 @@
 
 .tab-pane {
     color: #333;
-    font-size: 16px;
     line-height: 1.6;
 }
