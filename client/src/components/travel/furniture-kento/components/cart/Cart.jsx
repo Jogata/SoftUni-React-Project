@@ -21,9 +21,9 @@ export function Cart() {
                     {itemsAmount > 0 ? (
                         <CartTable />
                     ) : (
-                        <h2>Your cart is empty</h2>
+                        // <h2>Your cart is empty</h2>
+                        <EmptyCart />
                     )}
-                    {/* <CartTable /> */}
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -78,22 +78,12 @@ function CartRows() {
 
     return (
         <>
-            {/* {cart.length > 0 ? (
-                cart.map(item => (
-                    <Product
-                        key={item.id}
-                        product={item}
-                    />
-                ))
-            ) : (
-                <h2>Your cart is empty</h2>
-            )} */}
-                {cart.map(item => (
-                    <Product
-                        key={item.id}
-                        product={item}
-                    />
-                ))}
+            {cart.map(item => (
+                <Product
+                    key={item.id}
+                    product={item}
+                />
+            ))}
         </>
     )
 }
@@ -130,5 +120,14 @@ function Product({ product }) {
             <td className="price cell">${price}</td>
             <td className="total cell">${parseFloat(price * amount).toFixed(2)}</td>
         </tr>
+    )
+}
+
+
+function EmptyCart() {
+    return (
+        <div className="empty-cart">
+            <h2>Your cart is empty</h2>
+        </div>
     )
 }

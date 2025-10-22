@@ -129,7 +129,18 @@ td.cell {
 .summary-item {
     margin-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.summary-item span {
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    align-self: center;
+}
+
+.summary-item input {
+    flex: 1;
+    padding: 0.5rem;
 }
 
 .summary-item.total-cost {
@@ -138,7 +149,7 @@ td.cell {
 }
 
 .apply-btn {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 10px 15px;
     color: #fff;
     background-color: #ff4c4c;
@@ -152,6 +163,11 @@ td.cell {
     background-color: #4c4cff;
 }
 
-button {
-    /* border: 1px solid red; */
+.empty-cart {
+    padding: 3rem 1rem;
+}
+
+.empty-cart h2 {
+    font-size: 2rem;
+    text-align: center;
 }
