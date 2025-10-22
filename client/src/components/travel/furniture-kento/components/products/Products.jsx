@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { ShopContext } from "../../context/ShopContext";
+import { ProductsContext, ShopContext } from "../../context/ShopContext";
+// import { ProductsContext } from "../../context/ShopContext";
 import { Link } from "react-router-dom";
 import "./products.css";
 
 export function Products({ category }) {
-    const { products, addToCart } = useContext(ShopContext);
+    const { addToCart } = useContext(ShopContext);
+    const { products } = useContext(ProductsContext);
 
     let filtered = products;
 
@@ -13,11 +15,12 @@ export function Products({ category }) {
     }
 
     return (
-        <div className="products">
+        <div className="products" id="products">
             <h2>Our <span>Elegant Collections</span></h2>
             <div className="products-grid">
                 {filtered.map(product => {
                     const { id, image, name, price } = product;
+                    console.log(name);
                     return (
                         <div className="product-card" key={id}>
                             <Link to={`/product/${product.id}`}>

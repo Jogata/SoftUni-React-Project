@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Navigation } from "../navigation/Navigation";
 import "./hero.css";
 
@@ -8,7 +9,7 @@ export function Hero() {
       <div className="hero">
         <h1>Discover Timeless Style and <span>Unmatched Comfort</span></h1>
         <p>Shop the latest trends and classic essentials just for you</p>
-        <button>Shop Now</button>
+        <a href="#products">Shop Now</a>
       </div>
     </div>
   )

@@ -2,9 +2,10 @@ import { createContext, useState } from "react";
 import { productsData } from "../data";
 
 export const ShopContext = createContext();
+export const ProductsContext = createContext();
 
 export function ShopContextProvider({ children }) {
-    const [ products, setProducts ] = useState(productsData);
+    // const [ products, setProducts ] = useState(productsData);
     const [ cart, setCart ] = useState([]);
 
     const itemsAmount = cart.reduce((accumulator, currentItem) => {
@@ -76,7 +77,7 @@ export function ShopContextProvider({ children }) {
     }
 
     const context = {
-        products, 
+        // products, 
         cart, 
         itemsAmount, 
         total, 
@@ -91,5 +92,15 @@ export function ShopContextProvider({ children }) {
         <ShopContext.Provider value={context}>
             {children}
         </ShopContext.Provider>
+  )
+}
+
+export function ProductsContextProvider({ children }) {
+    const [ products, setProducts ] = useState(productsData);
+
+    return (
+        <ProductsContext.Provider value={{products}}>
+            {children}
+        </ProductsContext.Provider>
   )
 }

@@ -41,8 +41,9 @@
     line-height: 1.5;
 }
 
-.hero button {
+.hero a {
     padding: 1.1rem 4rem;
+    color: #000;
     font-weight: bold;
     border-radius: 16px;
     background-color: #fff;

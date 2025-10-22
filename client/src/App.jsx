@@ -35,7 +35,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Home } from './components/travel/furniture-kento/pages/Home';
-import { ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
+import { ProductsContextProvider, ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
 import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
 import { Footer } from './components/travel/furniture-kento/components/footer/Footer'
 import { Product } from './components/travel/furniture-kento/components/product/Product'
@@ -86,14 +86,16 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */} 
 
-      <ShopContextProvider>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/product/:id' element={<Product />} />
-        </Routes>
-      </ShopContextProvider>
+      <ProductsContextProvider>
+        <ShopContextProvider>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/product/:id' element={<Product />} />
+          </Routes>
+        </ShopContextProvider>
+      </ProductsContextProvider>
       <Footer />
 
           {/* <Routes>

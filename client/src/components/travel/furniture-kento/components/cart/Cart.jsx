@@ -18,12 +18,7 @@ export function Cart() {
                             <i className="ri-delete-bin-line"></i>
                         </button>
                     </div>
-                    {itemsAmount > 0 ? (
-                        <CartTable />
-                    ) : (
-                        // <h2>Your cart is empty</h2>
-                        <EmptyCart />
-                    )}
+                    {itemsAmount > 0 ? <CartTable /> : <EmptyCart />}
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -91,7 +86,7 @@ function CartRows() {
 function Product({ product }) {
     const { increaseAmount, decreaseAmount, removeItemFromCart } = useContext(ShopContext);
     const { id, name, image, price, amount } = product;
-    console.log(name);
+    // console.log(name);
 
     return (
         <tr>
@@ -100,7 +95,10 @@ function Product({ product }) {
                     <img src={image} alt="" />
                     <div className="cart-product-info">
                         <h3>{name}</h3>
-                        <button className="delete-btn" onClick={() => removeItemFromCart(id)}>
+                        <button 
+                            className="delete-btn" 
+                            onClick={() => removeItemFromCart(id)}
+                        >
                             <i className="ri-delete-bin-line"></i> Remove
                         </button>
                     </div>
@@ -117,8 +115,12 @@ function Product({ product }) {
                     </button>
                 </div>
             </td>
-            <td className="price cell">${price}</td>
-            <td className="total cell">${parseFloat(price * amount).toFixed(2)}</td>
+            <td className="price cell">
+                ${price}
+            </td>
+            <td className="total cell">
+                ${parseFloat(price * amount).toFixed(2)}
+            </td>
         </tr>
     )
 }
