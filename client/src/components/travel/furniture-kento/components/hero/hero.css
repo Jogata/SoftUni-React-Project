@@ -8,6 +8,10 @@
     background-size: cover;
 }
 
+.hero-container .navigation {
+    background-color: transparent;
+}
+
 .hero {
     max-width: 900px;
     margin: auto;

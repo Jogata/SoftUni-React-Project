@@ -18,7 +18,12 @@ export function Cart() {
                             <i className="ri-delete-bin-line"></i>
                         </button>
                     </div>
-                    <CartTable />
+                    {itemsAmount > 0 ? (
+                        <CartTable />
+                    ) : (
+                        <h2>Your cart is empty</h2>
+                    )}
+                    {/* <CartTable /> */}
                 </div>
                 <div className="cart-right">
                     <h2>Cart Summary</h2>
@@ -73,7 +78,7 @@ function CartRows() {
 
     return (
         <>
-            {cart.length > 0 ? (
+            {/* {cart.length > 0 ? (
                 cart.map(item => (
                     <Product
                         key={item.id}
@@ -82,7 +87,13 @@ function CartRows() {
                 ))
             ) : (
                 <h2>Your cart is empty</h2>
-            )}
+            )} */}
+                {cart.map(item => (
+                    <Product
+                        key={item.id}
+                        product={item}
+                    />
+                ))}
         </>
     )
 }

@@ -1,28 +1,7 @@
-header {
-    /* padding: 1rem 2rem;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #2d2d2d; */
-}
-
-header h1 {
-    /* font-size: 1.8rem; */
-}
-
-nav a {
-    /* text-decoration: none; */
-    /* margin-left: 1.5rem; */
-    /* color: white; */
-    /* font-weight: 600; */
-}
-
 .about .hero {
     padding: 4rem 2rem;
     color: #2d2d2d;
     text-align: center;
-    /* background-color: #e0dcd5; */
 }
 
 .about .hero h2 {
@@ -37,10 +16,8 @@ nav a {
 .about .section {
     max-width: 1000px;
     margin: 0 auto 2rem;
-    /* margin-bottom: 2rem; */
     padding: 4rem 2rem;
     border-radius: 8px;
-    /* background-color: white; */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -87,16 +64,7 @@ nav a {
     font-weight: 600;
     border-radius: 6px;
     background-color: white;
-    /* text-decoration: none; */
 }
-
-/* footer {
-    margin-top: 2rem;
-    padding: 1.5rem 2rem;
-    color: white;
-    text-align: center;
-    background-color: #2d2d2d;
-} */
 
 @media (max-width: 600px) {
     .about .values-list {
