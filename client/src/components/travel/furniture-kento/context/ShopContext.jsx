@@ -5,7 +5,6 @@ export const ShopContext = createContext();
 export const ProductsContext = createContext();
 
 export function ShopContextProvider({ children }) {
-    // const [ products, setProducts ] = useState(productsData);
     const [ cart, setCart ] = useState([]);
 
     const itemsAmount = cart.reduce((accumulator, currentItem) => {
@@ -77,7 +76,6 @@ export function ShopContextProvider({ children }) {
     }
 
     const context = {
-        // products, 
         cart, 
         itemsAmount, 
         total, 

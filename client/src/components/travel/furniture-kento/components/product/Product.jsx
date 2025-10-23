@@ -2,7 +2,7 @@ import { productsData } from "../../data";
 import { Navigation } from "../navigation/Navigation";
 import { useContext, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./product.css";
 
 export function Product() {
@@ -15,6 +15,8 @@ export function Product() {
         return product.id === parseInt(id);
     })
 
+    const desc = {__html: product.productDetail.description};
+
     return (
         <>
             <Navigation />
@@ -25,7 +27,8 @@ export function Product() {
                 <div className="details-right">
                     <h3>{product.name} </h3>
                     <p className="product-price"> $ {product.price}</p>
-                    <p className="desc">{product.productDetail.description} </p>
+                    {/* <p className="desc">{product.productDetail.description} </p> */}
+                    <p className="desc" dangerouslySetInnerHTML={desc}></p>
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
