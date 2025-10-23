@@ -8,14 +8,16 @@ import "./product.css";
 export function Product() {
     const [activeTab, setActiveTab] = useState("description");
 
-    const { itemsAmount, addToCart } = useContext(ShopContext);
+    // const { itemsAmount, addToCart } = useContext(ShopContext);
+    const { itemsAmount } = useContext(ShopContext);
     const { id } = useParams();
+    console.log(id);
 
     const product = productsData.find(product => {
         return product.id === parseInt(id);
     })
 
-    const desc = {__html: product.productDetail.description};
+    // const desc = {__html: product.productDetail.description};
 
     return (
         <>
@@ -27,16 +29,17 @@ export function Product() {
                 <div className="details-right">
                     <h3>{product.name} </h3>
                     <p className="product-price"> $ {product.price}</p>
-                    {/* <p className="desc">{product.productDetail.description} </p> */}
-                    <p className="desc" dangerouslySetInnerHTML={desc}></p>
+                    <p className="desc">{product.productDetail.description} </p>
+                    {/* <p className="desc" dangerouslySetInnerHTML={desc}></p> */}
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
                             <p className="qty-amt">{itemsAmount}</p>
                         </div>
-                        <button onClick={() => addToCart(product)}>
+                        {/* <button onClick={() => addToCart(product)}>
                             Add To Cart
-                        </button>
+                        </button> */}
+                        <Button product={product} />
                     </div>
                 </div>
             </div>
@@ -74,5 +77,20 @@ export function Product() {
                 </div>
             </div>
         </>
+    )
+}
+
+function Button({product}) {
+    const { addToCart } = useContext(ShopContext);
+    console.log("button");
+
+    return (
+        <button 
+            // className="add-to-cart" 
+            onClick={() => addToCart(product)}
+        >
+            {/* <i className="fa fa-plus cart-icon"></i> */}
+            Add To Cart
+        </button>
     )
 }

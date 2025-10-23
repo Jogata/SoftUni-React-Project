@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./products.css";
 
 export function Products({ category }) {
-    // const { addToCart } = useContext(ShopContext);
     const { products } = useContext(ProductsContext);
 
     let filtered = products;
@@ -28,9 +27,6 @@ export function Products({ category }) {
                             </Link>
                             <div className="product-info">
                                 <p className="price">${price}</p>
-                                {/* <button className="add-to-cart" onClick={() => addToCart(product)}>
-                                    <i className="fa fa-plus cart-icon"></i>
-                                </button> */}
                                 <Button product={product} />
                             </div>
                         </div>
