@@ -6,8 +6,6 @@ import { useParams } from "react-router-dom";
 import "./product.css";
 
 export function Product() {
-    // const [activeTab, setActiveTab] = useState("description");
-
     const { id } = useParams();
     console.log(id);
 
@@ -75,7 +73,6 @@ export function Product() {
 
 function Button({ product }) {
     const { addToCart } = useContext(ShopContext);
-    // console.log("button");
 
     return (
         <button onClick={() => addToCart(product)}>
@@ -86,7 +83,6 @@ function Button({ product }) {
 
 function ItemsAmount() {
     const { itemsAmount } = useContext(ShopContext);
-    // console.log(itemsAmount);
 
     return (
         <p className="qty-amt">{itemsAmount}</p>
@@ -100,7 +96,7 @@ function TabSwitcher({product}) {
     const tabs = ["description", "reviews"];
     const classes = ["tab", "tab"];
     classes[activeTab] = "tab active";
-    const content = ["description", "reviews"];
+    const content = [<Description product={product} />, <Reviews />];
 
     return (
         <div className="tab-container">
@@ -123,4 +119,23 @@ function TabSwitcher({product}) {
             </div>
         </div>
     );
+}
+
+function Reviews() {
+    return (
+        <p>No reviews yet</p>
+    )
+}
+
+function Description({ product }) {
+    return (
+        <>
+            <p>{product.productDetail.description}</p>
+            <p>{product.productDetail.description}</p>
+            <p>{product.productDetail.description}</p>
+            <p>{product.productDetail.description}</p>
+            <p>{product.productDetail.description}</p>
+            <p>{product.productDetail.description}</p>
+        </>
+    )
 }
