@@ -6,9 +6,8 @@ import { useParams } from "react-router-dom";
 import "./product.css";
 
 export function Product() {
-    const [activeTab, setActiveTab] = useState("description");
+    // const [activeTab, setActiveTab] = useState("description");
 
-    // const { itemsAmount } = useContext(ShopContext);
     const { id } = useParams();
     console.log(id);
 
@@ -25,19 +24,19 @@ export function Product() {
                 </div>
                 <div className="details-right">
                     <h3>{product.name} </h3>
-                    <p className="product-price"> $ {product.price}</p>
+                    <p className="product-price">$ {product.price}</p>
                     <p className="desc">{product.productDetail.description} </p>
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
-                            {/* <p className="qty-amt">{itemsAmount}</p> */}
                             <ItemsAmount />
                         </div>
                         <Button product={product} />
                     </div>
                 </div>
             </div>
-            <div className="tab-container">
+            <TabSwitcher product={product} />
+            {/* <div className="tab-container">
                 <div className="tab-header">
                     <button
                         className={activeTab === "description" ? "active" : ""}
@@ -55,12 +54,12 @@ export function Product() {
                 <div className="tab-content">
                     {activeTab === "description" && (
                         <div className="tab-pane">
-                            <p>{product.productDetail.description} </p>
-                            <p>{product.productDetail.description} </p>
-                            <p>{product.productDetail.description} </p>
-                            <p>{product.productDetail.description} </p>
-                            <p>{product.productDetail.description} </p>
-                            <p>{product.productDetail.description} </p>
+                            <p>{product.productDetail.description}</p>
+                            <p>{product.productDetail.description}</p>
+                            <p>{product.productDetail.description}</p>
+                            <p>{product.productDetail.description}</p>
+                            <p>{product.productDetail.description}</p>
+                            <p>{product.productDetail.description}</p>
                         </div>
                     )}
                     {activeTab === "reviews" && (
@@ -69,14 +68,14 @@ export function Product() {
                         </div>
                     )}
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }
 
 function Button({ product }) {
     const { addToCart } = useContext(ShopContext);
-    console.log("button");
+    // console.log("button");
 
     return (
         <button onClick={() => addToCart(product)}>
@@ -87,9 +86,41 @@ function Button({ product }) {
 
 function ItemsAmount() {
     const { itemsAmount } = useContext(ShopContext);
-    console.log(itemsAmount);
+    // console.log(itemsAmount);
 
     return (
         <p className="qty-amt">{itemsAmount}</p>
     )
+}
+
+function TabSwitcher({product}) {
+    const [activeTab, setActiveTab] = useState(0);
+    console.log(activeTab);
+
+    const tabs = ["description", "reviews"];
+    const classes = ["tab", "tab"];
+    classes[activeTab] = "tab active";
+    const content = ["description", "reviews"];
+
+    return (
+        <div className="tab-container">
+            <div className="tab-header">
+            {tabs.map((tab, index) => (
+                <button
+                    key={tab}
+                    className={classes[index]}
+                    onClick={() => setActiveTab(index)}
+                >
+                    {tab}
+                </button>
+            ))}
+            </div>
+            {/* <hr /> */}
+            <div className="tab-content" key={activeTab}>
+                <div className="tab-pane">
+                    {content[activeTab]}
+                </div>
+            </div>
+        </div>
+    );
 }
