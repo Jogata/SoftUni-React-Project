@@ -27,46 +27,14 @@ export function Product() {
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
-                            <ItemsAmount />
+                            {/* <ItemsAmount /> */}
+                            <ItemCartAmount id={id} />
                         </div>
                         <Button product={product} />
                     </div>
                 </div>
             </div>
             <TabSwitcher product={product} />
-            {/* <div className="tab-container">
-                <div className="tab-header">
-                    <button
-                        className={activeTab === "description" ? "active" : ""}
-                        onClick={() => setActiveTab("description")}
-                    >
-                        DESCRIPTION
-                    </button>
-                    <button
-                        className={activeTab === "reviews" ? "active" : ""}
-                        onClick={() => setActiveTab("reviews")}
-                    >
-                        REVIEWS
-                    </button>
-                </div>
-                <div className="tab-content">
-                    {activeTab === "description" && (
-                        <div className="tab-pane">
-                            <p>{product.productDetail.description}</p>
-                            <p>{product.productDetail.description}</p>
-                            <p>{product.productDetail.description}</p>
-                            <p>{product.productDetail.description}</p>
-                            <p>{product.productDetail.description}</p>
-                            <p>{product.productDetail.description}</p>
-                        </div>
-                    )}
-                    {activeTab === "reviews" && (
-                        <div className="tab-pane">
-                            <p>No reviews yet</p>
-                        </div>
-                    )}
-                </div>
-            </div> */}
         </>
     )
 }
@@ -81,17 +49,32 @@ function Button({ product }) {
     )
 }
 
-function ItemsAmount() {
-    const { itemsAmount } = useContext(ShopContext);
+// function ItemsAmount() {
+//     const { itemsAmount } = useContext(ShopContext);
+
+//     return (
+//         <p className="qty-amt">{itemsAmount}</p>
+//     )
+// }
+
+function ItemCartAmount({id}) {
+    const { cart } = useContext(ShopContext);
+
+    const product = cart.find(product => {
+        return product.id === parseInt(id);
+    })
+    console.log(product);
+
+    const amount = product ? product.amount : 0;
 
     return (
-        <p className="qty-amt">{itemsAmount}</p>
+        <p className="qty-amt">{amount}</p>
     )
 }
 
 function TabSwitcher({product}) {
     const [activeTab, setActiveTab] = useState(0);
-    console.log(activeTab);
+    // console.log(activeTab);
 
     const tabs = ["description", "reviews"];
     const classes = ["tab", "tab"];
@@ -111,7 +94,6 @@ function TabSwitcher({product}) {
                 </button>
             ))}
             </div>
-            {/* <hr /> */}
             <div className="tab-content" key={activeTab}>
                 <div className="tab-pane">
                     {content[activeTab]}

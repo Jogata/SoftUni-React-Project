@@ -1,6 +1,6 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
-import { AuthContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext';
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
