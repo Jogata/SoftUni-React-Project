@@ -18,7 +18,6 @@ export function Products({ category }) {
             <div className="products-grid">
                 {filtered.map(product => {
                     const { id, image, name, price } = product;
-                    console.log(name);
                     return (
                         <div className="product-card" key={id}>
                             <Link to={`/product/${product.id}`}>

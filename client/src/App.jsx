@@ -40,6 +40,7 @@ import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
 import { Footer } from './components/travel/furniture-kento/components/footer/Footer'
 import { Product } from './components/travel/furniture-kento/components/product/Product'
 import { About } from './components/travel/furniture-kento/components/about/About'
+import { ScrollToTop } from './components/travel/furniture-kento/components/scroll-to-top/ScrollToTop';
 
 function Loader() {
   return (
@@ -76,6 +77,7 @@ function useFetch(url) {
 }
 
 function App() {
+  console.log("app");
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -86,6 +88,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */} 
 
+      <ScrollToTop />
       <ProductsContextProvider>
         <ShopContextProvider>
           <Routes>

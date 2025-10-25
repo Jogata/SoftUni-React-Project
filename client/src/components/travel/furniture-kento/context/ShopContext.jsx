@@ -10,7 +10,7 @@ export function ShopContextProvider({ children }) {
     const itemsAmount = cart.reduce((accumulator, currentItem) => {
         return accumulator + currentItem.amount;
     }, 0);
-    console.log('Amount:', itemsAmount);
+    // console.log('Amount:', itemsAmount);
 
     const total = cart.reduce((accumulator, currentItem) => {
         const priceAsNumber = parseFloat(currentItem.price);
@@ -19,7 +19,7 @@ export function ShopContextProvider({ children }) {
         }
         return accumulator + priceAsNumber * currentItem.amount;
     }, 0);
-    console.log('Total:', total);
+    // console.log('Total:', total);
 
     function removeItemFromCart(id) {
         const newCart = cart.filter((item) => {

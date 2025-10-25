@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import { useParams } from "react-router-dom";
 import "./product.css";
+// import { ScrollToTop } from "../scroll-to-top/ScrollToTop";
 
 export function Product() {
     const { id } = useParams();
@@ -27,7 +28,6 @@ export function Product() {
                     <div className="product-qty-cart">
                         <div className="p-qty">
                             <p className="qty">Quantity</p>
-                            {/* <ItemsAmount /> */}
                             <ItemCartAmount id={id} />
                         </div>
                         <Button product={product} />
@@ -35,6 +35,7 @@ export function Product() {
                 </div>
             </div>
             <TabSwitcher product={product} />
+            {/* <ScrollToTop /> */}
         </>
     )
 }
@@ -49,21 +50,12 @@ function Button({ product }) {
     )
 }
 
-// function ItemsAmount() {
-//     const { itemsAmount } = useContext(ShopContext);
-
-//     return (
-//         <p className="qty-amt">{itemsAmount}</p>
-//     )
-// }
-
 function ItemCartAmount({id}) {
     const { cart } = useContext(ShopContext);
 
     const product = cart.find(product => {
         return product.id === parseInt(id);
     })
-    console.log(product);
 
     const amount = product ? product.amount : 0;
 
@@ -74,7 +66,6 @@ function ItemCartAmount({id}) {
 
 function TabSwitcher({product}) {
     const [activeTab, setActiveTab] = useState(0);
-    // console.log(activeTab);
 
     const tabs = ["description", "reviews"];
     const classes = ["tab", "tab"];
