@@ -4,11 +4,9 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import { useParams } from "react-router-dom";
 import "./product.css";
-// import { ScrollToTop } from "../scroll-to-top/ScrollToTop";
 
 export function Product() {
     const { id } = useParams();
-    console.log(id);
 
     const product = productsData.find(product => {
         return product.id === parseInt(id);
@@ -35,7 +33,6 @@ export function Product() {
                 </div>
             </div>
             <TabSwitcher product={product} />
-            {/* <ScrollToTop /> */}
         </>
     )
 }

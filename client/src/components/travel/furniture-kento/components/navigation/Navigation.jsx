@@ -5,7 +5,6 @@ import "./navigation.css";
 
 export function Navigation() {
     const { itemsAmount } = useContext(ShopContext);
-    console.log("nav");
 
     return (
         <nav className="navigation">

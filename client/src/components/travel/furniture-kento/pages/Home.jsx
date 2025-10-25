@@ -14,3 +14,16 @@ export function Home() {
         </>
     )
 }
+
+{/* <ScrollToTop />
+<ProductsContextProvider>
+  <ShopContextProvider>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/product/:id' element={<Product />} />
+    </Routes>
+  </ShopContextProvider>
+</ProductsContextProvider>
+<Footer /> */}

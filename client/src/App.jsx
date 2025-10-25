@@ -34,13 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Home } from './components/travel/furniture-kento/pages/Home';
-import { ProductsContextProvider, ShopContextProvider } from './components/travel/furniture-kento/context/ShopContext';
-import { Cart } from './components/travel/furniture-kento/components/cart/Cart'
-import { Footer } from './components/travel/furniture-kento/components/footer/Footer'
-import { Product } from './components/travel/furniture-kento/components/product/Product'
-import { About } from './components/travel/furniture-kento/components/about/About'
-import { ScrollToTop } from './components/travel/furniture-kento/components/scroll-to-top/ScrollToTop';
+import { Navigation } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -77,7 +71,6 @@ function useFetch(url) {
 }
 
 function App() {
-  console.log("app");
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -86,20 +79,11 @@ function App() {
           <Route path='/pricing' element={<Pricing />} />
           <Route path='/training' element={<Training />} />
           <Route path='/contact' element={<Contact />} />
-        </Routes> */} 
+        </Routes> */}
 
-      <ScrollToTop />
-      <ProductsContextProvider>
-        <ShopContextProvider>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/product/:id' element={<Product />} />
-          </Routes>
-        </ShopContextProvider>
-      </ProductsContextProvider>
-      <Footer />
+
+        <Navigation />
+
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
