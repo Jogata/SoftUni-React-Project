@@ -161,26 +161,28 @@ export function Services() {
     return (
         <div className="services">
             <div className="services-header">
-                <h2 className="f-size font">Our Services</h2>
+                <h2 className="font">Our Services</h2>
             </div>
             <div className="services-container">
                 {services.map((service, index) => (
-                    <div className="service-card" key={index}>
-                        <div className="service-icon">
-                            <i className={service.icon}></i>
+                    <div className="hover-box" key={index}>
+                        <div className="service-card">
+                            <div className="service-icon">
+                                <i className={service.icon}></i>
+                            </div>
+                            <h3 className="service-title">{service.title}</h3>
+                            <p className="service-description">{service.description}</p>
+                            <button className="expand-btn">
+                                {/* <i className="ri-expand-diagonal-line"></i> */}
+                                <i className="fa fa-expand" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <h3 className="service-title">{service.title}</h3>
-                        <p className="service-description">{service.description}</p>
-                        <button className="expand-btn">
-                            <i className="ri-expand-diagonal-line"></i>
-                            <i className="fa fa-expand" aria-hidden="true"></i>
-                        </button>
                     </div>
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
 // export function Footer() {
 //     return (

@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Brawler:wght@400;700&family=Croissant+One&family=Ephesis&family=Gloock&family=Hurricane&family=Imbue:opsz,wght@10..100,100..900&family=Modak&family=Montez&family=Prosto+One&family=Rye&family=Shojumaru&family=Young+Serif&family=ZCOOL+XiaoWei&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Poppins:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Goldman:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap');
 
 *, 
 *::before, 
@@ -132,6 +133,7 @@ body {
   font-family: "Imbue", serif;  
   font-family: 'Kaushan Script', cursive;
   font-family: "Hurricane", cursive;
+  font-family: "Bona Nova SC", serif;
   font-family: Georgia, serif;
   /* line-height: 1.6; */
   background-color: #080a0c;
@@ -979,6 +981,12 @@ main.max-width {
 
 
 
+.font {
+  font-weight: 700;
+  font-family: "Bona Nova SC", serif;
+  /* font-style: normal; */
+}
+
 .navigation {
   max-width: 1600px;
   margin: auto;
@@ -1149,7 +1157,6 @@ main.max-width {
   margin: auto;
   padding: 5rem 1rem;
   text-align: center;
-  /* background-color: #f8f8f8; */
 }
 
 .features h2 {
@@ -1169,21 +1176,18 @@ main.max-width {
   justify-content: center;
 }
 
-.hover-box {
+.features .hover-box {
   width: 100%;
   max-width: 400px;
   display: flex;
-  /* border: 1px solid red; */
 }
 
 .card {
   width: 100%;
-  /* max-width: 400px; */
   padding: 3rem 1.25rem;
   text-align: center;
   border-radius: 12px;
   border: 1px solid #777;
-  /* background-color: #fff; */
   transition: transform 300ms ease;
 }
 
@@ -1191,7 +1195,6 @@ main.max-width {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* .card:hover { */
 .hover-box:hover .card {
   transform: translateY(-6px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -1213,4 +1216,155 @@ main.max-width {
 .card p {
   color: #777;
   font-size: 18px;
-} 
+}
+
+.services {
+  max-width: 1600px;
+  margin: auto;
+}
+
+.services-container {
+  padding: 4rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  /* background-color: #ebebeb; */
+}
+
+.services-header h2 {
+  margin-top: 3rem;
+  /* font-size: 38px; */
+  font-size: 3rem;
+  text-align: center;
+}
+
+.services .hover-box {
+  display: flex;
+  /* border: 1px solid red; */
+}
+
+.service-card {
+  position: relative;
+  width: 100%;
+  padding: 3.5rem;
+  border-radius: 12px;
+  border: 1px solid #777;
+  /* background-color: #fff; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.hover-box:hover .service-card {
+  transform: translateY(-6px);
+}
+
+.service-icon {
+  margin-bottom: 1rem;
+  /* font-size: 2rem; */
+}
+
+.service-icon i {
+  font-size: 3rem;
+  color: #068cb4;
+}
+
+.service-title {
+  color: #999;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.service-description {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.expand-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.6rem 0.8rem;
+  color: #777;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  /* border: none; */
+  border: 1px solid #777;
+  /* background-color: #08b0ce; */
+  transition: background-color 300ms;
+  /* transform: scale(0.5); */
+  /* cursor: pointer; */
+}
+
+.expand-btn:hover {
+  color: #068cb4;
+  border: 1px solid #068cb4;
+  /* background-color: #333; */
+}
+
+@media screen and (max-width: 1024px) {
+  .services-container {
+    padding: 4rem;
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 2.5rem;
+  }
+
+  .service-title {
+    font-size: 1.8rem;
+  }
+
+  .service-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .services-container {
+    gap: 1rem;
+    padding: 2.5rem;
+  }
+
+  .service-card {
+    padding: 2rem;
+  }
+
+  .service-title {
+    font-size: 1.6rem;
+  }
+
+  .expand-btn {
+    padding: 0.7rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .services-container {
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-icon {
+    font-size: 1.5rem;
+  }
+
+  .service-title {
+    font-size: 1.4rem;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+  }
+
+  .expand-btn {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
