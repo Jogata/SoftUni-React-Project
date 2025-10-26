@@ -39,20 +39,24 @@ export function Navigation() {
 
 export function Hero() {
     return (
-        <div>
+        <>
             <div className="hero">
-                <h1 className="hero-header">
-                    Crafting Content That Connects, Converts and Reflect Your Brand Voice
-                </h1>
-                <p>
-                    We bring your brand's story to life with strategic, engaging content. 
-                    From blogs and social media posts to full content strategies, we're 
-                    here to help you stand out.
-                </p>
-                <div className="btns">
-                    <button className="cta-button">Get Started Free</button>
+                <div className="text-box">
+                    <h1 className="hero-header">
+                        Crafting Content That Connects, Converts and Reflect Your Brand Voice
+                    </h1>
+                    <p>
+                        We bring your brand's story to life with strategic, engaging content.
+                        From blogs and social media posts to full content strategies, we're
+                        here to help you stand out.
+                    </p>
+                    <div className="btns">
+                        <button className="cta-button">Get Started Free</button>
+                    </div>
                 </div>
-                <img src={hero} alt="hero-img" className="hero-img" />
+                <div className="img-box">
+                    <img src={hero} alt="hero-img" className="hero-img" />
+                </div>
             </div>
             <div className="trusted">
                 <h2>Over 2,000 Organizations use our platform</h2>
@@ -63,11 +67,56 @@ export function Hero() {
                     <img src={ionic} alt="" />
                     <img src={paypal} alt="" />
                     <img src={stripe} alt="" />
-                </div> 
+                </div>
             </div>
-        </div>
+        </>
     )
 }
+
+export function Features() {
+    return (
+        <div className="features">
+            <h2 className="font">Our Working Process</h2>
+            <p className="description">
+                Our Process From Concept to Content Success
+            </p>
+
+            <div className="cards-container">
+                <div className="card">
+                    <i className="ri-lightbulb-line icon"></i>
+                    <h3>Discovery & Strategy</h3>
+                    <p>
+                        We start by getting to know your brand, goals, and audience. 
+                        Through in-depth discussions and research, we build a tailored 
+                        content strategy that aligns with your vision and targets 
+                        measurable outcomes
+                    </p>
+                </div>
+
+                <div className="card">
+                    <i className="fa fa-file-text-o icon"></i>
+                    <h3>Content Creation</h3>
+                    <p>
+                        Once we have a plan, our creative team goes to work. From drafting 
+                        engaging articles and social media posts to designing visuals, we 
+                        create quality content that resonates with your audience and your 
+                        brand's voice
+                    </p>
+                </div>
+
+                <div className="card">
+                    <i className="fa fa-line-chart icon"></i>
+                    <h3>Review & Optimization</h3>
+                    <p>
+                        Content performance matters. We continuously review, measure, and 
+                        refine your content to ensure it's driving results. Through analytics 
+                        and feedback, we make adjustments to maximize engagement and conversion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 // export function Footer() {
 //     return (
