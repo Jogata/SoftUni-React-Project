@@ -1228,19 +1228,16 @@ main.max-width {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(2, 1fr);
-  /* background-color: #ebebeb; */
 }
 
 .services-header h2 {
   margin-top: 3rem;
-  /* font-size: 38px; */
   font-size: 3rem;
   text-align: center;
 }
 
 .services .hover-box {
   display: flex;
-  /* border: 1px solid red; */
 }
 
 .service-card {
@@ -1249,7 +1246,6 @@ main.max-width {
   padding: 3.5rem;
   border-radius: 12px;
   border: 1px solid #777;
-  /* background-color: #fff; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -1260,7 +1256,6 @@ main.max-width {
 
 .service-icon {
   margin-bottom: 1rem;
-  /* font-size: 2rem; */
 }
 
 .service-icon i {
@@ -1288,18 +1283,13 @@ main.max-width {
   color: #777;
   font-size: 1.4rem;
   border-radius: 10px;
-  /* border: none; */
   border: 1px solid #777;
-  /* background-color: #08b0ce; */
   transition: background-color 300ms;
-  /* transform: scale(0.5); */
-  /* cursor: pointer; */
 }
 
 .expand-btn:hover {
   color: #068cb4;
   border: 1px solid #068cb4;
-  /* background-color: #333; */
 }
 
 @media screen and (max-width: 1024px) {
@@ -1368,3 +1358,4 @@ main.max-width {
     font-size: 1.5rem;
   }
 }
+
