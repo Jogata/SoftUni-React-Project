@@ -42,7 +42,7 @@ const services = [
 const pricingPlans = [
     {
         name: "Basic",
-        price: "$10.90",
+        price: "$10.99",
         duration: "month",
         description: "Great Content, Limited Time",
         features: [
@@ -240,18 +240,20 @@ export function Pricing() {
             </p>
             <div className="pricing-cards">
                 {pricingPlans.map((plan, index) => (
-                    <div key={index} className="pricing-card">
-                        <h3 className="plan-name">{plan.name}</h3>
-                        <p className="plan-price">
-                            {plan.price} <span>/{plan.duration}</span>
-                        </p>
-                        <p className="plan-description">{plan.description}</p>
-                        <ul className="plan-features">
-                            {plan.features.map((feature, idx) => (
-                                <li key={idx}>{feature}</li>
-                            ))}
-                        </ul>
-                        <button className="plan-button">Choose Plan</button>
+                    <div className="hover-box" key={index}>
+                        <div className="pricing-card">
+                            <h3 className="plan-name">{plan.name}</h3>
+                            <p className="plan-price">
+                                {plan.price} <span>/ {plan.duration}</span>
+                            </p>
+                            <p className="plan-description">{plan.description}</p>
+                            <ul className="plan-features">
+                                {plan.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                ))}
+                            </ul>
+                            <button className="plan-button">Choose Plan</button>
+                        </div>
                     </div>
                 ))}
             </div>
