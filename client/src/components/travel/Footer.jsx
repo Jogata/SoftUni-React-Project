@@ -291,43 +291,51 @@ export function Pricing() {
 }
 
 export function Testimonials() {
-  const [activeTestimonial, setActiveTestimonial] = useState(testimonialsData[0]);
+    const [activeTestimonial, setActiveTestimonial] = useState(testimonialsData[0]);
 
-  function handleTestimonialClick(testimonial) {
-    setActiveTestimonial(testimonial);
-  };
+    function changeActiveTestimonial(testimonial) {
+        setActiveTestimonial(testimonial);
+    };
 
-  return (
-    <div className="testimonials-container">
-      <h2 className="testimonials-title f-size font">What Our Clients are Saying</h2>
-      <p className="testimonials-subtitle">
-        Discover what our students have to say about their learning experience.
-      </p>
-      
-      <div className="testimonials-content">
-        <div className="comment-box">
-          <img src={activeTestimonial.image} alt={activeTestimonial.name} className="active-avatar" />
-          <i className="fa fa-double-quotes comment-icon"></i>
-          <p className="comment-text">{activeTestimonial.comment}</p>
-          <p className="comment-author">{activeTestimonial.name}</p>
-          <p className="comment-title">{activeTestimonial.title}</p>
+    return (
+        <div className="testimonials-container">
+            <h2 className="testimonials-title">What Our Clients are Saying</h2>
+            <p className="testimonials-subtitle">
+                Discover what our students have to say about their learning experience.
+            </p>
+
+            <div className="testimonials-content">
+                <div className="comment-box">
+                    <div className="image-box">
+                        <img
+                            src={activeTestimonial.image}
+                            alt={activeTestimonial.name}
+                            className="active-avatar"
+                        />
+                    </div>
+                    <div className="content-box">
+                        <i className="fa fa-double-quotes comment-icon"></i>
+                        <p className="comment-text">{activeTestimonial.comment}</p>
+                        <p className="comment-author">{activeTestimonial.name}</p>
+                        <p className="comment-title">{activeTestimonial.title}</p>
+                    </div>
+                </div>
+
+                <div className="avatar-gallery">
+                    {testimonialsData.map(testimonial => (
+                        <img
+                            key={testimonial.id}
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="avatar"
+                            onClick={() => changeActiveTestimonial(testimonial)}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
-
-        <div className="avatar-gallery">
-          {testimonialsData.map(testimonial => (
-            <img 
-              key={testimonial.id} 
-              src={testimonial.image} 
-              alt={testimonial.name} 
-              className="avatar" 
-              onClick={() => handleTestimonialClick(testimonial)}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
 // export function Footer() {
 //     return (
