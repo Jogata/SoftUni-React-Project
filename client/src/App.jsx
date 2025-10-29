@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContextProvider } from './contexts/AuthContext';
+import { AuthContextProvider, ShopContextProvider } from './contexts/AuthContext';
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -81,7 +81,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+<ShopContextProvider>
         <Navigation />
+</ShopContextProvider>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
