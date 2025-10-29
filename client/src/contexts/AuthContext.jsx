@@ -42,3 +42,28 @@ export function AuthContextProvider(props) {
         </AuthContext.Provider>
     )
 }
+
+const data = [];
+
+export const ShopContext = createContext();
+
+export function ShopContextProvider({ children }) {
+    const [products, setProducts] = useState(data);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    function updateSearchTerm(term) {
+        setSearchTerm(term)
+    }
+
+    const ctx = {
+        products,
+        searchTerm,
+        updateSearchTerm
+    }
+
+    return (
+        <ShopContext.Provider value={ctx}>
+            {children}
+        </ShopContext.Provider>
+    )
+}
