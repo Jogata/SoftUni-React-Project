@@ -1,11 +1,18 @@
+import { useContext, useEffect, useState } from "react";
+import { ShopContext } from "../../contexts/AuthContext";
+
 export function Navigation() {
   return (
-    <div>
+    <>
         <nav className="navigation">
             <div className="nav-top">
                 <h2>Luma</h2>
                 <div className="search-bar">
-                    <input type="text" className='search-input' placeholder='Search for products....' />
+                    <input 
+                        type="text" 
+                        className="search-input" 
+                        placeholder="Search for products...." 
+                    />
                     <button className="search-btn">Search</button>
                 </div>
                 <div className="icons">
@@ -19,8 +26,41 @@ export function Navigation() {
                 </div>
             </div>
         </nav>
-    </div>
+    </>
   )
+}
+
+export function Home() {
+    const { products } = useContext(ShopContext);
+
+    return (
+        <>
+            <div className="page-container">
+                <div className="products-container">
+                    <div className="products-header">
+                        <h2>All Collection</h2>
+                        <select className="sort-dropdown">
+                            <option value="relevant">Sort by: Relevant</option>
+                            <option value="low-high">Sort by: Low to High</option>
+                            <option value="high-low">Sort by: High to Low</option>
+                        </select>
+                    </div>
+
+                    <div className="product-grid">
+                        {products.map((product) => (
+                            <div className="product-card" key={product._id}>
+                                <div className="product-image">
+                                    <img src={product.image[0]} alt={product.name} />
+                                </div>
+                                <h3>{product.name}</h3>
+                                <p>${product.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 // https://github.com/Zhully18/Powerful-filtering-react-js
