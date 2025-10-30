@@ -1043,6 +1043,8 @@ main.max-width {
 
  
 .navigation {
+  max-width: 1600px;
+  margin: auto;
   padding: 1.5rem;
   display: flex;
   gap: 15px;
@@ -1184,7 +1186,9 @@ main.max-width {
 }
 
 .page-container {
-  padding-top: 10px;
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -1225,20 +1229,21 @@ main.max-width {
 .product-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
+} */
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
+} */
 
 .product-card {
   text-align: center;
@@ -1269,7 +1274,7 @@ main.max-width {
 
 .product-card {
   position: relative;
-  width: 320px;
+  /* width: 320px; */
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
@@ -1308,4 +1313,33 @@ main.max-width {
   padding-bottom: 1rem;
   color: red;
   font-size: 20px;
+}
+
+.filters-container {
+  min-width: 180px;
+}
+
+.filter-title {
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.filter-section {
+  margin-top: 1.5rem;
+  padding: 1rem 0.5rem;
+  /* border: 1px solid #ccc; */
+}
+
+.filter-section.hidden {
+  display: none;
+}
+
+.filter-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.2rem;
 }

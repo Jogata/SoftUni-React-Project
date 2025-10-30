@@ -2,16 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
-  return (
-    <>
+    return (
         <nav className="navigation">
             <div className="nav-top">
                 <h2>Luma</h2>
                 <div className="search-bar">
-                    <input 
-                        type="text" 
-                        className="search-input" 
-                        placeholder="Search for products...." 
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder="Search for products...."
                     />
                     <button className="search-btn">Search</button>
                 </div>
@@ -26,16 +25,36 @@ export function Navigation() {
                 </div>
             </div>
         </nav>
-    </>
-  )
+    )
 }
 
 export function Home() {
-    const { products } = useContext(ShopContext);
+    const { products, searchTerm } = useContext(ShopContext);
+    const [displayFilter, setDisplayFilter] = useState(false);
 
     return (
         <>
             <div className="page-container">
+                <div className="filters-container">
+                    <p
+                        className="filter-title"
+                        onClick={() => setDisplayFilter(!displayFilter)}
+                    >
+                        FILTERS
+                    </p>
+                    <div className={`filter-section ${displayFilter ? '' : 'hidden'}`}>
+                        <p className="filter-title">GENDER</p>
+                        <label className="filter-item">
+                            <input type="checkbox" value="Men" /> Men
+                        </label>
+                        <label className="filter-item">
+                            <input type="checkbox" value="Women" /> Women
+                        </label>
+                        <label className="filter-item">
+                            <input type="checkbox" value="Kids" /> Kids
+                        </label>
+                    </div>
+                </div>
                 <div className="products-container">
                     <div className="products-header">
                         <h2>All Collection</h2>
