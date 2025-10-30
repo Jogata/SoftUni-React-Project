@@ -87,41 +87,55 @@ function Filters() {
     // const [displayFilter, setDisplayFilter] = useState(false);
 
     // const classes = displayFilter ? "filter-section" : "filter-section hidden";
-    const classes = "filter-section";
+    // const classes = "filter-section";
 
     return (
         <details className="filters-container" open>
-            <summary
-                className="filter-title"
-                // onClick={() => setDisplayFilter(!displayFilter)}
-            >
+            <summary className="filter-title">
                 FILTERS
             </summary>
-            <fieldset className={classes}>
+            <fieldset className="filter-section">
                 <legend className="filter-title">GENDER</legend>
                 <label className="filter-item">
-                    <input type="checkbox" value="Men" /> Men
+                    <input type="checkbox" name="category" value="Men" /> Men
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" value="Women" /> Women
+                    <input type="checkbox" name="category" value="Women" /> Women
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" value="Kids" /> Kids
+                    <input type="checkbox" name="category" value="Kids" /> Kids
                 </label>
             </fieldset>
-            <fieldset className={classes}>
+            <fieldset className="filter-section">
                 <legend className="filter-title">CLOTHING SIZE</legend>
-                <div className="filter-sizecategory">
-                    <p className="filter-item">
-                        <input type="checkbox" value="Juniors" /> Juniors
-                    </p>
-                    <p className="filter-item">
-                        <input type="checkbox" value="Petite" /> Petite
-                    </p>
-                    <p className="filter-item">
-                        <input type="checkbox" value="Plussize" /> Plus Size
-                    </p>
-                </div>
+                {/* <div className="filter-sizecategory"> */}
+                <label className="filter-item">
+                    <input type="checkbox" name="size" value="Juniors" /> Juniors
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" name="size" value="Petite" /> Petite
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" name="size" value="Plussize" /> Plus Size
+                </label>
+                {/* </div> */}
+            </fieldset>
+            <fieldset className="filter-section">
+                <legend className="filter-title">MATERIAL</legend>
+                {/* <div className="filter-sizecategory"> */}
+                <label className="filter-item">
+                    <input type="checkbox" name="material" value="Cotton" /> Cotton
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" name="material" value="Leather" /> Leather
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" name="material" value="Silk" /> Silk
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" name="material" value="Suede" /> Suede
+                </label>
+                {/* </div> */}
             </fieldset>
         </details>
     )
