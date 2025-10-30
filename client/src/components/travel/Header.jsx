@@ -30,12 +30,12 @@ export function Navigation() {
 
 export function Home() {
     const { products, searchTerm } = useContext(ShopContext);
-    const [displayFilter, setDisplayFilter] = useState(false);
+    // const [displayFilter, setDisplayFilter] = useState(false);
 
     return (
         <>
             <div className="page-container">
-                <div className="filters-container">
+                {/* <div className="filters-container">
                     <p
                         className="filter-title"
                         onClick={() => setDisplayFilter(!displayFilter)}
@@ -54,7 +54,8 @@ export function Home() {
                             <input type="checkbox" value="Kids" /> Kids
                         </label>
                     </div>
-                </div>
+                </div> */}
+                <Filters />
                 <div className="products-container">
                     <div className="products-header">
                         <h2>All Collection</h2>
@@ -82,7 +83,49 @@ export function Home() {
     )
 }
 
-// https://github.com/Zhully18/Powerful-filtering-react-js
+function Filters() {
+    // const [displayFilter, setDisplayFilter] = useState(false);
+
+    // const classes = displayFilter ? "filter-section" : "filter-section hidden";
+    const classes = "filter-section";
+
+    return (
+        <details className="filters-container" open>
+            <summary
+                className="filter-title"
+                // onClick={() => setDisplayFilter(!displayFilter)}
+            >
+                FILTERS
+            </summary>
+            <fieldset className={classes}>
+                <legend className="filter-title">GENDER</legend>
+                <label className="filter-item">
+                    <input type="checkbox" value="Men" /> Men
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" value="Women" /> Women
+                </label>
+                <label className="filter-item">
+                    <input type="checkbox" value="Kids" /> Kids
+                </label>
+            </fieldset>
+            <fieldset className={classes}>
+                <legend className="filter-title">CLOTHING SIZE</legend>
+                <div className="filter-sizecategory">
+                    <p className="filter-item">
+                        <input type="checkbox" value="Juniors" /> Juniors
+                    </p>
+                    <p className="filter-item">
+                        <input type="checkbox" value="Petite" /> Petite
+                    </p>
+                    <p className="filter-item">
+                        <input type="checkbox" value="Plussize" /> Plus Size
+                    </p>
+                </div>
+            </fieldset>
+        </details>
+    )
+}
 
 // export function Header() {
 //     return (

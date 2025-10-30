@@ -1321,11 +1321,16 @@ main.max-width {
 
 .filter-title {
   margin: 0.5rem 0;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  padding: 0 0.5rem;
+  /* display: flex; */
+  /* gap: 0.5rem; */
+  /* align-items: center; */
   font-size: 1.25rem;
   cursor: pointer;
+}
+
+.filter-title::marker {
+  color: #eee;
 }
 
 .filter-section {

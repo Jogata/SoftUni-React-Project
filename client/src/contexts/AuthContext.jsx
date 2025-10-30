@@ -45,7 +45,6 @@ import suede2 from "../components/travel/images/shop/suede2.jpg";
 import razorpay_logo from "../components/travel/images/shop/razorpay_logo.png";
 import stripe_logo from "../components/travel/images/shop/stripe_logo.png";
 
-
 const assets = {
     razorpay_logo,
     stripe_logo,
