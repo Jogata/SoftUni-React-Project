@@ -483,17 +483,50 @@ export const ShopContext = createContext();
 
 export function ShopContextProvider({ children }) {
     const [products, setProducts] = useState(data);
-    const [searchTerm, setSearchTerm] = useState("");
-    console.log(products);
+    // const [searchTerm, setSearchTerm] = useState("");
+    const [filtered, setFiltered] = useState(products);
+    // console.log(filtered);
 
-    function updateSearchTerm(term) {
-        setSearchTerm(term)
+    // function updateSearchTerm(term) {
+    //     setSearchTerm(term)
+    // }
+
+    function filterByCategory(categories) {
+        // console.log(categories[0]);
+        let filteredProducts = products;
+
+        if (categories.length) {
+            filteredProducts = [...products].filter(p => {
+                // p.category === categories[0];
+                const test = categories.includes(p.category);
+                console.log(test);
+                return test;
+            });
+        }
+        // console.log(filteredProducts);
+        setFiltered(filteredProducts);
+    }
+
+    function filterByQuery(query) {
+        // console.log(query);
+        let filteredProducts = products;
+
+        if (query.length) {
+            filteredProducts = filtered.filter(p => (
+                p.name.toLowerCase().includes(query.toLowerCase())
+            ));
+        }
+        // console.log(filteredProducts);
+        setFiltered(filteredProducts);
     }
 
     const ctx = {
         products,
-        searchTerm,
-        updateSearchTerm
+        filtered, 
+        // searchTerm,
+        // updateSearchTerm
+        filterByQuery, 
+        filterByCategory
     }
 
     return (

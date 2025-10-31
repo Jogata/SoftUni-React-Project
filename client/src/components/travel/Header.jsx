@@ -1,7 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
+    const { filterByQuery } = useContext(ShopContext);
+    const [query, setQuery] = useState("");
+    console.log("navigation");
+
     return (
         <nav className="navigation">
             <div className="nav-top">
@@ -10,9 +14,11 @@ export function Navigation() {
                     <input
                         type="text"
                         className="search-input"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search for products...."
                     />
-                    <button className="search-btn">Search</button>
+                    <button className="search-btn" onClick={() => filterByQuery(query)}>Search</button>
                 </div>
                 <div className="icons">
                     <div className="profile-group">
@@ -29,38 +35,16 @@ export function Navigation() {
 }
 
 export function Home() {
-    const { products, searchTerm } = useContext(ShopContext);
+    // const { filtered } = useContext(ShopContext);
 
-    const filtered = [...products];
+    // const filtered = [...products];
 
     return (
         <HomeContent>
             <FiltersSection >
                 <Filters />
             </FiltersSection>
-            {/* <div className="products-container">
-                <div className="products-header">
-                    <h2>All Collection</h2>
-                    <select className="sort-dropdown">
-                        <option value="relevant">Sort by: Relevant</option>
-                        <option value="low-high">Sort by: Low to High</option>
-                        <option value="high-low">Sort by: High to Low</option>
-                    </select>
-                </div>
-
-                <div className="product-grid">
-                    {products.map(product => (
-                        <div className="product-card" key={product._id}>
-                            <div className="product-image">
-                                <img src={product.image[0]} alt={product.name} />
-                            </div>
-                            <h3>{product.name}</h3>
-                            <p>${product.price}</p>
-                        </div>
-                    ))}
-                </div>
-            </div> */}
-            <Products products={products} filtered={filtered} />
+            <Products />
         </HomeContent>
     )
 }
@@ -102,17 +86,18 @@ function FiltersSection({children}) {
 }
 
 function Filters() {
-    const [categoryFilters, setCategoryFilters] = useState([]);
+    // const [categoryFilters, setCategoryFilters] = useState([]);
     const [sizeFilters, setSizeFilters] = useState([]);
     const [materialFilters, setMaterialFilters] = useState([]);
-    console.log(categoryFilters);
-    console.log("Filters");
+    // console.log(categoryFilters);
+    // console.log("Filters");
 
-    function check(e) {
-        console.log(e.target.checked);
-    }
+    // function check(e) {
+    //     console.log(e.target.checked);
+    // }
 
     function addFilter(e, setter) {
+        console.log("add");
         if (e.target.checked) {
             setter(oldArray => [...oldArray, e.target.value]);
         } else {
@@ -125,7 +110,8 @@ function Filters() {
             <summary className="filter-title">
                 FILTERS
             </summary>
-            <fieldset className="filter-section">
+            <CategoryFilters addFilter={addFilter} />
+            {/* <fieldset className="filter-section">
                 <legend className="filter-title">GENDER</legend>
                 <label className="filter-item">
                     <input 
@@ -151,7 +137,7 @@ function Filters() {
                         onChange={e => addFilter(e, setCategoryFilters)} 
                     /> Kids
                 </label>
-            </fieldset>
+            </fieldset> */}
             <fieldset className="filter-section">
                 <legend className="filter-title">CLOTHING SIZE</legend>
                 <label className="filter-item">
@@ -183,8 +169,50 @@ function Filters() {
     )
 }
 
-function Products(props) {
-    const { products } = props;
+function CategoryFilters({addFilter}) {
+    const { filterByCategory } = useContext(ShopContext);
+    const [categoryFilters, setCategoryFilters] = useState([]);
+    // console.log(categoryFilters);
+    
+    useEffect(() => {
+        // console.log(categoryFilters);
+        filterByCategory(categoryFilters);
+    }, [categoryFilters])
+
+    return (
+        <fieldset className="filter-section">
+            <legend className="filter-title">GENDER</legend>
+            <label className="filter-item">
+                <input
+                    type="checkbox"
+                    name="category"
+                    value="Men"
+                    onChange={e => addFilter(e, setCategoryFilters)}
+                /> Men
+            </label>
+            <label className="filter-item">
+                <input
+                    type="checkbox"
+                    name="category"
+                    value="Women"
+                    onChange={e => addFilter(e, setCategoryFilters)}
+                /> Women
+            </label>
+            <label className="filter-item">
+                <input
+                    type="checkbox"
+                    name="category"
+                    value="Kids"
+                    onChange={e => addFilter(e, setCategoryFilters)}
+                /> Kids
+            </label>
+        </fieldset>
+    )
+}
+
+function Products() {
+    const { filtered } = useContext(ShopContext);
+    // const { products } = props;
     console.log("Products");
 
     return (
@@ -199,7 +227,7 @@ function Products(props) {
             </div>
 
             <div className="product-grid">
-                {products.map(product => (
+                {filtered.map(product => (
                     <div className="product-card" key={product._id}>
                         <div className="product-image">
                             <img src={product.image[0]} alt={product.name} />
