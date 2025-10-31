@@ -28,34 +28,22 @@ export function Navigation() {
     )
 }
 
-export function Home() {
+export function Home({children}) {
     const { products, searchTerm } = useContext(ShopContext);
-    // const [displayFilter, setDisplayFilter] = useState(false);
+    const [test, setTest] = useState(0);
+    console.log(test);
 
     return (
         <>
+        <button 
+        onClick={() => setTest(test + 1)} 
+        style={{color: "red", fontSize: "2rem"}}
+        >
+            test
+        </button>
             <div className="page-container">
-                {/* <div className="filters-container">
-                    <p
-                        className="filter-title"
-                        onClick={() => setDisplayFilter(!displayFilter)}
-                    >
-                        FILTERS
-                    </p>
-                    <div className={`filter-section ${displayFilter ? '' : 'hidden'}`}>
-                        <p className="filter-title">GENDER</p>
-                        <label className="filter-item">
-                            <input type="checkbox" value="Men" /> Men
-                        </label>
-                        <label className="filter-item">
-                            <input type="checkbox" value="Women" /> Women
-                        </label>
-                        <label className="filter-item">
-                            <input type="checkbox" value="Kids" /> Kids
-                        </label>
-                    </div>
-                </div> */}
-                <Filters />
+                {/* <Test/> */}
+                {children}
                 <div className="products-container">
                     <div className="products-header">
                         <h2>All Collection</h2>
@@ -67,7 +55,7 @@ export function Home() {
                     </div>
 
                     <div className="product-grid">
-                        {products.map((product) => (
+                        {products.map(product => (
                             <div className="product-card" key={product._id}>
                                 <div className="product-image">
                                     <img src={product.image[0]} alt={product.name} />
@@ -83,13 +71,53 @@ export function Home() {
     )
 }
 
-function Filters() {
-    // const [displayFilter, setDisplayFilter] = useState(false);
+export function Test() {
+    return (
+        <FiltersSection>
+        <Filters />
+    </FiltersSection>
+    )
+}
 
-    // const classes = displayFilter ? "filter-section" : "filter-section hidden";
-    // const classes = "filter-section";
+function FiltersSection({children}) {
+    const [test, setTest] = useState(0);
+    console.log(test);
+    console.log("FiltersSection");
+    // console.log(children);
+    return (
+        <div className="filters-container">
+            <button 
+                onClick={() => setTest(test + 1)} 
+                style={{color: "red", fontSize: "2rem"}}
+            >
+                test
+            </button>
+            {children}
+        </div>
+    )
+}
+
+function Filters() {
+    const [categoryFilters, setCategoryFilters] = useState([]);
+    const [sizeFilters, setSizeFilters] = useState([]);
+    const [materialFilters, setMaterialFilters] = useState([]);
+    console.log(categoryFilters);
+    console.log("Filters");
+
+    function check(e) {
+        console.log(e.target.checked);
+    }
+
+    function addFilter(e, setter) {
+        if (e.target.checked) {
+            setter(oldArray => [...oldArray, e.target.value]);
+        } else {
+            setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
+        }
+    }
 
     return (
+        // <FiltersSection>
         <details className="filters-container" open>
             <summary className="filter-title">
                 FILTERS
@@ -97,18 +125,32 @@ function Filters() {
             <fieldset className="filter-section">
                 <legend className="filter-title">GENDER</legend>
                 <label className="filter-item">
-                    <input type="checkbox" name="category" value="Men" /> Men
+                    <input 
+                        type="checkbox" 
+                        name="category" 
+                        value="Men" 
+                        onChange={e => addFilter(e, setCategoryFilters)} 
+                    /> Men
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="category" value="Women" /> Women
+                    <input 
+                        type="checkbox" 
+                        name="category" 
+                        value="Women" 
+                        onChange={e => addFilter(e, setCategoryFilters)} 
+                    /> Women
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="category" value="Kids" /> Kids
+                    <input 
+                        type="checkbox" 
+                        name="category" 
+                        value="Kids" 
+                        onChange={e => addFilter(e, setCategoryFilters)} 
+                    /> Kids
                 </label>
             </fieldset>
             <fieldset className="filter-section">
                 <legend className="filter-title">CLOTHING SIZE</legend>
-                {/* <div className="filter-sizecategory"> */}
                 <label className="filter-item">
                     <input type="checkbox" name="size" value="Juniors" /> Juniors
                 </label>
@@ -118,11 +160,9 @@ function Filters() {
                 <label className="filter-item">
                     <input type="checkbox" name="size" value="Plussize" /> Plus Size
                 </label>
-                {/* </div> */}
             </fieldset>
             <fieldset className="filter-section">
                 <legend className="filter-title">MATERIAL</legend>
-                {/* <div className="filter-sizecategory"> */}
                 <label className="filter-item">
                     <input type="checkbox" name="material" value="Cotton" /> Cotton
                 </label>
@@ -135,9 +175,9 @@ function Filters() {
                 <label className="filter-item">
                     <input type="checkbox" name="material" value="Suede" /> Suede
                 </label>
-                {/* </div> */}
             </fieldset>
         </details>
+        // </FiltersSection>
     )
 }
 
