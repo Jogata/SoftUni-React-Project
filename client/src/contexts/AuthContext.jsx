@@ -498,7 +498,23 @@ export function ShopContextProvider({ children }) {
         if (categories.length) {
             filteredProducts = [...products].filter(p => {
                 // p.category === categories[0];
-                const test = categories.includes(p.category);
+                const isSameCategory = categories.includes(p.category);
+                console.log(isSameCategory);
+                return isSameCategory;
+            });
+        }
+        // console.log(filteredProducts);
+        setFiltered(filteredProducts);
+    }
+
+    function filterBySize(sizes) {
+        // console.log(categories[0]);
+        let filteredProducts = products;
+
+        if (sizes.length) {
+            filteredProducts = [...products].filter(p => {
+                // p.category === sizes[0];
+                const test = sizes.includes(p.sizeCategory);
                 console.log(test);
                 return test;
             });
@@ -526,7 +542,8 @@ export function ShopContextProvider({ children }) {
         // searchTerm,
         // updateSearchTerm
         filterByQuery, 
-        filterByCategory
+        filterByCategory, 
+        filterBySize
     }
 
     return (

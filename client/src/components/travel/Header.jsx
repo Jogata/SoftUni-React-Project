@@ -87,7 +87,7 @@ function FiltersSection({children}) {
 
 function Filters() {
     // const [categoryFilters, setCategoryFilters] = useState([]);
-    const [sizeFilters, setSizeFilters] = useState([]);
+    // const [sizeFilters, setSizeFilters] = useState([]);
     const [materialFilters, setMaterialFilters] = useState([]);
     // console.log(categoryFilters);
     // console.log("Filters");
@@ -97,7 +97,7 @@ function Filters() {
     // }
 
     function addFilter(e, setter) {
-        console.log("add");
+        // console.log("add");
         if (e.target.checked) {
             setter(oldArray => [...oldArray, e.target.value]);
         } else {
@@ -111,45 +111,31 @@ function Filters() {
                 FILTERS
             </summary>
             <CategoryFilters addFilter={addFilter} />
+            <SizeFilters addFilter={addFilter} />
             {/* <fieldset className="filter-section">
-                <legend className="filter-title">GENDER</legend>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="category" 
-                        value="Men" 
-                        onChange={e => addFilter(e, setCategoryFilters)} 
-                    /> Men
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="category" 
-                        value="Women" 
-                        onChange={e => addFilter(e, setCategoryFilters)} 
-                    /> Women
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="category" 
-                        value="Kids" 
-                        onChange={e => addFilter(e, setCategoryFilters)} 
-                    /> Kids
-                </label>
-            </fieldset> */}
-            <fieldset className="filter-section">
                 <legend className="filter-title">CLOTHING SIZE</legend>
                 <label className="filter-item">
-                    <input type="checkbox" name="size" value="Juniors" /> Juniors
+                    <input 
+                        type="checkbox" 
+                        name="size" 
+                        value="Juniors" 
+                    /> Juniors
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="size" value="Petite" /> Petite
+                    <input 
+                        type="checkbox" 
+                        name="size" 
+                        value="Petite" 
+                    /> Petite
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="size" value="Plussize" /> Plus Size
+                    <input 
+                        type="checkbox" 
+                        name="size" 
+                        value="Plussize" 
+                    /> Plus Size
                 </label>
-            </fieldset>
+            </fieldset> */}
             <fieldset className="filter-section">
                 <legend className="filter-title">MATERIAL</legend>
                 <label className="filter-item">
@@ -205,6 +191,62 @@ function CategoryFilters({addFilter}) {
                     value="Kids"
                     onChange={e => addFilter(e, setCategoryFilters)}
                 /> Kids
+            </label>
+        </fieldset>
+    )
+}
+
+// export function name(params) {
+//     return (
+//         <fieldset className="filter-section">
+//         <label className="filter-item">
+//         </label>
+//         <label className="filter-item">
+//         </label>
+//         <label className="filter-item">
+//         </label>
+
+//     </fieldset>
+
+//     )
+// }
+
+function SizeFilters({addFilter}) {
+    const { filterBySize } = useContext(ShopContext);
+    const [sizeFilters, setSizeFilters] = useState([]);
+    console.log(sizeFilters);
+    
+    useEffect(() => {
+        // console.log(sizeFilters);
+        filterBySize(sizeFilters);
+    }, [sizeFilters])
+
+    return (
+        <fieldset className="filter-section">
+            <legend className="filter-title">CLOTHING SIZE</legend>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="size" 
+                    value="Juniors" 
+                    onChange={e => addFilter(e, setSizeFilters)}
+                /> Juniors
+            </label>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="size" 
+                    value="Petite" 
+                    onChange={e => addFilter(e, setSizeFilters)}
+                /> Petite
+            </label>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="size" 
+                    value="Plussize" 
+                    onChange={e => addFilter(e, setSizeFilters)}
+                /> Plus Size
             </label>
         </fieldset>
     )
