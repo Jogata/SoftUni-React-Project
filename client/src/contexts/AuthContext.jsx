@@ -513,8 +513,24 @@ export function ShopContextProvider({ children }) {
 
         if (sizes.length) {
             filteredProducts = [...products].filter(p => {
-                // p.category === sizes[0];
+                // p.sizeCategory === sizes[0];
                 const test = sizes.includes(p.sizeCategory);
+                console.log(test);
+                return test;
+            });
+        }
+        // console.log(filteredProducts);
+        setFiltered(filteredProducts);
+    }
+
+    function filterByMaterial(materials) {
+        // console.log(categories[0]);
+        let filteredProducts = products;
+
+        if (materials.length) {
+            filteredProducts = [...products].filter(p => {
+                // p.material === materials[0];
+                const test = materials.includes(p.material);
                 console.log(test);
                 return test;
             });
@@ -543,7 +559,8 @@ export function ShopContextProvider({ children }) {
         // updateSearchTerm
         filterByQuery, 
         filterByCategory, 
-        filterBySize
+        filterBySize, 
+        filterByMaterial
     }
 
     return (

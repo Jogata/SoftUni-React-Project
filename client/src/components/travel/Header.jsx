@@ -136,21 +136,38 @@ function Filters() {
                     /> Plus Size
                 </label>
             </fieldset> */}
-            <fieldset className="filter-section">
+            <MaterialFilters addFilter={addFilter} />
+            {/* <fieldset className="filter-section">
                 <legend className="filter-title">MATERIAL</legend>
                 <label className="filter-item">
-                    <input type="checkbox" name="material" value="Cotton" /> Cotton
+                    <input 
+                        type="checkbox" 
+                        name="material" 
+                        value="Cotton" 
+                    /> Cotton
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="material" value="Leather" /> Leather
+                    <input 
+                        type="checkbox" 
+                        name="material" 
+                        value="Leather" 
+                    /> Leather
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="material" value="Silk" /> Silk
+                    <input 
+                        type="checkbox" 
+                        name="material" 
+                        value="Silk" 
+                    /> Silk
                 </label>
                 <label className="filter-item">
-                    <input type="checkbox" name="material" value="Suede" /> Suede
+                    <input 
+                        type="checkbox" 
+                        name="material" 
+                        value="Suede" 
+                    /> Suede
                 </label>
-            </fieldset>
+            </fieldset> */}
         </details>
     )
 }
@@ -247,6 +264,55 @@ function SizeFilters({addFilter}) {
                     value="Plussize" 
                     onChange={e => addFilter(e, setSizeFilters)}
                 /> Plus Size
+            </label>
+        </fieldset>
+    )
+}
+
+function MaterialFilters({addFilter}) {
+    const { filterByMaterial } = useContext(ShopContext);
+    const [materialFilters, setMaterialFilters] = useState([]);
+    console.log(materialFilters);
+    
+    useEffect(() => {
+        // console.log(materialFilters);
+        filterByMaterial(materialFilters);
+    }, [materialFilters])
+
+    return (
+        <fieldset className="filter-section">
+            <legend className="filter-title">MATERIAL</legend>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="material" 
+                    value="Cotton" 
+                    onChange={e => addFilter(e, setMaterialFilters)}
+                /> Cotton
+            </label>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="material" 
+                    value="Leather" 
+                    onChange={e => addFilter(e, setMaterialFilters)}
+                /> Leather
+            </label>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="material" 
+                    value="Silk" 
+                    onChange={e => addFilter(e, setMaterialFilters)}
+                /> Silk
+            </label>
+            <label className="filter-item">
+                <input 
+                    type="checkbox" 
+                    name="material" 
+                    value="Suede" 
+                    onChange={e => addFilter(e, setMaterialFilters)}
+                /> Suede
             </label>
         </fieldset>
     )
