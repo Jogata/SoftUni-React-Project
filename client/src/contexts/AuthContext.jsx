@@ -484,27 +484,46 @@ export const ShopContext = createContext();
 export function ShopContextProvider({ children }) {
     const [products, setProducts] = useState(data);
     // const [searchTerm, setSearchTerm] = useState("");
+    const [categoryFilters, setCategoryFilters] = useState([]);
     const [filtered, setFiltered] = useState(products);
     // console.log(filtered);
+    console.log(categoryFilters);
 
-    // function updateSearchTerm(term) {
-    //     setSearchTerm(term)
-    // }
+    function addFilter(e, setter) {
+        if (e.target.checked) {
+            setter(oldArray => [...oldArray, e.target.value]);
+        } else {
+            setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
+        }
+        console.log("add");
+        applyAllFilters();
+    }
 
-    function filterByCategory(categories) {
-        // console.log(categories[0]);
-        let filteredProducts = products;
+    function applyAllFilters() {
+        let filteredProducts = [...products];
 
-        if (categories.length) {
-            filteredProducts = [...products].filter(p => {
-                // p.category === categories[0];
-                const isSameCategory = categories.includes(p.category);
-                console.log(isSameCategory);
+        console.log("apply category");
+        if (categoryFilters.length > 0) {
+            filterByCategory(filteredProducts);
+        }
+        console.log(filteredProducts);
+        setFiltered(filteredProducts);
+    }
+
+    function filterByCategory(filteredProducts) {
+        // console.log(categoryFilters[0]);
+        // let filteredProducts = products;
+
+        // if (categoryFilters.length > 0) {
+            filteredProducts.filter(p => {
+                // p.category === categoryFilters[0];
+                const isSameCategory = categoryFilters.includes(p.category);
+                // console.log(isSameCategory);
                 return isSameCategory;
             });
-        }
-        // console.log(filteredProducts);
-        setFiltered(filteredProducts);
+        // }
+        console.log(filteredProducts);
+        // setFiltered(filteredProducts);
     }
 
     function filterBySize(sizes) {
@@ -514,9 +533,9 @@ export function ShopContextProvider({ children }) {
         if (sizes.length) {
             filteredProducts = [...products].filter(p => {
                 // p.sizeCategory === sizes[0];
-                const test = sizes.includes(p.sizeCategory);
-                console.log(test);
-                return test;
+                const isSameSize = sizes.includes(p.sizeCategory);
+                console.log(isSameSize);
+                return isSameSize;
             });
         }
         // console.log(filteredProducts);
@@ -530,9 +549,9 @@ export function ShopContextProvider({ children }) {
         if (materials.length) {
             filteredProducts = [...products].filter(p => {
                 // p.material === materials[0];
-                const test = materials.includes(p.material);
-                console.log(test);
-                return test;
+                const isSameMaterial = materials.includes(p.material);
+                console.log(isSameMaterial);
+                return isSameMaterial;
             });
         }
         // console.log(filteredProducts);
@@ -555,12 +574,14 @@ export function ShopContextProvider({ children }) {
     const ctx = {
         products,
         filtered, 
+        addFilter, 
         // searchTerm,
         // updateSearchTerm
         filterByQuery, 
-        filterByCategory, 
-        filterBySize, 
-        filterByMaterial
+        // filterByCategory, 
+        // filterBySize, 
+        // filterByMaterial
+        setCategoryFilters
     }
 
     return (

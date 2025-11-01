@@ -86,101 +86,27 @@ function FiltersSection({children}) {
 }
 
 function Filters() {
-    // const [categoryFilters, setCategoryFilters] = useState([]);
-    // const [sizeFilters, setSizeFilters] = useState([]);
-    const [materialFilters, setMaterialFilters] = useState([]);
-    // console.log(categoryFilters);
-    // console.log("Filters");
-
-    // function check(e) {
-    //     console.log(e.target.checked);
-    // }
-
-    function addFilter(e, setter) {
-        // console.log("add");
-        if (e.target.checked) {
-            setter(oldArray => [...oldArray, e.target.value]);
-        } else {
-            setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
-        }
-    }
-
     return (
         <details className="filters-container" open>
             <summary className="filter-title">
                 FILTERS
             </summary>
-            <CategoryFilters addFilter={addFilter} />
-            <SizeFilters addFilter={addFilter} />
-            {/* <fieldset className="filter-section">
-                <legend className="filter-title">CLOTHING SIZE</legend>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="size" 
-                        value="Juniors" 
-                    /> Juniors
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="size" 
-                        value="Petite" 
-                    /> Petite
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="size" 
-                        value="Plussize" 
-                    /> Plus Size
-                </label>
-            </fieldset> */}
-            <MaterialFilters addFilter={addFilter} />
-            {/* <fieldset className="filter-section">
-                <legend className="filter-title">MATERIAL</legend>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="material" 
-                        value="Cotton" 
-                    /> Cotton
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="material" 
-                        value="Leather" 
-                    /> Leather
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="material" 
-                        value="Silk" 
-                    /> Silk
-                </label>
-                <label className="filter-item">
-                    <input 
-                        type="checkbox" 
-                        name="material" 
-                        value="Suede" 
-                    /> Suede
-                </label>
-            </fieldset> */}
+            <CategoryFilters />
+            <SizeFilters />
+            <MaterialFilters />
         </details>
     )
 }
 
-function CategoryFilters({addFilter}) {
-    const { filterByCategory } = useContext(ShopContext);
-    const [categoryFilters, setCategoryFilters] = useState([]);
+function CategoryFilters() {
+    const { addFilter, setCategoryFilters } = useContext(ShopContext);
+    // const [categoryFilters, setCategoryFilters] = useState([]);
     // console.log(categoryFilters);
     
-    useEffect(() => {
+    // useEffect(() => {
         // console.log(categoryFilters);
-        filterByCategory(categoryFilters);
-    }, [categoryFilters])
+        // filterByCategory(categoryFilters);
+    // }, [categoryFilters])
 
     return (
         <fieldset className="filter-section">
@@ -213,29 +139,14 @@ function CategoryFilters({addFilter}) {
     )
 }
 
-// export function name(params) {
-//     return (
-//         <fieldset className="filter-section">
-//         <label className="filter-item">
-//         </label>
-//         <label className="filter-item">
-//         </label>
-//         <label className="filter-item">
-//         </label>
-
-//     </fieldset>
-
-//     )
-// }
-
 function SizeFilters({addFilter}) {
     const { filterBySize } = useContext(ShopContext);
     const [sizeFilters, setSizeFilters] = useState([]);
-    console.log(sizeFilters);
+    // console.log(sizeFilters);
     
     useEffect(() => {
         // console.log(sizeFilters);
-        filterBySize(sizeFilters);
+        // filterBySize(sizeFilters);
     }, [sizeFilters])
 
     return (
@@ -272,11 +183,11 @@ function SizeFilters({addFilter}) {
 function MaterialFilters({addFilter}) {
     const { filterByMaterial } = useContext(ShopContext);
     const [materialFilters, setMaterialFilters] = useState([]);
-    console.log(materialFilters);
+    // console.log(materialFilters);
     
     useEffect(() => {
         // console.log(materialFilters);
-        filterByMaterial(materialFilters);
+        // filterByMaterial(materialFilters);
     }, [materialFilters])
 
     return (
