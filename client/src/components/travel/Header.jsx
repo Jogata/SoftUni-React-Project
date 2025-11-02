@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
-    const { filterByQuery } = useContext(ShopContext);
-    const [query, setQuery] = useState("");
+    const { setQuery } = useContext(ShopContext);
+    const [value, setValue] = useState("");
     console.log("navigation");
 
     return (
@@ -14,11 +14,16 @@ export function Navigation() {
                     <input
                         type="text"
                         className="search-input"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
                         placeholder="Search for products...."
                     />
-                    <button className="search-btn" onClick={() => filterByQuery(query)}>Search</button>
+                    <button 
+                        className="search-btn" 
+                        onClick={() => setQuery(value)}
+                    >
+                        Search
+                    </button>
                 </div>
                 <div className="icons">
                     <div className="profile-group">
@@ -139,15 +144,15 @@ function CategoryFilters() {
     )
 }
 
-function SizeFilters({addFilter}) {
-    const { filterBySize } = useContext(ShopContext);
-    const [sizeFilters, setSizeFilters] = useState([]);
+function SizeFilters() {
+    const { addFilter, setSizeFilters } = useContext(ShopContext);
+    // const [sizeFilters, setSizeFilters] = useState([]);
     // console.log(sizeFilters);
     
-    useEffect(() => {
+    // useEffect(() => {
         // console.log(sizeFilters);
         // filterBySize(sizeFilters);
-    }, [sizeFilters])
+    // }, [sizeFilters])
 
     return (
         <fieldset className="filter-section">
@@ -180,15 +185,15 @@ function SizeFilters({addFilter}) {
     )
 }
 
-function MaterialFilters({addFilter}) {
-    const { filterByMaterial } = useContext(ShopContext);
-    const [materialFilters, setMaterialFilters] = useState([]);
+function MaterialFilters() {
+    const { addFilter, setMaterialFilters } = useContext(ShopContext);
+    // const [materialFilters, setMaterialFilters] = useState([]);ø
     // console.log(materialFilters);
     
-    useEffect(() => {
+    // useEffect(() => {
         // console.log(materialFilters);
         // filterByMaterial(materialFilters);
-    }, [materialFilters])
+    // }, [materialFilters])
 
     return (
         <fieldset className="filter-section">
