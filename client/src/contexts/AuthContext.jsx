@@ -483,15 +483,11 @@ export const ShopContext = createContext();
 
 export function ShopContextProvider({ children }) {
     const [products, setProducts] = useState(data);
-    // const [searchTerm, setSearchTerm] = useState("");
     const [categoryFilters, setCategoryFilters] = useState([]);
     const [sizeFilters, setSizeFilters] = useState([]);
     const [materialFilters, setMaterialFilters] = useState([]);
     const [query, setQuery] = useState("");
-    // const [filtered, setFiltered] = useState(products);
-    // console.log(materialFilters);
-    // console.log(categoryFilters);
-    console.log(query);
+    // console.log(query);
     const filtered = applyAllFilters();
 
     function addFilter(e, setter) {
@@ -500,118 +496,69 @@ export function ShopContextProvider({ children }) {
         } else {
             setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
         }
-        console.log(sizeFilters);
-        // applyAllFilters();
+        // console.log(sizeFilters);
     }
 
     function applyAllFilters() {
         let filteredProducts = [...products];
 
         if (categoryFilters.length > 0) {
-            // console.log("apply category");
             filteredProducts = filterByCategory(filteredProducts);
         }
 
         if (sizeFilters.length > 0) {
-            // console.log("apply category");
             filteredProducts = filterBySize(filteredProducts);
         }
 
         if (materialFilters.length > 0) {
-            // console.log("apply category");
             filteredProducts = filterByMaterial(filteredProducts);
         }
 
         if (query.length > 0) {
-            // console.log("apply category");
             filteredProducts = filterByQuery(filteredProducts);
         }
 
-        console.log(filteredProducts);
-        // setFiltered(filteredProducts);
+        // console.log(filteredProducts);
         return filteredProducts;
     }
 
     function filterByCategory(products) {
-        // console.log(categoryFilters[0]);
-        // let products = products;
-        // console.log(products);
-
-        // if (categoryFilters.length > 0) {
-            products = products.filter(p => {
-                // p.category === categoryFilters[0];
-                const isSameCategory = categoryFilters.includes(p.category);
-                // console.log(isSameCategory);
-                return isSameCategory;
-            });
-        // }
-        // console.log(products);
-        // setFiltered(filteredProducts);
+        products = products.filter(p => {
+            const isSameCategory = categoryFilters.includes(p.category);
+            return isSameCategory;
+        });
         return products;
     }
 
     function filterBySize(products) {
-        // console.log(categories[0]);
-        // let filteredProducts = products;
-
-        // if (sizes.length) {
-            products = products.filter(p => {
-                // p.sizeCategory === sizes[0];
-                const isSameSize = sizeFilters.includes(p.sizeCategory);
-                // console.log(isSameSize);
-                return isSameSize;
-            });
-        // }
-        // console.log(filteredProducts);
-        // setFiltered(filteredProducts);
+        products = products.filter(p => {
+            const isSameSize = sizeFilters.includes(p.sizeCategory);
+            return isSameSize;
+        });
         return products;
     }
 
     function filterByMaterial(products) {
-        // console.log(categories[0]);
-        // let filteredProducts = products;
-
-        // if (materials.length) {
-            products = products.filter(p => {
-                // p.material === materials[0];
-                const isSameMaterial = materialFilters.includes(p.material);
-                // console.log(isSameMaterial);
-                return isSameMaterial;
-            });
-        // }
-        // console.log(filteredProducts);
-        // setFiltered(filteredProducts);
+        products = products.filter(p => {
+            const isSameMaterial = materialFilters.includes(p.material);
+            return isSameMaterial;
+        });
         return products;
     }
 
     function filterByQuery(products) {
-        // console.log(query);
-        // let filteredProducts = products;
-        console.log(products);
-
-        // if (query.length) {
-            products = products.filter(p => (
-                p.name.toLowerCase().includes(query.toLowerCase())
-            ));
-        // }
-        // console.log(filteredProducts);
-        // setFiltered(filteredProducts);
+        products = products.filter(p => (
+            p.name.toLowerCase().includes(query.toLowerCase())
+        ));
         return products;
     }
 
     const ctx = {
-        // products,
-        filtered, 
-        addFilter, 
-        // searchTerm,
-        // updateSearchTerm
-        // filterByQuery, 
-        // filterByCategory, 
-        // filterBySize, 
-        // filterByMaterial
-        setCategoryFilters, 
-        setSizeFilters, 
-        setMaterialFilters, 
+        filtered,
+        addFilter,
+        setCategoryFilters,
+        setSizeFilters,
+        setMaterialFilters,
         setQuery
     }
 

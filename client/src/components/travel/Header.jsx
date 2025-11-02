@@ -2,29 +2,15 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
-    const { setQuery } = useContext(ShopContext);
-    const [value, setValue] = useState("");
-    console.log("navigation");
+    // const { setQuery } = useContext(ShopContext);
+    // const [value, setValue] = useState("");
+    console.log("Navigation");
 
     return (
         <nav className="navigation">
             <div className="nav-top">
                 <h2>Luma</h2>
-                <div className="search-bar">
-                    <input
-                        type="text"
-                        className="search-input"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        placeholder="Search for products...."
-                    />
-                    <button 
-                        className="search-btn" 
-                        onClick={() => setQuery(value)}
-                    >
-                        Search
-                    </button>
-                </div>
+                <SearchField />
                 <div className="icons">
                     <div className="profile-group">
                         <i className="fa fa-user-o icon"></i>
@@ -39,7 +25,99 @@ export function Navigation() {
     )
 }
 
+function SearchField() {
+    const { setQuery } = useContext(ShopContext);
+    const [value, setValue] = useState("");
+    console.log("SearchField");
+
+    return (
+        <div className="search-field">
+            <input
+                type="text"
+                className="search-input"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder="Search for products...."
+            />
+            <button
+                className="search-btn"
+                onClick={() => setQuery(value)}
+            >
+                Search
+            </button>
+        </div>
+    )
+}
+
 export function Home() {
+    // const [products, setProducts] = useState(data);
+    // const [categoryFilters, setCategoryFilters] = useState([]);
+    // const [sizeFilters, setSizeFilters] = useState([]);
+    // const [materialFilters, setMaterialFilters] = useState([]);
+    // const [query, setQuery] = useState("");
+    // const filtered = applyAllFilters();
+
+    // function addFilter(e, setter) {
+    //     if (e.target.checked) {
+    //         setter(oldArray => [...oldArray, e.target.value]);
+    //     } else {
+    //         setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
+    //     }
+    // }
+
+    // function applyAllFilters() {
+    //     let filteredProducts = [...products];
+
+    //     if (categoryFilters.length > 0) {
+    //         filteredProducts = filterByCategory(filteredProducts);
+    //     }
+
+    //     if (sizeFilters.length > 0) {
+    //         filteredProducts = filterBySize(filteredProducts);
+    //     }
+
+    //     if (materialFilters.length > 0) {
+    //         filteredProducts = filterByMaterial(filteredProducts);
+    //     }
+
+    //     if (query.length > 0) {
+    //         filteredProducts = filterByQuery(filteredProducts);
+    //     }
+
+    //     return filteredProducts;
+    // }
+
+    // function filterByCategory(products) {
+    //     products = products.filter(p => {
+    //         const isSameCategory = categoryFilters.includes(p.category);
+    //         return isSameCategory;
+    //     });
+    //     return products;
+    // }
+
+    // function filterBySize(products) {
+    //     products = products.filter(p => {
+    //         const isSameSize = sizeFilters.includes(p.sizeCategory);
+    //         return isSameSize;
+    //     });
+    //     return products;
+    // }
+
+    // function filterByMaterial(products) {
+    //     products = products.filter(p => {
+    //         const isSameMaterial = materialFilters.includes(p.material);
+    //         return isSameMaterial;
+    //     });
+    //     return products;
+    // }
+
+    // function filterByQuery(products) {
+    //     products = products.filter(p => (
+    //         p.name.toLowerCase().includes(query.toLowerCase())
+    //     ));
+    //     return products;
+    // }
+
     // const { filtered } = useContext(ShopContext);
 
     // const filtered = [...products];
@@ -55,18 +133,18 @@ export function Home() {
 }
 
 function HomeContent({ children }) {
-    const [test, setTest] = useState(0);
-    console.log("HomeContent");
-    console.log(test);
+    // const [test, setTest] = useState(0);
+    // console.log("HomeContent");
+    // console.log(test);
 
     return (
         <div className="page-container">
-                        <button 
+                        {/* <button 
                             onClick={() => setTest(test + 1)} 
                             style={{color: "red", fontSize: "2rem", marginBottom: "auto"}}
                         >
                             test
-                        </button>
+                        </button> */}
             {children}
         </div>
     )
@@ -91,6 +169,7 @@ function FiltersSection({children}) {
 }
 
 function Filters() {
+    console.log("Filters");
     return (
         <details className="filters-container" open>
             <summary className="filter-title">
@@ -105,13 +184,6 @@ function Filters() {
 
 function CategoryFilters() {
     const { addFilter, setCategoryFilters } = useContext(ShopContext);
-    // const [categoryFilters, setCategoryFilters] = useState([]);
-    // console.log(categoryFilters);
-    
-    // useEffect(() => {
-        // console.log(categoryFilters);
-        // filterByCategory(categoryFilters);
-    // }, [categoryFilters])
 
     return (
         <fieldset className="filter-section">
@@ -146,13 +218,6 @@ function CategoryFilters() {
 
 function SizeFilters() {
     const { addFilter, setSizeFilters } = useContext(ShopContext);
-    // const [sizeFilters, setSizeFilters] = useState([]);
-    // console.log(sizeFilters);
-    
-    // useEffect(() => {
-        // console.log(sizeFilters);
-        // filterBySize(sizeFilters);
-    // }, [sizeFilters])
 
     return (
         <fieldset className="filter-section">
@@ -187,13 +252,6 @@ function SizeFilters() {
 
 function MaterialFilters() {
     const { addFilter, setMaterialFilters } = useContext(ShopContext);
-    // const [materialFilters, setMaterialFilters] = useState([]);ø
-    // console.log(materialFilters);
-    
-    // useEffect(() => {
-        // console.log(materialFilters);
-        // filterByMaterial(materialFilters);
-    // }, [materialFilters])
 
     return (
         <fieldset className="filter-section">
@@ -236,7 +294,6 @@ function MaterialFilters() {
 
 function Products() {
     const { filtered } = useContext(ShopContext);
-    // const { products } = props;
     console.log("Products");
 
     return (
