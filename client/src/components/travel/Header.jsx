@@ -2,8 +2,6 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
-    // const { setQuery } = useContext(ShopContext);
-    // const [value, setValue] = useState("");
     console.log("Navigation");
 
     return (
@@ -28,7 +26,7 @@ export function Navigation() {
 function SearchField() {
     const { setQuery } = useContext(ShopContext);
     const [value, setValue] = useState("");
-    console.log("SearchField");
+    // console.log("SearchField");
 
     return (
         <div className="search-field">
@@ -50,78 +48,6 @@ function SearchField() {
 }
 
 export function Home() {
-    // const [products, setProducts] = useState(data);
-    // const [categoryFilters, setCategoryFilters] = useState([]);
-    // const [sizeFilters, setSizeFilters] = useState([]);
-    // const [materialFilters, setMaterialFilters] = useState([]);
-    // const [query, setQuery] = useState("");
-    // const filtered = applyAllFilters();
-
-    // function addFilter(e, setter) {
-    //     if (e.target.checked) {
-    //         setter(oldArray => [...oldArray, e.target.value]);
-    //     } else {
-    //         setter(oldArray => oldArray.filter(cat => cat !== e.target.value));
-    //     }
-    // }
-
-    // function applyAllFilters() {
-    //     let filteredProducts = [...products];
-
-    //     if (categoryFilters.length > 0) {
-    //         filteredProducts = filterByCategory(filteredProducts);
-    //     }
-
-    //     if (sizeFilters.length > 0) {
-    //         filteredProducts = filterBySize(filteredProducts);
-    //     }
-
-    //     if (materialFilters.length > 0) {
-    //         filteredProducts = filterByMaterial(filteredProducts);
-    //     }
-
-    //     if (query.length > 0) {
-    //         filteredProducts = filterByQuery(filteredProducts);
-    //     }
-
-    //     return filteredProducts;
-    // }
-
-    // function filterByCategory(products) {
-    //     products = products.filter(p => {
-    //         const isSameCategory = categoryFilters.includes(p.category);
-    //         return isSameCategory;
-    //     });
-    //     return products;
-    // }
-
-    // function filterBySize(products) {
-    //     products = products.filter(p => {
-    //         const isSameSize = sizeFilters.includes(p.sizeCategory);
-    //         return isSameSize;
-    //     });
-    //     return products;
-    // }
-
-    // function filterByMaterial(products) {
-    //     products = products.filter(p => {
-    //         const isSameMaterial = materialFilters.includes(p.material);
-    //         return isSameMaterial;
-    //     });
-    //     return products;
-    // }
-
-    // function filterByQuery(products) {
-    //     products = products.filter(p => (
-    //         p.name.toLowerCase().includes(query.toLowerCase())
-    //     ));
-    //     return products;
-    // }
-
-    // const { filtered } = useContext(ShopContext);
-
-    // const filtered = [...products];
-
     return (
         <HomeContent>
             <FiltersSection >
@@ -133,36 +59,16 @@ export function Home() {
 }
 
 function HomeContent({ children }) {
-    // const [test, setTest] = useState(0);
-    // console.log("HomeContent");
-    // console.log(test);
-
     return (
         <div className="page-container">
-                        {/* <button 
-                            onClick={() => setTest(test + 1)} 
-                            style={{color: "red", fontSize: "2rem", marginBottom: "auto"}}
-                        >
-                            test
-                        </button> */}
             {children}
         </div>
     )
 }
 
 function FiltersSection({children}) {
-    // const [test, setTest] = useState(0);
-    // console.log(test);
-    console.log("FiltersSection");
-    // console.log(children);
     return (
         <div className="filters-container">
-            {/* <button 
-                onClick={() => setTest(test + 1)} 
-                style={{color: "red", fontSize: "2rem"}}
-            >
-                test
-            </button> */}
             {children}
         </div>
     )
@@ -170,6 +76,7 @@ function FiltersSection({children}) {
 
 function Filters() {
     console.log("Filters");
+
     return (
         <details className="filters-container" open>
             <summary className="filter-title">
@@ -294,21 +201,56 @@ function MaterialFilters() {
 
 function Products() {
     const { filtered } = useContext(ShopContext);
+    const [sortType, setSortType] = useState("relevant");
     console.log("Products");
+    let sorted = [...filtered];
+
+    function sortProduct() {
+        // let filtered = filtered.slice();
+
+        switch (sortType) {
+            case "low-high":
+                sorted.sort((a, b) => a.price - b.price);
+                break;
+            case "high-low":
+                sorted.sort((a, b) => b.price - a.price);
+                break;
+            default:
+                sorted = [...filtered];
+                break;
+        }
+    }
+
+    sortProduct();
 
     return (
         <div className="products-container">
             <div className="products-header">
                 <h2>All Collection</h2>
                 <select className="sort-dropdown">
-                    <option value="relevant">Sort by: Relevant</option>
-                    <option value="low-high">Sort by: Low to High</option>
-                    <option value="high-low">Sort by: High to Low</option>
+                    <option 
+                        value="relevant" 
+                        onClick={(e) => setSortType(e.target.value)}
+                    >
+                        Sort by: Relevant
+                    </option>
+                    <option 
+                        value="low-high" 
+                        onClick={(e) => setSortType(e.target.value)}
+                    >
+                        Sort by: Low to High
+                    </option>
+                    <option 
+                        value="high-low" 
+                        onClick={(e) => setSortType(e.target.value)}
+                    >
+                        Sort by: High to Low
+                    </option>
                 </select>
             </div>
 
             <div className="product-grid">
-                {filtered.map(product => (
+                {sorted.map(product => (
                     <div className="product-card" key={product._id}>
                         <div className="product-image">
                             <img src={product.image[0]} alt={product.name} />
