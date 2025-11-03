@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContextProvider, ShopContextProvider } from './contexts/AuthContext';
+import { AuthContextProvider, ShopContextProvider, ShopContextProvider1 } from './contexts/AuthContext';
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -35,6 +35,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Home, Navigation } from './components/travel/Header';
+import { Navbar } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -81,10 +82,14 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<ShopContextProvider>
+{/* <ShopContextProvider>
         <Navigation />
         <Home />
-</ShopContextProvider>
+</ShopContextProvider> */}
+
+<ShopContextProvider1>
+        <Navbar />
+</ShopContextProvider1>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

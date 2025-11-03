@@ -568,3 +568,28 @@ export function ShopContextProvider({ children }) {
         </ShopContext.Provider>
     )
 }
+
+
+export const ShopContext1 = createContext();
+
+export function ShopContextProvider1({ children }) {
+    const [products, setProducts] = useState(data);
+
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const updateSearchTerm = (term) => {
+        setSearchTerm(term)
+    }
+
+    const value = {
+        products, 
+        searchTerm, 
+        updateSearchTerm 
+    }
+
+    return (
+        <ShopContext1.Provider value={value}>
+            {children}
+        </ShopContext1.Provider>
+    )
+}
