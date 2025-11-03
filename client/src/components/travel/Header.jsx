@@ -200,34 +200,43 @@ function MaterialFilters() {
 }
 
 function Products() {
+    console.log("Products");
     const { filtered } = useContext(ShopContext);
     const [sortType, setSortType] = useState("relevant");
-    console.log("Products");
     let sorted = [...filtered];
 
-    function sortProduct() {
-        // let filtered = filtered.slice();
+    // function sortProduct() {
+    //     switch (sortType) {
+    //         case "low-high":
+    //             sorted.sort((a, b) => a.price - b.price);
+    //             break;
+    //         case "high-low":
+    //             sorted.sort((a, b) => b.price - a.price);
+    //             break;
+    //         default:
+    //             sorted = [...filtered];
+    //             break;
+    //     }
+    // }
 
-        switch (sortType) {
-            case "low-high":
-                sorted.sort((a, b) => a.price - b.price);
-                break;
-            case "high-low":
-                sorted.sort((a, b) => b.price - a.price);
-                break;
-            default:
-                sorted = [...filtered];
-                break;
+    function sortProduct(type) {
+        const sort = {
+            "low": () => sorted.sort((a, b) => a.price - b.price), 
+            "high": () => sorted.sort((a, b) => b.price - a.price), 
+            "relevant": () => sorted = [...filtered]
         }
-    }
 
-    sortProduct();
+        sort[type]();
+    }
+    
+    sortProduct(sortType);
 
     return (
         <div className="products-container">
             <div className="products-header">
                 <h2>All Collection</h2>
-                <select className="sort-dropdown">
+                <PriceFilters setSortType={setSortType} />
+                {/* <select className="sort-dropdown">
                     <option 
                         value="relevant" 
                         onClick={(e) => setSortType(e.target.value)}
@@ -235,18 +244,18 @@ function Products() {
                         Sort by: Relevant
                     </option>
                     <option 
-                        value="low-high" 
+                        value="low" 
                         onClick={(e) => setSortType(e.target.value)}
                     >
                         Sort by: Low to High
                     </option>
                     <option 
-                        value="high-low" 
+                        value="high" 
                         onClick={(e) => setSortType(e.target.value)}
                     >
                         Sort by: High to Low
                     </option>
-                </select>
+                </select> */}
             </div>
 
             <div className="product-grid">
@@ -261,6 +270,33 @@ function Products() {
                 ))}
             </div>
         </div>
+    )
+}
+
+function PriceFilters({setSortType}) {
+    console.log("PriceFilters");
+
+    return (
+        <select className="sort-dropdown">
+            <option
+                value="relevant"
+                onClick={(e) => setSortType(e.target.value)}
+            >
+                Sort by: Relevant
+            </option>
+            <option
+                value="low"
+                onClick={(e) => setSortType(e.target.value)}
+            >
+                Sort by: Low to High
+            </option>
+            <option
+                value="high"
+                onClick={(e) => setSortType(e.target.value)}
+            >
+                Sort by: High to Low
+            </option>
+        </select>
     )
 }
 
