@@ -45,6 +45,39 @@ export function Navbar() {
     )
 }
 
+export function ProductFilter() {
+    const { products } = useContext(ShopContext1);
+
+    return (
+        <>
+            <div className="filter-and-products-container">
+                <div className="products-container">
+                    <div className="products-header">
+                        <h2>All Collection</h2>
+                        <select className="sort-dropdown">
+                            <option value="relevant">Sort by: Relevant</option>
+                            <option value="low-high">Sort by: Low to High</option>
+                            <option value="high-low">Sort by: High to Low</option>
+                        </select>
+                    </div>
+
+                    <div className="product-grid">
+                        {products.map((product) => (
+                            <div className="product-card" key={product._id}>
+                                <div className="product-image">
+                                    <img src={product.image[0]} alt={product.name} />
+                                </div>
+                                <h3>{product.name}</h3>
+                                <p>${product.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">

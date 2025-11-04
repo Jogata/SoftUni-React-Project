@@ -35,7 +35,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Home, Navigation } from './components/travel/Header';
-import { Navbar } from './components/travel/Footer';
+import { Navbar, ProductFilter } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -89,6 +89,7 @@ function App() {
 
 <ShopContextProvider1>
         <Navbar />
+        <ProductFilter />
 </ShopContextProvider1>
 
           {/* <Routes>
