@@ -47,10 +47,67 @@ export function Navbar() {
 
 export function ProductFilter() {
     const { products } = useContext(ShopContext1);
+    const [displayFilter, setDisplayFilter] = useState(false);
 
     return (
         <>
-            <div className="filter-and-products-container">
+            <div className="page-container">
+
+                <div className="filter-container">
+                    <p
+                        onClick={() => setDisplayFilter(!displayFilter)}
+                        className="filter-title"
+                    >
+                        FILTERS
+                    </p>
+
+                    <div className={`filter-section ${displayFilter ? "" : "hidden"}`}>
+                        <p className="filter-sizetitle">GENDER</p>
+                        <p className="filter-item">
+                            <input type="checkbox" value="Men" /> Men
+                        </p>
+                        <p className="filter-item">
+                            <input type="checkbox" value="Women" /> Women
+                        </p>
+                        <p className="filter-item">
+                            <input type="checkbox" value="Kids" /> Kids
+                        </p>
+                    </div>
+
+                    <div className={`filter-section ${displayFilter ? "" : "hidden"}`}>
+                        <p className="filter-sizetitle">CLOTHING SIZE</p>
+                        <div className="filter-sizecategory">
+                            <p className="filter-item">
+                                <input type="checkbox" value="Juniors" /> Juniors
+                            </p>
+                            <p className="filter-item">
+                                <input type="checkbox" value="Petite" /> Petite
+                            </p>
+                            <p className="filter-item">
+                                <input type="checkbox" value="Plussize" /> Plus Size
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className={`filter-section ${displayFilter ? "" : "hidden"}`}>
+                        <p className="filter-sizetitle">MATERIAL</p>
+                        <div className="filter-sizecategory">
+                            <p className="filter-item">
+                                <input type="checkbox" value="Cotton" /> Cotton
+                            </p>
+                            <p className="filter-item">
+                                <input type="checkbox" value="Leather" /> Leather
+                            </p>
+                            <p className="filter-item">
+                                <input type="checkbox" value="Silk" /> Silk
+                            </p>
+                            <p className="filter-item">
+                                <input type="checkbox" value="Suede" /> Suede
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="products-container">
                     <div className="products-header">
                         <h2>All Collection</h2>
