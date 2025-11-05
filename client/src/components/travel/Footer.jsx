@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext1 } from "../../contexts/AuthContext";
 
 export function Navbar() {
@@ -15,7 +15,7 @@ export function Navbar() {
             <nav className="navigation">
                 <div className="nav-top">
                     <h2>Luma</h2>
-                    <div className="search-bar">
+                    <div className="search-field">
                         <input
                             type="text"
                             value={searchInput}
@@ -46,7 +46,7 @@ export function Navbar() {
 }
 
 export function ProductFilter() {
-    const { products } = useContext(ShopContext1);
+    const { products, searchTerm } = useContext(ShopContext1);
     const [displayFilter, setDisplayFilter] = useState(false);
     const [filteredProduct, setFilteredProduct] = useState([]);
     const [category, setCategory] = useState([]);
@@ -54,7 +54,41 @@ export function ProductFilter() {
     const [material, setMaterialCategory] = useState([]);
     const [sortType, setSortType] = useState("relevant");
 
-    const toggleCategory = (e) => {
+    useEffect(() => {
+        filterResults();
+    }, [category, sizeCategory, material, searchTerm, products]);
+
+    function filterResults() {
+        let filtered = [...products];
+
+        if (searchTerm) {
+            filtered = filtered.filter(item => 
+                item.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+
+        if (category.length > 0) {
+            filtered = filtered.filter(
+                item => category.includes(item.category)
+            );
+        }
+
+        if (sizeCategory.length > 0) {
+            filtered = filtered.filter(
+                item => sizeCategory.includes(item.sizeCategory)
+            );
+        }
+
+        if (material.length > 0) {
+            filtered = filtered.filter(
+                item => material.includes(item.material)
+            );
+        }
+
+        setFilteredProduct(filtered);
+    };
+
+    function toggleCategory(e) {
         if (category.includes(e.target.value)) {
             setCategory(prev => prev.filter(item => item !== e.target.value));
         } else {
@@ -62,7 +96,7 @@ export function ProductFilter() {
         }
     };
 
-    const toggleSizeCategory = (e) => {
+    function toggleSizeCategory(e) {
         if (sizeCategory.includes(e.target.value)) {
             setSizeCategory(prev => prev.filter(item => item !== e.target.value));
         } else {
@@ -70,7 +104,7 @@ export function ProductFilter() {
         }
     };
 
-    const toggleMaterialCategory = (e) => {
+    function toggleMaterialCategory(e) {
         if (material.includes(e.target.value)) {
             setMaterialCategory(prev => prev.filter(item => item !== e.target.value));
         } else {
