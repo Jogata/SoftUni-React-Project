@@ -48,6 +48,35 @@ export function Navbar() {
 export function ProductFilter() {
     const { products } = useContext(ShopContext1);
     const [displayFilter, setDisplayFilter] = useState(false);
+    const [filteredProduct, setFilteredProduct] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [sizeCategory, setSizeCategory] = useState([]);
+    const [material, setMaterialCategory] = useState([]);
+    const [sortType, setSortType] = useState("relevant");
+
+    const toggleCategory = (e) => {
+        if (category.includes(e.target.value)) {
+            setCategory(prev => prev.filter(item => item !== e.target.value));
+        } else {
+            setCategory(prev => [...prev, e.target.value]);
+        }
+    };
+
+    const toggleSizeCategory = (e) => {
+        if (sizeCategory.includes(e.target.value)) {
+            setSizeCategory(prev => prev.filter(item => item !== e.target.value));
+        } else {
+            setSizeCategory(prev => [...prev, e.target.value]);
+        }
+    };
+
+    const toggleMaterialCategory = (e) => {
+        if (material.includes(e.target.value)) {
+            setMaterialCategory(prev => prev.filter(item => item !== e.target.value));
+        } else {
+            setMaterialCategory(prev => [...prev, e.target.value]);
+        }
+    };
 
     return (
         <>
@@ -64,13 +93,13 @@ export function ProductFilter() {
                     <div className={`filter-section ${displayFilter ? "" : "hidden"}`}>
                         <p className="filter-sizetitle">GENDER</p>
                         <p className="filter-item">
-                            <input type="checkbox" value="Men" /> Men
+                            <input type="checkbox" onChange={toggleCategory} value="Men" /> Men
                         </p>
                         <p className="filter-item">
-                            <input type="checkbox" value="Women" /> Women
+                            <input type="checkbox" onChange={toggleCategory} value="Women" /> Women
                         </p>
                         <p className="filter-item">
-                            <input type="checkbox" value="Kids" /> Kids
+                            <input type="checkbox" onChange={toggleCategory} value="Kids" /> Kids
                         </p>
                     </div>
 
@@ -78,13 +107,13 @@ export function ProductFilter() {
                         <p className="filter-sizetitle">CLOTHING SIZE</p>
                         <div className="filter-sizecategory">
                             <p className="filter-item">
-                                <input type="checkbox" value="Juniors" /> Juniors
+                                <input type="checkbox" onChange={toggleSizeCategory} value="Juniors" /> Juniors
                             </p>
                             <p className="filter-item">
-                                <input type="checkbox" value="Petite" /> Petite
+                                <input type="checkbox" onChange={toggleSizeCategory} value="Petite" /> Petite
                             </p>
                             <p className="filter-item">
-                                <input type="checkbox" value="Plussize" /> Plus Size
+                                <input type="checkbox" onChange={toggleSizeCategory} value="Plussize" /> Plus Size
                             </p>
                         </div>
                     </div>
@@ -93,16 +122,16 @@ export function ProductFilter() {
                         <p className="filter-sizetitle">MATERIAL</p>
                         <div className="filter-sizecategory">
                             <p className="filter-item">
-                                <input type="checkbox" value="Cotton" /> Cotton
+                                <input type="checkbox" onChange={toggleMaterialCategory} value="Cotton" /> Cotton
                             </p>
                             <p className="filter-item">
-                                <input type="checkbox" value="Leather" /> Leather
+                                <input type="checkbox" onChange={toggleMaterialCategory} value="Leather" /> Leather
                             </p>
                             <p className="filter-item">
-                                <input type="checkbox" value="Silk" /> Silk
+                                <input type="checkbox" onChange={toggleMaterialCategory} value="Silk" /> Silk
                             </p>
                             <p className="filter-item">
-                                <input type="checkbox" value="Suede" /> Suede
+                                <input type="checkbox" onChange={toggleMaterialCategory} value="Suede" /> Suede
                             </p>
                         </div>
                     </div>
