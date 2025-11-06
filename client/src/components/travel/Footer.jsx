@@ -53,10 +53,15 @@ export function ProductFilter() {
     const [sizeCategory, setSizeCategory] = useState([]);
     const [material, setMaterialCategory] = useState([]);
     const [sortType, setSortType] = useState("relevant");
+    console.log(sortType);
 
     useEffect(() => {
         filterResults();
     }, [category, sizeCategory, material, searchTerm, products]);
+
+    useEffect(() => {
+        sortProduct();
+    }, [sortType]);
 
     function filterResults() {
         let filtered = [...products];
@@ -109,6 +114,25 @@ export function ProductFilter() {
             setMaterialCategory(prev => prev.filter(item => item !== e.target.value));
         } else {
             setMaterialCategory(prev => [...prev, e.target.value]);
+        }
+    };
+
+    function sortProduct() {
+        let sorted = [...filteredProduct];
+        console.log(sorted);
+
+        switch (sortType) {
+            case "low-high":
+                setFilteredProduct(sorted.sort((a, b) => a.price - b.price));
+                break;
+
+            case "high-low":
+                setFilteredProduct(sorted.sort((a, b) => b.price - a.price));
+                break;
+
+            default:
+                filterResults();
+                break;
         }
     };
 
@@ -174,7 +198,10 @@ export function ProductFilter() {
                 <div className="products-container">
                     <div className="products-header">
                         <h2>All Collection</h2>
-                        <select className="sort-dropdown">
+                        <select 
+                            className="sort-dropdown" 
+                            onChange={(e) => setSortType(e.target.value)} 
+                        >
                             <option value="relevant">Sort by: Relevant</option>
                             <option value="low-high">Sort by: Low to High</option>
                             <option value="high-low">Sort by: High to Low</option>
@@ -182,7 +209,7 @@ export function ProductFilter() {
                     </div>
 
                     <div className="product-grid">
-                        {products.map((product) => (
+                        {filteredProduct.map((product) => (
                             <div className="product-card" key={product._id}>
                                 <div className="product-image">
                                     <img src={product.image[0]} alt={product.name} />
