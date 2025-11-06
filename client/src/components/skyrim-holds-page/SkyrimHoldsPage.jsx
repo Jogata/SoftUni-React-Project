@@ -6,7 +6,7 @@ import PageNavigation from "../navigation/PageNavigation";
 
 import "./skyrim-holds-page.css";
 
-const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
+// const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
 const thumbnailsData = [
   {
     img: "/skyrim/holds/Falkreath-hold-copy.jpeg",
@@ -48,32 +48,21 @@ const thumbnailsData = [
 
 export default function SkyrimHoldsPage() {
   const [index, setIndex] = useState(0);
-  // console.log("render");
-  // console.log(classes);
   // const [classes, setClasses] = useState(["item active", "item", "item", "item", "item", "item", "item", "item", "item"]);
+  const classes = ["item", "item", "item", "item", "item", "item", "item", "item", "item"];
+  classes[index] = "item active";
 
   function nextSlide() {
-    classes[index] = "item";
-    // console.log(index);
-    // console.log(classes);
-    // setClasses(classes[index] = "item");
-    // const newIndex = index + 1;
-    // setIndex(index => ++index);
-    // setIndex(index => index % classes.length);
+    // classes[index] = "item";
     let nextIndex = index + 1;
     nextIndex = nextIndex % classes.length;
-    // console.log(index);
-    classes[nextIndex] = "item active";
+    // classes[nextIndex] = "item active";
     thumbnailsData.push(thumbnailsData.shift());
     setIndex(index => nextIndex);
   }
 
   function prevSlide() {
     classes[index] = "item";
-    // setIndex(index => --index);
-    // setIndex(index => index + classes.length);
-    // setIndex(index => index % classes.length);
-    // console.log(index);
     let prevIndex = index - 1;
     prevIndex = prevIndex + classes.length;
     prevIndex = prevIndex % classes.length;
@@ -82,16 +71,9 @@ export default function SkyrimHoldsPage() {
     setIndex(index => prevIndex);
   }
 
-  // useEffect(() => {
-    // classes[0] = "item";
-    // classes[index] = "item active";
-    // console.log(index);
-    // console.log(classes);
-  // }, [index]);
-
   return (
     <>
-      <div className="page full-screen">
+      <div className="page full-screen relative">
         <div className="carousel-images">
           <img className={classes[0]} src="/skyrim/holds/Eastmarch-bg.jpg" />
           <img className={classes[1]} src="/skyrim/holds/Falkreath-hold-copy.jpeg" />
@@ -112,11 +94,9 @@ export default function SkyrimHoldsPage() {
 
             <div className="slider">
               <div className={classes[0]}>
-                {/* <img src="/skyrim/holds/Eastmarch-bg.jpg" /> */}
                 <div className="slide-content">
                   <div className="slide-subtitle">holds</div>
                   <div className="slide-title">Eastmarch</div>
-                  {/* <!-- <div className="topic"></div> --> */}
                   <p className="des">
                     Eastmarch or the Eastmarch Hold makes up the volcanic tundra of the Old Holds, within the province of Skyrim; it is one of the nine holds of the province. Eastmarch is largely a rural area, with sulfur pools that stretch the inner wastes. Eastmarch and its capital, <Link to="/skyrim-windhelm" className="valid">Windhelm</Link> was formerly the seat of power for the First Empire of the Nords, beginning with Ysgramor and continuing through the Ysgramor Dynasty.
                   </p>
@@ -241,7 +221,9 @@ export default function SkyrimHoldsPage() {
             </div>
 
             <div className="thumbnails render">
-              {thumbnailsData.map(data => <Thumbnail key={data.title} img={data.img} title={data.title} />)}
+              {thumbnailsData.map(data =>
+                <Thumbnail key={data.title} img={data.img} title={data.title} />
+              )}
             </div>
 
             <div className="arrows">

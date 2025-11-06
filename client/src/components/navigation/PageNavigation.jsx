@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function PageNavigation() {
     const { isAuthenticated } = useContext(AuthContext);
+    // console.log("nav");
     return (
         <>
             <nav className="main-nav alt">
