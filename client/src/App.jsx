@@ -82,15 +82,15 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-{/* <ShopContextProvider>
+<ShopContextProvider>
         <Navigation />
         <Home />
-</ShopContextProvider> */}
+</ShopContextProvider>
 
-<ShopContextProvider1>
+{/* <ShopContextProvider1>
         <Navbar />
         <ProductFilter />
-</ShopContextProvider1>
+</ShopContextProvider1> */}
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

@@ -53,7 +53,9 @@ export function Home() {
             <FiltersSection >
                 <Filters />
             </FiltersSection>
-            <Products />
+                {/* <Products /> */}
+                {/* <TestTitle /> */}
+            <ProductsContainer />
         </HomeContent>
     )
 }
@@ -199,25 +201,69 @@ function MaterialFilters() {
     )
 }
 
-function Products() {
+function ProductsContainer({children}) {
     console.log("Products");
     const { filtered } = useContext(ShopContext);
     const [sortType, setSortType] = useState("relevant");
     let sorted = [...filtered];
 
-    // function sortProduct() {
-    //     switch (sortType) {
-    //         case "low-high":
-    //             sorted.sort((a, b) => a.price - b.price);
-    //             break;
-    //         case "high-low":
-    //             sorted.sort((a, b) => b.price - a.price);
-    //             break;
-    //         default:
-    //             sorted = [...filtered];
-    //             break;
-    //     }
-    // }
+    function sortProduct(type) {
+        const sort = {
+            "low": () => sorted.sort((a, b) => a.price - b.price), 
+            "high": () => sorted.sort((a, b) => b.price - a.price), 
+            "relevant": () => sorted = [...filtered]
+        }
+
+        sort[type]();
+    }
+    
+    sortProduct(sortType);
+
+    return (
+        <ProductsTest sorted={sorted} title={<TestTitle />}>
+            {/* {children} */}
+            <PriceFilters setSortType={setSortType} />
+        </ProductsTest>
+    )
+}
+
+
+function TestTitle() {
+    console.log("title");
+    return (
+        <h1>test</h1>
+    )
+}
+
+function ProductsTest({children, sorted, title}) {
+    return (
+        <div className="products-container">
+            {title}
+            <div className="products-header">
+                <h2>All Collection</h2>
+                {children}
+            </div>
+
+            <div className="product-grid">
+                {sorted.map(product => (
+                    <div className="product-card" key={product._id}>
+                        <div className="product-image">
+                            <img src={product.image[0]} alt={product.name} />
+                        </div>
+                        <h3>{product.name}</h3>
+                        <p>${product.price}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+function Products() {
+    console.log("Products");
+    const { filtered } = useContext(ShopContext);
+    const [sortType, setSortType] = useState("relevant");
+    let sorted = [...filtered];
 
     function sortProduct(type) {
         const sort = {
@@ -236,26 +282,6 @@ function Products() {
             <div className="products-header">
                 <h2>All Collection</h2>
                 <PriceFilters setSortType={setSortType} />
-                {/* <select className="sort-dropdown">
-                    <option 
-                        value="relevant" 
-                        onClick={(e) => setSortType(e.target.value)}
-                    >
-                        Sort by: Relevant
-                    </option>
-                    <option 
-                        value="low" 
-                        onClick={(e) => setSortType(e.target.value)}
-                    >
-                        Sort by: Low to High
-                    </option>
-                    <option 
-                        value="high" 
-                        onClick={(e) => setSortType(e.target.value)}
-                    >
-                        Sort by: High to Low
-                    </option>
-                </select> */}
             </div>
 
             <div className="product-grid">
