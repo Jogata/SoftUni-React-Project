@@ -19,7 +19,6 @@ export default function SkyrimSteelArmor() {
 }
 
 function PageContent({ children }) {
-    console.log("PageContent");
     const [current, setCurrent] = useState(2);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
@@ -67,7 +66,7 @@ function PageContent({ children }) {
             
             {isGalleryOpen ? (
                 <div className="fixed-3d-gallery">
-                    <button id="close-btn" onClick={closeGallery}>x</button>
+                    <button id="close-btn" onClick={closeGallery} autoFocus>x</button>
                     <div className="slider">
                         <img className={slides[0]} src="/skyrim/equipment/armor/light/steel/a-male-scales-breastplate-01.png" alt="" />
                         <img className={slides[1]} src="/skyrim/equipment/armor/light/steel/an-elven-male-full-scales-armor-02.png" alt="" />
@@ -94,7 +93,6 @@ function PageContent({ children }) {
 }
 
 function Header() {
-    console.log("Header");
     return (
         <div className="header">
             <h1 className="big-fs cursive">
@@ -105,7 +103,6 @@ function Header() {
 }
 
 function MainArticle({ children }) {
-    console.log("MainArticle");
     return (
         <article className="main-article">
             <div className="article-content">
@@ -136,14 +133,12 @@ function MainArticle({ children }) {
 }
 
 function Button({ openGallery }) {
-    console.log("Button");
     return (
         <button className="details-btn" onClick={openGallery}>open gallery</button>
     )
 }
 
 function SmithingArticle() {
-    console.log("SmithingArticle");
     return (
         <article>
             <div className="article-content">
@@ -156,7 +151,6 @@ function SmithingArticle() {
 }
 
 function EnchantingArticle() {
-    console.log("EnchantingArticle");
     return (
         <article>
         <div className="article-content">

@@ -6,7 +6,6 @@ import PageNavigation from "../navigation/PageNavigation";
 
 import "./skyrim-holds-page.css";
 
-// const classes = ["item active", "item", "item", "item", "item", "item", "item", "item", "item"];
 const thumbnailsData = [
   {
     img: "/skyrim/holds/Falkreath-hold-copy.jpeg",
@@ -48,15 +47,12 @@ const thumbnailsData = [
 
 export default function SkyrimHoldsPage() {
   const [index, setIndex] = useState(0);
-  // const [classes, setClasses] = useState(["item active", "item", "item", "item", "item", "item", "item", "item", "item"]);
   const classes = ["item", "item", "item", "item", "item", "item", "item", "item", "item"];
   classes[index] = "item active";
 
   function nextSlide() {
-    // classes[index] = "item";
     let nextIndex = index + 1;
     nextIndex = nextIndex % classes.length;
-    // classes[nextIndex] = "item active";
     thumbnailsData.push(thumbnailsData.shift());
     setIndex(index => nextIndex);
   }

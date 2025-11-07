@@ -10,6 +10,7 @@ import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverview
 import SkyrimRaidsPage from './components/raids/raids-page/SkyrimRaidsPage'
 import SkyrimRaidDetailsPage from './components/raids/raid-details-page/SkyrimRaidDetailsPage'
 import CrateRaidPage from './components/raids/create-raid/CreateRaid'
+import SkyrimBestiaryPage from './components/skyrim-bestiary/SkyrimBestiaryPage';
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
@@ -34,7 +35,6 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import SkyrimBestiaryPage from './components/skyrim-bestiary/SkyrimBestiaryPage';
 
 function Loader() {
   return (

@@ -1,0 +1,3 @@
+.bestiary .header-content .image img {
+    transform: rotateY(180deg);
+}

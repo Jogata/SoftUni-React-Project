@@ -28,6 +28,10 @@ ul {
   padding-left: 1rem;
 }
 
+.bulled li {
+  margin: 0.5rem 0;
+}
+
 a {
   display: inline-block;
   text-decoration: none;
@@ -54,7 +58,9 @@ a:focus-visible {
 a.not-active {
   color: red;
   font-weight: bold;
-  cursor: text;
+  cursor: not-allowed;
+  pointer-events: none;
+  user-select: none;
 }
 
 a.not-active:hover {
@@ -513,6 +519,7 @@ main.max-width {
 .todo {}
 
 .locations .header-content,
+.bestiary .header-content,
 .equipment .header-content,
 .armor-sets .header-content,
 .armor .header-content {
@@ -527,6 +534,7 @@ main.max-width {
 .raids h1,
 .locations h1,
 .equipment h1,
+.bestiary h1,
 .armor-sets h1,
 .steel-armor h1,
 .armor h1 {
@@ -1014,11 +1022,13 @@ main.max-width {
 }
 
 .fixed-3d-gallery .arrows button#prev i {
-  padding: 0.36em 0.6em 0.36em 0.48em;
+  /* padding: 0.36em 0.6em 0.36em 0.48em; */
+  padding: 0.36em 0.62em 0.36em 0.52em;
 }
 
 .fixed-3d-gallery .arrows button#next i {
-  padding: 0.36em 0.48em 0.36em 0.6em;
+  /* padding: 0.36em 0.48em 0.36em 0.6em; */
+  padding: 0.36em 0.52em 0.36em 0.62em;
 }
 
 .fixed-3d-gallery .arrows button:hover {
