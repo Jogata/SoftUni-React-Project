@@ -519,6 +519,7 @@ main.max-width {
 .todo {}
 
 .locations .header-content,
+.races .header-content,
 .bestiary .header-content,
 .equipment .header-content,
 .armor-sets .header-content,
@@ -534,6 +535,7 @@ main.max-width {
 .raids h1,
 .locations h1,
 .equipment h1,
+.races h1,
 .bestiary h1,
 .armor-sets h1,
 .steel-armor h1,

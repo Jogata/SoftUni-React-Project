@@ -10,6 +10,7 @@ import SkyrimOverviewPage from './components/skyrim-overview-page/SkyrimOverview
 import SkyrimRaidsPage from './components/raids/raids-page/SkyrimRaidsPage'
 import SkyrimRaidDetailsPage from './components/raids/raid-details-page/SkyrimRaidDetailsPage'
 import CrateRaidPage from './components/raids/create-raid/CreateRaid'
+import SkyrimRacesPage from './components/skyrim-races/SkyrimRacesPage';
 import SkyrimBestiaryPage from './components/skyrim-bestiary/SkyrimBestiaryPage';
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
@@ -89,6 +90,7 @@ function App() {
             <Route path='/raid/details/:id' element={<SkyrimRaidDetailsPage />} />
             <Route path='/create-raid' element={<CrateRaidPage />} />
             <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
+            <Route path='/skyrim-races' element={<SkyrimRacesPage />} />
             <Route path='/skyrim-bestiary' element={<SkyrimBestiaryPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />

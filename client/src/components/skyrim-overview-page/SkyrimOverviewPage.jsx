@@ -105,7 +105,7 @@ export default function SkyrimOverviewPage() {
                 {/* </div> */}
                 <div className="title flex">
                   <img src="/skyrim/overview/ornament-1.png" alt="" className="ornament-left" />
-                  <h2>factions</h2>
+                  <Link to="/skyrim-races">factions</Link>
                   <img src="/skyrim/overview/ornament-1.png" alt="" className="ornament-right" />
                 </div>
               </div>
