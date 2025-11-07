@@ -34,6 +34,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
+import SkyrimBestiaryPage from './components/skyrim-bestiary/SkyrimBestiaryPage';
 
 function Loader() {
   return (
@@ -88,6 +89,7 @@ function App() {
             <Route path='/raid/details/:id' element={<SkyrimRaidDetailsPage />} />
             <Route path='/create-raid' element={<CrateRaidPage />} />
             <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
+            <Route path='/skyrim-bestiary' element={<SkyrimBestiaryPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />
             <Route path='/skyrim-armor-sets' element={<SkyrimArmorSetsPage />} />
@@ -101,7 +103,7 @@ function App() {
             <Route path='/skyrim-eastmarch' element={<SkyrimEastmarchPage />} />
             <Route path='/skyrim-eastmarch-hold-history' element={<SkyrimEastmarchHistoryPage />} />
             <Route path='/skyrim-windhelm' element={<SkyrimWindhelmPage />} />
-            <Route path='//skyrim-windhelm-history' element={<SkyrimWindhelmHistoryPage />} />
+            <Route path='/skyrim-windhelm-history' element={<SkyrimWindhelmHistoryPage />} />
             <Route path='/witcher' element={<TheWitcherHomePage />} />
             <Route path='/god-of-war' element={<GodOfWarHomePage />} />
             <Route path='/register' element={<AuthPage classes={"full-screen auth-page"} />} />

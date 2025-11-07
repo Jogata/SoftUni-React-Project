@@ -150,7 +150,7 @@ export default function SkyrimOverviewPage() {
                 <section className="title flex">
                   {/* <!-- <img src="./asset/skyrim/overview/00test/rig-kilt-Copy.png" alt="" className="h2l"> --> */}
                   <img src="/skyrim/overview/ornament-1.png" alt="Decorative ornament" className="ornament-left" />
-                  <a href="#bestiary">bestiary</a>
+                  <Link to="/skyrim-bestiary">bestiary</Link>
                   {/* <!-- <img src="./asset/skyrim/overview/00test/rig-kilt-Copy.png" alt="" className="h2r"> --> */}
                   <img src="/skyrim/overview/ornament-1.png" alt="Decorative ornament" className="ornament-right" />
                 </section>
