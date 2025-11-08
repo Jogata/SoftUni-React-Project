@@ -36,6 +36,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
+import SkyrimOrcRacePage from './components/skyrim-races/SkyrimOrcRacePage';
 
 function Loader() {
   return (
@@ -91,6 +92,7 @@ function App() {
             <Route path='/create-raid' element={<CrateRaidPage />} />
             <Route path='/skyrim-locations' element={<SkyrimLocationsPage />} />
             <Route path='/skyrim-races' element={<SkyrimRacesPage />} />
+            <Route path='/skyrim-orc' element={<SkyrimOrcRacePage />} />
             <Route path='/skyrim-bestiary' element={<SkyrimBestiaryPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />

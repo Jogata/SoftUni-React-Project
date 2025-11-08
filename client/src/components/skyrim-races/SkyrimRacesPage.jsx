@@ -1,4 +1,5 @@
-// import "./skyrim-bestiary-page.css";
+// import "./skyrim-races-page.css";
+import { Link } from "react-router-dom";
 import PageNavigation from "../navigation/PageNavigation";
 
 export default function SkyrimRacesPage() {
@@ -55,7 +56,7 @@ export default function SkyrimRacesPage() {
                                 <li>Altmer</li>
                                 <li>Bosmer</li>
                                 <li>Dunmer</li>
-                                <li><a href="#" className="link">Orc</a></li>
+                                <li><Link to="/skyrim-orc" className="link">Orc</Link></li>
                             </ul>
                             {/* <a href="#" className="btn not-active">Learn More</a> */}
                         </div>
