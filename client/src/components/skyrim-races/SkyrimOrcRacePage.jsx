@@ -61,7 +61,7 @@ export default function SkyrimOrcRacePage() {
 
                     <article>
                         <div className="article-content">
-                            <h3 className="cursive">Gameplay</h3>
+                            <h2 className="cursive">Gameplay</h2>
                             <p>Bonuses to both one-handed and two-handed weapons allows players to choose their weapon styles early-on, and they receive an early benefit to augmenting their weaponry with bonuses to both Smithing and Enchanting. These combined with a strong bonus to Heavy Armor give Orcs the opportunity to become very fearsome warriors. However, to balance their potency in physical combat, they have no benefits for magic or stealth character builds.</p>
                             <p>Their Berserker Rage power is extremely useful at all levels, potentially making the difference between life and death at earlier levels against stronger opponents. Because it has no effect on magic, try to save it for combat against tough melee or archery opponents for best results.</p>
                             <p>Orc players are automatically Blood-Kin to the Orcs of Skyrim, providing them with full access to all Orc Strongholds.</p>

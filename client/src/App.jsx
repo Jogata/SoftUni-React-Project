@@ -11,7 +11,9 @@ import SkyrimRaidsPage from './components/raids/raids-page/SkyrimRaidsPage'
 import SkyrimRaidDetailsPage from './components/raids/raid-details-page/SkyrimRaidDetailsPage'
 import CrateRaidPage from './components/raids/create-raid/CreateRaid'
 import SkyrimRacesPage from './components/skyrim-races/SkyrimRacesPage';
+import SkyrimOrcRacePage from './components/skyrim-races/SkyrimOrcRacePage';
 import SkyrimBestiaryPage from './components/skyrim-bestiary/SkyrimBestiaryPage';
+import SkyrimDraugrPage from './components/skyrim-bestiary/SkyrimDraugrPage';
 import SkyrimLocationsPage from './components/skyrim-locations-page/SkyrimLocationsPage'
 import SkyrimHoldsPage from './components/skyrim-holds-page/SkyrimHoldsPage'
 import SkyrimEastmarchPage from './components/skyrim-eastmarch/SkyrimEastmarchPage'
@@ -36,7 +38,6 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import SkyrimOrcRacePage from './components/skyrim-races/SkyrimOrcRacePage';
 
 function Loader() {
   return (
@@ -94,6 +95,7 @@ function App() {
             <Route path='/skyrim-races' element={<SkyrimRacesPage />} />
             <Route path='/skyrim-orc' element={<SkyrimOrcRacePage />} />
             <Route path='/skyrim-bestiary' element={<SkyrimBestiaryPage />} />
+            <Route path='/skyrim-draugr' element={<SkyrimDraugrPage />} />
             <Route path='/skyrim-equipment' element={<SkyrimEquipmentPage />} />
             <Route path='/skyrim-armor' element={<SkyrimArmorPage />} />
             <Route path='/skyrim-armor-sets' element={<SkyrimArmorSetsPage />} />

@@ -1,4 +1,5 @@
 import "./skyrim-bestiary-page.css";
+import { Link } from "react-router-dom";
 import PageNavigation from "../navigation/PageNavigation";
 
 export default function SkyrimBestiaryPage() {
@@ -118,7 +119,7 @@ export default function SkyrimBestiaryPage() {
                             <p>Undead creatures consist of spirits, reanimated skeletons, and reanimated corpses. Vampires are also considered undead, but are undead NPCs instead of creatures.</p>
                             <ul className="bulled">
                                 <li>Dragon Priest</li>
-                                <li>Draugr</li>
+                                <li><Link to="/skyrim-draugr" className="link" >Draugr</Link></li>
                                 <li>Ghost</li>
                                 <li>Skeleton</li>
                                 <li>Zombie</li>
