@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import hero from "./images/estates/skyscraper-2.jpg";
+import { PropertiesContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
     const [Mobile, setMobile] = useState(false);
@@ -50,7 +51,20 @@ export function Hero() {
                 </div>
                 {/* </div> */}
             </div>
+            <Test />
         </>
+    )
+}
+
+function Test() {
+    const {properties} = useContext(PropertiesContext);
+
+    return (
+        properties.map(p => {
+            return (
+                <h1>{p.name}</h1>
+            )
+        })
     )
 }
 

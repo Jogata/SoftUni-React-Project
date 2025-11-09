@@ -48,26 +48,26 @@ export function AuthContextProvider(props) {
 
 
 
-import glass1 from "./images/estates/glass1.jpg";
-import glass2 from "./images/estates/hero.jpg";
-import glass3 from "./images/estates/glass3.jpg";
-import smart3 from "./images/estates/smart3.jpg";
-import smart2 from "./images/estates/smart2.jpg";
-import smart1 from "./images/estates/smart1.jpg";
-import apartment1 from "./images/estates/apartment1.jpg";
-import apartment2 from "./images/estates/apartment2.jpg";
-import apartment3 from "./images/estates/apartment3.jpg";
-import bungalow1 from "./images/estates/bungalow1.jpg";
-import bungalow2 from "./images/estates/bungalow2.jpg";
-import bungalow3 from "./images/estates/bungalow3.jpg";
-import office1 from "./images/estates/office1.jpg";
-import office2 from "./images/estates/office2.jpg";
-import office3 from "./images/estates/office3.jpg";
-import villa1 from "./images/estates/villa1.jpg";
-import villa2 from "./images/estates/villa2.jpg";
-import villa3 from "./images/estates/villa3.jpg";
+import glass1 from "../components/travel/images/estates/glass1.jpg";
+import glass2 from "../components/travel/images/estates/hero.jpg";
+import glass3 from "../components/travel/images/estates/glass3.jpg";
+import smart3 from "../components/travel/images/estates/smart3.jpg";
+import smart2 from "../components/travel/images/estates/smart2.jpg";
+import smart1 from "../components/travel/images/estates/smart1.jpg";
+import apartment1 from "../components/travel/images/estates/apartment1.jpg";
+import apartment2 from "../components/travel/images/estates/apartment2.jpg";
+import apartment3 from "../components/travel/images/estates/apartment3.jpg";
+import bungalow1 from "../components/travel/images/estates/bungalow1.jpg";
+import bungalow2 from "../components/travel/images/estates/bungalow2.jpg";
+import bungalow3 from "../components/travel/images/estates/bungalow3.jpg";
+import office1 from "../components/travel/images/estates/office1.jpg";
+import office2 from "../components/travel/images/estates/office2.jpg";
+import office3 from "../components/travel/images/estates/office3.jpg";
+import villa1 from "../components/travel/images/estates/villa1.jpg";
+import villa2 from "../components/travel/images/estates/villa2.jpg";
+import villa3 from "../components/travel/images/estates/villa3.jpg";
 
-const properties = [
+const data = [
     {
         id: 1,
         name: "Ocean Breeze Apartment",
@@ -268,3 +268,27 @@ const properties = [
         property: "House",
     },
 ];
+
+export const PropertiesContext = createContext();
+
+export function PropertiesContextProvider(props) {
+    const [properties] = useState(data);
+
+    function isDefault(value) {
+        return value === "default";
+    }
+
+    const [country, setCountry] = useState("default");
+    const [property, setProperty] = useState("default");
+    const [price, setPrice] = useState("default");
+
+    const ctx = {
+        properties
+    };
+
+    return (
+        <PropertiesContext.Provider value={ctx}>
+            {props.children}
+        </PropertiesContext.Provider>
+    )
+}
