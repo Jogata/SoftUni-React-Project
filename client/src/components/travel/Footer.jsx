@@ -7,51 +7,51 @@ export function Navigation() {
     const iconClasses = Mobile ? "fa fa-times close" : "fa fa-bars open";
     const navClasses = Mobile ? "nav-links" : "links";
 
-    return ( 
-        <div>
+    return (
+        <>
             <div className="navigation">
                 <div className="nav-logo">
                     <h2>CREVA</h2>
-                </div> 
-                <div className={navClasses} onClick={() => setMobile(false)}>
+                </div>
+                <nav className={navClasses} onClick={() => setMobile(false)}>
                     <ul>
                         <li>Home</li>
                         <li>About Us</li>
                         <li>Contact</li>
                     </ul>
-                </div> 
+                </nav>
                 <div className="button">
                     <button>Booking</button>
                 </div>
                 <button className="toggle" onClick={() => setMobile(!Mobile)}>
                     <i className={iconClasses}></i>
                 </button>
-            </div> 
-        </div> 
-    ) 
-} 
+            </div>
+        </>
+    )
+}
 
 export function Hero() {
-  return (
-    <div>
-        <div className="hero-container">
-            <img src={hero} alt="" />
-            <div className="hero-overlay">
+    return (
+        <>
+            <div className="hero-container">
+                <img src={hero} alt="" />
+                {/* <div className="hero-overlay"> */}
                 <div className="hero-content">
                     <h1>Find The Perfect Dream Property For Your Future</h1>
                     <p>
-                        From cozy starter homes to luxurious estates, we offer 
-                        a diverse range of properties to suit your unique lifestyle. 
+                        From cozy starter homes to luxurious estates, we offer
+                        a diverse range of properties to suit your unique lifestyle.
                         Discover your dream home with CREVA today.
                     </p>
                     <div className="hero-button">
                         <button>Buy Property</button>
                     </div>
                 </div>
+                {/* </div> */}
             </div>
-        </div>
-    </div>
-  )
+        </>
+    )
 }
 
 // export function Footer() {

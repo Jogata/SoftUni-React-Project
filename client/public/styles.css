@@ -1181,7 +1181,7 @@ body.overflow .fixed-3d-gallery {
   /* height: 100vh; */
   /* margin-top: -90px; */
   margin: auto;
-  padding: 15rem 1rem;
+  padding: 5rem 1rem 25rem;
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
@@ -1202,7 +1202,7 @@ body.overflow .fixed-3d-gallery {
   z-index: -1;
 }
 
-.hero-overlay {
+/* .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1212,7 +1212,7 @@ body.overflow .fixed-3d-gallery {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-}
+} */
 
 .hero-content {
   max-width: 1000px;
