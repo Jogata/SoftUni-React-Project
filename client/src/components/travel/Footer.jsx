@@ -1,4 +1,5 @@
 import { useState } from "react";
+import hero from "./images/estates/skyscraper-2.jpg";
 
 export function Navigation() {
     const [Mobile, setMobile] = useState(false);
@@ -29,6 +30,29 @@ export function Navigation() {
         </div> 
     ) 
 } 
+
+export function Hero() {
+  return (
+    <div>
+        <div className="hero-container">
+            <img src={hero} alt="" />
+            <div className="hero-overlay">
+                <div className="hero-content">
+                    <h1>Find The Perfect Dream Property For Your Future</h1>
+                    <p>
+                        From cozy starter homes to luxurious estates, we offer 
+                        a diverse range of properties to suit your unique lifestyle. 
+                        Discover your dream home with CREVA today.
+                    </p>
+                    <div className="hero-button">
+                        <button>Buy Property</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}
 
 // export function Footer() {
 //     return (
