@@ -1307,6 +1307,9 @@ body.overflow .fixed-3d-gallery {
 
 .search-btn {
   padding: 0.8rem 1.5rem;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
   color: #fff;
   font-size: 1.2rem;
   /* border: none; */

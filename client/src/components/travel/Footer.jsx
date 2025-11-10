@@ -32,13 +32,21 @@ export function Navigation() {
     )
 }
 
-export function Hero() {
+export function Home() {
+    return (
+        <>
+            <Hero />
+            <Filters />
+        </>
+    )
+}
+
+function Hero() {
     console.log("Hero");
     return (
         <>
             <div className="hero-container">
                 <img src={hero} alt="" />
-                {/* <div className="hero-overlay"> */}
                 <div className="hero-content">
                     <h1>Find The Perfect Dream Property For Your Future</h1>
                     <p>
@@ -50,15 +58,15 @@ export function Hero() {
                         <button>Buy Property</button>
                     </div>
                 </div>
-                {/* </div> */}
             </div>
-            <Filters />
+            {/* <Filters /> */}
+            <Test />
         </>
     )
 }
 
 function Filters() {
-    const { country, setCountry, property, setProperty, price, setPrice } = useContext(PropertiesContext);
+    const { country, setCountry, property, setProperty, price, setPrice, filter } = useContext(PropertiesContext);
     console.log("Filters");
 
     return (
@@ -87,7 +95,7 @@ function Filters() {
                     <select 
                         className=""
                         value={property}
-                        onChange={(e) => setProperty(e.target.vale)}
+                        onChange={(e) => setProperty(e.target.value)}
                     >
                         <option value="default">Select your place</option>
                         <option value="Apartment">Apartment</option>
@@ -109,14 +117,14 @@ function Filters() {
                         <option value="default">Select price range</option>
                         <option value="0-200000">0-200000</option>
                         <option value="200001-300000">200001-300000</option>
-                        <option value="300001-400000<">300001-400000</option>
+                        <option value="300001-400000">300001-400000</option>
                     </select>
                 </div>
             </div>
 
             <button
                 className="search-btn"
-                onClick={() => console.log("todo filter")}
+                onClick={filter}
             >
                 <i className="ri-search-line"></i>
             </button>
@@ -125,10 +133,11 @@ function Filters() {
 }
 
 function Test() {
-    const {properties} = useContext(PropertiesContext);
+    const {filtered} = useContext(PropertiesContext);
+    console.log(filtered);
 
     return (
-        properties.map(p => {
+        filtered.map(p => {
             return (
                 <h1>{p.name}</h1>
             )
