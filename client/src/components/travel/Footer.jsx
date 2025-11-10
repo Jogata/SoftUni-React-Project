@@ -33,6 +33,7 @@ export function Navigation() {
 }
 
 export function Hero() {
+    console.log("Hero");
     return (
         <>
             <div className="hero-container">
@@ -51,8 +52,75 @@ export function Hero() {
                 </div>
                 {/* </div> */}
             </div>
-            <Test />
+            <Filters />
         </>
+    )
+}
+
+function Filters() {
+    const { country, setCountry, property, setProperty, price, setPrice } = useContext(PropertiesContext);
+    console.log("Filters");
+
+    return (
+        <div className="filters">
+            <div className="filter">
+                <i className="ri-map-pin-2-line"></i>
+                <div>
+                    <p className="">Location (any) </p>
+                    <select 
+                        className=""
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                    >
+                        <option value="default">Select your place</option>
+                        <option value="United State">United State</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                    </select>
+                </div>
+            </div>
+
+            <div className="filter">
+                <i className="fa fa-home"></i>
+                <div>
+                    <p className="">Property type (any)</p>
+                    <select 
+                        className=""
+                        value={property}
+                        onChange={(e) => setProperty(e.target.vale)}
+                    >
+                        <option value="default">Select your place</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="House">House</option>
+                    </select>
+                </div>
+            </div>
+
+            <div className="filter">
+                <i className="fa fa-usd" />
+                <div>
+                    <p className="">Price range (any)</p>
+                    <select 
+                        className=""
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    >
+                        <option value="default">Select price range</option>
+                        <option value="0-200000">0-200000</option>
+                        <option value="200001-300000">200001-300000</option>
+                        <option value="300001-400000<">300001-400000</option>
+                    </select>
+                </div>
+            </div>
+
+            <button
+                className="search-btn"
+                onClick={() => console.log("todo filter")}
+            >
+                <i className="ri-search-line"></i>
+            </button>
+        </div>
     )
 }
 

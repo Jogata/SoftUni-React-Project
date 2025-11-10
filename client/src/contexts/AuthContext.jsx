@@ -283,7 +283,13 @@ export function PropertiesContextProvider(props) {
     const [price, setPrice] = useState("default");
 
     const ctx = {
-        properties
+        properties, 
+        country, 
+        setCountry, 
+        property, 
+        setProperty, 
+        price,  
+        setPrice
     };
 
     return (
