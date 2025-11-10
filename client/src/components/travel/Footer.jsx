@@ -37,6 +37,7 @@ export function Home() {
         <>
             <Hero />
             <Filters />
+            <Properties />
         </>
     )
 }
@@ -59,14 +60,21 @@ function Hero() {
                     </div>
                 </div>
             </div>
-            {/* <Filters /> */}
-            <Test />
+            {/* <Test /> */}
         </>
     )
 }
 
 function Filters() {
-    const { country, setCountry, property, setProperty, price, setPrice, filter } = useContext(PropertiesContext);
+    const { 
+        country, 
+        setCountry, 
+        property, 
+        setProperty, 
+        price, 
+        setPrice, 
+        filter 
+    } = useContext(PropertiesContext);
     console.log("Filters");
 
     return (
@@ -74,7 +82,7 @@ function Filters() {
             <div className="filter">
                 <i className="ri-map-pin-2-line"></i>
                 <div>
-                    <p className="">Location (any) </p>
+                    <p className="filter-name">Location (any) </p>
                     <select 
                         className=""
                         value={country}
@@ -91,7 +99,7 @@ function Filters() {
             <div className="filter">
                 <i className="fa fa-home"></i>
                 <div>
-                    <p className="">Property type (any)</p>
+                    <p className="filter-name">Property type (any)</p>
                     <select 
                         className=""
                         value={property}
@@ -106,9 +114,11 @@ function Filters() {
             </div>
 
             <div className="filter">
-                <i className="fa fa-usd" />
+                <i className="normal">$</i>
+                {/* <i className="fa fa-usd"></i> */}
+                {/* <i className="ri-money-dollar-circle-line"></i> */}
                 <div>
-                    <p className="">Price range (any)</p>
+                    <p className="filter-name">Price range (any)</p>
                     <select 
                         className=""
                         value={price}
@@ -128,6 +138,46 @@ function Filters() {
             >
                 <i className="ri-search-line"></i>
             </button>
+        </div>
+    )
+}
+
+function Properties() {
+    const { filtered } = useContext(PropertiesContext);
+    // const filtered = [];
+    console.log("Properties");
+
+    return (
+        <div className="properties">
+            <div className="header">
+                <h2>Featured Properties</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    Molestias ad debitis quo explicabo a accusamus, vitae fugit 
+                    cum ea numquam aliquam mollitia maxime doloribus labore 
+                    voluptatibus atque consequatur perferendis qui quisquam.
+                </p>
+            </div>
+            <div className="list">
+                {filtered.length == 0 ? (
+                    <p>No properties available</p>
+                ) : (
+                    filtered.map(property => (
+                        <div className="property" key={property.id}>
+                            <img src={property.image} alt="" />
+                            <div className="details">
+                                <p className="country">{property.country}</p>
+                                <h3>{property.name}</h3>
+                                <p className="price">${property.price}</p>
+                                <div className="info">
+                                    <span>Beds: {property.beds}</span>
+                                    <span>Baths: {property.baths}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                )}
+            </div>
         </div>
     )
 }
