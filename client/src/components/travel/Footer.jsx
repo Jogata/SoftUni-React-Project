@@ -208,31 +208,31 @@ export function PropertyPage() {
     return (
         <div className="property-page">
             <div className="header">
-                <h2>{house.name}</h2>
-                <p>${house.price}</p>
+                <h1 className="name">{house.name}</h1>
+                <p className="price">${house.price}</p>
             </div>
-            <h3 className="country">{house.country}</h3>
+            <p className="country">{house.country}</p>
             <hr />
 
-            <div className="">
-                <p className="">
+            <div className="details">
+                <p className="detail">
                     <i className="fa fa-bed"></i>
-                    {house.beds}{" "}Beds
+                    {house.beds} Beds
                 </p>
-                <p className="">
+                <p className="detail">
                     <i className="fa fa-bath"></i>
-                    {house.baths}{" "}Baths
+                    {house.baths} Baths
                 </p>
-                <p className="">
+                <p className="detail">
                     <i className="ri-map-pin-2-line"></i>
-                    {house.property}{" "}
+                    {house.property}
                 </p>
             </div>
             <hr />
 
             <img src={house.image} alt="" />
 
-            <h2 className="">Property Description</h2>
+            <h2 className="page-subtitle">Property Description</h2>
 
             <dl className="list">
                 <div>
@@ -262,31 +262,35 @@ export function PropertyPage() {
             <p className="desc">{house.description}</p>
             <p className="desc">{house.description}</p>
 
-            {/* <div className="">
-        <p className="">Please fill the form for property inspection</p>
-        <form >
-          <h2 className="">Book An Inspection</h2>
-          <div className="">
-            <label className="">Full Name *</label>
-            <div className="">
-              <input type="text" className="" placeholder="First Name" required />
-              <input type="text" className="" placeholder="Last Name" required />
+            <div className="form-section">
+                <p className="header">Please fill the form for property inspection</p>
+                <form >
+                    <h2 className="form-title">Book An Inspection</h2>
+                    <div className="group">
+                        <label>Full Name *</label>
+                        <div className="names">
+                            <input type="text" className="" placeholder="First Name" required />
+                            <input type="text" className="" placeholder="Last Name" required />
+                        </div>
+                    </div>
+
+                    <div className="group">
+                        <label>E-mail *</label>
+                        <input type="email" className="" placeholder="example@gmail.com" />
+                    </div>
+
+                    <div className="group">
+                        <label>Messages</label>
+                        <textarea 
+                            name="message" 
+                            rows={10} 
+                            placeholder="Hi, I'm intrested in this property" 
+                        ></textarea>
+                    </div>
+
+                    <button className="submit-btn">Submit</button>
+                </form>
             </div>
-          </div>
-
-          <div className="">
-            <label className=""> E-mail *</label>
-            <input type="email" className="" placeholder="example@gmail.com"/>
-          </div>
-
-          <div className="">
-            <label className="">Messages</label>
-            <textarea name="message" placeholder="Hi, I'm intrested in this property" className=""></textarea>
-          </div>
-
-          <button className=""> Submit</button>
-        </form>
-      </div> */}
         </div>
     );
 };

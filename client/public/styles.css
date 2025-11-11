@@ -1407,3 +1407,164 @@ body.overflow .fixed-3d-gallery {
 .property .info span {
   margin-right: 1rem;
 }
+
+.property-page {
+  /* width: 80%; */
+  max-width: 1600px;
+  /* margin-top: 2rem; */
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.property-page hr {
+  margin: 1rem 0;
+  color: #666;
+}
+
+.property-page hr:last-of-type {
+  max-width: 1040px;
+}
+
+.property-page .header {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.property-page .header h1 {
+  color: #f07229;
+  font-size: 3rem;
+}
+
+.property-page .header .price {
+  /* color: #f07229; */
+  color: #ccc;
+  font-size: 2rem;
+}
+
+.property-page .country {
+  color: #888;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.property-page .details {
+  padding: 0 5%;
+  display: flex;
+  gap: 1rem 4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.8rem;
+}
+
+.property-page .details i {
+  margin-right: 2rem;
+}
+
+.property-page .page-subtitle {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+}
+
+.property-page .list dt {
+  display: block;
+  color: #999;
+  font-size: 1.4rem;
+}
+
+.property-page .list dd {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.property-page .desc {
+  max-width: 1000px;
+  margin-bottom: 1rem;
+}
+
+.property-page .form-section {
+  max-width: 1000px;
+  /* margin: auto; */
+  padding: 5rem 1rem 0;
+  text-align: center;
+}
+
+.property-page .form-section .header {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto 1rem;
+  font-size: 1.4rem;
+  /* text-align: center; */
+}
+
+.property-page .form-section form {
+  border: 1px solid #666;
+  border-radius: 16px;
+}
+
+.form-section form {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.form-section form .group {
+  margin: 1rem 0;
+  text-align: initial;
+}
+
+.form-section form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-section form input, 
+.form-section form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #333;
+  background-color: transparent;
+}
+
+.form-section form ::placeholder {
+  color: #666;
+}
+
+form .form-title {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.names {
+  display: flex;
+}
+
+.names input {
+  flex: 1;
+  /* padding: 0.5rem; */
+  /* border: 1px solid #333; */
+  /* background-color: transparent; */
+}
+
+.form-section form .submit-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  border: 2px solid #f07229;
+  background-color: #f07229;
+  transition: background-color 400ms;
+  /* cursor: pointer; */
+}
+
+.form-section form .submit-btn:hover {
+  /* color: #fff; */
+  background-color: #dc5405;
+}
