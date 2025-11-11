@@ -1,6 +1,7 @@
-import { Children, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import hero from "./images/estates/skyscraper-2.jpg";
 import { PropertiesContext } from "../../contexts/AuthContext";
+import { Link, useParams } from "react-router-dom";
 
 export function Navigation() {
     const [Mobile, setMobile] = useState(false);
@@ -9,44 +10,44 @@ export function Navigation() {
     const navClasses = Mobile ? "nav-links" : "links";
 
     return (
-        <>
-            <div className="navigation">
-                <div className="nav-logo">
-                    <h2>CREVA</h2>
-                </div>
-                <nav className={navClasses} onClick={() => setMobile(false)}>
-                    <ul>
-                        <li>Home</li>
-                        <li>About Us</li>
-                        <li>Contact</li>
-                    </ul>
-                </nav>
-                <div className="button">
-                    <button>Booking</button>
-                </div>
-                <button className="toggle" onClick={() => setMobile(!Mobile)}>
-                    <i className={iconClasses}></i>
-                </button>
+        <div className="navigation">
+            <div className="nav-logo">
+                <h2>CREVA</h2>
             </div>
-        </>
+            <nav className={navClasses} onClick={() => setMobile(false)}>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li>About Us</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+            <div className="button">
+                <button>Booking</button>
+            </div>
+            <button className="toggle" onClick={() => setMobile(!Mobile)}>
+                <i className={iconClasses}></i>
+            </button>
+        </div>
     )
 }
 
 export function Home() {
     return (
-        <HomeContent>
+        <>
             <Hero />
             <Filters />
-        </HomeContent>
+            <Properties />
+        </>
     )
 }
 
-function HomeContent({children}) {
-        const { filtered } = useContext(PropertiesContext);
+function HomeContent({ children }) {
+    // const { filtered } = useContext(PropertiesContext);
     return (
         <>
-        {children}
-<Properties filtered={filtered} />
+            <Hero />
+            {children}
+            <Properties />
         </>
     )
 }
@@ -54,36 +55,25 @@ function HomeContent({children}) {
 function Hero() {
     console.log("Hero");
     return (
-        <>
-            <div className="hero-container">
-                <img src={hero} alt="" />
-                <div className="hero-content">
-                    <h1>Find The Perfect Dream Property For Your Future</h1>
-                    <p>
-                        From cozy starter homes to luxurious estates, we offer
-                        a diverse range of properties to suit your unique lifestyle.
-                        Discover your dream home with CREVA today.
-                    </p>
-                    <div className="hero-button">
-                        <button>Buy Property</button>
-                    </div>
+        <div className="hero-container">
+            <img src={hero} alt="" />
+            <div className="hero-content">
+                <h1>Find The Perfect Dream Property For Your Future</h1>
+                <p>
+                    From cozy starter homes to luxurious estates, we offer
+                    a diverse range of properties to suit your unique lifestyle.
+                    Discover your dream home with CREVA today.
+                </p>
+                <div className="hero-button">
+                    <button>Buy Property</button>
                 </div>
             </div>
-            {/* <Test /> */}
-        </>
+        </div>
     )
 }
 
 function Filters() {
-    const { 
-        // country, 
-        // setCountry, 
-        // property, 
-        // setProperty, 
-        // price, 
-        // setPrice, 
-        filter 
-    } = useContext(PropertiesContext);
+    const { filter } = useContext(PropertiesContext);
     const [country, setCountry] = useState("default");
     const [property, setProperty] = useState("default");
     const [price, setPrice] = useState("default");
@@ -95,7 +85,7 @@ function Filters() {
                 <i className="ri-map-pin-2-line"></i>
                 <div>
                     <p className="filter-name">Location (any) </p>
-                    <select 
+                    <select
                         className=""
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
@@ -112,7 +102,7 @@ function Filters() {
                 <i className="fa fa-home"></i>
                 <div>
                     <p className="filter-name">Property type (any)</p>
-                    <select 
+                    <select
                         className=""
                         value={property}
                         onChange={(e) => setProperty(e.target.value)}
@@ -127,11 +117,9 @@ function Filters() {
 
             <div className="filter">
                 <i className="normal">$</i>
-                {/* <i className="fa fa-usd"></i> */}
-                {/* <i className="ri-money-dollar-circle-line"></i> */}
                 <div>
                     <p className="filter-name">Price range (any)</p>
-                    <select 
+                    <select
                         className=""
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
@@ -154,9 +142,8 @@ function Filters() {
     )
 }
 
-function Properties({filtered}) {
-    // const { filtered } = useContext(PropertiesContext);
-    // const filtered = [];
+function Properties({ filtered1 }) {
+    const { filtered } = useContext(PropertiesContext);
     console.log("Properties");
 
     return (
@@ -164,9 +151,9 @@ function Properties({filtered}) {
             <div className="header">
                 <h2>Featured Properties</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    Molestias ad debitis quo explicabo a accusamus, vitae fugit 
-                    cum ea numquam aliquam mollitia maxime doloribus labore 
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Molestias ad debitis quo explicabo a accusamus, vitae fugit
+                    cum ea numquam aliquam mollitia maxime doloribus labore
                     voluptatibus atque consequatur perferendis qui quisquam.
                 </p>
             </div>
@@ -179,7 +166,9 @@ function Properties({filtered}) {
                             <img src={property.image} alt="" />
                             <div className="details">
                                 <p className="country">{property.country}</p>
-                                <h3>{property.name}</h3>
+                                <Link to={`property/${property.id}`}>
+                                    <h3>{property.name}</h3>
+                                </Link>
                                 <p className="price">${property.price}</p>
                                 <div className="info">
                                     <span>Beds: {property.beds}</span>
@@ -195,7 +184,7 @@ function Properties({filtered}) {
 }
 
 function Test() {
-    const {filtered} = useContext(PropertiesContext);
+    const { filtered } = useContext(PropertiesContext);
     console.log(filtered);
 
     return (
@@ -206,6 +195,101 @@ function Test() {
         })
     )
 }
+
+
+export function PropertyPage() {
+    const { properties } = useContext(PropertiesContext);
+    const { id } = useParams();
+
+    const house = properties.find(
+        house => house.id === parseInt(id)
+    );
+
+    return (
+        <div className="property-page">
+            <div className="header">
+                <h2>{house.name}</h2>
+                <p>${house.price}</p>
+            </div>
+            <h3 className="country">{house.country}</h3>
+            <hr />
+
+            <div className="">
+                <p className="">
+                    <i className="fa fa-bed"></i>
+                    {house.beds}{" "}Beds
+                </p>
+                <p className="">
+                    <i className="fa fa-bath"></i>
+                    {house.baths}{" "}Baths
+                </p>
+                <p className="">
+                    <i className="ri-map-pin-2-line"></i>
+                    {house.property}{" "}
+                </p>
+            </div>
+            <hr />
+
+            <img src={house.image} alt="" />
+
+            <h2 className="">Property Description</h2>
+
+            <dl className="list">
+                <div>
+                    <dt>PROPERTY TYPE</dt>
+                    <dd>{house.property} </dd>
+                </div>
+
+                <div>
+                    <dt>STATUS</dt>
+                    <dd>Available</dd>
+                </div>
+
+                <div>
+                    <dt>YEAR BUILT</dt>
+                    <dd>2022</dd>
+                </div>
+
+                <div>
+                    <dt>PROPERTY ID</dt>
+                    <dd>GJKHKGYKSGVJ467</dd>
+                </div>
+            </dl>
+            <hr />
+
+            <p className="desc">{house.description}</p>
+            <p className="desc">{house.description}</p>
+            <p className="desc">{house.description}</p>
+            <p className="desc">{house.description}</p>
+
+            {/* <div className="">
+        <p className="">Please fill the form for property inspection</p>
+        <form >
+          <h2 className="">Book An Inspection</h2>
+          <div className="">
+            <label className="">Full Name *</label>
+            <div className="">
+              <input type="text" className="" placeholder="First Name" required />
+              <input type="text" className="" placeholder="Last Name" required />
+            </div>
+          </div>
+
+          <div className="">
+            <label className=""> E-mail *</label>
+            <input type="email" className="" placeholder="example@gmail.com"/>
+          </div>
+
+          <div className="">
+            <label className="">Messages</label>
+            <textarea name="message" placeholder="Hi, I'm intrested in this property" className=""></textarea>
+          </div>
+
+          <button className=""> Submit</button>
+        </form>
+      </div> */}
+        </div>
+    );
+};
 
 // export function Footer() {
 //     return (

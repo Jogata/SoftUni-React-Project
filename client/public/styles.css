@@ -1095,15 +1095,15 @@ body.overflow .fixed-3d-gallery {
   gap: 1rem;
 }
 
-.links ul li {
+.links ul li a {
   color: #fff;
   font-size: 18px;
   font-weight: 600;
   transition: color 400ms;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.links ul li:hover {
+.links ul li a:hover {
   color: #f07229
 }
 
@@ -1385,7 +1385,14 @@ body.overflow .fixed-3d-gallery {
 }
 
 .property .details h3 {
+  color: #fff;
   font-size: 2rem;
+  text-decoration: underline;
+  transition: color 400ms;
+}
+
+.property .details h3:hover {
+  color: #f07229;
 }
 
 .property .details .price {

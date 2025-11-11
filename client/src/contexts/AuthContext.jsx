@@ -315,7 +315,7 @@ export function PropertiesContextProvider(props) {
     }
 
     const ctx = {
-        // properties, 
+        properties, 
         filtered, 
         // country, 
         // setCountry, 
