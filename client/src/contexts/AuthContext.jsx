@@ -273,19 +273,18 @@ export const PropertiesContext = createContext();
 
 export function PropertiesContextProvider(props) {
     const [properties] = useState(data);
+    const [filtered, setFiltered] = useState([...properties]);
 
     // function isDefault(value) {
     //     return value === "default";
     // }
 
-    const [country, setCountry] = useState("default");
-    const [property, setProperty] = useState("default");
-    const [price, setPrice] = useState("default");
+    // let filtered = [...properties];
+    // filter();
+    
+    function filter(country, property, price) {
+        let filtered = [...properties];
 
-    let filtered = [...properties];
-    filter();
-
-    function filter() {
         if (country !== "default") {
             // console.log(filtered);
             // console.log(country);
@@ -311,18 +310,19 @@ export function PropertiesContextProvider(props) {
             console.log(min, max);
             filtered = filtered.filter(item => item.price >= min && item.price <= max);
         }
-        console.log(filtered);
+        // console.log(filtered);
+        setFiltered(filtered);
     }
 
     const ctx = {
         // properties, 
         filtered, 
-        country, 
-        setCountry, 
-        property, 
-        setProperty, 
-        price,  
-        setPrice, 
+        // country, 
+        // setCountry, 
+        // property, 
+        // setProperty, 
+        // price,  
+        // setPrice, 
         filter
     };
 

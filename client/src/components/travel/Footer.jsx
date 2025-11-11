@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { Children, useContext, useState } from "react";
 import hero from "./images/estates/skyscraper-2.jpg";
 import { PropertiesContext } from "../../contexts/AuthContext";
 
@@ -34,10 +34,19 @@ export function Navigation() {
 
 export function Home() {
     return (
-        <>
+        <HomeContent>
             <Hero />
             <Filters />
-            <Properties />
+        </HomeContent>
+    )
+}
+
+function HomeContent({children}) {
+        const { filtered } = useContext(PropertiesContext);
+    return (
+        <>
+        {children}
+<Properties filtered={filtered} />
         </>
     )
 }
@@ -67,14 +76,17 @@ function Hero() {
 
 function Filters() {
     const { 
-        country, 
-        setCountry, 
-        property, 
-        setProperty, 
-        price, 
-        setPrice, 
+        // country, 
+        // setCountry, 
+        // property, 
+        // setProperty, 
+        // price, 
+        // setPrice, 
         filter 
     } = useContext(PropertiesContext);
+    const [country, setCountry] = useState("default");
+    const [property, setProperty] = useState("default");
+    const [price, setPrice] = useState("default");
     console.log("Filters");
 
     return (
@@ -134,7 +146,7 @@ function Filters() {
 
             <button
                 className="search-btn"
-                onClick={filter}
+                onClick={() => filter(country, property, price)}
             >
                 <i className="ri-search-line"></i>
             </button>
@@ -142,8 +154,8 @@ function Filters() {
     )
 }
 
-function Properties() {
-    const { filtered } = useContext(PropertiesContext);
+function Properties({filtered}) {
+    // const { filtered } = useContext(PropertiesContext);
     // const filtered = [];
     console.log("Properties");
 
