@@ -17,7 +17,8 @@ export function Navigation() {
             <nav className={navClasses} onClick={() => setMobile(false)}>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li>About Us</li>
+                    <li><Link to="/about">About Us</Link></li>
+                    {/* <li>About Us</li> */}
                     <li>Contact</li>
                 </ul>
             </nav>
@@ -294,6 +295,85 @@ export function PropertyPage() {
         </div>
     );
 };
+
+export function About() {
+    return (
+        <div className="about-page">
+            <h1>
+                About CREVA
+                <span>Your Trusted Partner in Real Estate</span>
+            </h1>
+            <p className="header">
+                At CREVA, we believe finding the perfect property isn't
+                just about walls and roofs - it's about discovering a
+                space that fits your life, your dreams, and your future.
+            </p>
+            <p className="header">
+                Founded with a vision to redefine the real estate experience,
+                CREVA combines innovation, transparency, and personalized service
+                to help clients make confident property decisions. Whether you're
+                buying your first home, expanding your investment portfolio, or
+                selling a cherished property, we're here to guide you every step
+                of the way.
+            </p>
+            <hr />
+            <h2>Our Mission</h2>
+            <p>
+                To simplify real estate through technology, integrity, and
+                expertise - empowering every client to make smarter, faster,
+                and more informed decisions.
+            </p>
+            <hr />
+            <h2>What We Do</h2>
+            <ul>
+                <li>
+                    <p>
+                        <strong>Property Sales &amp; Rentals:</strong> From
+                        luxury homes to commercial spaces, we connect buyers,
+                        sellers, and renters seamlessly.
+                    </p>
+                </li>
+                <li >
+                    <p>
+                        <strong>Real Estate Consulting:</strong> Data-driven
+                        insights and expert advice to help you invest with
+                        confidence.
+                    </p>
+                </li>
+                <li >
+                    <p>
+                        <strong>Property Management:</strong> Full-service
+                        management solutions designed to protect and grow your
+                        property's value.
+                    </p>
+                </li>
+            </ul>
+            <hr />
+            <h2>Why Choose CREVA</h2>
+            <ul>
+                <li>Expert Guidance: Our experienced team knows the market inside and out.</li>
+                <li>Smart Technology: Innovative tools to search, compare, and connect effortlessly.</li>
+                <li>Personalized Approach: Every client is unique - and so is every property journey we design.</li>
+                <li>Integrity First: We build relationships based on trust, not transactions.</li>
+            </ul>
+            <hr />
+            <h2>Our Vision</h2>
+            <p>
+                To be the most trusted name in real estate by blending human expertise
+                with cutting-edge technology - making property discovery and investment
+                easier, smarter, and more rewarding for everyone.
+            </p>
+            <hr />
+            <h2>Let's Build Your Future Together</h2>
+            <p>
+                Whether you're ready to buy, sell, or invest, CREVA is here to make it
+                happen - with clarity, confidence, and care.
+            </p>
+            <p className="important">Discover. Decide. Dream. - With <Link to="/">CREVA</Link>.</p>
+
+        </div>
+    )
+}
 
 // export function Footer() {
 //     return (

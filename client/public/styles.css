@@ -1096,10 +1096,12 @@ body.overflow .fixed-3d-gallery {
 }
 
 .links ul li a {
+  padding: 0.5em 1em;
   color: #fff;
   font-size: 18px;
   font-weight: 600;
   transition: color 400ms;
+  /* border: 1px solid; */
   /* cursor: pointer; */
 }
 
@@ -1567,4 +1569,72 @@ form .form-title {
 .form-section form .submit-btn:hover {
   /* color: #fff; */
   background-color: #dc5405;
+}
+
+.about-page {
+  max-width: 1600px;
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.about-page h1 {
+  margin-bottom: 3rem;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.about-page h1 span {
+  display: block;
+  margin-top: 1rem;
+  font-size: 3rem;
+}
+
+.about-page .header {
+  max-width: 1200px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+/* .about-page .header:last-of-type {
+  margin-bottom: 3rem;
+} */
+
+.about-page hr {
+  margin: 2rem 0;
+  color: #333;
+}
+
+.about-page hr:first-of-type {
+  margin-top: 5rem;
+}
+
+.about-page h2 {
+  /* margin-top: 3rem; */
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.about-page h2, 
+.about-page ul, 
+.about-page p {
+  max-width: 1200px;
+}
+
+.about-page ul {
+  list-style: inside circle;
+  padding-left: 1rem;
+}
+
+.about-page ul li p {
+  display: inline;
+}
+
+.about-page .important {
+  margin-top: 2rem;
+  font-size: 2rem
+}
+
+.about-page .important a {
+  color: #f07229;
+  text-decoration: underline;
 }
