@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import { About, Home, Navigation, PropertyPage } from './components/travel/Footer';
+import { About, Contact, Home, Navigation, PropertyPage } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -91,7 +91,7 @@ function App() {
     <Route path='/' element={<Home />} />
     <Route path='/property/:id' element={<PropertyPage />} />
     <Route path='/about' element={<About />} />
-    {/* <Route path='/contact' element={<Contact />} /> */}
+    <Route path='/contact' element={<Contact />} />
   </Routes>
 </PropertiesContextProvider>
 

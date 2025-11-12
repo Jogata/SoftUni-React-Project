@@ -18,8 +18,8 @@ export function Navigation() {
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
-                    {/* <li>About Us</li> */}
-                    <li>Contact</li>
+                    <li><Link to="/contact">Contact</Link></li>
+                    {/* <li>Contact</li> */}
                 </ul>
             </nav>
             <div className="button">
@@ -371,6 +371,60 @@ export function About() {
             </p>
             <p className="important">Discover. Decide. Dream. - With <Link to="/">CREVA</Link>.</p>
 
+        </div>
+    )
+}
+
+export function Contact() {
+    return (
+        <div className="contact-page">
+            <header>
+                <h1>Contact CREVA</h1>
+                <p>Your trusted partner in real estate.</p>
+            </header>
+
+            <div className="container">
+                <section className="contact-info">
+                    <div>
+                        <h3>Our Office</h3>
+                        <p>CREVA Real Estate</p>
+                        <p>123 Estate Avenue, Cityville, Country</p>
+                    </div>
+                    <div>
+                        <h3>Contact Details</h3>
+                        <p><strong>Phone:</strong> +1 (234) 567-890</p>
+                        <p><strong>Email:</strong> info@creva.com</p>
+                        <p><strong>Working Hours:</strong> Mon-Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </section>
+
+                <section className="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form>
+                        <label htmlFor="name">Full Name</label>
+                        <input type="text" id="name" name="name" required />
+
+                        <label htmlFor="email">Email Address</label>
+                        <input type="email" id="email" name="email" required />
+
+                        <label htmlFor="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" />
+
+                        <label htmlFor="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+                </section>
+
+                <section className="map">
+                    <h2>Find Us Here</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345098294!2d144.95373531531594!3d-37.81627974202151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f2dfdfdf%3A0x5045675218ce840!2sMelbourne%2C%20Australia!5e0!3m2!1sen!2sau!4v0000000000000"
+                        width="100%" height="350" allowFullScreen loading="lazy">
+                    </iframe>
+                </section>
+            </div>
         </div>
     )
 }
