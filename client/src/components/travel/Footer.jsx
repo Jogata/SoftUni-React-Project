@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import hero from "./images/estates/skyscraper-2.jpg";
 import { PropertiesContext } from "../../contexts/AuthContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export function Navigation() {
     const [Mobile, setMobile] = useState(false);
@@ -19,7 +19,6 @@ export function Navigation() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
-                    {/* <li>Contact</li> */}
                 </ul>
             </nav>
             <div className="button">
@@ -42,16 +41,16 @@ export function Home() {
     )
 }
 
-function HomeContent({ children }) {
-    // const { filtered } = useContext(PropertiesContext);
-    return (
-        <>
-            <Hero />
-            {children}
-            <Properties />
-        </>
-    )
-}
+// function HomeContent({ children }) {
+//     const { filtered } = useContext(PropertiesContext);
+//     return (
+//         <>
+//             <Hero />
+//             {children}
+//             <Properties />
+//         </>
+//     )
+// }
 
 function Hero() {
     console.log("Hero");
@@ -143,7 +142,7 @@ function Filters() {
     )
 }
 
-function Properties({ filtered1 }) {
+function Properties() {
     const { filtered } = useContext(PropertiesContext);
     console.log("Properties");
 
@@ -184,19 +183,18 @@ function Properties({ filtered1 }) {
     )
 }
 
-function Test() {
-    const { filtered } = useContext(PropertiesContext);
-    console.log(filtered);
+// function Test() {
+//     const { filtered } = useContext(PropertiesContext);
+//     console.log(filtered);
 
-    return (
-        filtered.map(p => {
-            return (
-                <h1>{p.name}</h1>
-            )
-        })
-    )
-}
-
+//     return (
+//         filtered.map(p => {
+//             return (
+//                 <h1>{p.name}</h1>
+//             )
+//         })
+//     )
+// }
 
 export function PropertyPage() {
     const { properties } = useContext(PropertiesContext);
@@ -427,6 +425,24 @@ export function Contact() {
             </div>
         </div>
     )
+}
+
+export function Footer() {
+    return (
+        <footer>
+            <p>&copy; 2025 CREVA Real Estate. All rights reserved.</p>
+        </footer>
+    )
+}
+
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 // export function Footer() {

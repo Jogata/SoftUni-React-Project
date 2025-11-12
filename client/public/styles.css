@@ -1746,3 +1746,13 @@ form input,
   border-radius: 8px;
   overflow: hidden;
 }
+
+footer {
+  max-width: 1600px;
+  margin: auto;
+  /* margin-top: 3rem; */
+  padding: 0 1rem 3rem;
+  /* color: #fff; */
+  text-align: center;
+  /* background-color: #0a2647; */
+}
