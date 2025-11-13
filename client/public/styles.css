@@ -1148,3 +1148,65 @@ body.overflow .fixed-3d-gallery {
   transition: 0.5s;
   z-index: 1000;
 } */
+
+.hero {
+  max-width: 1600px;
+  margin: auto;
+  /* padding: 5rem 1rem; */
+  /* height: 90vh; */
+  color: #222;
+  background-color: #afe1af;
+}
+
+.hero-content {
+  /* padding-inline: 100px; */
+  padding: 3rem 5% 5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.hero-left {
+  max-width: 50%;
+  margin: auto 0;
+  /* margin-top: 100px; */
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.hero .hero-left h1 {
+  margin-top: 10px;
+  font-size: 5.5rem;
+}
+
+.hero .hero-left .text {
+  /* margin-top: 1rem; */
+  color: #666;
+  font-size: 18px;
+}
+
+.hero-left .price {
+  color: #000;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hero-left button {
+  width: 40%;
+  padding: 1rem 4rem;
+  color: #fff;
+  background-color: #043927;
+  /* border: none; */
+  /* cursor: pointer; */
+}
+
+.hero-right {
+  max-width: 50%;
+}
+
+.hero .hero-right img {
+  max-width: 640px;
+  /* height: 550px; */
+  object-fit: contain;
+}

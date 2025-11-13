@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import hero from "./images/bags/bag1.png";
 
 export function Navigation() {
     return (
-        <div>
-            <div className="navigation">
+        <>
+            <nav className="navigation">
                 <div className="logo">
                     <h2>YBL Bags</h2>
                 </div>
@@ -23,10 +24,35 @@ export function Navigation() {
                     </Link>
                     <i className="fa fa-user-o nav-icon"></i>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </>
     )
 }
+
+export function Hero() {
+    return (
+        <div>
+            <div className="hero">
+                <div className="hero-content">
+                    <div className="hero-left">
+                        <h1>YBL Leather Quality Bag</h1>
+                        <p className="text">
+                            Elevate your bag collection with a stylish 
+                            leather handbag from YBL. This ladies handbag 
+                            is the perfect handbag to add to your series 
+                            of collection of stylish bag.
+                        </p>
+                        <p className="price">$ 75.99</p>
+                        <button className="cta">BUY NOW</button>
+                    </div>
+                    <div className="hero-right">
+                        <img src={hero} alt="" />
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    ) 
+} 
 
 // export function Header() {
 //     return (
