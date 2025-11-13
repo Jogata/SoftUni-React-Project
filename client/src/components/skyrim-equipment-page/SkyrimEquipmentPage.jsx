@@ -57,8 +57,19 @@ export default function SkyrimEquipmentPage() {
               </div>
             </article>
             <article>
-              <h2 className="cursive">Weapons</h2>
-              <a className="btn not-active">Learn More</a>
+              <div className="article-content">
+                <h2 className="cursive">Weapons</h2>
+                <p>Weapons in The Elder Scrolls V: Skyrim refer to offensive equipment that the player can equipped by the player character, used to deal damage to enemies in combat. Skyrim's Weapons are the most prominent tools used in battle and are divided categorically by their class: One-Handed Weapons, Two-Handed Weapons, and Archery Weapons. Within each weapon class, weapons are further categorized based on their type. Aside from varying stat values and special effects, each weapon type has unique characteristics and behaves differently in combat.</p>
+                {/* <a className="btn not-active">Learn More</a> */}
+                <Link to="/skyrim-weapons" className="details-btn">Learn More</Link>
+              </div>
+              <div className="article-image">
+                {/* <img src="/skyrim/equipment/weapons/erick-gonzalez-nw-weapons-corruptedheart-01.jpg" alt="" /> */}
+                {/* <img src="/skyrim/equipment/weapons/fantasy-dagger-9822017.png" alt="" /> */}
+                {/* <img src="/skyrim/equipment/weapons/Digen_image_1762972945218.jpeg" alt="" /> */}
+                <img src="/skyrim/equipment/weapons/Digen_image_1762972945218-trans.png" alt="" />
+                {/* <img src="/skyrim/equipment/weapons/Digen_image_1762972570539.jpeg" alt="" /> */}
+              </div>
             </article>
             <article>
               <h2 className="cursive">Clothing</h2>
