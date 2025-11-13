@@ -67,7 +67,8 @@ export default function SkyrimEquipmentPage() {
                 {/* <img src="/skyrim/equipment/weapons/erick-gonzalez-nw-weapons-corruptedheart-01.jpg" alt="" /> */}
                 {/* <img src="/skyrim/equipment/weapons/fantasy-dagger-9822017.png" alt="" /> */}
                 {/* <img src="/skyrim/equipment/weapons/Digen_image_1762972945218.jpeg" alt="" /> */}
-                <img src="/skyrim/equipment/weapons/Digen_image_1762972945218-trans.png" alt="" />
+                {/* <img src="/skyrim/equipment/weapons/Digen_image_1762972945218-trans.png" alt="" /> */}
+                <img src="/skyrim/equipment/weapons/GlassGreatsword_SK-ed.png" alt="" />
                 {/* <img src="/skyrim/equipment/weapons/Digen_image_1762972570539.jpeg" alt="" /> */}
               </div>
             </article>
