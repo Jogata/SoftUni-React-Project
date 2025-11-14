@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import hero from "./images/bags/bag1.png";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/AuthContext";
 
 export function Navigation() {
     return (
@@ -29,10 +31,11 @@ export function Navigation() {
 
 export function HomePage() {
     return (
-        <div>
+        <>
             <Hero />
             <Features />
-        </div>
+            <ProductList />
+        </>
     )
 }
 
@@ -93,6 +96,42 @@ export function Features() {
     )
 }
 
+function ProductList() {
+    const {products} = useContext(CartContext);
+    const [product, setProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    function toggleModal() {
+        setIsModalOpen(!isModalOpen);
+    }
+
+    return (
+        <>
+        <div className="products">
+            <h2>Our Bags Collection</h2>
+            <div className="grid">
+                {products.map(product => {
+                    const { id, image, title, price } = product;
+
+                    return(
+                        <div className="product-card" key={id}>
+                            <img src={image} alt="" className="product-image" />
+                            <div className="product-info">
+                                <h3>{title}</h3>
+                                <p>$ {price}</p>
+                            </div>
+                            <button className="add-to-cart-btn" onClick={toggleModal}>
+                                Add to cart
+                            </button>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+        { isModalOpen ? <h2>Modal</h2> : null}
+        </>
+    )
+}
 
 // export function Header() {
 //     return (
