@@ -27,30 +27,72 @@ export function Navigation() {
     )
 }
 
+export function HomePage() {
+    return (
+        <div>
+            <Hero />
+            <Features />
+        </div>
+    )
+}
+
 export function Hero() {
     return (
-        <>
-            <div className="hero">
-                <div className="hero-content">
-                    <div className="hero-text">
-                        <h1>YBL Leather Quality Bag</h1>
-                        <p className="text">
-                            Elevate your bag collection with a stylish 
-                            leather handbag from YBL. This ladies handbag 
-                            is the perfect handbag to add to your series 
-                            of collection of stylish bag.
-                        </p>
-                        <p className="price">$ 75.99</p>
-                        <button className="cta">BUY NOW</button>
-                    </div>
-                    <div className="hero-image">
-                        <img src={hero} alt="" />
-                    </div>
+        <div className="hero">
+            <div className="hero-content">
+                <div className="hero-text">
+                    <h1>YBL Leather Quality Bag</h1>
+                    <p className="text">
+                        Elevate your bag collection with a stylish
+                        leather handbag from YBL. This ladies handbag
+                        is the perfect handbag to add to your series
+                        of collection of stylish bag.
+                    </p>
+                    <p className="price">$ 75.99</p>
+                    <button className="cta">BUY NOW</button>
                 </div>
-            </div> 
-        </> 
-    ) 
-} 
+                <div className="hero-image">
+                    <img src={hero} alt="" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function Features() {
+    return (
+        <div className="features">
+            <h2>Why Choose Our Brand</h2>
+            <p className="description">
+                Yourself required no at thoughts delicate landlord it be.
+                Branched dashwood do is whatever it. Further be chapter at
+                visited married in it pressed.
+            </p>
+
+            <div className="cards-container">
+                <div className="card">
+                    <i className="ri-award-line icon"></i>
+                    <h3>Best Quality</h3>
+                    <p>100% Genuine Product</p>
+                </div>
+
+                <div className="card">
+                    <i className="ri-truck-fill icon"></i>
+                    <h3>Free Shipping</h3>
+                    <p>100% Free Shipping Product</p>
+                </div>
+
+                <div className="card">
+                    <i className="ri-shield-check-line icon"></i>
+                    {/* <i className="fa fa-check-square-o icon"></i> */}
+                    <h3>Warranty</h3>
+                    <p>100% Return Guarantee</p>
+                </div> 
+            </div>
+        </div>
+    )
+}
+
 
 // export function Header() {
 //     return (

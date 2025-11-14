@@ -1075,22 +1075,34 @@ body.overflow .fixed-3d-gallery {
 }
 
 
+/* @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Brawler:wght@400;700&family=Croissant+One&family=Ephesis&family=Gloock&family=Hurricane&family=Imbue:opsz,wght@10..100,100..900&family=Modak&family=Montez&family=Prosto+One&family=Rye&family=Shojumaru&family=Young+Serif&family=ZCOOL+XiaoWei&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap'); */
 
-
+body {
+  font-family: "Bona Nova SC", serif;
+}
 
 .navigation {
   max-width: 1600px;
   margin: auto;
   padding: 30px;
-  /* padding-inline: 80px; */
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   color: #222;
+  font-family: Georgia, serif;
   background-color: #afe1af;
-  /* box-shadow: -1px 11px 24px -11px rgba( 0, 0, 0, 0.75); */
+}
+
+.navigation .logo h2 {
+  /* color: transparent; */
+  /* -webkit-text-stroke: 1px #000; */
+  /* text-shadow: 1px 1px 1px #999; */
+  /* filter: drop-shadow(1px 1px 1px #000); */
+  font-family: "Ephesis", cursive;
+  text-wrap: nowrap;
 }
 
 .navigation .links ul {
@@ -1100,7 +1112,6 @@ body.overflow .fixed-3d-gallery {
 }
 
 .navigation .links ul li {
-  /* list-style: none; */
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -1112,7 +1123,6 @@ body.overflow .fixed-3d-gallery {
 }
 
 .nav-icon {
-  /* margin-left: 35px; */
   color: #222;
   font-size: 2rem;
 }
@@ -1120,7 +1130,6 @@ body.overflow .fixed-3d-gallery {
 .nav-cart {
   position: relative;
   display: flex;
-  /* cursor: pointer; */
 }
 
 .cart-amount {
@@ -1152,25 +1161,21 @@ body.overflow .fixed-3d-gallery {
 .hero {
   max-width: 1600px;
   margin: auto;
-  /* padding: 5rem 1rem; */
-  /* height: 90vh; */
   color: #222;
   background-color: #afe1af;
 }
 
 .hero-content {
-  /* padding-inline: 100px; */
   padding: 3rem 5% 5rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  /* display: flex; */
+  /* gap: 1rem; */
+  /* justify-content: space-between; */
 }
 
 .hero-text {
-  /* max-width: 50%; */
+  flex: 1;
   max-width: 700px;
   margin: auto 0;
-  /* margin-top: 100px; */
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -1182,7 +1187,6 @@ body.overflow .fixed-3d-gallery {
 }
 
 .hero .hero-text .text {
-  /* margin-top: 1rem; */
   color: #666;
   font-size: 18px;
 }
@@ -1198,18 +1202,97 @@ body.overflow .fixed-3d-gallery {
   margin-right: auto;
   padding: 1rem 4rem;
   color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
   background-color: #043927;
-  /* border: none; */
-  /* cursor: pointer; */
 }
 
 .hero-image {
-  /* max-width: 50%; */
+  flex: 1;
   max-width: 600px;
+  /* margin: auto; */
 }
 
 .hero .hero-image img {
   max-width: 640px;
-  /* height: 550px; */
   object-fit: contain;
+}
+
+@media screen and (max-width: 1100px) {
+  .hero-text {
+    margin: auto;
+    text-align: center;
+  }
+
+  .hero-text button {
+    margin: auto;
+  }
+
+  .hero-image {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .hero-content {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+}
+
+.features {
+  max-width: 1600px;
+  margin: auto;
+  padding: 5rem 1rem;
+  text-align: center;
+  /* background-color: #f8f8f8; */
+}
+
+.features h2 {
+  margin-bottom: 1.25rem;
+  font-size: 3rem;
+}
+
+.features .description {
+  max-width: 600px;
+  margin: auto;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.features .cards-container {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.features .card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 320px;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid #444;
+  /* background-color: #fff; */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.features .card .icon {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #afe1af;
+  font-size: 2.5rem;
+}
+
+.features .card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.features .card p {
+  color: #999;
 }
