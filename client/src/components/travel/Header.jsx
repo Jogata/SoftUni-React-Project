@@ -3,38 +3,36 @@ import hero from "./images/bags/bag1.png";
 
 export function Navigation() {
     return (
-        <>
-            <nav className="navigation">
-                <div className="logo">
-                    <h2>YBL Bags</h2>
-                </div>
-                <div className="links">
-                    <ul>
-                        <li>Home</li>
-                        <li>Products</li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-                <div className="nav-icons">
-                    <Link to="/cart">
-                        <span className="nav-cart">
-                            <i className="fa fa-shopping-bag nav-icon"></i>
-                            <span className="cart-amount">0</span>
-                        </span>
-                    </Link>
-                    <i className="fa fa-user-o nav-icon"></i>
-                </div>
-            </nav>
-        </>
+        <nav className="navigation">
+            <div className="logo">
+                <h2>YBL Bags</h2>
+            </div>
+            <div className="links">
+                <ul>
+                    <li>Home</li>
+                    <li>Products</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div className="nav-icons">
+                <Link to="/cart">
+                    <span className="nav-cart">
+                        <i className="fa fa-shopping-bag nav-icon"></i>
+                        <span className="cart-amount">0</span>
+                    </span>
+                </Link>
+                <i className="fa fa-user-o nav-icon"></i>
+            </div>
+        </nav>
     )
 }
 
 export function Hero() {
     return (
-        <div>
+        <>
             <div className="hero">
                 <div className="hero-content">
-                    <div className="hero-left">
+                    <div className="hero-text">
                         <h1>YBL Leather Quality Bag</h1>
                         <p className="text">
                             Elevate your bag collection with a stylish 
@@ -45,12 +43,12 @@ export function Hero() {
                         <p className="price">$ 75.99</p>
                         <button className="cta">BUY NOW</button>
                     </div>
-                    <div className="hero-right">
+                    <div className="hero-image">
                         <img src={hero} alt="" />
                     </div>
                 </div>
             </div> 
-        </div> 
+        </> 
     ) 
 } 
 
