@@ -35,7 +35,60 @@ export function HomePage() {
             <Hero />
             <Features />
             <ProductList />
+            <Test child={<Child />} />
+            {/* <Test>
+                <Child />
+            </Test> */}
         </>
+    )
+}
+
+// function Test({children}) {
+function Test({child}) {
+    const [count, setCount] = useState(0);
+    console.log("Test");
+    return (
+        <div style={{textAlign: "center"}}>
+            <TestButton func={setCount} />
+            {/* <Child /> */}
+            {/* {children} */}
+            {child}
+        </div>
+    )
+}
+
+function Child() {
+    console.log("Child");
+    return (
+        <h1 
+            style={{
+                fontSize: "15rem", 
+                color: "white", 
+                marginBottom: "5rem"
+            }}
+        >
+            Child
+        </h1>
+    )
+}
+
+function TestButton({ func }) {
+    console.log("TestButton");
+    return (
+        <button
+            onClick={() => func(count => count + 1)}
+            style={{
+                margin: "5rem 0", 
+                padding: "0.5em 1.5em",
+                color: "white",
+                fontSize: "5rem", 
+                fontWeight: "bold", 
+                border: "1px solid", 
+                textTransform: "uppercase"
+            }}
+        >
+            add
+        </button>
     )
 }
 
