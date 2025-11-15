@@ -39,7 +39,8 @@ export function HomePage() {
     )
 }
 
-export function Hero() {
+function Hero() {
+    console.log("Hero");
     return (
         <div className="hero">
             <div className="hero-content">
@@ -62,7 +63,8 @@ export function Hero() {
     )
 }
 
-export function Features() {
+function Features() {
+    console.log("Features");
     return (
         <div className="features">
             <h2>Why Choose Our Brand</h2>
@@ -87,7 +89,6 @@ export function Features() {
 
                 <div className="card">
                     <i className="ri-shield-check-line icon"></i>
-                    {/* <i className="fa fa-check-square-o icon"></i> */}
                     <h3>Warranty</h3>
                     <p>100% Return Guarantee</p>
                 </div> 
@@ -97,39 +98,76 @@ export function Features() {
 }
 
 function ProductList() {
+    console.log("ProductList");
     const {products} = useContext(CartContext);
     const [product, setProduct] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(true);
 
-    function toggleModal() {
-        setIsModalOpen(!isModalOpen);
+    function toggleModal(product) {
+        // setIsModalOpen(!isModalOpen);
+        setProduct(product);
     }
 
     return (
         <>
-        <div className="products">
-            <h2>Our Bags Collection</h2>
-            <div className="grid">
-                {products.map(product => {
-                    const { id, image, title, price } = product;
+            <div className="products">
+                <h2>Our Bags Collection</h2>
+                <div className="grid">
+                    {products.map(product => {
+                        const { id, image, title, price } = product;
 
-                    return(
-                        <div className="product-card" key={id}>
-                            <img src={image} alt="" className="product-image" />
-                            <div className="product-info">
-                                <h3>{title}</h3>
-                                <p>$ {price}</p>
+                        return (
+                            <div className="product-card" key={id}>
+                                <img src={image} alt="" className="product-image" />
+                                <div className="product-info">
+                                    <h3>{title}</h3>
+                                    <p>$ {price}</p>
+                                </div>
+                                <button
+                                    className="add-to-cart-btn"
+                                    onClick={() => toggleModal(product)}
+                                >
+                                    Add to cart
+                                </button>
                             </div>
-                            <button className="add-to-cart-btn" onClick={toggleModal}>
-                                Add to cart
-                            </button>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
+            </div>
+            {product ? (
+                <Modal product={product} toggleModal={toggleModal} />
+            ) : (
+                null
+            )}
+        </>
+    )
+}
+
+function Modal({ product, toggleModal }) {
+    console.log("Modal");
+    return (
+        <div className="product-modal" onClick={() => toggleModal(null)}>
+                <button 
+                    className="modal-close-btn" 
+                    // onClick={() => toggleModal(null)}
+                >
+                    <i className="ri-close-line"></i>
+                </button>
+            <div className="product-modal-content" onClick={e => e.stopPropagation()}>
+                <div className="modal-content">
+                    <img src={product.image} alt="" className="modal-img" />
+                    <h3 className="modal-title">
+                        {product.title}
+                    </h3>
+                    <p className="modal-price">
+                        $ {product.price}
+                    </p>
+                    <button className="buy-now">
+                        Buy Now
+                    </button>
+                </div>
             </div>
         </div>
-        { isModalOpen ? <h2>Modal</h2> : null}
-        </>
     )
 }
 

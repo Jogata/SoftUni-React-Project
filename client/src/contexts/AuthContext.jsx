@@ -53,8 +53,7 @@ import bag6 from "../components/travel/images/bags/bag6.png";
 import bag7 from "../components/travel/images/bags/bag7.jpg";
 import bag8 from "../components/travel/images/bags/bag8.jpg";
 
-
-export const bags = [
+const bags = [
     {
         id: 1,
         image: bag1,
