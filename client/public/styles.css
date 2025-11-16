@@ -1442,16 +1442,18 @@ body {
 }
 
 .footer-address {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 0.5rem;
+  /* font-size: 1rem; */
   line-height: 1.5;
 }
 
 .social-icons a {
-  margin: 0 10px;
+  margin: 0.5rem;
+  padding: 0.25em 0.5em;
   color: #fff;
   font-size: 28px;
   transition: color 300ms;
+  border: 1px solid;
 }
 
 .social-icons a:hover {
@@ -1473,10 +1475,12 @@ body {
 }
 
 .footer-menu li a {
+  padding: 0.5em 1em;
   color: #fff;
   font-size: 14px;
   /* text-decoration: none; */
   transition: color 300ms;
+  border: 1px solid;
 }
 
 .footer-menu li a:hover {

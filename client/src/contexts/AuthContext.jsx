@@ -124,6 +124,61 @@ export const CartContext = createContext();
 
 export function CartContextProvider(props) {
     const [products] = useState(bags);
+    const [cart, setCart] = useState([]);
+    const [itemsAmount, setItemsAmount] = useState(0);
+    const [total, setTotal] = useState([]);
+
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) => {
+            const priceAsNumber = parseFloat(currentItem.price);
+
+            if (isNaN(priceAsNumber)) {
+                return accumulator;
+            }
+
+            return accumulator + priceAsNumber * currentItem.amount;
+        }, 0);
+
+        console.log("Total:", total);
+        setTotal(total);
+    }, [cart]);
+
+    useEffect(() => {
+        if (cart) {
+            const amount = cart.reduce((accumulator, currentItem) => {
+                return accumulator + currentItem.amount;
+            }, 0);
+            setItemsAmount(amount);
+        }
+    }, [cart]);
+
+    function addToCart(product) {
+        const newItem = { ...product, amount: 1 };
+
+        const cartItem = cart.find((item) => item.id === product.id);
+
+        console.log(cartItem);
+
+        if (cartItem) {
+            const newCart = cart.map((item) =>
+                item.id === id ? { ...item, amount: cartItem.amount + 1 } : item
+            );
+            setCart(newCart);
+        } else {
+            setCart([...cart, newItem]);
+        }
+    }
+
+    console.log(cart);
+
+    const removeFromCart = (id) => {
+        const newCart = cart.filter(item => item.id !== id);
+        setCart(newCart);
+    };
+
+    const clearCart = () => {
+        setCart([]);
+    };
 
     const ctx = {
         products

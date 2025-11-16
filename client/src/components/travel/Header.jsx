@@ -230,9 +230,9 @@ export function Footer() {
         <footer className="footer-container">
             <div className="footer-top">
                 <h3 className="footer-title">YBL Elegant Bag</h3>
-                <p className="footer-address">
+                <address className="footer-address">
                     123, Steet Name, Close Axis, State, Country
-                </p>
+                </address>
                 <div className="social-icons">
                     <a href="#">
                         <i className="fa fa-facebook-f"></i>
