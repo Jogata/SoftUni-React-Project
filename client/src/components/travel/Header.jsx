@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import hero from "./images/bags/bag1.png";
 import { useContext, useState } from "react";
-import { CartContext } from "../../contexts/AuthContext";
+import { CartContext, ModalContext, ModalContextProvider } from "../../contexts/AuthContext";
 
 export function Navigation() {
     return (
@@ -34,61 +34,15 @@ export function HomePage() {
         <>
             <Hero />
             <Features />
-            <ProductList />
-            <Test child={<Child />} />
-            {/* <Test>
-                <Child />
-            </Test> */}
+            {/* <ProductList /> */}
+            <ModalContextProvider>
+                <ProductList>
+                    <Products />
+                    <Test />
+                    <Modal />
+                </ProductList>
+            </ModalContextProvider>
         </>
-    )
-}
-
-// function Test({children}) {
-function Test({child}) {
-    const [count, setCount] = useState(0);
-    console.log("Test");
-    return (
-        <div style={{textAlign: "center"}}>
-            <TestButton func={setCount} />
-            {/* <Child /> */}
-            {/* {children} */}
-            {child}
-        </div>
-    )
-}
-
-function Child() {
-    console.log("Child");
-    return (
-        <h1 
-            style={{
-                fontSize: "15rem", 
-                color: "white", 
-                marginBottom: "5rem"
-            }}
-        >
-            Child
-        </h1>
-    )
-}
-
-function TestButton({ func }) {
-    console.log("TestButton");
-    return (
-        <button
-            onClick={() => func(count => count + 1)}
-            style={{
-                margin: "5rem 0", 
-                padding: "0.5em 1.5em",
-                color: "white",
-                fontSize: "5rem", 
-                fontWeight: "bold", 
-                border: "1px solid", 
-                textTransform: "uppercase"
-            }}
-        >
-            add
-        </button>
     )
 }
 
@@ -150,22 +104,20 @@ function Features() {
     )
 }
 
-function ProductList() {
+function ProductList({children}) {
     console.log("ProductList");
-    const {products} = useContext(CartContext);
-    const [product, setProduct] = useState(null);
+    // const {products} = useContext(CartContext);
+    // const { product } = useContext(ModalContext);
+    // const [product, setProduct] = useState(null);
     // const [isModalOpen, setIsModalOpen] = useState(true);
-
-    function toggleModal(product) {
-        // setIsModalOpen(!isModalOpen);
-        setProduct(product);
-    }
 
     return (
         <>
             <div className="products">
                 <h2>Our Bags Collection</h2>
-                <div className="grid">
+                {/* <Products toggleModal={toggleModal} /> */}
+                {children}
+                {/* <div className="grid">
                     {products.map(product => {
                         const { id, image, title, price } = product;
 
@@ -185,42 +137,91 @@ function ProductList() {
                             </div>
                         )
                     })}
-                </div>
+                </div> */}
             </div>
-            {product ? (
-                <Modal product={product} toggleModal={toggleModal} />
-            ) : (
-                null
-            )}
+            {/* {product ? ( */}
+                {/* <Modal product={product} toggleModal={toggleModal} /> */}
+                {/* <Modal /> */}
+            {/* ) : ( */}
+                {/* null */}
+            {/* )} */}
         </>
     )
 }
 
-function Modal({ product, toggleModal }) {
+function Test() {
+    const { setProduct } = useContext(ModalContext);
+    console.log("Test");
+    return (
+        <h1>TEST</h1>
+    )
+}
+
+// function Products({toggleModal}) {
+function Products() {
+    const { products } = useContext(CartContext);
+    const { setProduct } = useContext(ModalContext);
+    console.log("Products");
+
+    return (
+        <div className="grid">
+            {products.map(product => {
+                const { id, image, title, price } = product;
+
+                return (
+                    <div className="product-card" key={id}>
+                        <img src={image} alt="" className="product-image" />
+                        <div className="product-info">
+                            <h3>{title}</h3>
+                            <p>$ {price}</p>
+                        </div>
+                        <button
+                            className="add-to-cart-btn"
+                            onClick={() => setProduct(product)}
+                        >
+                            Add to cart
+                        </button>
+                    </div>
+                )
+            })}
+        </div>
+
+    )
+}
+
+// function Modal({ product, toggleModal }) {
+function Modal() {
+    const { product, setProduct } = useContext(ModalContext);
     console.log("Modal");
     return (
-        <div className="product-modal" onClick={() => toggleModal(null)}>
-                <button 
-                    className="modal-close-btn" 
-                    // onClick={() => toggleModal(null)}
-                >
-                    <i className="ri-close-line"></i>
+        <>
+        {product ? (
+            <div className="product-modal" onClick={() => setProduct(null)}>
+            <button 
+                className="modal-close-btn" 
+                // onClick={() => toggleModal(null)}
+            >
+                <i className="ri-close-line"></i>
+            </button>
+        <div className="product-modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-content">
+                <img src={product.image} alt="" className="modal-img" />
+                <h3 className="modal-title">
+                    {product.title}
+                </h3>
+                <p className="modal-price">
+                    $ {product.price}
+                </p>
+                <button className="buy-now">
+                    Buy Now
                 </button>
-            <div className="product-modal-content" onClick={e => e.stopPropagation()}>
-                <div className="modal-content">
-                    <img src={product.image} alt="" className="modal-img" />
-                    <h3 className="modal-title">
-                        {product.title}
-                    </h3>
-                    <p className="modal-price">
-                        $ {product.price}
-                    </p>
-                    <button className="buy-now">
-                        Buy Now
-                    </button>
-                </div>
             </div>
         </div>
+    </div>
+        ) : (
+            null
+        )}
+        </>
     )
 }
 

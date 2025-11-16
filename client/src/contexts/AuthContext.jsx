@@ -135,3 +135,20 @@ export function CartContextProvider(props) {
         </CartContext.Provider>
     )
 }
+
+export const ModalContext = createContext();
+
+export function ModalContextProvider(props) {
+    const [product, setProduct] = useState(null);
+
+    function toggleModal(product) {
+        // setIsModalOpen(!isModalOpen);
+        setProduct(product);
+    }
+
+    return (
+        <ModalContext.Provider value={{product, setProduct}}>
+            {props.children}
+        </ModalContext.Provider>
+    )
+}
