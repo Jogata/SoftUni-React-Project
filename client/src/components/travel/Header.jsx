@@ -34,11 +34,10 @@ export function HomePage() {
         <>
             <Hero />
             <Features />
-            {/* <ProductList /> */}
             <ModalContextProvider>
                 <ProductList>
                     <Products />
-                    {/* <Test /> */}
+                    <Test Child={Test1} child2={<Test2 />} />
                     <Modal />
                 </ProductList>
             </ModalContextProvider>
@@ -106,54 +105,41 @@ function Features() {
 
 function ProductList({children}) {
     console.log("ProductList");
-    // const {products} = useContext(CartContext);
-    // const { product } = useContext(ModalContext);
-    // const [product, setProduct] = useState(null);
-    // const [isModalOpen, setIsModalOpen] = useState(true);
 
     return (
         <>
             <div className="products">
                 <h2>Our Bags Collection</h2>
-                {/* <Products toggleModal={toggleModal} /> */}
                 {children}
-                {/* <div className="grid">
-                    {products.map(product => {
-                        const { id, image, title, price } = product;
-
-                        return (
-                            <div className="product-card" key={id}>
-                                <img src={image} alt="" className="product-image" />
-                                <div className="product-info">
-                                    <h3>{title}</h3>
-                                    <p>$ {price}</p>
-                                </div>
-                                <button
-                                    className="add-to-cart-btn"
-                                    onClick={() => toggleModal(product)}
-                                >
-                                    Add to cart
-                                </button>
-                            </div>
-                        )
-                    })}
-                </div> */}
             </div>
-            {/* {product ? ( */}
-                {/* <Modal product={product} toggleModal={toggleModal} /> */}
-                {/* <Modal /> */}
-            {/* ) : ( */}
-                {/* null */}
-            {/* )} */}
         </>
     )
 }
 
-function Test() {
+function Test({Child, child2}) {
     const { setProduct } = useContext(ModalContext);
     console.log("Test");
     return (
-        <h1>TEST</h1>
+        <>
+            <h1>TEST</h1>
+            <Child func={(str) => console.log(str)} str="test1" />
+            {/* <Test2 /> */}
+            {child2}
+        </>
+    )
+}
+
+function Test1({func, str}) {
+    func(str);
+    return (
+        <h2>Test1</h2>
+    )
+}
+
+function Test2() {
+    console.log("Test2");
+    return (
+        <h3>Test2</h3>
     )
 }
 

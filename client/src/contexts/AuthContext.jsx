@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "r.eact-router-dom";
@@ -180,8 +180,38 @@ export function CartContextProvider(props) {
         setCart([]);
     };
 
+    const increaseAmount = (id) => {
+        const cartItem = cart.find((item) => item.id === id);
+        addToCart(cartItem, id);
+    };
+
+    const decreaseAmount = (id) => {
+        const cartItem = cart.find((item) => item.id === id);
+
+        if (cartItem) {
+
+            const newCart = cart.map((item) =>
+                item.id === id ? { ...item, amount: cartItem.amount - 1 } : item
+            );
+            setCart(newCart);
+
+
+            if (cartItem.amount < 2) {
+                removeFromCart(id);
+            }
+        }
+    };
+
     const ctx = {
-        products
+        products, 
+        cart, 
+        total, 
+        itemsAmount, 
+        addToCart, 
+        removeFromCart, 
+        increaseAmount, 
+        decreaseAmount, 
+        clearCart
     };
 
     return (
