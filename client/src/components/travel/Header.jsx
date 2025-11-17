@@ -37,7 +37,7 @@ export function HomePage() {
             <ModalContextProvider>
                 <ProductList>
                     <Products />
-                    <Test Child={Test1} child2={<Test2 />} />
+                    {/* <Test Child={Test1} child2={<Test2 />} /> */}
                     <Modal />
                 </ProductList>
             </ModalContextProvider>
@@ -116,32 +116,32 @@ function ProductList({children}) {
     )
 }
 
-function Test({Child, child2}) {
-    const { setProduct } = useContext(ModalContext);
-    console.log("Test");
-    return (
-        <>
-            <h1>TEST</h1>
-            <Child func={(str) => console.log(str)} str="test1" />
-            {/* <Test2 /> */}
-            {child2}
-        </>
-    )
-}
+// function Test({Child, child2}) {
+//     const { setProduct } = useContext(ModalContext);
+//     console.log("Test");
+//     return (
+//         <>
+//             <h1>TEST</h1>
+//             <Child func={(str) => console.log(str)} str="test1" />
+//             {/* <Test2 /> */}
+//             {child2}
+//         </>
+//     )
+// }
 
-function Test1({func, str}) {
-    func(str);
-    return (
-        <h2>Test1</h2>
-    )
-}
+// function Test1({func, str}) {
+//     func(str);
+//     return (
+//         <h2>Test1</h2>
+//     )
+// }
 
-function Test2() {
-    console.log("Test2");
-    return (
-        <h3>Test2</h3>
-    )
-}
+// function Test2() {
+//     console.log("Test2");
+//     return (
+//         <h3>Test2</h3>
+//     )
+// }
 
 // function Products({toggleModal}) {
 function Products() {
@@ -251,6 +251,131 @@ export function Footer() {
         </footer>
     )
 }
+
+export function Cart() {
+    const {
+        cart,
+        total,
+        itemsAmount,
+        removeFromCart,
+        increaseAmount,
+        decreaseAmount,
+        clearCart
+    } =
+        useContext(CartContext);
+
+    return (
+        <div className="">
+
+            <div className="">
+                <div className="">
+                    <h1 className="">Shopping Cart</h1>
+                    <h1 className="">Items: ({itemsAmount})</h1>
+                    <button onClick={clearCart} className="">
+                        <i className="fa fa-trash"></i>
+                    </button>
+                </div>
+
+                <div className="">
+                    <span>Product</span>
+                    <span>Quantity</span>
+                    <span>Price</span>
+                    <span>Total</span>
+                </div>
+
+                {cart.length > 0 ? (
+                    cart.map((item) => {
+                        const { id, title, image, price, amount } = item;
+                        return (
+                            <div
+                                key={id}
+                                className=""
+                            >
+                                <div className="">
+                                    <img src={image} alt={title} className="" />
+                                    <div>
+                                        <h3 className="font-semibold">
+                                            <Link to={`/product/${id}`} className="">
+                                                {title}
+                                            </Link>
+                                        </h3>
+                                        <button
+                                            onClick={() => removeFromCart(id)}
+                                            className=""
+                                        >
+                                            <i className="fa fa-trash"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="">
+                                    <button
+                                        onClick={() => decreaseAmount(id)}
+                                        className=""
+                                    >
+                                        <i className="re-minus-line"></i>
+                                    </button>
+                                    <span className="">{amount}</span>
+                                    <button
+                                        onClick={() => increaseAmount(id)}
+                                        className=""
+                                    >
+                                        <i className="ri-plus-line"></i>
+                                    </button>
+                                </div>
+
+                                <p className="">${price}</p>
+                                <p className="">${(price * amount).toFixed(2)}</p>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <p className="">Your cart is empty</p>
+                )}
+            </div>
+
+            <div className="">
+                <h2 className="">Cart Summary</h2>
+
+                <div className="">
+                    <span className="">Items:</span>
+                    <span className="">{itemsAmount}</span>
+                </div>
+
+                <div className="">
+                    <span className="">Subtotal:</span>
+                    <span className="">${isNaN(total) ? 0 : total}</span>
+                </div>
+
+                <div className="">
+                    <span className="">Shipping:</span>
+                    <span className="">Free</span>
+                </div>
+
+                <div className="">
+                    <span className="">Promo Code</span>
+                    <input
+                        type="text"
+                        placeholder="Enter your code"
+                        className=""
+                    />
+                    <button className="">
+                        Apply
+                    </button>
+                </div>
+
+                <div className="">
+                    <span>Total Cost:</span>
+                    <span>${isNaN(total) ? 0 : total}</span>
+                </div>
+
+                <button className="">
+                    CHECKOUT
+                </button>
+            </div>
+        </div>
+    );
+};
 
 // export function Header() {
 //     return (

@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import { Footer, HomePage, Navigation } from './components/travel/Header';
+import { Cart, Footer, HomePage, Navigation } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -87,7 +87,10 @@ function App() {
 
         <CartContextProvider>
           <Navigation />
-          <HomePage />
+                <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
         </CartContextProvider>
         <Footer />
 
