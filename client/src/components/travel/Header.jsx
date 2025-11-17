@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import hero from "./images/bags/bag1.png";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext, ModalContext, ModalContextProvider } from "../../contexts/AuthContext";
 
 export function Navigation() {
@@ -11,7 +11,7 @@ export function Navigation() {
             </div>
             <div className="links">
                 <ul>
-                    <li>Home</li>
+                    <li><Link to="/">Home</Link></li>
                     <li>Products</li>
                     <li>Contact</li>
                 </ul>
@@ -145,9 +145,14 @@ function ProductList({children}) {
 
 // function Products({toggleModal}) {
 function Products() {
-    const { products } = useContext(CartContext);
+    const { products, addToCart } = useContext(CartContext);
     const { setProduct } = useContext(ModalContext);
     console.log("Products");
+
+    function handleClick(product) {
+        setProduct(product);
+        addToCart(product);
+    }
 
     return (
         <div className="grid">
@@ -163,7 +168,7 @@ function Products() {
                         </div>
                         <button
                             className="add-to-cart-btn"
-                            onClick={() => setProduct(product)}
+                            onClick={() => handleClick(product)}
                         >
                             Add to cart
                         </button>
@@ -179,34 +184,32 @@ function Products() {
 function Modal() {
     const { product, setProduct } = useContext(ModalContext);
     console.log("Modal");
+
     return (
         <>
-        {product ? (
-            <div className="product-modal" onClick={() => setProduct(null)}>
-            <button 
-                className="modal-close-btn" 
-                // onClick={() => toggleModal(null)}
-            >
-                <i className="ri-close-line"></i>
-            </button>
-        <div className="product-modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-content">
-                <img src={product.image} alt="" className="modal-img" />
-                <h3 className="modal-title">
-                    {product.title}
-                </h3>
-                <p className="modal-price">
-                    $ {product.price}
-                </p>
-                <button className="buy-now">
-                    Buy Now
-                </button>
-            </div>
-        </div>
-    </div>
-        ) : (
-            null
-        )}
+            {product ? (
+                <div className="product-modal" onClick={() => setProduct(null)}>
+                    <button className="modal-close-btn">
+                        <i className="ri-close-line"></i>
+                    </button>
+                    <div className="product-modal-content" onClick={e => e.stopPropagation()}>
+                        <div className="modal-content">
+                            <img src={product.image} alt="" className="modal-img" />
+                            <h3 className="modal-title">
+                                {product.title}
+                            </h3>
+                            <p className="modal-price">
+                                $ {product.price}
+                            </p>
+                            <button className="buy-now">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                null
+            )}
         </>
     )
 }
@@ -265,18 +268,18 @@ export function Cart() {
         useContext(CartContext);
 
     return (
-        <div className="">
+        <div className="cart">
 
-            <div className="">
-                <div className="">
-                    <h1 className="">Shopping Cart</h1>
-                    <h1 className="">Items: ({itemsAmount})</h1>
-                    <button onClick={clearCart} className="">
+            <div className="cart-table-section">
+                <div className="cart-header">
+                    <h1>Shopping Cart</h1>
+                    <h1>Items: ({itemsAmount})</h1>
+                    <button onClick={clearCart} className="cart-clear-btn">
                         <i className="fa fa-trash"></i>
                     </button>
                 </div>
 
-                <div className="">
+                <div className="cart-table-head">
                     <span>Product</span>
                     <span>Quantity</span>
                     <span>Price</span>
@@ -287,15 +290,12 @@ export function Cart() {
                     cart.map((item) => {
                         const { id, title, image, price, amount } = item;
                         return (
-                            <div
-                                key={id}
-                                className=""
-                            >
-                                <div className="">
+                            <div key={id} className="cart-product">
+                                <div className="cart-product-details">
                                     <img src={image} alt={title} className="" />
-                                    <div>
-                                        <h3 className="font-semibold">
-                                            <Link to={`/product/${id}`} className="">
+                                    <div className="cart-product-info">
+                                        <h3>
+                                            <Link to={`/product/${id}`}>
                                                 {title}
                                             </Link>
                                         </h3>
@@ -308,68 +308,62 @@ export function Cart() {
                                     </div>
                                 </div>
 
-                                <div className="">
-                                    <button
-                                        onClick={() => decreaseAmount(id)}
-                                        className=""
-                                    >
-                                        <i className="re-minus-line"></i>
+                                <div className="quantity">
+                                    <button onClick={() => decreaseAmount(id)}>
+                                        <i className="ri-subtract-line"></i>
                                     </button>
-                                    <span className="">{amount}</span>
-                                    <button
-                                        onClick={() => increaseAmount(id)}
-                                        className=""
-                                    >
-                                        <i className="ri-plus-line"></i>
+                                    <span className="quantity">{amount}</span>
+                                    <button onClick={() => increaseAmount(id)}>
+                                        <i className="ri-add-line"></i>
                                     </button>
                                 </div>
 
-                                <p className="">${price}</p>
-                                <p className="">${(price * amount).toFixed(2)}</p>
+                                <p className="price">${price}</p>
+                                <p className="total">${(price * amount).toFixed(2)}</p>
                             </div>
                         );
                     })
                 ) : (
-                    <p className="">Your cart is empty</p>
+                    <p className="empty-cart">Your cart is empty</p>
                 )}
             </div>
 
-            <div className="">
+            <div className="cart-summary-section">
                 <h2 className="">Cart Summary</h2>
 
-                <div className="">
+                <div className="summary-item">
                     <span className="">Items:</span>
                     <span className="">{itemsAmount}</span>
                 </div>
 
-                <div className="">
+                <div className="summary-item">
                     <span className="">Subtotal:</span>
                     <span className="">${isNaN(total) ? 0 : total}</span>
                 </div>
 
-                <div className="">
+                <div className="summary-item">
                     <span className="">Shipping:</span>
                     <span className="">Free</span>
                 </div>
 
-                <div className="">
+                <div className="summary-item">
                     <span className="">Promo Code</span>
                     <input
                         type="text"
                         placeholder="Enter your code"
                         className=""
                     />
-                    <button className="">
+                    <button className="apply-btn">
                         Apply
                     </button>
                 </div>
 
-                <div className="">
+                <div className="total-cost">
                     <span>Total Cost:</span>
                     <span>${isNaN(total) ? 0 : total}</span>
                 </div>
 
-                <button className="">
+                <button className="checkout-btn">
                     CHECKOUT
                 </button>
             </div>
