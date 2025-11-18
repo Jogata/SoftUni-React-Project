@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import hero from "./images/bags/bag1.png";
 import { useContext } from "react";
 import { CartContext, ModalContext, ModalContextProvider } from "../../contexts/AuthContext";
@@ -49,7 +49,6 @@ export function HomePage() {
             <ModalContextProvider>
                 <ProductList>
                     <Products />
-                    {/* <Test /> */}
                     <Modal />
                 </ProductList>
             </ModalContextProvider>
@@ -138,14 +137,7 @@ function ProductList({children}) {
 
 function Products() {
     const { products } = useContext(CartContext);
-    // const { products, addToCart } = useContext(CartContext);
-    // const { setProduct } = useContext(ModalContext);
     console.log("Products");
-
-    // function handleClick(product) {
-    //     setProduct(product);
-    //     addToCart(product);
-    // }
 
     return (
         <div className="grid">
@@ -159,12 +151,6 @@ function Products() {
                             <h3>{title}</h3>
                             <p>$ {price}</p>
                         </div>
-                        {/* <button
-                            className="add-to-cart-btn"
-                            onClick={() => handleClick(product)}
-                        >
-                            Add to cart
-                        </button> */}
                         <Button product={product} />
                     </div>
                 )
@@ -254,7 +240,7 @@ export function Footer() {
             </div>
             <div className="footer-bottom">
                 <ul className="footer-menu">
-                    <li><a href="#">Home</a></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><a href="#">Products</a></li>
                     <li><a href="#">Testimonial</a></li>
                     <li><a href="#">Contact</a></li>
@@ -363,7 +349,6 @@ export function Cart() {
                     <input
                         type="text"
                         placeholder="Enter your code"
-                        // className=""
                     />
                     <button className="apply-btn">
                         Apply
@@ -382,6 +367,31 @@ export function Cart() {
         </div>
     );
 };
+
+export function ProductDetails() {
+  const { products, addToCart } = useContext(CartContext);
+  const { id } = useParams();
+
+  const product = products.find(product=> {
+    return product.id === parseInt(id);
+  })
+
+  return (
+    <div>
+      <div className="product-details-info">
+        <div className="detail-left">
+          <img src={product.image} alt="" />
+        </div>
+        <div className="details-right">
+            <h3>{product.title} </h3>
+            <p className="product-price">$ {product.price}</p>
+            <p className="desc">{product.description}</p>
+            <button onClick={()=> addToCart(product)}>ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 // export function Header() {
 //     return (
