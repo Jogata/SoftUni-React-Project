@@ -124,7 +124,13 @@ export const CartContext = createContext();
 
 export function CartContextProvider(props) {
     const [products] = useState(bags);
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
+    const testCart = products.map(p => {
+        p.amount = 2;
+        return p;
+    });
+    // console.log(testCart);
+    const [cart, setCart] = useState(testCart);
     const [itemsAmount, setItemsAmount] = useState(0);
     const [total, setTotal] = useState([]);
 
@@ -148,6 +154,8 @@ export function CartContextProvider(props) {
             const amount = cart.reduce((accumulator, currentItem) => {
                 return accumulator + currentItem.amount;
             }, 0);
+
+            console.log("Amount:", amount);
             setItemsAmount(amount);
         }
     }, [cart]);
@@ -157,11 +165,11 @@ export function CartContextProvider(props) {
 
         const cartItem = cart.find((item) => item.id === product.id);
 
-        console.log(cartItem);
+        // console.log(cartItem);
 
         if (cartItem) {
             const newCart = cart.map((item) =>
-                item.id === id ? { ...item, amount: cartItem.amount + 1 } : item
+                item.id === product.id ? { ...item, amount: cartItem.amount + 1 } : item
             );
             setCart(newCart);
         } else {
@@ -169,7 +177,7 @@ export function CartContextProvider(props) {
         }
     }
 
-    console.log(cart);
+    // console.log(cart);
 
     const removeFromCart = (id) => {
         const newCart = cart.filter(item => item.id !== id);
@@ -182,7 +190,7 @@ export function CartContextProvider(props) {
 
     const increaseAmount = (id) => {
         const cartItem = cart.find((item) => item.id === id);
-        addToCart(cartItem, id);
+        addToCart(cartItem);
     };
 
     const decreaseAmount = (id) => {
@@ -194,7 +202,6 @@ export function CartContextProvider(props) {
                 item.id === id ? { ...item, amount: cartItem.amount - 1 } : item
             );
             setCart(newCart);
-
 
             if (cartItem.amount < 2) {
                 removeFromCart(id);

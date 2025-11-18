@@ -20,7 +20,8 @@ export function Navigation() {
                 <Link to="/cart">
                     <span className="nav-cart">
                         <i className="fa fa-shopping-bag nav-icon"></i>
-                        <span className="cart-amount">0</span>
+                        {/* <span className="cart-amount">0</span> */}
+                        <CartAmount />
                     </span>
                 </Link>
                 <i className="fa fa-user-o nav-icon"></i>
@@ -29,19 +30,38 @@ export function Navigation() {
     )
 }
 
+function CartAmount() {
+    const { itemsAmount } = useContext(CartContext);
+    console.log("CartAmount");
+
+    return (
+        <span className="cart-amount">
+            {itemsAmount}
+        </span>
+    )
+}
+
 export function HomePage() {
     return (
-        <>
+        <HomeContent>
             <Hero />
             <Features />
             <ModalContextProvider>
                 <ProductList>
                     <Products />
-                    {/* <Test Child={Test1} child2={<Test2 />} /> */}
+                    {/* <Test /> */}
                     <Modal />
                 </ProductList>
             </ModalContextProvider>
-        </>
+        </HomeContent>
+    )
+}
+
+function HomeContent({ children }) {
+    return (
+        <div className="page-container">
+            {children}
+        </div>
     )
 }
 
@@ -116,43 +136,16 @@ function ProductList({children}) {
     )
 }
 
-// function Test({Child, child2}) {
-//     const { setProduct } = useContext(ModalContext);
-//     console.log("Test");
-//     return (
-//         <>
-//             <h1>TEST</h1>
-//             <Child func={(str) => console.log(str)} str="test1" />
-//             {/* <Test2 /> */}
-//             {child2}
-//         </>
-//     )
-// }
-
-// function Test1({func, str}) {
-//     func(str);
-//     return (
-//         <h2>Test1</h2>
-//     )
-// }
-
-// function Test2() {
-//     console.log("Test2");
-//     return (
-//         <h3>Test2</h3>
-//     )
-// }
-
-// function Products({toggleModal}) {
 function Products() {
-    const { products, addToCart } = useContext(CartContext);
-    const { setProduct } = useContext(ModalContext);
+    const { products } = useContext(CartContext);
+    // const { products, addToCart } = useContext(CartContext);
+    // const { setProduct } = useContext(ModalContext);
     console.log("Products");
 
-    function handleClick(product) {
-        setProduct(product);
-        addToCart(product);
-    }
+    // function handleClick(product) {
+    //     setProduct(product);
+    //     addToCart(product);
+    // }
 
     return (
         <div className="grid">
@@ -166,21 +159,40 @@ function Products() {
                             <h3>{title}</h3>
                             <p>$ {price}</p>
                         </div>
-                        <button
+                        {/* <button
                             className="add-to-cart-btn"
                             onClick={() => handleClick(product)}
                         >
                             Add to cart
-                        </button>
+                        </button> */}
+                        <Button product={product} />
                     </div>
                 )
             })}
         </div>
-
     )
 }
 
-// function Modal({ product, toggleModal }) {
+function Button({ product }) {
+    const { addToCart } = useContext(CartContext);
+    const { setProduct } = useContext(ModalContext);
+    // console.log("Button");
+
+    function handleClick(product) {
+        setProduct(product);
+        addToCart(product);
+    }
+
+    return (
+        <button
+            className="add-to-cart-btn"
+            onClick={() => handleClick(product)}
+        >
+            Add to cart
+        </button>
+    )
+}
+
 function Modal() {
     const { product, setProduct } = useContext(ModalContext);
     console.log("Modal");
@@ -329,36 +341,36 @@ export function Cart() {
             </div>
 
             <div className="cart-summary-section">
-                <h2 className="">Cart Summary</h2>
+                <h2>Cart Summary</h2>
 
                 <div className="summary-item">
-                    <span className="">Items:</span>
-                    <span className="">{itemsAmount}</span>
+                    <span>Items:</span>
+                    <span>{itemsAmount}</span>
                 </div>
 
                 <div className="summary-item">
-                    <span className="">Subtotal:</span>
-                    <span className="">${isNaN(total) ? 0 : total}</span>
+                    <span>Subtotal:</span>
+                    <span>${isNaN(total) ? 0 : total}</span>
                 </div>
 
                 <div className="summary-item">
-                    <span className="">Shipping:</span>
-                    <span className="">Free</span>
+                    <span>Shipping:</span>
+                    <span>Free</span>
                 </div>
 
                 <div className="summary-item">
-                    <span className="">Promo Code</span>
+                    <span>Promo Code</span>
                     <input
                         type="text"
                         placeholder="Enter your code"
-                        className=""
+                        // className=""
                     />
                     <button className="apply-btn">
                         Apply
                     </button>
                 </div>
 
-                <div className="total-cost">
+                <div className="summary-item total-cost">
                     <span>Total Cost:</span>
                     <span>${isNaN(total) ? 0 : total}</span>
                 </div>
