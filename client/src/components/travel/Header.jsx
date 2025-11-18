@@ -13,7 +13,8 @@ export function Navigation() {
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li>Products</li>
-                    <li>Contact</li>
+                    <li><Link to="/contact">Contact</Link></li>
+                    {/* <li>Contact</li> */}
                 </ul>
             </div>
             <div className="nav-icons">
@@ -44,6 +45,7 @@ function CartAmount() {
 export function HomePage() {
     return (
         <HomeContent>
+            <Hoc Component={Test} id="test" />
             <Hero />
             <Features />
             <ModalContextProvider>
@@ -369,28 +371,77 @@ export function Cart() {
 };
 
 export function ProductDetails() {
-  const { products, addToCart } = useContext(CartContext);
-  const { id } = useParams();
+    const { products, addToCart } = useContext(CartContext);
+    const { id } = useParams();
 
-  const product = products.find(product=> {
-    return product.id === parseInt(id);
-  })
+    const product = products.find(product => {
+        return product.id === parseInt(id);
+    })
 
-  return (
-    <div>
-      <div className="product-details-info">
-        <div className="detail-left">
-          <img src={product.image} alt="" />
+    return (
+        <div className="product-details-info">
+            <div className="detail-left">
+                <img src={product.image} alt="" />
+            </div>
+            <div className="details-right">
+                <h3>{product.title} </h3>
+                <p className="product-price">$ {product.price}</p>
+                <p className="desc">{product.description}</p>
+                <button onClick={() => addToCart(product)}>ADD TO CART</button>
+            </div>
         </div>
-        <div className="details-right">
-            <h3>{product.title} </h3>
-            <p className="product-price">$ {product.price}</p>
-            <p className="desc">{product.description}</p>
-            <button onClick={()=> addToCart(product)}>ADD TO CART</button>
-        </div>
-      </div>
-    </div>
-  )
+    )
+}
+
+export function Contact() {
+    return (
+        <section className="contact-section">
+            <h1>Contact Us</h1>
+            <form>
+                <label htmlFor="name">Name</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Your full name" 
+                    required 
+                />
+
+                <label htmlFor="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="you@example.com" 
+                    required 
+                />
+
+                <label htmlFor="message">Message</label>
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    rows={10}
+                    placeholder="Write your message here..." 
+                    required
+                ></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    )
+}
+
+export function Hoc(props) {
+    console.log(props);
+    const {Component, ...restProps} = props;
+
+    return (
+        <Component {...restProps} />
+    )
+}
+
+export function Test(props) {
+    console.log(props);
 }
 
 // export function Header() {

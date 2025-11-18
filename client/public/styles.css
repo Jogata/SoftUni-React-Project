@@ -1726,3 +1726,69 @@ body {
   background-color: red;
   /* cursor: pointer; */
 }
+
+.contact-section {
+  max-width: 1600px;
+  margin: auto;
+  padding: 3rem 1rem;
+  border-radius: 8px;
+  /* background-color: #fff; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* background-image: url("https://raw.githubusercontent.com/Jogata/SoftUni-React-Project/refs/heads/main/client/src/components/travel/images/bags/autumn-fashion.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+}
+
+.contact-section h1 {
+  margin-bottom: 1.5rem;
+  /* color: #2c3e50; */
+  text-align: center;
+}
+
+.contact-section form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.contact-section label {
+  /* margin-bottom: 0.25rem; */
+  font-weight: 600;
+}
+
+.contact-section input,
+.contact-section textarea {
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #666;
+  background-color: transparent;
+  /* resize: vertical; */
+}
+
+.contact-section ::placeholder {
+  /* min-height: 120px; */
+  /* background-color: transparent; */
+  color: #888;
+}
+
+.contact-section button {
+  padding: 0.75rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  /* border: none; */
+  background-color: #1abc9c;
+  transition: background-color 300ms ease;
+  /* cursor: pointer; */
+}
+
+.contact-section button:hover {
+  color: #fff;
+  background-color: #14987a;
+}
