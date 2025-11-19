@@ -14,14 +14,12 @@ export function Navigation() {
                     <li><Link to="/">Home</Link></li>
                     <li>Products</li>
                     <li><Link to="/contact">Contact</Link></li>
-                    {/* <li>Contact</li> */}
                 </ul>
             </div>
             <div className="nav-icons">
                 <Link to="/cart">
                     <span className="nav-cart">
                         <i className="fa fa-shopping-bag nav-icon"></i>
-                        {/* <span className="cart-amount">0</span> */}
                         <CartAmount />
                     </span>
                 </Link>
@@ -45,7 +43,6 @@ function CartAmount() {
 export function HomePage() {
     return (
         <HomeContent>
-            <Hoc Component={Test} id="test" />
             <Hero />
             <Features />
             <ModalContextProvider>
@@ -429,19 +426,6 @@ export function Contact() {
             </form>
         </section>
     )
-}
-
-export function Hoc(props) {
-    console.log(props);
-    const {Component, ...restProps} = props;
-
-    return (
-        <Component {...restProps} />
-    )
-}
-
-export function Test(props) {
-    console.log(props);
 }
 
 // export function Header() {

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "r.eact-router-dom";
@@ -124,41 +124,56 @@ export const CartContext = createContext();
 
 export function CartContextProvider(props) {
     const [products] = useState(bags);
-    // const [cart, setCart] = useState([]);
-    const testCart = products.map(p => {
-        p.amount = 2;
-        return p;
-    });
+    const [cart, setCart] = useState([]);
+    // const testCart = products.map(p => {
+    //     p.amount = 2;
+    //     return p;
+    // });
     // console.log(testCart);
-    const [cart, setCart] = useState(testCart);
-    const [itemsAmount, setItemsAmount] = useState(0);
-    const [total, setTotal] = useState([]);
+    // const [cart, setCart] = useState(testCart);
+    // const [itemsAmount, setItemsAmount] = useState(0);
+    // const [total, setTotal] = useState([]);
+    const total = cart.reduce((accumulator, currentItem) => {
+        const priceAsNumber = parseFloat(currentItem.price);
 
-    useEffect(() => {
-        const total = cart.reduce((accumulator, currentItem) => {
-            const priceAsNumber = parseFloat(currentItem.price);
-
-            if (isNaN(priceAsNumber)) {
-                return accumulator;
-            }
-
-            return accumulator + priceAsNumber * currentItem.amount;
-        }, 0);
-
-        console.log("Total:", total);
-        setTotal(total);
-    }, [cart]);
-
-    useEffect(() => {
-        if (cart) {
-            const amount = cart.reduce((accumulator, currentItem) => {
-                return accumulator + currentItem.amount;
-            }, 0);
-
-            console.log("Amount:", amount);
-            setItemsAmount(amount);
+        if (isNaN(priceAsNumber)) {
+            return accumulator;
         }
-    }, [cart]);
+
+        return accumulator + priceAsNumber * currentItem.amount;
+    }, 0);
+    console.log("Total:", total);
+
+    const itemsAmount = cart.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.amount;
+    }, 0);
+    console.log("Amount:", itemsAmount);
+
+    // useEffect(() => {
+    //     const total = cart.reduce((accumulator, currentItem) => {
+    //         const priceAsNumber = parseFloat(currentItem.price);
+
+    //         if (isNaN(priceAsNumber)) {
+    //             return accumulator;
+    //         }
+
+    //         return accumulator + priceAsNumber * currentItem.amount;
+    //     }, 0);
+
+    //     console.log("Total:", total);
+    //     setTotal(total);
+    // }, [cart]);
+
+    // useEffect(() => {
+    //     if (cart) {
+    //         const amount = cart.reduce((accumulator, currentItem) => {
+    //             return accumulator + currentItem.amount;
+    //         }, 0);
+
+    //         console.log("Amount:", amount);
+    //         setItemsAmount(amount);
+    //     }
+    // }, [cart]);
 
     function addToCart(product) {
         const newItem = { ...product, amount: 1 };
@@ -233,10 +248,9 @@ export const ModalContext = createContext();
 export function ModalContextProvider(props) {
     const [product, setProduct] = useState(null);
 
-    function toggleModal(product) {
-        // setIsModalOpen(!isModalOpen);
-        setProduct(product);
-    }
+    // function toggleModal(product) {
+    //     setProduct(product);
+    // }
 
     return (
         <ModalContext.Provider value={{product, setProduct}}>
