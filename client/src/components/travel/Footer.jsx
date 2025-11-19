@@ -59,6 +59,48 @@ export function Test() {
     );
 }
 
+const withTodo = (Component, todoId) => {
+    return (props) => {
+        const [todo, setTodo] = useState(null);
+
+        useEffect(() => {
+            (async () => {
+                const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`);
+                const data = await response.json();
+                // console.log(data);
+                setTodo(data);
+            })();
+        }, []);
+
+        return (
+            <Component {...props} todo={todo} />
+        );
+    };
+}
+
+export const TodoListWrapper = withTodo(TodoList, "2");
+
+const withTodo2 = (Component) => {
+    return ({todoId}) => {
+        const [todo, setTodo] = useState(null);
+
+        useEffect(() => {
+            (async () => {
+                const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`);
+                const data = await response.json();
+                console.log(data);
+                setTodo(data);
+            })();
+        }, []);
+
+        return (
+            <Component todo={todo} />
+        );
+    };
+}
+
+export const TodoListWrapper2 = withTodo2(TodoList);
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
