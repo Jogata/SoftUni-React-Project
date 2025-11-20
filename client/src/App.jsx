@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import { Test, TodoListWrapped, TodoListWrapper, TodoListWrapper2 } from './components/travel/Footer';
+import { Test, TestUser, TodoListWrapped, TodoListWrapper, TodoListWrapper2 } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -87,10 +87,11 @@ function App() {
 
 {/* <TodoListWrapped a={1} b="hello" c={{ name: "Jogata" }} /> */}
 {/* <Test /> */}
-<TodoListWrapper />
-<TodoListWrapper2 todoId={3} />
-<TodoListWrapper2 todoId={4} />
-<TodoListWrapper2 todoId={5} />
+{/* <TodoListWrapper /> */}
+{/* <TodoListWrapper2 todoId={3} /> */}
+{/* <TodoListWrapper2 todoId={4} /> */}
+{/* <TodoListWrapper2 todoId={5} /> */}
+<TestUser />
 
           <Routes>
             <Route path='/' element={<MainPage />} />

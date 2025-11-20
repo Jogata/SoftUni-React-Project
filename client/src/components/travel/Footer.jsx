@@ -101,6 +101,66 @@ const withTodo2 = (Component) => {
 
 export const TodoListWrapper2 = withTodo2(TodoList);
 
+const UserComponent = ({
+    message,
+    userName,
+    userPermissions,
+  }) => {
+    return (
+      <div>
+        <h1>{message}</h1>
+        <p>Welcome, {userName}</p>
+        <p>Your permissions: {userPermissions?.join(", ")}</p>
+      </div>
+    );
+  };
+
+  const NotAuthorized = () => (
+    <div>You are not authorized to view this content.</div>
+  );
+
+const withAccessControl = (WrappedComponent, currentUserRole) => {
+  return (props) => {
+    const {
+      roles,
+      fallbackComponent: Fallback,
+      injectedProps = {},
+      ...restProps
+    } = props;
+
+    const hasAccess = roles.includes(currentUserRole);
+
+    if (!hasAccess) {
+      return <Fallback />;
+    }
+
+    const mergedProps = {
+      ...restProps,
+      ...injectedProps,
+    };
+
+    return <WrappedComponent {...mergedProps} />;
+  };
+};
+
+export const UserComponentWithAccessControl = withAccessControl(UserComponent, "admin");
+
+export function TestUser() {
+    const injectedProps={
+        userName: "John Doe",
+        userPermissions: ["view_dashboard", "edit_settings"]
+    }
+
+    return (
+        <UserComponentWithAccessControl 
+            roles={["admin", "manager"]} 
+            fallbackComponent={NotAuthorized} 
+            injectedProps={injectedProps} 
+            message="Hello, Admin!" 
+        />
+    )
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
