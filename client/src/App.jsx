@@ -41,6 +41,8 @@ import { useEffect } from 'react';
 import { 
   PostsWithCustomHook,
     Test, 
+    TestForm, 
+    TestFormWithCustomHook, 
     TestUser, 
     TodoListWrapped, 
     TodoListWrapper, 
@@ -101,9 +103,11 @@ function App() {
 {/* <TodoListWrapper2 todoId={4} /> */}
 {/* <TodoListWrapper2 todoId={5} /> */}
 {/* <TestUser /> */}
-<WithoutCustomHook />
-<WithCustomHook />
-<PostsWithCustomHook />
+{/* <WithoutCustomHook /> */}
+{/* <WithCustomHook /> */}
+{/* <PostsWithCustomHook /> */}
+<TestForm />
+<TestFormWithCustomHook />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

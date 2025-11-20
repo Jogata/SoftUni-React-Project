@@ -260,6 +260,175 @@ export const PostsWithCustomHook = () => {
     );
 };
 
+export function TestForm() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setSubmitted(true);
+        console.log("Submitted:", { name, email });
+    };
+
+    return (
+        <div style={{
+            minHeight: "100vh", 
+            padding: "3rem 1rem", 
+            display: "flex"
+        }}>
+            {submitted ? (
+                <h2 style={{margin: "auto"}}>
+                    Thank you for submitting your information!
+                </h2>
+            ) : (
+                <form 
+                    onSubmit={handleSubmit} 
+                    style={{
+                        margin: "auto", 
+                        padding: "2rem", 
+                        display: "flex", 
+                        gap: "1rem", 
+                        flexDirection: "column", 
+                        border: "1px solid #555", 
+                        borderRadius: "12px"
+                    }}
+                >
+                    <div>
+                        <label>
+                            Name:
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                // required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Email:
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                // required
+                            />
+                        </label>
+                    </div>
+                    <button 
+                        type="submit"
+                        style={{
+                            margin: "1rem auto 0", 
+                            padding: "0.5rem 1.5rem", 
+                            color: "white", 
+                            border: "1px solid #555", 
+                            borderRadius: "4em"
+                        }}
+                    >
+                        Submit
+                    </button>
+                </form>
+            )}
+        </div>
+    );
+};
+
+function useForm(initialValues) {
+    const [values, setValues] = useState(initialValues);
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prev) => ({ ...prev, [name]: value }));
+    };
+
+    function handleSubmit(e, callback) {
+        e.preventDefault();
+        setSubmitted(true);
+        callback();
+    };
+
+    return { values, handleChange, handleSubmit, submitted };
+};
+
+export function TestFormWithCustomHook() {
+    const { values, handleChange, handleSubmit, submitted } = useForm({
+        name: "",
+        email: "",
+    });
+
+    const onSubmit = () => {
+        console.log("Submitted:", values);
+    };
+
+    return (
+        <div style={{
+            minHeight: "100vh", 
+            padding: "3rem 1rem", 
+            display: "flex"
+        }}>
+            {submitted ? (
+                <h2 style={{margin: "auto"}}>
+                    Thank you for submitting your information!
+                </h2>
+            ) : (
+                <form 
+                    onSubmit={
+                        (e) => handleSubmit(e, onSubmit)
+                    } 
+                    style={{
+                        margin: "auto", 
+                        padding: "2rem", 
+                        display: "flex", 
+                        gap: "1rem", 
+                        flexDirection: "column", 
+                        border: "1px solid #555", 
+                        borderRadius: "12px"
+                    }}
+                >
+                    <div>
+                        <label>
+                            Name:
+                            <input
+                                type="text"
+                                name="name"
+                                value={values.name}
+                                onChange={handleChange}
+                            // required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Email:
+                            <input
+                                type="email"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
+                            // required
+                            />
+                        </label>
+                    </div>
+                    <button 
+                        type="submit"
+                        style={{
+                            margin: "1rem auto 0", 
+                            padding: "0.5rem 1.5rem", 
+                            color: "white", 
+                            border: "1px solid #555", 
+                            borderRadius: "4em"
+                        }}
+                    >
+                        Submit
+                    </button>
+                </form>
+            )}
+        </div>
+    );
+};
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
