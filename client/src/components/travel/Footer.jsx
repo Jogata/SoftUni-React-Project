@@ -161,6 +161,105 @@ export function TestUser() {
     )
 }
 
+export const WithoutCustomHook = () => {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/todos")
+            .then((res) => res.json())
+            .then((data) => setData(data));
+    }, []);
+
+    return (
+        <ul className="todos">
+            {data &&
+                data.map((item) => {
+                    return <p key={item.id}>{item.title}</p>;
+                })}
+        </ul>
+    );
+};
+
+const useFetch = (url) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Network response was not ok");
+                const result = await response.json();
+                setData(result);
+            } catch (error) {
+                console.error("Fetch error: ", error);
+                setError(error);
+                setData(null);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [url]);
+
+    return { data, loading, error };
+};
+
+export const WithCustomHook = () => {
+    const { data, loading, error } = useFetch("https://jsonplaceholder.typicode.com/todos");
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error fetching todos: {error.message}</p>;
+    }
+
+    return (
+        <>
+            <hr style={{margin: "2rem 0"}} />
+            {data &&
+                <ul className="todos">
+                    {data.map(item => (
+                        <li key={item.id}>{item.title}</li>
+                    ))}
+                </ul>
+            }
+        </>
+    );
+};
+
+export const PostsWithCustomHook = () => {
+    const { data, loading, error } = useFetch("https://jsonplaceholder.typicode.com/posts");
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error fetching posts: {error.message}</p>;
+    }
+
+    return (
+        <div className="posts">
+            <hr style={{margin: "2rem 0"}} />
+            <h2>Posts</h2>
+            <ul>
+                {data &&
+                    data.map((post) => (
+                        <li key={post.id}>
+                            <h3>{post.title}</h3>
+                            <p>{post.body}</p>
+                        </li>
+                    ))}
+            </ul>
+        </div>
+    );
+};
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
