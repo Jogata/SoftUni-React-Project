@@ -38,21 +38,23 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect } from 'react';
-import { 
+import {
   PostsWithCustomHook,
-    Test, 
-    TestForm, 
-    TestFormWithCustomHook, 
-    TestFormWithValidation, 
-    TestThemeToggle, 
-    TestThemeToggleWithCustomHook, 
-    TestUser, 
-    TodoListWrapped, 
-    TodoListWrapper, 
-    TodoListWrapper2, 
-    WithCustomHook, 
-    WithoutCustomHook 
-  } from './components/travel/Footer';
+  Test,
+  TestForm,
+  TestFormWithCustomHook,
+  TestFormWithValidation,
+  TestModal,
+  TestModalWithCustomHook,
+  TestThemeToggle,
+  TestThemeToggleWithCustomHook,
+  TestUser,
+  TodoListWrapped,
+  TodoListWrapper,
+  TodoListWrapper2,
+  WithCustomHook,
+  WithoutCustomHook
+} from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -113,7 +115,9 @@ function App() {
 {/* <TestFormWithCustomHook /> */}
 {/* <TestFormWithValidation /> */}
 {/* <TestThemeToggle /> */}
-<TestThemeToggleWithCustomHook />
+{/* <TestThemeToggleWithCustomHook /> */}
+{/* <TestModal /> */}
+<TestModalWithCustomHook />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

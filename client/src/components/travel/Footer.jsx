@@ -718,6 +718,119 @@ export function TestThemeToggleWithCustomHook() {
     )
 }
 
+export function TestModal() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    return (
+        <div>
+            <h1>My Amazing Modal</h1>
+            <button 
+                onClick={openModal} 
+                style={{color: "#fff"}
+            }>
+                Open Modal
+            </button>
+            <Modal 
+                isOpen={isModalOpen} 
+                onClose={closeModal} 
+            />
+        </div>
+    );
+}
+
+function Modal({ isOpen, onClose }) {
+
+    if (!isOpen) return null;
+
+    return (
+        <div
+            style={{
+                position: "fixed", 
+                top: "0", 
+                left: "0", 
+                width: "100%", 
+                minHeight: "100vh", 
+                padding: "2rem 1rem", 
+                background: "rgba(0, 0, 0, 0.5)",
+                zIndex: "1"
+            }}
+        >
+            <div>
+                <h2>Modal Title</h2>
+                <p>This is a modal content.</p>
+                <button 
+                    onClick={onClose} 
+                    style={{color: "#fff"}
+                }>
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
+
+function useModal() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
+    return { isOpen, openModal, closeModal };
+};
+
+function ModalWithCustomHook({ isOpen, onClose }) {
+    if (!isOpen) return null;
+
+    return (
+        <div
+            style={{
+                position: "fixed",
+                top: "0",
+                left: "0",
+                width: "100%",
+                minHeight: "100vh",
+                padding: "2rem 1rem",
+                background: "rgba(0, 0, 0, 0.5)",
+                zIndex: "1"
+            }}
+        >
+            <div>
+                <h2>Modal Title</h2>
+                <p>This is a modal content.</p>
+                <button
+                    onClick={onClose}
+                    style={{ color: "#fff" }
+                }>
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export function TestModalWithCustomHook() {
+    const { isOpen, openModal, closeModal } = useModal();
+
+    return (
+        <div>
+            <h1>My Amazing Modal with Custom Hook</h1>
+            <button 
+                onClick={openModal} 
+                style={{color: "#fff"}
+            }>
+                Open Modal
+            </button>
+            <ModalWithCustomHook 
+                isOpen={isOpen} 
+                onClose={closeModal} 
+            />
+        </div>
+    );
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
