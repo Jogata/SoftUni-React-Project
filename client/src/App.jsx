@@ -43,6 +43,7 @@ import {
     Test, 
     TestForm, 
     TestFormWithCustomHook, 
+    TestFormWithValidation, 
     TestUser, 
     TodoListWrapped, 
     TodoListWrapper, 
@@ -106,8 +107,9 @@ function App() {
 {/* <WithoutCustomHook /> */}
 {/* <WithCustomHook /> */}
 {/* <PostsWithCustomHook /> */}
-<TestForm />
-<TestFormWithCustomHook />
+{/* <TestForm /> */}
+{/* <TestFormWithCustomHook /> */}
+<TestFormWithValidation />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

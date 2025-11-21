@@ -429,6 +429,140 @@ export function TestFormWithCustomHook() {
     );
 };
 
+const useFormWithValidation = ({ initialValues, validate }) => {
+    const [values, setValues] = useState(initialValues);
+    const [errors, setErrors] = useState({});
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prev) => ({ ...prev, [name]: value }));
+
+        if (errors[name]) {
+            setErrors((prev) => ({ ...prev, [name]: undefined }));
+        }
+    };
+
+    const validateForm = () => {
+        let isValid = true;
+        const newErrors = {};
+
+        for (const field in validate) {
+            const error = validate[field](values[field]);
+            if (error) {
+                isValid = false;
+                newErrors[field] = error;
+            }
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
+    const handleSubmit = callback => (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            setSubmitted(true);
+            callback();
+        }
+    };
+
+    return { values, errors, handleChange, handleSubmit, submitted };
+};
+
+const validateEmail = (value) => {
+    if (!value) return "Email is required";
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(value)) return "Email is invalid";
+};
+
+const validateName = (value) => {
+    if (!value) return "Name is required";
+    if (value.length < 2) return "Name must be at least 2 characters long";
+};
+
+export function TestFormWithValidation() {
+    const { values, errors, handleChange, handleSubmit, submitted } = useFormWithValidation({
+        initialValues: { name: "", email: "" },
+        validate: {
+            name: validateName,
+            email: validateEmail,
+        },
+    });
+
+    const onSubmit = () => {
+        console.log("Submitted:", values);
+    };
+
+    return (
+        <div style={{
+            minHeight: "100vh", 
+            padding: "3rem 1rem", 
+            display: "flex"
+        }}>
+            {submitted ? (
+                <h2 style={{ margin: "auto" }}>
+                    Thank you for submitting your information!
+                </h2>
+            ) : (
+                <form 
+                    onSubmit={handleSubmit(onSubmit)} 
+                    style={{
+                        margin: "auto", 
+                        padding: "2rem", 
+                        display: "flex", 
+                        gap: "1rem", 
+                        flexDirection: "column", 
+                        border: "1px solid #555", 
+                        borderRadius: "12px"
+                    }}
+                >
+                    <div>
+                        <label>
+                            Name:
+                            <input
+                                type="text"
+                                name="name"
+                                value={values.name}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        {errors.name && (
+                            <span style={{ color: "red" }}>{errors.name}</span>
+                        )}
+                    </div>
+                    <div>
+                        <label>
+                            Email:
+                            <input
+                                type="email"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        {errors.email && (
+                            <span style={{ color: "red" }}>{errors.email}</span>
+                        )}
+                    </div>
+                    <button 
+                        type="submit"
+                        style={{
+                            margin: "1rem auto 0", 
+                            padding: "0.5rem 1.5rem", 
+                            color: "white", 
+                            border: "1px solid #555", 
+                            borderRadius: "4em"
+                        }}
+                    >
+                        Submit
+                    </button>
+                </form>
+            )}
+        </div>
+    );
+};
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
