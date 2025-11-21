@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const printProps = (Component) => {
     return (props) => {
@@ -562,6 +562,161 @@ export function TestFormWithValidation() {
         </div>
     );
 };
+
+function Lorem() {
+    console.log("Lorem");
+
+    return (
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quis neque dolore sapiente vero id omnis corporis laudantium voluptates cupiditate totam explicabo consequuntur, excepturi asperiores iure inventore a doloremque quisquam veritatis nihil recusandae officiis provident nulla fugit? Saepe fugit obcaecati nihil odio ipsum sed non quod sequi voluptatem ullam at ut ab earum blanditiis, illo expedita alias numquam, maxime asperiores aliquid molestias facilis. Fugiat praesentium rem dolor modi voluptatibus cumque minus quidem, natus blanditiis voluptates distinctio accusamus dolores repellat id dolorem doloremque quas possimus debitis repudiandae temporibus nobis. Iste blanditiis eligendi reiciendis dolore necessitatibus sunt modi odio, assumenda repudiandae possimus quae saepe nihil accusamus inventore a consequuntur aut laboriosam nobis eos nostrum incidunt optio. Quo minus ad quisquam alias nulla, debitis voluptatibus officia. Doloribus, nulla nemo aliquam consequatur quis sequi! Modi velit totam autem, voluptas et officia illum quisquam quasi suscipit alias impedit optio eius voluptates quidem facere sequi tenetur veniam provident. Soluta culpa excepturi expedita qui eaque obcaecati sapiente illum quibusdam. Optio deserunt explicabo eaque atque corporis aspernatur tempore quibusdam, pariatur, quas nobis impedit ex, perferendis tempora sint natus reiciendis delectus sunt facilis nisi eligendi aliquid ullam odit officia. Architecto distinctio illo blanditiis, itaque magni consectetur adipisci cupiditate voluptates quaerat! Necessitatibus qui tenetur eum quas, amet esse eos quam odit. Assumenda, dolore maxime. Dolore fuga, accusamus vero eligendi ullam velit voluptatum, doloribus esse mollitia sequi perferendis fugiat eos illum quisquam perspiciatis praesentium eum inventore modi consectetur recusandae, harum voluptates tenetur autem. Quos deserunt voluptas obcaecati corrupti beatae officiis minima error illo temporibus aliquam ab asperiores corporis voluptatem rerum nulla qui laudantium porro repudiandae, ea nihil? Perferendis modi, id incidunt iusto, voluptatibus eveniet saepe dicta voluptas quae aliquid neque maxime ipsum aliquam aperiam consectetur laudantium sed minus illo, placeat nostrum est nesciunt. Perspiciatis soluta molestias sed voluptatum quis? Modi, obcaecati!</p>
+    )
+}
+
+let localStorage = null;
+
+function ThemeToggle({children}) {
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        console.log("effect");
+        // const storedTheme = window.localStorage.getItem("theme");
+        const storedTheme = localStorage;
+
+        if (storedTheme) {
+            //   setTheme(JSON.parse(storedTheme));
+            setTheme(localStorage);
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+        // window.localStorage.setItem("theme", JSON.stringify(newTheme));
+        localStorage = newTheme;
+    };
+
+    return (
+        <div
+            style={{
+                background: theme === "light" ? "#fff" : "#333",
+                color: theme === "light" ? "#000" : "#fff",
+                padding: "20px",
+            }}
+        >
+            <h1>Current Theme: {theme}</h1>
+            <button 
+                onClick={toggleTheme} 
+                style={{
+                    margin: "2rem 0", 
+                    padding: "1em 1.5em", 
+                    color: "inherit", 
+                    fontWeight: "bold", 
+                    border: "1px solid",
+                    borderRadius: "4em"
+                }}
+            >
+                Toggle Theme
+            </button>
+            {/* <Lorem /> */}
+            {children}
+        </div>
+    );
+};
+
+export function TestThemeToggle() {
+    return (
+        <>
+            <ThemeToggle>
+                <Lorem />
+            </ThemeToggle>
+        </>
+    )
+}
+
+function useLocalStorage(key, initialValue) {
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
+            //   const item = window.localStorage.getItem(key);
+            const item = localStorage;
+            return item ? item : initialValue;
+        } catch (error) {
+            console.error(`Error reading localStorage key “${key}”:`, error);
+            return initialValue;
+        }
+    });
+
+    function setValue(value) {
+        try {
+            const valueToStore =
+                value instanceof Function ? value(storedValue) : value;
+            setStoredValue(valueToStore);
+            //   window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            localStorage = valueToStore;
+        } catch (error) {
+            console.error(`Error setting localStorage key “${key}”:`, error);
+        }
+    };
+
+    // useEffect(() => {
+    //     const handleStorageChange = () => {
+    //         const item = window.localStorage.getItem(key);
+    //         item ? setStoredValue(JSON.parse(item)) : setStoredValue(initialValue);
+    //     };
+
+    //     window.addEventListener("storage", handleStorageChange);
+
+    //     return () => {
+    //         window.removeEventListener("storage", handleStorageChange);
+    //     };
+    // }, [key, initialValue]);
+
+    return [storedValue, setValue];
+};
+
+function ThemeToggleWithCustomHook({children}) {
+    console.log("ThemeToggleWithCustomHook");
+    const [theme, setTheme] = useLocalStorage("theme", "light");
+
+    function toggleTheme() {
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    };
+
+    return (
+        <div
+            style={{
+                background: theme === "light" ? "#fff" : "#333",
+                color: theme === "light" ? "#000" : "#fff",
+                padding: "20px",
+            }}
+        >
+            <h1>Current Theme: {theme}</h1>
+            <button
+                onClick={toggleTheme}
+                style={{
+                    margin: "2rem 0",
+                    padding: "1em 1.5em",
+                    color: "inherit",
+                    fontWeight: "bold",
+                    border: "1px solid",
+                    borderRadius: "4em"
+                }}
+            >
+                Toggle Theme
+            </button>
+            {/* <Lorem /> */}
+            {children}
+        </div>
+    );
+};
+
+export function TestThemeToggleWithCustomHook() {
+    return (
+        <>
+            <ThemeToggleWithCustomHook>
+                <Lorem />
+            </ThemeToggleWithCustomHook>
+        </>
+    )
+}
 
 // export function Footer() {
 //     return (

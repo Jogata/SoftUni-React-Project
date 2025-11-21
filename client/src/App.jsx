@@ -44,6 +44,8 @@ import {
     TestForm, 
     TestFormWithCustomHook, 
     TestFormWithValidation, 
+    TestThemeToggle, 
+    TestThemeToggleWithCustomHook, 
     TestUser, 
     TodoListWrapped, 
     TodoListWrapper, 
@@ -109,7 +111,9 @@ function App() {
 {/* <PostsWithCustomHook /> */}
 {/* <TestForm /> */}
 {/* <TestFormWithCustomHook /> */}
-<TestFormWithValidation />
+{/* <TestFormWithValidation /> */}
+{/* <TestThemeToggle /> */}
+<TestThemeToggleWithCustomHook />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
