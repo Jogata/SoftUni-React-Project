@@ -37,24 +37,8 @@ import Logout from './components/logout/Logout'
 // import { Pricing } from './components/travel/galaxy-travel/routes/Pricing';
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
-import { useEffect } from 'react';
-import {
-  PostsWithCustomHook,
-  Test,
-  TestForm,
-  TestFormWithCustomHook,
-  TestFormWithValidation,
-  TestModal,
-  TestModalWithCustomHook,
-  TestThemeToggle,
-  TestThemeToggleWithCustomHook,
-  TestUser,
-  TodoListWrapped,
-  TodoListWrapper,
-  TodoListWrapper2,
-  WithCustomHook,
-  WithoutCustomHook
-} from './components/travel/Footer';
+import { useEffect, useState } from 'react';
+import { Test, Test1, TestForm } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -91,6 +75,7 @@ function useFetch(url) {
 }
 
 function App() {
+  const [appnum, setAppnum] = useState(100);
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -101,23 +86,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-{/* <TodoListWrapped a={1} b="hello" c={{ name: "Jogata" }} /> */}
-{/* <Test /> */}
-{/* <TodoListWrapper /> */}
-{/* <TodoListWrapper2 todoId={3} /> */}
-{/* <TodoListWrapper2 todoId={4} /> */}
-{/* <TodoListWrapper2 todoId={5} /> */}
-{/* <TestUser /> */}
-{/* <WithoutCustomHook /> */}
-{/* <WithCustomHook /> */}
-{/* <PostsWithCustomHook /> */}
-{/* <TestForm /> */}
-{/* <TestFormWithCustomHook /> */}
-{/* <TestFormWithValidation /> */}
-{/* <TestThemeToggle /> */}
-{/* <TestThemeToggleWithCustomHook /> */}
-{/* <TestModal /> */}
-<TestModalWithCustomHook />
+<TestForm />
+<hr />
+<Test init={101} />
+<Test1 init={11} rer={setAppnum} />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
