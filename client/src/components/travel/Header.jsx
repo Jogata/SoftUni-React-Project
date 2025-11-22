@@ -164,6 +164,153 @@ export function TestDebounce() {
     )
 }
 
+let localStorage = "";
+
+function useLocalStorage(key, initialValue) {
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
+            //   const item = window.localStorage.getItem(key);
+            //   return item ? JSON.parse(item) : initialValue;
+            const item = localStorage;
+            return item ? item : initialValue;
+        } catch (error) {
+            console.error(error);
+            return initialValue;
+        }
+    });
+
+    function setValue(value) {
+        try {
+            setStoredValue(value);
+            //   window.localStorage.setItem(key, JSON.stringify(value));
+            localStorage = value;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return [storedValue, setValue];
+};
+
+export function TestLocalStorage() {
+    const [storedValue, setStoredValue] = useLocalStorage("username", "");
+
+    return (
+        <div className="test-section">
+            <h2>Local Storage Example</h2>
+            <h2>{storedValue}</h2>
+            <input
+                type="text"
+                value={storedValue}
+                onChange={(e) => setStoredValue(e.target.value)}
+                placeholder="Set Local Storage"
+            />
+        </div>
+    )
+}
+
+export function Clock({ time }) {
+    const hours = time.getHours();
+    let classes = "day";
+
+    if (hours >= 0 && hours <= 6) {
+        // document.getElementById('time').className = 'night';
+        classes = "night";
+    }
+    // } else {
+    //     document.getElementById('time').className = 'day';
+    // }
+
+    return (
+        <h1 id="time" className={classes}>
+            {time.toLocaleTimeString()}
+        </h1>
+    );
+}
+
+export function Profiles() {
+    return (
+      <>
+        <Profile person={{
+          imageId: 'lrWQx8l',
+          name: 'Subrahmanyan Chandrasekhar',
+        }} />
+        <Profile person={{
+          imageId: 'MK3eW3A',
+          name: 'Creola Katherine Johnson',
+        }} />
+      </>
+    )
+  }
+
+// let currentPerson;
+
+export function Profile({ person }) {
+//   currentPerson = person;
+  return (
+    <Panel>
+      <Header person={person} />
+      <Avatar person={person} />
+    </Panel>
+  )
+}
+
+function Header({person}) {
+//   return <h1>{currentPerson.name}</h1>;
+  return <h1>{person.name}</h1>;
+}
+
+function Avatar({person}) {
+  return (
+    <img
+      className="avatar"
+    //   src={getImageUrl(currentPerson)}
+      src={getImageUrl(person)}
+    //   alt={currentPerson.name}
+      alt={person.name}
+      width={50}
+      height={50}
+    />
+  );
+}
+
+const data = [];
+
+export function Button() {
+    const [num, setNum] = useState(0);
+
+    return (
+        <>
+        <h2>{num}</h2>
+        <button onClick={() => setNum(num + 1)}>add</button>
+        <StoryTray stories={data} />
+        </>
+    )
+}
+
+export function StoryTray({ stories }) {
+    const newStories = [...stories];
+    newStories.push({
+        id: "create",
+        label: "Create Story"
+    });
+
+    // stories.push({
+    //     id: "create",
+    //     label: "Create Story"
+    // });
+
+    return (
+        <ul>
+            {newStories.map(story => (
+                <li key={story.id}>
+                    {story.label}
+                </li>
+            ))}
+        </ul>
+    );
+}
+
 // export function Header() {
 //     return (
 //         <header>
