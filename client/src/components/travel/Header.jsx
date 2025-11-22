@@ -107,6 +107,63 @@ function Inner(props) {
     return <h1>Inner</h1>
 }
 
+
+function useDebounce(value, delay) {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        console.log("debounce effect");
+        const id = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => {
+            clearTimeout(id);
+        };
+    }, [value, delay]);
+
+    return debouncedValue;
+};
+
+function usePrevious(value) {
+    console.log("previous effect");
+
+    const ref = useRef();
+
+    useEffect(() => {
+        ref.current = value;
+    }, [value]);
+
+    return ref.current;
+};
+
+export function TestDebounce() {
+    const [inputValue, setInputValue] = useState("");
+    const debouncedInput = useDebounce(inputValue, 5000);
+  
+    const previousValue = usePrevious(inputValue);
+  
+    function handleInputChange(e) {
+      setInputValue(e.target.value);
+    };
+
+    return (
+        <div className="test-section">
+            <div>
+                <h2>Debounced Input Example</h2>
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    placeholder="Type to debounce"
+                />
+                <p>Debounced Value: {debouncedInput}</p>
+                <p>Previous Value: {previousValue}</p>
+            </div>
+        </div>
+    )
+}
+
 // export function Header() {
 //     return (
 //         <header>
