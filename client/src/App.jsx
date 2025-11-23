@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Button, StoryTray, Test, Test1, TestDebounce, TestForm, TestLocalStorage } from './components/travel/Header';
+import { Button, StoryTray, Test, Test1, TestDebounce, TestFetch, TestForm, TestLocalStorage } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -100,6 +100,8 @@ function App() {
 <div className="test-section">
   <Button />
 </div>
+<hr />
+<TestFetch />
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
