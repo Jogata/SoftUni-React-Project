@@ -559,6 +559,101 @@ export function TestWelcome() {
   );
 }
 
+function ModalDialog({ isOpen, children }) {
+    const ref = useRef();
+
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+        const dialog = ref.current;
+        dialog.showModal();
+
+        return () => {
+            dialog.close();
+        };
+    }, [isOpen]);
+
+    return (
+        <dialog 
+            ref={ref} 
+            style={{
+                padding: "3rem", 
+                color: "white", 
+                backgroundColor: "black"
+            }}>
+                {children}
+            </dialog>
+    );
+}
+
+export function TestModalDialog() {
+    const [showModal, setShowModal] = useState(false);
+
+    return (
+        <div className="test-section">
+            <button onClick={() => setShowModal(true)}>
+                Open dialog
+            </button>
+            <ModalDialog isOpen={showModal}>
+                Hello there!
+                <br />
+                <button onClick={() => {
+                    setShowModal(false);
+                }}>Close</button>
+            </ModalDialog>
+        </div>
+    );
+}
+
+function ModalDialog2({ isOpen }) {
+    // const ref = useRef();
+
+    // useEffect(() => {
+    //     if (!isOpen) {
+    //         return;
+    //     }
+    //     const dialog = ref.current;
+    //     dialog.showModal();
+
+    //     return () => {
+    //         dialog.close();
+    //     };
+    // }, [isOpen]);
+
+    return (
+        <dialog 
+            // ref={ref} 
+            style={{
+                padding: "3rem", 
+                color: "white", 
+                backgroundColor: "black"
+            }}>
+                {children}
+            </dialog>
+    );
+}
+
+export function TestModalDialog2() {
+    // const [showModal, setShowModal] = useState(false);
+    const dialog = useRef();
+
+    return (
+        <div className="test-section">
+            <button onClick={() => dialog.current.showModal()}>
+                Open dialog
+            </button>
+            <ModalDialog2 ref={dialog}>
+                Hello there!
+                <br />
+                <button onClick={() => {
+                    dialog.current.close();
+                }}>Close</button>
+            </ModalDialog2>
+        </div>
+    );
+}
+
 // export function Header() {
 //     return (
 //         <header>
