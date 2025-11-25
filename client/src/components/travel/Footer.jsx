@@ -303,6 +303,74 @@ export function TestFixRetriggeringAnimation() {
     );
 }
 
+function Welcome2({ duration }) {
+    console.log("welcome2", duration);
+    // const ref = useRef(null);
+
+    // useEffect(() => {
+    //     const animation = new FadeInAnimation(ref.current);
+    //     animation.start(duration);
+    //     return () => {
+    //         animation.stop();
+    //     };
+    // }, [duration]);
+
+    return (
+        <h1
+            // ref={ref}
+            className="fade-in"
+            style={{
+                color: "brown", 
+                animationDuration: `${duration}ms`
+                // opacity: 0,
+                // color: "white",
+                // padding: 50,
+                // textAlign: "center",
+                // fontSize: 50,
+                // backgroundImage: "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)"
+            }}
+        >
+            Welcome
+        </h1>
+    );
+}
+
+export function TestFixRetriggeringAnimation2() {
+    const [duration, setDuration] = useState(10000);
+    const [currDuration, setCurrDuration] = useState(10000);
+    const [show, setShow] = useState(false);
+
+    function change(e) {
+        setCurrDuration(Number(e.target.value));
+    }
+
+    function click() {
+        setShow(!show);
+        setDuration(currDuration);
+    }
+
+    return (
+        <>
+            <label>
+                <input
+                    type="range"
+                    min="100"
+                    max="10000"
+                    value={currDuration}
+                    onChange={e => change(e)}
+                />
+                <br />
+                Fade in duration: {duration} ms
+            </label>
+            <button onClick={click}>
+                {show ? "Remove" : "Show"}
+            </button>
+            <hr />
+            {show && <Welcome2 duration={duration} />}
+        </>
+    );
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
