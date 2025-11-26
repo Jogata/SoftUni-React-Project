@@ -505,6 +505,99 @@ export function SaveButtonWithCustomHook() {
     );
 }
 
+export function Form() {
+    const [firstName, setFirstName] = useState("Mary");
+    const [lastName, setLastName] = useState("Poppins");
+
+    function handleFirstNameChange(e) {
+        setFirstName(e.target.value);
+    }
+
+    function handleLastNameChange(e) {
+        setLastName(e.target.value);
+    }
+
+    return (
+        <div className="test-section">
+            <label>
+                First name:
+                <input value={firstName} onChange={handleFirstNameChange} />
+            </label>
+            <label>
+                Last name:
+                <input value={lastName} onChange={handleLastNameChange} />
+            </label>
+            <p><b>Good morning, {firstName} {lastName}.</b></p>
+        </div>
+    );
+}
+
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
+
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  const inputProps = {
+    value: value,
+    onChange: handleChange
+  };
+
+  return inputProps;
+}
+
+export function FormWithCustomHook() {
+    const firstNameProps = useFormInput("Mary");
+    const lastNameProps = useFormInput("Poppins");
+
+    return (
+        <div className="test-section">
+            <label>
+                First name:
+                <input {...firstNameProps} />
+            </label>
+            <label>
+                Last name:
+                <input {...lastNameProps} />
+            </label>
+            <p><b>Good morning, {firstNameProps.value} {lastNameProps.value}.</b></p>
+        </div>
+    );
+}
+
+export function TestThis() {
+    return (
+        <button onClick={function() {
+            console.log(this);
+        }}>
+            log this
+        </button>
+    )
+}
+
+export function TestThisRef() {
+    const btn = useRef(null);
+
+    useEffect(() => {
+        function log() {
+            console.log(this);
+        }
+
+        console.log("effect");
+        btn.current.addEventListener("click", log);
+
+        return () => {
+            btn.current.removeEventListener("click", log);
+        }
+    }, []);
+
+    return (
+        <button ref={btn}>
+            log this
+        </button>
+    )
+}
 
 // export function Footer() {
 //     return (
