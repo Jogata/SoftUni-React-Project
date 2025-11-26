@@ -371,6 +371,78 @@ export function TestFixRetriggeringAnimation2() {
     );
 }
 
+export function StatusBar() {
+    const [isOnline, setIsOnline] = useState(true);
+
+    const onlineStyles = {
+        padding: "3rem 1rem", 
+        color: "greenyellow", 
+        textAlign: "center"
+    };
+
+    const offineStyles = {
+        padding: "3rem 1rem", 
+        color: "red", 
+        textAlign: "center"
+    };
+
+    useEffect(() => {
+        function handleOnline() {
+            setIsOnline(true);
+        }
+
+        function handleOffline() {
+            setIsOnline(false);
+        }
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    return <h1 style={isOnline ? onlineStyles : offineStyles}>
+        {isOnline ? "Online" : "Disconnected"}
+    </h1>;
+}
+
+export function SaveButton() {
+    const [isOnline, setIsOnline] = useState(true);
+
+    useEffect(() => {
+        function handleOnline() {
+            setIsOnline(true);
+        }
+
+        function handleOffline() {
+            setIsOnline(false);
+        }
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    function handleSaveClick() {
+        console.log("Progress saved");
+    }
+
+    return (
+        <div className="test-section">
+            <button disabled={!isOnline} onClick={handleSaveClick}>
+                {isOnline ? "Save progress" : "Reconnecting..."}
+            </button>
+        </div>
+    );
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
