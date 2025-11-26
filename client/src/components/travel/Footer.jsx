@@ -443,6 +443,69 @@ export function SaveButton() {
     );
 }
 
+function useOnlineStatus() {
+    const [isOnline, setIsOnline] = useState(true);
+
+    useEffect(() => {
+        function handleOnline() {
+            setIsOnline(true);
+        }
+
+        function handleOffline() {
+            setIsOnline(false);
+        }
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    return isOnline;
+}
+
+export function StatusBarWithCustomHook() {
+    // const [isOnline, setIsOnline] = useState(true);
+    const isOnline = useOnlineStatus();
+
+    const onlineStyles = {
+        padding: "3rem 1rem", 
+        color: "greenyellow", 
+        textAlign: "center"
+    };
+
+    const offineStyles = {
+        padding: "3rem 1rem", 
+        color: "red", 
+        textAlign: "center"
+    };
+
+    return <h1 style={isOnline ? onlineStyles : offineStyles}>
+        {isOnline ? "Online" : "Disconnected"}
+    </h1>;
+}
+
+export function SaveButtonWithCustomHook() {
+    // const [isOnline, setIsOnline] = useState(true);
+    const isOnline = useOnlineStatus();
+
+    function handleSaveClick() {
+        console.log("Progress saved");
+    }
+
+    return (
+        <div className="test-section">
+            <button disabled={!isOnline} onClick={handleSaveClick}>
+                {isOnline ? "Save progress" : "Reconnecting..."}
+            </button>
+        </div>
+    );
+}
+
+
 // export function Footer() {
 //     return (
 //         <div className="footer">

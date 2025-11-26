@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Counter, Counter2, SaveButton, StatusBar, TestChatRoom, TestFixRetriggeringAnimation, TestFixRetriggeringAnimation2, TestIntersectionObserver, TestWindowListener } from './components/travel/Footer';
+import { Counter, Counter2, SaveButton, SaveButtonWithCustomHook, StatusBar, StatusBarWithCustomHook, TestChatRoom, TestFixRetriggeringAnimation, TestFixRetriggeringAnimation2, TestIntersectionObserver, TestWindowListener } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,9 +86,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <StatusBar />
-        <SaveButton />
+        <StatusBarWithCustomHook/>
+        <SaveButtonWithCustomHook />
         <hr />
+        {/* <StatusBar />
+        <SaveButton />
+        <hr /> */}
         {/* <TestChatRoom /> */}
         {/* <hr /> */}
         {/* <TestFixRetriggeringAnimation /> */}
