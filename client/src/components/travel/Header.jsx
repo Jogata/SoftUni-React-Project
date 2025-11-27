@@ -140,6 +140,103 @@ export function TestButtonFactory() {
     )
 }
 
+const CardFactory = ({ type, data }) => {
+    switch (type) {
+        case "image":
+            return <ImageCard imageSrc={data.src} altText={data.alt} />;
+        case "text":
+            return <TextCard text={data.text} />;
+        case "profile":
+            return (
+                <ProfileCard name={data.name} bio={data.bio} avatar={data.avatar} />
+            );
+        default:
+            return <div>Unknown card type</div>;
+    }
+};
+
+function ImageCard({ imageSrc, altText }) {
+    const styles = {
+        maxWidth: "400px", 
+        margin: "1rem",
+        padding: "1rem",
+        color: "#fff",
+        border: "1px solid",
+        borderRadius: "12px"
+    };
+
+    return (
+        <div style={styles}>
+            <img src={imageSrc} alt={altText} />
+        </div>
+    )
+}
+
+function ProfileCard({ name, bio, avatar }) {
+    const styles = {
+        maxWidth: "400px", 
+        margin: "1rem",
+        padding: "1rem",
+        color: "#fff",
+        border: "1px solid",
+        borderRadius: "12px"
+    };
+
+    return (
+        <div style={styles}>
+            <img src={avatar} alt={name} />
+            <h3>{name}</h3>
+            <p>{bio}</p>
+        </div>
+    );
+}
+
+function TextCard({ text }) {
+    const styles = {
+        maxWidth: "400px", 
+        margin: "1rem",
+        padding: "1rem",
+        color: "#fff",
+        border: "1px solid",
+        borderRadius: "12px"
+    };
+
+    return (
+        <div style={styles}>
+            <p>{text}</p>
+        </div>
+    );
+}
+
+export function TestCardFactory() {
+    const imageCardData = {
+        src: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=3903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Placeholder Image",
+    };
+
+    const textCardData = {
+        text: "This is a simple text card.",
+    };
+
+    const profileCardData = {
+        name: "John Doe",
+        bio: "A software engineer with a passion for React.",
+        avatar:
+            "https://images.unsplash.com/photo-1487349703519-90c8e4f426a7?q=80&w=3853&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    };
+
+    return (
+        <div className="test-section">
+            <h1 style={{textAlign: "center"}}>Factory Design Pattern in React</h1>
+            <div className="test-section">
+                <CardFactory type="image" data={imageCardData} />
+                <CardFactory type="text" data={textCardData} />
+                <CardFactory type="profile" data={profileCardData} />
+            </div>
+        </div>
+    )
+}
+  
 // export function Header() {
 //     return (
 //         <header>
