@@ -79,6 +79,67 @@ function showNotification(msg) {
     console.log(msg);
 } 
 
+function ButtonFactory(type, label) {
+    switch (type) {
+        case "primary":
+            return <PrimaryButton label={label} />;
+        case "secondary":
+            return <SecondaryButton label={label} />;
+        case "danger":
+            return <DangerButton label={label} />;
+        default:
+            return <button>{label}</button>;
+    }
+}
+
+function DangerButton({ label }) {
+    const styles = {
+        padding: "1rem 1.5rem",
+        color: "#fff",
+        border: "1px solid",
+        backgroundColor: "green"
+    };
+
+    return <button style={styles}>{label}</button>;
+}
+
+function PrimaryButton({ label }) {
+    const styles = {
+        padding: "1rem 1.5rem",
+        color: "#fff",
+        border: "1px solid",
+        backgroundColor: "teal"
+    };
+
+    return <button style={styles}>{label}</button>;
+}
+
+function SecondaryButton({ label }) {
+    const styles = {
+        padding: "1rem 1.5rem",
+        color: "#fff",
+        border: "1px solid",
+        backgroundColor: "purple"
+    };
+
+    return <button style={styles}>{label}</button>;
+}
+  
+export function TestButtonFactory() {
+    const buttonType1 = "primary";
+    const buttonType2 = "secondary";
+    const buttonType3 = "danger";
+    const buttonLabel = "Click Me";
+
+    return (
+        <div className="test-section">
+            {ButtonFactory(buttonType1, buttonLabel)}
+            {ButtonFactory(buttonType2, buttonLabel)}
+            {ButtonFactory(buttonType3, buttonLabel)}
+        </div>
+    )
+}
+
 // export function Header() {
 //     return (
 //         <header>
