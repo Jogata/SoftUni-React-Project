@@ -227,7 +227,9 @@ export function TestCardFactory() {
 
     return (
         <div className="test-section">
-            <h1 style={{textAlign: "center"}}>Factory Design Pattern in React</h1>
+            <h1 style={{textAlign: "center"}}>
+                Factory Design Pattern in React
+            </h1>
             <div className="test-section">
                 <CardFactory type="image" data={imageCardData} />
                 <CardFactory type="text" data={textCardData} />
@@ -235,6 +237,102 @@ export function TestCardFactory() {
             </div>
         </div>
     )
+}
+
+function ComponentFactory(config) {
+    switch (config.type) {
+        case "button":
+            return <Button {...config.props} />;
+        case "card":
+            return <Card {...config.props} />;
+        case "modal":
+            return <Modal {...config.props} />;
+        default:
+            throw new Error("Unknown component type");
+    }
+}
+
+function Button({ label, onClick, disabled }) {
+    return (
+        <button onClick={onClick} disabled={disabled}>
+            {label}
+        </button>
+    );
+}
+
+function Card({ title, content, footer }) {
+    const styles = {
+        maxWidth: "400px", 
+        margin: "1rem",
+        padding: "1rem",
+        color: "#fff",
+        textAlign: "center",
+        border: "1px solid",
+        borderRadius: "12px"
+    };
+
+    return (
+        <div className="card" style={styles}>
+            <h3>{title}</h3>
+            <p>{content}</p>
+            <footer>{footer}</footer>
+        </div>
+    );
+}
+
+function Modal({ header, content, footer }) {
+    const styles = {
+        maxWidth: "400px", 
+        margin: "1rem",
+        padding: "1rem",
+        color: "#fff",
+        textAlign: "center",
+    };
+
+    return (
+        <div className="modal" style={styles}>
+            <h2>{header}</h2>
+            <p>{content}</p>
+            <footer>{footer}</footer>
+        </div>
+    );
+}
+
+export function TestComponentFactory() {
+    const buttonConfig = {
+        type: "button",
+        props: {
+            label: "Click Me",
+            onClick: () => alert("Clicked"),
+            disabled: false,
+        },
+    };
+
+    const cardConfig = {
+        type: "card",
+        props: {
+            title: "Card Title",
+            content: "Some content here.",
+            footer: "Footer",
+        },
+    }
+
+    const modalConfig = {
+        type: "modal",
+        props: {
+            header: "Modal Header",
+            content: "Some content here.",
+            footer: "Footer",
+        },
+    }
+
+    return (
+        <div className="test-section">
+            {ComponentFactory(buttonConfig)}
+            {ComponentFactory(cardConfig)}
+            {ComponentFactory(modalConfig)}
+        </div>
+    );
 }
   
 // export function Header() {

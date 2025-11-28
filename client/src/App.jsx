@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { ChatRoom, TestButtonFactory, TestCardFactory } from './components/travel/Header';
+import { ChatRoom, TestButtonFactory, TestCardFactory, TestComponentFactory } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -89,7 +89,9 @@ function App() {
         {/* <ChatRoom roomId={"general"} /> */}
         {/* <TestButtonFactory /> */}
         {/* <hr /> */}
-        <TestCardFactory />
+        {/* <TestCardFactory /> */}
+        {/* <hr /> */}
+        <TestComponentFactory />
         <hr />
 
           <Routes>
