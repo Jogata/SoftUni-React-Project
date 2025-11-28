@@ -386,7 +386,107 @@ export function TestChatRoom2() {
         <ChatRoom2 roomId={"main"} />
     )
 }
-  
+
+function ShippingForm({ country }) {
+    const [cities, setCities] = useState(null);
+
+    useEffect(() => {
+        let ignore = false;
+        fetch(`/api/cities?country=${country}`)
+            .then(response => response.json())
+            .then(json => {
+                if (!ignore) {
+                    setCities(json);
+                }
+            });
+        return () => {
+            ignore = true;
+        };
+    }, [country]);
+
+    const [city, setCity] = useState(null);
+    const [areas, setAreas] = useState(null);
+
+    useEffect(() => {
+        if (city) {
+            let ignore = false;
+            fetch(`/api/areas?city=${city}`)
+                .then(response => response.json())
+                .then(json => {
+                    if (!ignore) {
+                        setAreas(json);
+                    }
+                });
+            return () => {
+                ignore = true;
+            };
+        }
+    }, [city]);
+
+    return (
+        <div className="test-section">
+            <h1>{cities}</h1>
+            <h1>{city}</h1>
+            <h1>{areas}</h1>
+        </div>
+    )
+}
+
+function useData(url) {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        if (url) {
+            console.log(url);
+            let ignore = false;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    if (!ignore) {
+                        setData(json);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .finally(() => setData(["Yambol", "Sliven"]));
+
+            return () => {
+                ignore = true;
+            };
+        }
+    }, [url]);
+
+    return data;
+}
+
+function ShippingFormWithCustomHook({ country }) {
+    const cities = useData(country ? `/api/cities?country=${country}` : []);
+
+    const [city, setCity] = useState(cities[0]);
+
+    useEffect(() => {
+        setCity(cities[0]);
+    }, [cities])
+
+    const areas = useData(city ? `/api/areas?city=${city}` : null);
+
+    return (
+        <div className="test-section">
+            <h1>{cities}</h1>
+            <h1>{city}</h1>
+            <h1>{areas}</h1>
+        </div>
+    )
+}
+
+export function TestShippingFormWithCustomHook() {
+    return (
+        <ShippingFormWithCustomHook country={"Bulgaria"} />
+    )
+}
+
 // export function Header() {
 //     return (
 //         <header>
