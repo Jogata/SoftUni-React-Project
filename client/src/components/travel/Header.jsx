@@ -1,3 +1,4 @@
+import { useEffectEvent } from "react";
 import { useState, useEffect } from "react";
 
 function createConnection({ serverUrl, roomId }) {
@@ -333,6 +334,57 @@ export function TestComponentFactory() {
             {ComponentFactory(modalConfig)}
         </div>
     );
+}
+
+function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
+    // const onMessage = useEffectEvent(onReceiveMessage);
+
+    useEffect(() => {
+        const options = {
+            serverUrl: serverUrl,
+            roomId: roomId
+        };
+
+        const connection = createConnection(options);
+        connection.connect();
+        connection.on("message", (msg) => {
+            // onMessage(msg);
+            onReceiveMessage(msg);
+        });
+
+        return () => connection.disconnect();
+    }, [roomId, serverUrl]);
+}
+
+function ChatRoom2({ roomId }) {
+    const [serverUrl, setServerUrl] = useState("https://localhost:1234");
+    const [num, setNum] = useState(0);
+
+    useChatRoom({
+        roomId: roomId,
+        serverUrl: serverUrl,
+        onReceiveMessage(msg) {
+            showNotification("New message: " + msg);
+        }
+    });
+
+    return (
+        <div className="test-section">
+            <label>
+                Server URL:
+                <input value={serverUrl} onChange={e => setServerUrl(e.target.value)} />
+            </label>
+            <h1>Welcome to the {roomId} room!</h1>
+            <h2>{num}</h2>
+            <button onClick={() => setNum(num + 1)}>add</button>
+        </div>
+    )
+}
+
+export function TestChatRoom2() {
+    return (
+        <ChatRoom2 roomId={"main"} />
+    )
 }
   
 // export function Header() {
