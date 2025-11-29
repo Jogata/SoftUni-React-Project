@@ -549,7 +549,7 @@ export function TestWelcome() {
 
 
 
-export function useFadeIn(ref, duration) {
+function useFadeIn(ref, duration) {
     useEffect(() => {
         const node = ref.current;
 
@@ -586,11 +586,45 @@ export function useFadeIn(ref, duration) {
     }, [ref, duration]);
 }
 
+function useFadeInWithCustomHook(ref, duration) {
+    const [isRunning, setIsRunning] = useState(true);
+
+    useAnimationLoop(isRunning, (timePassed) => {
+        const progress = Math.min(timePassed / duration, 1);
+        ref.current.style.opacity = progress;
+        if (progress === 1) {
+            setIsRunning(false);
+        }
+    });
+}
+
+function useAnimationLoop(isRunning, drawFrame) {
+    //   const onFrame = useEffectEvent(drawFrame);
+
+    useEffect(() => {
+        if (!isRunning) {
+            return;
+        }
+
+        const startTime = performance.now();
+        let frameId = null;
+
+        function tick(now) {
+            const timePassed = now - startTime;
+            drawFrame(timePassed);
+            frameId = requestAnimationFrame(tick);
+        }
+
+        tick();
+
+        return () => cancelAnimationFrame(frameId);
+    }, [isRunning, drawFrame]);
+}
 
 function WelcomeWithHook() {
     const ref = useRef(null);
 
-    useFadeIn(ref, 10000);
+    useFadeInWithCustomHook(ref, 10000);
 
     return (
         <h1 className="welcome" ref={ref}>
@@ -602,13 +636,35 @@ function WelcomeWithHook() {
 export function TestWelcomeWithHook() {
     const [show, setShow] = useState(false);
     return (
-        <>
+        <div className="fade-in">
             <button onClick={() => setShow(!show)}>
                 {show ? 'Remove' : 'Show'}
             </button>
             <hr />
             {show && <WelcomeWithHook />}
-        </>
+        </div>
+    );
+}
+
+function WelcomeWithCSS() {
+    return (
+        <h1 className="fade-in">
+            Welcome
+        </h1>
+    );
+}
+
+export function TestWelcomeWithCSS() {
+    const [show, setShow] = useState(false);
+
+    return (
+        <div className="fade-in">
+            <button onClick={() => setShow(!show)}>
+                {show ? 'Remove' : 'Show'}
+            </button>
+            <hr />
+            {show && <WelcomeWithCSS />}
+        </div>
     );
 }
 
