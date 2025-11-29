@@ -668,6 +668,80 @@ export function TestWelcomeWithCSS() {
     );
 }
 
+function useCounter() {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setCount(c => c + 1);
+        }, 1000);
+
+        return () => clearInterval(id);
+    }, []);
+
+    return count;
+}
+
+export function TestCounter() {
+    const count = useCounter();
+
+    return (
+        <div className="test-section">
+            <h1>Seconds passed: {count}</h1>
+        </div>
+    );
+}
+
+
+function useInterval(setCount, delay) {
+    useEffect(() => {
+        const id = setInterval(setCount, delay);
+
+        return () => clearInterval(id);
+    }, [delay, setCount]);
+}
+
+function useCounterWithDelay(delay) {
+    const [count, setCount] = useState(0);
+
+    useInterval(() => {
+        setCount(c => c + 1);
+    }, delay);
+    // useEffect(() => {
+    //     const id = setInterval(() => {
+    //         setCount(c => c + 1);
+    //     }, delay);
+
+    //     return () => clearInterval(id);
+    // }, [delay]);
+
+    return count;
+}
+
+export function TestCounterWithDelay() {
+    const [delay, setDelay] = useState(1000);
+    const count = useCounterWithDelay(delay);
+
+    return (
+        <div className="test-section">
+            <label>
+                Tick duration: {delay} ms
+                <br />
+                <input
+                    type="range"
+                    value={delay}
+                    min="10"
+                    max="2000"
+                    onChange={e => setDelay(Number(e.target.value))}
+                />
+            </label>
+            <hr />
+            <h1>Ticks: {count}</h1>
+        </div>
+    );
+}
+
+
 // export function Header() {
 //     return (
 //         <header>

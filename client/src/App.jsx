@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { ChatRoom, TestButtonFactory, TestCardFactory, TestChatRoom2, TestComponentFactory, TestShippingFormWithCustomHook, TestWelcome, TestWelcomeWithCSS, TestWelcomeWithHook } from './components/travel/Header';
+import { ChatRoom, TestButtonFactory, TestCardFactory, TestChatRoom2, TestComponentFactory, TestCounter, TestCounterWithDelay, TestShippingFormWithCustomHook, TestWelcome, TestWelcomeWithCSS, TestWelcomeWithHook } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -99,9 +99,13 @@ function App() {
         {/* <hr /> */}
         {/* <TestWelcome />
         <hr /> */}
-        <TestWelcomeWithHook />
+        {/* <TestWelcomeWithHook /> */}
+        {/* <hr /> */}
+        {/* <TestWelcomeWithCSS /> */}
+        {/* <hr /> */}
+        <TestCounter />
         <hr />
-        <TestWelcomeWithCSS />
+        <TestCounterWithDelay />
         <hr />
 
           <Routes>
