@@ -741,6 +741,65 @@ export function TestCounterWithDelay() {
     );
 }
 
+// ======================================= Challenge 4: Fix a resetting interval ==============================================
+
+function useInterval4(onTick, delay) {
+    useEffect(() => {
+        const id = setInterval(onTick, delay);
+
+        return () => {
+            clearInterval(id);
+        };
+    }, [onTick,delay]);
+}
+
+// function counterCallback(callback) {
+//     return () => callback(c => c + 1);
+// }
+
+// function callback() {
+//     callback(c => c + 1);
+// }
+
+function useCounter4(delay) {
+    const [count, setCount] = useState(0);
+
+    // useInterval4(counterCallback(setCount), delay);
+    useInterval4(() => {
+        setCount(c => c + 1);
+    }, delay);
+
+    return count;
+}
+
+function changeBg() {
+    const randomColor = `hsla(${Math.random() * 360}, 100%, 50%, 0.2)`;
+    document.body.style.backgroundColor = randomColor;
+}
+
+function Counter4() {
+    const count = useCounter4(1000);
+    // const count = 0;
+
+    // useInterval4(() => {
+    //     const randomColor = `hsla(${Math.random() * 360}, 100%, 50%, 0.2)`;
+    //     document.body.style.backgroundColor = randomColor;
+    // }, 2000);
+    useInterval4(changeBg, 2000);
+
+    return <h1>Seconds passed: {count}</h1>;
+}
+
+export function FixCounter() {
+    return (
+        <div className="test-section">
+            <Counter4 />
+        </div>
+    )
+}
+
+// =============================================================================================
+
 
 // export function Header() {
 //     return (
