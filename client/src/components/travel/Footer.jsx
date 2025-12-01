@@ -1,22 +1,22 @@
 // ======================================================================
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-let nextId = 0;
+// let nextId = 0;
 
-function createTodo(text, completed = false) {
-    return {
-        id: nextId++,
-        text,
-        completed
-    };
-}
+// function createTodo(text, completed = false) {
+//     return {
+//         id: nextId++,
+//         text,
+//         completed
+//     };
+// }
 
-const initialTodos = [
-    createTodo("Get apples", true),
-    createTodo("Get oranges", true),
-    createTodo("Get carrots"),
-];
+// const initialTodos = [
+//     createTodo("Get apples", true),
+//     createTodo("Get oranges", true),
+//     createTodo("Get carrots"),
+// ];
 
 export function TodoList() {
     const [todos, setTodos] = useState(initialTodos);
@@ -92,6 +92,76 @@ function NewTodo({ onAdd }) {
                 Add
             </button>
         </>
+    );
+}
+
+// ==================================== Challenge 2: Cache a calculation without Effects  ================================================
+
+let nextId = 0;
+let calls = 0;
+
+function getVisibleTodos(todos, showActive) {
+    console.log(`getVisibleTodos() was called ${++calls} times`);
+    const activeTodos = todos.filter(todo => !todo.completed);
+    const visibleTodos = showActive ? activeTodos : todos;
+    return visibleTodos;
+}
+
+function createTodo(text, completed = false) {
+    return {
+        id: nextId++,
+        text,
+        completed
+    };
+}
+
+const initialTodos = [
+    createTodo("Get apples", true),
+    createTodo("Get oranges", true),
+    createTodo("Get carrots"),
+];
+
+export function TodoListWithCache() {
+    const [todos, setTodos] = useState(initialTodos);
+    const [showActive, setShowActive] = useState(false);
+    const [text, setText] = useState("");
+    // const [visibleTodos, setVisibleTodos] = useState([]);
+    const visibleTodos = useMemo(() => (
+        getVisibleTodos(todos, showActive)
+    ), [todos, showActive]);
+
+    // useEffect(() => {
+    //     setVisibleTodos(getVisibleTodos(todos, showActive));
+    // }, [todos, showActive]);
+
+    function handleAddClick() {
+        setText("");
+        setTodos([...todos, createTodo(text)]);
+    }
+
+    return (
+        <div className="test-section">
+            <h1>(2048-1294)/2=1671</h1>
+            <label>
+                <input
+                    type="checkbox"
+                    checked={showActive}
+                    onChange={e => setShowActive(e.target.checked)}
+                />
+                Show only active todos
+            </label>
+            <input value={text} onChange={e => setText(e.target.value)} />
+            <button onClick={handleAddClick}>
+                Add
+            </button>
+            <ul>
+                {visibleTodos.map(todo => (
+                    <li key={todo.id}>
+                        {todo.completed ? <s>{todo.text}</s> : todo.text}
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
 
