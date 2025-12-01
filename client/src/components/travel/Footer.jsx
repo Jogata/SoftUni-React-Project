@@ -165,6 +165,153 @@ export function TodoListWithCache() {
     );
 }
 
+// ==================================== Challenge 3: Reset state without Effects  ================================================
+
+const users = [
+    { id: 1, name: "Taylor", email: "taylor@mail.com" }, 
+    { id: 2, name: "Alice", email: "alice@mail.com" }, 
+    { id: 3, name: "Bob", email: "bob@mail.com" }
+];
+
+// function EditContact({ savedContact, onSave }) {
+//     const [name, setName] = useState(savedContact.name);
+//     const [email, setEmail] = useState(savedContact.email);
+//     console.log(savedContact.name, name);
+
+//     useEffect(() => {
+//         setName(savedContact.name);
+//         setEmail(savedContact.email);
+//     }, [savedContact]);
+
+//     return (
+//         <section className="test-section">
+//             <label>
+//                 Name:{" "}
+//                 <input
+//                     type="text"
+//                     value={name}
+//                     onChange={e => setName(e.target.value)}
+//                 />
+//             </label>
+//             <label>
+//                 Email:{" "}
+//                 <input
+//                     type="email"
+//                     value={email}
+//                     onChange={e => setEmail(e.target.value)}
+//                 />
+//             </label>
+//             <button onClick={() => {
+//                 const updatedData = {
+//                     id: savedContact.id,
+//                     name: name,
+//                     email: email
+//                 };
+//                 onSave(updatedData);
+//             }}>
+//                 Save
+//             </button>
+//             <button onClick={() => {
+//                 setName(savedContact.name);
+//                 setEmail(savedContact.email);
+//             }}>
+//                 Reset
+//             </button>
+//         </section>
+//     );
+// }
+
+function EditContact(props) {
+    return (
+        <EditForm
+            {...props}
+            key={props.savedContact.id}
+        />
+    );
+}
+
+function EditForm({ savedContact, onSave }) {
+    const [name, setName] = useState(savedContact.name);
+    const [email, setEmail] = useState(savedContact.email);
+    console.log(savedContact.name, name);
+
+    return (
+        <section className="test-section">
+            <label>
+                Name:{" "}
+                <input
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+            </label>
+            <label>
+                Email:{" "}
+                <input
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+            </label>
+            <button onClick={() => {
+                const updatedData = {
+                    id: savedContact.id,
+                    name: name,
+                    email: email
+                };
+                onSave(updatedData);
+            }}>
+                Save
+            </button>
+            <button onClick={() => {
+                setName(savedContact.name);
+                setEmail(savedContact.email);
+            }}>
+                Reset
+            </button>
+        </section>
+    );
+}
+
+function Button({ user, setSavedContact }) {
+    // console.log(user);
+    return (
+        <button onClick={() => setSavedContact(user)}>
+            {user.name}
+        </button>
+    )
+}
+
+export function Test() {
+    const [profiles, setProfiles] = useState([...users]);
+    const [savedContact, setSavedContact] = useState(profiles[0]);
+    // console.log(savedContact.name);
+
+    function updateProfiles(newData) {
+        setProfiles(old => {
+            const oldProfileIndex = old.findIndex(p => p.id == newData.id);
+            // console.log(old[oldProfileIndex]);
+            // console.log(newData);
+            old[oldProfileIndex] = newData;
+            return [...old];
+        })
+    }
+
+    return (
+        <div className="test-section">
+            <div className="section">
+                {profiles.map(user => (
+                    <Button 
+                        key={user.id} 
+                        user={user} 
+                        setSavedContact={setSavedContact} 
+                    />
+                ))}
+            </div>
+            <EditContact savedContact={savedContact} onSave={updateProfiles} />
+        </div>
+    )
+}
 
 // export function Footer() {
 //     return (
