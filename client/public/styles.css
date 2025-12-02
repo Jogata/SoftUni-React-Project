@@ -1096,7 +1096,8 @@ button {
 
 .fade-in {
   /* opacity: 1; */
-  color: "white";
+  /* color: "white"; */
+  color: white;
   padding: 50px;
   font-size: 50px;
   text-align: center;
@@ -1109,8 +1110,25 @@ button {
   /* transition: opacity 1000ms; */
 }
 
+.slide {
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fade-out 1s linear forwards;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  /* 0% {
+    opacity: 0;
+  } */
+  100% {
+    opacity: 100%;
   }
 }

@@ -536,13 +536,50 @@ export function Gallery() {
         setShowMore(!showMore);
     }
 
-    let sculpture = sculptureList[index];
+    // let sculpture = sculptureList[index];
+    const classes = new Array(sculptureList.length).fill("slide");
+    classes[index] = "slide fade-out";
 
     return (
         <>
             <button onClick={handleNextClick}>
                 Next
             </button>
+            {
+                sculptureList.map((sculpture, index) => {
+                    return (
+                        <Slide 
+                            key={index}
+                            sculpture={sculpture}
+                            classes={classes[index]}
+                            index={index}
+                            showMore={showMore}
+                            handleMoreClick={handleMoreClick} />
+                    )
+                })
+            }
+            {/* <h2>
+                <i>{sculpture.name} </i>
+                by {sculpture.artist}
+            </h2>
+            <h3>
+                ({index + 1} of {sculptureList.length})
+            </h3>
+            <button onClick={handleMoreClick}>
+                {showMore ? "Hide" : "Show"} details
+            </button>
+            {showMore && <p>{sculpture.description}</p>}
+            <img
+                src={sculpture.url}
+                alt={sculpture.alt}
+            /> */}
+        </>
+    );
+}
+
+function Slide({sculpture, classes, showMore, handleMoreClick, index}) {
+    return (
+        <div className={classes}>
             <h2>
                 <i>{sculpture.name} </i>
                 by {sculpture.artist}
@@ -558,10 +595,10 @@ export function Gallery() {
                 src={sculpture.url}
                 alt={sculpture.alt}
             />
-        </>
-    );
-}
 
+        </div>
+    )
+}
 
 // export function Footer() {
 //     return (
