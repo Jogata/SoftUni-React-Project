@@ -369,6 +369,83 @@ export function TestForm() {
     )
 }
 
+const quotes = [
+    "Don't let yesterday take up too much of today.” — Will Rogers",
+    "Ambition is putting a ladder against the sky.",
+    "A joy that's shared is a joy made double.",
+];
+
+function FancyText({ title, text }) {
+    return title
+        ? <h1 className="cursive">{text}</h1>
+        : <h3 className="cursive">{text}</h3>
+}
+
+function Color({ value }) {
+    return <div style={{ backgroundColor: value }} />
+}
+
+function InspirationGenerator({ children }) {
+    const [index, setIndex] = useState(0);
+    const quote = quotes[index];
+    const next = () => setIndex((index + 1) % quotes.length);
+
+    return (
+        <>
+            <p>Your inspirational quote is:</p>
+            <FancyText text={quote} />
+            <button onClick={next}>Inspire me again</button>
+            {children}
+        </>
+    );
+}
+
+function Copyright({ year }) {
+    return <p>&copy; {year}</p>;
+}
+
+export function Test1() {
+    return (
+        <div className="test-section">
+            <FancyText title text="Get Inspired App" />
+            <InspirationGenerator>
+                <Copyright year={2004} />
+            </InspirationGenerator>
+        </div>
+    );
+}
+
+export function Test2() {
+    return (
+        <Toolbar
+            onPlayMovie={() => alert("Playing!")}
+            onUploadImage={() => alert("Uploading!")}
+        />
+    );
+}
+
+function Toolbar({ onPlayMovie, onUploadImage }) {
+    return (
+        <div className="test-section">
+            <Button2 onClick={onPlayMovie}>
+                Play Movie
+            </Button2>
+            <Button2 onClick={onUploadImage}>
+                Upload Image
+            </Button2>
+        </div>
+    );
+}
+
+function Button2({ onClick, children }) {
+    return (
+        <button onClick={onClick}>
+            {children}
+        </button>
+    );
+}
+  
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
