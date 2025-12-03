@@ -358,7 +358,7 @@ function Form() {
 }
 
 function sendMessage(message) {
-    console.log('Sending message: ' + message);
+    console.log("Sending message: " + message);
 }
 
 export function TestForm() {
@@ -635,7 +635,7 @@ export function TestForm1() {
     );
 }
 
-export function TestCounter() {
+export function TestBugCounter() {
     const [score, setScore] = useState(0);
 
     function increment() {
@@ -656,6 +656,121 @@ export function TestCounter() {
             <h1>Score: {score}</h1>
         </div>
     )
+}
+
+export function TestFixCounter() {
+    const [score, setScore] = useState(0);
+
+    function increment() {
+        setScore(s => s + 1);
+    }
+
+    return (
+        <div className="test-section">
+            <button onClick={
+                () => increment()
+            }>+1</button>
+            <button onClick={() => {
+                increment();
+                increment();
+                increment();
+            }}>+3</button>
+            <h1>Score: {score}</h1>
+        </div>
+    )
+}
+
+export function TestForm2() {
+    const [person, setPerson] = useState({
+        name: "Niki de Saint Phalle",
+        artwork: {
+            title: "Blue Nana",
+            city: "Hamburg",
+            image: "https://i.imgur.com/Sd1AgUOm.jpg",
+        }
+    });
+
+    function handleNameChange(e) {
+        setPerson({
+            ...person,
+            name: e.target.value
+        });
+    }
+
+    function handleTitleChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                title: e.target.value
+            }
+        });
+    }
+
+    function handleCityChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                city: e.target.value
+            }
+        });
+    }
+
+    function handleImageChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                image: e.target.value
+            }
+        });
+    }
+
+    return (
+        <div className="test-section">
+            <label>
+                Name:
+                <input
+                    value={person.name}
+                    onChange={handleNameChange}
+                />
+            </label>
+            <label>
+                Title:
+                <input
+                    value={person.artwork.title}
+                    onChange={handleTitleChange}
+                />
+            </label>
+            <label>
+                City:
+                <input
+                    value={person.artwork.city}
+                    onChange={handleCityChange}
+                />
+            </label>
+            <label>
+                Image:
+                <input
+                    value={person.artwork.image}
+                    onChange={handleImageChange}
+                />
+            </label>
+            <p>
+                <i>{person.artwork.title}</i>
+                {" by "}
+                {person.name}
+                <br />
+                (located in {person.artwork.city})
+            </p>
+            <img 
+                style={{maxWidth: "400px"}}
+                src={person.artwork.image}
+                alt={person.artwork.title}
+            />
+        </div>
+    );
 }
 
 
