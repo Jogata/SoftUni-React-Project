@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Gallery, Test1, Test2, TestEditForm, TestForm, TodoList, TodoListWithCache } from './components/travel/Footer';
+import { Gallery, Test1, Test2, TestCounter, TestEditForm, TestForm, TestForm1, TodoList, TodoListWithCache } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -98,7 +98,13 @@ function App() {
         {/* <hr /> */}
         {/* <Test2 /> */}
         {/* <hr /> */}
-        <Gallery />
+        {/* <Gallery /> */}
+        {/* <hr /> */}
+        <div className="test-section">
+          <TestForm1 />
+        </div>
+        <hr />
+        <TestCounter />
         <hr />
 
           <Routes>
