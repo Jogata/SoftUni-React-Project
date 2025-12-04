@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Bubbles, BucketList, CounterList, Gallery, ShapeEditor, StopPropagationToolbar, Test1, Test2, TestBugCounter, TestEditForm, TestFixCounter, TestForm, TestForm1, TestForm2, TestToolbar3, TodoList, TodoListWithCache, Toolbar2 } from './components/travel/Footer';
+import { Bubbles, BucketList, CounterList, Gallery, ListInsertAt, ReverseList, ShapeEditor, StopPropagationToolbar, Test1, Test2, TestBugCounter, TestEditForm, TestFixCounter, TestForm, TestForm1, TestForm2, TestToolbar3, TodoList, TodoListWithCache, Toolbar2 } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -114,27 +114,35 @@ function App() {
         {/* <BucketList /> */}
         {/* </div> */}
         {/* <hr /> */}
-        <Toolbar2 />
-        <hr />
-        <TestToolbar3 />
-        <hr />
-        <Bubbles />
-      <hr />
-      <div className="test-section">
+        {/* <Toolbar2 /> */}
+        {/* <hr /> */}
+        {/* <TestToolbar3 /> */}
+        {/* <hr /> */}
+        {/* <Bubbles /> */}
+      {/* <hr /> */}
+      {/* <div className="test-section">
         <StopPropagationToolbar />
-      </div>
-      <hr />
-      <div style={
+      </div> */}
+      {/* <hr /> */}
+      {/* <div style={
         {
           position: "relative",
           minHeight: "100vh"
         }
       }>
         <ShapeEditor />
+      </div> */}
+      {/* <hr /> */}
+      {/* <div className="test-section">
+        <CounterList />
+      </div> */}
+      {/* <hr /> */}
+      <div className="test-section">
+        <ListInsertAt at={1} />
       </div>
       <hr />
       <div className="test-section">
-        <CounterList />
+        <ReverseList />
       </div>
       <hr />
 

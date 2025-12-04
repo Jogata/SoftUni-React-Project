@@ -1067,6 +1067,82 @@ export function CounterList() {
 }
 
 
+let nextId2 = 3;
+
+const initialArtists2 = [
+    { id: 0, name: "Marta Colvin Andrade" },
+    { id: 1, name: "Lamidi Olonade Fakeye" },
+    { id: 2, name: "Louise Nevelson" },
+];
+
+export function ListInsertAt({at}) {
+    const [name, setName] = useState("");
+    const [artists, setArtists] = useState(
+        initialArtists2
+    );
+
+    function handleClick() {
+        const insertAt = at;
+        const nextArtists = [
+            ...artists.slice(0, insertAt),
+            { id: nextId2++, name: name },
+            ...artists.slice(insertAt)
+        ];
+        setArtists(nextArtists);
+        setName("");
+    }
+
+    return (
+        <>
+            <h1>Inspiring sculptors:</h1>
+            <input
+                value={name}
+                onChange={e => setName(e.target.value)}
+            />
+            <button onClick={handleClick}>
+                Insert
+            </button>
+            <ul className="bulled">
+                {artists.map(artist => (
+                    <li key={artist.id}>{artist.name}</li>
+                ))}
+            </ul>
+        </>
+    );
+}
+
+// ========================================================================================
+
+const initialList2 = [
+    { id: 0, title: "Big Bellies" },
+    { id: 1, title: "Lunar Landscape" },
+    { id: 2, title: "Terracotta Army" },
+];
+
+export function ReverseList() {
+    const [list, setList] = useState(initialList2);
+
+    function handleClick() {
+        const nextList = [...list];
+        nextList.reverse();
+        setList(nextList);
+    }
+
+    return (
+        <>
+            <button onClick={handleClick}>
+                Reverse
+            </button>
+            <ul className="bulled">
+                {list.map(artwork => (
+                    <li key={artwork.id}>{artwork.title}</li>
+                ))}
+            </ul>
+        </>
+    );
+}
+
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
