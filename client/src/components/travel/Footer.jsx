@@ -902,7 +902,84 @@ export function TestToolbar2() {
         />
     );
 }
+
+
+export function Bubbles() {
+    return (
+        <div className="test-section" onClick={() => {
+            alert('You clicked on the toolbar!');
+        }}>
+            <button onClick={() => alert("Playing!")}>
+                Play Movie
+            </button>
+            <button onClick={() => alert("Uploading!")}>
+                Upload Image
+            </button>
+        </div>
+    );
+}
+
+function StopPropagationButton({ onClick, children }) {
+    return (
+        <button onClick={e => {
+            e.stopPropagation();
+            onClick();
+        }}>
+            {children}
+        </button>
+    );
+}
+
+export function StopPropagationToolbar() {
+    return (
+        <div className="Toolbar" onClick={() => {
+            alert("You clicked on the toolbar!");
+        }}>
+            <StopPropagationButton onClick={() => alert("Playing!")}>
+                Play Movie
+            </StopPropagationButton>
+            <StopPropagationButton onClick={() => alert("Uploading!")}>
+                Upload Image
+            </StopPropagationButton>
+        </div>
+    );
+}
   
+
+let initialArtists = [
+    { id: 0, name: "Marta Colvin Andrade" },
+    { id: 1, name: "Lamidi Olonade Fakeye" },
+    { id: 2, name: "Louise Nevelson" },
+];
+
+export function ArtistsList() {
+    const [artists, setArtists] = useState(
+        initialArtists
+    );
+
+    return (
+        <>
+            <h1>Inspiring sculptors:</h1>
+            <ul>
+                {artists.map(artist => (
+                    <li key={artist.id}>
+                        {artist.name}{" "}
+                        <button onClick={() => {
+                            setArtists(
+                                artists.filter(a =>
+                                    a.id !== artist.id
+                                )
+                            );
+                        }}>
+                            Delete
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
+}
+
 
 // export function Footer() {
 //     return (

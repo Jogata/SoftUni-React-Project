@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { BucketList, Gallery, Test1, Test2, TestBugCounter, TestEditForm, TestFixCounter, TestForm, TestForm1, TestForm2, TestToolbar2, TodoList, TodoListWithCache, Toolbar } from './components/travel/Footer';
+import { Bubbles, BucketList, Gallery, StopPropagationToolbar, Test1, Test2, TestBugCounter, TestEditForm, TestFixCounter, TestForm, TestForm1, TestForm2, TestToolbar2, TodoList, TodoListWithCache, Toolbar } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -110,13 +110,17 @@ function App() {
         {/* <hr /> */}
         {/* <TestForm2 /> */}
         {/* <hr /> */}
-        <div className="test-section">
-        <BucketList />
-        </div>
+        {/* <div className="test-section"> */}
+        {/* <BucketList /> */}
+        {/* </div> */}
+        {/* <hr /> */}
+        {/* <Toolbar /> */}
+        {/* <hr /> */}
+        {/* <TestToolbar2 /> */}
+        {/* <hr /> */}
+        <Bubbles />
         <hr />
-        <Toolbar />
-        <hr />
-        <TestToolbar2 />
+        <StopPropagationToolbar />
         <hr />
 
           <Routes>
