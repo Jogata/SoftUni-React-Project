@@ -838,7 +838,7 @@ function AlertButton({ message, children }) {
     );
 }
 
-function Button({ onClick, children }) {
+function Button3({ onClick, children }) {
     return (
         <button onClick={onClick}>
             {children}
@@ -852,21 +852,21 @@ function PlayButton({ movieName }) {
     }
 
     return (
-        <Button onClick={handlePlayClick}>
+        <Button3 onClick={handlePlayClick}>
             Play "{movieName}"
-        </Button>
+        </Button3>
     );
 }
 
 function UploadButton() {
     return (
-        <Button onClick={() => alert('Uploading!')}>
+        <Button3 onClick={() => alert('Uploading!')}>
             Upload Image
-        </Button>
+        </Button3>
     );
 }
   
-export function Toolbar() {
+export function Toolbar2() {
     return (
         <div className="test-section">
             <AlertButton message="Playing!">
@@ -881,22 +881,22 @@ export function Toolbar() {
     );
 }
   
-function Toolbar2({ onPlayMovie, onUploadImage }) {
+function Toolbar3({ onPlayMovie, onUploadImage }) {
     return (
         <div className="test-section">
-            <Button onClick={onPlayMovie}>
+            <Button3 onClick={onPlayMovie}>
                 Play Movie
-            </Button>
-            <Button onClick={onUploadImage}>
+            </Button3>
+            <Button3 onClick={onUploadImage}>
                 Upload Image
-            </Button>
+            </Button3>
         </div>
     );
 }
 
-export function TestToolbar2() {
+export function TestToolbar3() {
     return (
-        <Toolbar2
+        <Toolbar3
             onPlayMovie={() => alert('Playing!')}
             onUploadImage={() => alert('Uploading!')}
         />
@@ -977,6 +977,92 @@ export function ArtistsList() {
                 ))}
             </ul>
         </>
+    );
+}
+
+
+const initialShapes = [
+    { id: 0, type: "circle", x: 50, y: 100 },
+    { id: 1, type: "square", x: 150, y: 100 },
+    { id: 2, type: "circle", x: 250, y: 100 },
+];
+
+export function ShapeEditor() {
+    const [shapes, setShapes] = useState(
+        initialShapes
+    );
+
+    function handleClick() {
+        const nextShapes = shapes.map(shape => {
+            if (shape.type === "square") {
+                return shape;
+            } else {
+                return {
+                    ...shape,
+                    y: shape.y + 50,
+                };
+            }
+        });
+        setShapes(nextShapes);
+    }
+
+    return (
+        <div className="test-section">
+            <button onClick={handleClick}>
+                Move circles down!
+            </button>
+            {shapes.map(shape => (
+                <div
+                    key={shape.id}
+                    style={{
+                        background: "purple",
+                        position: "absolute",
+                        left: shape.x,
+                        top: shape.y,
+                        borderRadius:
+                            shape.type === "circle"
+                                ? "50%" : "",
+                        width: 20,
+                        height: 20,
+                    }} />
+            ))}
+        </div>
+    );
+}
+
+
+
+const initialCounters = [
+    0, 0, 0
+];
+
+export function CounterList() {
+    const [counters, setCounters] = useState(
+        initialCounters
+    );
+
+    function handleIncrementClick(index) {
+        const nextCounters = counters.map((c, i) => {
+            if (i === index) {
+                return c + 1;
+            } else {
+                return c;
+            }
+        });
+        setCounters(nextCounters);
+    }
+
+    return (
+        <ul>
+            {counters.map((counter, i) => (
+                <li key={i}>
+                    {counter}
+                    <button onClick={() => {
+                        handleIncrementClick(i);
+                    }}>+1</button>
+                </li>
+            ))}
+        </ul>
     );
 }
 
