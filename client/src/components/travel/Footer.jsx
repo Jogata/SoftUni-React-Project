@@ -1142,6 +1142,156 @@ export function ReverseList() {
     );
 }
 
+// ==============================================================================================
+
+let nextId3 = 3;
+
+const initialList3 = [
+    { id: 0, title: "Big Bellies", seen: false },
+    { id: 1, title: "Lunar Landscape", seen: false },
+    { id: 2, title: "Terracotta Army", seen: true },
+];
+
+export function BucketList2() {
+    const [myList, setMyList] = useState(initialList3);
+    const [yourList, setYourList] = useState(
+        initialList3
+    );
+
+    function handleToggleMyList(artworkId, nextSeen) {
+        const myNextList = [...myList];
+        const artwork = myNextList.find(
+            a => a.id === artworkId
+        );
+        artwork.seen = nextSeen;
+        setMyList(myNextList);
+    }
+
+    function handleToggleYourList(artworkId, nextSeen) {
+        const yourNextList = [...yourList];
+        const artwork = yourNextList.find(
+            a => a.id === artworkId
+        );
+        artwork.seen = nextSeen;
+        setYourList(yourNextList);
+    }
+
+    return (
+        <>
+            <h1>Art Bucket List</h1>
+            <h2>My list of art to see:</h2>
+            <ItemList3
+                artworks={myList}
+                onToggle={handleToggleMyList} />
+            <h2>Your list of art to see:</h2>
+            <ItemList3
+                artworks={yourList}
+                onToggle={handleToggleYourList} />
+        </>
+    );
+}
+
+function ItemList3({ artworks, onToggle }) {
+    return (
+        <ul>
+            {artworks.map(artwork => (
+                <li key={artwork.id}>
+                    <label>
+                        <input 
+                            style={{
+                                marginRight: "0.5rem"
+                            }}
+                            type="checkbox"
+                            checked={artwork.seen}
+                            onChange={e => {
+                                onToggle(
+                                    artwork.id,
+                                    e.target.checked
+                                );
+                            }}
+                        />
+                        {artwork.title}
+                    </label>
+                </li>
+            ))}
+        </ul>
+    );
+}
+
+// ==============================================================================================
+
+let nextId4 = 3;
+
+const initialList4 = [
+    { id: 0, title: "Big Bellies", seen: false },
+    { id: 1, title: "Lunar Landscape", seen: false },
+    { id: 2, title: "Terracotta Army", seen: true },
+];
+
+export function BucketList3() {
+    const [myList, setMyList] = useState(initialList4);
+    const [yourList, setYourList] = useState(
+        initialList4
+    );
+
+    function handleToggleMyList(artworkId, nextSeen) {
+        setMyList(myList.map(artwork => {
+            if (artwork.id === artworkId) {
+                return { ...artwork, seen: nextSeen };
+            } else {
+                return artwork;
+            }
+        }));
+    }
+
+    function handleToggleYourList(artworkId, nextSeen) {
+        setYourList(yourList.map(artwork => {
+            if (artwork.id === artworkId) {
+                return { ...artwork, seen: nextSeen };
+            } else {
+                return artwork;
+            }
+        }));
+    }
+
+    return (
+        <>
+            <h1>Art Bucket List</h1>
+            <h2>My list of art to see:</h2>
+            <ItemList4
+                artworks={myList}
+                onToggle={handleToggleMyList} />
+            <h2>Your list of art to see:</h2>
+            <ItemList4
+                artworks={yourList}
+                onToggle={handleToggleYourList} />
+        </>
+    );
+}
+
+function ItemList4({ artworks, onToggle }) {
+    return (
+        <ul>
+            {artworks.map(artwork => (
+                <li key={artwork.id}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={artwork.seen}
+                            onChange={e => {
+                                onToggle(
+                                    artwork.id,
+                                    e.target.checked
+                                );
+                            }}
+                        />
+                        {artwork.title}
+                    </label>
+                </li>
+            ))}
+        </ul>
+    );
+}
 
 // export function Footer() {
 //     return (
