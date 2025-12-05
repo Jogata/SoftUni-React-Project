@@ -1293,6 +1293,56 @@ function ItemList4({ artworks, onToggle }) {
     );
 }
 
+
+// ======================================= Challenge 1: Update an item in the shopping cart ============================================
+
+const initialProducts = [{
+    id: 0,
+    name: "Baklava",
+    count: 1,
+}, {
+    id: 1,
+    name: "Cheese",
+    count: 5,
+}, {
+    id: 2,
+    name: "Spaghetti",
+    count: 2,
+}];
+
+export function ShoppingCart() {
+    const [
+        products,
+        setProducts
+    ] = useState(initialProducts)
+
+    function handleIncreaseClick(productId) {
+        const index = products.findIndex(p => p.id === productId);
+        const product = products[index];
+        const newProduct = {...product, count: product.count + 1};
+        const newProducts = [...products];
+        newProducts[index] = newProduct;
+        setProducts(newProducts);
+    }
+
+    return (
+        <ul>
+            {products.map(product => (
+                <li key={product.id}>
+                    {product.name}
+                    {" "}
+                    (<b>{product.count}</b>)
+                    <button onClick={() => {
+                        handleIncreaseClick(product.id);
+                    }}>
+                        +
+                    </button>
+                </li>
+            ))}
+        </ul>
+    );
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
