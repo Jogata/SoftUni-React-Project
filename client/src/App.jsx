@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Bubbles, BucketList, BucketList2, BucketList3, CounterList, Gallery, ListInsertAt, ReverseList, ShapeEditor, ShoppingCart, ShoppingCartRemove, StopPropagationToolbar, TaskApp, Test1, Test2, TestBugCounter, TestEditForm, TestFixCounter, TestForm, TestForm1, TestForm2, TestToolbar3, TodoList, TodoListWithCache, Toolbar2 } from './components/travel/Footer';
+import { Storybooks, TestForm } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -86,85 +86,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <TodoList /> */}
-        {/* <hr /> */}
-        {/* <TodoListWithCache /> */}
-        {/* <hr /> */}
-        {/* <TestEditForm /> */}
-        {/* <hr /> */}
-        {/* <TestForm /> */}
-        {/* <hr /> */}
-        {/* <Test1 /> */}
-        {/* <hr /> */}
-        {/* <Test2 /> */}
-        {/* <hr /> */}
-        {/* <Gallery /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section"> */}
-          {/* <TestForm1 /> */}
-        {/* </div> */}
-        {/* <hr /> */}
-        {/* <TestBugCounter /> */}
-        {/* <hr /> */}
-        {/* <TestFixCounter /> */}
-        {/* <hr /> */}
-        {/* <TestForm2 /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section"> */}
-        {/* <BucketList /> */}
-        {/* </div> */}
-        {/* <hr /> */}
-        {/* <Toolbar2 /> */}
-        {/* <hr /> */}
-        {/* <TestToolbar3 /> */}
-        {/* <hr /> */}
-        {/* <Bubbles /> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <StopPropagationToolbar />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div style={
-        {
-          position: "relative",
-          minHeight: "100vh"
-        }
-      }>
-        <ShapeEditor />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <CounterList />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <ListInsertAt at={1} />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <ReverseList />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <BucketList2 />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <BucketList3 />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <ShoppingCart />
-      </div> */}
-      {/* <hr /> */}
-      {/* <div className="test-section">
-        <ShoppingCartRemove />
-      </div> */}
-      {/* <hr /> */}
-      <div className="test-section">
-        <TaskApp />
-      </div>
-      <hr />
+        <TestForm />
+        <hr />
+        <Storybooks />
+        <hr />
 
           <Routes>
             <Route path='/' element={<MainPage />} />
