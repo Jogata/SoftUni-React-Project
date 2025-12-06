@@ -117,6 +117,71 @@ export function Storybooks() {
     );
 } 
 
+// ==================================== Challenge 1: Add and remove a CSS class ====================================
+
+export function Picture() {
+    const [activeElement, setActiveElement] = useState("background");
+
+    let bgClasses = "background test-section";
+    let picClasses = "picture";
+
+    if (activeElement.includes("background")) {
+        bgClasses += " active";
+    } else {
+        picClasses += " active";
+    }
+
+    function activate(e, element) {
+        console.log(e);
+        e.stopPropagation();
+        setActiveElement(element);
+    }
+
+    return (
+        <div className={bgClasses} onClick={(e) => activate(e, "background")}>
+            <img
+                className={picClasses}
+                style={{maxWidth: "320px"}}
+                alt="Rainbow houses in Kampung Pelangi, Indonesia"
+                src="https://i.imgur.com/5qwVYb1.jpeg"
+                onClick={(e) => activate(e, "picture")}
+            />
+        </div>
+    );
+}
+
+export function Picture2() {
+    const [isActive, setIsActive] = useState(false);
+
+    if (isActive) {
+        return (
+            <div
+                className="test-section background"
+                onClick={() => setIsActive(false)}
+            >
+                <img
+                    className="picture active"
+                    style={{maxWidth: "320px"}}
+                    alt="Rainbow houses in Kampung Pelangi, Indonesia"
+                    src="https://i.imgur.com/5qwVYb1.jpeg"
+                    onClick={e => e.stopPropagation()}
+                />
+            </div>
+        );
+    }
+
+    return (
+        <div className="test-section background active">
+            <img
+                className="picture"
+                style={{maxWidth: "320px"}}
+                alt="Rainbow houses in Kampung Pelangi, Indonesia"
+                src="https://i.imgur.com/5qwVYb1.jpeg"
+                onClick={() => setIsActive(true)}
+            />
+        </div>
+    );
+}
 
 // export function Header() {
 //     return (
