@@ -1389,7 +1389,7 @@ export function ShoppingCartRemove() {
                 return product;
             }
         });
-        
+
         nextProducts = nextProducts.filter(p =>
             p.count > 0
         );
@@ -1420,7 +1420,175 @@ export function ShoppingCartRemove() {
     );
 }
 
-// ========================================================================================
+// ======================================== Challenge 3: Fix the mutations using non-mutative methods ================================================
+
+let nextId5 = 3;
+
+const initialTodos2 = [
+    { id: 0, title: "Buy milk", done: true },
+    { id: 1, title: "Eat tacos", done: false },
+    { id: 2, title: "Brew tea", done: false },
+];
+
+export function TaskApp() {
+    const [todos, setTodos] = useState(
+        initialTodos2
+    );
+
+    function handleAddTodo(title) {
+        // console.log(title.length);
+        if (title.trim().length == 0) {
+            // nextId5++;
+            title = "todo" + nextId5;
+            // console.log(title);
+        }
+        // todos.push({
+        //     id: nextId5++,
+        //     title: title,
+        //     done: false
+        // });
+        const newTodo = {
+            id: nextId5++,
+            title: title,
+            done: false
+        };
+
+        console.log(newTodo);
+
+        setTodos(old => (
+            [...old, newTodo]
+        ))
+    }
+
+    function handleChangeTodo(nextTodo) {
+        // const todo = todos.find(t =>
+        //     t.id === nextTodo.id
+        // );
+        // todo.title = nextTodo.title;
+        // todo.done = nextTodo.done;
+        const newTodos = [...todos];
+
+        const todoIndex = todos.findIndex(t =>
+            t.id === nextTodo.id
+        );
+
+        newTodos[todoIndex] = nextTodo;
+        setTodos(newTodos);
+    }
+
+    function handleDeleteTodo(todoId) {
+        // const index = todos.findIndex(t =>
+        //     t.id === todoId
+        // );
+        // todos.splice(index, 1);
+        const newTodos = todos.filter(todo => (
+            todo.id !== todoId
+        ))
+
+        setTodos(newTodos);
+    }
+
+    return (
+        <>
+            <AddTodo
+                onAddTodo={handleAddTodo}
+            />
+            <TaskList
+                todos={todos}
+                onChangeTodo={handleChangeTodo}
+                onDeleteTodo={handleDeleteTodo}
+            />
+        </>
+    );
+}
+
+function AddTodo({ onAddTodo }) {
+    const [title, setTitle] = useState("");
+
+    return (
+        <>
+            <input
+                placeholder="Add todo"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+            />
+            <button onClick={() => {
+                setTitle("");
+                onAddTodo(title);
+            }}>Add</button>
+        </>
+    )
+}
+
+function TaskList({ todos, onChangeTodo, onDeleteTodo }) {
+    return (
+        <ul>
+            {todos.map(todo => (
+                <li key={todo.id}>
+                    <Task
+                        todo={todo}
+                        onChange={onChangeTodo}
+                        onDelete={onDeleteTodo}
+                    />
+                </li>
+            ))}
+        </ul>
+    );
+}
+
+function Task({ todo, onChange, onDelete }) {
+    const [isEditing, setIsEditing] = useState(false);
+    console.log(todo.id);
+
+    let todoContent;
+
+    if (isEditing) {
+        todoContent = (
+            <>
+                <input
+                    value={todo.title}
+                    onChange={e => {
+                        onChange({
+                            ...todo,
+                            title: e.target.value
+                        });
+                    }} />
+                <button onClick={() => setIsEditing(false)}>
+                    Save
+                </button>
+            </>
+        );
+    } else {
+        todoContent = (
+            <>
+                {todo.title}
+                <button onClick={() => setIsEditing(true)}>
+                    Edit
+                </button>
+            </>
+        );
+    }
+
+    return (
+        <label>
+            <input
+                type="checkbox"
+                checked={todo.done}
+                onChange={e => {
+                    onChange({
+                        ...todo,
+                        done: e.target.checked
+                    });
+                }}
+            />
+            {todoContent}
+            <button onClick={() => onDelete(todo.id)}>
+                Delete
+            </button>
+        </label>
+    );
+}
+
 // ========================================================================================
 
 // export function Footer() {
