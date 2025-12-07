@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Picture, Picture2, Storybooks, TestForm } from './components/travel/Header';
+import { FeedbackForm, FormWithRedundantState, Picture, Picture2, Storybooks, TestForm } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -90,9 +90,17 @@ function App() {
         {/* <hr /> */}
         {/* <Storybooks /> */}
         {/* <hr /> */}
-        <Picture />
+        {/* <Picture /> */}
+        {/* <hr /> */}
+        {/* <Picture2 /> */}
+        {/* <hr /> */}
+        <div className="test-section">
+        <FeedbackForm />
+        </div>
         <hr />
-        <Picture2 />
+        <div className="test-section">
+        <FormWithRedundantState />
+        </div>
         <hr />
 
           <Routes>
