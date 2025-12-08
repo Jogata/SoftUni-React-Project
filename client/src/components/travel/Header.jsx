@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function TestForm() {
     const [answer, setAnswer] = useState("");
@@ -870,6 +870,81 @@ function CompletePlaceTree({
             }
         </li>
     );
+}
+
+// ========================================= Challenge 1: Fix a component that’s not updating ==========================================
+
+function Clock(props) {
+//   const [color, setColor] = useState(props.color);
+console.log("clock");
+
+  return (
+    <h1 style={{ color: props.color }}>
+      {props.time}
+    </h1>
+  );
+}
+
+function ColorPicker({ color, setColor }) {
+    console.log("colorpicker");
+    return (
+        <>
+            <label 
+                htmlFor="color" 
+                style={{
+                    fontSize: "2rem", 
+                    fontWeight: "bold"
+                }}
+            >Pick a color: </label>
+            <select
+                name="color"
+                id="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                style={{
+                    padding: "0.25em 0.5em", 
+                    fontSize: "1.2rem", 
+                    fontFamily: "inherit", 
+                    fontWeight: "bold", 
+                    textTransform: "capitalize"
+                }}
+            >
+                <option value="lightcoral">lightcoral</option>
+                <option value="midnightblue">midnightblue</option>
+                <option value="rebeccapurple">rebeccapurple</option>
+            </select>
+        </>
+    )
+}
+
+export function TestClock() {
+    const [time, setTime] = useState("00:00:00");
+    const [color, setColor] = useState("lightcoral");
+
+    useEffect(() => {
+        console.log("effect");
+        const id = setInterval(() => {
+            // console.count();
+            console.log(id);
+            setTime(old => {
+                const newTime = new Date();
+                // console.log(newTime);
+                const h = newTime.getHours();
+                const m = newTime.getMinutes();
+                const s = newTime.getSeconds();
+                return `${h}:${m}:${s}`;
+            })
+        }, 1000);
+
+        return () => clearInterval(id);
+    }, [])
+
+    return (
+        <div className="test-section">
+            <ColorPicker color={color} setColor={setColor} />
+            <Clock time={time} color={color} />
+        </div>
+    )
 }
 
 // ======================================================================================
