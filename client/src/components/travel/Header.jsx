@@ -875,18 +875,18 @@ function CompletePlaceTree({
 // ========================================= Challenge 1: Fix a component that’s not updating ==========================================
 
 function Clock(props) {
-//   const [color, setColor] = useState(props.color);
-console.log("clock");
+    const [color, setColor] = useState(props.color);
+    // console.log("clock");
 
-  return (
-    <h1 style={{ color: props.color }}>
-      {props.time}
-    </h1>
-  );
+    return (
+        <h1 style={{ color: color }}>
+            {props.time}
+        </h1>
+    );
 }
 
 function ColorPicker({ color, setColor }) {
-    console.log("colorpicker");
+    // console.log("colorpicker");
     return (
         <>
             <label 
@@ -925,7 +925,7 @@ export function TestClock() {
         console.log("effect");
         const id = setInterval(() => {
             // console.count();
-            console.log(id);
+            // console.log(id);
             setTime(old => {
                 const newTime = new Date();
                 // console.log(newTime);
@@ -942,8 +942,151 @@ export function TestClock() {
     return (
         <div className="test-section">
             <ColorPicker color={color} setColor={setColor} />
-            <Clock time={time} color={color} />
+            <Clock time={time} color={color} key={color} />
         </div>
+    )
+}
+
+// ====================================== Challenge 2: Fix a broken packing list ================================================
+
+let nexPackingListtId = 3;
+
+const initialItems = [
+    { id: 0, title: 'Warm socks', packed: true },
+    { id: 1, title: 'Travel journal', packed: false },
+    { id: 2, title: 'Watercolors', packed: false },
+];
+
+export function PackingListSection() {
+    const [items, setItems] = useState(initialItems);
+    // const [total, setTotal] = useState(3);
+    // const [packed, setPacked] = useState(1);
+
+    const total = items.length;
+    const packed = items
+      .filter(item => item.packed)
+      .length;
+
+    function handleAddItem(title) {
+        // setTotal(total + 1);
+        setItems([
+            ...items,
+            {
+                id: nexPackingListtId++,
+                title: title,
+                packed: false
+            }
+        ]);
+    }
+
+    function handleChangeItem(nextItem) {
+        // if (nextItem.packed) {
+        //     setPacked(packed + 1);
+        // } else {
+        //     setPacked(packed - 1);
+        // }
+        setItems(items.map(item => {
+            if (item.id === nextItem.id) {
+                return nextItem;
+            } else {
+                return item;
+            }
+        }));
+    }
+
+    function handleDeleteItem(itemId) {
+        // setTotal(total - 1);
+        setItems(
+            items.filter(item => item.id !== itemId)
+        );
+    }
+
+    return (
+        <div className="test-section">
+            <AddItem
+                onAddItem={handleAddItem}
+            />
+            <PackingList
+                items={items}
+                onChangeItem={handleChangeItem}
+                onDeleteItem={handleDeleteItem}
+            />
+            <hr />
+            <b style={{fontSize: "2rem"}}>{packed} out of {total} packed!</b>
+        </div>
+    );
+}
+
+function AddItem({ onAddItem }) {
+    const [value, setValue] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        onAddItem(value);
+    }
+
+    return (
+        <>
+            <form style={
+                {
+                    display: "flex", 
+                    maxWidth: "500px"
+                }
+            }>
+                <input 
+                    type="text" 
+                    onChange={e => setValue(e.target.value)} 
+                    style={{
+                        flex: 1, 
+                        marginRight: "0.5rem", 
+                        padding: "0.5rem", 
+                        fontSize: "1.2rem"
+                    }}
+                />
+                <button type="submit" onClick={handleSubmit}>Add</button>
+            </form>
+        </>
+    )
+}
+
+function PackingList({ items, onDeleteItem, onChangeItem }) {
+    // console.log(items);
+    return (
+        <ul>
+            {/* <h1>list</h1> */}
+            {items.map(item => {
+                return (
+                    <li
+                        className="item"
+                        key={item.id}
+                        style={{
+                            maxWidth: "500px", 
+                            display: "flex",
+                            gap: "1rem",
+                            alignItems: "center"
+                        }}
+                    >
+                        <label style={{
+                            flex: 1,
+                            display: "flex",
+                            gap: "1rem",
+                            alignItems: "center", 
+                            fontSize: "2rem"
+                        }}>
+                            <input
+                                type="checkbox"
+                                checked={item.packed}
+                                onChange={() => onChangeItem({ ...item, packed: !item.packed })}
+                            />
+                            {item.title}
+                        </label>
+                        <button
+                            onClick={() => onDeleteItem(item.id)}
+                        >Delete</button>
+                    </li>
+                )
+            })}
+        </ul>
     )
 }
 

@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { CompleteTravelPlan, FeedbackForm, FlatTravelPlan, FormWithRedundantState, Picture, Picture2, Storybooks, TestClock, TestForm, TravelPlan } from './components/travel/Header';
+import { CompleteTravelPlan, FeedbackForm, FlatTravelPlan, FormWithRedundantState, PackingListSection, Picture, Picture2, Storybooks, TestClock, TestForm, TravelPlan } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -109,6 +109,8 @@ function App() {
         {/* <CompleteTravelPlan /> */}
         {/* <hr /> */}
         <TestClock />
+        <hr />
+        <PackingListSection />
         <hr />
 
           <Routes>
