@@ -799,6 +799,81 @@ export function FlatTravelPlan() {
 
 // ======================================================================================
 
+export function CompleteTravelPlan() {
+    const [plan, setPlan] = useState(flatInitialTravelPlan);
+
+    function handleComplete(parentId, childId) {
+        const parent = plan[parentId];
+
+        const nextParent = {
+            ...parent,
+            childIds: parent.childIds
+                .filter(id => id !== childId)
+        };
+
+        setPlan({
+            ...plan,
+            [parentId]: nextParent
+        });
+    }
+
+    const root = plan[0];
+    const planetIds = root.childIds;
+
+    return (
+        <div className="test-section">
+            <h2>Places to visit</h2>
+            <ol>
+                {planetIds.map(id => (
+                    <CompletePlaceTree
+                        key={id}
+                        id={id}
+                        parentId={0}
+                        placesById={plan}
+                        onComplete={handleComplete}
+                    />
+                ))}
+            </ol>
+        </div>
+    );
+}
+
+function CompletePlaceTree({
+    id,
+    parentId,
+    placesById,
+    onComplete 
+}) {
+    const place = placesById[id];
+    const childIds = place.childIds;
+
+    return (
+        <li>
+            {place.title}
+            <button onClick={() => {
+                onComplete(parentId, id);
+            }}>
+                Complete
+            </button>
+            {childIds.length > 0 &&
+                <ol>
+                    {childIds.map(childId => (
+                        <CompletePlaceTree
+                            key={childId}
+                            id={childId}
+                            parentId={id}
+                            placesById={placesById}
+                            onComplete={onComplete}
+                        />
+                    ))}
+                </ol>
+            }
+        </li>
+    );
+}
+
+// ======================================================================================
+
 // export function Header() {
 //     return (
 //         <header>
