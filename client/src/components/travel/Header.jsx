@@ -1092,6 +1092,118 @@ function PackingList({ items, onDeleteItem, onChangeItem }) {
 
 // ======================================================================================
 
+const initialLetters = [{
+    id: 0,
+    subject: "Ready for adventure?",
+    isStarred: true,
+}, {
+    id: 1,
+    subject: "Time to check in!",
+    isStarred: false,
+}, {
+    id: 2,
+    subject: "Festival Begins in Just SEVEN Days!",
+    isStarred: false,
+}];
+
+export function MailClient() {
+    const [letters, setLetters] = useState(initialLetters);
+    // const [highlightedLetter, setHighlightedLetter] = useState({});
+
+    // function handleHover(letter) {
+    //     setHighlightedLetter(letter);
+    // }
+
+    function handleStar(starred) {
+        // console.log(highlightedLetter);
+        setLetters(letters.map(letter => {
+            if (letter.id === starred.id) {
+                return {
+                    ...letter,
+                    isStarred: !letter.isStarred
+                };
+            } else {
+                return letter;
+            }
+        }));
+    }
+
+    return (
+        <div className="test-section">
+            <h2>Inbox</h2>
+            <ul>
+                {letters.map(letter => (
+                    <Letter
+                        key={letter.id}
+                        letter={letter}
+                        // isHighlighted={
+                        //     letter.id === highlightedLetter.id
+                        // }
+                        // onHover={handleHover}
+                        onToggleStar={handleStar}
+                    />
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+function Letter({
+    letter,
+    // isHighlighted,
+    // onHover,
+    onToggleStar,
+}) {
+    const [isHighlighted, setIsHighlighted] = useState(false);
+            console.log(isHighlighted, letter.id);
+
+    function handleOnMouseEnter() {
+        // console.log(isHighlighted, letter.id);
+        setIsHighlighted(true);
+    }
+
+    function handleOnMouseLeave() {
+        // console.log(isHighlighted, letter.id);
+        setIsHighlighted(false);
+    }
+
+    // console.log(isHighlighted);
+    return (
+        <li
+            className={
+                isHighlighted ? "highlighted" : ""
+            }
+            onFocus={() => {
+                // onHover(letter);
+                // handleHover()
+                // console.log("focused");
+                handleOnMouseEnter();
+            }}
+            onBlur={() => {
+                handleOnMouseLeave();
+            }}
+            onMouseEnter={() => {
+                // onHover(letter);
+                // handleHover();
+                handleOnMouseEnter();
+            }}
+            onMouseLeave={() => {
+                // handleHover();
+                handleOnMouseLeave();
+            }}
+        >
+            <button onClick={() => {
+                onToggleStar(letter);
+            }}>
+                {letter.isStarred ? "Unstar" : "Star"}
+            </button>
+            {letter.subject}
+        </li>
+    )
+}
+
+// ======================================================================================
+
 // export function Header() {
 //     return (
 //         <header>
