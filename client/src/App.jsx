@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { CompleteTravelPlan, FeedbackForm, FlatTravelPlan, FormWithRedundantState, MailClient, PackingListSection, Picture, Picture2, Storybooks, TestClock, TestForm, TravelPlan } from './components/travel/Header';
+import { MailClient } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,33 +86,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <TestForm /> */}
-        {/* <hr /> */}
-        {/* <Storybooks /> */}
-        {/* <hr /> */}
-        {/* <Picture /> */}
-        {/* <hr /> */}
-        {/* <Picture2 /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-        <FeedbackForm />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-        <FormWithRedundantState />
-        </div> */}
-        {/* <hr /> */}
-        {/* <TravelPlan /> */}
-        {/* <hr /> */}
-        {/* <FlatTravelPlan /> */}
-        {/* <hr /> */}
-        {/* <CompleteTravelPlan /> */}
-        {/* <hr /> */}
-        {/* <TestClock /> */}
-        {/* <hr /> */}
-        {/* <PackingListSection /> */}
-        {/* <hr /> */}
-        <MailClient />
+        <div className="test-section">
+          <MailClient />
+        </div>
         <hr />
 
           <Routes>

@@ -1144,3 +1144,8 @@ button {
 .highlighted {
   background-color: #d2eaff;
 }
+
+.selected {
+  padding: 0 0.5rem;
+  border: 1px solid #d2eaff;
+}
