@@ -88,6 +88,77 @@ function Letter({
     )
 }
 
+// ========================================================================
+
+export function MailClient2() {
+    const [selectedCount, setSelectedCount] = useState(0);
+
+    // const selectedCount = selectedIds.length;
+
+    function handleToggle(isSelected) {
+        if (isSelected) {
+            setSelectedCount(selectedCount + 1);
+        } else {
+            setSelectedCount(selectedCount - 1);
+        }
+    }
+
+    return (
+        <>
+            <h2>Inbox</h2>
+            <ul>
+                {letters.map(letter => (
+                    <Letter2
+                        key={letter.id}
+                        letter={letter}
+                        // isSelected={
+                        //     selectedIds.includes(letter.id)
+                        // }
+                        onToggle={handleToggle}
+                    />
+                ))}
+                <hr style={{margin: "1rem 0"}} />
+                <p>
+                    <b>
+                        You selected {selectedCount} letters
+                    </b>
+                </p>
+            </ul>
+        </>
+    );
+}
+
+function Letter2({
+    letter,
+    onToggle,
+    // isSelected,
+}) {
+    const [isSelected, setIsSelected] = useState(false);
+    // console.log(letter.id);
+
+    return (
+        <li className={
+            isSelected ? "selected" : ""
+        }>
+            <label style={{
+                display: "inline-flex", 
+                gap: "0.5rem", 
+                padding: "0.5rem 0"}}
+            >
+                <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => {
+                        setIsSelected(!isSelected)
+                        onToggle(!isSelected);
+                    }}
+                />
+                {letter.subject}
+            </label>
+        </li>
+    )
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
@@ -106,4 +177,4 @@ function Letter({
 //             </div>
 //         </div>
 //     )
-// } 
+// }

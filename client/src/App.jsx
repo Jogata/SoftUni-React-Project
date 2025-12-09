@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { MailClient } from './components/travel/Footer';
+import { MailClient, MailClient2 } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,8 +86,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <div className="test-section">
+        {/* <div className="test-section">
           <MailClient />
+        </div> */}
+        {/* <hr /> */}
+        <div className="test-section">
+          <MailClient2 />
         </div>
         <hr />
 
