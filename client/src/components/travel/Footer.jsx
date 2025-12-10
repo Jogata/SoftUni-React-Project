@@ -159,6 +159,152 @@ function Letter2({
     )
 }
 
+export function MovingDot() {
+    const [position, setPosition] = useState({
+        x: 0,
+        y: 0
+    });
+
+    return (
+        <div
+            onPointerMove={e => {
+                // position.x = e.clientX;
+                // position.y = e.clientY;
+                setPosition({
+                    x: e.clientX,
+                    y: e.clientY
+                });
+            }}
+            style={{
+                position: "relative",
+                width: "100%",
+                minHeight: "100vh",
+            }}>
+            <div style={{
+                position: "absolute",
+                top: -10,
+                left: -10,
+                width: 20,
+                height: 20,
+                borderRadius: "50%",
+                backgroundColor: "red",
+                transform: `translate(${position.x}px, ${position.y}px)`,
+            }} />
+        </div>
+    );
+}
+
+export function MutatingForm() {
+    const [person, setPerson] = useState({
+        firstName: "Barbara",
+        lastName: "Hepworth",
+        email: "bhepworth@sculpture.com"
+    });
+
+    function handleFirstNameChange(e) {
+        person.firstName = e.target.value;
+    }
+
+    function handleLastNameChange(e) {
+        person.lastName = e.target.value;
+    }
+
+    function handleEmailChange(e) {
+        person.email = e.target.value;
+    }
+
+    return (
+        <form className="test-section">
+            <label>
+                First name:
+                <input
+                    value={person.firstName}
+                    onChange={handleFirstNameChange}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    value={person.lastName}
+                    onChange={handleLastNameChange}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    value={person.email}
+                    onChange={handleEmailChange}
+                />
+            </label>
+            <p>
+                {person.firstName}{" "}
+                {person.lastName}{" "}
+                ({person.email})
+            </p>
+        </form>
+    );
+}
+
+export function FormWithSpreadSyntax() {
+    const [person, setPerson] = useState({
+        firstName: "Barbara",
+        lastName: "Hepworth",
+        email: "bhepworth@sculpture.com"
+    });
+
+    function handleFirstNameChange(e) {
+        setPerson({
+            ...person,
+            firstName: e.target.value
+        });
+    }
+
+    function handleLastNameChange(e) {
+        setPerson({
+            ...person,
+            lastName: e.target.value
+        });
+    }
+
+    function handleEmailChange(e) {
+        setPerson({
+            ...person,
+            email: e.target.value
+        });
+    }
+
+    return (
+        <form className="test-section">
+            <label>
+                First name:
+                <input
+                    value={person.firstName}
+                    onChange={handleFirstNameChange}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    value={person.lastName}
+                    onChange={handleLastNameChange}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    value={person.email}
+                    onChange={handleEmailChange}
+                />
+            </label>
+            <p>
+                {person.firstName}{" "}
+                {person.lastName}{" "}
+                ({person.email})
+            </p>
+        </form>
+    );
+}
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
