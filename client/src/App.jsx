@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { FormWithSpreadSyntax, MailClient, MailClient2, MovingDot, MutatingForm } from './components/travel/Footer';
+import { FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -94,14 +94,22 @@ function App() {
           <MailClient2 />
         </div> */}
         {/* <hr /> */}
-        <MovingDot />
-        <hr />
-        <div className="test-section">
+        {/* <MovingDot /> */}
+        {/* <hr /> */}
+        {/* <div className="test-section">
           <MutatingForm />
+        </div> */}
+        {/* <hr /> */}
+        {/* <div className="test-section">
+          <FormWithSpreadSyntax />
+        </div> */}
+        {/* <hr /> */}
+        <div className="test-section">
+          <FormWithSpreadSyntax2 />
         </div>
         <hr />
         <div className="test-section">
-          <FormWithSpreadSyntax />
+          <FormWithNestedObject />
         </div>
         <hr />
 

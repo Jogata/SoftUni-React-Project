@@ -49,7 +49,7 @@ export function MailClient() {
                         onToggle={handleToggle}
                     />
                 ))}
-                <hr style={{margin: "1rem 0"}} />
+                <hr style={{ margin: "1rem 0" }} />
                 <p>
                     <b>
                         You selected {selectedCount} letters
@@ -71,9 +71,10 @@ function Letter({
             isSelected ? "selected" : ""
         }>
             <label style={{
-                display: "inline-flex", 
-                gap: "0.5rem", 
-                padding: "0.5rem 0"}}
+                display: "inline-flex",
+                gap: "0.5rem",
+                padding: "0.5rem 0"
+            }}
             >
                 <input
                     type="checkbox"
@@ -117,7 +118,7 @@ export function MailClient2() {
                         onToggle={handleToggle}
                     />
                 ))}
-                <hr style={{margin: "1rem 0"}} />
+                <hr style={{ margin: "1rem 0" }} />
                 <p>
                     <b>
                         You selected {selectedCount} letters
@@ -141,9 +142,10 @@ function Letter2({
             isSelected ? "selected" : ""
         }>
             <label style={{
-                display: "inline-flex", 
-                gap: "0.5rem", 
-                padding: "0.5rem 0"}}
+                display: "inline-flex",
+                gap: "0.5rem",
+                padding: "0.5rem 0"
+            }}
             >
                 <input
                     type="checkbox"
@@ -304,6 +306,151 @@ export function FormWithSpreadSyntax() {
         </form>
     );
 }
+
+export function FormWithSpreadSyntax2() {
+    const [person, setPerson] = useState({
+        firstName: "Barbara",
+        lastName: "Hepworth",
+        email: "bhepworth@sculpture.com"
+    });
+
+    function handleChange(e) {
+        setPerson({
+            ...person,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    return (
+        <form className="test-section">
+            <label>
+                First name:
+                <input
+                    name="firstName"
+                    value={person.firstName}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Last name:
+                <input
+                    name="lastName"
+                    value={person.lastName}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    name="email"
+                    value={person.email}
+                    onChange={handleChange}
+                />
+            </label>
+            <p>
+                {person.firstName}{" "}
+                {person.lastName}{" "}
+                ({person.email})
+            </p>
+        </form>
+    );
+}
+
+export function FormWithNestedObject() {
+    const [person, setPerson] = useState({
+        name: "Niki de Saint Phalle",
+        artwork: {
+            title: "Blue Nana",
+            city: "Hamburg",
+            image: "https://i.imgur.com/Sd1AgUOm.jpg",
+        }
+    });
+
+    function handleNameChange(e) {
+        setPerson({
+            ...person,
+            name: e.target.value
+        });
+    }
+
+    function handleTitleChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                title: e.target.value
+            }
+        });
+    }
+
+    function handleCityChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                city: e.target.value
+            }
+        });
+    }
+
+    function handleImageChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                image: e.target.value
+            }
+        });
+    }
+
+    return (
+        <>
+            <label>
+                Name:
+                <input
+                    value={person.name}
+                    onChange={handleNameChange}
+                />
+            </label>
+            <label>
+                Title:
+                <input
+                    value={person.artwork.title}
+                    onChange={handleTitleChange}
+                />
+            </label>
+            <label>
+                City:
+                <input
+                    value={person.artwork.city}
+                    onChange={handleCityChange}
+                />
+            </label>
+            <label>
+                Image:
+                <input
+                    value={person.artwork.image}
+                    onChange={handleImageChange}
+                />
+            </label>
+            <p>
+                <i>{person.artwork.title}</i>
+                {" by "}
+                {person.name}
+                <br />
+                (located in {person.artwork.city})
+            </p>
+            <img
+                src={person.artwork.image}
+                alt={person.artwork.title}
+                style={{
+                    maxWidth: "320px"
+                }}
+            />
+        </>
+    );
+}
+
 
 // export function Footer() {
 //     return (
