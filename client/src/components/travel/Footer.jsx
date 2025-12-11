@@ -531,7 +531,7 @@ export function Canvas() {
     function handleMove(dx, dy) {
         const x = shape.position.x + dx;
         const y = shape.position.y + dy;
-        const newPosition = {x, y};
+        const newPosition = { x, y };
 
         setShape({
             ...shape,
@@ -644,6 +644,83 @@ function Background({ position }) {
     );
 };
 
+// =========================================== Challenge 1: Fix a request counter ===========================================
+
+export function RequestTracker() {
+    const [pending, setPending] = useState(0);
+    const [completed, setCompleted] = useState(0);
+
+    async function handleClick() {
+        let n = pending;
+        n += 1;
+        setPending(n);
+        await delay(3000);
+        n -= 1;
+        setPending(n);
+        setCompleted(completed + 1);
+    }
+
+    return (
+        <>
+            <h3>
+                Pending: {pending}
+            </h3>
+            <h3>
+                Completed: {completed}
+            </h3>
+            <button onClick={handleClick}>
+                Buy
+            </button>
+        </>
+    );
+}
+
+function delay(ms) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
+
+function Card({ title, content, footer }) {
+    return (
+        <div style={
+            {
+                border: "1px solid #444",
+                borderRadius: "12px",
+                width: "20rem",
+                padding: "1rem",
+                backgroundColor: "#fff",
+                boxShadow: "1px 1px 1px #0005"
+            }
+        }>
+            <div>
+                <h2 style={
+                    {
+                        color: "#555",
+                        fontSize: "2rem"
+                    }
+                }>{title}</h2>
+            </div>
+            <div style={{ marginTop: "1rem" }}>
+                <p style={{color: "#333"}}>{content}</p>
+            </div>
+            <div style={{ marginTop: "1rem" }}>
+                <p style={{color: "#666"}}>{footer}</p>
+            </div>
+        </div>
+    );
+};
+
+export function Test() {
+    return (
+        <Card
+            title="Card Title"
+            content="This is the content of the card."
+            footer="This is the footer."
+        />
+    );
+};
 
 // export function Footer() {
 //     return (
