@@ -1,6 +1,6 @@
 // ================================ Challenge 4: Implement multiple selection ================================
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const letters = [{
     id: 0,
@@ -649,15 +649,18 @@ function Background({ position }) {
 export function RequestTracker() {
     const [pending, setPending] = useState(0);
     const [completed, setCompleted] = useState(0);
+    const pen = useRef(pending);
+    const com = useRef(completed);
 
     async function handleClick() {
-        let n = pending;
-        n += 1;
-        setPending(n);
+        // let n = pending;
+        pen.current += 1;
+        setPending(pen.current);
         await delay(3000);
-        n -= 1;
-        setPending(n);
-        setCompleted(completed + 1);
+        pen.current -= 1;
+        setPending(pen.current);
+        com.current += 1;
+        setCompleted(com.current);
     }
 
     return (
@@ -712,13 +715,103 @@ function Card({ title, content, footer }) {
     );
 };
 
-export function Test() {
+function ImageCard({ imageSrc, altText }) {
     return (
-        <Card
-            title="Card Title"
-            content="This is the content of the card."
-            footer="This is the footer."
-        />
+        <div style={{
+            margin: "1rem",
+            padding: "1rem",
+            border: "1px solid #444",
+            borderRadius: "12px"
+        }}>
+            <img
+                src={imageSrc}
+                alt={altText}
+                style={
+                    {
+                        width: "5rem",
+                        height: "5rem"
+                    }
+                }
+            />
+        </div>
+    )
+};
+
+function ProfileCard({ name, bio, avatar }) {
+    return (
+        <div style={{
+            margin: "1rem", 
+            padding: "1rem", 
+            border: "1px solid #444", 
+            borderRadius: "12px"
+        }}>
+            <img src={avatar} alt={name} style={{width: "10rem"}} />
+            <h3>{name}</h3>
+            <p>{bio}</p>
+        </div>
+    );
+}
+
+function TextCard({ text }) {
+    return (
+        <div style={{
+            margin: "1rem", 
+            padding: "1rem", 
+            border: "1px solid #444", 
+            borderRadius: "12px"
+        }}>
+            <p>{text}</p>
+        </div>
+    )
+}
+
+function CardFactory({ type, data }) {
+    switch (type) {
+        case "image":
+            return <ImageCard imageSrc={data.src} altText={data.alt} />;
+        case "text":
+            return <TextCard text={data.text} />;
+        case "profile":
+            return (
+                <ProfileCard name={data.name} bio={data.bio} avatar={data.avatar} />
+            );
+        default:
+            return <div>Unknown card type</div>;
+    }
+};
+
+export function Test() {
+    const imageCardData = {
+        src: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=3903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Placeholder Image",
+    };
+
+    const textCardData = {
+        text: "This is a simple text card.",
+    };
+
+    const profileCardData = {
+        name: "John Doe",
+        bio: "A software engineer with a passion for React.",
+        avatar:
+            "https://images.unsplash.com/photo-1487349703519-90c8e4f426a7?q=80&w=3853&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    };
+
+    return (
+        // <Card
+        //     title="Card Title"
+        //     content="This is the content of the card."
+        //     footer="This is the footer."
+        // />
+        <div className="test-section">
+            <h1>Factory Design Pattern in React</h1>
+            <div className="test-section">
+                {/* Use the factory function to render different types of cards */}
+                <CardFactory type="image" data={imageCardData} />
+                <CardFactory type="text" data={textCardData} />
+                <CardFactory type="profile" data={profileCardData} />
+            </div>
+        </div>
     );
 };
 
