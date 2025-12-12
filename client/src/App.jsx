@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test } from './components/travel/Footer';
+import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -120,13 +120,19 @@ function App() {
           <Canvas />
         </div> */}
         {/* <hr /> */}
-        <div className="test-section">
+        {/* <div className="test-section">
           <RequestTracker />
-        </div>
+        </div> */}
+        {/* <hr /> */}
+        {/* <div className="test-section">
+          <Test />
+        </div> */}
+        {/* <hr /> */}
+        <TestCardDefaultSlots />
         <hr />
-        <div className="test-section">
-        <Test />
-        </div>
+        <TestCardNamedSlots />
+        <hr />
+        <TestCardCompoundSlots />
         <hr />
 
           <Routes>

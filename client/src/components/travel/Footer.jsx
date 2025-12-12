@@ -845,10 +845,11 @@ function Modal({ children }) {
                 backgroundColor: "#0005",
                 zIndex: 50
             }}
-        >
+            >
             <div
                 style={{
                     width: "20rem",
+                    margin: "auto", 
                     padding: "1rem",
                     borderRadius: "12px",
                     backgroundColor: "white"
@@ -975,6 +976,84 @@ export function Test() {
         // </div>
     );
 };
+
+function CardDefaultSlots({ children }) {
+    return (
+        <div className="test-section">
+            {children}
+        </div>
+    );
+};
+
+export function TestCardDefaultSlots() {
+    return (
+        <div className="test-section">
+            <CardDefaultSlots>
+                <h1>This is my Card with Default Slots</h1>
+                <p>This is my card content</p>
+                <button>Learn More</button>
+            </CardDefaultSlots>
+        </div>
+    );
+};
+
+function CardNamedSlots({ cardTitle, cardContent, cardButton }) {
+    return (
+        <div className="test-section">
+            {cardTitle}
+            {cardContent}
+            {cardButton}
+        </div>
+    );
+};
+
+export function TestCardNamedSlots() {
+    return (
+        <div className="test-section">
+            <CardNamedSlots
+                cardTitle={<h1>This is my Card with Named Slots</h1>}
+                cardContent={<p>This is my card content</p>}
+                cardButton={<button>Learn More</button>}
+            />
+        </div>
+    );
+};
+
+function CardTitleCompoundSlot({ children }) {
+    return <div>{children}</div>;
+};
+
+function CardContentCompoundSlot({ children }) {
+    return <div>{children}</div>;
+};
+
+function CardButtonCompoundSlot({ children }) {
+    return <div>{children}</div>;
+};
+
+function CardCompoundSlots({ children }) {
+    return (
+        <div className="test-section">
+            <CardTitleCompoundSlot>
+                <h1>This is my Card with Compound Slots</h1>
+            </CardTitleCompoundSlot>
+            <CardContentCompoundSlot>
+                <h2>This is my card content</h2>
+            </CardContentCompoundSlot>
+            <CardButtonCompoundSlot>
+                <button>This is my random card button</button>
+            </CardButtonCompoundSlot>
+        </div>
+    );
+};
+
+CardCompoundSlots.Title = CardTitleCompoundSlot;
+CardCompoundSlots.Content = CardContentCompoundSlot;
+CardCompoundSlots.Button = CardButtonCompoundSlot;
+
+export function TestCardCompoundSlots() {
+    return <CardCompoundSlots />
+}
 
 // export function Footer() {
 //     return (
