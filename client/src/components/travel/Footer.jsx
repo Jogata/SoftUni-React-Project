@@ -649,18 +649,21 @@ function Background({ position }) {
 export function RequestTracker() {
     const [pending, setPending] = useState(0);
     const [completed, setCompleted] = useState(0);
-    const pen = useRef(pending);
-    const com = useRef(completed);
+    // const pen = useRef(pending);
+    // const com = useRef(completed);
 
     async function handleClick() {
         // let n = pending;
-        pen.current += 1;
-        setPending(pen.current);
+        // pen.current += 1;
+        // setPending(pen.current);
+        setPending(old => old + 1);
         await delay(3000);
-        pen.current -= 1;
-        setPending(pen.current);
-        com.current += 1;
-        setCompleted(com.current);
+        // pen.current -= 1;
+        // setPending(pen.current);
+        setPending(old => old - 1);
+        // com.current += 1;
+        // setCompleted(com.current);
+        setCompleted(old => old + 1);
     }
 
     return (
@@ -706,14 +709,66 @@ function Card({ title, content, footer }) {
                 }>{title}</h2>
             </div>
             <div style={{ marginTop: "1rem" }}>
-                <p style={{color: "#333"}}>{content}</p>
+                <p style={{ color: "#333" }}>{content}</p>
             </div>
             <div style={{ marginTop: "1rem" }}>
-                <p style={{color: "#666"}}>{footer}</p>
+                <p style={{ color: "#666" }}>{footer}</p>
             </div>
         </div>
     );
 };
+
+function CompoundCard({ children }) {
+    return (
+        <div style={{
+            border: "1px solid #444",
+            borderRadius: "12px",
+            width: "20rem",
+            padding: "1rem",
+            backgroundColor: "#fff",
+            boxShadow: "1px 1px 1px #0005"
+        }}>
+            {children}
+        </div>
+    );
+};
+
+function CardTitle({ children }) {
+    return (
+        <div>
+            <h2 style={{
+                fontSize: "2rem",
+                color: "#555",
+            }}>
+                {children}
+            </h2>
+        </div>
+    );
+};
+
+function CardContent({ children }) {
+    return (
+        <div style={{ marginTop: "1rem" }}>
+            <p style={{ color: "#444" }}>
+                {children}
+            </p>
+        </div>
+    );
+};
+
+function CardFooter({ children }) {
+    return (
+        <div style={{ marginTop: "1rem" }}>
+            <p style={{ color: "#333" }}>
+                {children}
+            </p>
+        </div>
+    );
+};
+
+Card.Title = CardTitle;
+Card.Content = CardContent;
+Card.Footer = CardFooter;
 
 function ImageCard({ imageSrc, altText }) {
     return (
@@ -740,12 +795,12 @@ function ImageCard({ imageSrc, altText }) {
 function ProfileCard({ name, bio, avatar }) {
     return (
         <div style={{
-            margin: "1rem", 
-            padding: "1rem", 
-            border: "1px solid #444", 
+            margin: "1rem",
+            padding: "1rem",
+            border: "1px solid #444",
             borderRadius: "12px"
         }}>
-            <img src={avatar} alt={name} style={{width: "10rem"}} />
+            <img src={avatar} alt={name} style={{ width: "10rem" }} />
             <h3>{name}</h3>
             <p>{bio}</p>
         </div>
@@ -755,9 +810,9 @@ function ProfileCard({ name, bio, avatar }) {
 function TextCard({ text }) {
     return (
         <div style={{
-            margin: "1rem", 
-            padding: "1rem", 
-            border: "1px solid #444", 
+            margin: "1rem",
+            padding: "1rem",
+            border: "1px solid #444",
             borderRadius: "12px"
         }}>
             <p>{text}</p>
@@ -798,20 +853,25 @@ export function Test() {
     };
 
     return (
+        // <h1>test</h1>
+        <CompoundCard>
+            <Card.Title>Something Cool</Card.Title>
+            <Card.Content>Amazing Stuff</Card.Content>
+            <Card.Footer>And the end</Card.Footer>
+        </CompoundCard>
         // <Card
         //     title="Card Title"
         //     content="This is the content of the card."
         //     footer="This is the footer."
         // />
-        <div className="test-section">
-            <h1>Factory Design Pattern in React</h1>
-            <div className="test-section">
-                {/* Use the factory function to render different types of cards */}
-                <CardFactory type="image" data={imageCardData} />
-                <CardFactory type="text" data={textCardData} />
-                <CardFactory type="profile" data={profileCardData} />
-            </div>
-        </div>
+        // <div className="test-section">
+        //     <h1>Factory Design Pattern in React</h1>
+        //     <div className="test-section">
+        //         <CardFactory type="image" data={imageCardData} />
+        //         <CardFactory type="text" data={textCardData} />
+        //         <CardFactory type="profile" data={profileCardData} />
+        //     </div>
+        // </div>
     );
 };
 
