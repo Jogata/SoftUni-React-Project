@@ -835,6 +835,57 @@ function CardFactory({ type, data }) {
     }
 };
 
+function Modal({ children }) {
+    return (
+        <div
+            style={{
+                position: "fixed",
+                inset: 0,
+                display: "flex",
+                backgroundColor: "#0005",
+                zIndex: 50
+            }}
+        >
+            <div
+                style={{
+                    width: "20rem",
+                    padding: "1rem",
+                    borderRadius: "12px",
+                    backgroundColor: "white"
+                }}
+            >{children}</div>
+        </div>
+    );
+};
+
+function ModalTitle({ children }) {
+    return (
+        <div>
+            <h2 className="text-xl font-semibold text-gray-800">{children}</h2>
+        </div>
+    );
+};
+
+function ModalBody({ children }) {
+    return (
+        <div className="mt-2">
+            <p className="text-gray-600 text-sm">{children}</p>
+        </div>
+    );
+};
+
+function ModalFooter({ children }) {
+    return (
+        <div className="mt-4 flex justify-end space-x-2">
+            <div>{children}</div>
+        </div>
+    );
+};
+
+Modal.Title = ModalTitle;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;
+
 export function Test() {
     const imageCardData = {
         src: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=3903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -852,13 +903,63 @@ export function Test() {
             "https://images.unsplash.com/photo-1487349703519-90c8e4f426a7?q=80&w=3853&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
     return (
         // <h1>test</h1>
-        <CompoundCard>
-            <Card.Title>Something Cool</Card.Title>
-            <Card.Content>Amazing Stuff</Card.Content>
-            <Card.Footer>And the end</Card.Footer>
-        </CompoundCard>
+        <div className="test-section">
+            <button
+                onClick={openModal}
+                style={{
+                    padding: "1rem 2rem",
+                    color: "white",
+                    borderRadius: "12px",
+                    backgroundColor: "green",
+                }}
+            >
+                Open Modal
+            </button>
+
+            {isModalOpen && (
+                <Modal>
+                    <Modal.Title>Modal Title</Modal.Title>
+                    <Modal.Body>This is the body of the modal.</Modal.Body>
+                    <Modal.Footer>
+                        <button
+                            onClick={closeModal}
+                            style={{
+                                padding: "1rem 2rem",
+                                color: "white",
+                                borderRadius: "12px",
+                                backgroundColor: "gray"
+                            }}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={closeModal}
+                            style={{
+                                marginLeft: "0.3rem",
+                                padding: "1rem 2rem",
+                                color: "white",
+                                borderRadius: "12px",
+                                backgroundColor: "teal"
+                            }}
+                        >
+                            Confirm
+                        </button>
+                    </Modal.Footer>
+                </Modal>
+            )}
+        </div>
+        // <CompoundCard>
+        //     <Card.Title>Something Cool</Card.Title>
+        //     <Card.Content>Amazing Stuff</Card.Content>
+        //     <Card.Footer>And the end</Card.Footer>
+        // </CompoundCard>
         // <Card
         //     title="Card Title"
         //     content="This is the content of the card."
