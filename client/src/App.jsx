@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots, TestSlotComponents } from './components/travel/Footer';
+import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, Gallery, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots, TestSlotComponents } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -128,16 +128,17 @@ function App() {
           <Test />
         </div> */}
         {/* <hr /> */}
-        <TestCardDefaultSlots />
-        <hr />
-        <TestCardNamedSlots />
-        <hr />
-        <TestCardCompoundSlots />
-        <hr />
-        <MyProvider>
+        {/* <TestCardDefaultSlots /> */}
+        {/* <hr /> */}
+        {/* <TestCardNamedSlots /> */}
+        {/* <hr /> */}
+        {/* <TestCardCompoundSlots /> */}
+        {/* <hr /> */}
+        {/* <MyProvider>
           <TestSlotComponents />
-        </MyProvider>
-        <hr />
+        </MyProvider> */}
+        {/* <hr /> */}
+        <Gallery />
 
           <Routes>
             <Route path='/' element={<MainPage />} />
