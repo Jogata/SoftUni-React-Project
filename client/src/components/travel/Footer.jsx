@@ -846,11 +846,11 @@ function Modal({ children }) {
                 backgroundColor: "#0005",
                 zIndex: 50
             }}
-            >
+        >
             <div
                 style={{
                     width: "20rem",
-                    margin: "auto", 
+                    margin: "auto",
                     padding: "1rem",
                     borderRadius: "12px",
                     backgroundColor: "white"
@@ -1169,7 +1169,18 @@ export function Gallery() {
     const [showMore, setShowMore] = useState(false);
 
     function handleNextClick() {
-        setIndex(index + 1);
+        let newIndex = index + 1;
+        newIndex = newIndex % sculptureList.length;
+        // setIndex(index + 1);
+        setIndex(newIndex);
+    }
+
+    function handlePreviousClick() {
+        let newIndex = index - 1;
+        newIndex = newIndex + sculptureList.length;
+        newIndex = newIndex % sculptureList.length;
+        // setIndex(index + 1);
+        setIndex(newIndex);
     }
 
     function handleMoreClick() {
@@ -1179,13 +1190,24 @@ export function Gallery() {
     let sculpture = sculptureList[index];
 
     return (
-        <>
-            <button 
-                onClick={handleNextClick} 
-                disabled={index == sculptureList.length - 1}
-            >
-                Next
-            </button>
+        <div className="test-section">
+            <div>
+                <button
+                    onClick={handlePreviousClick}
+                    // disabled={index == 0}
+                    style={{
+                        marginRight: "1rem"
+                    }}
+                >
+                    Previous
+                </button>
+                <button
+                    onClick={handleNextClick}
+                // disabled={index == sculptureList.length - 1}
+                >
+                    Next
+                </button>
+            </div>
             <h2>
                 <i>{sculpture.name} </i>
                 by {sculpture.artist}
@@ -1204,7 +1226,53 @@ export function Gallery() {
                     maxWidth: "320px"
                 }}
             />
-        </>
+        </div>
+    );
+}
+
+// ================================== Challenge 2: Fix stuck form inputs ==================================
+
+export function Form() {
+    const [firstName, setFirstName] = useState("");
+    // let firstName = "";
+    const [lastName, setLastName] = useState("");
+    // let lastName = "";
+
+    function handleFirstNameChange(e) {
+        //   firstName = e.target.value;
+        setFirstName(e.target.value);
+    }
+
+    function handleLastNameChange(e) {
+        //   lastName = e.target.value;
+        setLastName(e.target.value);
+    }
+
+    function handleReset() {
+        //   firstName = "";
+        setFirstName("");
+        //   lastName = "";
+        setLastName("");
+    }
+
+    return (
+        <form
+            className="test-section"
+            onSubmit={e => e.preventDefault()}
+        >
+            <input
+                placeholder="First name"
+                value={firstName}
+                onChange={handleFirstNameChange}
+            />
+            <input
+                placeholder="Last name"
+                value={lastName}
+                onChange={handleLastNameChange}
+            />
+            <h1>Hi, {firstName} {lastName}</h1>
+            <button onClick={handleReset}>Reset</button>
+        </form>
     );
 }
 
