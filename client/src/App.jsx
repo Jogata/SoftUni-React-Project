@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContextProvider } from './contexts/AuthContext';
+import { AuthContextProvider, MyProvider } from './contexts/AuthContext';
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots } from './components/travel/Footer';
+import { Canvas, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots, TestSlotComponents } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -133,6 +133,10 @@ function App() {
         <TestCardNamedSlots />
         <hr />
         <TestCardCompoundSlots />
+        <hr />
+        <MyProvider>
+          <TestSlotComponents />
+        </MyProvider>
         <hr />
 
           <Routes>

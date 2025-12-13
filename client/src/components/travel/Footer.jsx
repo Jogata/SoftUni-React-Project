@@ -1,6 +1,7 @@
 // ================================ Challenge 4: Implement multiple selection ================================
 
 import { useRef, useState } from "react";
+import { useMyContext } from "../../contexts/AuthContext";
 
 const letters = [{
     id: 0,
@@ -1053,6 +1054,37 @@ CardCompoundSlots.Button = CardButtonCompoundSlot;
 
 export function TestCardCompoundSlots() {
     return <CardCompoundSlots />
+}
+
+const SlotContent = () => {
+    const { setValue } = useMyContext();
+
+    return (
+        <button onClick={() => setValue("New Value from SlotContent")}>
+            Update Context Value
+        </button>
+    );
+};
+
+function SlotComponent({ children }) {
+    const { value } = useMyContext();
+
+    return (
+        <div className="test-section">
+            <h3>Context Value: {value}</h3>
+            <div>{children}</div>
+        </div>
+    );
+};
+
+export function TestSlotComponents() {
+    return (
+        <div className="test-section">
+            <SlotComponent>
+                <SlotContent />
+            </SlotComponent>
+        </div>
+    )
 }
 
 // export function Footer() {
