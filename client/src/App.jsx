@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContextProvider, MyProvider } from './contexts/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 import MainPage from './components/main-page/MainPage'
 import SkyrimHomePage from './components/skyrim-home-page/SkyrimHomePage'
@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Canvas, Form, FormWithNestedObject, FormWithSpreadSyntax, FormWithSpreadSyntax2, Gallery, MailClient, MailClient2, MovingDot, MutatingForm, RequestTracker, Scoreboard, Test, TestCardCompoundSlots, TestCardDefaultSlots, TestCardNamedSlots, TestSlotComponents } from './components/travel/Footer';
+import { TestCounterRenderProp, TestMouseTrackerRenderProp } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -86,62 +86,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <div className="test-section">
-          <MailClient />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <MailClient2 />
-        </div> */}
-        {/* <hr /> */}
-        {/* <MovingDot /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <MutatingForm />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <FormWithSpreadSyntax />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <FormWithSpreadSyntax2 />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <FormWithNestedObject />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <Scoreboard />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div style={{minHeight: "100vh"}}>
-          <Canvas />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <RequestTracker />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <Test />
-        </div> */}
-        {/* <hr /> */}
-        {/* <TestCardDefaultSlots /> */}
-        {/* <hr /> */}
-        {/* <TestCardNamedSlots /> */}
-        {/* <hr /> */}
-        {/* <TestCardCompoundSlots /> */}
-        {/* <hr /> */}
-        {/* <MyProvider>
-          <TestSlotComponents />
-        </MyProvider> */}
-        {/* <hr /> */}
-        {/* <Gallery /> */}
-        <div className="test-section">
-          <Form />
-        </div>
+        <TestCounterRenderProp />
+        <hr />
+        <TestMouseTrackerRenderProp />
         <hr />
 
           <Routes>

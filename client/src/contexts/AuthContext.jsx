@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext } from "react";
 
 import usePersistedState from "../hooks/usePersistedState";
 // import { useNavigate } from "r.eact-router-dom";
@@ -42,26 +42,3 @@ export function AuthContextProvider(props) {
         </AuthContext.Provider>
     )
 }
-
-
-const MyContext = createContext(undefined);
-
-export const MyProvider = ({ children }) => {
-    const [value, setValue] = useState("Hello from Context");
-
-    return (
-        <MyContext.Provider value={{ value, setValue }}>
-            {children}
-        </MyContext.Provider>
-    );
-};
-
-export const useMyContext = () => {
-  const context = useContext(MyContext);
-
-  if (!context) {
-    throw new Error("useMyContext must be used within a MyProvider");
-  }
-
-  return context;
-};
