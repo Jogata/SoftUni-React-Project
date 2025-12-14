@@ -115,6 +115,126 @@ export function TestUsersRenderProps() {
     )
 }
 
+// ============================================================================
+
+export const WithoutTanstackQuery = () => {
+    const [id, setId] = useState(1);
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const handleFetch = async () => {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const res = await fetch(
+                    `https://jsonplaceholder.typicode.com/todos/${id}`
+                );
+
+                if (!res.ok) throw new Error(`Error fetching data: ${res.statusText}`);
+
+                const result = await res.json();
+                // console.log(result);
+                setData(result);
+            } catch (e) {
+                setError(e.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        handleFetch();
+    }, [id]);
+
+    return (
+        <div className="test-section">
+            {error && <h1>{error}</h1>}
+            {/* {isLoading && <h1>Loading...</h1>} */}
+            {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
+            {isLoading ? (
+                <h1>Loading next todo...</h1>
+            ) : (
+                <pre>{JSON.stringify(data, null, 2)}</pre>
+            )}
+            <button
+                // style={{ padding: "20rem" }}
+                onClick={() => setId((prevId) => prevId + 1)}
+            >
+                Next
+            </button>
+        </div>
+    );
+};
+
+
+const fetchTodos = async (page = 1, limit = 10) => {
+    const response = await fetch(
+        `https://jsonplaceholder.typicode.com/todos?_page=${page}&_limit=${limit}`
+    );
+    if (!response.ok) throw new Error("Network response was not ok");
+    return response.json();
+};
+
+export const Pagination = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const pageSize = 10;
+    console.log(currentPage);
+
+    useEffect(() => {
+        const handleFetch = async () => {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const result = await fetchTodos(currentPage, pageSize);
+                console.log(result);
+                setData(result);
+            } catch (e) {
+                setError(e.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        handleFetch();
+    }, [currentPage])
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>An error occurred: {error.message}</div>;
+
+    function handleNextPage() {
+        setCurrentPage((prevPage) => prevPage + 1);
+        // setIsLoading(true);
+    };
+
+    function handlePreviousPage() {
+        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+        // setIsLoading(true);
+    };
+
+    return (
+        <div>
+            <h1>Todos</h1>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <div>
+                <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+                    Previous Page
+                </button>
+                <button onClick={handleNextPage}>Next Page</button>
+            </div>
+        </div>
+    );
+};
+
+// ============================================================================
+// ============================================================================
+
+
 // export function Header() {
 //     return (
 //         <header>
