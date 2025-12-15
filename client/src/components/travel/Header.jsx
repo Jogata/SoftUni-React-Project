@@ -183,16 +183,17 @@ export const Pagination = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const pageSize = 10;
-    console.log(currentPage);
+    console.log(data);
 
     useEffect(() => {
         const handleFetch = async () => {
-            setIsLoading(true);
-            setError(null);
+            // setIsLoading(true);
+            console.log(isLoading);
+            // setError(null);
 
             try {
                 const result = await fetchTodos(currentPage, pageSize);
-                console.log(result);
+                // console.log(result);
                 setData(result);
             } catch (e) {
                 setError(e.message);
@@ -209,16 +210,18 @@ export const Pagination = () => {
 
     function handleNextPage() {
         setCurrentPage((prevPage) => prevPage + 1);
-        // setIsLoading(true);
+        setIsLoading(true);
+        setError(null);
     };
 
     function handlePreviousPage() {
         setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-        // setIsLoading(true);
+        setIsLoading(true);
+        setError(null);
     };
 
     return (
-        <div>
+        <div className="test-section">
             <h1>Todos</h1>
             <pre>{JSON.stringify(data, null, 2)}</pre>
             <div>
@@ -231,7 +234,36 @@ export const Pagination = () => {
     );
 };
 
-// ============================================================================
+// ====================================== Challenge 3: Fix a crash ======================================
+
+export function FeedbackForm() {
+    const [isSent, setIsSent] = useState(false);
+    const [message, setMessage] = useState("");
+
+    if (isSent) {
+        return <h1>Thank you!</h1>;
+    } else {
+        // const [message, setMessage] = useState("");
+
+        return (
+            <form onSubmit={e => {
+                e.preventDefault();
+                alert(`Sending: "${message}"`);
+                setIsSent(true);
+            }}>
+                <textarea
+                    placeholder="Message"
+                    value={message}
+                    onChange={e => setMessage(e.target.value)}
+                />
+                <br />
+                <button type="submit">Send</button>
+            </form>
+        );
+    }
+}
+
+
 // ============================================================================
 
 
