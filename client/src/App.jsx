@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { FeedbackForm, Pagination, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
+import { FeedbackForm, GreetForm, Pagination, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -96,7 +96,11 @@ function App() {
         {/* <hr /> */}
         {/* <Pagination /> */}
         {/* <hr /> */}
-        <FeedbackForm />
+        {/* <FeedbackForm /> */}
+        {/* <hr /> */}
+        <div className="test-section">
+          <GreetForm />
+        </div>
         <hr />
 
           <Routes>
