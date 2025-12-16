@@ -396,6 +396,50 @@ function Panel2({
     );
 }
 
+// ====================================== Challenge 1: Synced inputs ======================================
+
+export function SyncedInputs() {
+    const [text, setText] = useState("");
+
+    function handleChange(e) {
+        setText(e.target.value);
+    }
+
+    return (
+        <div className="test-section">
+            <Input 
+                label="First input" 
+                text={text} 
+                onChange={handleChange} 
+            />
+            <Input 
+                label="Second input" 
+                text={text} 
+                onChange={handleChange} 
+            />
+        </div>
+    );
+}
+
+function Input({ label, text, onChange }) {
+    // const [text, setText] = useState("");
+
+    // function handleChange(e) {
+    //     setText(e.target.value);
+    // }
+
+    return (
+        <label>
+            {label}
+            {" "}
+            <input
+                value={text}
+                onChange={onChange}
+            />
+        </label>
+    );
+}
+
 // ============================================================================
 
 
