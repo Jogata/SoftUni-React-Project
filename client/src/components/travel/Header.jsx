@@ -598,8 +598,8 @@ export function Counters() {
 
     return (
         <div className="test-section">
-            <Counter />
-            {showB && <Counter />}
+            <Counter1 />
+            {showB && <Counter1 />}
             <label>
                 <input
                     type="checkbox"
@@ -614,7 +614,7 @@ export function Counters() {
     );
 }
 
-function Counter() {
+function Counter1() {
     const [score, setScore] = useState(0);
     const [hover, setHover] = useState(false);
 
@@ -642,13 +642,13 @@ function Counter() {
 
 export function FancyCounter() {
     const [isFancy, setIsFancy] = useState(false);
-    
+
     return (
-        <div>
+        <div className="test-section">
             {isFancy ? (
-                <Counter isFancy={true} />
+                <Counter2 isFancy={true} />
             ) : (
-                <Counter isFancy={false} />
+                <Counter2 isFancy={false} />
             )}
             <label>
                 <input
@@ -664,7 +664,73 @@ export function FancyCounter() {
     );
 }
 
-function Counter({ isFancy }) {
+function Counter2({ isFancy }) {
+    const [score, setScore] = useState(0);
+    const [hover, setHover] = useState(false);
+
+    let className = "counter";
+    if (hover) {
+        className += " hover";
+    }
+    if (isFancy) {
+        className += " fancy";
+    }
+
+    return (
+        <div
+            className={className}
+            onPointerEnter={() => setHover(true)}
+            onPointerLeave={() => setHover(false)}
+        >
+            <h1>{score}</h1>
+            <button onClick={() => setScore(score + 1)}>
+                Add one
+            </button>
+        </div>
+    );
+}
+
+// ============================================================================
+
+export function FancyCounter2() {
+    const [isFancy, setIsFancy] = useState(false);
+
+    if (isFancy) {
+        return (
+            <div className="test-section">
+                <Counter3 isFancy={true} />
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={isFancy}
+                        onChange={e => {
+                            setIsFancy(e.target.checked)
+                        }}
+                    />
+                    Use fancy styling
+                </label>
+            </div>
+        );
+    }
+
+    return (
+        <div className="test-section">
+            <Counter3 isFancy={false} />
+            <label>
+                <input
+                    type="checkbox"
+                    checked={isFancy}
+                    onChange={e => {
+                        setIsFancy(e.target.checked)
+                    }}
+                />
+                Use fancy styling
+            </label>
+        </div>
+    );
+}
+
+function Counter3({ isFancy }) {
     const [score, setScore] = useState(0);
     const [hover, setHover] = useState(false);
 
