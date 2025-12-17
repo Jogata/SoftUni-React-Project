@@ -534,6 +534,65 @@ function List({ items }) {
 
 // ============================================================================
 
+export const RaceCondition = () => {
+    const [id, setId] = useState(1);
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    console.log("race");
+
+    useEffect(() => {
+        let rc = false;
+
+        const handleFetch = async () => {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const res = await fetch(
+                    `https://jsonplaceholder.typicode.com/todos/${id}`
+                );
+
+                if (rc) return;
+
+                if (!res.ok) {
+                    throw new Error(`Error fetching data: ${res.statusText}`);
+                }
+
+                const result = await res.json();
+                setData(result);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        handleFetch();
+
+        return () => {
+            console.log("clean-up");
+            rc = true;
+        };
+    }, [id]);
+
+    return (
+        <div className="test-section">
+            {isLoading && <h1>Loading...</h1>}
+            {error && <h1>{error}</h1>}
+            {data && !isLoading && <h1>{JSON.stringify(data)}</h1>}
+            <button
+                style={{ padding: "1rem 2rem" }}
+                onClick={() => setId((prevId) => prevId + 1)}
+            >
+                Next
+            </button>
+        </div>
+    );
+};
+
+// ============================================================================
+
 
 // export function Header() {
 //     return (
