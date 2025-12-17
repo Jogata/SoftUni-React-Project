@@ -593,6 +593,105 @@ export const RaceCondition = () => {
 
 // ============================================================================
 
+export function Counters() {
+    const [showB, setShowB] = useState(true);
+
+    return (
+        <div className="test-section">
+            <Counter />
+            {showB && <Counter />}
+            <label>
+                <input
+                    type="checkbox"
+                    checked={showB}
+                    onChange={e => {
+                        setShowB(e.target.checked)
+                    }}
+                />
+                Render the second counter
+            </label>
+        </div>
+    );
+}
+
+function Counter() {
+    const [score, setScore] = useState(0);
+    const [hover, setHover] = useState(false);
+
+    let className = "counter";
+
+    if (hover) {
+        className = "counter hover";
+    }
+
+    return (
+        <div
+            className={className}
+            onPointerEnter={() => setHover(true)}
+            onPointerLeave={() => setHover(false)}
+        >
+            <h1>{score}</h1>
+            <button onClick={() => setScore(score + 1)}>
+                Add one
+            </button>
+        </div>
+    );
+}
+
+// ============================================================================
+
+export function FancyCounter() {
+    const [isFancy, setIsFancy] = useState(false);
+    
+    return (
+        <div>
+            {isFancy ? (
+                <Counter isFancy={true} />
+            ) : (
+                <Counter isFancy={false} />
+            )}
+            <label>
+                <input
+                    type="checkbox"
+                    checked={isFancy}
+                    onChange={e => {
+                        setIsFancy(e.target.checked)
+                    }}
+                />
+                Use fancy styling
+            </label>
+        </div>
+    );
+}
+
+function Counter({ isFancy }) {
+    const [score, setScore] = useState(0);
+    const [hover, setHover] = useState(false);
+
+    let className = "counter";
+    if (hover) {
+        className += " hover";
+    }
+    if (isFancy) {
+        className += " fancy";
+    }
+
+    return (
+        <div
+            className={className}
+            onPointerEnter={() => setHover(true)}
+            onPointerLeave={() => setHover(false)}
+        >
+            <h1>{score}</h1>
+            <button onClick={() => setScore(score + 1)}>
+                Add one
+            </button>
+        </div>
+    );
+}
+
+// ============================================================================
+
 
 // export function Header() {
 //     return (
