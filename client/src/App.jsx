@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Accordion, Accordion2, Counters, FancyCounter, FancyCounter2, FeedbackForm, FilterableList, GreetForm, Pagination, RaceCondition, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
+import { Accordion, Accordion2, Counters, FancyCounter, FancyCounter2, FeedbackForm, FilterableList, GreetForm, Pagination, RaceCondition, ResetingCounter, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -114,9 +114,11 @@ function App() {
         {/* <hr /> */}
         {/* <Counters /> */}
         {/* <hr /> */}
-        <FancyCounter />
-        <hr />
-        <FancyCounter2 />
+        {/* <FancyCounter /> */}
+        {/* <hr /> */}
+        {/* <FancyCounter2 /> */}
+        {/* <hr /> */}
+        <ResetingCounter />
         <hr />
 
           <Routes>
