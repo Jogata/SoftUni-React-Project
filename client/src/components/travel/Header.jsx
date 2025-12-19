@@ -923,13 +923,13 @@ export function ResetingCounter3() {
     return (
         <div className="test-section">
             {isFancy && <p>See you later!</p>}
-                {/* <div> */}
-                    {/* <Counter6 isFancy={true} /> */}
-                {/* </div> */}
+            {/* <div> */}
+            {/* <Counter6 isFancy={true} /> */}
+            {/* </div> */}
             {/* ) : ( */}
-                {/* <section> */}
-                    <Counter7 isFancy={false} />
-                {/* </section> */}
+            {/* <section> */}
+            <Counter7 isFancy={false} />
+            {/* </section> */}
             {/* )} */}
             <label>
                 <input
@@ -974,6 +974,78 @@ function Counter7({ isFancy }) {
 }
 
 // ============================================================================
+
+export function MyComponent() {
+    const [counter, setCounter] = useState(0);
+
+    function MyTextField() {
+        const [text, setText] = useState('');
+
+        return (
+            <input
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
+        );
+    }
+
+    return (
+        <div className="test-section">
+            <MyTextField />
+            <button onClick={() => {
+                setCounter(counter + 1)
+            }}>
+                Clicked {counter} times
+            </button>
+        </div>
+    );
+}
+
+// ============================================================================
+
+export function Scoreboard() {
+    const [isPlayerA, setIsPlayerA] = useState(true);
+
+    return (
+        <div>
+            {isPlayerA ? (
+                <Counter8 person="Taylor" />
+            ) : (
+                <Counter8 person="Sarah" />
+            )}
+            <button onClick={() => {
+                setIsPlayerA(!isPlayerA);
+            }}>
+                Next player!
+            </button>
+        </div>
+    );
+}
+
+function Counter8({ person }) {
+    const [score, setScore] = useState(0);
+    const [hover, setHover] = useState(false);
+
+    let className = "counter";
+
+    if (hover) {
+        className += " hover";
+    }
+
+    return (
+        <div
+            className={className}
+            onPointerEnter={() => setHover(true)}
+            onPointerLeave={() => setHover(false)}
+        >
+            <h1>{person}'s score: {score}</h1>
+            <button onClick={() => setScore(score + 1)}>
+                Add one
+            </button>
+        </div>
+    );
+}
+
 
 
 // export function Header() {
