@@ -1096,7 +1096,7 @@ function Counter9({ person }) {
 
 export function ScoreboardKeyReset() {
     const [isPlayerA, setIsPlayerA] = useState(true);
-    
+
     return (
         <div>
             {isPlayerA ? (
@@ -1135,6 +1135,67 @@ function Counter10({ person }) {
             </button>
         </div>
     );
+}
+
+// ============================================================================
+
+const contacts = [
+    { id: 0, name: "Taylor", email: "taylor@mail.com" },
+    { id: 1, name: "Alice", email: "alice@mail.com" },
+    { id: 2, name: "Bob", email: "bob@mail.com" }
+];
+
+function Chat({ contact }) {
+    const [text, setText] = useState("");
+
+    return (
+        <section className="chat">
+            <textarea
+                value={text}
+                placeholder={"Chat to " + contact.name}
+                onChange={e => setText(e.target.value)}
+            />
+            <br />
+            <button>Send to {contact.email}</button>
+        </section>
+    );
+}
+
+function ContactList({
+    selectedContact,
+    contacts,
+    onSelect
+}) {
+    return (
+        <section className="contact-list">
+            <ul>
+                {contacts.map(contact =>
+                    <li key={contact.id}>
+                        <button onClick={() => {
+                            onSelect(contact);
+                        }}>
+                            {contact.name}
+                        </button>
+                    </li>
+                )}
+            </ul>
+        </section>
+    );
+}
+
+export function Messenger() {
+    const [to, setTo] = useState(contacts[0]);
+
+    return (
+        <div className="test-section">
+            <ContactList
+                contacts={contacts}
+                selectedContact={to}
+                onSelect={contact => setTo(contact)}
+            />
+            <Chat contact={to} />
+        </div>
+    )
 }
 
 // ============================================================================
