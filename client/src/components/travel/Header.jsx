@@ -1198,6 +1198,55 @@ export function Messenger() {
     )
 }
 
+// ===================================== Challenge 1: Fix disappearing input text =====================================
+
+export function DisappearingInput() {
+    const [showHint, setShowHint] = useState(false);
+
+    // if (showHint) {
+    return (
+        <div className="test-section">
+            {showHint && <p><i>Hint: Your favorite city?</i></p>}
+            <Form />
+            {/* <button onClick={() => {
+                    setShowHint(!showHint);
+                }}>Hide hint</button> */}
+            {showHint ? (
+                <button onClick={() => {
+                    setShowHint(false);
+                }}>Hide hint</button>
+            ) : (
+                <button onClick={() => {
+                    setShowHint(true);
+                }}>Show hint</button>
+            )}
+        </div>
+    );
+    // } else {
+
+    // return (
+    //     <div className="test-section">
+    //         <Form />
+    //         <button onClick={() => {
+    //             setShowHint(true);
+    //         }}>Show hint</button>
+    //     </div>
+    // );
+    // }
+
+}
+
+function Form() {
+    const [text, setText] = useState("");
+
+    return (
+        <textarea
+            value={text}
+            onChange={e => setText(e.target.value)}
+        />
+    );
+}
+
 // ============================================================================
 
 
