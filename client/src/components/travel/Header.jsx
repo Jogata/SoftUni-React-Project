@@ -1206,7 +1206,9 @@ export function DisappearingInput() {
     // if (showHint) {
     return (
         <div className="test-section">
-            {showHint && <p><i>Hint: Your favorite city?</i></p>}
+            {showHint &&
+                <p><i>Hint: Your favorite city?</i></p>
+            }
             <Form />
             {/* <button onClick={() => {
                     setShowHint(!showHint);
@@ -1244,6 +1246,83 @@ function Form() {
             value={text}
             onChange={e => setText(e.target.value)}
         />
+    );
+}
+
+export function DisappearingInput2() {
+    const [showHint, setShowHint] = useState(false);
+
+    if (showHint) {
+        return (
+            <div className="test-section">
+                <p><i>Hint: Your favorite city?</i></p>
+                <Form />
+                <button onClick={() => {
+                    setShowHint(false);
+                }}>Hide hint</button>
+            </div>
+        );
+    }
+
+    return (
+        <div className="test-section">
+            {null}
+            <Form />
+            <button onClick={() => {
+                setShowHint(true);
+            }}>Show hint</button>
+        </div>
+    );
+}
+
+// =================================== Challenge 2: Swap two form fields ===================================
+
+export function SwapFields() {
+    const [reverse, setReverse] = useState(false);
+
+    let checkbox = (
+        <label>
+            <input
+                type="checkbox"
+                checked={reverse}
+                onChange={e => setReverse(e.target.checked)}
+            />
+            Reverse order
+        </label>
+    );
+
+    if (reverse) {
+        return (
+            <>
+                <Field key="last" label="Last name" />
+                <Field key="first" label="First name" />
+                {checkbox}
+            </>
+        );
+    } else {
+        return (
+            <>
+                <Field key="first" label="First name" />
+                <Field key="last" label="Last name" />
+                {checkbox}
+            </>
+        );
+    }
+}
+
+function Field({ label }) {
+    const [text, setText] = useState("");
+
+    return (
+        <label>
+            {label}:{" "}
+            <input
+                type="text"
+                value={text}
+                placeholder={label}
+                onChange={e => setText(e.target.value)}
+            />
+        </label>
     );
 }
 

@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Accordion, Accordion2, Counters, DisappearingInput, FancyCounter, FancyCounter2, FancyCounter3, FeedbackForm, FilterableList, GreetForm, Messenger, MyComponent, Pagination, RaceCondition, ResetingCounter, ResetingCounter2, ResetingCounter3, Scoreboard, ScoreboardKeyReset, ScoreboardReset, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
+import { Accordion, Accordion2, Counters, DisappearingInput, DisappearingInput2, FancyCounter, FancyCounter2, FancyCounter3, FeedbackForm, FilterableList, GreetForm, Messenger, MyComponent, Pagination, RaceCondition, ResetingCounter, ResetingCounter2, ResetingCounter3, Scoreboard, ScoreboardKeyReset, ScoreboardReset, SwapFields, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -136,7 +136,13 @@ function App() {
         {/* <hr /> */}
         {/* <Messenger /> */}
         {/* <hr /> */}
-        <DisappearingInput />
+        {/* <DisappearingInput /> */}
+        {/* <hr /> */}
+        <DisappearingInput2 />
+        <hr />
+        <div className="test-section">
+        <SwapFields />
+        </div>
         <hr />
 
           <Routes>
