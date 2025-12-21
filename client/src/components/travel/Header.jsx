@@ -1342,7 +1342,7 @@ function ContactsList({
     return (
         <section>
             <ul style={{
-                display: "flex", 
+                display: "flex",
                 gap: "1rem"
             }}>
                 {contacts.map(contact =>
@@ -1437,7 +1437,7 @@ export function ContactManager() {
                 selectedId={selectedId}
                 onSelect={id => setSelectedId(id)}
             />
-            <hr style={{width: "100%"}} />
+            <hr style={{ width: "100%" }} />
             <EditContact
                 key={selectedId}
                 initialData={selectedContact}
@@ -1445,6 +1445,65 @@ export function ContactManager() {
             />
         </div>
     )
+}
+
+// =================================== Challenge 4: Clear an image while it’s loadin ===================================
+
+let images = [{
+    place: "Penang, Malaysia",
+    src: "https://i.imgur.com/FJeJR8M.jpg"
+}, {
+    place: "Lisbon, Portugal",
+    src: "https://i.imgur.com/dB2LRbj.jpg"
+}, {
+    place: "Bilbao, Spain",
+    src: "https://i.imgur.com/z08o2TS.jpg"
+}, {
+    place: "Valparaíso, Chile",
+    src: "https://i.imgur.com/Y3utgTi.jpg"
+}, {
+    place: "Schwyz, Switzerland",
+    src: "https://i.imgur.com/JBbMpWY.jpg"
+}, {
+    place: "Prague, Czechia",
+    src: "https://i.imgur.com/QwUKKmF.jpg"
+}, {
+    place: "Ljubljana, Slovenia",
+    src: "https://i.imgur.com/3aIiwfm.jpg"
+}];
+
+export function Gallery() {
+    const [index, setIndex] = useState(0);
+    const hasNext = index < images.length - 1;
+
+    function handleClick() {
+        if (hasNext) {
+            setIndex(index + 1);
+        } else {
+            setIndex(0);
+        }
+    }
+
+    let image = images[index];
+
+    return (
+        <div className="test-section">
+            <button onClick={handleClick}>
+                Next
+            </button>
+            <h3>
+                Image {index + 1} of {images.length}
+            </h3>
+            <img 
+                key={image.src}
+                src={image.src} 
+                style={{maxWidth: "300px"}} 
+            />
+            <p>
+                {image.place}
+            </p>
+        </div>
+    );
 }
 
 // ============================================================================
