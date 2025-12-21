@@ -1326,6 +1326,127 @@ function Field({ label }) {
     );
 }
 
+// ==================================== Challenge 3: Reset a detail form ====================================
+
+const initialContacts = [
+    { id: 0, name: "Taylor", email: "taylor@mail.com" },
+    { id: 1, name: "Alice", email: "alice@mail.com" },
+    { id: 2, name: "Bob", email: "bob@mail.com" }
+];
+
+function ContactsList({
+    contacts,
+    selectedId,
+    onSelect
+}) {
+    return (
+        <section>
+            <ul style={{
+                display: "flex", 
+                gap: "1rem"
+            }}>
+                {contacts.map(contact =>
+                    <li key={contact.id}>
+                        <button onClick={() => {
+                            onSelect(contact.id);
+                        }}>
+                            {contact.id === selectedId ?
+                                <b>{contact.name}</b> :
+                                contact.name
+                            }
+                        </button>
+                    </li>
+                )}
+            </ul>
+        </section>
+    );
+}
+
+function EditContact({ initialData, onSave }) {
+    const [name, setName] = useState(initialData.name);
+    const [email, setEmail] = useState(initialData.email);
+
+    return (
+        <section className="test-section">
+            <label>
+                Name:{" "}
+                <input
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+            </label>
+            <label>
+                Email:{" "}
+                <input
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+            </label>
+            <button onClick={() => {
+                const updatedData = {
+                    id: initialData.id,
+                    name: name,
+                    email: email
+                };
+                onSave(updatedData);
+            }}>
+                Save
+            </button>
+            <button onClick={() => {
+                setName(initialData.name);
+                setEmail(initialData.email);
+            }}>
+                Reset
+            </button>
+        </section>
+    );
+}
+
+export function ContactManager() {
+    const [
+        contacts,
+        setContacts
+    ] = useState(initialContacts);
+
+    const [
+        selectedId,
+        setSelectedId
+    ] = useState(0);
+
+    const selectedContact = contacts.find(c =>
+        c.id === selectedId
+    );
+
+    function handleSave(updatedData) {
+        const nextContacts = contacts.map(c => {
+            if (c.id === updatedData.id) {
+                return updatedData;
+            } else {
+                return c;
+            }
+        });
+        setContacts(nextContacts);
+    }
+
+    return (
+        <div className="test-section">
+            <ContactsList
+                contacts={contacts}
+                selectedId={selectedId}
+                onSelect={id => setSelectedId(id)}
+            />
+            <hr style={{width: "100%"}} />
+            <EditContact
+                key={selectedId}
+                initialData={selectedContact}
+                onSave={handleSave}
+            />
+        </div>
+    )
+}
+
 // ============================================================================
 
 
