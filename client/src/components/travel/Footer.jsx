@@ -1,3 +1,5 @@
+import { useReducer } from "react";
+
 function tasksReducer(tasks, action) {
     switch (action.type) {
         case "added": {
@@ -40,11 +42,122 @@ let actions = [
 let finalState = actions.reduce(tasksReducer, initialState);
 
 export function Output() {
-    return ( 
+    return (
         <pre>{JSON.stringify(finalState, null, 2)}</pre>
-    ) 
-} 
- 
+    )
+}
+
+// ============================================== Challenge 1: Dispatch actions from event handlers ==============================================
+
+const contacts = [
+    { id: 0, name: "Taylor", email: "taylor@mail.com" },
+    { id: 1, name: "Alice", email: "alice@mail.com" },
+    { id: 2, name: "Bob", email: "bob@mail.com" },
+];
+
+function messengerReducer(state, action) {
+    switch (action.type) {
+        case "changed_selection": {
+            return {
+                ...state,
+                selectedId: action.contactId,
+                message: "",
+            };
+        }
+        case "edited_message": {
+            return {
+                ...state,
+                message: action.message,
+            };
+        }
+        default: {
+            throw Error("Unknown action: " + action.type);
+        }
+    }
+}
+
+const initialMessengerState = {
+    selectedId: 0,
+    message: "Hello",
+};
+
+export function Messenger() {
+    const [state, dispatch] = 
+        useReducer(messengerReducer, initialMessengerState);
+    const message = state.message;
+    const contact = contacts.find((c) => c.id === state.selectedId);
+
+    return (
+        <div style={{display: "flex", gap: "2rem"}}>
+            <ContactList
+                contacts={contacts}
+                selectedId={state.selectedId}
+                dispatch={dispatch}
+            />
+            <Chat
+                key={contact.id}
+                message={message}
+                contact={contact}
+                dispatch={dispatch}
+            />
+        </div>
+    );
+}
+
+function ContactList({ contacts, selectedId, dispatch }) {
+    return (
+        <section>
+            <ul>
+                {contacts.map((contact) => (
+                    <li key={contact.id}>
+                        <button
+                            style={{width: "100%"}}
+                            onClick={() => {
+                                dispatch({
+                                    type: "changed_selection", 
+                                    contactId: contact.id
+                                })
+                            }}>
+                            {selectedId === contact.id ? 
+                                <b>{contact.name}</b> : 
+                                contact.name
+                            }
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}
+
+function Chat({ contact, message, dispatch }) {
+    return (
+        <section style={{minWidth: "320px"}}>
+            <textarea
+                rows={10}
+                value={message}
+                placeholder={"Chat to " + contact.name}
+                onChange={(e) => {
+                    dispatch({
+                        type: "edited_message", 
+                        message: e.target.value
+                    })
+                }}
+                style={{
+                    width: "100%", 
+                    padding: "0.5rem", 
+                    color: "#ccc", 
+                    backgroundColor: 'transparent'
+                }}
+            />
+            <br />
+            <button>Send to {contact.email}</button>
+        </section>
+    );
+}
+
+// =============================================================================================
+
 // export function Footer() {
 //     return (
 //         <div className="footer">
