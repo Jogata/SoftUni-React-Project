@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Accordion, Accordion2, ContactManager, Counters, DisappearingInput, DisappearingInput2, FancyCounter, FancyCounter2, FancyCounter3, FeedbackForm, FilterableList, Gallery, GreetForm, Messenger, MyComponent, Pagination, RaceCondition, ResetingCounter, ResetingCounter2, ResetingCounter3, Scoreboard, ScoreboardKeyReset, ScoreboardReset, SwapFields, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
+import { Accordion, Accordion2, ContactManager, ContactsDataList, Counters, DisappearingInput, DisappearingInput2, FancyCounter, FancyCounter2, FancyCounter3, FeedbackForm, FilterableList, Gallery, GreetForm, Messenger, MyComponent, Pagination, RaceCondition, ResetingCounter, ResetingCounter2, ResetingCounter3, Scoreboard, ScoreboardKeyReset, ScoreboardReset, SwapFields, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -146,7 +146,9 @@ function App() {
         {/* <hr /> */}
         {/* <ContactManager /> */}
         {/* <hr /> */}
-        <Gallery />
+        {/* <Gallery /> */}
+        {/* <hr /> */}
+        <ContactsDataList />
         <hr />
 
           <Routes>
