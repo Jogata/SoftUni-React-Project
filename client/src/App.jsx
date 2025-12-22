@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Accordion, Accordion2, ContactManager, ContactsDataList, Counters, DisappearingInput, DisappearingInput2, FancyCounter, FancyCounter2, FancyCounter3, FeedbackForm, FilterableList, Gallery, GreetForm, Messenger, MyComponent, Pagination, RaceCondition, ResetingCounter, ResetingCounter2, ResetingCounter3, Scoreboard, ScoreboardKeyReset, ScoreboardReset, SwapFields, SyncedInputs, TestCounterRenderProp, TestMouseTrackerRenderProp, TestUsersRenderProps, WithoutTanstackQuery } from './components/travel/Header';
+import { Output } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,70 +86,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <TestCounterRenderProp /> */}
-        {/* <hr /> */}
-        {/* <TestMouseTrackerRenderProp /> */}
-        {/* <hr /> */}
-        {/* <TestUsersRenderProps /> */}
-        {/* <hr /> */}
-        {/* <WithoutTanstackQuery /> */}
-        {/* <hr /> */}
-        {/* <Pagination /> */}
-        {/* <hr /> */}
-        {/* <FeedbackForm /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <GreetForm />
-        </div> */}
-        {/* <hr /> */}
-        {/* <Accordion /> */}
-        {/* <hr /> */}
-        {/* <Accordion2 /> */}
-        {/* <hr /> */}
-        {/* <SyncedInputs /> */}
-        {/* <hr /> */}
-        {/* <FilterableList /> */}
-        {/* <hr /> */}
-        {/* <RaceCondition /> */}
-        {/* <hr /> */}
-        {/* <Counters /> */}
-        {/* <hr /> */}
-        {/* <FancyCounter /> */}
-        {/* <hr /> */}
-        {/* <FancyCounter2 /> */}
-        {/* <hr /> */}
-        {/* <ResetingCounter /> */}
-        {/* <hr /> */}
-        {/* <FancyCounter3 /> */}
-        {/* <hr /> */}
-        {/* <ResetingCounter2 /> */}
-        {/* <hr /> */}
-        {/* <ResetingCounter3 /> */}
-        {/* <hr /> */}
-        {/* <MyComponent /> */}
-        {/* <hr /> */}
-        {/* <Scoreboard /> */}
-        {/* <hr /> */}
-        {/* <ScoreboardReset /> */}
-        {/* <hr /> */}
-        {/* <ScoreboardKeyReset /> */}
-        {/* <hr /> */}
-        {/* <Messenger /> */}
-        {/* <hr /> */}
-        {/* <DisappearingInput /> */}
-        {/* <hr /> */}
-        {/* <DisappearingInput2 /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-        <SwapFields />
-        </div> */}
-        {/* <hr /> */}
-        {/* <ContactManager /> */}
-        {/* <hr /> */}
-        {/* <Gallery /> */}
-        {/* <hr /> */}
-        <ContactsDataList />
-        <hr />
+        <div className="test-section">
+          <Output />
+        </div>
+        <hr /> 
 
           <Routes>
             <Route path='/' element={<MainPage />} />
