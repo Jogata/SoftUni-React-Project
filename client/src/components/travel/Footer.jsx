@@ -180,8 +180,8 @@ function messengerReducerClearInput(state, action) {
         }
         case "sent_message": {
             return {
-              ...state,
-              message: "",
+                ...state,
+                message: "",
             };
         }
         default: {
@@ -233,8 +233,8 @@ function ContactListClearInput({ contacts, selectedId, dispatch }) {
                                     contactId: contact.id,
                                 });
                             }}>
-                            {selectedId === contact.id 
-                                ? <b>{contact.name}</b> 
+                            {selectedId === contact.id
+                                ? <b>{contact.name}</b>
                                 : contact.name}
                         </button>
                     </li>
@@ -276,10 +276,147 @@ function ChatClearInput({ contact, message, dispatch }) {
                 //     message: ""
                 // })
                 dispatch({
-                    type: "sent_message", 
+                    type: "sent_message",
                     message: ""
                 })
             }}>Send to {contact.email}</button>
+        </section>
+    );
+}
+
+// =========================================== Challenge 3: Restore input values when switching between tabs ===========================================
+
+function messengerReducerRestoreInput(state, action) {
+    switch (action.type) {
+        case "changed_selection": {
+            return {
+                ...state,
+                selectedId: action.contactId,
+                message: "",
+            };
+        }
+        case "edited_message": {
+            return {
+                ...state,
+                // message: action.message,
+                messages: {
+                    ...state.messages,
+                    [state.selectedId]: action.message,
+                  },
+            };
+        }
+        case "sent_message": {
+            return {
+                ...state,
+                // message: "",
+                messages: {
+                    ...state.messages,
+                    [state.selectedId]: "",
+                  },
+            };
+        }
+        default: {
+            throw Error("Unknown action: " + action.type);
+        }
+    }
+}
+
+const contactsRestoreInput = [
+    { id: 0, name: "Taylor", email: "taylor@mail.com" },
+    { id: 1, name: "Alice", email: "alice@mail.com" },
+    { id: 2, name: "Bob", email: "bob@mail.com" },
+];
+
+const initialStateRestoreInput = {
+    selectedId: 0,
+    // message: "Hello",
+    messages: {
+        0: 'Hello, Taylor',
+        1: 'Hello, Alice',
+        2: 'Hello, Bob',
+      },
+};
+
+export function MessengerRestoreInput() {
+    const [state, dispatch] = 
+        useReducer(messengerReducerRestoreInput, initialStateRestoreInput);
+    // const message = state.message;
+    const message = state.messages[state.selectedId];
+    const contact = contacts.find((c) => c.id === state.selectedId);
+
+    return (
+        <div style={{ display: "flex", gap: "2rem" }}>
+            <ContactListRestoreInput
+                contacts={contactsRestoreInput}
+                selectedId={state.selectedId}
+                dispatch={dispatch}
+            />
+            <ChatRestoreInput
+                key={contact.id}
+                message={message}
+                contact={contact}
+                dispatch={dispatch}
+            />
+        </div>
+    );
+}
+
+function ContactListRestoreInput({ contacts, selectedId, dispatch }) {
+    return (
+        <section>
+            <ul>
+                {contacts.map((contact) => (
+                    <li key={contact.id}>
+                        <button
+                            style={{ width: "100%" }}
+                            onClick={() => {
+                                dispatch({
+                                    type: "changed_selection",
+                                    contactId: contact.id,
+                                });
+                            }}>
+                            {selectedId === contact.id 
+                                ? <b>{contact.name}</b> 
+                                : contact.name
+                            }
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}
+
+function ChatRestoreInput({ contact, message, dispatch }) {
+    return (
+        <section style={{ minWidth: "320px" }}>
+            <textarea
+                value={message}
+                rows={10}
+                placeholder={"Chat to " + contact.name}
+                onChange={(e) => {
+                    dispatch({
+                        type: "edited_message",
+                        message: e.target.value,
+                    });
+                }}
+                style={{
+                    width: "100%",
+                    padding: "0.5rem",
+                    color: "#ccc",
+                    backgroundColor: 'transparent'
+                }}
+            />
+            <br />
+            <button
+                onClick={() => {
+                    alert(`Sending "${message}" to ${contact.email}`);
+                    dispatch({
+                        type: "sent_message",
+                    });
+                }}>
+                Send to {contact.email}
+            </button>
         </section>
     );
 }
