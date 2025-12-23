@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -302,7 +302,7 @@ function messengerReducerRestoreInput(state, action) {
                 messages: {
                     ...state.messages,
                     [state.selectedId]: action.message,
-                  },
+                },
             };
         }
         case "sent_message": {
@@ -312,7 +312,7 @@ function messengerReducerRestoreInput(state, action) {
                 messages: {
                     ...state.messages,
                     [state.selectedId]: "",
-                  },
+                },
             };
         }
         default: {
@@ -334,11 +334,11 @@ const initialStateRestoreInput = {
         0: 'Hello, Taylor',
         1: 'Hello, Alice',
         2: 'Hello, Bob',
-      },
+    },
 };
 
 export function MessengerRestoreInput() {
-    const [state, dispatch] = 
+    const [state, dispatch] =
         useReducer(messengerReducerRestoreInput, initialStateRestoreInput);
     // const message = state.message;
     const message = state.messages[state.selectedId];
@@ -375,8 +375,8 @@ function ContactListRestoreInput({ contacts, selectedId, dispatch }) {
                                     contactId: contact.id,
                                 });
                             }}>
-                            {selectedId === contact.id 
-                                ? <b>{contact.name}</b> 
+                            {selectedId === contact.id
+                                ? <b>{contact.name}</b>
                                 : contact.name
                             }
                         </button>
@@ -419,6 +419,127 @@ function ChatRestoreInput({ contact, message, dispatch }) {
             </button>
         </section>
     );
+}
+
+// ============================================================================================
+
+export function Page() {
+    return (
+        <Section>
+            <Heading level={1}>Page Title</Heading>
+            <Heading level={2}>Heading</Heading>
+            <Heading level={3}>Sub-heading</Heading>
+            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={5}>Sub-sub-sub-heading</Heading>
+            <Heading level={6}>Sub-sub-sub-sub-heading</Heading>
+        </Section>
+    );
+}
+
+export function PageWithoutContext() {
+    return (
+        <Section>
+            <Heading level={1}>PageWithoutContext Title</Heading>
+            <Section>
+                <Heading level={2}>Heading</Heading>
+                <Heading level={2}>Heading</Heading>
+                <Heading level={2}>Heading</Heading>
+                <Section>
+                    <Heading level={3}>Sub-heading</Heading>
+                    <Heading level={3}>Sub-heading</Heading>
+                    <Heading level={3}>Sub-heading</Heading>
+                    <Section>
+                        <Heading level={4}>Sub-sub-heading</Heading>
+                        <Heading level={4}>Sub-sub-heading</Heading>
+                        <Heading level={4}>Sub-sub-heading</Heading>
+                    </Section>
+                </Section>
+            </Section>
+        </Section>
+    );
+}
+
+const LevelContext = createContext(1);
+
+export function PageWithContext() {
+    return (
+        <SectionWithContext level={1}>
+            <HeadingWithContext>PageWithContext Title</HeadingWithContext>
+            <SectionWithContext level={2}>
+                <HeadingWithContext>Heading</HeadingWithContext>
+                <HeadingWithContext>Heading</HeadingWithContext>
+                <HeadingWithContext>Heading</HeadingWithContext>
+                <SectionWithContext level={3}>
+                    <HeadingWithContext>Sub-heading</HeadingWithContext>
+                    <HeadingWithContext>Sub-heading</HeadingWithContext>
+                    <HeadingWithContext>Sub-heading</HeadingWithContext>
+                    <SectionWithContext level={4}>
+                        <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
+                        <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
+                        <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
+                    </SectionWithContext>
+                </SectionWithContext>
+            </SectionWithContext>
+        </SectionWithContext>
+    )
+}
+
+function Section({ children }) {
+    return (
+        <section className="test-section">
+            {children}
+        </section>
+    );
+}
+
+function SectionWithContext({ level, children }) {
+    return (
+        <section className="test-section">
+            <LevelContext.Provider value={level}>
+                {children}
+            </LevelContext.Provider>
+        </section>
+    );
+}
+
+function Heading({ level, children }) {
+    switch (level) {
+        case 1:
+            return <h1>{children}</h1>;
+        case 2:
+            return <h2>{children}</h2>;
+        case 3:
+            return <h3>{children}</h3>;
+        case 4:
+            return <h4>{children}</h4>;
+        case 5:
+            return <h5>{children}</h5>;
+        case 6:
+            return <h6>{children}</h6>;
+        default:
+            throw Error("Unknown level: " + level);
+    }
+}
+
+function HeadingWithContext({ children }) {
+    const level = useContext(LevelContext);
+
+    switch (level) {
+        case 1:
+            return <h1>{children}</h1>;
+        case 2:
+            return <h2>{children}</h2>;
+        case 3:
+            return <h3>{children}</h3>;
+        case 4:
+            return <h4>{children}</h4>;
+        case 5:
+            return <h5>{children}</h5>;
+        case 6:
+            return <h6>{children}</h6>;
+        default:
+            throw Error("Unknown level: " + level);
+    }
 }
 
 // =============================================================================================
