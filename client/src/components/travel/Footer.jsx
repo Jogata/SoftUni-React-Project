@@ -82,13 +82,13 @@ const initialMessengerState = {
 };
 
 export function Messenger() {
-    const [state, dispatch] = 
+    const [state, dispatch] =
         useReducer(messengerReducer, initialMessengerState);
     const message = state.message;
     const contact = contacts.find((c) => c.id === state.selectedId);
 
     return (
-        <div style={{display: "flex", gap: "2rem"}}>
+        <div style={{ display: "flex", gap: "2rem" }}>
             <ContactList
                 contacts={contacts}
                 selectedId={state.selectedId}
@@ -111,15 +111,15 @@ function ContactList({ contacts, selectedId, dispatch }) {
                 {contacts.map((contact) => (
                     <li key={contact.id}>
                         <button
-                            style={{width: "100%"}}
+                            style={{ width: "100%" }}
                             onClick={() => {
                                 dispatch({
-                                    type: "changed_selection", 
+                                    type: "changed_selection",
                                     contactId: contact.id
                                 })
                             }}>
-                            {selectedId === contact.id ? 
-                                <b>{contact.name}</b> : 
+                            {selectedId === contact.id ?
+                                <b>{contact.name}</b> :
                                 contact.name
                             }
                         </button>
@@ -132,26 +132,154 @@ function ContactList({ contacts, selectedId, dispatch }) {
 
 function Chat({ contact, message, dispatch }) {
     return (
-        <section style={{minWidth: "320px"}}>
+        <section style={{ minWidth: "320px" }}>
             <textarea
                 rows={10}
                 value={message}
                 placeholder={"Chat to " + contact.name}
                 onChange={(e) => {
                     dispatch({
-                        type: "edited_message", 
+                        type: "edited_message",
                         message: e.target.value
                     })
                 }}
                 style={{
-                    width: "100%", 
-                    padding: "0.5rem", 
-                    color: "#ccc", 
+                    width: "100%",
+                    padding: "0.5rem",
+                    color: "#ccc",
                     backgroundColor: 'transparent'
                 }}
             />
             <br />
             <button>Send to {contact.email}</button>
+        </section>
+    );
+}
+
+// ============================================ Challenge 2: Clear the input on sending a message =================================================
+
+const initialStateClearInput = {
+    selectedId: 0,
+    message: "Hello",
+};
+
+function messengerReducerClearInput(state, action) {
+    switch (action.type) {
+        case "changed_selection": {
+            return {
+                ...state,
+                selectedId: action.contactId,
+                message: "",
+            };
+        }
+        case "edited_message": {
+            return {
+                ...state,
+                message: action.message,
+            };
+        }
+        case "sent_message": {
+            return {
+              ...state,
+              message: "",
+            };
+        }
+        default: {
+            throw Error("Unknown action: " + action.type);
+        }
+    }
+}
+
+const contactsClearInput = [
+    { id: 0, name: "Taylor", email: "taylor@mail.com" },
+    { id: 1, name: "Alice", email: "alice@mail.com" },
+    { id: 2, name: "Bob", email: "bob@mail.com" },
+];
+
+export function ClearInputMessenger() {
+    const [state, dispatch] =
+        useReducer(messengerReducerClearInput, initialStateClearInput);
+    const message = state.message;
+    const contact = contactsClearInput.find((c) => c.id === state.selectedId);
+
+    return (
+        <div style={{ display: "flex", gap: "2rem" }}>
+            <ContactListClearInput
+                contacts={contactsClearInput}
+                selectedId={state.selectedId}
+                dispatch={dispatch}
+            />
+            <ChatClearInput
+                key={contact.id}
+                message={message}
+                contact={contact}
+                dispatch={dispatch}
+            />
+        </div>
+    );
+}
+
+function ContactListClearInput({ contacts, selectedId, dispatch }) {
+    return (
+        <section>
+            <ul>
+                {contacts.map((contact) => (
+                    <li key={contact.id}>
+                        <button
+                            style={{ width: "100%" }}
+                            onClick={() => {
+                                dispatch({
+                                    type: "changed_selection",
+                                    contactId: contact.id,
+                                });
+                            }}>
+                            {selectedId === contact.id 
+                                ? <b>{contact.name}</b> 
+                                : contact.name}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}
+
+function ChatClearInput({ contact, message, dispatch }) {
+    return (
+        <section style={{ minWidth: "320px" }}>
+            <textarea
+                value={message}
+                rows={10}
+                placeholder={"Chat to " + contact.name}
+                onChange={(e) => {
+                    dispatch({
+                        type: "edited_message",
+                        message: e.target.value,
+                    });
+                }}
+                style={{
+                    width: "100%",
+                    padding: "0.5rem",
+                    color: "#ccc",
+                    backgroundColor: 'transparent'
+                }}
+            />
+            <br />
+            <button onClick={() => {
+                alert(`${contact.email}, ${message}`);
+                // dispatch({
+                //     type: "changed_selection", 
+                //     contactId: contact.id,
+                // })
+                // dispatch({
+                //     type: "edited_message", 
+                //     message: ""
+                // })
+                dispatch({
+                    type: "sent_message", 
+                    message: ""
+                })
+            }}>Send to {contact.email}</button>
         </section>
     );
 }
