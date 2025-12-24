@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -463,17 +463,21 @@ const LevelContext = createContext(1);
 
 export function PageWithContext() {
     return (
-        <SectionWithContext level={1}>
+        // <SectionWithContext level={1}>
+        <SectionWithContext>
             <HeadingWithContext>PageWithContext Title</HeadingWithContext>
-            <SectionWithContext level={2}>
+            {/* <SectionWithContext level={2}> */}
+            <SectionWithContext>
                 <HeadingWithContext>Heading</HeadingWithContext>
                 <HeadingWithContext>Heading</HeadingWithContext>
                 <HeadingWithContext>Heading</HeadingWithContext>
-                <SectionWithContext level={3}>
+                {/* <SectionWithContext level={3}> */}
+                <SectionWithContext>
                     <HeadingWithContext>Sub-heading</HeadingWithContext>
                     <HeadingWithContext>Sub-heading</HeadingWithContext>
                     <HeadingWithContext>Sub-heading</HeadingWithContext>
-                    <SectionWithContext level={4}>
+                    {/* <SectionWithContext level={4}> */}
+                    <SectionWithContext>
                         <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
                         <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
                         <HeadingWithContext>Sub-sub-heading</HeadingWithContext>
@@ -492,10 +496,12 @@ function Section({ children }) {
     );
 }
 
-function SectionWithContext({ level, children }) {
+function SectionWithContext({ children }) {
+    const level = useContext(LevelContext);
+
     return (
         <section className="test-section">
-            <LevelContext.Provider value={level}>
+            <LevelContext.Provider value={level + 1}>
                 {children}
             </LevelContext.Provider>
         </section>
@@ -586,6 +592,8 @@ export function Test() {
 
 function Timer() {
     const [count, setCount] = useState(0);
+    const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+    const hoverRef = useRef(null);
 
     useEffect(() => {
         // let innerCount = 0;
@@ -600,7 +608,7 @@ function Timer() {
             //     setCount(old => old + 1);
             // }
             setCount(old => old + 1);
-            console.count("count");
+            // console.count("count");
         }, 1000);
 
         console.log(`Timer ${id} starts ${count}`);
@@ -612,11 +620,46 @@ function Timer() {
             clearInterval(id);
         }
     }, [])
+
+    // const onMouseEnter = useCallback(
+    //     () => setIsTooltipVisible(true), 
+    //     []
+    // )
+
+    // const onMouseLeave = useCallback(
+    //     () => setIsTooltipVisible(false), 
+    //     []
+    // )
+
+    useEffect(() => {
+        console.log("Add Event Listeners");
+
+        const onMouseEnter = () => setIsTooltipVisible(true);
+        const onMouseLeave = () => setIsTooltipVisible(false);
+
+        if (hoverRef.current) {            
+            hoverRef.current.addEventListener("pointerenter", onMouseEnter);
+            hoverRef.current.addEventListener("pointerleave", onMouseLeave);
+        }
+
+        return () => {
+            console.log("Remove Event Listeners");
+            if (hoverRef.current) {            
+                hoverRef.current.removeEventListener("pointerenter", onMouseEnter);
+                hoverRef.current.removeEventListener("pointerleave", onMouseLeave);
+            }
+        }
+    }, [hoverRef.current])
  
     return (
-        // <div className="test-section">
+        <div className="test-section">
             <h1>Timer: {count}</h1>
-        // </div>
+            <h2 ref={hoverRef}>Hover</h2>
+            {isTooltipVisible && <span>Tooltip timer: {count}</span>}
+            {/* <button onClick={() => setIsTooltipVisible(!isTooltipVisible)}>
+                {isTooltipVisible ? "Hide" : "Show"}
+            </button> */}
+        </div>
     )
 }
 

@@ -106,10 +106,10 @@ function App() {
         {/* <hr /> */}
         {/* <PageWithoutContext /> */}
         {/* <hr /> */}
-        {/* <PageWithContext /> */}
-        {/* <hr /> */}
-        <Test />
+        <PageWithContext />
         <hr />
+        {/* <Test /> */}
+        {/* <hr /> */}
         <TestTimer />
         <hr />
 
