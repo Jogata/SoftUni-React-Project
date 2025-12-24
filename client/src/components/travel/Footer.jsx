@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useState } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -542,6 +542,96 @@ function HeadingWithContext({ children }) {
     }
 }
 
+// =============================================================================================
+
+export function Test() {
+    console.log("test comp start");
+    const [numbers, setNumbers] = useState([]);
+
+    useEffect(() => {
+        const id = setTimeout(() => {
+            setNumbers([1, 2, 3]);
+        }, 1000);
+
+        return () => clearTimeout(id);
+    }, [])
+
+    console.log("numbers: " + numbers);
+
+    const sum = useMemo(
+        () => numbers.reduce((a, v) => a + v, 0), 
+        [numbers]
+    );
+
+    console.log("test comp render");
+
+    const add = useCallback( () => {
+        console.log(numbers);
+        setNumbers(old => [
+            ...old, 
+            old.length + 1
+        ])
+    }, [])
+
+    return (
+        <div className="test-section">
+            {JSON.stringify(numbers)}
+            <h1>{sum}</h1>
+            <button onClick={add}>add</button>
+        </div>
+    )
+}
+
+// =============================================================================================
+
+function Timer() {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        // let innerCount = 0;
+        // let isMounted = true;
+
+        const id = setInterval(() => {
+            // innerCount++;
+            // console.log("innerCount: " + innerCount);
+            // setCount(count + 1);
+            // setCount(innerCount);
+            // if (isMounted) {
+            //     setCount(old => old + 1);
+            // }
+            setCount(old => old + 1);
+            console.count("count");
+        }, 1000);
+
+        console.log(`Timer ${id} starts ${count}`);
+
+        return () => {
+            // isMounted = false;
+            // console.log(isMounted);
+            console.log("clearInterval");
+            clearInterval(id);
+        }
+    }, [])
+ 
+    return (
+        // <div className="test-section">
+            <h1>Timer: {count}</h1>
+        // </div>
+    )
+}
+
+export function TestTimer() {
+    const [index, setIndex] = useState(0);
+ 
+    return (
+        <div className="test-section">
+            <Timer key={index} />
+            <button 
+                onClick={() => setIndex(index + 1)}
+            >reset timer</button>
+        </div>
+    )
+}
 // =============================================================================================
 
 // export function Footer() {

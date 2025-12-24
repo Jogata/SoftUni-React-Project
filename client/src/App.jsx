@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { ClearInputMessenger, Messenger, MessengerRestoreInput, Output, Page, PageWithContext, PageWithoutContext } from './components/travel/Footer';
+import { ClearInputMessenger, Messenger, MessengerRestoreInput, Output, Page, PageWithContext, PageWithoutContext, Test, TestTimer } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -102,11 +102,15 @@ function App() {
           <MessengerRestoreInput />
         </div> */}
         {/* <hr /> */}
-        <Page />
+        {/* <Page /> */}
+        {/* <hr /> */}
+        {/* <PageWithoutContext /> */}
+        {/* <hr /> */}
+        {/* <PageWithContext /> */}
+        {/* <hr /> */}
+        <Test />
         <hr />
-        <PageWithoutContext />
-        <hr />
-        <PageWithContext />
+        <TestTimer />
         <hr />
 
           <Routes>
