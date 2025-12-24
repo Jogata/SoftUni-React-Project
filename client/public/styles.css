@@ -1088,6 +1088,10 @@ body.overflow .fixed-3d-gallery {
   flex-direction: column;
 }
 
+.fancy {
+  border: 1px double #555;
+}
+
 button {
   padding: 1rem 1.5rem;
   color: #fff;

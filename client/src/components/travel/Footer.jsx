@@ -147,7 +147,7 @@ function Chat({ contact, message, dispatch }) {
                     width: "100%",
                     padding: "0.5rem",
                     color: "#ccc",
-                    backgroundColor: 'transparent'
+                    backgroundColor: "transparent"
                 }}
             />
             <br />
@@ -565,16 +565,16 @@ export function Test() {
     console.log("numbers: " + numbers);
 
     const sum = useMemo(
-        () => numbers.reduce((a, v) => a + v, 0), 
+        () => numbers.reduce((a, v) => a + v, 0),
         [numbers]
     );
 
     console.log("test comp render");
 
-    const add = useCallback( () => {
+    const add = useCallback(() => {
         console.log(numbers);
         setNumbers(old => [
-            ...old, 
+            ...old,
             old.length + 1
         ])
     }, [])
@@ -637,20 +637,20 @@ function Timer() {
         const onMouseEnter = () => setIsTooltipVisible(true);
         const onMouseLeave = () => setIsTooltipVisible(false);
 
-        if (hoverRef.current) {            
+        if (hoverRef.current) {
             hoverRef.current.addEventListener("pointerenter", onMouseEnter);
             hoverRef.current.addEventListener("pointerleave", onMouseLeave);
         }
 
         return () => {
             console.log("Remove Event Listeners");
-            if (hoverRef.current) {            
+            if (hoverRef.current) {
                 hoverRef.current.removeEventListener("pointerenter", onMouseEnter);
                 hoverRef.current.removeEventListener("pointerleave", onMouseLeave);
             }
         }
     }, [hoverRef.current])
- 
+
     return (
         <div className="test-section">
             <h1>Timer: {count}</h1>
@@ -665,16 +665,111 @@ function Timer() {
 
 export function TestTimer() {
     const [index, setIndex] = useState(0);
- 
+
     return (
         <div className="test-section">
             <Timer key={index} />
-            <button 
+            <button
                 onClick={() => setIndex(index + 1)}
             >reset timer</button>
         </div>
     )
 }
+// =============================================================================================
+
+function IntermediateSection({ children, isFancy }) {
+    const level = useContext(LevelContext);
+
+    return (
+        <section className={
+            "test-section " +
+            (isFancy ? "fancy" : "")
+        }>
+            <LevelContext.Provider value={level + 1}>
+                {children}
+            </LevelContext.Provider>
+        </section>
+    );
+}
+
+function IntermediateHeading({ children }) {
+    const level = useContext(LevelContext);
+
+    switch (level) {
+        case 0:
+            throw Error("Heading must be inside a Section!");
+        case 1:
+            return <h1>{children}</h1>;
+        case 2:
+            return <h2>{children}</h2>;
+        case 3:
+            return <h3>{children}</h3>;
+        case 4:
+            return <h4>{children}</h4>;
+        case 5:
+            return <h5>{children}</h5>;
+        case 6:
+            return <h6>{children}</h6>;
+        default:
+            throw Error("Unknown level: " + level);
+    }
+}
+
+export function ProfilePage() {
+    return (
+        <IntermediateSection>
+            <IntermediateHeading>
+                My Profile
+            </IntermediateHeading>
+            <Post
+                title="Hello traveller!"
+                body="Read about my adventures."
+            />
+            <AllPosts />
+        </IntermediateSection>
+    );
+}
+
+function AllPosts() {
+    return (
+        <IntermediateSection>
+            <IntermediateHeading>
+                Posts
+            </IntermediateHeading>
+            <RecentPosts />
+        </IntermediateSection>
+    );
+}
+
+function RecentPosts() {
+    return (
+        <IntermediateSection>
+            <IntermediateHeading>
+                Recent Posts
+            </IntermediateHeading>
+            <Post
+                title="Flavors of Lisbon"
+                body="...those pastéis de nata!"
+            />
+            <Post
+                title="Buenos Aires in the rhythm of tango"
+                body="I loved it!"
+            />
+        </IntermediateSection>
+    );
+}
+
+function Post({ title, body }) {
+    return (
+        <IntermediateSection isFancy={true}>
+            <IntermediateHeading>
+                {title}
+            </IntermediateHeading>
+            <p><i>{body}</i></p>
+        </IntermediateSection>
+    );
+}
+
 // =============================================================================================
 
 // export function Footer() {
