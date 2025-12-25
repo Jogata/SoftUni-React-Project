@@ -772,6 +772,143 @@ function Post({ title, body }) {
 
 // =============================================================================================
 
+function Signup() {
+    const [formData, setFormData] = useState({
+        username: "", 
+        email: "", 
+        password: "", 
+    });
+
+    function handleChange(e) {
+        setFormData({
+            ...formData, 
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("User registered: ", formData);
+        alert("Signup successful");
+    }
+
+    return (
+        <div className="test-section">
+            <h2>Signup</h2>
+            <form 
+                onSubmit={handleSubmit}
+                className="test-section"
+                style={{border: "1px solid #555"}}
+            >
+                <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="Username" 
+                    value={formData.username} 
+                    onChange={handleChange} 
+                    style={{marginBottom: "12px"}}
+                    required
+                />
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    style={{marginBottom: "12px"}}
+                    required
+                />
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value={formData.password} 
+                    onChange={handleChange} 
+                    style={{marginBottom: "12px"}}
+                    required
+                />
+                <button type="submit">
+                    Signup
+                </button>
+            </form>
+        </div>
+    )
+}
+
+function Login() {
+    const [credentials, setCredentials] = useState({
+        email: "", 
+        password: "", 
+    });
+
+    function handleChange(e) {
+        setCredentials({
+            ...credentials, 
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function handleLogin(e) {
+        e.preventDefault();
+
+        if (credentials.email == "test") {
+            if (credentials.password === "1234") {
+                console.log("Login successful");
+            } else {
+                alert("Invalid credentials");
+            }
+        }
+    }
+
+    return (
+        <div className="test-section">
+            <h2>Login</h2>
+            <form 
+                onSubmit={handleLogin} 
+                className="test-section"
+                style={{border: "1px solid #555"}}
+            >
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    value={credentials.email} 
+                    onChange={handleChange} 
+                    style={{marginBottom: "12px"}}
+                    required
+                />
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value={credentials.password} 
+                    onChange={handleChange} 
+                    style={{marginBottom: "12px"}}
+                    required
+                />
+                <button type="submit">
+                    Login
+                </button>
+            </form>
+        </div>
+    )
+}
+
+export function TestAuth() {
+    return (
+        <div className="test-section">
+            <h1 style={{textAlign: "center"}}>
+                React Auth Demo
+            </h1>
+            <Signup />
+            <hr />
+            <Login />
+        </div>
+    )
+}
+
+// =============================================================================================
+
 // export function Footer() {
 //     return (
 //         <div className="footer">

@@ -1092,8 +1092,15 @@ body.overflow .fixed-3d-gallery {
   border: 1px double #555;
 }
 
-button {
+.test-section button {
   padding: 1rem 1.5rem;
   color: #fff;
   border: 1px solid;
+}
+
+.test-section input {
+  padding: 1rem 1.5rem;
+  color: #fff;
+  border: 1px solid #333;
+  background-color: transparent;
 }
