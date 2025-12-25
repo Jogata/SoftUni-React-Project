@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { ClearInputMessenger, ImageSizeCtx, Messenger, MessengerRestoreInput, Output, Page, PageWithContext, PageWithoutContext, ProfilePage, Test, TestAuth, TestTimer } from './components/travel/Footer';
+import { TaskApp } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -86,37 +86,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <div className="test-section">
-          <Output />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <Messenger />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <ClearInputMessenger />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <MessengerRestoreInput />
-        </div> */}
-        {/* <hr /> */}
-        {/* <Page /> */}
-        {/* <hr /> */}
-        {/* <PageWithoutContext /> */}
-        {/* <hr /> */}
-        {/* <PageWithContext /> */}
-        {/* <hr /> */}
-        {/* <Test /> */}
-        {/* <hr /> */}
-        {/* <TestTimer /> */}
-        {/* <hr /> */}
-        {/* <ProfilePage /> */}
-        {/* <hr /> */}
-        {/* <TestAuth /> */}
-        {/* <hr /> */}
-        <ImageSizeCtx />
+        <TaskApp />
         <hr />
 
           <Routes>
