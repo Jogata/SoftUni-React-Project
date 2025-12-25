@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { ClearInputMessenger, Messenger, MessengerRestoreInput, Output, Page, PageWithContext, PageWithoutContext, ProfilePage, Test, TestAuth, TestTimer } from './components/travel/Footer';
+import { ClearInputMessenger, ImageSizeCtx, Messenger, MessengerRestoreInput, Output, Page, PageWithContext, PageWithoutContext, ProfilePage, Test, TestAuth, TestTimer } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -114,7 +114,9 @@ function App() {
         {/* <hr /> */}
         {/* <ProfilePage /> */}
         {/* <hr /> */}
-        <TestAuth />
+        {/* <TestAuth /> */}
+        {/* <hr /> */}
+        <ImageSizeCtx />
         <hr />
 
           <Routes>

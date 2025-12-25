@@ -774,14 +774,14 @@ function Post({ title, body }) {
 
 function Signup() {
     const [formData, setFormData] = useState({
-        username: "", 
-        email: "", 
-        password: "", 
+        username: "",
+        email: "",
+        password: "",
     });
 
     function handleChange(e) {
         setFormData({
-            ...formData, 
+            ...formData,
             [e.target.name]: e.target.value
         })
     }
@@ -795,36 +795,36 @@ function Signup() {
     return (
         <div className="test-section">
             <h2>Signup</h2>
-            <form 
+            <form
                 onSubmit={handleSubmit}
                 className="test-section"
-                style={{border: "1px solid #555"}}
+                style={{ border: "1px solid #555" }}
             >
-                <input 
-                    type="text" 
-                    name="username" 
-                    placeholder="Username" 
-                    value={formData.username} 
-                    onChange={handleChange} 
-                    style={{marginBottom: "12px"}}
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    style={{ marginBottom: "12px" }}
                     required
                 />
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    style={{marginBottom: "12px"}}
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    style={{ marginBottom: "12px" }}
                     required
                 />
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password" 
-                    value={formData.password} 
-                    onChange={handleChange} 
-                    style={{marginBottom: "12px"}}
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    style={{ marginBottom: "12px" }}
                     required
                 />
                 <button type="submit">
@@ -837,13 +837,13 @@ function Signup() {
 
 function Login() {
     const [credentials, setCredentials] = useState({
-        email: "", 
-        password: "", 
+        email: "",
+        password: "",
     });
 
     function handleChange(e) {
         setCredentials({
-            ...credentials, 
+            ...credentials,
             [e.target.name]: e.target.value
         })
     }
@@ -863,27 +863,27 @@ function Login() {
     return (
         <div className="test-section">
             <h2>Login</h2>
-            <form 
-                onSubmit={handleLogin} 
+            <form
+                onSubmit={handleLogin}
                 className="test-section"
-                style={{border: "1px solid #555"}}
+                style={{ border: "1px solid #555" }}
             >
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Email" 
-                    value={credentials.email} 
-                    onChange={handleChange} 
-                    style={{marginBottom: "12px"}}
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={credentials.email}
+                    onChange={handleChange}
+                    style={{ marginBottom: "12px" }}
                     required
                 />
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="Password" 
-                    value={credentials.password} 
-                    onChange={handleChange} 
-                    style={{marginBottom: "12px"}}
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={credentials.password}
+                    onChange={handleChange}
+                    style={{ marginBottom: "12px" }}
                     required
                 />
                 <button type="submit">
@@ -897,7 +897,7 @@ function Login() {
 export function TestAuth() {
     return (
         <div className="test-section">
-            <h1 style={{textAlign: "center"}}>
+            <h1 style={{ textAlign: "center" }}>
                 React Auth Demo
             </h1>
             <Signup />
@@ -905,6 +905,139 @@ export function TestAuth() {
             <Login />
         </div>
     )
+}
+
+// ========================================== Challenge 1: Replace prop drilling with context ==========================================
+
+const places = [{
+    id: 0,
+    name: "Bo-Kaap in Cape Town, South Africa",
+    description: "The tradition of choosing bright colors for houses began in the late 20th century.",
+    imageId: "K9HVAGH"
+}, {
+    id: 1,
+    name: "Rainbow Village in Taichung, Taiwan",
+    description: "To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.",
+    imageId: "9EAYZrt"
+}, {
+    id: 2,
+    name: "Macromural de Pachuca, Mexico",
+    description: "One of the largest murals in the world covering homes in a hillside neighborhood.",
+    imageId: "DgXHVwu"
+}, {
+    id: 3,
+    name: "Selarón Staircase in Rio de Janeiro, Brazil",
+    description: "This landmark was created by Jorge Selarón, a Chilean-born artist, as a `tribute to the Brazilian people.`",
+    imageId: "aeO3rpI"
+}, {
+    id: 4,
+    name: "Burano, Italy",
+    description: "The houses are painted following a specific color system dating back to 16th century.",
+    imageId: "kxsph5C"
+}, {
+    id: 5,
+    name: "Chefchaouen, Marocco",
+    description: "There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.",
+    imageId: "rTqKo46"
+}, {
+    id: 6,
+    name: "Gamcheon Culture Village in Busan, South Korea",
+    description: "In 2009, the village was converted into a cultural hub by painting the houses and featuring exhibitions and art installations.",
+    imageId: "ZfQOOzf"
+}];
+
+function getImageUrl(place) {
+    return (
+        "https://i.imgur.com/" +
+        place.imageId +
+        "l.jpg"
+    );
+}
+
+const ImageSizeContext = createContext(null);
+
+export function ImageSizeCtx() {
+    const [isLarge, setIsLarge] = useState(false);
+    const imageSize = isLarge ? 150 : 100;
+
+    return (
+        <div className="test-section">
+            <label>
+                <input
+                    type="checkbox"
+                    checked={isLarge}
+                    onChange={e => {
+                        setIsLarge(e.target.checked);
+                    }}
+                    style={{marginRight: "8px"}}
+                />
+                Use large images
+            </label>
+            <hr />
+            {/* <List imageSize={imageSize} /> */}
+            <ImageSizeContext.Provider value={imageSize}>
+                <List />
+            </ImageSizeContext.Provider>
+        </div>
+    )
+}
+
+// function List({ imageSize }) {
+function List() {
+    const listItems = places.map(place =>
+        <li key={place.id}>
+            <Place
+                place={place}
+            // imageSize={imageSize}
+            />
+        </li>
+    );
+
+    return (
+        <ul
+            style={{
+                maxWidth: "300px",
+                margin: "auto",
+                textAlign: "center"
+            }}
+        >
+            {listItems}
+        </ul>
+    )
+}
+
+// function Place({ place, imageSize }) {
+function Place({ place }) {
+    return (
+        <div className="test-section">
+            <PlaceImage
+                place={place}
+            // imageSize={imageSize}
+            />
+            <p>
+                <b>{place.name}</b>
+                {": " + place.description}
+            </p>
+        </div>
+    );
+}
+
+// function PlaceImage({ place, imageSize }) {
+function PlaceImage({ place }) {
+    const imageSize = useContext(ImageSizeContext);
+
+    return (
+        <img
+            src={getImageUrl(place)}
+            alt={place.name}
+            width={imageSize}
+            height={imageSize}
+            style={{
+                width: "revert",
+                display: "inline-block"
+            }}
+        />
+    );
 }
 
 // =============================================================================================
