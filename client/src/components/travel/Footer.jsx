@@ -3,6 +3,21 @@ import { useState, useContext, createContext, useReducer } from "react";
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 
+function TasksProvider({ children }) {
+    const [tasks, dispatch] = useReducer(
+        tasksReducer,
+        initialTasks
+    );
+
+    return (
+        <TasksContext.Provider value={tasks}>
+            <TasksDispatchContext.Provider value={dispatch}>
+                {children}
+            </TasksDispatchContext.Provider>
+        </TasksContext.Provider>
+    );
+}
+
 function tasksReducer(tasks, action) {
     switch (action.type) {
         case "added": {
@@ -37,19 +52,21 @@ const initialTasks = [
 ];
 
 export function TaskAppWithContext() {
-    const [tasks, dispatch] = useReducer(
-        tasksReducer,
-        initialTasks
-    );
+    // const [tasks, dispatch] = useReducer(
+    //     tasksReducer,
+    //     initialTasks
+    // );
 
     return (
-        <TasksContext.Provider value={tasks}>
-            <TasksDispatchContext.Provider value={dispatch}>
-                <h1>Day off in Kyoto</h1>
-                <AddTask />
-                <TaskList />
-            </TasksDispatchContext.Provider>
-        </TasksContext.Provider>
+        <TasksProvider>
+        {/* <TasksContext.Provider value={tasks}> */}
+            {/* <TasksDispatchContext.Provider value={dispatch}> */}
+            <h1>Day off in Kyoto</h1>
+            <AddTask />
+            <TaskList />
+            {/* </TasksDispatchContext.Provider> */}
+        {/* </TasksContext.Provider> */}
+        </TasksProvider>
     );
 }
 
