@@ -239,6 +239,78 @@ export function Toolbar2() {
 
 // =============================================================================================
 
+function SmashButton({ onSmash, children }) {
+    return (
+        <button onClick={onSmash}>
+            {children}
+        </button>
+    );
+}
+
+export function SmashButtonApp() {
+    return (
+        <div className="test-section">
+            <SmashButton onSmash={() => alert("Playing!")}>
+                Play Movie
+            </SmashButton>
+            <SmashButton onSmash={() => alert("Uploading!")}>
+                Upload Image
+            </SmashButton>
+        </div>
+    );
+}
+  
+// =============================================================================================
+
+export function TestToolbar3() {
+    return (
+        <Toolbar3
+            onPlayMovie={() => alert("Playing!")}
+            onUploadImage={() => alert("Uploading!")}
+        />
+    );
+}
+
+function Toolbar3({ onPlayMovie, onUploadImage }) {
+    return (
+        <div className="test-section">
+            <Button3 onClick={onPlayMovie}>
+                Play Movie
+            </Button3>
+            <Button3 onClick={onUploadImage}>
+                Upload Image
+            </Button3>
+        </div>
+    );
+}
+
+function Button3({ onClick, children }) {
+    return (
+        <button onClick={onClick}>
+            {children}
+        </button>
+    );
+}
+  
+// =============================================================================================
+
+export function ToolbarWithPropagation() {
+    return (
+        <div className="test-section" onClick={() => {
+            alert("You clicked on the toolbar!");
+        }}>
+            <button onClick={() => alert("Playing!")}>
+                Play Movie
+            </button>
+            <button onClick={() => alert("Uploading!")}>
+                Upload Image
+            </button>
+        </div>
+    );
+}
+  
+// =============================================================================================
+
 // export function Header() {
 //     return ( 
 //         <header>

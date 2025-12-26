@@ -38,8 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { TaskApp, Toolbar, Toolbar2 } from './components/travel/Header';
-import { TaskAppWithContext } from './components/travel/Footer';
+import { SmashButtonApp, TaskApp, TestToolbar3, Toolbar, Toolbar2, ToolbarWithPropagation } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -89,15 +88,17 @@ function App() {
 
         {/* <TaskApp /> */}
         {/* <hr /> */}
-        <div className="test-section">
-          <TaskAppWithContext />
-        </div>
-        <hr />
-        <div className="test-section">
+        {/* <div className="test-section">
           <Toolbar />
-        </div>
+        </div> */}
+        {/* <hr /> */}
+        {/* <Toolbar2 /> */}
+        {/* <hr /> */}
+        <SmashButtonApp />
         <hr />
-        <Toolbar2 />
+        <TestToolbar3 />
+        <hr />
+        <ToolbarWithPropagation />
         <hr />
 
           <Routes>
