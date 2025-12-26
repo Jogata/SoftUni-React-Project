@@ -39,6 +39,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { TaskApp } from './components/travel/Header';
+import { TaskAppWithContext } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,7 +87,11 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <TaskApp />
+        {/* <TaskApp /> */}
+        {/* <hr /> */}
+        <div className="test-section">
+          <TaskAppWithContext />
+        </div>
         <hr />
 
           <Routes>
