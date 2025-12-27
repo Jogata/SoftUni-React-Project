@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from "react";
+import { useImperativeHandle, useReducer, useRef, useState } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -464,7 +464,7 @@ export function CatFriends() {
 
     return (
         <div className="test-section">
-            <nav style={{marginBottom: "50vh"}}>
+            <nav style={{ marginBottom: "50vh" }}>
                 <button onClick={handleScrollToFirstCat}>
                     Neo
                 </button>
@@ -500,6 +500,105 @@ export function CatFriends() {
                     </li>
                 </ul>
             </div>
+        </div>
+    );
+}
+
+// =============================================================================================
+
+function MyInput({ ref }) {
+    console.log(ref);
+    return <input ref={ref} />;
+}
+
+export function MyFormWithRefProp() {
+    const inputRef = useRef(null);
+
+    function handleClick() {
+        inputRef.current.focus();
+    }
+
+    return (
+        <div className="test-section">
+            <MyInput ref={inputRef} />
+            <button onClick={handleClick}>
+                Focus the input
+            </button>
+        </div>
+    );
+}
+
+function MyImperativeInput({ ref }) {
+    const realInputRef = useRef(null);
+
+    useImperativeHandle(ref, () => ({
+        focus() {
+            realInputRef.current.focus();
+        },
+    }));
+
+    return <input ref={realInputRef} />;
+};
+
+export function ImperativeForm() {
+    const inputRef = useRef(null);
+
+    function handleClick() {
+        inputRef.current.focus();
+    }
+
+    return (
+        <div className="test-section">
+            <MyImperativeInput ref={inputRef} />
+            <button onClick={handleClick}>Focus the input</button>
+        </div>
+    );
+}
+
+// =============================================================================================
+
+let nextTodoId = 0;
+
+let initialTodos = [];
+
+for (let i = 0; i < 20; i++) {
+    initialTodos.push({
+        id: nextTodoId++,
+        text: "Todo #" + (i + 1)
+    });
+}
+
+export default function TodoList() {
+    const listRef = useRef(null);
+    const [text, setText] = useState("");
+    const [todos, setTodos] = useState(
+        initialTodos
+    );
+
+    function handleAdd() {
+        const newTodo = { id: nextId++, text: text };
+        setText("");
+        setTodos([...todos, newTodo]);
+        listRef.current.lastChild.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }
+
+    return (
+        <div className="test-section">
+            <button onClick={handleAdd}>
+                Add
+            </button>
+            <input
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
+            <ul ref={listRef}>
+                {todos.map(todo => (
+                    <li key={todo.id}>{todo.text}</li>
+                ))}
+            </ul>
         </div>
     );
 }
