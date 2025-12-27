@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -309,6 +309,111 @@ export function ToolbarWithPropagation() {
     );
 }
   
+// =============================================================================================
+
+function ButtonStopPropagation({ onClick, children }) {
+    return (
+        <button onClick={e => {
+            e.stopPropagation();
+            onClick();
+        }}>
+            {children}
+        </button>
+    );
+}
+
+export function ToolbarStopPropagation() {
+    return (
+        <div className="test-section" onClick={() => {
+            alert("You clicked on the toolbar!");
+        }}>
+            <ButtonStopPropagation
+                onClick={() => alert("Playing!")}>
+                Play Movie
+            </ButtonStopPropagation>
+            <ButtonStopPropagation
+                onClick={() => alert("Uploading!")}>
+                Upload Image
+            </ButtonStopPropagation>
+        </div>
+    );
+}
+
+export function Signup() {
+    return (
+        <form onSubmit={e => {
+            e.preventDefault();
+            alert("Submitting!");
+        }}>
+            <input />
+            <button>Send</button>
+        </form>
+    );
+}
+  
+// ============================================ Challenge 1: Fix an event handler ============================================
+
+export function LightSwitch() {
+    function handleClick() {
+        let bodyStyle = document.body.style;
+
+        if (bodyStyle.backgroundColor === "black") {
+            bodyStyle.backgroundColor = "white";
+        } else {
+            bodyStyle.backgroundColor = "black";
+        }
+    }
+
+    return (
+        // <button onClick={handleClick()}>
+        <button onClick={handleClick}>
+            Toggle the lights
+        </button>
+    );
+}
+  
+// =============================================================================================
+
+function ColorSwitch({
+    onChangeColor
+  }) {
+    return (
+      <button onClick={onChangeColor}>
+        Change color
+      </button>
+    );
+  }
+
+  export function TestColorSwitch() {
+    const [color, setColor] = useState("black");
+    const counter = useRef(0);
+
+    function onChangeColor(e) {
+        e.stopPropagation();
+        if (color === "black") {
+           setColor("white");
+        } else {
+            setColor("black");
+        }
+    }
+
+    function increment() {
+        counter.current += 1;
+        console.log(counter.current);
+    }
+
+    return (
+        <div 
+            className="test-section" 
+            onClick={increment}
+            style={{backgroundColor: color}}
+        >
+            <ColorSwitch onChangeColor={onChangeColor} />
+        </div>
+    )
+    
+  }
+
 // =============================================================================================
 
 // export function Header() {
