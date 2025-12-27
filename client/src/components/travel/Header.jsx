@@ -131,9 +131,9 @@ function Task({ task, onChange, onDelete }) {
     }
 
     const styles = {
-        padding: "1rem", 
-        display: "flex", 
-        gap: "1rem", 
+        padding: "1rem",
+        display: "flex",
+        gap: "1rem",
         alignItems: "center"
     };
 
@@ -197,7 +197,7 @@ export function Toolbar() {
         </div>
     );
 }
-  
+
 // =============================================================================================
 
 function Button({ onClick, children }) {
@@ -259,7 +259,7 @@ export function SmashButtonApp() {
         </div>
     );
 }
-  
+
 // =============================================================================================
 
 export function TestToolbar3() {
@@ -291,7 +291,7 @@ function Button3({ onClick, children }) {
         </button>
     );
 }
-  
+
 // =============================================================================================
 
 export function ToolbarWithPropagation() {
@@ -308,7 +308,7 @@ export function ToolbarWithPropagation() {
         </div>
     );
 }
-  
+
 // =============================================================================================
 
 function ButtonStopPropagation({ onClick, children }) {
@@ -350,7 +350,7 @@ export function Signup() {
         </form>
     );
 }
-  
+
 // ============================================ Challenge 1: Fix an event handler ============================================
 
 export function LightSwitch() {
@@ -371,27 +371,27 @@ export function LightSwitch() {
         </button>
     );
 }
-  
+
 // =============================================================================================
 
 function ColorSwitch({
     onChangeColor
-  }) {
+}) {
     return (
-      <button onClick={onChangeColor}>
-        Change color
-      </button>
+        <button onClick={onChangeColor}>
+            Change color
+        </button>
     );
-  }
+}
 
-  export function TestColorSwitch() {
+export function TestColorSwitch() {
     const [color, setColor] = useState("black");
     const counter = useRef(0);
 
     function onChangeColor(e) {
         e.stopPropagation();
         if (color === "black") {
-           setColor("white");
+            setColor("white");
         } else {
             setColor("black");
         }
@@ -403,24 +403,114 @@ function ColorSwitch({
     }
 
     return (
-        <div 
-            className="test-section" 
+        <div
+            className="test-section"
             onClick={increment}
-            style={{backgroundColor: color}}
+            style={{ backgroundColor: color }}
         >
             <ColorSwitch onChangeColor={onChangeColor} />
         </div>
     )
-    
-  }
+
+}
+
+// =============================================================================================
+
+export function FormWithRef() {
+    const inputRef = useRef(null);
+
+    function handleClick() {
+        inputRef.current.focus();
+    }
+
+    return (
+        <div className="test-section">
+            <input ref={inputRef} />
+            <button onClick={handleClick}>
+                Focus the input
+            </button>
+        </div>
+    );
+}
+
+export function CatFriends() {
+    const firstCatRef = useRef(null);
+    const secondCatRef = useRef(null);
+    const thirdCatRef = useRef(null);
+
+    function handleScrollToFirstCat() {
+        firstCatRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+    }
+
+    function handleScrollToSecondCat() {
+        secondCatRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+    }
+
+    function handleScrollToThirdCat() {
+        thirdCatRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+        });
+    }
+
+    return (
+        <div className="test-section">
+            <nav style={{marginBottom: "50vh"}}>
+                <button onClick={handleScrollToFirstCat}>
+                    Neo
+                </button>
+                <button onClick={handleScrollToSecondCat}>
+                    Millie
+                </button>
+                <button onClick={handleScrollToThirdCat}>
+                    Bella
+                </button>
+            </nav>
+            <div>
+                <ul>
+                    <li>
+                        <img
+                            src="https://placecats.com/neo/300/200"
+                            alt="Neo"
+                            ref={firstCatRef}
+                        />
+                    </li>
+                    <li>
+                        <img
+                            src="https://placecats.com/millie/200/200"
+                            alt="Millie"
+                            ref={secondCatRef}
+                        />
+                    </li>
+                    <li>
+                        <img
+                            src="https://placecats.com/bella/199/200"
+                            alt="Bella"
+                            ref={thirdCatRef}
+                        />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
+}
 
 // =============================================================================================
 
 // export function Header() {
-//     return ( 
+//     return (
 //         <header>
 //             <img src="https://raw.githubusercontent.com/scrimba/learn-react/refs/heads/main/02.%20Data-Driven%20React/01.%20Section%202%20Intro/images/globe.png" alt="" />
 //             <h1>my travel journal.</h1>
 //         </header>
-//     ) 
+//     )
 // }

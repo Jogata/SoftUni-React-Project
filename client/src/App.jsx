@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { LightSwitch, Signup, SmashButtonApp, TaskApp, TestColorSwitch, TestToolbar3, Toolbar, Toolbar2, ToolbarStopPropagation, ToolbarWithPropagation } from './components/travel/Header';
+import { CatFriends, FormWithRef, LightSwitch, Signup, SmashButtonApp, TaskApp, TestColorSwitch, TestToolbar3, Toolbar, Toolbar2, ToolbarStopPropagation, ToolbarWithPropagation } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -100,17 +100,21 @@ function App() {
         {/* <hr /> */}
         {/* <ToolbarWithPropagation /> */}
         {/* <hr /> */}
-        <ToolbarStopPropagation />
-        <hr />
-        <div className="test-section">
+        {/* <ToolbarStopPropagation /> */}
+        {/* <hr /> */}
+        {/* <div className="test-section">
           <Signup />
-        </div>
-        <hr />
-        <div className="test-section">
+        </div> */}
+        {/* <hr /> */}
+        {/* <div className="test-section">
           <LightSwitch />
-        </div>
+        </div> */}
+        {/* <hr /> */}
+        {/* <TestColorSwitch /> */}
+        {/* <hr /> */}
+        <FormWithRef />
         <hr />
-        <TestColorSwitch />
+        <CatFriends />
         <hr />
 
           <Routes>
