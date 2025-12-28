@@ -1,4 +1,4 @@
-import { useImperativeHandle, useReducer, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useReducer, useRef, useState } from "react";
 
 function tasksReducer(tasks, action) {
     switch (action.type) {
@@ -674,6 +674,93 @@ export function FocusSearchWithAttribute() {
                 autoFocus={isFocused}
                 placeholder="Looking for something?"
             />
+        </div>
+    );
+}
+
+// ========================================== Challenge 3: Scrolling an image carousel ==========================================
+
+const catCount = 10;
+const catList = new Array(catCount);
+
+for (let i = 0; i < catCount; i++) {
+    const bucket = Math.floor(Math.random() * catCount) % 2;
+    let imageUrl = "";
+
+    switch (bucket) {
+        case 0: {
+            imageUrl = "https://placecats.com/neo/250/200";
+            break;
+        }
+        case 1: {
+            imageUrl = "https://placecats.com/millie/250/200";
+            break;
+        }
+        case 2: {
+            imageUrl = "https://placecats.com/millie/250/200";
+            break;
+        }
+        default: {
+            imageUrl = "https://placecats.com/bella/250/200";
+            break;
+        }
+    }
+    catList[i] = {
+        id: i,
+        imageUrl,
+    };
+}
+
+export function Gallery() {
+    const [index, setIndex] = useState(0);
+    const activeLi = useRef(null);
+
+    useEffect(() => {
+        activeLi.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+          });
+    }, [index])
+
+    return (
+        <div className="test-section">
+            <nav>
+                <button onClick={() => {
+                    if (index < catList.length - 1) {
+                        setIndex(index + 1);
+                    } else {
+                        setIndex(0);
+                    }
+                }}>
+                    Next
+                </button>
+            </nav>
+            <div style={{width: "350px", margin: "auto", border: "1px solid white"}}>
+                <ul style={{whiteSpace: "nowrap", overflow: "hidden"}}>
+                    {catList.map((cat, i) => (
+                        <li 
+                            key={cat.id} 
+                            ref={index === i ? activeLi : null}
+                            style={{
+                                display: "inline", 
+                                padding: "0.5rem"}}
+                        >
+                            <img
+                                className={
+                                    index === i ?
+                                        "active" :
+                                        ""
+                                }
+                                src={cat.imageUrl}
+                                alt={"Cat #" + cat.id}
+                                style={{display: "inline", width: "300px"}}
+                            />
+                            <span>{"Cat #" + cat.id}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
