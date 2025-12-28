@@ -603,6 +603,81 @@ export default function TodoList() {
     );
 }
 
+// ========================================== Challenge 1: Play and pause the video ==========================================
+
+export function VideoPlayer() {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef(null);
+
+    function handleClick() {
+        const nextIsPlaying = !isPlaying;
+        setIsPlaying(nextIsPlaying);
+
+        if (isPlaying) {
+            videoRef.current.play();
+        } else {
+            videoRef.current.pause();
+        }
+    }
+
+    return (
+        <div className="test-section">
+            <button onClick={handleClick}>
+                {isPlaying ? 'Pause' : 'Play'}
+            </button>
+            <video width="250" ref={videoRef}>
+                <source
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    type="video/mp4"
+                />
+            </video>
+        </div>
+    )
+}
+
+// ========================================== Challenge 2: Focus the search field ==========================================
+
+export function FocusSearch() {
+    const inputRef = useRef(null);
+
+    function focus() {
+        inputRef.current.focus();
+    }
+
+    return (
+        <div className="test-section">
+            <nav>
+                <button onClick={focus}>Search</button>
+            </nav>
+            <input
+                ref={inputRef}
+                placeholder="Looking for something?"
+            />
+        </div>
+    );
+}
+
+export function FocusSearchWithAttribute() {
+    const [isFocused, setIsFocused] = useState(false);
+    console.log(isFocused);
+
+    function focus() {
+        setIsFocused(!isFocused);
+    }
+
+    return (
+        <div className="test-section">
+            <nav>
+                <button onClick={focus}>Search</button>
+            </nav>
+            <input
+                autoFocus={isFocused}
+                placeholder="Looking for something?"
+            />
+        </div>
+    );
+}
+
 // =============================================================================================
 
 // export function Header() {

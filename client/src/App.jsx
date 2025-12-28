@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { CatFriends, FormWithRef, ImperativeForm, LightSwitch, MyFormWithRefProp, Signup, SmashButtonApp, TaskApp, TestColorSwitch, TestToolbar3, Toolbar, Toolbar2, ToolbarStopPropagation, ToolbarWithPropagation } from './components/travel/Header';
+import { CatFriends, FocusSearch, FocusSearchWithAttribute, FormWithRef, ImperativeForm, LightSwitch, MyFormWithRefProp, Signup, SmashButtonApp, TaskApp, TestColorSwitch, TestToolbar3, Toolbar, Toolbar2, ToolbarStopPropagation, ToolbarWithPropagation, VideoPlayer } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -116,9 +116,15 @@ function App() {
         {/* <hr /> */}
         {/* <CatFriends /> */}
         {/* <hr /> */}
-        <MyFormWithRefProp />
+        {/* <MyFormWithRefProp /> */}
+        {/* <hr /> */}
+        {/* <ImperativeForm /> */}
+        {/* <hr /> */}
+        <VideoPlayer />
         <hr />
-        <ImperativeForm />
+        <FocusSearch />
+        <hr />
+        <FocusSearchWithAttribute />
         <hr />
 
           <Routes>
