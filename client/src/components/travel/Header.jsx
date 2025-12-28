@@ -557,6 +557,67 @@ export function ImperativeForm() {
 
 // =============================================================================================
 
+let nextTodo = 0;
+
+let initialTodosList = [];
+
+for (let i = 0; i < 20; i++) {
+    initialTodosList.push({
+        id: nextTodo++,
+        text: "Todo #" + (i + 1)
+    });
+}
+
+console.log(initialTodosList);
+
+export function TodoList2() {
+    const listRef = useRef(null);
+    const [text, setText] = useState("");
+    const [todos, setTodos] = useState(
+        initialTodosList
+    );
+
+    useEffect(() => {
+        listRef.current.lastChild.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }, [todos])
+
+    function handleAdd() {
+        const newTodo = { id: nextTodo++, text: text };
+        setText("");
+        setTodos([...todos, newTodo]);
+        // flushSync(() => {
+        //     setText("");
+        //     setTodos([...todos, newTodo]);
+        // });
+        // listRef.current.lastChild.scrollIntoView({
+        //     behavior: "smooth",
+        //     block: "nearest"
+        // });
+    }
+
+    return (
+        <div className="test-section">
+            <button onClick={handleAdd}>
+                Add
+            </button>
+            <input
+                value={text}
+                onChange={e => setText(e.target.value)}
+            />
+            <ul ref={listRef}>
+                {todos.map(todo => (
+                    <li key={todo.id}>{todo.text}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+// =============================================================================================
+
 let nextTodoId = 0;
 
 let initialTodos = [];
@@ -568,7 +629,7 @@ for (let i = 0; i < 20; i++) {
     });
 }
 
-export default function TodoList() {
+export function TodoList() {
     const listRef = useRef(null);
     const [text, setText] = useState("");
     const [todos, setTodos] = useState(
@@ -761,6 +822,42 @@ export function Gallery() {
                     ))}
                 </ul>
             </div>
+        </div>
+    );
+}
+
+// =========================================== Challenge 4: Focus the search field with separate components ===========================================
+
+function SearchInput({ref}) {
+    return (
+        <input
+            ref={ref}
+            placeholder="Looking for something?"
+        />
+    );
+}
+
+function SearchButton({handleClick}) {
+    return (
+        <button onClick={handleClick}>
+            Search
+        </button>
+    );
+}
+
+export function Page() {
+    const inputRef = useRef(null);
+
+    function focus() {
+        inputRef.current.focus();
+    }
+
+    return (
+        <div className="test-section">
+            <nav>
+                <SearchButton handleClick={focus} />
+            </nav>
+            <SearchInput ref={inputRef} />
         </div>
     );
 }
