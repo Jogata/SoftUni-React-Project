@@ -1097,24 +1097,91 @@ body.overflow .fixed-3d-gallery {
   gap: 1rem;
 }
 
-.prudento-links ul li {
-  /* color: #fff; */
+.prudento-links a {
+  color: #fff;
   font-size: 18px;
   font-weight: 600;
 } 
  
 .prudento-links ul li:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
 } 
  
-.prudento-nav-btn button {
+.prudento-nav-btn a {
   /* margin-top: 20px; */
   padding: 1rem 3rem;
+  color: #fff;
   font-weight: 600;
-  border: none;
+  /* border: none; */
+  border: 1px solid #fff;
   border-radius: 6px;
 } 
  
-.prudento-nav-btn button:hover {
-  color: #000;
-} 
+.prudento-nav-btn a:hover {
+  /* color: #000; */
+  background-color: #000;
+}
+
+.footer-container {
+  padding: 40px 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+}
+
+.footer-top {
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  margin-bottom: 10px;
+  color: #097969;
+  font-size: 24px;
+  font-family: 'Cursive', sans-serif;
+}
+
+.footer-address {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 28px;
+}
+
+.social-icons a:hover {
+  color: #68b6c4;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid #444;
+}
+
+.footer-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.footer-menu li a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-menu li a:hover {
+  color: #68b6c4;
+}
+
+.copyright {
+  margin-top: 20px;
+  color: #777;
+  font-size: 14px;
+}
