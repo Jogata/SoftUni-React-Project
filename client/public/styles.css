@@ -1079,28 +1079,42 @@ body.overflow .fixed-3d-gallery {
 
 
 
-.test-section {
-  padding: 3rem 1rem;
+.prudento-navbar {
+  padding: 1rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-around;
+  color: #fff;
+  background-color: #097969;
+}
+
+.prudento-navbar-logo h2 {
+  font-size: 1.5rem;
+}
+
+.prudento-links ul {
   display: flex;
-  gap: 2rem;
-  align-items: center;
-  /* justify-content: center; */
-  flex-direction: column;
+  gap: 1rem;
 }
 
-.fancy {
-  border: 1px double #555;
-}
-
-.test-section button {
-  padding: 1rem 1.5rem;
-  color: #fff;
-  border: 1px solid;
-}
-
-.test-section input {
-  padding: 1rem 1.5rem;
-  color: #fff;
-  border: 1px solid #333;
-  background-color: transparent;
-}
+.prudento-links ul li {
+  /* color: #fff; */
+  font-size: 18px;
+  font-weight: 600;
+} 
+ 
+.prudento-links ul li:hover {
+  cursor: pointer;
+} 
+ 
+.prudento-nav-btn button {
+  /* margin-top: 20px; */
+  padding: 1rem 3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+} 
+ 
+.prudento-nav-btn button:hover {
+  color: #000;
+} 
