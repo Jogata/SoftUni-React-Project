@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { CatFriends, FocusSearch, FocusSearchWithAttribute, FormWithRef, Gallery, ImperativeForm, LightSwitch, MyFormWithRefProp, Signup, SmashButtonApp, TaskApp, TestColorSwitch, TestToolbar3, TodoList, TodoList2, Toolbar, Toolbar2, ToolbarStopPropagation, ToolbarWithPropagation, VideoPlayer } from './components/travel/Header';
+import { CatFriends } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,51 +86,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        {/* <TaskApp /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <Toolbar />
-        </div> */}
-        {/* <hr /> */}
-        {/* <Toolbar2 /> */}
-        {/* <hr /> */}
-        {/* <SmashButtonApp /> */}
-        {/* <hr /> */}
-        {/* <TestToolbar3 /> */}
-        {/* <hr /> */}
-        {/* <ToolbarWithPropagation /> */}
-        {/* <hr /> */}
-        {/* <ToolbarStopPropagation /> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <Signup />
-        </div> */}
-        {/* <hr /> */}
-        {/* <div className="test-section">
-          <LightSwitch />
-        </div> */}
-        {/* <hr /> */}
-        {/* <TestColorSwitch /> */}
-        {/* <hr /> */}
-        {/* <FormWithRef /> */}
-        {/* <hr /> */}
-        {/* <CatFriends /> */}
-        {/* <hr /> */}
-        {/* <MyFormWithRefProp /> */}
-        {/* <hr /> */}
-        {/* <ImperativeForm /> */}
-        {/* <hr /> */}
-        {/* <VideoPlayer /> */}
-        {/* <hr /> */}
-        {/* <FocusSearch /> */}
-        {/* <hr /> */}
-        {/* <FocusSearchWithAttribute /> */}
-        {/* <hr /> */}
-        {/* <Gallery /> */}
-        {/* <hr /> */}
-        {/* <TodoList /> */}
-        {/* <hr /> */}
-        <TodoList2 />
+        <CatFriends />
         <hr />
 
           <Routes>
