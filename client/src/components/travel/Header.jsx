@@ -76,7 +76,7 @@ export function Features() {
                 <div className="card">
                     <i className="fa fa-lightbulb-o icon"></i>
                     <h3>Discovery & Strategy</h3>
-                    <p>
+                    <p className="card-description">
                         We start by getting to know your brand, goals, and audience.
                         Through in-depth discussions and research, we build a tailored
                         content strategy that aligns with your vision and targets
@@ -88,7 +88,7 @@ export function Features() {
                 <div className="card">
                     <i className="fa fa-file-text icon"></i>
                     <h3>Content Creation</h3>
-                    <p>
+                    <p className="card-description">
                         Once we have a plan, our creative team goes to work. From drafting
                         engaging articles and social media posts to designing visuals, we
                         create quality content that resonates with your audience and your
@@ -100,7 +100,7 @@ export function Features() {
                 <div className="card">
                     <i className="fa fa-pie-chart icon"></i>
                     <h3>Review & Optimization</h3>
-                    <p>
+                    <p className="card-description">
                         Content performance matters. We continuously review, measure, and
                         refine your content to ensure it's driving results. Through analytics
                         and feedback, we make adjustments to maximize engagement and conversion.
@@ -109,6 +109,65 @@ export function Features() {
                 </div>
             </div>
         </div>
+    );
+};
+
+const services = [
+    {
+        title: "Content Creation",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-tv", 
+    },
+    {
+        title: "Social Media Management",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-tv", 
+    },
+    {
+        title: "SEO Content Optimization",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-tv", 
+    },
+    {
+        title: "Content Strategy Development",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-wrench", 
+    },
+    {
+        title: "Email Marketing",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-tv", 
+    },
+    {
+        title: "Copywriting",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
+        icon: "fa fa-wrench", 
+    }
+];
+
+export function Services() {
+    return (
+        <>
+            <div className="services-wrapper">
+                <div className="services">
+                    <h2 className="f-size font">Our Services</h2>
+                </div>
+                <div className="services-container">
+                    {services.map((service, index) => (
+                        <div className="service-card" key={index}>
+                            <div className="service-icon">
+                                <i className={service.icon}></i>
+                            </div>
+                            <h3 className="service-title">{service.title}</h3>
+                            <p className="service-description">{service.description}</p>
+                            <button className="expand-btn">
+                                <i className="fa fa-expand"></i>
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </>
     );
 };
 
