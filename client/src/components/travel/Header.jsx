@@ -1,7 +1,7 @@
 export function Navbar() {
     return (
-        <div>
-            <div className="prudento-navbar">
+        <>
+            <nav className="prudento-navbar">
                 <div className="prudento-nav-logo">
                     <h2>Prudento</h2>
                 </div>
@@ -18,9 +18,50 @@ export function Navbar() {
                         Contact Us
                     </a>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </>
     )
+}
+
+import hero from "./images/hero2.jpg";
+import glovo from "./images/glovo-logo.svg";
+import oracle from "./images/oracle-logo.svg";
+import paypal from "./images/paypal-logo.svg";
+import stripe from "./images/stripe-logo.svg";
+import segment from "./images/segment-logo.svg";
+import ionic from "./images/ionic-logo.svg";
+
+export function Hero() {
+  return (
+    <div>
+        <div className="hero">
+            <h1 className="hero-header">
+                Crafting Content That Connects, Converts and Reflect Your Brand Voice
+            </h1>
+            <p>
+                We bring your brand's story to life with strategic, engaging content. 
+                From blogs and social media posts to full content strategies, we're 
+                here to help you stand out.
+            </p>
+            <div className="btns">
+              <button className="demo-button">Get Free Demo</button>
+                <button className="cta-button">Get Started Free</button>
+            </div>
+            <img src={hero} alt="hero-img" className="hero-img"/>
+        </div>
+        <div className="trusted">
+        <h2>Over 2,000 Organizations use our platform</h2>
+        <div className="hero-imgs">
+          <img src={oracle} alt="" />
+          <img src={segment} alt="" />
+            <img src={glovo} alt="" />            
+            <img src={ionic} alt="" />
+            <img src={stripe} alt="" />
+            <img src={paypal} alt="" />
+        </div>
+        </div>
+    </div>
+  )
 }
 
 export function Footer() {

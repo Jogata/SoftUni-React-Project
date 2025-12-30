@@ -1080,6 +1080,8 @@ body.overflow .fixed-3d-gallery {
 
 
 .prudento-navbar {
+  max-width: 1200px;
+  margin: auto;
   padding: 1rem;
   display: flex; 
   align-items: center; 
@@ -1122,7 +1124,96 @@ body.overflow .fixed-3d-gallery {
   background-color: #000;
 }
 
+.hero {
+  /* width: 100%; */
+  max-width: 1200px;
+  /* height: 120vh; */
+  margin: auto;
+  padding: 3rem 2%;
+  display: grid;
+  gap: 10px;
+  place-items: center;
+  color: white;
+  background-color: #097969;
+}
+
+.hero .hero-header {
+  margin-top: 20px;
+  font-size: 50px;
+  text-align: center;
+  /* color: #fff; */
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+  /* color: #fff; */
+}
+
+.hero .btns {
+  margin-top: 15px;
+  display: flex;
+  gap: 1rem;
+}
+
+.hero .btns .demo-button,
+.hero .btns .cta-button {
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hero .btns .demo-button {
+  color: black;
+  border: none;
+  background-color: gold;
+}
+
+.hero .btns .cta-button {
+  color: white;
+  border: 1px solid white;
+}
+
+.hero .btns button:hover {
+  background-color: goldenrod;
+}
+
+.hero .hero-img {
+  width: 1000px;
+  height: 600px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+.trusted {
+  margin-top: 9rem;
+}
+
+.trusted h2 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.hero-imgs {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  /* place-items: center; */
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-imgs img {
+  width: 160px;
+}
+
 .footer-container {
+  max-width: 1200px;
+  margin: auto;
   padding: 40px 20px;
   color: #fff;
   text-align: center;
@@ -1146,8 +1237,7 @@ body.overflow .fixed-3d-gallery {
   line-height: 1.5;
 }
 
-.social-icons a {
-  margin: 0 10px;
+.social-icons a {  margin: 0 10px;
   color: #fff;
   font-size: 28px;
 }
