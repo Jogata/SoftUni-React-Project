@@ -1,25 +1,24 @@
 export function Navbar() {
     return (
-        // <>
-            <nav className="prudento-navbar">
-                <div className="prudento-nav-logo">
-                    <h2>Prudento</h2>
-                </div>
-                <div className="prudento-links">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                    </ul>
-                </div>
-                <div className="prudento-nav-btn">
-                    <a href="#contact">
-                        Contact Us
-                    </a>
-                </div>
-            </nav>
-        // </>
+        <nav className="prudento-navbar">
+            <div className="prudento-nav-logo">
+                <h2>Prudento</h2>
+            </div>
+            <div className="prudento-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </div>
+            <div className="prudento-nav-btn">
+                <a href="#contact">
+                    Contact Us
+                </a>
+            </div>
+        </nav>
+
     )
 }
 
@@ -116,32 +115,32 @@ const services = [
     {
         title: "Content Creation",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-tv", 
+        icon: "fa fa-tv",
     },
     {
         title: "Social Media Management",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-tv", 
+        icon: "fa fa-tv",
     },
     {
         title: "SEO Content Optimization",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-tv", 
+        icon: "fa fa-tv",
     },
     {
         title: "Content Strategy Development",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-wrench", 
+        icon: "fa fa-wrench",
     },
     {
         title: "Email Marketing",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-tv", 
+        icon: "fa fa-tv",
     },
     {
         title: "Copywriting",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt explicabo quidem maiores praesentium deserunt tempora, corporis enim dolorem vero eaque libero voluptates",
-        icon: "fa fa-wrench", 
+        icon: "fa fa-wrench",
     }
 ];
 
@@ -168,6 +167,82 @@ export function Services() {
                 </div>
             </div>
         </>
+    );
+};
+
+const pricingPlans = [
+    {
+        name: "Basic",
+        price: "$10.90",
+        duration: "month",
+        description: "Great Content, Limited Time",
+        features: [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3",
+            "Feature 4",
+            "Feature 5",
+            "Feature 6",
+            "Feature 7"
+        ]
+    },
+    {
+        name: "Standard",
+        price: "$40.99",
+        duration: "month",
+        description: "Great Content, Limited Time",
+        features: [
+            "Feature A",
+            "Feature B",
+            "Feature C",
+            "Feature D",
+            "Feature E",
+            "Feature F",
+            "Feature G"
+        ]
+    },
+    {
+        name: "Premium",
+        price: "$60.99",
+        duration: "month",
+        description: "Great Content, Limited Time",
+        features: [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3",
+            "Feature 4",
+            "Feature 5",
+            "Feature 6",
+            "Feature 7"
+        ]
+    }
+];
+
+export function Pricing() {
+    return (
+        <div className="pricing-container">
+            <h2 className="pricing-title f-size font">Pricing Plans</h2>
+            <p className="pricing-subtitle">
+                Get all you need with these affordable plans tailored to suit your needs.
+            </p>
+            <div className="pricing-cards">
+                {pricingPlans.map((plan, index) => (
+                    <div key={index} className="pricing-card">
+                        <h3 className="plan-name">{plan.name}</h3>
+                        <p className="plan-price">
+                            {plan.price} <span>/{plan.duration}</span>
+                        </p>
+                        <p className="plan-description">{plan.description}</p>
+                        <ul className="plan-features">
+                            {plan.features.map((feature, index) => (
+                                <li key={index}>{feature}</li>
+                            ))}
+                        </ul>
+                        <button className="plan-button">Choose Plan</button>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
