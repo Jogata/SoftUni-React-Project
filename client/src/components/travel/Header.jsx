@@ -233,7 +233,7 @@ export function Pricing() {
                             {plan.price} <span>/{plan.duration}</span>
                         </p>
                         <p className="plan-description">{plan.description}</p>
-                        <ul className="plan-features">
+                        <ul className="plan-features bulled">
                             {plan.features.map((feature, index) => (
                                 <li key={index}>{feature}</li>
                             ))}
