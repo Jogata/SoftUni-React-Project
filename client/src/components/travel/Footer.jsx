@@ -3,7 +3,7 @@ import { useState } from "react";
 import logo from "./images/modern/logo.png";
 
 export function Navigation() {
-    const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+    const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(true);
 
     return (
         <nav className="navigation">
@@ -20,13 +20,22 @@ export function Navigation() {
                     </div>
 
                     <div className="nav-links">
-                        <a href="#features">
+                        <a 
+                            href="#features"
+                            onClick={() => setMobileMenuIsOpen(false)}
+                        >
                             Features
                         </a>
-                        <a href="#pricing">
+                        <a 
+                            href="#pricing"
+                            onClick={() => setMobileMenuIsOpen(false)}
+                        >
                             Pricing
                         </a>
-                        <a href="#testimonials">
+                        <a 
+                            href="#testimonials"
+                            onClick={() => setMobileMenuIsOpen(false)}
+                        >
                             Testimonials
                         </a>
                     </div>
@@ -45,8 +54,8 @@ export function Navigation() {
             </div>
 
             {mobileMenuIsOpen && (
-                <div>
-                    <div>
+                <div className="mobile-navigation">
+                    <div className="nav-links mobile">
                         <a
                             href="#features"
                             onClick={() => setMobileMenuIsOpen(false)}
@@ -72,22 +81,30 @@ export function Navigation() {
     );
 }
 
-export function Footer() {
+export function Hero() {
     return (
-        <div className="footer">
-            <div className="footer-content">
-                <div className="footer-name">
-                    <h2>Nika Shoes</h2>
-                </div>
-                <div className="footer-socials">
-                    <i className="fa fa-facebook footer-icon"></i>
-                    <i className="fa fa-instagram footer-icon"></i>
-                    <i className="fa fa-twitter footer-icon"></i>
-                </div>
-            </div>
-            <div className="copy">
-                <p>Copyright © Nika Shoes 2024. All rights reserved</p>
-            </div>
-        </div>
+        <section>
+            <h1>hero</h1>
+        </section>
     )
 }
+
+// export function Footer() {
+//     return (
+//         <div className="footer">
+//             <div className="footer-content">
+//                 <div className="footer-name">
+//                     <h2>Nika Shoes</h2>
+//                 </div>
+//                 <div className="footer-socials">
+//                     <i className="fa fa-facebook footer-icon"></i>
+//                     <i className="fa fa-instagram footer-icon"></i>
+//                     <i className="fa fa-twitter footer-icon"></i>
+//                 </div>
+//             </div>
+//             <div className="copy">
+//                 <p>Copyright © Nika Shoes 2024. All rights reserved</p>
+//             </div>
+//         </div>
+//     )
+// }
