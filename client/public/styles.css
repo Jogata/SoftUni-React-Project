@@ -1526,15 +1526,119 @@ body.overflow .fixed-3d-gallery {
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
-  border: none;
+  /* border: none; */
+  /* border: 1px solid; */
   border-radius: 6px;
   background-color: #097969;
   transition: background-color 300ms ease;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .plan-button:hover {
   background-color: #555;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+  background-color: #fcfad2;
+}
+
+.testimonials-title {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.testimonials-subtitle {
+  margin-bottom: 40px;
+  color: #666;
+  font-size: 1.1em;
+}
+
+.testimonials-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-box {
+  position: relative;
+  max-width: 700px;
+  padding: 80px;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  background-color: #097969;
+}
+
+.active-avatar {
+  position: absolute;
+  top: -30px;
+  left: 25rem;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid gold;
+}
+
+.comment-icon {
+  color: gold;
+  font-size: 28px;
+}
+
+.comment-text {
+  margin-top: 20px;
+  font-size: 22px;
+  font-style: italic;
+}
+
+.comment-author {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.comment-title {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.avatar-gallery {
+  max-width: 200px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid gold;
+  transition: transform 300ms ease;
+  cursor: pointer;
+}
+
+.avatar-gallery .avatar:nth-child(1) {
+  transform: translate(-190px, -70px);
+}
+
+.avatar-gallery .avatar:nth-child(2) {
+  transform: translate(-30px, -20px);
+}
+
+.avatar-gallery .avatar:nth-child(3) {
+  transform: translate(-140px, 60px);
+}
+
+.avatar:hover {
+  transform: scale(1.1);
 }
 
 .footer-container {
@@ -1545,6 +1649,7 @@ body.overflow .fixed-3d-gallery {
   text-align: center;
   background-color: #000;
 }
+
 .footer-top {
   margin-bottom: 20px;
 }
