@@ -1,23 +1,25 @@
 import { useState } from "react";
 
-export function Navbar() {
+import logo from "./images/modern/logo.png";
+
+export function Navigation() {
     const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
     return (
-        <nav>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <img src="/logo.png" alt="CodeFlow" />
+        <nav className="navigation">
+            <div className="navigation-max-width">
+                <div className="flex">
+                    <div className="logo flex">
+                        <div className="logo-img">
+                            <img src={logo} alt="CodeFlow" />
                         </div>
                         <span>
                             <span>Code</span>
-                            <span>Flow</span>
+                            <span className="blue">Flow</span>
                         </span>
                     </div>
 
-                    <div>
+                    <div className="nav-links">
                         <a href="#features">
                             Features
                         </a>
@@ -30,6 +32,7 @@ export function Navbar() {
                     </div>
 
                     <button
+                        className="menu-button"
                         onClick={() => setMobileMenuIsOpen(prev => !prev)}
                     >
                         {mobileMenuIsOpen ? (

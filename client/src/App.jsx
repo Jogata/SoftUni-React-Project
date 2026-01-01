@@ -39,6 +39,7 @@ import Logout from './components/logout/Logout'
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
 import { Features, Footer, Hero, Navbar, Pricing, Services, Testimonials } from './components/travel/Header';
+import { Navigation } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -75,7 +76,6 @@ function useFetch(url) {
 }
 
 function App() {
-  const [appnum, setAppnum] = useState(100);
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -86,13 +86,17 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-        <Navbar />
+        {/* <Navbar />
         <Hero />
         <Features />
         <Services />
         <Pricing />
         <Testimonials />
-        <Footer />
+        <Footer /> */}
+
+      <div className="slate-bg">
+        <Navigation />
+      </div>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />
