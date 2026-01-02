@@ -1125,6 +1125,7 @@ a:focus-visible {
 }
 
 .navigation {
+  position: relative;
   /* width: 100%; */
   max-width: 100%;
   /* margin: 0 auto; */
@@ -1134,8 +1135,21 @@ a:focus-visible {
   /* gap: 0; */
   /* flex-wrap: wrap; */
   /* justify-content: space-between; */
+  /* background-color: rgb(2, 6, 23, 0.2);
+  backdrop-filter: blur(6px); */
+}
+
+.navigation::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
   background-color: rgb(2, 6, 23, 0.2);
+  /* background-color: red; */
   backdrop-filter: blur(6px);
+  z-index: -1;
 }
 
 .navigation-max-width {
@@ -1219,6 +1233,7 @@ a:focus-visible {
     /* flex-direction: column; */
     text-align: center;
     background-color: rgb(2, 6, 23, 0.2);
+    backdrop-filter: blur(4px);
     animation: fade-down 1s ease-in;
   }
   .nav-links.mobile a {
@@ -1235,15 +1250,79 @@ a:focus-visible {
     opacity: 0;
     transform: translateY(-1rem);
   }
-  100% {
+  /* 100% {
     opacity: 1;
     transform: translateY(0);
-  }
+  } */
 }
 
+.hero-section {
+  position: relative;
+  z-index: 1;
+  /* border: 1px solid red; */
+}
 
+.mouse-tracker {
+  /* --x: 0; */
+  /* --y: 0; */
+  --radius: max(320px, 30vw);
+  position: absolute;
+  top: 0;
+  /* top: var(--y); */
+  left: 0;
+  /* left: var(--x); */
+  width: 100%;
+  /* width: 50px; */
+  height: 100%;
+  /* height: 50px; */
+  /* background-color: red; */
+  background: 
+    radial-gradient(
+      var(--radius) circle at var(--x) var(--y), 
+      rgba(59, 130, 246, 0.15), 
+      transparent 40%);
+  z-index: -1;
+  /* border: 10px solid red; */
+}
 
+.pulsing-circle {
+  position: absolute;
+  width: 20vw;
+  max-width: 300px;
+  height: 20vw;
+  max-height: 300px;
+  border-radius: 50%;
+  /* background-color: red; */
+  filter: blur(30px);
+  z-index: -1;
+}
 
+.pulsing-circle:nth-child(2) {
+  top: 1rem;
+  left: 1rem;
+  background-color: rgb(59, 130, 246, 0.2);
+  animation: pulse 3s linear infinite;
+}
+
+.pulsing-circle:nth-child(3) {
+  right: 1rem;
+  bottom: 1rem;
+  background-color: rgb(6, 182, 212, 0.2);
+  animation: pulse 3s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
 

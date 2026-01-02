@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import logo from "./images/modern/logo.png";
 
 export function Navigation() {
-    const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(true);
+    const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
     return (
         <nav className="navigation">
@@ -82,9 +82,57 @@ export function Navigation() {
 }
 
 export function Hero() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const spotContainer = useRef(null);
+
+    useEffect(() => {
+        function handleMouseMove(e) {
+            // console.log({ x: e.offsetX, y: e.offsetY });
+            setMousePosition({ x: e.offsetX, y: e.offsetY });
+        }
+
+        spotContainer.current.addEventListener("mousemove", handleMouseMove);
+
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
+
     return (
-        <section>
+        <section className="hero-section" ref={spotContainer}>
+            <div className="mouse-tracker"
+                style={{ "--x": `${mousePosition.x}px`, "--y": `${mousePosition.y}px` }}
+            // style={{
+            //     background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`,
+            //   }}
+            />
+
+            <div className="pulsing-circle" />
+            <div className="pulsing-circle" />
+
             <h1>hero</h1>
+            <pre>
+                <code>
+                    {`import { useState } from "react";
+import { CodeFlow } from "@codeflow/ai";
+
+function App() {
+  const [code, setCode] = useState("");
+
+  const handleAICompletion = async () => {
+    const suggestion = await CodeFlow.complete(code);
+    setCode(suggestion);
+  };
+
+  return (
+    <div className="app">
+      <CodeEditor 
+        onChange={setCode} 
+        onAI={handleAICompletion} 
+      />
+    </div>
+  );
+}`}
+                </code>
+            </pre>
         </section>
     )
 }
