@@ -1296,14 +1296,14 @@ a:focus-visible {
 .container-1 {
   position: relative;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
   text-align: center;
 }
 
-.container-2 {
+.hero-header {
   position: relative;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
   display: flex;
   gap: 2rem;
@@ -1312,7 +1312,7 @@ a:focus-visible {
   text-align: center;
 }
 
-.subheader {
+.subtitle {
   display: inline-block;
   margin-bottom: 2rem;
   padding: 1rem 5%;
@@ -1322,19 +1322,20 @@ a:focus-visible {
   animation: fade-up 1s linear backwards;
 }
 
-.subheader i {
+.subtitle i {
   margin-right: 0.5rem;
   color: rgb(96 165 250);
   font-size: 1.2rem;
   pointer-events: none;
 }
 
-.subheader span {
+.subtitle span {
   color: rgb(147 197 253);
   line-height: 1.6;
 }
 
 h1 {
+  margin-bottom: 2rem;
   font-size: 5rem;
   animation: fade-up 1s linear backwards;
   animation-delay: 500ms;
@@ -1343,7 +1344,7 @@ h1 {
 
 h1 span {
   display: block;
-  margin-bottom: 1px;
+  /* margin-bottom: 0.5rem; */
   color: transparent;
   background-image: 
     linear-gradient(
@@ -1362,6 +1363,71 @@ h1 span.blue {
       rgb(133, 213, 226), 
       rgb(121, 174, 240), 
       rgb(96 165 250));
+}
+
+.hero-header p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #9ca3af;
+  font-size: 1.4rem;
+  animation: fade-up 1s linear backwards;
+  animation-delay: 700ms;
+}
+
+.hero-btns {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fade-up 1s linear backwards;
+  animation-delay: 900ms;
+}
+
+.hero-btns button {
+  flex: 1;
+  /* margin: 0.5rem 1rem; */
+  margin: 0 auto;
+  padding: 0.5em 3em;
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  border-radius: 10em;
+}
+
+.hero-btns button span {
+  text-wrap: nowrap;
+}
+
+.hero-btns button i {
+  font-size: 1.8rem;
+}
+
+.hero-btns button:first-child {
+  background-image: 
+    linear-gradient(
+      rgb(37 99 235), 
+      rgb(96 165 250)
+    );
+}
+
+.hero-btns button i {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0;
+  font-size: 1.5rem;
+}
+
+.hero-btns button:last-child {
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  background-color: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btns button:last-child i {
+  padding: 0.4rem 0.5rem;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255, 0.2); 
 }
 
 @keyframes fade-up {

@@ -105,30 +105,50 @@ export function Hero() {
             <div className="pulsing-circle" />
 
             <div className="container-1">
-                <div className="container-2">
+                <div className="hero-header">
                     <div>
-                        <div className="subheader">
+                        <div className="subtitle">
                             <i className="ri-sparkling-line"></i>
                             <span className="">
                                 Introducing CodeFlow AI
                             </span>
                         </div>
 
-                        {/* <h1 className="text-5xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700 delay-100 leading-tight"> */}
                         <h1>
-                            {/* <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
                             <span>
                                 Code Faster
                             </span>
-                            {/* <span className="bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
                             <span className="blue">
-                                Build Better
+                                 Build Better 
                             </span>
-                            {/* <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
                             <span>
                                 With CodeFlow AI
                             </span>
                         </h1>
+
+                        {/* <h1>
+                            <span>Code Faster</span><span className="blue"> Build Better </span><span>With CodeFlow AI</span>
+                        </h1> */}
+
+
+                        <p>
+                            Accelerate your development workflow with intelligent code
+                            completion, automated testing, and smart debugging. Ship
+                            production-ready code 10x faster.
+                        </p>
+
+                        <div className="hero-btns">
+                            <button>
+                                <span>Start Coding Free</span>
+                                {/* <i className="ri-arrow-right-s-line"></i> */}
+                                <i className="fa fa-angle-double-right"></i>
+                            </button>
+
+                            <button>
+                                <i className="ri-play-fill"></i>
+                                <span>Watch Demo</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
