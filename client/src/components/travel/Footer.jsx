@@ -87,26 +87,51 @@ export function Hero() {
 
     useEffect(() => {
         function handleMouseMove(e) {
-            // console.log({ x: e.offsetX, y: e.offsetY });
             setMousePosition({ x: e.offsetX, y: e.offsetY });
         }
 
         spotContainer.current.addEventListener("mousemove", handleMouseMove);
 
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        return () => spotContainer.current.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
     return (
         <section className="hero-section" ref={spotContainer}>
             <div className="mouse-tracker"
                 style={{ "--x": `${mousePosition.x}px`, "--y": `${mousePosition.y}px` }}
-            // style={{
-            //     background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`,
-            //   }}
             />
 
             <div className="pulsing-circle" />
             <div className="pulsing-circle" />
+
+            <div className="container-1">
+                <div className="container-2">
+                    <div>
+                        <div className="subheader">
+                            <i className="ri-sparkling-line"></i>
+                            <span className="">
+                                Introducing CodeFlow AI
+                            </span>
+                        </div>
+
+                        {/* <h1 className="text-5xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-4 sm:mb-6 animate-in slide-in-from-bottom duration-700 delay-100 leading-tight"> */}
+                        <h1>
+                            {/* <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
+                            <span>
+                                Code Faster
+                            </span>
+                            {/* <span className="bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
+                            <span className="blue">
+                                Build Better
+                            </span>
+                            {/* <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent block mb-1 sm:mb-2"> */}
+                            <span>
+                                With CodeFlow AI
+                            </span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
 
             <h1>hero</h1>
             <pre>
