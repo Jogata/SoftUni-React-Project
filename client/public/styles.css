@@ -1350,7 +1350,7 @@ a:focus-visible {
 h1 {
   margin-bottom: 2rem;
   /* font-size: 5rem; */
-  font-size: calc(3vw + 2.5rem);
+  font-size: min(4.5rem, calc(3vw + 2.5rem));
   animation: fade-up 1s linear backwards;
   animation-delay: 500ms;
   /* pointer-events: none; */
@@ -1397,7 +1397,7 @@ h1 span.blue {
 }
 
 .hero-btns button {
-  flex: 1;
+  /* flex: 1; */
   /* margin: 0.5rem 1rem; */
   margin: 0 auto;
   padding: 0.5em 3em;
@@ -1411,7 +1411,7 @@ h1 span.blue {
 }
 
 .hero-btns button span {
-  text-wrap: nowrap;
+  /* text-wrap: nowrap; */
 }
 
 .hero-btns button i {
@@ -1448,11 +1448,14 @@ h1 span.blue {
   /* position: relative; */
   width: 100%;
   padding: 3rem 0;
+  display: flex;
   /* order: 2; */
 }
 
 .ide-cont-2 {
-  position: relative;
+  /* position: relative; */
+  width: 100%;
+  padding: 1%;
   border-radius: 12px;
   border: 1px solid rgb(255, 255, 255, 0.2);
   background-color: rgb(255, 255, 255, 0.1);
@@ -1460,7 +1463,8 @@ h1 span.blue {
 }
 
 .ide-cont-3 {
-  height: 280px;
+  /* height: 280px; */
+  min-height: 100%;
   border-radius: 12px;
   border: 1px solid rgb(255, 255, 255, 0.2);
   background-image: 
@@ -1477,10 +1481,16 @@ h1 span.blue {
   gap: 5%;
   align-items: center;
   justify-content: space-between;
-  border-radius: 12px;
+  /* border-radius: 12px; */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   border: 1px solid rgb(255, 255, 255, 0.2);
   background-color: rgb(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+}
+
+.ide-header i {
+  color: rgb(156 163 175);
 }
 
 .header {

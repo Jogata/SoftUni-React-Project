@@ -81,6 +81,11 @@ export function Navigation() {
     );
 }
 
+function TestRerender() {
+    console.log("test rerender");
+    return null;
+}
+
 export function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const spotContainer = useRef(null);
@@ -100,6 +105,8 @@ export function Hero() {
             <div className="mouse-tracker"
                 style={{ "--x": `${mousePosition.x}px`, "--y": `${mousePosition.y}px` }}
             />
+
+            <TestRerender />
 
             <div className="pulsing-circle" />
             <div className="pulsing-circle" />
@@ -130,7 +137,6 @@ export function Hero() {
                             <span>Code Faster</span><span className="blue"> Build Better </span><span>With CodeFlow AI</span>
                         </h1> */}
 
-
                         <p>
                             Accelerate your development workflow with intelligent code
                             completion, automated testing, and smart debugging. Ship
@@ -158,9 +164,9 @@ export function Hero() {
                             <div className="ide-header">
                                 <div className="header">
                                     <div className="dot-btns">
-                                        <button className="dot"></button>
-                                        <button className="dot"></button>
-                                        <button className="dot"></button>
+                                        <span className="dot"></span>
+                                        <span className="dot"></span>
+                                        <span className="dot"></span>
                                     </div>
                                     <span className="">
                                         CodeFlow AI
@@ -168,17 +174,15 @@ export function Hero() {
                                 </div>
                                 <i className="fa fa-chevron-down"></i>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
+        </section>
+    )
+}
 
-            {/* <h1>hero</h1>
-            <pre>
-                <code>
-                    {`import { useState } from "react";
+const appCode = `import { useState } from "react";
 import { CodeFlow } from "@codeflow/ai";
 
 function App() {
@@ -197,13 +201,93 @@ function App() {
       />
     </div>
   );
-}`}
-                </code>
-            </pre> */}
-        </section>
-    )
-}
+}`;
 
+const heroCode = `import { useState, useEffect } from "react";
+import { CodeFlow } from "@codeflow/ai";
+
+export default function Hero() {
+  const [isTyping, setIsTyping] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTyping(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleAISuggestion = async () => {
+    const suggestion = await CodeFlow.suggest("hero component");
+    return suggestion;
+  };
+
+  return (
+    <section className="hero">
+      <h1 className="text-4xl font-bold">
+        {isTyping ? "AI-Powered Development" : "Loading..."}
+      </h1>
+      <button onClick={handleAISuggestion}>
+        Get AI Suggestion
+      </button>
+    </section>
+  );
+}`;
+
+const navbarCode = `import { useState } from "react";
+import { CodeFlow } from "@codeflow/ai";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = async () => {
+    const results = await CodeFlow.search(searchQuery);
+    return results;
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="nav-brand">
+        <h2>CodeFlow AI</h2>
+      </div>
+      
+      <div className="nav-search">
+        <input 
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search code..."
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      
+      <button 
+        className="menu-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        ☰
+      </button>
+    </nav>
+  );
+}`;
+
+
+const codeExamples = [
+    {
+        name: "App.jsx", 
+        code: appCode
+    }, 
+    {
+        name: "Hero.jsx", 
+        code: heroCode
+    }, 
+    {
+        name: "Navbar.jsx", 
+        code: navbarCode
+    }
+];
+
+  
 // export function Footer() {
 //     return (
 //         <div className="footer">
