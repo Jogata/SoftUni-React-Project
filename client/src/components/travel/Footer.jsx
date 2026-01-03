@@ -89,6 +89,10 @@ function TestRerender() {
 export function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const spotContainer = useRef(null);
+    const [activeTab, setActiveTab] = useState(0);
+
+    const tabsClasses = new Array(codeExamples.length).fill("tab");
+    tabsClasses[activeTab] = "tab active";
 
     useEffect(() => {
         function handleMouseMove(e) {
@@ -174,7 +178,39 @@ export function Hero() {
                                 </div>
                                 <i className="fa fa-chevron-down"></i>
                             </div>
+
+                            <div className="code-examples-section">
+                                <div className="tabs">
+                                    <button
+                                        className={tabsClasses[0]}
+                                        onClick={() => setActiveTab(0)}
+                                    >
+                                        App.jsx
+                                    </button>
+                                    <button
+                                        className={tabsClasses[1]}
+                                        onClick={() => setActiveTab(1)}
+                                    >
+                                        Hero.jsx
+                                    </button>
+                                    <button
+                                        className={tabsClasses[2]}
+                                        onClick={() => setActiveTab(2)}
+                                    >
+                                        Navbar.jsx
+                                    </button>
+                                </div>
+
+                                <div className="code-content">
+                                    <pre>
+                                        <code>
+                                        {codeExamples[activeTab].code}
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

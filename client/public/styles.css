@@ -1478,7 +1478,9 @@ h1 span.blue {
 .ide-header {
   padding: 1rem;
   display: flex;
-  gap: 5%;
+  /* gap: 5%; */
+  gap: 1rem 5%;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   /* border-radius: 12px; */
@@ -1497,6 +1499,7 @@ h1 span.blue {
   width: 100%;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -1521,6 +1524,55 @@ h1 span.blue {
 }
 .dot:nth-child(3) {
   background-color: green;
+}
+
+.code-examples-section {
+  position: relative;
+  height: 100%;
+  padding: 1rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.5em 1em;
+  color: #333;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  border-radius: 6px 6px 0 0;
+  border: 2px solid rgb(255, 255, 255, 0.4);
+  background-color: #fff6;
+  /* backdrop-filter: blur(6px); */
+  transition: background-color 300ms;
+}
+
+.tab:hover {
+  background-color: #fff8;
+}
+
+.tab.active {
+  color: #fff;
+  border: 2px solid rgb(96 165 250 / 0.2);
+  background-color: rgb(59 130 246 / 0.3);
+}
+
+.tab:focus-visible {
+  outline: 2px solid #fff;
+}
+
+.code-content {
+  position: relative;
+  padding: 1rem;
+  border-radius: 0 12px 12px 12px;
+  border: 1px solid #fff4;
+  text-align: left;
+}
+
+.code-content code {
+  white-space: break-spaces;
 }
 
 @keyframes fade-up {
