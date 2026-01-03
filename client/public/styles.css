@@ -1293,23 +1293,36 @@ a:focus-visible {
   } */
 }
 
-.container-1 {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
+.max-width-container {
+  /* position: relative; */
+  /* width: 100%; */
+  /* max-width: 800px; */
+  max-width: 1600px;
   margin: auto;
+  /* text-align: center; */
+}
+
+.hero-section .max-width-container {
   text-align: center;
 }
 
+@media screen and (min-width: 1200px) {
+  .hero-section .max-width-container {
+    display: flex;
+    gap: 5%;
+  }
+}
+
 .hero-header {
-  position: relative;
+  /* position: relative; */
   max-width: 800px;
   margin: auto;
+  padding: 3rem 0;
   display: flex;
   gap: 2rem;
   align-items: center;
   /* flex-direction: column; */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .subtitle {
@@ -1336,10 +1349,11 @@ a:focus-visible {
 
 h1 {
   margin-bottom: 2rem;
-  font-size: 5rem;
+  /* font-size: 5rem; */
+  font-size: calc(3vw + 2.5rem);
   animation: fade-up 1s linear backwards;
   animation-delay: 500ms;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 h1 span {
@@ -1366,7 +1380,7 @@ h1 span.blue {
 }
 
 .hero-header p {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto 2rem;
   color: #9ca3af;
   font-size: 1.4rem;
@@ -1430,9 +1444,96 @@ h1 span.blue {
   background-color: rgb(255, 255, 255, 0.2); 
 }
 
+.ide-section {
+  /* position: relative; */
+  width: 100%;
+  padding: 3rem 0;
+  /* order: 2; */
+}
+
+.ide-cont-2 {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  background-color: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.ide-cont-3 {
+  height: 280px;
+  border-radius: 12px;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  background-image: 
+    linear-gradient(
+      rgb(17 24 39 / 0.2), 
+      rgb(31 41 55 / 0.2));
+  backdrop-filter: blur(10px);
+  /* overflow: hidden; */
+}
+
+.ide-header {
+  padding: 1rem;
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  background-color: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dot-btns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot:nth-child(1) {
+  background-color: red;
+}
+.dot:nth-child(2) {
+  background-color: yellow;
+}
+.dot:nth-child(3) {
+  background-color: green;
+}
+
 @keyframes fade-up {
   0% {
     opacity: 0;
     transform: translateY(1rem);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

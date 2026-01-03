@@ -104,7 +104,7 @@ export function Hero() {
             <div className="pulsing-circle" />
             <div className="pulsing-circle" />
 
-            <div className="container-1">
+            <div className="max-width-container">
                 <div className="hero-header">
                     <div>
                         <div className="subtitle">
@@ -151,9 +151,31 @@ export function Hero() {
                         </div>
                     </div>
                 </div>
+
+                <div className="ide-section">
+                    <div className="ide-cont-2">
+                        <div className="ide-cont-3">
+                            <div className="ide-header">
+                                <div className="header">
+                                    <div className="dot-btns">
+                                        <button className="dot"></button>
+                                        <button className="dot"></button>
+                                        <button className="dot"></button>
+                                    </div>
+                                    <span className="">
+                                        CodeFlow AI
+                                    </span>
+                                </div>
+                                <i className="fa fa-chevron-down"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <h1>hero</h1>
+            {/* <h1>hero</h1>
             <pre>
                 <code>
                     {`import { useState } from "react";
@@ -177,7 +199,7 @@ function App() {
   );
 }`}
                 </code>
-            </pre>
+            </pre> */}
         </section>
     )
 }
