@@ -204,7 +204,7 @@ export function Hero() {
                                 <div className="code-content">
                                     <pre>
                                         <code>
-                                        {codeExamples[activeTab].code}
+                                            {codeExamples[activeTab].code}
                                         </code>
                                     </pre>
                                 </div>
@@ -397,7 +397,7 @@ const features = [
   const data = await fetch("/api/submit")
   // Auto-completed by AI
 }`,
-        imagePosition: "left",
+        // imagePosition: "left",
     },
     {
         title: "Automated Testing",
@@ -409,7 +409,7 @@ const features = [
     // Test implementation
   })
 })`,
-        imagePosition: "right",
+        // imagePosition: "right",
     },
     {
         title: "Smart Debugging",
@@ -418,7 +418,7 @@ const features = [
         codeSnippet: `// AI suggests fix:
 const result = await processData(input)
 // Fixed: Added await keyword`,
-        imagePosition: "left",
+        // imagePosition: "left",
     },
 ];
 
@@ -440,8 +440,48 @@ export function Features() {
 
                 <div className="features">
                     {features.map((feature, index) => (
-                        <div className="test" key={index}>
-                            {feature.title}
+                        <div key={index} className="feature">
+
+                            <div className="code-section">
+                                <div className="relative">
+                                    <div className="gradient-bg"></div>
+                                    <div className="feature-ide-section">
+                                        <div className="ide">
+                                            <div className="header">
+                                                <div className="dot-btns">
+                                                    <span className="dot"></span>
+                                                    <span className="dot"></span>
+                                                    <span className="dot"></span>
+                                                </div>
+                                                <span>
+                                                    {feature.title}
+                                                </span>
+                                            </div>
+
+                                            <div className="code-content">
+                                                <pre>
+                                                    <code>
+
+                                                        {feature.codeSnippet}
+                                                    </code>
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="text-section">
+                                <div className="max-width">
+                                    <h3>
+                                        {feature.title}
+                                    </h3>
+                                    <p>
+                                        {feature.description}
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     ))}
                 </div>

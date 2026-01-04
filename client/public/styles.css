@@ -1537,7 +1537,7 @@ h1 span:last-child {
 
 .dot-btns {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -1639,7 +1639,7 @@ h1 span:last-child {
 
 .features-section {
   position: relative;
-  padding: 1rem 2%;
+  padding: 3rem 2%;
 }
 
 .features-section .max-width {
@@ -1653,7 +1653,7 @@ h1 span:last-child {
 }
 
 .features-section .section-header h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   font-size: 4rem;
 }
 
@@ -1686,11 +1686,102 @@ h1 span:last-child {
 
 .features {
   margin: 1rem 0;
-  /* <div className="space-y-16 sm:space-y-20 lg:space-y-32"> */
 }
 
+.feature {
+  margin-bottom: 3rem;
+  /* display: flex;
+  gap: 2%;
+  align-items: center; */
+}
 
+.gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-image: 
+    linear-gradient(
+      rgb(59, 130, 246), 
+      rgb(20, 184, 166));
+}
 
+.feature .code-section {
+  flex: 1;
+}
+
+.feature-ide-section {
+  position: relative;
+  /* padding: 1rem; */
+  padding: 0.2rem;
+  border-radius: 12px;
+  border: 1px solid rgb(55 65 81 / 0.5);
+  background-color: rgb(17 24 39 / 0.5);
+  transition: border-color 300ms;
+  backdrop-filter: blur(10px);
+}
+
+.feature-ide-section:hover {
+  border: 1px solid rgb(125, 156, 225);
+}
+
+.feature .text-section {
+  flex: 1;
+}
+
+.feature .header {
+  margin-bottom: 1rem;
+  justify-content: start;
+}
+
+.feature .header span {
+  color: rgb(156 163 175);
+}
+
+.feature .code-content {
+  border-radius: 12px;
+}
+
+.feature .ide {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgb(3, 7, 18);
+}
+
+.text-section.max-width {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.text-section h3 {
+  margin-bottom: 1rem;
+}
+
+.text-section p {
+  color: rgb(209 213 219);
+}
+
+@media screen and (min-width: 800px) {
+  .feature {
+    display: flex;
+    gap: 2%;
+    align-items: center;
+  }
+  .feature:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .code-section {
+    margin-bottom: 1rem;
+  }
+  .text-section {
+    text-align: center;
+  }
+}
 
 /* =============== delete =============== */
 .ide-border-container.inner {
