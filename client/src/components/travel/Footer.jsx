@@ -117,7 +117,7 @@ export function Hero() {
 
             <div className="max-width-container">
                 <div className="hero-header">
-                    <div>
+                    {/* <div> */}
                         <div className="subtitle">
                             <i className="ri-sparkling-line"></i>
                             <span className="">
@@ -159,12 +159,12 @@ export function Hero() {
                                 <span>Watch Demo</span>
                             </button>
                         </div>
-                    </div>
+                    {/* </div> */}
                 </div>
 
                 <div className="ide-section">
-                    <div className="ide-cont-2">
-                        <div className="ide-cont-3">
+                    <div className="ide-border-container outer">
+                        <div className="ide-border-container inner">
                             <div className="ide-header">
                                 <div className="header">
                                     <div className="dot-btns">
@@ -172,7 +172,7 @@ export function Hero() {
                                         <span className="dot"></span>
                                         <span className="dot"></span>
                                     </div>
-                                    <span className="">
+                                    <span>
                                         CodeFlow AI
                                     </span>
                                 </div>
@@ -210,8 +210,42 @@ export function Hero() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+                        <div 
+                            className="floating-card" 
+                            style={{
+                                backgroundColor: floatingCards[activeTab].bgColor
+                            }}
+                        >
+                            <div className="header">
+                                <div 
+                                    className="icon" 
+                                    style={{
+                                        color: floatingCards[activeTab].iconColor,
+                                    }}
+                                >
+                                    {floatingCards[activeTab].icon}
+                                </div>
+                                <span 
+                                    className="title"
+                                    style={{
+                                        color: floatingCards[activeTab].textColor,
+                                    }}
+                                >
+                                    {floatingCards[activeTab].title}
+                                </span>
+                            </div>
+
+                            <div 
+                                className="card-content"
+                                style={{
+                                    color: floatingCards[activeTab].contentColor,
+                                }}
+                            >
+                                {floatingCards[activeTab].content}
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>
@@ -321,6 +355,36 @@ const codeExamples = [
         name: "Navbar.jsx", 
         code: navbarCode
     }
+];
+
+const floatingCards = [
+    {
+        bgColor: "rgb(59 130 246 / 0.2)",
+        iconColor: "rgb(96 165 250)",
+        textColor: "rgb(191 219 254)",
+        contentColor: "rgb(147 197 253)",
+        icon: "AI",
+        title: "Smart Completion",
+        content: "AI-powered code suggestions in real-time",
+    },
+    {
+        bgColor: "rgb(168 85 247 / 0.2)",
+        iconColor: "rgb(192 132 252)",
+        textColor: "rgb(233 213 255)",
+        contentColor: "rgb(216 180 254)",
+        icon: "⚡",
+        title: "Auto Animation",
+        content: "Dynamic typing effects generated automatically",
+    },
+    {
+        bgColor: "rgb(16 185 129 / 0.2)",
+        iconColor: "rgb(52 211 153)",
+        textColor: "rgb(167 243 208)",
+        contentColor: "rgb(110 231 183)",
+        icon: "🔍",
+        title: "Smart Search",
+        content: "Intelligent code search across your project",
+    },
 ];
 
   
