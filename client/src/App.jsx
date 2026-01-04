@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Hero, Navigation } from './components/travel/Footer';
+import { Features, Hero, Navigation } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -88,6 +88,7 @@ function App() {
       <div className="slate-bg">
         <Navigation />
         <Hero />
+        <Features />
       </div>
 
           {/* <Routes>
