@@ -562,10 +562,15 @@ export function Pricing() {
                 </div>
 
                 <div className="pricing-cards">
-                    {plans.map((plan, key) => (
+                    {plans.map((plan, key) => {
+                        let cardClasses = plan.mostPopular ? 
+                            "pricing-card most-popular" : 
+                            "pricing-card";
+
+                        return (
                         <div
                             key={key}
-                            className="pricing-card"
+                            className={cardClasses}
                         >
                             <div className="gradient-bg"></div>
 
@@ -582,12 +587,42 @@ export function Pricing() {
                                 <h3>
                                     {plan.name}
                                 </h3>
+                                <p className="description">
+                                    {plan.description}
+                                </p>
+                                <div className="price">
+                                    <span className="price-value">
+                                        ${plan.price}
+                                    </span>
+                                    <span className="plan-duration">
+                                        /month
+                                    </span>
+                                </div>
                             </div>
 
+                            <ul className="plan-features">
+                                {plan.features.map((feature, featureKey) => (
+                                    <li
+                                        key={featureKey}
+                                        className="plan-feature"
+                                    >
+                                        <div className="icon">
+                                            <i className="fa fa-check"></i>
+                                        </div>
+                                        <span className="feature-description">
+                                            {feature}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <button>
+                                Get Started
+                            </button>
                         </div>
-                    ))}
+                    )})}
                 </div>
-                
+
             </div>
         </section>
     );
