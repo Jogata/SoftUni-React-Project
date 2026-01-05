@@ -489,6 +489,31 @@ export function Features() {
         </section>
     );
 }
+
+export function Pricing() {
+    return (
+        <section id="pricing" className="pricing-section">
+            <div className="max-width">
+
+                <div className="section-header">
+                    <h2>
+                        <span className="gray-bg">
+                            Simple, Transparent
+                        </span>
+                        <span className="blue-bg">
+                            Pricing Plans
+                        </span>
+                    </h2>
+                    <p>
+                        Choose the perfect plan for your needs. All 
+                        plans include a 14-day free trial.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    );
+}
   
 // export function Footer() {
 //     return (

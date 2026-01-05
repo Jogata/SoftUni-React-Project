@@ -1285,24 +1285,15 @@ a:focus-visible {
 }
 
 @keyframes pulse {
-  /* 0% {
-    opacity: 1;
-  } */
   50% {
     opacity: 0.4;
   }
-  /* 100% {
-    opacity: 1;
-  } */
 }
 
 .max-width-container {
   /* position: relative; */
-  /* width: 100%; */
-  /* max-width: 800px; */
   max-width: 1600px;
   margin: auto;
-  /* text-align: center; */
 }
 
 .hero-section .max-width-container {
@@ -1353,16 +1344,13 @@ a:focus-visible {
 
 h1 {
   margin-bottom: 2rem;
-  /* font-size: 5rem; */
   font-size: min(4.5rem, calc(3vw + 2.5rem));
   animation: fade-up 1s linear backwards;
   animation-delay: 500ms;
-  /* pointer-events: none; */
 }
 
 h1 span {
   display: block;
-  /* margin-bottom: 0.5rem; */
   color: transparent;
   background-image: 
     linear-gradient(
@@ -1401,7 +1389,6 @@ h1 span:last-child {
 }
 
 .hero-header p {
-  /* max-width: 800px; */
   margin: 0 auto 2rem;
   color: #9ca3af;
   font-size: 1.4rem;
@@ -1418,8 +1405,6 @@ h1 span:last-child {
 }
 
 .hero-btns button {
-  /* flex: 1; */
-  /* margin: 0.5rem 1rem; */
   margin: 0 auto;
   padding: 0.5em 3em;
   display: inline-flex;
@@ -1479,42 +1464,28 @@ h1 span:last-child {
   backdrop-filter: blur(10px);
 }
 
-/* .ide-cont-2 { */
 .ide-border-container.outer {
   /* position: relative; */
   width: 100%;
   padding: 1%;
-  /* border-radius: 12px; */
-  /* border: 1px solid rgb(255, 255, 255, 0.2); */
   background-color: rgb(255, 255, 255, 0.1);
-  /* backdrop-filter: blur(10px); */
 }
 
-/* .ide-cont-3 { */
 .ide-border-container.inner {
-  /* display: block; */
-  /* height: 280px; */
   min-height: 100%;
-  /* padding: 0; */
-  /* border-radius: 12px; */
-  /* border: 1px solid rgb(255, 255, 255, 0.2); */
   background-image: 
     linear-gradient(
       rgb(17 24 39 / 0.2), 
       rgb(31 41 55 / 0.2));
-  /* backdrop-filter: blur(10px); */
-  /* overflow: hidden; */
 }
 
 .ide-header {
   padding: 1rem;
   display: flex;
-  /* gap: 5%; */
   gap: 1rem 5%;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  /* border-radius: 12px; */
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border: 1px solid rgb(255, 255, 255, 0.2);
@@ -1527,7 +1498,6 @@ h1 span:last-child {
 }
 
 .header {
-  /* width: 100%; */
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -1576,7 +1546,6 @@ h1 span:last-child {
   border-radius: 6px 6px 0 0;
   border: 2px solid rgb(255, 255, 255, 0.4);
   background-color: #fff6;
-  /* backdrop-filter: blur(6px); */
   transition: background-color 300ms;
 }
 
@@ -1624,7 +1593,6 @@ h1 span:last-child {
   border-radius: 12px;
   border: 1px solid #fff2;
   backdrop-filter: blur(10px);
-  /* border: 1px solid red; */
 }
 
 .floating-card .header {
@@ -1782,6 +1750,62 @@ h1 span:last-child {
     text-align: center;
   }
 }
+
+.pricing-section {
+  position: relative;
+  padding: 3rem 2%;
+}
+
+.pricing-section .max-width {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.pricing-section .section-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.pricing-section .section-header h2 {
+  margin-bottom: 1rem;
+  font-size: 4rem;
+}
+
+.pricing-section .section-header h2 span {
+  display: block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.pricing-section .section-header h2 .gray-bg {
+  /* color: transparent; */
+  background-image: 
+    linear-gradient(
+      rgb(255, 255, 255), 
+      rgb(98, 101, 106));
+  /* -webkit-background-clip: text; */
+  /* background-clip: text; */
+}
+
+.pricing-section .section-header h2 .blue-bg {
+  /* color: transparent; */
+  background-image: 
+    linear-gradient(
+      rgb(96, 165, 250), 
+      rgb(119, 220, 235));
+  /* -webkit-background-clip: text; */
+  /* background-clip: text; */
+}
+
+.pricing-section .section-header p {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: rgb(156 163 175);
+  font-size: 1.25rem;
+}
+
+
 
 /* =============== delete =============== */
 .ide-border-container.inner {
