@@ -563,67 +563,110 @@ export function Pricing() {
 
                 <div className="pricing-cards">
                     {plans.map((plan, key) => {
-                        let cardClasses = plan.mostPopular ? 
-                            "pricing-card most-popular" : 
+                        let cardClasses = plan.mostPopular ?
+                            "pricing-card most-popular" :
                             "pricing-card";
 
                         return (
-                        <div
-                            key={key}
-                            className={cardClasses}
-                        >
-                            <div className="gradient-bg"></div>
+                            <div key={key} className={cardClasses}>
+                                <div className="gradient-bg"></div>
 
-                            {plan.mostPopular && (
-                                <div className="most-popular-box">
-                                    <div className="flex-box">
-                                        <i className="fa fa-star"></i>
-                                        <span>Most Popular</span>
+                                {plan.mostPopular && (
+                                    <div className="most-popular-box">
+                                        <div className="flex-box">
+                                            <i className="fa fa-star"></i>
+                                            <span>Most Popular</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="pricing-card-header">
+                                    <h3>{plan.name}</h3>
+                                    <p className="description">
+                                        {plan.description}
+                                    </p>
+                                    <div className="price">
+                                        <span className="price-value">
+                                            ${plan.price}
+                                        </span>
+                                        <span className="plan-duration">
+                                            /month
+                                        </span>
                                     </div>
                                 </div>
-                            )}
 
-                            <div className="pricing-card-header">
-                                <h3>
-                                    {plan.name}
-                                </h3>
-                                <p className="description">
-                                    {plan.description}
-                                </p>
-                                <div className="price">
-                                    <span className="price-value">
-                                        ${plan.price}
-                                    </span>
-                                    <span className="plan-duration">
-                                        /month
-                                    </span>
-                                </div>
+                                <ul className="plan-features">
+                                    {plan.features.map((feature, featureKey) => (
+                                        <li key={featureKey} className="plan-feature">
+                                            <div className="icon">
+                                                <i className="fa fa-check"></i>
+                                            </div>
+                                            <span className="feature-description">
+                                                {feature}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <button>Get Started</button>
+
                             </div>
-
-                            <ul className="plan-features">
-                                {plan.features.map((feature, featureKey) => (
-                                    <li
-                                        key={featureKey}
-                                        className="plan-feature"
-                                    >
-                                        <div className="icon">
-                                            <i className="fa fa-check"></i>
-                                        </div>
-                                        <span className="feature-description">
-                                            {feature}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <button>
-                                Get Started
-                            </button>
-                        </div>
-                    )})}
+                        )
+                    })}
                 </div>
 
+                <div className="contact-link">
+                    <p>
+                        Need a custom plan?{" "}
+                        <a href="#">
+                            Contact our sales team
+                        </a>
+                    </p>
+                </div>
+                
             </div>
+        </section>
+    );
+}
+
+const testimonials = [
+    {
+        name: "Sarah Chen",
+        role: "Senior Developer",
+        image:
+            "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200",
+        content:
+            "This AI-powered development platform has revolutionized how we write code. The intelligent suggestions save us hours every day.",
+    },
+    {
+        name: "Marcus Rodriguez",
+        role: "Tech Lead",
+        image:
+            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200",
+        content:
+            "The automated testing and debugging features are game-changers. We ship code faster and with more confidence than ever before.",
+    },
+    {
+        name: "Emily Watson",
+        role: "CTO",
+        image:
+            "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200",
+        content:
+            "Our development velocity increased by 300% since adopting this platform. It's like having a senior developer pair programming with every team member.",
+    },
+];
+  
+export function Testimonials() {
+    return (
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+
+
+            {testimonials.map((testimonial, key) => (
+                <div key={key}>
+                    <p>{testimonial.name}</p>
+                </div>
+            ))}
         </section>
     );
 }
