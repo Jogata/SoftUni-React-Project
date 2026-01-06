@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Features, Hero, Navigation, Pricing } from './components/travel/Footer';
+import { Features, Hero, Navigation, Pricing, Testimonials } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -90,6 +90,7 @@ function App() {
         <Hero />
         <Features />
         <Pricing />
+        <Testimonials />
       </div>
 
           {/* <Routes>

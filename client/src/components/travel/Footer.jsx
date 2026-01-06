@@ -658,15 +658,63 @@ const testimonials = [
   
 export function Testimonials() {
     return (
-        <section id="testimonials">
-            <h2>Testimonials</h2>
+        <section
+            id="testimonials"
+            className="testimonials-section"
+        >
+            <div className="max-width-container">
+                <div className="flex-box">
 
+                    <div className="testimonials-header">
+                        <h2>
+                            What developers are saying about us
+                        </h2>
+                        <p>
+                            Everything you need to build, test, and deploy applications with
+                            AI-powered development tools.
+                        </p>
+                    </div>
 
-            {testimonials.map((testimonial, key) => (
-                <div key={key}>
-                    <p>{testimonial.name}</p>
+                    <div className="testimonials">
+                        <div className="testimonials-inner">
+                            {testimonials.map((testimonial, key) => (
+                                <div
+                                    key={key}
+                                    className="testimonial"
+                                >
+                                    <div className="flex-box">
+                                        <div className="flex-shrink-0">
+                                            <div className="quotes">
+                                                "
+                                            </div>
+                                        </div>
+
+                                        <div className="flex-grow">
+                                            <p className="testimonial-content">
+                                                {testimonial.content}
+                                            </p>
+                                            <div className="image">
+                                                <img
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                />
+                                                <div>
+                                                    <h4 className="name">
+                                                        {testimonial.name}
+                                                    </h4>
+                                                    <p className="role">
+                                                        {testimonial.role}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            ))}
+            </div>
         </section>
     );
 }
