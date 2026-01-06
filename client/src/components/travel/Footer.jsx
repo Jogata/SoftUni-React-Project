@@ -658,12 +658,10 @@ const testimonials = [
   
 export function Testimonials() {
     return (
-        <section
-            id="testimonials"
-            className="testimonials-section"
-        >
+        <section id="testimonials" className="testimonials-section">
             <div className="max-width-container">
-                <div className="flex-box">
+                {/* <div className="flex-box"> */}
+                <div className="grid-box">
 
                     <div className="testimonials-header">
                         <h2>
@@ -678,13 +676,10 @@ export function Testimonials() {
                     <div className="testimonials">
                         <div className="testimonials-inner">
                             {testimonials.map((testimonial, key) => (
-                                <div
-                                    key={key}
-                                    className="testimonial"
-                                >
+                                <div key={key} className="testimonial">
                                     <div className="flex-box">
-                                        <div className="flex-shrink-0">
-                                            <div className="quotes">
+                                        <div className="quotes">
+                                            <div className="quotes-icon">
                                                 "
                                             </div>
                                         </div>
@@ -693,7 +688,7 @@ export function Testimonials() {
                                             <p className="testimonial-content">
                                                 {testimonial.content}
                                             </p>
-                                            <div className="image">
+                                            <div className="person-info">
                                                 <img
                                                     src={testimonial.image}
                                                     alt={testimonial.name}

@@ -1950,13 +1950,17 @@ h1 span:last-child {
   padding: 3rem 2%;
 }
 
-.testimonials-section .flex-box {
-  display: flex;
-  gap: 1rem;
-  align-items: start;
+/* .testimonials-section .flex-box { */
+.testimonials-section .grid-box {
+  /* display: flex; */
+  /* gap: 1rem; */
+  /* align-items: start; */
 }
 
 .testimonials-section .testimonials-header {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -1978,6 +1982,8 @@ h1 span:last-child {
 }
 
 .testimonial {
+  max-width: 600px;
+  margin: 0 auto 2rem;
   padding: 1rem;
   border-radius: 12px;
   border: 1px solid rgb(30 41 59);
@@ -1985,13 +1991,25 @@ h1 span:last-child {
   backdrop-filter: blur(10px);
 }
 
-.testimonial .flex-box {
+/* .testimonial .flex-box {
   display: flex;
   gap: 1rem;
   align-items: center;
+} */
+
+@media screen and (min-width: 440px) {
+  .testimonial .flex-box {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }  
+}
+.quotes {
+  margin-bottom: auto;
 }
 
-.quotes {
+.quotes-icon {
+  /* margin-bottom: auto; */
   color: transparent;
   font-size: 3rem;
   font-weight: bold;
@@ -2008,25 +2026,50 @@ h1 span:last-child {
   margin-bottom: 1rem;
 }
 
-.testimonial .image {
-  margin: 1rem;
+/* .testimonial .image { */
+.testimonial .person-info {
+  /* margin: 1rem; */
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
 }
 
-.testimonial .image img {
-  width: 2.5rem;
-  height: 2.5rem;
+/* .testimonial .image img { */
+.testimonial .person-info img {
+  min-width: 2rem;
+  /* width: 2.5rem; */
+  max-width: 3rem;
+  min-height: 2rem;
+  /* height: 2.5rem; */
+  max-height: 3rem;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.testimonial-content .name {
-  color: #fff;
+.person-info .name {
+  /* color: #fff; */
+  font-size: 1.2rem;
 }
 
-.testimonial-content .role {
+.person-info .role {
   color: rgb(156 163 175);
+}
+
+@media screen and (min-width: 1200px) {
+  .testimonials-section .grid-box {
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .testimonials-section .testimonials-header {
+    margin-right: 0;
+    text-align: left;
+  }
+  .testimonials {
+    margin-right: auto;
+  }
 }
 
 /* =============== delete =============== */
