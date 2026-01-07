@@ -804,6 +804,33 @@ export function Footer() {
                     </div>
                 </div>
 
+                <div className="copyrights-section">
+                    <div className="flex-box">
+                        <p>
+                            © 2025 CodeFlow. All rights reserved.
+                        </p>
+                        <div className="links">
+                            <a
+                                href="#"
+                                className="link"
+                            >
+                                Privacy Policy
+                            </a>
+                            <a
+                                href="#"
+                                className="link"
+                            >
+                                Terms of Service
+                            </a>
+                            <a
+                                href="#"
+                                className="link"
+                            >
+                                Cookie Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     );

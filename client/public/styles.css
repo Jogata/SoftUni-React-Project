@@ -2082,11 +2082,15 @@ h1 span:last-child {
   padding: 3rem 2%;
 }
 
+.footer .max-width-container > .flex-box {
+  padding-bottom: 1.5rem;
+}
+
 @media screen and (min-width: 800px) {
   .footer .flex-box {
     display: flex;
     /* gap: 2%; */
-    gap: 10vw;
+    gap: 5rem;
     /* border: 1px solid red; */
   }
 }
@@ -2144,7 +2148,8 @@ h1 span:last-child {
   /* width: 100%; */
   margin: 0 auto;
   display: flex;
-  gap: 2rem 10vw;
+  /* gap: 2rem 10vw; */
+  gap: 2rem 3rem;
   flex-wrap: wrap;
   /* justify-content: space-around; */
 }
@@ -2168,6 +2173,41 @@ h1 span:last-child {
 .footer-link:hover {
   color: #fff
 }
+
+.copyrights-section {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(30 41 59);
+}
+
+.copyrights-section .flex-box {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+
+.copyrights-section p {
+  color: rgb(156 163 175);
+}
+
+.copyrights-section .links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.copyrights-section .link {
+  color: rgb(156 163 175);
+  transition: color 300ms;
+}
+
+.copyrights-section .link:hover {
+  color: #fff;
+}
+
 
 /* =============== delete =============== */
 .ide-border-container.inner {
