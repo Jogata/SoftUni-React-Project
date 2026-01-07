@@ -746,61 +746,67 @@ const footerLinks = {
 };
 
 export function Footer() {
-  return (
-    <footer className="footer">
-      <div className="max-width-container">
+    return (
+        <footer className="footer">
+            <div className="max-width-container">
 
-        <div className="flex-box">
-          <div className="logo-max-width">
-            <div className="logo">
-              <div className="logo-image">
-                <img
-                  src={logo}
-                  alt="CodeFlow Logo"
-                />
-              </div>
-              <span>
-                <span>Code</span>
-                <span className="blue">Flow</span>
-              </span>
+                <div className="flex-box">
+                    <div className="logo-max-width">
+                        <div className="logo">
+                            <div className="logo-image">
+                                <img
+                                    src={logo}
+                                    alt="CodeFlow Logo"
+                                />
+                            </div>
+                            <span>
+                                <span>Code</span>
+                                <span className="blue">Flow</span>
+                            </span>
+                        </div>
+                        <p>
+                            Transform your workflow with AI-powered tools 
+                            and automation. Built for modern teams.
+                        </p>
+                        <div className="social">
+                            <a href="#" className="link">
+                                <i className="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" className="link">
+                                <i className="fa fa-github"></i>
+                            </a>
+                            <a href="#" className="link">
+                                <i className="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" className="link">
+                                <i className="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="flex-box footer-links-section">
+                        {Object.entries(footerLinks).map(([category, links]) => (
+                            <div key={category} className="flex-grow">
+                                <h3 className="footer-links-title">
+                                    {category}
+                                </h3>
+                                <ul className="footer-links">
+                                    {links.map((link) => (
+                                        <li key={link}>
+                                            <a href="#" className="footer-link">
+                                                {link}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
-            <p>
-              Transform your workflow with AI-powered tools and automation.
-              Built for modern teams.
-            </p>
-            <div className="social">
-              <a
-                href="#"
-                className="link"
-              >
-                <i className="fa fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                className="link"
-              >
-                <i className="fa fa-github"></i>
-              </a>
-              <a
-                href="#"
-                className="link"
-              >
-                <i className="fa fa-linkedin"></i>
-              </a>
-              <a
-                href="#"
-                className="link"
-              >
-                <i className="fa fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </footer>
-  );
+        </footer>
+    );
 }
   
 // export function Footer() {

@@ -2082,18 +2082,32 @@ h1 span:last-child {
   padding: 3rem 2%;
 }
 
-.footer .flex-box {
-  display: flex;
-  gap: 2%;
+@media screen and (min-width: 800px) {
+  .footer .flex-box {
+    display: flex;
+    /* gap: 2%; */
+    gap: 10vw;
+    /* border: 1px solid red; */
+  }
 }
 
 .footer .logo-max-width {
   max-width: 20rem;
+  margin: 0 auto;
+  /* border: 1px solid blue; */
+}
+
+@media screen and (max-width: 800px) {
+  .footer .logo-max-width {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
 }
 
 .footer .logo {
   margin-bottom: 1.5rem;
-  display: flex;
+  /* display: flex; */
+  display: inline-flex;
   gap: 0.5rem;
   align-items: center;
 }
@@ -2108,7 +2122,8 @@ h1 span:last-child {
 
 .footer .social {
   margin-top: 1.5rem;
-  display: flex;
+  /* display: flex; */
+  display: inline-flex;
   gap: 1rem;
   align-items: center;
 }
@@ -2123,6 +2138,35 @@ h1 span:last-child {
 
 .social .link:hover {
   background-color: rgb(51 65 85);
+}
+
+.footer .flex-box.footer-links-section {
+  /* width: 100%; */
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem 10vw;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.footer-links-title {
+  margin-bottom: 1rem;
+}
+
+.footer-links {}
+
+.footer-link {
+  margin-bottom: 0.5rem;
+  color: rgb(156 163 175);
+  transition: color 300ms;
+}
+
+.footer-link:hover {
+  color: #fff
 }
 
 /* =============== delete =============== */
