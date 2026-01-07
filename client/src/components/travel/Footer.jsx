@@ -660,7 +660,7 @@ export function Testimonials() {
     return (
         <section id="testimonials" className="testimonials-section">
             <div className="max-width-container">
-                {/* <div className="flex-box"> */}
+
                 <div className="grid-box">
 
                     <div className="testimonials-header">
@@ -712,6 +712,95 @@ export function Testimonials() {
             </div>
         </section>
     );
+}
+
+const footerLinks = {
+    Product: [
+        "Features",
+        "Pricing",
+        "Security",
+        "Roadmap",
+        "Changelog"
+    ],
+    Company: [
+        "About",
+        "Blog",
+        "Careers",
+        "Press",
+        "Partners"
+    ],
+    Resources: [
+        "Documentation",
+        "Help Center",
+        "Community",
+        "API Reference",
+        "Status",
+    ],
+    Legal: [
+        "Privacy",
+        "Terms",
+        "Cookie Policy",
+        "Licenses",
+        "Compliance"
+    ]
+};
+
+export function Footer() {
+  return (
+    <footer className="footer">
+      <div className="max-width-container">
+
+        <div className="flex-box">
+          <div className="logo-max-width">
+            <div className="logo">
+              <div className="logo-image">
+                <img
+                  src={logo}
+                  alt="CodeFlow Logo"
+                />
+              </div>
+              <span>
+                <span>Code</span>
+                <span className="blue">Flow</span>
+              </span>
+            </div>
+            <p>
+              Transform your workflow with AI-powered tools and automation.
+              Built for modern teams.
+            </p>
+            <div className="social">
+              <a
+                href="#"
+                className="link"
+              >
+                <i className="fa fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                className="link"
+              >
+                <i className="fa fa-github"></i>
+              </a>
+              <a
+                href="#"
+                className="link"
+              >
+                <i className="fa fa-linkedin"></i>
+              </a>
+              <a
+                href="#"
+                className="link"
+              >
+                <i className="fa fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </footer>
+  );
 }
   
 // export function Footer() {

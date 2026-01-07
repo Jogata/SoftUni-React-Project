@@ -2072,6 +2072,59 @@ h1 span:last-child {
   }
 }
 
+.footer {
+  border-top: 1px solid rgb(30 41 59);
+  background-color: rgb(2 6 23 / 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.footer .max-width-container {
+  padding: 3rem 2%;
+}
+
+.footer .flex-box {
+  display: flex;
+  gap: 2%;
+}
+
+.footer .logo-max-width {
+  max-width: 20rem;
+}
+
+.footer .logo {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer .logo-image {
+  max-width: 48px;
+}
+
+.footer .logo-max-width p {
+  color: rgb(156 163 175);
+}
+
+.footer .social {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social .link {
+  padding: 0.4em 0.5em;
+  color: #fff;
+  border-radius: 50%;
+  background-color: rgb(30 41 59);
+  transition: background-color 300ms;
+}
+
+.social .link:hover {
+  background-color: rgb(51 65 85);
+}
+
 /* =============== delete =============== */
 .ide-border-container.inner {
   display: block;
