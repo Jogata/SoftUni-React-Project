@@ -86,10 +86,12 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
+<div className="body dark">
         <Routes>
           <Route index element={<Home />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
+        </div>
 
       {/* <div className="slate-bg">
         <Navigation />
