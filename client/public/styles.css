@@ -2075,12 +2075,10 @@ h1 span:last-child {
 
 .footer .logo-max-width {
   max-width: 20rem;
-  /* margin: 0 auto; */
 }
 
 @media screen and (max-width: 800px) {
   .footer .logo-max-width {
-    /* margin-bottom: 3rem; */
     margin: 0 auto 3rem;
     text-align: center;
   }
@@ -2153,20 +2151,11 @@ h1 span:last-child {
   border-top: 1px solid rgb(30 41 59);
 }
 
-/* .copyrights-section .flex-box {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-} */
-
 .copyrights-section p {
   color: rgb(156 163 175);
 }
 
 .copyrights-section .links {
-  /* display: flex; */
   display: inline-flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -2299,4 +2288,115 @@ body {
   .container {
     max-width: 1400px;
   }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+
+.text-glow {
+  position: relative;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+.card-hover {
+  transition: transform 300ms;
+}
+
+.card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 3px 3px 3px #0005;
+}
+
+.gradient-border {
+  position: relative;
+  background: 
+    linear-gradient(
+      to right, 
+      hsl(var(--card)), 
+      hsl(var(--card)));
+  background-clip: padding-box;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.cosmic-button {
+  padding: 0.5em 1.2em;
+  color: var(--primary-foreground);
+  border-radius: 50%;
+  transition: transform 300ms;
+}
+
+.cosmic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(139,92,246,0.5);
+}
+
+.cosmic-button:active {
+  transform: scale(1.05);
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+
+.meteor {
+  position: absolute;
+  background: 
+    linear-gradient(
+      to right,
+      #fff, 
+      #fff, 
+      transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
