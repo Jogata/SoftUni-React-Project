@@ -87,28 +87,32 @@ function TestRerender() {
 }
 
 export function Hero() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const spotContainer = useRef(null);
-    // const [activeTab, setActiveTab] = useState(0);
+    // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    // const spotContainer = useRef(null);
 
-    // const tabsClasses = new Array(codeExamples.length).fill("tab");
-    // tabsClasses[activeTab] = "tab active";
+    // useEffect(() => {
+        // function handleMouseMove(e) {
+        //     setMousePosition({ x: e.offsetX, y: e.offsetY });
+        // }
 
-    useEffect(() => {
-        function handleMouseMove(e) {
-            setMousePosition({ x: e.offsetX, y: e.offsetY });
-        }
+        // spotContainer.current.addEventListener("mousemove", handleMouseMove);
+        // window.addEventListener("mousemove", handleMouseMove);
 
-        spotContainer.current.addEventListener("mousemove", handleMouseMove);
-
-        return () => spotContainer.current.removeEventListener("mousemove", handleMouseMove);
-    }, []);
+        // return () => {
+            // spotContainer.current.removeEventListener("mousemove", handleMouseMove);
+        // }
+        // return () => {
+        //     window.removeEventListener("mousemove", handleMouseMove);
+        // };
+    // }, []);
 
     return (
-        <section className="hero-section" ref={spotContainer}>
-            <div className="mouse-tracker"
+        <section className="hero-section">
+        {/* <section className="hero-section" ref={spotContainer}> */}
+            {/* <div className="mouse-tracker"
                 style={{ "--x": `${mousePosition.x}px`, "--y": `${mousePosition.y}px` }}
-            />
+            /> */}
+            <MouseTracker />
 
             <TestRerender />
 
@@ -125,15 +129,11 @@ export function Hero() {
                     </div>
 
                     <h1>
-                        <span>
-                            Code Faster
-                        </span>
+                        <span>Code Faster</span>
                         <span className="blue">
                             Build Better
                         </span>
-                        <span>
-                            With CodeFlow AI
-                        </span>
+                        <span>With CodeFlow AI</span>
                     </h1>
 
                     {/* <h1>
@@ -161,93 +161,30 @@ export function Hero() {
                 </div>
 
                 <IdeSection />
-                {/* <div className="ide-section">
-                    <div className="ide-border-container outer">
-                        <div className="ide-border-container inner">
-                            <div className="ide-header">
-                                <div className="header">
-                                    <div className="dot-btns">
-                                        <span className="dot"></span>
-                                        <span className="dot"></span>
-                                        <span className="dot"></span>
-                                    </div>
-                                    <span>
-                                        CodeFlow AI
-                                    </span>
-                                </div>
-                                <i className="fa fa-chevron-down"></i>
-                            </div>
-
-                            <div className="code-examples-section">
-                                <div className="tabs">
-                                    <button
-                                        className={tabsClasses[0]}
-                                        onClick={() => setActiveTab(0)}
-                                    >
-                                        App.jsx
-                                    </button>
-                                    <button
-                                        className={tabsClasses[1]}
-                                        onClick={() => setActiveTab(1)}
-                                    >
-                                        Hero.jsx
-                                    </button>
-                                    <button
-                                        className={tabsClasses[2]}
-                                        onClick={() => setActiveTab(2)}
-                                    >
-                                        Navbar.jsx
-                                    </button>
-                                </div>
-
-                                <div className="code-content">
-                                    <pre>
-                                        <code>
-                                            {codeExamples[activeTab].code}
-                                        </code>
-                                    </pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        className="floating-card"
-                        style={{
-                            backgroundColor: floatingCards[activeTab].bgColor
-                        }}
-                    >
-                        <div className="header">
-                            <div
-                                className="icon"
-                                style={{
-                                    color: floatingCards[activeTab].iconColor,
-                                }}
-                            >
-                                {floatingCards[activeTab].icon}
-                            </div>
-                            <span
-                                className="title"
-                                style={{
-                                    color: floatingCards[activeTab].textColor,
-                                }}
-                            >
-                                {floatingCards[activeTab].title}
-                            </span>
-                        </div>
-
-                        <div
-                            className="card-content"
-                            style={{
-                                color: floatingCards[activeTab].contentColor,
-                            }}
-                        >
-                            {floatingCards[activeTab].content}
-                        </div>
-                    </div>
-                </div> */}
             </div>
         </section>
+    )
+}
+
+function MouseTracker() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        function handleMouseMove(e) {
+            setMousePosition({ x: e.offsetX, y: e.offsetY });
+        }
+
+        window.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, []);
+
+    return (
+        <div className="mouse-tracker"
+            style={{ "--x": `${mousePosition.x}px`, "--y": `${mousePosition.y}px` }}
+        />
     )
 }
 
@@ -279,6 +216,7 @@ function IdeSection() {
                         <div className="tabs">
                             {codeExamples.map((example, index) => (
                                 <button 
+                                    key={index}
                                     className={tabsClasses[index]}
                                     onClick={() => setActiveTab(index)}
                                 >
