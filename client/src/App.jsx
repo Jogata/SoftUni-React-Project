@@ -38,8 +38,8 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Home, NotFound } from './components/travel/Header';
-// import { Features, Footer, Hero, Navigation, Pricing, Testimonials } from './components/travel/Footer';
+// import { Home, NotFound } from './components/travel/Header';
+import { Features, Footer, Hero, Navigation, Pricing, Testimonials } from './components/travel/Footer';
 
 function Loader() {
   return (
@@ -86,21 +86,21 @@ function App() {
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
 
-<div className="body dark">
+{/* <div className="body dark">
         <Routes>
           <Route index element={<Home />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        </div>
+        </div> */}
 
-      {/* <div className="slate-bg">
+      <div className="slate-bg">
         <Navigation />
         <Hero />
         <Features />
         <Pricing />
         <Testimonials />
         <Footer />
-      </div> */}
+      </div>
 
           {/* <Routes>
             <Route path='/' element={<MainPage />} />

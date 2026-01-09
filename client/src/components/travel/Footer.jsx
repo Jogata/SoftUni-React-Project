@@ -89,10 +89,10 @@ function TestRerender() {
 export function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const spotContainer = useRef(null);
-    const [activeTab, setActiveTab] = useState(0);
+    // const [activeTab, setActiveTab] = useState(0);
 
-    const tabsClasses = new Array(codeExamples.length).fill("tab");
-    tabsClasses[activeTab] = "tab active";
+    // const tabsClasses = new Array(codeExamples.length).fill("tab");
+    // tabsClasses[activeTab] = "tab active";
 
     useEffect(() => {
         function handleMouseMove(e) {
@@ -117,52 +117,51 @@ export function Hero() {
 
             <div className="max-width-container">
                 <div className="hero-header">
-                    {/* <div> */}
-                        <div className="subtitle">
-                            <i className="ri-sparkling-line"></i>
-                            <span className="">
-                                Introducing CodeFlow AI
-                            </span>
-                        </div>
+                    <div className="subtitle">
+                        <i className="ri-sparkling-line"></i>
+                        <span className="">
+                            Introducing CodeFlow AI
+                        </span>
+                    </div>
 
-                        <h1>
-                            <span>
-                                Code Faster
-                            </span>
-                            <span className="blue">
-                                 Build Better 
-                            </span>
-                            <span>
-                                With CodeFlow AI
-                            </span>
-                        </h1>
+                    <h1>
+                        <span>
+                            Code Faster
+                        </span>
+                        <span className="blue">
+                            Build Better
+                        </span>
+                        <span>
+                            With CodeFlow AI
+                        </span>
+                    </h1>
 
-                        {/* <h1>
+                    {/* <h1>
                             <span>Code Faster</span><span className="blue"> Build Better </span><span>With CodeFlow AI</span>
                         </h1> */}
 
-                        <p>
-                            Accelerate your development workflow with intelligent code
-                            completion, automated testing, and smart debugging. Ship
-                            production-ready code 10x faster.
-                        </p>
+                    <p>
+                        Accelerate your development workflow with intelligent code
+                        completion, automated testing, and smart debugging. Ship
+                        production-ready code 10x faster.
+                    </p>
 
-                        <div className="hero-btns">
-                            <button>
-                                <span>Start Coding Free</span>
-                                {/* <i className="ri-arrow-right-s-line"></i> */}
-                                <i className="fa fa-angle-double-right"></i>
-                            </button>
+                    <div className="hero-btns">
+                        <button>
+                            <span>Start Coding Free</span>
+                            {/* <i className="ri-arrow-right-s-line"></i> */}
+                            <i className="fa fa-angle-double-right"></i>
+                        </button>
 
-                            <button>
-                                <i className="ri-play-fill"></i>
-                                <span>Watch Demo</span>
-                            </button>
-                        </div>
-                    {/* </div> */}
+                        <button>
+                            <i className="ri-play-fill"></i>
+                            <span>Watch Demo</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div className="ide-section">
+                <IdeSection />
+                {/* <div className="ide-section">
                     <div className="ide-border-container outer">
                         <div className="ide-border-container inner">
                             <div className="ide-header">
@@ -212,43 +211,128 @@ export function Hero() {
                         </div>
                     </div>
 
-                        <div 
-                            className="floating-card" 
-                            style={{
-                                backgroundColor: floatingCards[activeTab].bgColor
-                            }}
-                        >
-                            <div className="header">
-                                <div 
-                                    className="icon" 
-                                    style={{
-                                        color: floatingCards[activeTab].iconColor,
-                                    }}
-                                >
-                                    {floatingCards[activeTab].icon}
-                                </div>
-                                <span 
-                                    className="title"
-                                    style={{
-                                        color: floatingCards[activeTab].textColor,
-                                    }}
-                                >
-                                    {floatingCards[activeTab].title}
-                                </span>
-                            </div>
-
-                            <div 
-                                className="card-content"
+                    <div
+                        className="floating-card"
+                        style={{
+                            backgroundColor: floatingCards[activeTab].bgColor
+                        }}
+                    >
+                        <div className="header">
+                            <div
+                                className="icon"
                                 style={{
-                                    color: floatingCards[activeTab].contentColor,
+                                    color: floatingCards[activeTab].iconColor,
                                 }}
                             >
-                                {floatingCards[activeTab].content}
+                                {floatingCards[activeTab].icon}
                             </div>
+                            <span
+                                className="title"
+                                style={{
+                                    color: floatingCards[activeTab].textColor,
+                                }}
+                            >
+                                {floatingCards[activeTab].title}
+                            </span>
                         </div>
-                </div>
+
+                        <div
+                            className="card-content"
+                            style={{
+                                color: floatingCards[activeTab].contentColor,
+                            }}
+                        >
+                            {floatingCards[activeTab].content}
+                        </div>
+                    </div>
+                </div> */}
             </div>
         </section>
+    )
+}
+
+function IdeSection() {
+    const [activeTab, setActiveTab] = useState(0);
+
+    const tabsClasses = new Array(codeExamples.length).fill("tab");
+    tabsClasses[activeTab] = "tab active";
+
+    return (
+        <div className="ide-section">
+            <div className="ide-border-container outer">
+                <div className="ide-border-container inner">
+                    <div className="ide-header">
+                        <div className="header">
+                            <div className="dot-btns">
+                                <span className="dot"></span>
+                                <span className="dot"></span>
+                                <span className="dot"></span>
+                            </div>
+                            <span>
+                                CodeFlow AI
+                            </span>
+                        </div>
+                        <i className="fa fa-chevron-down"></i>
+                    </div>
+
+                    <div className="code-examples-section">
+                        <div className="tabs">
+                            {codeExamples.map((example, index) => (
+                                <button 
+                                    className={tabsClasses[index]}
+                                    onClick={() => setActiveTab(index)}
+                                >
+                                    {example.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="code-content">
+                            <pre>
+                                <code>
+                                    {codeExamples[activeTab].code}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                className="floating-card"
+                style={{
+                    backgroundColor: floatingCards[activeTab].bgColor
+                }}
+            >
+                <div className="header">
+                    <div
+                        className="icon"
+                        style={{
+                            color: floatingCards[activeTab].iconColor,
+                        }}
+                    >
+                        {floatingCards[activeTab].icon}
+                    </div>
+                    <span
+                        className="title"
+                        style={{
+                            color: floatingCards[activeTab].textColor,
+                        }}
+                    >
+                        {floatingCards[activeTab].title}
+                    </span>
+                </div>
+
+                <div
+                    className="card-content"
+                    style={{
+                        color: floatingCards[activeTab].contentColor,
+                    }}
+                >
+                    {floatingCards[activeTab].content}
+                </div>
+            </div>
+        </div>
     )
 }
 
