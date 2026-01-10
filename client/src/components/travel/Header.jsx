@@ -105,6 +105,59 @@ function AnimatedBackground() {
     );
 };
 
+
+const navItems = [
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+];
+
+export function Navigation() {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.screenY > 10);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        <nav className="navigation alt">
+            <div className="container flex-box">
+                <a
+                    className="logo" 
+                    href="#hero"
+                >
+                    <span>
+                        <span className="text-glow">Person </span>Portfolio
+                    </span>
+                </a>
+
+                {/* desktop nav */}
+                <div className="desktop-nav">
+                    {navItems.map((item, key) => (
+                        <a
+                            key={key}
+                            href={item.href}
+                            className="link-nav"
+                        >
+                            {item.name}
+                        </a>
+                    ))}
+                </div>
+
+            </div>
+        </nav>
+    );
+};
+
 // export function Header() {
 //     return (
 //         <header>
