@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Home() {
     return (
@@ -72,7 +72,7 @@ function AnimatedBackground() {
 
     return (
         <div className="animated-bg">
-            {stars.map((star) => (
+            {/* {stars.map((star) => (
                 <div
                     key={star.id}
                     className="star"
@@ -85,9 +85,11 @@ function AnimatedBackground() {
                         animationDuration: star.animationDuration + "s",
                     }}
                 />
-            ))}
+            ))} */}
 
-            {meteors.map((meteor) => (
+            <Meteor />
+
+            {/* {meteors.map((meteor) => (
                 <div
                     key={meteor.id}
                     className="meteor"
@@ -100,11 +102,68 @@ function AnimatedBackground() {
                         animationDuration: meteor.animationDuration + "s",
                     }}
                 />
-            ))}
+            ))} */}
         </div>
     );
 };
 
+function Meteor() {
+    const [meteor, setMeteor] = useState({
+        // id: 0,
+        size: Math.random() * 2 + 1,
+        x: Math.random() * 100,
+        y: Math.random() * 20,
+        delay: Math.random() * 15,
+        animationDuration: Math.random() * 3 + 3,
+    });
+
+    // const id = useRef(0);
+    console.log(meteor);
+
+    useEffect(() => {
+        // let id = 0;
+        const duration = Math.random() * 3 + 3;
+
+        const id = setTimeout(() => {
+            // id.current++;
+            // const newId = id.current;
+            const newMeteor = {
+                // id: i,
+                size: Math.random() * 2 + 1,
+                x: Math.random() * 100,
+                y: Math.random() * 20,
+                // delay: Math.random() * 15,
+                animationDuration: duration,
+            };
+            // console.log(id.current);
+            console.log("effect");
+            console.log(newMeteor);
+            // if (newId == id.current) {
+            setMeteor(newMeteor);
+            // id.current++;
+            // } else {
+                // console.log("no match");
+            // }
+        }, duration * 1000);
+
+        return () => clearInterval(id);
+    }, [meteor])
+
+    return (
+        <div
+            // key={meteor.id}
+            className="meteor"
+            style={{
+                width: meteor.size * 50 + "px",
+                height: meteor.size * 2 + "px",
+                left: meteor.x + "%",
+                top: meteor.y + "%",
+                // animationDelay: meteor.delay,
+                animationDuration: meteor.animationDuration + "s",
+            }}
+        />
+    )
+}
 
 const navItems = [
     { name: "Home", href: "#hero" },
@@ -120,10 +179,6 @@ export function Navigation() {
 
     useEffect(() => {
         const handleScroll = () => {
-            console.log(window.scrollY);
-            // console.log(window.scrollY > 50);
-            // console.log(isScrolled);
-            // setIsScrolled(window.scrollY > 50);
             if (window.scrollY > 50) {
                 setIsScrolled(true);
             } else {
@@ -142,10 +197,7 @@ export function Navigation() {
     return (
         <nav className={navClass}>
             <div className="container flex-box">
-                <a
-                    className="logo" 
-                    href="#hero"
-                >
+                <a href="#hero" className="logo">
                     <span>
                         <span className="text-glow">Person </span>Portfolio
                     </span>
@@ -176,15 +228,12 @@ export function Navigation() {
                     }
                 </button>
 
-                <div
-                    className={mobileNavClass}
-                >
+                <div className={mobileNavClass}>
                     <div className="links">
                         {navItems.map((item, key) => (
                             <a
                                 key={key}
                                 href={item.href}
-                                className=""
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 {item.name}

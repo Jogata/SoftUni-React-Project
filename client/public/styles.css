@@ -1109,7 +1109,7 @@ body.overflow .fixed-3d-gallery {
   --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
+  /* --animate-meteor: meteor 5s linear infinite; */
 }
 
 .body.dark {
@@ -1189,15 +1189,15 @@ html {
 }
 
 @keyframes pulse-subtle {
-  0% {
+  /* 0% { */
     /* opacity: 1; */
-  }
+  /* } */
   50% {
     opacity: 0.2;
   }
-  100% {
+  /* 100% { */
     /* opacity: 1; */
-  }
+  /* } */
 }
 
 @keyframes fade-in {
@@ -1213,14 +1213,14 @@ html {
 
 @keyframes meteor {
   0% {
-    transform: rotate(215deg) translateX(0);
+    transform: translate(0, 0) rotate(215deg);
     opacity: 1;
   }
   70% {
     opacity: 1;
   }
   100% {
-    transform: rotate(215deg) translateX(-500px);
+    transform: translate(500px, 500px) rotate(215deg);
     opacity: 0;
   }
 }
@@ -1274,8 +1274,6 @@ html {
   animation-name: pulse-subtle;
   animation-iteration-count: infinite;
   box-shadow: 
-    /* 0 0 2px 2px rgba(255, 255, 255, 0.8),  */
-    /* 0 0 4px 2px rgba(255, 255, 255, 0.6),  */
     0 0 6px 2px rgba(255, 255, 255, 0.4), 
     0 0 8px 2px rgba(255, 255, 255, 0.2),
     0 0 10px 2px rgba(255, 255, 255, 0.1);
@@ -1303,7 +1301,6 @@ html {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  /* background-color: black; */
 }
 
 .navigation {
@@ -1318,7 +1315,6 @@ html {
   padding: 0.8rem 2%;
   backdrop-filter: blur(10px);
   background-color: hsl(var(--background) / 0.8);
-  /* background-color: red; */
 }
 
 .navigation .flex-box {
@@ -1331,8 +1327,6 @@ html {
 
 .navigation .logo {
   color: var(--color-primary);
-  /* display: flex; */
-  /* align-items: center; */
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -1356,7 +1350,6 @@ html {
   padding: 0.5em 1em;
   color: hsl(var(--foreground) / 0.8);
   transition: color 300ms;
-  /* border: 1px solid red; */
 }
 
 .desktop-nav a:hover {
@@ -1368,12 +1361,10 @@ html {
   padding: 0.4rem 0.55rem;
   color: var(--color-primary-foreground);
   font-size: 1.5rem;
-  /* border: 1px solid red; */
 }
 
 .navigation .flex-box {
   position: relative;
-  /* border: 1px solid greenyellow; */
 }
 
 .mobile-nav {
@@ -1388,7 +1379,6 @@ html {
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;
-  /* border: 1px solid red; */
 }
 
 .mobile-nav.open {
@@ -1407,7 +1397,6 @@ html {
   color: hsl(var(--foreground) / 0.8);
   font-size: 1.2rem;
   transition: color 300ms;
-  /* border: 1px solid; */
 }
 
 .mobile-nav a:hover {
