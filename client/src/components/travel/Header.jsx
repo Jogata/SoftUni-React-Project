@@ -120,7 +120,15 @@ export function Navigation() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.screenY > 10);
+            console.log(window.scrollY);
+            // console.log(window.scrollY > 50);
+            // console.log(isScrolled);
+            // setIsScrolled(window.scrollY > 50);
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -128,8 +136,11 @@ export function Navigation() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const mobileNavClass = isMenuOpen ? "mobile-nav open" : "mobile-nav";
+    const navClass = isScrolled ? "navigation alt" : "navigation";
+
     return (
-        <nav className="navigation alt">
+        <nav className={navClass}>
             <div className="container flex-box">
                 <a
                     className="logo" 
@@ -153,6 +164,34 @@ export function Navigation() {
                     ))}
                 </div>
 
+                {/* mobile nav */}
+                <button
+                    onClick={() => setIsMenuOpen((prev) => !prev)}
+                    className="menu-button"
+                    aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+                >
+                    {isMenuOpen ? 
+                        <i className="ri-close-line"></i> : 
+                        <i className="ri-menu-3-line"></i>
+                    }
+                </button>
+
+                <div
+                    className={mobileNavClass}
+                >
+                    <div className="links">
+                        {navItems.map((item, key) => (
+                            <a
+                                key={key}
+                                href={item.href}
+                                className=""
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
+                </div>
             </div>
         </nav>
     );
