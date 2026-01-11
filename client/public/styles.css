@@ -1104,7 +1104,7 @@ body.overflow .fixed-3d-gallery {
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in: fade-in 0.7s ease-out backwards;
   --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
   --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
@@ -1177,15 +1177,15 @@ html {
 }
 
 @keyframes float {
-  0% {
+  /* 0% {
     transform: translateY(0);
-  }
+  } */
   50% {
     transform: translateY(-10px);
   }
-  100% {
+  /* 100% {
     transform: translateY(0);
-  }
+  } */
 }
 
 @keyframes pulse-subtle {
@@ -1201,14 +1201,15 @@ html {
 }
 
 @keyframes fade-in {
-  from {
+  /* from { */
+  0% {
     opacity: 0;
     transform: translateY(20px);
   }
-  to {
+  /* to {
     opacity: 1;
     transform: translateY(0);
-  }
+  } */
 }
 
 @keyframes meteor {
@@ -1254,7 +1255,8 @@ html {
 .cosmic-button {
   padding: 0.5em 1.2em;
   color: var(--primary-foreground);
-  border-radius: 50%;
+  border-radius: 10em;
+  background-color: var(--color-primary);
   transition: transform 300ms;
 }
 
@@ -1289,7 +1291,8 @@ html {
       transparent);
   border-radius: 50%;
   animation-name: meteor;
-  animation-iteration-count: infinite;
+  /* animation-iteration-count: infinite; */
+  animation-fill-mode: forwards;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
@@ -1413,6 +1416,74 @@ html {
   .mobile-nav {
     display: block;
   }
+}
+
+.hero-section {
+  position: relative;
+  /* min-height: 100vh; */
+  /* padding: 15rem 0; */
+}
+
+.hero-section .container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 15rem 0;
+  /* text-align: center; */
+  /* z-index: 10; */
+}
+
+.hero-section h1 {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+}
+
+.hero-section h1 .fade-in {
+  /* opacity: 0; */
+  display: inline-block;
+  animation: var(--animate-fade-in);
+}
+
+.hero-section h1 .fade-in.primary {
+  color: var(--color-primary);
+  animation-delay: 200ms;
+}
+
+.hero-section h1 span.fade-in:last-child {
+  animation-delay: 400ms;
+}
+
+.hero-section p.fade-in {
+  max-width: 42rem;
+  margin: auto;
+  color: var(--primary-foreground);
+  font-size: 1.125rem;
+  animation: var(--animate-fade-in);
+  animation-delay: 600ms;
+}
+
+.hero-section .button {
+  margin-top: 2rem;
+  animation: var(--animate-fade-in);
+  animation-delay: 800ms;
+}
+
+.hero-section .scroll {
+  /* position: absolute; */
+  /* left: 50%; */
+  /* bottom: 2rem; */
+  /* transform: translateX(-50%); */
+  animation: var(--animate-float);
+}
+
+.hero-section .scroll span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--color-primary-foreground);
+}
+
+.hero-section .scroll i {
+  color: var(--color-primary);
 }
 
 /* ============================== delete ============================== */
