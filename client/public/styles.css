@@ -1105,11 +1105,10 @@ body.overflow .fixed-3d-gallery {
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
   --animate-fade-in: fade-in 0.7s ease-out backwards;
-  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
-  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
-  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
-  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  /* --animate-meteor: meteor 5s linear infinite; */
+  /* --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards; */
+  /* --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards; */
+  /* --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards; */
+  /* --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards; */
 }
 
 .body.dark {
@@ -1211,7 +1210,8 @@ html {
 
 .text-glow {
   position: relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 
+    0 0 10px rgba(167, 139, 250, 0.5);
 }
 
 .card-hover {
@@ -1245,7 +1245,8 @@ html {
 
 .cosmic-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(139,92,246,0.5);
+  box-shadow: 
+    0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 .cosmic-button:active {
@@ -1274,8 +1275,10 @@ html {
       transparent);
   border-radius: 50%;
   animation-name: meteor;
+  animation-timing-function: linear;
   animation-fill-mode: forwards;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
 .animated-bg {
@@ -1294,7 +1297,6 @@ html {
   padding: 1.25rem 3%;
   transition: padding 300ms, 
       background-color 300ms;
-  /* z-index: 1; */
   z-index: 2;
 }
 .navigation.alt {
@@ -1415,7 +1417,6 @@ html {
 .hero-section h1 {
   margin-bottom: 1rem;
   font-size: 2.25rem;
-  /* letter-spacing: -0.025em; */
 }
 
 .hero-section h1 .fade-in {
@@ -1474,11 +1475,9 @@ html {
 }
 
 .about-section h2 {
-  /* margin-bottom: 3rem; */
   padding: 1rem 0;
   font-size: 2.25rem;
   line-height: 2.5rem;
-  /* text-align: center; */
 }
 
 .about-section h2 span {
@@ -1500,21 +1499,16 @@ html {
 .about-section .section-content .about-description p {
   margin-bottom: 1rem;
   color: hsl(var(--primary-foreground));
-  /* font-size: 1.5rem; */
-  /* line-height: 2rem; */
 }
 
 .about-section .about-buttons {
   padding-top: 1rem;
-  /* flex flex-col sm:flex-row gap-4 pt-4 justify-center */
 }
 
 .about-buttons a {
   margin: 1rem;
   padding: 0.5em 1.2em;
-  /* color: var(--primary-foreground); */
   border-radius: 10em;
-  /* background-color: var(--color-primary); */
 }
 
 .about-buttons a.alt-btn {
@@ -1528,6 +1522,63 @@ html {
   background-color: hsl(var(--primary) / 0.2);
 }
 
+.about-section .section-content .about-cards {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.about-cards .about-card {
+  max-width: 500px;
+  /* margin-bottom: 1.5rem; */
+  margin: 0 auto 1.5rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.about-card .flex-box {
+  display: flex;
+  gap: 1rem;
+}
+
+.about-card .icon {
+  margin-bottom: auto;
+  border-radius: 50%;
+  background-color: hsl(var(--primary) / 0.2);
+}
+
+.about-card .icon i {
+  padding: 0.4rem;
+  color: var(--color-primary);
+}
+
+.about-card .icon i.fa-user {
+  padding: 0.4rem 0.55rem;
+}
+
+.about-card .description h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.about-card .description p {
+  color: hsl(var(--foreground) / 0.8);
+}
+
+@media screen and (min-width: 1000px) {
+  .about-section .section-content {
+    display: flex;
+    gap: 5%;
+  }
+
+  .about-section .section-content .about-description {
+    flex: 1;
+  }
+
+  .about-section .section-content .about-cards {
+    flex: 1;
+  }
+}
 /* ============================== delete ============================== */
 .logo {
   align-self: center !important;

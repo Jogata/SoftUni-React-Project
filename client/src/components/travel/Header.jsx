@@ -23,7 +23,7 @@ function AnimatedBackground() {
         generateStars();
 
         const handleResize = () => {
-            console.log("resize");
+            // console.log("resize");
             generateStars();
         };
 
@@ -112,11 +112,11 @@ function Meteor() {
 }
 
 function MeteorElement({ meteor }) {
-    useEffect(() => {
-        return () => {
-            console.log("clear");
-        }
-    })
+    // useEffect(() => {
+    //     return () => {
+    //         console.log("clear");
+    //     }
+    // })
 
     return (
         <div
@@ -248,52 +248,93 @@ export function HeroSection() {
 }
 
 function AboutSection() {
-  return (
-    <section id="about" className="about-section">
-      {" "}
-      <div className="container">
-        <h2>
-          About <span> Me</span>
-        </h2>
+    return (
+        <section id="about" className="about-section">
+            {/* {" "} */}
+            <div className="container">
+                <h2>
+                    About <span> Me</span>
+                </h2>
 
-        <div className="section-content">
-          <div className="about-description">
-            <h3>
-              Passionate Web Developer & Tech Creator
-            </h3>
+                <div className="section-content">
+                    <div className="about-description">
+                        <h3>
+                            Passionate Web Developer & Tech Creator
+                        </h3>
 
-            <p>
-              With over 5 years of experience in web development, I 
-              specialize in creating responsive, accessible, and 
-              performant web applications using modern technologies.
-            </p>
+                        <p>
+                            With over 5 years of experience in web development, I
+                            specialize in creating responsive, accessible, and
+                            performant web applications using modern technologies.
+                        </p>
 
-            <p>
-              I'm passionate about creating elegant solutions to complex
-              problems, and I'm constantly learning new technologies and
-              techniques to stay at the forefront of the ever-evolving 
-              web landscape.
-            </p>
+                        <p>
+                            I'm passionate about creating elegant solutions to complex
+                            problems, and I'm constantly learning new technologies and
+                            techniques to stay at the forefront of the ever-evolving
+                            web landscape.
+                        </p>
 
-            <div className="about-buttons">
-              <a href="#contact" className="cosmic-button">
-                {" "}
-                Get In Touch
-              </a>
+                        <div className="about-buttons">
+                            <a href="#contact" className="cosmic-button">
+                                {/* {" "} */}
+                                Get In Touch
+                            </a>
+                            <a href="#" className="alt-btn">
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
 
-              <a
-                href=""
-                className="alt-btn"
-              >
-                Download CV
-              </a>
+                    <div className="about-cards">
+                        <div className="about-card gradient-border card-hover">
+                            <div className="flex-box">
+                                <div className="icon">
+                                    <i className="fa fa-code"></i>
+                                </div>
+                                <div className="description">
+                                    <h4>Web Development</h4>
+                                    <p>
+                                        Creating responsive websites and web applications 
+                                        with modern frameworks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="about-card gradient-border card-hover">
+                            <div className="flex-box">
+                                <div className="icon">
+                                    <i className="fa fa-user"></i>
+                                </div>
+                                <div className="description">
+                                    <h4>UI/UX Design</h4>
+                                    <p>
+                                        Designing intuitive user interfaces and seamless 
+                                        user experiences.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="about-card gradient-border card-hover">
+                            <div className="flex-box">
+                                <div className="icon">
+                                    <i className="fa fa-briefcase"></i>
+                                </div>
+
+                                <div className="description">
+                                    <h4>Project Management</h4>
+                                    <p>
+                                        Leading projects from conception to completion 
+                                        with agile methodologies.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }
 
 // export function Header() {
