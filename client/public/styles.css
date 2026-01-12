@@ -1190,6 +1190,15 @@ html {
   }
 }
 
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes meteor {
   0% {
     transform: translate(0, 0) rotate(215deg);
@@ -1583,7 +1592,7 @@ html {
 }
 
 .skills-section .container {
-  max-width: 64rem;
+  /* max-width: 64rem; */
 }
 
 .skills-section .container h2 {
@@ -1592,17 +1601,20 @@ html {
   font-weight: bold;
   /* text-align: center; */
   line-height: 2.5rem;
+  /* color: transparent; */
+  /* -webkit-text-stroke: 1px #fff; */
 }
 
 .categories {
   margin-bottom: 2rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* display: flex; */
+  /* gap: 1rem; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
 }
 
 .categories button {
+  margin: 0.5rem;
   padding: 0.8em 1.6em;
   color: var(--color-primary);
   border-radius: 10em;
@@ -1622,6 +1634,56 @@ html {
   background-color: var(--color-primary);
 }
 
+.skills {
+  display: grid;
+  gap: 1rem 1%;
+  grid-template-columns: 
+    repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.skill-card {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--color-foreground);
+}
+
+.skill-card .card-header {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.skill-card .card-header h3 {}
+
+.skill-level {
+  margin-bottom: 0.5rem;
+  height: 0.5rem;
+  border-radius: 6px;
+  background-color: hsl(var(--background) / 0.7);
+  overflow: hidden;
+  /* border: 1px solid red; */
+}
+
+.skill-level .bar {
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--color-primary);
+  /* transform: scaleX(0); */
+  transform-origin: left;
+  animation: grow 1.5s ease-out forwards;
+  /* border: 1px solid blue; */
+}
+
+.skill-card .percentage {
+  text-align: right;
+}
+
+.skill-card .percentage span {
+  color: hsl(var(--foreground) / 0.8);
+}
+
 /* ============================== delete ============================== */
 .logo {
   align-self: center !important;
@@ -1635,7 +1697,7 @@ nav {
 }
 
 body {
-  min-height: 200vh;
+  /* min-height: 200vh; */
 }
 
 section {

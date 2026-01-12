@@ -374,40 +374,70 @@ const skills = [
 const categories = ["all", "frontend", "backend", "tools"];
 
 const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+    //   const [activeCategory, setActiveCategory] = useState("all");
+    const [index, setIndex] = useState(0);
 
-  const categoriesClasses = ["category active", "category", "category", "category"];
+    const activeCategory = categories[index];
 
-  let filteredSkills = skills;
+    const categoriesClasses = ["category", "category", "category", "category"];
+    categoriesClasses[index] = "category active";
 
-  if (activeCategory !== "all") {
-    filteredSkills = skills.filter(
-        skill => skill.category === activeCategory
-      );
-  }
+    let filteredSkills = skills;
 
-  return (
-    <section id="skills" className="skills-section">
-      <div className="container">
-        <h2>
-          My <span className="text-primary"> Skills</span>
-        </h2>
+    if (activeCategory !== "all") {
+        filteredSkills = skills.filter(
+            skill => skill.category === activeCategory
+        );
+    }
 
-        <div className="categories">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={categoriesClasses[index]}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+    return (
+        <section id="skills" className="skills-section">
+            <div className="container">
+                <h2>
+                    My <span>Skills</span>
+                </h2>
 
-      </div>
-    </section>
-  );
+                <div className="categories">
+                    {categories.map((category, index) => (
+                        <button
+                            key={index}
+                            className={categoriesClasses[index]}
+                            //   onClick={() => setActiveCategory(category)}
+                            onClick={() => setIndex(index)}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="skills">
+                    {filteredSkills.map((skill, key) => (
+                        <div
+                            key={key}
+                            className="skill-card card-hover"
+                        >
+                            <div className="card-header">
+                                <h3>{skill.name}</h3>
+                            </div>
+                            <div className="skill-level">
+                                <div
+                                    className="bar"
+                                    style={{ width: skill.level + "%" }}
+                                />
+                            </div>
+
+                            <div className="percentage">
+                                <span>
+                                    {skill.level}%
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+        </section>
+    );
 }
 
 // export function Header() {
