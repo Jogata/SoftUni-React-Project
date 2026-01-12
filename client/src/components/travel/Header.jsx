@@ -6,6 +6,7 @@ export function Home() {
             <AnimatedBackground />
             <HeroSection />
             <AboutSection />
+            <SkillsSection />
         </>
     )
 }
@@ -114,12 +115,6 @@ function Meteor() {
 }
 
 function MeteorElement({ meteor }) {
-    // useEffect(() => {
-    //     return () => {
-    //         console.log("clear");
-    //     }
-    // })
-
     return (
         <div
             className="meteor"
@@ -150,25 +145,21 @@ export function Navigation() {
         let count = 0;
 
         const handleScroll = () => {
-            // if (window.scrollY > 50) {
-            //     setIsScrolled(true);
-            // } else {
-            //     setIsScrolled(false);
-            // }
             count++;
             const current = count;
 
             setTimeout(() => {
                 if (current == count) {
-                    console.log("scrolled", count);
+                    // console.log("scrolled", count);
                     if (window.scrollY > 50) {
                         setIsScrolled(true);
                     } else {
                         setIsScrolled(false);
                     }
-                } else {
-                    console.log("canceled", count);
                 }
+                //  else {
+                //     console.log("canceled", count);
+                // }
             }, 1000);
         };
 
@@ -235,7 +226,7 @@ export function Navigation() {
 };
 
 
-export function HeroSection() {
+function HeroSection() {
     return (
         <section id="hero" className="hero-section">
             <div className="container">
@@ -354,6 +345,69 @@ function AboutSection() {
             </div>
         </section>
     );
+}
+
+
+const skills = [
+    // Frontend
+    { name: "HTML/CSS", level: 95, category: "frontend" },
+    { name: "JavaScript", level: 90, category: "frontend" },
+    { name: "React", level: 90, category: "frontend" },
+    { name: "TypeScript", level: 85, category: "frontend" },
+    { name: "Tailwind CSS", level: 90, category: "frontend" },
+    { name: "Next.js", level: 80, category: "frontend" },
+
+    // Backend
+    { name: "Node.js", level: 80, category: "backend" },
+    { name: "Express", level: 75, category: "backend" },
+    { name: "MongoDB", level: 70, category: "backend" },
+    { name: "PostgreSQL", level: 65, category: "backend" },
+    { name: "GraphQL", level: 60, category: "backend" },
+
+    // Tools
+    { name: "Git/GitHub", level: 90, category: "tools" },
+    { name: "Docker", level: 70, category: "tools" },
+    { name: "Figma", level: 85, category: "tools" },
+    { name: "VS Code", level: 95, category: "tools" },
+];
+
+const categories = ["all", "frontend", "backend", "tools"];
+
+const SkillsSection = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categoriesClasses = ["category active", "category", "category", "category"];
+
+  let filteredSkills = skills;
+
+  if (activeCategory !== "all") {
+    filteredSkills = skills.filter(
+        skill => skill.category === activeCategory
+      );
+  }
+
+  return (
+    <section id="skills" className="skills-section">
+      <div className="container">
+        <h2>
+          My <span className="text-primary"> Skills</span>
+        </h2>
+
+        <div className="categories">
+          {categories.map((category, index) => (
+            <button
+              key={index}
+              className={categoriesClasses[index]}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
 }
 
 // export function Header() {
