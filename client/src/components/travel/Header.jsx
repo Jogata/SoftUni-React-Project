@@ -23,13 +23,15 @@ function AnimatedBackground() {
         generateStars();
 
         const handleResize = () => {
-            // console.log("resize");
+            console.log("resize");
             generateStars();
         };
 
         window.addEventListener("resize", handleResize);
 
-        return () => window.removeEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
     }, []);
 
     const generateStars = () => {
@@ -145,17 +147,36 @@ export function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
+        let count = 0;
+
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            // if (window.scrollY > 50) {
+            //     setIsScrolled(true);
+            // } else {
+            //     setIsScrolled(false);
+            // }
+            count++;
+            const current = count;
+
+            setTimeout(() => {
+                if (current == count) {
+                    console.log("scrolled", count);
+                    if (window.scrollY > 50) {
+                        setIsScrolled(true);
+                    } else {
+                        setIsScrolled(false);
+                    }
+                } else {
+                    console.log("canceled", count);
+                }
+            }, 1000);
         };
 
         window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
     }, []);
 
     const mobileNavClass = isMenuOpen ? "mobile-nav open" : "mobile-nav";
@@ -250,7 +271,6 @@ export function HeroSection() {
 function AboutSection() {
     return (
         <section id="about" className="about-section">
-            {/* {" "} */}
             <div className="container">
                 <h2>
                     About <span> Me</span>
@@ -277,7 +297,6 @@ function AboutSection() {
 
                         <div className="about-buttons">
                             <a href="#contact" className="cosmic-button">
-                                {/* {" "} */}
                                 Get In Touch
                             </a>
                             <a href="#" className="alt-btn">
