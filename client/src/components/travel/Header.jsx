@@ -7,6 +7,7 @@ export function Home() {
             <HeroSection />
             <AboutSection />
             <SkillsSection />
+            <ProjectsSection />
         </>
     )
 }
@@ -374,7 +375,6 @@ const skills = [
 const categories = ["all", "frontend", "backend", "tools"];
 
 const SkillsSection = () => {
-    //   const [activeCategory, setActiveCategory] = useState("all");
     const [index, setIndex] = useState(0);
 
     const activeCategory = categories[index];
@@ -402,7 +402,6 @@ const SkillsSection = () => {
                         <button
                             key={index}
                             className={categoriesClasses[index]}
-                            //   onClick={() => setActiveCategory(category)}
                             onClick={() => setIndex(index)}
                         >
                             {category}
@@ -432,6 +431,64 @@ const SkillsSection = () => {
                                 </span>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+            </div>
+        </section>
+    );
+}
+
+
+const projects = [
+    {
+        id: 1,
+        title: "SaaS Landing Page",
+        description: "A beautiful landing page app using React and Tailwind.",
+        image: "/projects/project1.png",
+        tags: ["React", "TailwindCSS", "Supabase"],
+        demoUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: 2,
+        title: "Orbit Analytics Dashboard",
+        description:
+            "Interactive analytics dashboard with data visualization and filtering capabilities.",
+        image: "/projects/project2.png",
+        tags: ["TypeScript", "D3.js", "Next.js"],
+        demoUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: 3,
+        title: "E-commerce Platform",
+        description:
+            "Full-featured e-commerce platform with user authentication and payment processing.",
+        image: "/projects/project3.png",
+        tags: ["React", "Node.js", "Stripe"],
+        demoUrl: "#",
+        githubUrl: "#",
+    },
+];
+
+export const ProjectsSection = () => {
+    return (
+        <section id="projects" className="projects-section">
+            <div className="container">
+                <h2>
+                    {" "}
+                    Featured <span> Projects </span>
+                </h2>
+
+                <p className="section-description">
+                    Here are some of my recent projects. Each project was carefully
+                    crafted with attention to detail, performance, and user experience.
+                </p>
+
+                <div className="projects">
+                    {projects.map((project, key) => (
+                        project.title
                     ))}
                 </div>
 
