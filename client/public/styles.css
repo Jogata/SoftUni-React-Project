@@ -1696,8 +1696,100 @@ html {
 
 .projects {
   display: grid;
+  gap: 1rem;
+  grid-template-columns: 
+    repeat(auto-fit, minmax(400px, 1fr));
 }
 
+.project {
+  border-radius: 12px;
+  background-color: var(--color-foreground);
+  box-shadow: 3px 3px 3px #0005;
+  overflow: hidden;
+  border: 1px solid red;
+}
+
+.project .project-image {
+  /* height: 24rem; */
+  aspect-ratio: 2 / 1.2;
+  overflow: hidden;
+}
+
+.project .project-image img {
+  /* width: 100%; */
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms;
+}
+
+.project .project-image img:hover {
+  transform: scale(1.1);
+}
+
+.project .project-data {
+  /* margin-bottom: 1rem; */
+  padding: 1.5rem;
+}
+
+.project .tags {
+  margin-bottom: 1rem;
+  /* display: flex; */
+  /* gap: 0.5rem; */
+  /* flex-wrap: wrap; */
+}
+
+.project .tag {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--color-primary-foreground);
+  border-radius: 10em;
+  border: 1px solid var(--color-primary-foreground);
+  background-color: var(--color-foreground);
+}
+
+.project-data h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.project-data p {
+  margin-bottom: 1rem;
+  color: hsl(var(--foreground) / 0.8);
+}
+
+.project-data .links {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.project-data .links .flex-box {
+  /* display: flex; */
+  /* gap: 1rem; */
+}
+
+.project-data .links a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.4em 0.5em;
+  color: hsl(var(--foreground) / 0.8);
+  transition: color 300ms;
+  border: 1px solid red;
+}
+
+.project-data .links a:hover {
+  color: var(--color-primary-foreground);
+}
+
+.projects-section .github-link {
+  margin-top: 3rem;
+  /* text-align: center; */
+}
+
+.projects-section .github-link i {
+  margin-left: 0.25rem;
+}
 
 /* ============================== delete ============================== */
 .logo {

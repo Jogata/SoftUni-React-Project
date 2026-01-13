@@ -151,16 +151,12 @@ export function Navigation() {
 
             setTimeout(() => {
                 if (current == count) {
-                    // console.log("scrolled", count);
                     if (window.scrollY > 50) {
                         setIsScrolled(true);
                     } else {
                         setIsScrolled(false);
                     }
                 }
-                //  else {
-                //     console.log("canceled", count);
-                // }
             }, 1000);
         };
 
@@ -439,13 +435,16 @@ const SkillsSection = () => {
     );
 }
 
+import project1 from "./images/drink.jpg";
+import project2 from "./images/hero2.jpg";
+import project3 from "./images/work4.jpeg";
 
 const projects = [
     {
         id: 1,
         title: "SaaS Landing Page",
         description: "A beautiful landing page app using React and Tailwind.",
-        image: "/projects/project1.png",
+        image: project1,
         tags: ["React", "TailwindCSS", "Supabase"],
         demoUrl: "#",
         githubUrl: "#",
@@ -455,7 +454,7 @@ const projects = [
         title: "Orbit Analytics Dashboard",
         description:
             "Interactive analytics dashboard with data visualization and filtering capabilities.",
-        image: "/projects/project2.png",
+        image: project2,
         tags: ["TypeScript", "D3.js", "Next.js"],
         demoUrl: "#",
         githubUrl: "#",
@@ -465,7 +464,7 @@ const projects = [
         title: "E-commerce Platform",
         description:
             "Full-featured e-commerce platform with user authentication and payment processing.",
-        image: "/projects/project3.png",
+        image: project3,
         tags: ["React", "Node.js", "Stripe"],
         demoUrl: "#",
         githubUrl: "#",
@@ -487,11 +486,65 @@ export const ProjectsSection = () => {
                 </p>
 
                 <div className="projects">
-                    {projects.map((project, key) => (
-                        project.title
+                    {projects.map((project, index) => (
+                        <div
+                            key={index}
+                            className="project card-hover"
+                        >
+                            <div className="project-image">
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className=""
+                                />
+                            </div>
+
+                            <div className="project-data">
+                                <div className="tags">
+                                    {project.tags.map((tag, index) => (
+                                        <span key={index} className="tag">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <h3>{project.title}</h3>
+                                <p>
+                                    {project.description}
+                                </p>
+
+                                <div className="links">
+                                    {/* <div className="flex-box"> */}
+                                        <a
+                                            href={project.demoUrl}
+                                            target="_blank"
+                                            className=""
+                                        >
+                                            <i className="fa fa-chain"></i>
+                                        </a>
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            className=""
+                                        >
+                                            <i className="fa fa-github"></i>
+                                        </a>
+                                    {/* </div> */}
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
+                <div className="github-link">
+                    <a
+                        className="cosmic-button"
+                        target="_blank"
+                        href="#"
+                    >
+                        Check My Github <i className="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
     );
