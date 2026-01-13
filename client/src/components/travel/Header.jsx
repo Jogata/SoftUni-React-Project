@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 
 export function Home() {
     return (
-        <>
+        <main>
             <AnimatedBackground />
             <HeroSection />
             <AboutSection />
             <SkillsSection />
             <ProjectsSection />
-        </>
+            <ContactSection />
+        </main>
     )
 }
 
@@ -157,7 +158,7 @@ export function Navigation() {
                         setIsScrolled(false);
                     }
                 }
-            }, 1000);
+            }, 500);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -435,6 +436,7 @@ const SkillsSection = () => {
     );
 }
 
+
 import project1 from "./images/drink.jpg";
 import project2 from "./images/hero2.jpg";
 import project3 from "./images/work4.jpeg";
@@ -471,12 +473,12 @@ const projects = [
     },
 ];
 
-export const ProjectsSection = () => {
+function ProjectsSection() {
     return (
         <section id="projects" className="projects-section">
             <div className="container">
                 <h2>
-                    {" "}
+                    {/* {" "} */}
                     Featured <span> Projects </span>
                 </h2>
 
@@ -514,22 +516,20 @@ export const ProjectsSection = () => {
                                 </p>
 
                                 <div className="links">
-                                    {/* <div className="flex-box"> */}
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            className=""
-                                        >
-                                            <i className="fa fa-chain"></i>
-                                        </a>
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            className=""
-                                        >
-                                            <i className="fa fa-github"></i>
-                                        </a>
-                                    {/* </div> */}
+                                    <a
+                                        href={project.demoUrl}
+                                        target="_blank"
+                                        className=""
+                                    >
+                                        <i className="fa fa-chain"></i>
+                                    </a>
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        className=""
+                                    >
+                                        <i className="fa fa-github"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -538,12 +538,47 @@ export const ProjectsSection = () => {
 
                 <div className="github-link">
                     <a
-                        className="cosmic-button"
-                        target="_blank"
                         href="#"
+                        target="_blank"
+                        className="cosmic-button"
                     >
-                        Check My Github <i className="fa fa-angle-double-right"></i>
+                        Check My Github
+                        <i className="fa fa-angle-double-right"></i>
                     </a>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+
+
+function ContactSection() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        setIsSubmitting(true);
+
+        setTimeout(() => {
+            setIsSubmitting(false);
+        }, 1500);
+    };
+
+    return (
+        <section id="contact" className="contact-section">
+            <div className="container">
+                <h2>
+                    Get In <span> Touch</span>
+                </h2>
+
+                <p className="section-description">
+                    Have a project in mind or want to collaborate? Feel free 
+                    to reach out. I'm always open to discussing new opportunities.
+                </p>
+
+                <div className="contact-section-body">
                 </div>
             </div>
         </section>
