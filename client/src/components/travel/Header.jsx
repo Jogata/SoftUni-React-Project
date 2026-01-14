@@ -552,7 +552,6 @@ function ProjectsSection() {
 }
 
 
-
 function ContactSection() {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -569,9 +568,7 @@ function ContactSection() {
     return (
         <section id="contact" className="contact-section">
             <div className="container">
-                <h2>
-                    Get In <span> Touch</span>
-                </h2>
+                <h2>Get In <span> Touch</span></h2>
 
                 <p className="section-description">
                     Have a project in mind or want to collaborate? Feel free 
@@ -579,6 +576,73 @@ function ContactSection() {
                 </p>
 
                 <div className="contact-section-body">
+                    <div className="contacts">
+                        <h3>
+                            {" "}
+                            Contact Information
+                        </h3>
+
+                        <div className="inline-block">
+                            <div className="contact">
+                                <div className="icon">
+                                    <i className="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a
+                                        href="mailto:hello@gmail.com"
+                                        className="contact-link"
+                                    >
+                                        hello@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="contact">
+                                <div className="icon">
+                                    <i className="fa fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a
+                                        href="tel:+11234567890"
+                                        className="contact-link"
+                                    >
+                                        +1 (123) 456-7890
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="contact">
+                                <div className="icon">
+                                    <i className="ri-map-pin-2-fill"></i>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <span>
+                                        Vancouver, BC, Canada
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="connect">
+                            <h4>Connect With Me</h4>
+                            <div className="social-links">
+                                <a href="#" target="_blank">
+                                    <i className="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i className="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i className="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i className="fa fa-twitch"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
