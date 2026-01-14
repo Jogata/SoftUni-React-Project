@@ -1138,7 +1138,7 @@ html {
 .body main {
   max-width: 1600px;
   margin: auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .container {
@@ -1246,7 +1246,8 @@ html {
 }
 
 .cosmic-button {
-  padding: 0.5em 1.2em;
+  /* padding: 0.5em 1.2em; */
+  padding: 0.8em 1.6em;
   color: var(--primary-foreground);
   border-radius: 10em;
   background-color: var(--color-primary);
@@ -1709,7 +1710,8 @@ html {
   border-radius: 12px;
   border: 1px solid var(--color-foreground);
   /* background-color: var(--color-foreground); */
-  background-color: hsl(var(--background) / 0.3);
+  /* background-color: hsl(var(--background) / 0.3); */
+  background-color: hsl(var(--background) / 0.5);
   box-shadow: 3px 3px 3px #0005;
   overflow: hidden;
   /* border: 1px solid red; */
@@ -1835,7 +1837,7 @@ html {
 
 .contacts {
   padding: 2rem 1rem;
-  border: 1px solid turquoise;
+  /* border: 1px solid turquoise; */
 }
 
 .contacts .inline-block {
@@ -1848,11 +1850,9 @@ html {
   display: flex;
   gap: 1rem;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .contact .icon {
-  /* margin-bottom: auto; */
   border-radius: 50%;
   background-color: hsl(var(--primary) / 0.2);
 }
@@ -1901,7 +1901,74 @@ html {
   color: var(--color-primary);
 }
 
+.contact-form {
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  background: 
+    linear-gradient(
+      to right, 
+      hsl(var(--card)), 
+      hsl(var(--card)));
+  box-shadow: 3px 3px 3px #0005;
+}
 
+.contact-form h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.contact-form form {
+  /* border: 1px solid red; */
+}
+
+.contact-form .form-row {
+  margin-bottom: 1rem;
+  /* border: 1px solid blueviolet; */
+}
+
+.contact-form form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form form input {
+  width: 100%;
+  padding: 1em 1.5em;
+  color: var(--color-primary-foreground);
+  border-radius: 10em;
+  border: 1px solid var(--color-foreground);
+  background-color: hsl(var(--background));
+}
+
+.contact-form form textarea {
+  resize: none;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1em;
+  color: var(--color-primary-foreground);
+  font-family: inherit;
+  border-radius: 6px;
+  border: 1px solid var(--color-foreground);
+  background-color: hsl(var(--background));
+}
+
+.contact-form form input:focus-visible, 
+.contact-form form textarea:focus-visible {
+  outline: 1px solid hsl(var(--foreground) / 0.8);
+}
+
+.contact-form .cosmic-button {
+  /* width: 100%; */
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.contact-form .cosmic-button i {
+  /* margin-left: 0.5rem; */
+}
 
 /* ============================== delete ============================== */
 .logo {
@@ -1921,4 +1988,8 @@ body {
 
 section {
   /* background-color: red; */
+}
+
+.contact-form .cosmic-button:hover {
+  color: var(--primary-foreground);
 }

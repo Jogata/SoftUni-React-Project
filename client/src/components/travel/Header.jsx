@@ -577,10 +577,7 @@ function ContactSection() {
 
                 <div className="contact-section-body">
                     <div className="contacts">
-                        <h3>
-                            {" "}
-                            Contact Information
-                        </h3>
+                        <h3>Contact Information</h3>
 
                         <div className="inline-block">
                             <div className="contact">
@@ -643,6 +640,76 @@ function ContactSection() {
                         </div>
                     </div>
 
+                    <div
+                        className="contact-form"
+                    >
+                        <h3>Send a Message</h3>
+
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-row">
+                                <label
+                                    htmlFor="name"
+                                    className=""
+                                >
+                                    {" "}
+                                    Your Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="John Doe..."
+                                    className=""
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-row">
+                                <label
+                                    htmlFor="email"
+                                    className=""
+                                >
+                                    {" "}
+                                    Your Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="john@gmail.com"
+                                    className=""
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-row">
+                                <label
+                                    htmlFor="message"
+                                    className=""
+                                >
+                                    {" "}
+                                    Your Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Hello, I'd like to talk about..."
+                                    className=""
+                                    rows={6}
+                                    required
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="cosmic-button"
+                            >
+                                {isSubmitting ? "Sending..." : "Send Message"}
+                                <i className="ri-send-plane-2-fill"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
