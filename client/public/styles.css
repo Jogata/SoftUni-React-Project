@@ -1970,6 +1970,40 @@ html {
   /* margin-left: 0.5rem; */
 }
 
+.footer {
+  position: relative;
+  margin-top: 3rem;
+  padding: 3rem 2%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid hsl(var(--foreground) / 0.4);
+  /* background-color: var(--color-card); */
+  background: 
+    linear-gradient(
+      to right, 
+      hsl(var(--card)), 
+      hsl(var(--card)));
+}
+
+.footer p {
+  color: hsl(var(--foreground) / 0.8);
+}
+
+.footer a {
+  padding: 0.5em 0.7em;
+  border-radius: 50%;
+  color: var(--color-primary);
+  transition: background-color 300ms;
+  background-color: hsl(var(--background));
+  /* border: 1px solid red; */
+}
+
+.footer a:hover {
+  background-color: transparent;
+}
+
 /* ============================== delete ============================== */
 .logo {
   align-self: center !important;

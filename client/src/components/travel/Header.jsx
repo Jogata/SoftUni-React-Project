@@ -478,7 +478,6 @@ function ProjectsSection() {
         <section id="projects" className="projects-section">
             <div className="container">
                 <h2>
-                    {/* {" "} */}
                     Featured <span> Projects </span>
                 </h2>
 
@@ -558,10 +557,16 @@ function ContactSection() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setIsSubmitting(true);
+        if (isSubmitting) {
+            console.log("form is submitting");
+            return;
+        }
 
+        setIsSubmitting(true);
+        
         setTimeout(() => {
             setIsSubmitting(false);
+            console.log("form was submitted");
         }, 1500);
     };
 
@@ -640,18 +645,12 @@ function ContactSection() {
                         </div>
                     </div>
 
-                    <div
-                        className="contact-form"
-                    >
+                    <div className="contact-form">
                         <h3>Send a Message</h3>
 
                         <form onSubmit={handleSubmit}>
                             <div className="form-row">
-                                <label
-                                    htmlFor="name"
-                                    className=""
-                                >
-                                    {" "}
+                                <label htmlFor="name">
                                     Your Name
                                 </label>
                                 <input
@@ -659,17 +658,12 @@ function ContactSection() {
                                     id="name"
                                     name="name"
                                     placeholder="John Doe..."
-                                    className=""
-                                    required
+                                    // required
                                 />
                             </div>
 
                             <div className="form-row">
-                                <label
-                                    htmlFor="email"
-                                    className=""
-                                >
-                                    {" "}
+                                <label htmlFor="email">
                                     Your Email
                                 </label>
                                 <input
@@ -677,32 +671,26 @@ function ContactSection() {
                                     id="email"
                                     name="email"
                                     placeholder="john@gmail.com"
-                                    className=""
-                                    required
+                                    // required
                                 />
                             </div>
 
                             <div className="form-row">
-                                <label
-                                    htmlFor="message"
-                                    className=""
-                                >
-                                    {" "}
+                                <label htmlFor="message">
                                     Your Message
                                 </label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     placeholder="Hello, I'd like to talk about..."
-                                    className=""
                                     rows={6}
-                                    required
+                                    // required
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                disabled={isSubmitting}
+                                // disabled={isSubmitting}
                                 className="cosmic-button"
                             >
                                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -715,6 +703,24 @@ function ContactSection() {
         </section>
     );
 }
+
+export function Footer() {
+  return (
+    <footer className="footer">
+      {" "}
+      <p>
+        {" "}
+        &copy; {new Date().getFullYear()} Company. All rights reserved.
+      </p>
+      <a
+        href="#hero"
+        className=""
+      >
+        <i className="fa fa-angle-double-up"></i>
+      </a>
+    </footer>
+  );
+};
 
 // export function Header() {
 //     return (
