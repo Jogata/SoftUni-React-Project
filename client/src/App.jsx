@@ -38,7 +38,7 @@ import Logout from './components/logout/Logout'
 // import { Training } from './components/travel/galaxy-travel/routes/Training';
 // import { Contact } from './components/travel/galaxy-travel/routes/Contact';
 import { useEffect, useState } from 'react';
-import { Footer, Home, Navigation, NotFound } from './components/travel/Header';
+import { AnimatedBackground, Footer, Home, Navigation, NotFound } from './components/travel/Header';
 
 function Loader() {
   return (
@@ -75,6 +75,25 @@ function useFetch(url) {
 }
 
 function App() {
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+  // const themes = {
+  //   "false": "light", 
+  //   "true": "dark"
+  // }
+
+  // let theme = "light";
+
+  // if (isDarkTheme) {
+  //   theme = "dark";
+  // }
+
+  // const theme = isDarkTheme ? "dark" : "light";
+
+  // const bodyClasses = "body " + theme;
+
+  const bodyClasses = isDarkTheme ? "body dark" : "body light";
+
   return (
     <>
       {/* <AuthContextProvider> */}
@@ -84,9 +103,16 @@ function App() {
           <Route path='/training' element={<Training />} />
           <Route path='/contact' element={<Contact />} />
         </Routes> */}
+      <button 
+        onClick={() => setIsDarkTheme(!isDarkTheme)} 
+        className="theme-button"
+      >
+        <i className="ri-palette-fill"></i>
+      </button>
 
-      <div className="body dark">
+      <div className={bodyClasses}>
         <Navigation />
+        {isDarkTheme ? <AnimatedBackground /> : null}
         <Routes>
           <Route index element={<Home />} />
           <Route path='*' element={<NotFound />} />

@@ -1199,9 +1199,6 @@ html {
   0% {
     transform: scaleX(0);
   }
-  /* 100% {
-    transform: scaleX(1);
-  } */
 }
 
 @keyframes meteor {
@@ -1246,7 +1243,6 @@ html {
 }
 
 .cosmic-button {
-  /* padding: 0.5em 1.2em; */
   padding: 0.8em 1.6em;
   color: var(--primary-foreground);
   border-radius: 10em;
@@ -1300,6 +1296,17 @@ html {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+}
+
+.theme-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.2em;
+  color: var(--color-primary-foreground);
+  font-size: 1.6rem;
+  /* border: 1px solid red; */
+  z-index: 3;
 }
 
 .navigation {

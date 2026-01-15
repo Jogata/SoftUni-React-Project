@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 export function Home() {
     return (
         <main>
-            <AnimatedBackground />
+            {/* <AnimatedBackground /> */}
             <HeroSection />
             <AboutSection />
             <SkillsSection />
@@ -19,7 +19,7 @@ export function NotFound() {
     )
 }
 
-function AnimatedBackground() {
+export function AnimatedBackground() {
     const [stars, setStars] = useState([]);
 
     useEffect(() => {
@@ -707,20 +707,15 @@ function ContactSection() {
 export function Footer() {
   return (
     <footer className="footer">
-      {" "}
       <p>
-        {" "}
         &copy; {new Date().getFullYear()} Company. All rights reserved.
       </p>
-      <a
-        href="#hero"
-        className=""
-      >
+      <a href="#hero">
         <i className="fa fa-angle-double-up"></i>
       </a>
     </footer>
   );
-};
+}
 
 // export function Header() {
 //     return (
